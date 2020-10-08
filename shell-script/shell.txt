@@ -1,0 +1,38 @@
+
+
+cat /etc/shells
+
+切换bash：chsh -s /bin/bash
+切换zsh：z
+
+bash读取的配置文件：~/.bash_profile文件
+zsh读取的配置文件：~/.zshrc文件
+当从bash切换为zsh时，如果不想重新配置一遍.zshrc文件，可以在.zshrc文件中加上source ~/.bash_profile;直接从.bash_profile文件读取配置。
+
+vim ~/.zshrc
+source ~/.zshrc
+
+brew reinstall zsh-autosuggestion
+
+export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+brew reinstall zsh-autosuggestions
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+export PATH=$PATH:/Users/shuyuej/Library/Python/2.7/lib/python/site-packages
+export PATH=$PATH:/Users/shuyuej/Library/Python/2.7/lib/python/site-packages/comparxiv
+export PATH=$PATH:/Users/shuyuej/.local/bin
+
+export PATH=$PATH:/usr/local/bin/clang-format
+
+export PATH=$PATH:/Users/shuyuej/bin
+
+export ROCM_DIR=/Users/shuyuej/Desktop/llvm-project
+
+export HBASE_HOME=/usr/local/Cellar/hbase
+
+sudo chown -R $(whoami) /var/root/
+
+for i in /Users/shuyuej/Desktop/START-19/*; do mv "$i" /Users/shuyuej/Desktop/Saved_JSON_data; done

@@ -1,0 +1,127 @@
+
+
+brew update
+brew cleanup
+brew upgrade -f 
+brew cask upgrade
+
+# Cask 常用命令
+
+brew cask search        #列出所有可以被安装的软件
+
+brew cask search sublime    #查找所有和sublime相关的应用
+
+brew cask list          #列出所有通过cask安装的软件
+
+brew cask info sublime-text  #查看 sublime 的信息
+
+brew cask install sublime-text  # 安装sublime
+
+brew cask uninstall sublime-text  #卸载sublime
+
+source ~/.zshrc
+
+
+
+brew cask install java
+brew install scala
+brew install apache-spark
+
+spark-shell
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**PRELIMINARY**
+// Install Xcode Tools:     xcode-select —install
+// Install Homebrew:        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+ 
+**CASK**
+//Install Cask              brew install cask
+List apps:                  brew search --casks
+Search apps:                brew search (discord)
+Install:                    brew cask install (discord)
+Update:                     brew cask upgrade
+Help:                       brew cask help
+ 
+ 
+**HTOP**
+//Install htop:             brew install htop
+Run:                        sudo htop
+ 
+ 
+**SPEEDTEST**
+//Install Speedtest         brew install speedtest-cli
+Run:                        speedtest-cli
+ 
+ 
+**YOUTUBE-DL**
+//Install youtube-dl:       brew install youtube-dl
+//Install ffmpeg:           brew install youtube-dl ffmpeg
+Download highest-res vid:   youtube-dl -f bestvideo+bestaudio ‘link’
+Help:                       youtube-dl --help
+ 
+**IMAGEMAGICK**
+//Install ImageMagick:      brew install imagemagick
+Add border (sample):        convert testing.png -border 1x1 -bordercolor black result.png
+Resize (sample):            convert testing.png -resize 1920 (or x1080) example.png
+Add effect (sample):        convert testing.png -charcoal 2 example.png
+Change multiple (sample):   for file in *.png; do convert $file -resize 1920 small-$file; done
+Help:                       convert help
+
+
+brew update
+更新 brew
+
+brew search FORMULA
+查找软件包，可使用正则表达式
+
+brew info FORMULA
+显示软件的信息
+
+brew deps FORMULA
+显示包依赖
+
+brew install FORMULA
+安装软件包
+
+brew uninstall FORMULA
+卸载软件包
+
+brew list
+列出已安装的软件包，可指定 FORMULA
+
+brew outdated
+列出可升级的软件包
+
+brew upgrade
+更新已安装的软件包，可指定 FORMULA
+
+brew doctor
+诊断 homebrew 环境
+
+brew prune
+删除 /usr/local 下的无效链接(remove broken symlinks)
+
+brew info
+**brew info
+** 显示软件包信息，一般包括：
+
+作者：坚持编程_lyz
+链接：https://www.jianshu.com/p/61f209cd0e91
+来源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+

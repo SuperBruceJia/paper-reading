@@ -1,0 +1,59 @@
+make -j 8 CXX="g++ -stdlib=libc++"
+
+export PATH="/home/xxxxx/anaconda3/bin:$PATH"
+export PYTHONPATH="$PYTHONPATH:/home/xxxxx/pytorch/build"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
+
+
+
+
+Tensorflow build from source
+
+git clone --recurse-submodules https://github.com/tensorflow/tensorflow
+
+cd tensorflow
+
+git checkout r1.14
+
+./configure
+
+/usr/bin/clang++
+
+/usr/bin/clang
+
+/Users/shuyuej/Library/Android/sdk/ndk/16.1.4479499
+
+/Users/shuyuej/library/Android/Sdk
+
+bazel build --config=opt --config=mkl --config=dynamic_kernels //tensorflow/tools/pip_package:build_pip_package
+
+
+bazel build --config=opt --config=mkl --config=monolithic --config=dynamic_kernels //tensorflow/tools/pip_package:build_pip_package
+
+
+bazel build --config=opt --config=mkl --config=monolithic --config=dynamic_kernels --config=v2 //tensorflow/tools/pip_package:build_pip_package
+
+
+bazel build //tensorflow/tools/pip_package:build_pip_package
+
+
+./bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
+
+pip install /tmp/tensorflow_pkg/tensorflow-1.14.1-cp36-cp36m-macosx_10_15_x86_64.whl
+
+
+Preconfigured Bazel build configs. You can use any of the below by adding "--config=<>" to your build command. See .bazelrc for more details.
+        --config=mkl            # Build with MKL support.
+        --config=monolithic     # Config for mostly static monolithic build.
+        不能用 --config=gdr            # Build with GDR support.
+        --config=verbs          # Build with libverbs support.
+        不能用 --config=ngraph         # Build with Intel nGraph support.
+        --config=numa           # Build with NUMA support.
+        --config=dynamic_kernels        # (Experimental) Build kernels into separate shared objects.
+Preconfigured Bazel build configs to DISABLE default on features:
+        --config=noaws          # Disable AWS S3 filesystem support.
+        --config=nogcp          # Disable GCP support.
+        --config=nohdfs         # Disable HDFS support.
+        --config=noignite       # Disable Apache Ignite support.
+        --config=nokafka        # Disable Apache Kafka support.
+        --config=nonccl         # Disable NVIDIA NCCL support.

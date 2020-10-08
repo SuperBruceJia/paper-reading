@@ -1,0 +1,15 @@
+
+
+node -v
+
+npm init
+
+
+
+npm install nodemon --save-dev
+
+npm install -g nodemon
+
+live server
+Bracket Pair Colorizer
+JavaScript (ES6) code snippets

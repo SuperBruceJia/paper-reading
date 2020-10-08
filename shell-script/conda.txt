@@ -1,0 +1,644 @@
+set PYTHONIOENCODING=utf-8
+
+nvcc --version
+
+conda update --all
+
+activate tensorflow
+activate tensorflow2
+activate tensorflow11
+activate tensorflow13
+activate pytorch
+activate python2
+activate python37
+activate yolo
+activate paddlepaddle
+activate mxnet
+
+
+deactivate
+
+spyder --new-instance
+tensorboard --logdir=run1:"/home/.../summary",run2:"/home/.../summary"
+tensorboard --logdir=" " --host=127.0.0.1
+
+安装Tensorflow
+pip install --user --ignore-installed --upgrade tensorflow-gpu
+pip install --upgrade --force-reinstall tensorflow-gpu==1.12.0 --user
+pip install --upgrade --force-reinstall tensorflow-gpu==1.13.1 --user
+pip install --upgrade tensorflow-gpu==2.0.0-alpha0
+pip install tensorflow-gpu==2.0.0-beta0
+pip install tensorflow_datasets
+
+pip install --upgrade --force-reinstall tensorflow==1.13.1 --user
+
+pip install --upgrade tensorflow --user
+
+pip install --upgrade --force-reinstall tensorflow==1.14.0 --user
+
+
+tensorboard --logdir="/Users/shuyuej/Desktop/Python-Files/Codes-Github/cnn_graph/summaries/EEG-GCN" --host=127.0.0.1
+
+安装mxnet
+pip install mxnet-cu100mkl
+
+安装opencv
+pip install opencv-python
+pip install opencv-contrib-python
+
+更新Python
+conda update python
+
+更新pip
+python -m pip install --upgrade pip
+
+更新conda
+conda update -n base conda
+conda update -n base -c defaults conda
+
+
+更新Anaconda
+conda update anaconda
+
+安装Spyder
+conda install spyder
+
+安装R语言
+conda install r-essentials
+conda install mro-base
+
+获取版本号:
+conda --version
+conda -V
+python -V
+
+获取帮助:
+conda --help
+conda -h
+conda update --help
+conda remove --help
+
+环境管理:
+conda env -h
+创建环境：
+conda create --name (your_env_name)
+创建指定python版本下包含某些包的环境
+conda create --name (your_env_name) python=3.5 numpy scipy
+conda create --name (your_env_name) python=3.6 numpy scipy
+conda create --name (your_env_name) python=2.7 numpy scipy
+列举当前所有环境
+conda info --envs
+conda env list
+进入某个环境
+activate your_env_name
+退出当前环境
+deactivate 
+复制某个环境
+conda create --name new_env_name --clone old_env_name 
+删除某个环境
+conda remove --name your_env_name --all
+
+列举当前活跃环境下的所有包：
+conda list
+
+# 创建Tensorflow的环境 Python3.5
+conda create --name tensorflow python=3.5 numpy scipy
+conda create --name tensorflow11 python=3.5 numpy scipy
+conda create --name pytorch python=3.5 numpy scipy
+conda create --name cntk python=3.5 numpy scipy
+
+中科大的镜像 
+conda config –add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/ 
+conda config –set show_channel_urls yes
+
+show_channel_urls: true
+channels:
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+  - defaults
+
+conda换回默认源
+conda config --remove-key channels
+
+tensorflow 错误ImportError: No module named sklearn
+pip install --user --install-option="--prefix=" -U scikit-learn
+
+import sys
+sys.path.append(r"C:/Users/jiash/Desktop/models/research/slim")
+from datasets import dataset_utils
+
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
+
+docker
+安装tf:
+docker pull tensorflow/tensorflow  
+docker pull tensorflow/tensorflow:nightly-devel-gpu
+
+
+docker run -it --rm tensorflow/tensorflow \
+    python -c "import tensorflow as tf; print(tf.__version__)"
+
+
+docker run -it tensorflow/tensorflow bash
+
+
+AttributeError: 'NoneType' object has no attribute 'flush'
+conda install -c anaconda spyder ipykernel=4.8.2
+spyder --reset
+
+
+conda install spyder
+
+# TensorFlow
+pip install --user --ignore-installed --upgrade tensorflow-gpu
+
+# PyTorch
+conda install pytorch torchvision -c pytorch
+conda install pytorch torchvision cudatoolkit=10.0 -c pytorch
+或者
+pip install --upgrade https://download.pytorch.org/whl/cu90/torch-1.0.0-cp36-cp36m-win_amd64.whl
+pip install --upgrade torchvision
+
+pip install https://download.pytorch.org/whl/cu100/torch-1.1.0-cp35-cp35m-win_amd64.whl
+pip install https://download.pytorch.org/whl/cu100/torchvision-0.3.0-cp35-cp35m-win_amd64.whl
+
+
+# CNTK
+pip install --user --upgrade --no-deps cntk-gpu
+
+# MXnet
+pip install mxnet-cu92
+
+# Baidu PaddlePaddle
+pip install --upgrade paddlepaddle
+
+# Installation Schedule
+
+conda update --all
+
+python -m pip install --upgrade pip
+pip install --upgrade cython
+
+conda install spyder 
+
+pip install --upgrade keras
+pip install --upgrade pillow
+pip install --upgrade opencv-python
+pip install --upgrade opencv-contrib-python
+pip install --upgrade theano
+pip install --upgrade scipy
+pip install --upgrade pandas
+pip install --upgrade xlrd
+pip install --upgrade statsmodels
+pip install --upgrade seaborn
+pip install --upgrade plotly
+pip install --upgrade bokeh
+pip install --upgrade pydot
+pip install --upgrade scikit-learn
+pip install --upgrade scikit-image
+pip install --upgrade sklearn
+pip install --upgrade pyedflib
+pip install --upgrade bs4
+pip install --upgrade ignite
+
+conda install matplotlib
+conda install ipython
+
+pip install --upgrade ipython
+pip install --upgrade jupyter 
+pip install --upgrade notebook
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+python -m pip install --upgrade pip --user
+pip install --upgrade cython --user
+pip install --upgrade textblob --user
+pip install --upgrade nltk --user
+pip install --upgrade jieba --user
+pip install --upgrade visdom --user
+pip install --upgrade keras --user
+pip install --upgrade pillow --user
+pip install --upgrade opencv-python --user
+pip install --upgrade opencv-contrib-python --user
+pip install --upgrade theano --user
+pip install --upgrade scipy --user
+pip install --upgrade pandas --user
+
+pip install --upgrade xlrd --user
+pip install --upgrade statsmodels --user
+pip install --upgrade seaborn --user
+pip install --upgrade plotly --user
+pip install --upgrade bokeh --user
+pip install --upgrade pydot --user
+pip install --upgrade scikit-learn --user
+pip install --upgrade scikit-image --user
+pip install --upgrade sklearn --user
+pip install --upgrade pyedflib --user
+pip install --upgrade bs4 --user
+pip install --upgrade ignite --user
+pip install --upgrade cython --user
+pip install --upgrade keras --user
+
+pip install --upgrade opencv-python --user
+pip install --upgrade opencv-contrib-python --user
+pip install --upgrade theano --user
+pip install --upgrade numpy --user
+pip install --upgrade scipy --user
+pip install --upgrade pandas --user
+pip install --upgrade xlrd --user
+pip install --upgrade statsmodels --user
+pip install --upgrade matplotlib --user
+pip install --upgrade seaborn --user
+pip install --upgrade plotly --user
+pip install --upgrade bokeh --user
+pip install --upgrade pydot --user
+
+pip install --upgrade scikit-learn --user
+pip install --upgrade scikit-image --user
+pip install --upgrade sklearn --user
+pip install --upgrade XGBoost --user
+pip install --upgrade LightGBM --user
+pip install --upgrade CatBoost --user
+pip install --upgrade Eli5 --user
+pip install --upgrade NLTK --user
+pip install --upgrade Gensim --user
+pip install --upgrade jupyter --user
+pip install --upgrade notebook --user
+pip install --upgrade pyedflib --user
+pip install --upgrade bs4 --user
+pip install --upgrade pandas-profiling --user
+pip install --upgrade Django --user
+pip install --upgrade gym --user
+
+
+export PATH=/Users/shuyuej/anaconda3/bin:$PATH
+
+
+
+
+conda install captum -c pytorch
+
+
+
+
+
+
+
+
+
+
+pip install --upgrade textblob
+pip install --upgrade spacy
+pip install --upgrade gensim
+pip install --upgrade scattertext
+pip install --upgrade gluonnlp
+pip install --upgrade allennlp
+pip install --upgrade rosetta
+pip install --upgrade pynlpl
+pip install --upgrade dynet
+pip install --upgrade artm
+pip install --upgrade snips-nlu
+pip install --upgrade chazutsu
+pip install --upgrade word_forms
+pip install --upgrade artifici_lda
+pip install --upgrade flair
+pip install --upgrade kashgari
+pip install --upgrade nlp-architect
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+pip install --upgrade urllib 
+pip install --upgrade requests 
+pip install --upgrade grab 
+pip install --upgrade pycurl 
+pip install --upgrade urllib3 
+pip install --upgrade httplib2 
+pip install --upgrade RoboBrowser 
+pip install --upgrade MechanicalSoup 
+pip install --upgrade mechanize 
+pip install --upgrade socket 
+pip install --upgrade Unirest 
+pip install --upgrade hyper 
+pip install --upgrade PySocks 
+pip install --upgrade treq 
+pip install --upgrade aiohttp 
+pip install --upgrade grab 
+pip install --upgrade scrapy 
+pip install --upgrade pyspider 
+pip install --upgrade cola 
+pip install --upgrade portia 
+pip install --upgrade restkit 
+pip install --upgrade demiurge 
+pip install --upgrade lxml 
+pip install --upgrade cssselect 
+pip install --upgrade pyquery 
+pip install --upgrade BeautifulSoup 
+pip install --upgrade html5lib 
+pip install --upgrade feedparser
+pip install --upgrade MarkupSafe 
+pip install --upgrade xmltodict 
+pip install --upgrade xhtml2pdf 
+pip install --upgrade untangle 
+pip install --upgrade Bleach 
+pip install --upgrade sanitize 
+pip install --upgrade difflib 
+pip install --upgrade Levenshtein 
+pip install --upgrade fuzzywuzzy 
+pip install --upgrade esmre 
+pip install --upgrade ftfy 
+pip install --upgrade unidecode 
+pip install --upgrade codecs 
+pip install --upgrade uniout 
+pip install --upgrade chardet 
+pip install --upgrade xpinyin 
+pip install --upgrade pangu.py
+pip install --upgrade awesome-slugify
+pip install --upgrade python-slugify
+pip install --upgrade unicode-slugify
+pip install --upgrade pytils 
+pip install --upgrade PLY 
+pip install --upgrade python-nameparser 
+pip install --upgrade phonenumbers 
+pip install --upgrade python-user-agents
+pip install --upgrade tablib 
+pip install --upgrade textract 
+pip install --upgrade messytables 
+pip install --upgrade rows 
+pip install --upgrade python-docx
+pip install --upgrade xlwt 
+pip install --upgrade xlrd 
+pip install --upgrade XlsxWriter 
+pip install --upgrade xlwings 
+pip install --upgrade openpyxl 
+pip install --upgrade Marmir 
+pip install --upgrade PDFMiner 
+pip install --upgrade PyPDF2 
+pip install --upgrade ReportLab 
+pip install --upgrade pdftables 
+pip install --upgrade Python-Markdown
+pip install --upgrade Mistune 
+pip install --upgrade markdown2 
+pip install --upgrade PyYAML 
+pip install --upgrade cssutils 
+pip install --upgrade feedparser 
+pip install --upgrade sqlparse 
+pip install --upgrade http-parser
+pip install --upgrade opengraph 
+pip install --upgrade pefile  
+pip install --upgrade psd-tools
+pip install --upgrade NLTK 
+pip install --upgrade Pattern 
+pip install --upgrade TextBlob 
+pip install --upgrade SnowNLP 
+pip install --upgrade jieba 
+pip install --upgrade loso 
+pip install --upgrade genius
+pip install --upgrade langid.py
+pip install --upgrade Korean 
+pip install --upgrade pymorphy2 
+pip install --upgrade PyPLN  
+pip install --upgrade selenium 
+pip install --upgrade Ghost.py
+pip install --upgrade Spynner 
+pip install --upgrade Splinter 
+pip install --upgrade threading 
+pip install --upgrade multiprocessing 
+pip install --upgrade celery 
+pip install --upgrade concurrent-futures
+pip install --upgrade asyncio 
+pip install --upgrade Twisted 
+pip install --upgrade Tornado 
+pip install --upgrade pulsar 
+pip install --upgrade diesel 
+pip install --upgrade gevent 
+pip install --upgrade eventlet 
+pip install --upgrade Tomorrow 
+pip install --upgrade celery 
+pip install --upgrade huey 
+pip install --upgrade mrq 
+pip install --upgrade RQ 
+pip install --upgrade simpleq 
+pip install --upgrade python-gearman
+pip install --upgrade picloud 
+pip install --upgrade dominoup.com
+pip install --upgrade flanker
+pip install --upgrade Talon 
+pip install --upgrade furl 
+pip install --upgrade purl 
+pip install --upgrade urllib.parse
+pip install --upgrade tldextract 
+pip install --upgrade netaddr 
+pip install --upgrade newspaper 
+pip install --upgrade html2text 
+pip install --upgrade python-goose
+pip install --upgrade lassie 
+pip install --upgrade micawber 
+pip install --upgrade sumy 
+pip install --upgrade Haul 
+pip install --upgrade python-readability
+pip install --upgrade scrapely 
+pip install --upgrade youtube-dl 
+pip install --upgrade you-get
+pip install --upgrade WikiTeam 
+pip install --upgrade Crossbar
+pip install --upgrade AutobahnPython 
+pip install --upgrade WebSocket-for-Python
+pip install --upgrade dnsyo 
+pip install --upgrade pycares 
+pip install --upgrade SimpleCV 
+pip install --upgrade mahotas 
+pip install --upgrade shadowsocks
+pip install --upgrade tproxy 
+
+
+pip install --upgrade tensornetwork
+
+
+
+
+
+
+
+
+
+
+
+python -m pip install --upgrade pip
+pip install --upgrade cython
+pip install --upgrade keras
+pip install --upgrade opencv-python
+pip install --upgrade opencv-contrib-python
+pip install --upgrade theano
+pip install --upgrade numpy
+pip install --upgrade scipy
+pip install --upgrade pandas
+pip install --upgrade xlrd
+pip install --upgrade statsmodels
+pip install --upgrade matplotlib
+pip install --upgrade seaborn
+pip install --upgrade plotly
+pip install --upgrade bokeh
+pip install --upgrade pydot
+pip install --upgrade scikit-learn
+pip install --upgrade scikit-image
+pip install --upgrade sklearn
+pip install --upgrade XGBoost
+pip install --upgrade LightGBM
+pip install --upgrade CatBoost
+pip install --upgrade Eli5
+pip install --upgrade NLTK
+pip install --upgrade Gensim
+pip install --upgrade jupyter 
+pip install notebook==5.7.4
+pip install --upgrade pyedflib
+pip install --upgrade bs4
+pip install --upgrade autopep8
+pip install --upgrade elephas
+pip install --upgrade chartify
+pip install --upgrade jupytext
+pip install --upgrade tpot
+pip install --upgrade adanet
+pip install --upgrade spacy[cuda100]
+pip install --upgrade optimuspyspark
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+python -m pip install --upgrade pip
+pip install --user cython
+pip install --user keras
+pip install --user opencv-python
+pip install --user opencv-contrib-python
+pip install --user theano
+pip install --user numpy
+pip install --user scipy
+pip install --user pandas
+pip install --user xlrd
+pip install --user statsmodels
+pip install --user matplotlib
+pip install --user seaborn
+pip install --user plotly
+pip install --user bokeh
+pip install --user pydot
+pip install --user scikit-learn
+pip install --user scikit-image
+pip install --user sklearn
+pip install --user XGBoost
+pip install --user LightGBM
+pip install --user CatBoost
+pip install --user Eli5
+pip install --user NLTK
+pip install --user Gensim
+pip install --user jupyter 
+pip install --user notebook
+pip install --user pyedflib
+pip install --user bs4
+pip install --user autopep8
+pip install --user elephas
+
+
+
+
+
+pip uninstall notebook
+pip install notebook==5.7.4
+
+# Facebook Botorch and AX
+pip install --upgrade botorch
+pip install --upgrade ax-platform
+
+
+
+pip install bert-base==0.0.7 -i https://pypi.python.org/simple
+
+# server
+pip install bert-serving-server
+# client, independent of `bert-serving-server`  
+pip install bert-serving-client  
+
+

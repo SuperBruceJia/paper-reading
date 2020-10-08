@@ -1,0 +1,33 @@
+Pkg.add("IJulia")
+using IJulia
+notebook()
+
+For those of you who have installed Julia on your own local computer, here's how to get interactive notebooks running
+
+Step 1: Start Julia, and go to the command line.
+
+Step 2: Install IJulia by typing and entering Pkg.add("IJulia").
+
+Step 3: Activate IJulia by typing and entering using IJulia.
+
+Step 4: Start up IJulia by typing and entering notebook(). It opens in a browser (if necessary, starting up the browser).
+
+It can be a little unclear how to shut it down. I generally first close the browser window, then return to the Julia terminal and press Ctrl-C. The other way round also works.
+
+
+using Pkg
+Pkg.update()
+
+Pkg.add("Arduino")
+Pkg.add("BackpropNeuralNet")
+Pkg.add("Bokeh")
+Pkg.add("Clustering")
+
+
+
+
+
+
+
+
+

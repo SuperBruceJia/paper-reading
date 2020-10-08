@@ -1,0 +1,19 @@
+
+Run your first Go program by executing:
+go run hello.go
+
+If you wish to compile it and move it to $GOPATH/bin, then run:
+go install hello.go
+
+You can create Go package, as well importing shared ones. To do so you'll need to use go get command
+go get -u github.com/gorilla/mux
+
+Go has a tool that automatically formats Go source code.
+gofmt -w yourcode.go
+go fmt path/to/your/package
+
+Using the godoc command, you can generate a program documentation.
+godoc fmt                # documentation for package fmt
+godoc fmt Printf         # documentation for fmt.Printf
+godoc -src fmt           # fmt package interface in Go source form
+
