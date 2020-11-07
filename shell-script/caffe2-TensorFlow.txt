@@ -9,6 +9,8 @@ export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
 
 Tensorflow build from source
 
+下载Bazel 0.24.1版本：https://github.com/bazelbuild/bazel/releases/tag/0.24.1
+
 git clone --recurse-submodules https://github.com/tensorflow/tensorflow
 
 cd tensorflow
@@ -21,21 +23,25 @@ git checkout r1.14
 
 /usr/bin/clang
 
+可以不选用Android：
+
 /Users/shuyuej/Library/Android/sdk/ndk/16.1.4479499
 
 /Users/shuyuej/library/Android/Sdk
 
-bazel build --config=opt --config=mkl --config=dynamic_kernels //tensorflow/tools/pip_package:build_pip_package
+# bazel build --config=opt --config=mkl --config=dynamic_kernels //tensorflow/tools/pip_package:build_pip_package
 
 
-bazel build --config=opt --config=mkl --config=monolithic --config=dynamic_kernels //tensorflow/tools/pip_package:build_pip_package
+# bazel build --config=opt --config=mkl --config=monolithic --config=dynamic_kernels //tensorflow/tools/pip_package:build_pip_package
 
 
-bazel build --config=opt --config=mkl --config=monolithic --config=dynamic_kernels --config=v2 //tensorflow/tools/pip_package:build_pip_package
+# bazel build --config=opt --config=mkl --config=monolithic --config=dynamic_kernels --config=v2 //tensorflow/tools/pip_package:build_pip_package
 
 
-bazel build //tensorflow/tools/pip_package:build_pip_package
+选用这个编译：bazel build //tensorflow/tools/pip_package:build_pip_package
 
+
+接下来：
 
 ./bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 
@@ -50,7 +56,8 @@ Preconfigured Bazel build configs. You can use any of the below by adding "--con
         不能用 --config=ngraph         # Build with Intel nGraph support.
         --config=numa           # Build with NUMA support.
         --config=dynamic_kernels        # (Experimental) Build kernels into separate shared objects.
-Preconfigured Bazel build configs to DISABLE default on features:
+
+        Preconfigured Bazel build configs to DISABLE default on features:
         --config=noaws          # Disable AWS S3 filesystem support.
         --config=nogcp          # Disable GCP support.
         --config=nohdfs         # Disable HDFS support.
