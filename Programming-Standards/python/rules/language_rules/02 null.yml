@@ -1,0 +1,22 @@
+---
+
+name_en: Null
+name: None 条件的判断
+description:
+full_description:
+rules:
+  - name: xx
+    level: Mandatory
+    summary: 为提升可读性，在判断条件中应使用 `is not`，而不使用 `not ... is`。
+    description:
+    bad_example: |
+      ```python
+      if not foo is None:
+      ```
+    good_example: |
+      ```python
+      if foo is not None:
+      ```
+    pylint:
+    pycodestyle:
+      - E714 test for object identity should be 'is not'

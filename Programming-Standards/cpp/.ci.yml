@@ -1,0 +1,14 @@
+stages:
+  - stage:
+      - job:
+          steps:
+            - taskType: codeCCScan@latest
+              displayName: codecc检查
+              inputs:
+                languages:
+                  - C_CPP
+                tools:
+                  - CPPLINT
+                languageRuleSetMap:
+                  JAVA_RULE:
+                    - standard_cpp

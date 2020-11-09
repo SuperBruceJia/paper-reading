@@ -1,0 +1,15 @@
+---
+
+name_en:
+name:
+description:
+full_description:
+rules:
+  - name: xx
+    level: Mandatory
+    summary:
+    description:
+    bad_example:
+    good_example:
+    pylint:
+    pycodestyle:

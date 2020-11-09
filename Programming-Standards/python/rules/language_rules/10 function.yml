@@ -1,0 +1,47 @@
+---
+
+name_en: Function
+name: 函数
+description:
+full_description:
+rules:
+  - name: function-redefined
+    level: Mandatory
+    summary: 模块内部禁止定义重复函数声明。
+    description: >
+      禁止重复的函数定义。
+    bad_example: |
+      ```python
+      def get_x(x):
+          return x
+
+      def get_x(x):  # 模块内重复定义
+          return x
+      ```
+    good_example:
+    pylint:
+      - function-redefined
+    pycodestyle:
+
+  - name: dangerous-default-value
+    level: Mandatory
+    summary: 函数参数中，不允许出现可变类型变量作为默认值。
+    bad_example: |
+      ```python
+      def f(x=0, y=[], z={}):
+          pass
+
+      def f(a, b=time.time()):
+          pass
+      ```
+    good_example: |
+      ```python
+      def f(x=0, y=None, z=None):
+          if y is None:
+              y = []
+          if z is None:
+              z = {}
+      ```
+    pylint:
+      - dangerous-default-value
+    pycodestyle:

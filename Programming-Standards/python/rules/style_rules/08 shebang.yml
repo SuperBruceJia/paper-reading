@@ -1,0 +1,20 @@
+---
+
+name_en:
+name: Shebang
+description:
+rules:
+  - name: xx
+    level: Mandatory
+    summary: 程序的main文件应该以 `#!/usr/bin/env python2` 或者 `#!/usr/bin/env python3` 开始，
+             可以同时支持Python2、Python3的`#!/usr/bin/env python`。
+    description: 非程序入口的文件不应该出现 Shebang 。
+    bad_example:
+    good_example: |
+      ```python
+      #!/usr/bin/env python3
+      # -*- coding: utf-8 -*-
+      #
+      ```
+    pylint:
+    pycodestyle:

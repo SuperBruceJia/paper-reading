@@ -1,0 +1,51 @@
+---
+
+name_en: True/False
+name: True/False 布尔运算
+description:
+full_description:
+rules:
+  - name: xx
+    level: Mandatory
+    summary: 不要用 `==` 与 `True`、 `False` 进行布尔运算。
+    description:
+    bad_example: |
+      ```python
+      if greeting == True:
+         pass
+
+      if greeting is True:  # Worse
+         pass
+      ```
+    good_example: |
+      ```python
+      if greeting:
+         pass
+      ```
+    pylint:
+      - singleton-comparison
+    pycodestyle:
+
+  - name: xx
+    level: Mandatory
+    summary: 对序列（字符串、列表 、元组），空序列为 false 的情况。
+    description:
+    bad_example: |
+      ```python
+      if len(seq):
+         pass
+
+      if not len(seq):
+         pass
+      ```
+    good_example: |
+      ```python
+      if not seq:
+         pass
+
+      if seq:
+         pass
+      ```
+    pylint:
+      - len-as-condition
+    pycodestyle:

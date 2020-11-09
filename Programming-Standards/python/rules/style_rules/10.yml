@@ -1,0 +1,45 @@
+---
+
+name_en: dunders
+name: 模块中的魔术变量(dunders)
+description:
+rules:
+  - name: xx
+    level: Mandatory
+    summary: 对于两个 `_`  开头和两个 `_` 结尾的变量，
+             如 `__all__`，`__author__`，`__version__`等，应该放在模块文档之后，
+             其他模块导入之前（`__future__` 除外）。
+    description:
+    bad_example:
+    good_example:
+    pylint:
+    pycodestyle:
+
+  - name: xx
+    level: Mandatory
+    summary: Python 要求 `future` 导入必须出现在其他模块导入之前。
+    description:
+    bad_example:
+    good_example: |
+      ```python
+      # -*- coding: utf-8 -*-
+      #
+      # Copyright @ 2020 Tencent.com
+
+      """This is the example module.
+
+      This module does stuff.
+      """
+
+      from __future__ import barry_as_FLUFL
+
+      __all__ = ['a', 'b', 'c']
+      __version__ = '0.1'
+      __author__ = 'Cardinal Biggles'
+
+      import os
+      import sys
+      ```
+    pylint:
+      - misplaced-future
+    pycodestyle:

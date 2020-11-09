@@ -1,0 +1,42 @@
+---
+
+name_en: Whitespace
+name: 空白符
+description:
+rules:
+  - name: bad-whitespace
+    level: Mandatory
+    summary: 在表达式的赋值符号、操作符左右至少有一个空格。
+    description:
+    bad_example: |
+      ```python
+      x=y+1
+      x = y+1
+      ```
+    good_example: |
+      ```python
+      x = y + 1
+      ```
+    pylint:
+    pycodestyle:
+
+  - name: trailing-whitespace
+    level: Mandatory
+    summary: 禁止行尾空白。
+    description: |
+      行尾空白虽然不会造成功能性异常，但是这些空白字符会被源码管理系统标记出来显示为差异，对开发人员造成困恼。
+    bad_example: |
+      ```diff
+      # No: 结尾存在多余空白符号
+      - para = {}•••••
+      - para = {}  # comment••••••
+      ```
+    good_example: |
+      ```diff
+      # YES: 尾部没有空白符号
+      + para = {}
+      + para = {}  # comment
+      ```
+    pylint:
+      - trailing-whitespace
+    pycodestyle:

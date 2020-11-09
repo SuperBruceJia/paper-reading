@@ -1,0 +1,5 @@
+extends:
+  - "@commitlint/config-conventional"
+rules:
+  #允许中文
+  subject-case: [0]

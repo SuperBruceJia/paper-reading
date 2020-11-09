@@ -1,0 +1,76 @@
+---
+
+name_en: import
+name: 模块引用(import)
+description:
+rules:
+  - name: xx
+    level: Mandatory
+    summary: 每个导入应该独占一行。
+    description:
+    bad_example: |
+      ```python
+      import os, sys
+      ```
+    good_example: |
+      ```python
+      import os
+      import sys
+      ```
+    pylint:
+      - multiple-imports
+    pycodestyle:
+
+  - name: xx
+    level: Mandatory
+    summary: 导入总应该放在文件顶部，位于模块注释和文档字符串之后，模块全局变量和常量之前。
+    description: |
+      导入应该按照从最通用到最不通用的顺序分组, 每个分组之间，需要空一行:
+
+      * 标准库导入
+      * 第三方库导入
+      * 本地导入
+
+      每种分组中，建议每个模块的完整包路径按 ***字典序*** 排序，并忽略大小写。
+    bad_example:
+    good_example: |
+      ```python
+      import foo
+      from foo import bar
+      from foo.bar import baz
+      from foo.bar import Quux
+      from Foob import ar
+      ```
+    pylint:
+      - wrong-import-order
+    pycodestyle:
+
+  - name: xx
+    level: Mandatory
+    summary: 避免使用 `from <module> import *`，因为可能会造成命名空间的污染。
+    description:
+    bad_example:
+    good_example:
+    pylint:
+      - wildcard-import
+    pycodestyle:
+
+  - name: unused-import
+    level: Mandatory
+    summary: 禁止导入了模块却不使用它。
+    description:
+    bad_example: |
+      ```python
+      import os   # unused !
+
+      # dir_path = os.path.abspath('.')
+      ```
+    good_example: |
+      ```python
+      import os  # used
+
+      dir_path = os.path.abspath('.')
+      ```
+    pylint:
+      - unused-import
+    pycodestyle:

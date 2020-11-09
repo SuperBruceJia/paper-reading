@@ -1,0 +1,4 @@
+# See https://iwiki.oa.tencent.com/pages/viewpage.action?pageId=113587682
+source:
+  third_party_source:
+    filepath_regex: ["/cpplint/.*"]

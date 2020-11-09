@@ -1,0 +1,109 @@
+---
+
+name_en:
+name: 文档字符串
+description: |
+  Docstring 文档字符串提供了将文档与 Python 模块，函数，类和方法相关联的便捷方法。
+
+  ```python
+  def foobar():
+      """Return a foobang
+
+      Optional plotz says to frobnicate the bizbaz first.
+      """
+  ```
+
+  [PEP 257](https://www.python.org/dev/peps/pep-0257/) 全面描述了文档字符串的风格。
+
+rules:
+  - name: xx
+    level: Preferable
+    summary: 需对外发布的public 模块，函数，类，方法等需要包含文档字符串。内部使用的方法，函数等，要求使用简单的注释描述功能。
+    description: |
+      一个函数或方法，如果可以直接被其他开发者使用，需要提供文档明确其含义，需要指出输入，输出，以及异常内容。
+    bad_example:
+    good_example:
+    pylint:
+      - missing-module-docstring
+      - missing-class-docstring
+      - missing-function-docstring
+    pycodestyle:
+
+  - name: xx
+    level: Mandatory
+    summary: 第一行应为文档名，空一行后，输入文档描述。
+    description:
+    bad_example:
+    good_example:
+    pylint:
+    pycodestyle:
+
+  - name: xx
+    level: Preferable
+    summary: 在使用文档字符串时，推荐使用 `reStructuredText` 风格类型。
+    description:
+    bad_example:
+    good_example: |
+      ```python
+      def fetch_bigtable_rows(big_table, keys, other_silly_variable=None):
+          """Fetches rows from a Bigtable.
+
+          Retrieves rows pertaining to the given keys from the Table instance
+          represented by big_table.  Silly things may happen if
+          other_silly_variable is not None.
+
+          :param big_table: An open Bigtable Table instance.
+          :param keys: A sequence of strings representing the key of each table row
+              to fetch.
+          :param other_silly_variable: Another optional variable, that has a much
+              longer name than the other args, and which does nothing.
+
+          :return: A dict mapping keys to the corresponding table row data
+              fetched. Each row is represented as a tuple of strings. For
+              example:
+
+              {'Serak': ('Rigel VII', 'Preparer'),
+               'Zim': ('Irk', 'Invader'),
+               'Lrrr': ('Omicron Persei 8', 'Emperor')}
+
+              If a key from the keys argument is missing from the dictionary,
+              then that row was not found in the table.
+
+          :raises ValueError: if `keys` is empty.
+          :raises IOError: An error occurred accessing the bigtable.Table object.
+          """
+          pass
+      ```
+    pylint:
+    pycodestyle:
+
+
+  - name: xx
+    level: Preferable
+    summary: 类应该在其定义下有一个用于描述该类的文档字符串。
+             如果类有公共属性(Attributes)，那么文档中应该有一个属性(Attributes)段，
+             并且应该遵守和函数参数相同的格式。
+    description:
+    bad_example:
+    good_example: |
+      ```python
+      class SampleClass(object):
+          """Summary of class here.
+
+          Longer class information....
+          Longer class information....
+
+          :ivar likes_spam: A boolean indicating if we like SPAM or not.
+          :ivar eggs: An integer count of the eggs we have laid.
+          """
+
+          def __init__(self, likes_spam=False):
+              """Inits SampleClass with blah."""
+              self.likes_spam = likes_spam
+              self.eggs = 0
+
+          def public_method(self):
+              """Performs operation blah."""
+      ```
+    pylint:
+    pycodestyle:

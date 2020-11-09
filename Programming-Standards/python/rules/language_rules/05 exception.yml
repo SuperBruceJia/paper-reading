@@ -1,0 +1,145 @@
+---
+
+name_en: Exception
+name: 异常
+description:
+full_description:
+rules:
+  - name: xx
+    level: Mandatory
+    summary: 异常类继承自 `Exception`，而不是 `BaseException`。
+    description:
+    bad_example:
+    good_example:
+    pylint:
+    pycodestyle:
+
+  - name: xx
+    level: Mandatory
+    summary: 使用新版本抛出异常的方式，禁止使用废弃的方式。
+    description:
+    bad_example: |
+      ```python
+      raise ValueError, 'message'
+      ```
+    good_example: |
+      ```python
+      raise ValueError('message')
+      ```
+    pylint:
+    pycodestyle:
+      - W602 deprecated form of raising exception
+
+  - name: broad-except
+
+    level: Mandatory
+    summary: 捕获异常时，需要指明具体异常，而不是捕获所有异常。
+             除非已经在当前线程的最外层（记得还是要打印一条traceback）。
+    description:
+    bad_example: |
+      ```python
+      try:
+          import platform_specific_module
+      except Exception:  # broad-except
+          platform_specific_module = None
+
+      try:
+          do_something()
+      except Exception:  # 框架等未明确异常场景，建议增加 traceback 打印
+          platform_specific_module = None
+      ```
+    good_example: |
+      ```python
+      try:
+          import platform_specific_module
+      except ImportError:
+          platform_specific_module = None
+
+      try:
+          do_something()
+      except Exception as ex:
+          print(traceback.format_exc())
+          do_handle_exception()
+      ```
+    pylint:
+      - broad-except
+      - bare-except
+    pycodestyle:
+
+  - name: xx
+    level: Preferable
+    summary: 建议在代码中用异常替代函数的错误返回码。
+    description:
+    bad_example: |
+      ```python
+      def write_data():
+          if check_file_exist():
+              do_something()
+              return 0
+          else:
+              return FILE_NOT_EXIST
+      ```
+    good_example: |
+      ```python
+      def write_data():
+          if check_file_exist():
+              do_something()
+          else:
+              raise FileNotExist()
+      ```
+    pylint:
+    pycodestyle:
+
+  - name: xx
+    level: Preferable
+    summary: 在 `except` 子句中重新抛出原有异常时，不能用 `raise ex`，而是用 `raise`。
+    description:
+    bad_example: |
+      ```python
+      try:
+          raise MyException()
+      except MyException as ex:
+          try_handle_exception()
+          raise ex  # 异常栈信息从这里开始，原始的raise异常栈信息消息
+      ```
+    good_example: |
+      ```python
+      try:
+          raise MyException()
+      except MyException as ex:
+          try_handle_exception()
+          raise  # 可以保留原始的 traceback
+
+
+      try:
+          raise MyException()
+      except MyException as ex:
+          raise AnotherException(str(ex))  # 允许的，建议保留好之前的异常栈信息，用于定位问题
+      ```
+    pylint:
+    pycodestyle:
+
+  - name: xx
+    level: Preferable
+    summary: 所有 `try`/`except` 子句的代码要尽可的少，以免屏蔽其他的错误。
+    description:
+    bad_example: |
+      ```python
+      try:
+          # 范围太广
+          return handle_value(collection[key])
+      except KeyError:
+          # 会捕捉到 handle_value() 中的 KeyError
+          return key_not_found(key)
+      ```
+    good_example: |
+      ```python
+      try:
+          value = collection[key]
+      except KeyError:
+          return key_not_found(key)
+      else:
+          return handle_value(value)
+      ```
+    pylint:
+    pycodestyle:

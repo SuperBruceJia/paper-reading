@@ -1,0 +1,84 @@
+---
+
+name_en:
+name: 注释
+description: |
+  > 有效的注释有助于帮助开发者更快地理解代码，模块，函数，方法，以及行内注释的都有各自的风格。
+rules:
+  - name: xx
+    level: Mandatory
+    summary: 所有`#`开头的注释，必须与所在的代码块同级，并置放在代码之上。
+    description:
+    bad_example:
+    good_example:
+    pylint:
+    pycodestyle:
+      - E262 inline comment should start with '# '
+
+  - name: xx
+    level: Mandatory
+    summary: 注释的每一行都应该以`#`和一个空格开头。
+    description:
+    bad_example:
+    good_example:
+    pylint:
+    pycodestyle:
+      - E266 too many leading '#' for block comment
+      - E262 inline comment should start with '# '
+
+  - name: xx
+    level: Mandatory
+    summary: 行内注释`#`与代码离开至少2个空格。
+    description:
+    bad_example:
+    good_example:
+    pylint:
+    pycodestyle:
+      - E261 at least two spaces before inline comment
+
+  - name: xx
+    level: Mandatory
+    summary: 块注释：对于复杂的操作，可以在代码之前写若干行注释，对简单的代码，可以放在行内。与代码离开至少2个空格。
+    description:
+    bad_example:
+    good_example: |
+      ```python
+      # this is a very complex operation, please
+      # read this carefully
+
+      if i & (i-1) == 0:
+          # do my job ...
+
+      # 单行注释，为可读性，至少离开代码2个空格
+      x = x + 1                 # Compensate for border
+      ```
+    pylint:
+    pycodestyle:
+
+  - name: xx
+    level: Mandatory
+    summary: TODO 注释需要加上名字。
+    description: >
+      TODO注释应该在所有开头处包含`TODO`字符串，紧跟着是用括号括起来的你的名字，
+      email地址或其它标识符，然后是一个可选的冒号。
+      接着必须有一行注释，解释要做什么。
+      主要目的是为了有一个统一的TODO格式，这样添加注释的人就可以搜索到(并可以按需提供更多细节)。
+      写了TODO注释并不保证写的人会亲自解决问题。
+      当你写了一个TODO，请注上你的名字。
+
+
+      > 为临时代码使用TODO注释, 它是一种短期解决方案。常见的IDE在提交代码时，
+      会检查变更中包含了TODO并提醒开发者，防止提交是忘记还有未完成的代码。
+
+      如果TODO是`将来做某事`的形式, 那么请确保包含一个指定的日期或者一个特定的事件（条件）。
+
+      相同地，也可以留下`FIXME`, `NOTES` 注释。
+    bad_example:
+    good_example: |
+      ```python
+      # TODO(zhangsan): Change this to use relations.
+      # FIXME(zhangsan@xx.com): Please fix me here.
+      # NOTES(zhangsan): This is some notes.
+      ```
+    pylint:
+    pycodestyle:

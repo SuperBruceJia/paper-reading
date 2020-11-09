@@ -1,0 +1,32 @@
+---
+
+name_en: operator
+name: 操作符
+description:
+rules:
+
+  - name: xx
+    level: Preferable
+    summary: Python 没有三目操作符，对于二目操作符来说，操作符允许在换行符之后出现。
+    description: |
+      > 备注：pycodestyle 工具与此条目相反，PEP8 推荐操作符在这之前，更具备可读性。[PEP8: Should a Line Break Before or After a Binary Operator?](https://www.python.org/dev/peps/pep-0008/#should-a-line-break-before-or-after-a-binary-operator)。 屏蔽 pycodestyle:`W503 line break before binary operator`
+    bad_example: |
+      ```python
+      # No: 运算符的位置远离其操作数
+      income = (gross_wages +
+                taxable_interest +
+                (dividends - qualified_dividends) -
+                ira_deduction -
+                student_loan_interest)
+      ```
+    good_example: |
+      ```python
+      # YES: 易于将运算符与操作数匹配，可读性高
+      income = (gross_wages
+                + taxable_interest
+                + (dividends - qualified_dividends)
+                - ira_deduction
+                - student_loan_interest)
+      ```
+    pylint:
+    pycodestyle:

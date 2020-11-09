@@ -1,0 +1,22 @@
+---
+
+name_en:
+name: 访问控制
+description: |
+  > 在Python中，对于琐碎又不太重要的访问函数, 应该直接使用公有变量来取代它们，这样可以避免额外的函数调用开销。
+    当添加更多功能时，也可以用属性(property)来保持语法的一致性。
+full_description:
+rules:
+  - name: xx
+    level: Preferable
+    summary: 如果访问属性后需要复杂的逻辑处理，或者变量的访问开销很显著，
+             那么应该使用像 `get_foo()` 和 `set_foo()` 这样的函数调用。
+
+             如果之前的代码行为已经通过属性(property)访问，那么就不要将新的访问函数与属性绑定。
+             否则，任何试图通过老方法访问变量的代码就没法运行，使用者也就会意识到复杂性发生了变化。
+            （如果可以重构这个代码是最好的了）
+    description:
+    bad_example:
+    good_example:
+    pylint:
+    pycodestyle:

@@ -1,0 +1,38 @@
+{% set LEVEL_COLOR = {'必须': 'red', '推荐': 'orange', '可选': 'blue'}  %}
+
+
+### {{ rule_item.h2_base_level_number }}.{{ rule_item.base_level_number }} {{ rule_item.name }}
+
+{{ rule_item.description if rule_item.description -}}
+
+{% for rule in rule_item.rules %}
+{{ rule_item.h2_base_level_number }}.{{ rule_item.base_level_number }}.{{ loop.index }}{{ ' ' -}}
+    <span style="color:{{ LEVEL_COLOR[rule.level] }}">**【{{ rule.level }}】**</span>
+    {{- ' ' }}{{ rule.summary }}
+{#- 这里是每行后面增加一个pylint编号 #}
+{{- ' pylint:'
+    + rule.pylint|map('regex_replace', '^(.*)$', '`\\1`')|join(', ')
+    + '.'
+    if rule.pylint -}}
+{#- 这里是每行后面增加一个pylint编号 #}
+{{- ' pycodestyle:'
+    + rule.pycodestyle|map('regex_replace', '^(.*)$', '`\\1`')|join(', ')
+    + '.'
+    if rule.pycodestyle }}
+
+{{ rule.description if rule.description }}
+
+{% if rule.good_example %}
+<span class="good_example_span" style="color:#228b22">***正确示范***</span>
+
+{{ rule.good_example}}
+{% endif -%}
+
+{%- if rule.bad_example %}
+<span class="bad_example_span" style="color:#dc143c">***错误示范***</span>
+
+{{ rule.bad_example}}
+{% endif -%}
+{% endfor %}
+
+{{- rule_item.full_description if rule_item.full_description -}}

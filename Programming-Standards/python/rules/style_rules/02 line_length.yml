@@ -1,0 +1,25 @@
+---
+
+name-en: line-length
+name: 每行最大长度
+description:
+rules:
+  - name: line-too-long
+            # django 119 char. https://github.com/django/django/blob/master/setup.cfg#L61
+    level: Mandatory
+    summary: 每行最多不超过`120`个字符。每行代码最大长度限制的根本原因是过长的行会导致阅读障碍，使得缩进失效。
+    description: |
+      除了以下两种情况例外：
+      1. 导入模块语句。
+      2. 注释中包含的URL。
+
+      如果需要一个长的字符串，可以用括号实现隐形连接。
+    bad_example:
+    good_example: |
+      ```python
+      x = ('This will build a very long long '
+           'long long long long long long string')
+      ```
+    pylint:
+      - line-too-long
+    pycodestyle:

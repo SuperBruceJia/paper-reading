@@ -1,0 +1,21 @@
+---
+
+name_en: Conditional Operator
+name: 三目运算符
+description:
+full_description:
+rules:
+  - name: xx
+    level: Mandatory
+    summary: 三目操作符判断，python 不支持三目运算符，但可使用如下方式，禁止使用复杂难懂的逻辑判断。
+    description:
+    bad_example: |
+      ```python
+      x = a >= b and a or b
+      ```
+    good_example: |
+      ```python
+      x = a if a >= b else b
+      ```
+    pylint:
+    pycodestyle:

@@ -1,0 +1,50 @@
+---
+
+name_en: Vairable
+name: 变量
+description:
+full_description:
+rules:
+  - name: unused-variable
+    level: Mandatory
+    summary: 禁止定义了变量却不使用它。
+    description: >
+      在代码里到处定义变量却没有使用它，不完整的代码结构看起来像是个代码错误。
+      即使没有使用，但是定义变量仍然需要消耗资源，并且对阅读代码的人也会造成困惑，不知道这些变量是要做什么的。
+    bad_example: |
+      ```python
+      some_unused_var = 42
+
+      # 定义了变量不意味着就是使用了
+      y = 10
+      y = 5
+
+      # 对自身的操作并不意味着使用了
+      z = 0
+      z = z + 1
+
+      # 未使用的函数参数
+      def get_x(x, y):
+          return x
+      ```
+    good_example: |
+      ```python
+      def get_x_plus_y(x, y):
+          return x + y
+      ```
+    pylint:
+      - unused-variable
+    pycodestyle:
+
+  - name: ignored_vairable
+    level: Preferable
+    summary: 使用双下划线 `__` 来代表不需要的变量，单下划线 `_` 容易与 `gettext()` 函数的别名冲突。
+    description:
+    bad_example:
+    good_example: |
+      ```python
+      path = '/tmp/python/foobar.txt'
+      dir_name, __ = os.path.split(path)
+      ```
+    pylint:
+    pycodestyle:

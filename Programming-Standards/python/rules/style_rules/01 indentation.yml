@@ -1,0 +1,153 @@
+---
+
+name-en: indentation
+name: 缩进
+description:
+rules:
+  - name: mixed-indentation
+    level: Mandatory
+    summary: 对于每级缩进，统一要求使用4个 <kbd>空格</kbd> ，而非 <kbd>tab</kbd> 键。
+    description:
+    bad_example:
+    good_example:
+    pylint:
+      - bad-indentation
+    pycodestyle:
+
+  - name: bad-continuation
+    level: Mandatory
+    summary: 续行，要求使用括号等定限界符，并且需要垂直对齐。
+    description:
+    bad_example: |
+      ```python
+
+      # 当不使用垂直对齐时，第一行不允许加参数
+      foo = long_function_name(var_one, var_two,
+          var_three, var_four)
+
+      # 下面这种情况，需要增加额外的缩进，否则无法区分代码所在的缩进级别
+      def long_function_name(
+          var_one, var_two, var_three,
+          var_four):
+          print(var_one)
+
+      ```
+    good_example: |
+      ```python
+      # 与定界（括号）符对齐
+      foo = long_function_name(var_one, var_two,
+                               var_three, var_four)
+
+      # 换行并增加4个额外的空格（一级缩进）
+      def long_function_name(
+              var_one, var_two, var_three,
+              var_four):
+          print(var_one)
+
+      # 悬挂需要增加一级缩进
+      foo = long_function_name(
+          var_one, var_two,
+          var_three, var_four)
+      ```
+    pylint:
+    pycodestyle:
+
+  - name: xx
+    level: Preferable
+    summary: 如果包含定界符（括号，中括号，大括号）的表达式跨越多行，那么定界符的扩回符，
+             可以放置与最后一行的非空字符对齐或者与构造多行的开始第一个字符对齐。
+    description:
+    bad_example:
+    good_example: |
+      ```python
+      # 与最后一行的非空字符对齐
+      my_list = [
+          1, 2, 3,
+          4, 5, 6,
+          ]
+      result = some_function_that_takes_arguments(
+          'a', 'b', 'c',
+          'd', 'e', 'f',
+          )
+
+      # 或者与开始构造多行的第一个字符对齐
+      my_list = [
+          1, 2, 3,
+          4, 5, 6,
+      ]
+      result = some_function_that_takes_arguments(
+          'a', 'b', 'c',
+          'd', 'e', 'f',
+      )
+      ```
+    pylint:
+    pycodestyle:
+
+  - name: xx
+    level: Preferable
+    summary: 对于会经常改动的函数参数、列表、字典定义，建议每行一个元素，并且每行增加一个`,` 。
+    description:
+    bad_example: |
+      ```python
+      # 关键字会不断增加，每个元素都换行
+      kwlist = ['False', 'None', 'True', 'and', 'as',
+                'assert', 'async', ...
+      ]
+
+      person = {'name': 'bob', 'age': 12}
+      ```
+    good_example: |
+      ```python
+      yes = ('y', 'Y', 'yes', 'TRUE', 'True', 'true', 'On', 'on', '1')  # 基本不再改变
+
+      kwlist = [
+          'False',
+          'None',
+          'True',
+          'and',
+          'as',
+          'assert',
+          ...
+          'yield',  # 最后一个元素也增加一个逗号 ，方便以后diff不显示此行
+      ]
+
+      person = {
+          'name': 'bob',
+          'age': 12,      # 可能经常增加字段
+      }
+      ```
+    pylint:
+    pycodestyle:
+
+  - name: bad-continuation
+    level: Optional
+    summary: 对于 if 判断，一般来说尽量不要放置过多的判断条件。换行时增加 4 个额外的空格。
+    description: |
+      > 备注：PEP8没有明确规定，以下几种都是允许的。建议使用前面2种方法，后2种会与已有的开源工具冲突。
+    bad_example:
+    good_example: |
+      ```python
+      # 更推荐：在续行中，增加额外的缩进级别。允许 and 操作符在前
+      if (this_is_one_thing
+              and that_is_another_thing):
+          do_something()
+
+      # 更推荐：在续行中，增加额外的缩进级别
+      if (this_is_one_thing and
+              that_is_another_thing):
+          do_something()
+
+      # 允许：与定界符（括号）对齐，不需要额外的缩进
+      if (this_is_one_thing and
+          that_is_another_thing):
+          do_something()
+
+      # 允许：增加注释，编辑器会提示语法高亮，有助于区分
+      if (this_is_one_thing and
+          that_is_another_thing):
+          # Since both conditions are true, we can frobnicate.
+          do_something()
+      ```
+    pylint:
+    pycodestyle:
+      - E129 visually indented line with same indent as next logical line

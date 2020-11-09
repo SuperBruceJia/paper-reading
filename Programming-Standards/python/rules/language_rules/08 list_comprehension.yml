@@ -1,0 +1,67 @@
+---
+
+name_en: List Comprehension
+name: 列表推导式
+description:
+full_description:
+rules:
+  - name: xx
+    level: Mandatory
+    summary: 禁止超过1个for语句或过滤器表达式，否则使用传统`for`循环语句替代。
+    description:
+    bad_example: |
+      ```python
+      result = [(x, y) for x in range(10) for y in range(5) if x * y > 10]  # for 语句
+      ```
+    good_example: |
+      ```python
+      number_list = [1, 2, 3, 10, 20, 55]
+      odd = [i for i in number_list if i % 2 == 1]
+
+      result = []
+      for x in range(10):
+          for y in range(5):
+              if x * y > 10:
+                  result.append((x, y))
+      ```
+    pylint:
+    pycodestyle:
+
+  - name: xx
+    level: Preferable
+    summary: 列表推导式适用于简单场景。
+             如果语句过长，每个部分应该单独置于一行： 映射表达式， for语句， 过滤器表达式。
+    description:
+    bad_example: |
+      ```python
+      # 条件过于复杂，应该采用for语句展开
+      fizzbuzz = [
+          f'fizzbuzz {n}' if n % 3 == 0 and n % 5 == 0
+          else f'fizz {n}' if n % 3 == 0
+          else f'buzz {n}' if n % 5 == 0
+          else n
+          for n in range(100)
+      ]
+
+
+      [print(n) for n in range(1, 11)]  # 无返回值
+      ```
+    good_example: |
+      ```python
+      fizzbuzz = []
+      for n in range(100):
+          if n % 3 == 0 and n % 5 == 0:
+              fizzbuzz.append(f'fizzbuzz {n}')
+          elif n % 3 == 0:
+              fizzbuzz.append(f'fizz {n}')
+          elif n % 5 == 0:
+              fizzbuzz.append(f'buzz {n}')
+          else:
+              fizzbuzz.append(n)
+
+
+      for n in range(1, 11):
+          print(n)
+      ```
+    pylint:
+    pycodestyle:

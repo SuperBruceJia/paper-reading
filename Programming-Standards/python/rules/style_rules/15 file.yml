@@ -1,0 +1,52 @@
+---
+
+name_en:
+name: 文件和sockets
+description:
+full_description:
+rules:
+  - name: xx
+    level: Mandatory
+    summary: 在文件和sockets结束时，显式的关闭它。
+    description: |
+      除文件外， sockets或其他类似文件的对象在没有必要的情况下打开，会有许多副作用，例如：
+
+      1. 它们可能会消耗有限的系统资源，如文件描述符。 如果这些资源在使用后没有及时归还系统，那么用于处理这些对象的代码会将资源消耗殆尽。
+      2. 持有文件将会阻止对于文件的其他诸如移动、删除之类的操作。
+      3. 仅仅是从逻辑上关闭文件和sockets，那么它们仍然可能会被其共享的程序在无意中进行读或者写操作。只有当它们真正被关闭后，对于它们尝试进行读或者写操作将会抛出异常, 并使得问题快速显现出来。
+
+      而且，幻想当文件对象析构时，文件和sockets会自动关闭，试图将文件对象的生命周期和文件的状态绑定在一起的想法, 都是不现实的。因为有如下原因：
+
+      1. 没有任何方法可以确保运行环境会真正的执行文件的析构. 不同的Python实现采用不同的内存管理技术, 比如延时垃圾处理机制. 延时垃圾处理机制可能会导致对象生命周期被任意无限制的延长。
+      2. 对于文件意外的引用,会导致对于文件的持有时间超出预期(比如对于异常的跟踪, 包含有全局变量等)。
+    bad_example:
+    good_example:
+    pylint:
+    pycodestyle:
+
+  - name: xx
+    level: Preferable
+    summary: 推荐使用 `with` 语句管理文件。
+    description: |
+      ```python
+      with open("hello.txt") as hello_file:
+          for line in hello_file:
+              print(line)
+      ```
+
+      对于不支持使用`with`语句的类似文件的对象,使用`contextlib.closing()`：
+
+      ```python
+      import contextlib
+
+      with contextlib.closing(urllib.urlopen("http://www.python.org/")) as front_page:
+          for line in front_page:
+              print(line)
+      ```
+
+      Legacy AppEngine 中Python 2.5的代码如使用`with`语句, 需要添加 `from __future__ import with_statement`.
+
+    bad_example:
+    good_example:
+    pylint:
+    pycodestyle:

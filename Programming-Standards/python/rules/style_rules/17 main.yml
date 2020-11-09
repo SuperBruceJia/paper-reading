@@ -1,0 +1,32 @@
+---
+
+name_en:
+name: Main
+description: |
+  > 即使是一个打算被用作脚本的文件, 也应该是可导入的。
+    并且简单的导入不应该导致这个脚本的主功能(main functionality)被执行，这是一种副作用。
+    主功能应该放在一个main()函数中。
+full_description:
+rules:
+  - name: xx
+    level: Mandatory
+    summary: 所有的文件都应该可以被导入。
+             对不需要作为程序入口地方添加 `if __name__ == '__main__' `。
+    description: >
+      在Python中，pydoc以及单元测试要求模块必须是可导入的。
+      你的代码应该在执行主程序前总是检查 `if __name__ == '__main__' `，
+      这样当模块被导入时主程序就不会被执行。
+
+      所有的顶级代码在模块导入时都会被执行。
+      要小心不要去调用函数，创建对象，或者执行那些不应该在使用pydoc时执行的操作。
+    bad_example:
+    good_example: |
+      ```python
+      def main():
+            ...
+
+      if __name__ == '__main__':
+          main()
+      ```
+    pylint:
+    pycodestyle:

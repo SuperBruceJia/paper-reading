@@ -1,0 +1,26 @@
+---
+
+name_en: Parentheses
+name: 括号
+description:
+full_description:
+rules:
+  - name: trailing-comma-tuple
+    level: Mandatory
+    summary: tuple 元组不允许逗号结尾，显式增加括号规避。即使一个元素也加上括号。
+    description: 行尾的逗号可能导致本来要定义一个简单变量，结果变成 tuple 变量。
+    bad_example: |
+      ```python
+      trailingcomma = ['f'],   # tuple
+
+      return 1,
+      ```
+    good_example: |
+      ```python
+      trailingcomma = (['f'],)
+
+      return (1,)
+      ```
+    pylint:
+      - trailing-comma-tuple
+    pycodestyle:

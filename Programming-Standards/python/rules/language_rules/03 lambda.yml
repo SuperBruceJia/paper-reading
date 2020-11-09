@@ -1,0 +1,22 @@
+---
+
+name_en: Lambda
+name: lambda匿名函数
+description:
+full_description:
+rules:
+  - name: xx
+    level: Mandatory
+    summary: 使用 def 定义简短函数而不是使用 lambda。
+    description: 使用def的方式有助于在trackbacks中打印有效的类型信息，明确使用`f`函数而不是一个lambda的调用。
+    bad_example: |
+      ```python
+      f = lambda x: 2 * x
+      ```
+    good_example: |
+      ```python
+      def f(x): return 2 * x
+      ```
+    pylint:
+    pycodestyle:
+      - E731 do not assign a lambda expression, use a def

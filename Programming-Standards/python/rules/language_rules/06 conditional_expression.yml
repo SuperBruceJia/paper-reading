@@ -1,0 +1,90 @@
+---
+
+name_en: Conditional Expression
+name: 条件表达式
+description:
+full_description:
+rules:
+  - name: xx
+    level: Preferable
+    summary: 函数或者方法在没有返回时要明确返回`None`。
+    description:
+    bad_example: |
+      ```python
+      def foo(x):
+          if x >= 0:
+              return math.sqrt(x)
+
+      def bar(x):
+          if x < 0:
+              return
+          return math.sqrt(x)
+      ```
+    good_example: |
+      ```python
+      def foo(x):
+          if x >= 0:
+              return math.sqrt(x)
+          else:
+              return None
+
+      def bar(x):
+          if x < 0:
+              return None
+          return math.sqrt(x)
+      ```
+    pylint:
+      - inconsistent-return-statements
+    pycodestyle:
+
+  - name: xx
+    level: Preferable
+    summary: 对于未知的条件分支或者不应该进入的分支，建议抛出异常，而不是返回一个值（比如说`None` 或`False`）。
+    description:
+    bad_example: |
+      ```python
+      def f(x):
+          if x in ('SUCCESS',):
+              return True
+          return None
+      ```
+    good_example: |
+      ```python
+      def f(x):
+          if x in ('SUCCESS',):
+              return True
+          else:
+              raise MyException()  # 如果一定不会走到的条件，可以增加异常，防止将来未知的语句执行。
+      ```
+    pylint:
+    pycodestyle:
+
+  - name: xx
+    level: Optional
+    summary: "`if` 与 `else` 尽量一起出现，而不是全部都是`if`子句。"
+    description:
+    bad_example: |
+      ```python
+      if condition:
+          do_something()
+      if another_condition:  # 不能确定是否笔误为 elif ，还是开启全新一个if条件
+          do_another_something()
+      else:
+          do_else_something()
+      ```
+    good_example: |
+      ```python
+      if condition:
+          do_something()
+      else:
+          # 增加说明注释
+          pass
+
+      if condition:
+          do_something()
+      # 这里增加注释说明为什么不用写else子句
+      # else:
+      #     pass
+      ```
+    pylint:
+    pycodestyle:

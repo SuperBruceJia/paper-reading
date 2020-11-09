@@ -1,0 +1,108 @@
+---
+
+name_en:
+name: 类型提示
+description: |
+
+  Python 是动态语言，在运行时无需指定变量类型。
+  虽然运行时不会执行函数与变量类型注解，但类型提示有助于阅读代码、重构、静态代码检查与IDE的语法提示。
+  推荐在项目中使用该特性。
+  更多使用可以参考 [类型标注支持]( https://docs.python.org/zh-cn/3/library/typing.html)。
+
+  类型提示示例代码
+  ```python
+  from typing import List
+
+
+  class Container(object):
+      def __init__(self) -> None:
+          self.elements: List[int] = []
+
+      def append(self, element: int) -> None:
+          self.elements.append(element)
+
+
+  def greeting(name: str) -> str:
+      return 'Hello ' + name
+
+
+  # 变量定义
+  lang: str = 'zh'
+  success_code: int = 0
+  ```
+full_description:
+
+rules:
+  - name: xx
+    level: Mandatory
+    summary: 模块级变量，类和实例变量以及局部变量的注释应在冒号后面有一个空格。
+    description:
+    bad_example:
+    good_example:
+    pylint:
+    pycodestyle:
+      - E231 missing whitespace after ':'
+
+  - name: xx
+    level: Mandatory
+    summary: 冒号前不应有空格。
+    description:
+    bad_example:
+    good_example:
+    pylint:
+    pycodestyle:
+      # 禁用E203，与 black 格式化 a[1 + 1 : 2 + 2] 后有冲突。依赖 Pylint 的 bad-whitespace 检查。
+      # - E203 whitespace before ':'
+
+  - name: xx
+    level: Mandatory
+    summary: 如果有赋值符，则等号在两边应恰好有一个空格。
+    description:
+    bad_example: |
+      ```python
+      code:int  # No space after colon
+      code : int  # Space before colon
+
+      class Test(object):
+          result: int=0  # No spaces around equality sign
+      ```
+
+    good_example: |
+      ```python
+      code: int = 10
+
+      class Point(object):
+          coords: Tuple[int, int] = (0, 0)
+          label: str = '<unknown>'
+
+      def broadcast(servers: Sequence[Server],
+                    message: str = 'spaces around equality sign') -> None:
+          pass
+      ```
+    pylint:
+    pycodestyle:
+      - E225 missing whitespace around operator
+
+  - name: xx
+    level: Preferable
+    summary: 当使用类型提示出现循环引用时，可以在导入的头部使用 `if typing.TYPE_CHECKING` ，
+             且对类型注解使用`双引号`或`单引号`进行修饰。
+    description:
+    bad_example:
+    good_example: |
+      ```python
+      import typing
+
+      if typing.TYPE_CHECKING:  # 运行时不导入
+          # For type annotation
+          from typing import Any, Dict, List, Sequence  # NOQA
+          from sphinx.application import Sphinx  # NOQA
+
+
+      class Parser(docutils.parsers.Parser):
+
+          def set_application(self, app: "Sphinx") -> None:  # 同时采用引号
+              pass
+      ```
+    pylint:
+    pycodestyle:

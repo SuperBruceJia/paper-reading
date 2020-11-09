@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8">
+    <title>Python 编码风格与规范</title>
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="author" content="dondonchen">
+    <meta name="description" content="Python 编码风格与规范">
+    <meta name="keywords" content="python, 编码规范, 编码风格">
+    <link rel="stylesheet" href="stylesheets/normalize.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="stylesheets/cayman.css">
+    <link rel="stylesheet" href="stylesheets/highlight.css">
+    <script src="javascripts/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="stylesheets/custom.css">
+    <!-- anything you put here will go verbatim in the header section
+         Useful for adding javascripts, custom metadata, and so on... -->
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Python 编码风格与规范</h1>
+      <h2 class="project-tagline"></h2>
+      <a href="https://git.code.oa.com/standards/python" class="btn">View on git.code.oa.com</a>
+      <a href="https://git.code.oa.com/standards/python/archive/master.zip" class="btn">Download .zip</a>
+      <a href="https://git.code.oa.com/standards/python/archive/master.tar.gz" class="btn">Download .tar.gz</a>
+    </section>
+    <section class="main-content">
+
+<!-- anything you put here will go before the opening <body> tag
+     (ie: before the README’s contents) Markdown will become HTML  -->
+<ul>
+<li><a href="#python-编码风格与规范">Python 编码风格与规范</a>
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#一编码风格">一、编码风格</a>
+<ul>
+<li><a href="#11-缩进">1.1 缩进</a></li>
+<li><a href="#12-每行最大长度">1.2 每行最大长度</a></li>
+<li><a href="#13-空白符">1.3 空白符</a></li>
+<li><a href="#14-操作符">1.4 操作符</a></li>
+<li><a href="#15-括号">1.5 括号</a></li>
+<li><a href="#16-空行">1.6 空行</a></li>
+<li><a href="#17-源文件编码">1.7 源文件编码</a></li>
+<li><a href="#18-shebang">1.8 Shebang</a></li>
+<li><a href="#19-模块引用import">1.9 模块引用(import)</a></li>
+<li><a href="#110-模块中的魔术变量dunders">1.10 模块中的魔术变量(dunders)</a></li>
+<li><a href="#111-注释">1.11 注释</a></li>
+<li><a href="#112-文档字符串">1.12 文档字符串</a></li>
+<li><a href="#113-类型提示">1.13 类型提示</a></li>
+<li><a href="#114-字符串">1.14 字符串</a></li>
+<li><a href="#115-文件和sockets">1.15 文件和sockets</a></li>
+<li><a href="#116-访问控制">1.16 访问控制</a></li>
+<li><a href="#117-main">1.17 Main</a></li>
+<li><a href="#118-命名">1.18 命名</a></li>
+</ul></li>
+<li><a href="#二编码规范">二、编码规范</a>
+<ul>
+<li><a href="#21-三目运算符">2.1 三目运算符</a></li>
+<li><a href="#22-none-条件的判断">2.2 None 条件的判断</a></li>
+<li><a href="#23-lambda匿名函数">2.3 lambda匿名函数</a></li>
+<li><a href="#24-异常">2.4 异常</a></li>
+<li><a href="#25-条件表达式">2.5 条件表达式</a></li>
+<li><a href="#26-truefalse-布尔运算">2.6 True/False 布尔运算</a></li>
+<li><a href="#27-列表推导式">2.7 列表推导式</a></li>
+<li><a href="#28-函数">2.8 函数</a></li>
+<li><a href="#29-变量">2.9 变量</a></li>
+</ul></li>
+<li><a href="#工具与配置">工具与配置</a>
+<ul>
+<li><a href="#flake8">flake8</a></li>
+<li><a href="#pylint">pylint</a></li>
+<li><a href="#black">black</a></li>
+<li><a href="#editorconfig">EditorConfig</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h1 id="python-编码风格与规范">Python 编码风格与规范</h1>
+<p>[TOC]</p>
+<p><a href="https://git.code.oa.com/standards/python"><img src="https://img.shields.io/badge/code_style-python-brightgreen.svg" alt="code_style" /></a></p>
+<h2 id="前言">前言</h2>
+<p>为了让不同编码习惯的开发者更好的协作配合，并且形成良好的基础编码规范与风格，我们以 <a href="https://www.python.org/dev/peps/pep-0008/">PEP8</a> 为基础，修改了陈旧的规则，丰富了示例，并整理了工作中常见的不规范操作，最终形成此 Python 编码规范与风格。</p>
+<p>本规范适用于所有使用 Python 语言作为开发语言的软件产品。</p>
+<p>由于 Python2 在 <a href="https://www.python.org/doc/sunset-python-2/">2020 年停止维护</a>，建议新增的项目使用 Python3.6+，可以使用到更多的高级特性。如果项目有兼容性需求需要支持老版本 Python 的，那么不涉及的特性可以忽略。 本规范的示例采用符合 Python3.6+ 的语法。</p>
+<ul>
+<li>
+<span style="color: red"><strong>必须（Mandatory）</strong></span>：用户必须采用；
+</li>
+<li>
+<span style="color: orange"><strong>推荐（Preferable）</strong></span>：用户理应采用，但如有特殊情况，可以不采用；
+</li>
+<li>
+<span style="color: blue"><strong>可选（Optional）</strong></span>：用户可参考，自行决定是否采用；
+</li>
+</ul>
+<p>未明确指明的则默认为 <span style="color: red"><strong>必须（Mandatory）</strong></span>。</p>
+<h2 id="一编码风格">一、编码风格</h2>
+<p>规范地代码布局有助于帮助开发者更容易地理解业务逻辑。</p>
+<h3 id="11-缩进">1.1 缩进</h3>
+<p>1.1.1 <span style="color:red"><strong>【必须】</strong></span> 对于每级缩进，统一要求使用4个 <kbd>空格</kbd> ，而非 <kbd>tab</kbd> 键。 pylint:<code>bad-indentation</code>.</p>
+<p>1.1.2 <span style="color:red"><strong>【必须】</strong></span> 续行，要求使用括号等定限界符，并且需要垂直对齐。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code># 与定界（括号）符对齐
+foo = long_function_name(var_one, var_two,
+                         var_three, var_four)
+
+# 换行并增加4个额外的空格（一级缩进）
+def long_function_name(
+        var_one, var_two, var_three,
+        var_four):
+    print(var_one)
+
+# 悬挂需要增加一级缩进
+foo = long_function_name(
+    var_one, var_two,
+    var_three, var_four)</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>
+# 当不使用垂直对齐时，第一行不允许加参数
+foo = long_function_name(var_one, var_two,
+    var_three, var_four)
+
+# 下面这种情况，需要增加额外的缩进，否则无法区分代码所在的缩进级别
+def long_function_name(
+    var_one, var_two, var_three,
+    var_four):
+    print(var_one)
+</code></pre>
+<p>1.1.3 <span style="color:orange"><strong>【推荐】</strong></span> 如果包含定界符（括号，中括号，大括号）的表达式跨越多行，那么定界符的扩回符， 可以放置与最后一行的非空字符对齐或者与构造多行的开始第一个字符对齐。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code># 与最后一行的非空字符对齐
+my_list = [
+    1, 2, 3,
+    4, 5, 6,
+    ]
+result = some_function_that_takes_arguments(
+    &#39;a&#39;, &#39;b&#39;, &#39;c&#39;,
+    &#39;d&#39;, &#39;e&#39;, &#39;f&#39;,
+    )
+
+# 或者与开始构造多行的第一个字符对齐
+my_list = [
+    1, 2, 3,
+    4, 5, 6,
+]
+result = some_function_that_takes_arguments(
+    &#39;a&#39;, &#39;b&#39;, &#39;c&#39;,
+    &#39;d&#39;, &#39;e&#39;, &#39;f&#39;,
+)</code></pre>
+<p>1.1.4 <span style="color:orange"><strong>【推荐】</strong></span> 对于会经常改动的函数参数、列表、字典定义，建议每行一个元素，并且每行增加一个<code>,</code> 。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>yes = (&#39;y&#39;, &#39;Y&#39;, &#39;yes&#39;, &#39;TRUE&#39;, &#39;True&#39;, &#39;true&#39;, &#39;On&#39;, &#39;on&#39;, &#39;1&#39;)  # 基本不再改变
+
+kwlist = [
+    &#39;False&#39;,
+    &#39;None&#39;,
+    &#39;True&#39;,
+    &#39;and&#39;,
+    &#39;as&#39;,
+    &#39;assert&#39;,
+    ...
+    &#39;yield&#39;,  # 最后一个元素也增加一个逗号 ，方便以后diff不显示此行
+]
+
+person = {
+    &#39;name&#39;: &#39;bob&#39;,
+    &#39;age&#39;: 12,      # 可能经常增加字段
+}</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code># 关键字会不断增加，每个元素都换行
+kwlist = [&#39;False&#39;, &#39;None&#39;, &#39;True&#39;, &#39;and&#39;, &#39;as&#39;,
+          &#39;assert&#39;, &#39;async&#39;, ...
+]
+
+person = {&#39;name&#39;: &#39;bob&#39;, &#39;age&#39;: 12}</code></pre>
+<p>1.1.5 <span style="color:blue"><strong>【可选】</strong></span> 对于 if 判断，一般来说尽量不要放置过多的判断条件。换行时增加 4 个额外的空格。 pycodestyle:<code>E129 visually indented line with same indent as next logical line</code>.</p>
+<blockquote>
+<p>备注：PEP8没有明确规定，以下几种都是允许的。建议使用前面2种方法，后2种会与已有的开源工具冲突。</p>
+</blockquote>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code># 更推荐：在续行中，增加额外的缩进级别。允许 and 操作符在前
+if (this_is_one_thing
+        and that_is_another_thing):
+    do_something()
+
+# 更推荐：在续行中，增加额外的缩进级别
+if (this_is_one_thing and
+        that_is_another_thing):
+    do_something()
+
+# 允许：与定界符（括号）对齐，不需要额外的缩进
+if (this_is_one_thing and
+    that_is_another_thing):
+    do_something()
+
+# 允许：增加注释，编辑器会提示语法高亮，有助于区分
+if (this_is_one_thing and
+    that_is_another_thing):
+    # Since both conditions are true, we can frobnicate.
+    do_something()</code></pre>
+<h3 id="12-每行最大长度">1.2 每行最大长度</h3>
+<p>1.2.1 <span style="color:red"><strong>【必须】</strong></span> 每行最多不超过<code>120</code>个字符。每行代码最大长度限制的根本原因是过长的行会导致阅读障碍，使得缩进失效。 pylint:<code>line-too-long</code>.</p>
+<p>除了以下两种情况例外：</p>
+<ol>
+<li>导入模块语句。</li>
+<li>注释中包含的URL。</li>
+</ol>
+<p>如果需要一个长的字符串，可以用括号实现隐形连接。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>x = (&#39;This will build a very long long &#39;
+     &#39;long long long long long long string&#39;)</code></pre>
+<h3 id="13-空白符">1.3 空白符</h3>
+<p>1.3.1 <span style="color:red"><strong>【必须】</strong></span> 在表达式的赋值符号、操作符左右至少有一个空格。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>x = y + 1</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>x=y+1
+x = y+1</code></pre>
+<p>1.3.2 <span style="color:red"><strong>【必须】</strong></span> 禁止行尾空白。 pylint:<code>trailing-whitespace</code>.</p>
+<p>行尾空白虽然不会造成功能性异常，但是这些空白字符会被源码管理系统标记出来显示为差异，对开发人员造成困恼。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="diff"><code># YES: 尾部没有空白符号
++ para = {}
++ para = {}  # comment</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="diff"><code># No: 结尾存在多余空白符号
+- para = {}•••••
+- para = {}  # comment••••••</code></pre>
+<h3 id="14-操作符">1.4 操作符</h3>
+<p>1.4.1 <span style="color:orange"><strong>【推荐】</strong></span> Python 没有三目操作符，对于二目操作符来说，操作符允许在换行符之后出现。</p>
+<blockquote>
+<p>备注：pycodestyle 工具与此条目相反，PEP8 推荐操作符在这之前，更具备可读性。<a href="https://www.python.org/dev/peps/pep-0008/#should-a-line-break-before-or-after-a-binary-operator">PEP8: Should a Line Break Before or After a Binary Operator?</a>。 屏蔽 pycodestyle:<code>W503 line break before binary operator</code></p>
+</blockquote>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code># YES: 易于将运算符与操作数匹配，可读性高
+income = (gross_wages
+          + taxable_interest
+          + (dividends - qualified_dividends)
+          - ira_deduction
+          - student_loan_interest)</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code># No: 运算符的位置远离其操作数
+income = (gross_wages +
+          taxable_interest +
+          (dividends - qualified_dividends) -
+          ira_deduction -
+          student_loan_interest)</code></pre>
+<h3 id="15-括号">1.5 括号</h3>
+<p>1.5.1 <span style="color:red"><strong>【必须】</strong></span> tuple 元组不允许逗号结尾，显式增加括号规避。即使一个元素也加上括号。 pylint:<code>trailing-comma-tuple</code>.</p>
+<p>行尾的逗号可能导致本来要定义一个简单变量，结果变成 tuple 变量。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>trailingcomma = ([&#39;f&#39;],)
+
+return (1,)</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>trailingcomma = [&#39;f&#39;],   # tuple
+
+return 1,</code></pre>
+<h3 id="16-空行">1.6 空行</h3>
+<p>1.6.1 <span style="color:red"><strong>【必须】</strong></span> 模块中的一级函数和类定义之间，需要<code>空两行</code>。 pycodestyle:<code>E302 expected 2 blank lines</code>.</p>
+<p>1.6.2 <span style="color:red"><strong>【必须】</strong></span> 类中函数定义之间，<code>空一行</code>。 pycodestyle:<code>E302 expected 1 blank line</code>.</p>
+<p>1.6.3 <span style="color:red"><strong>【必须】</strong></span> 源文件末尾有且仅有 <code>一行空行</code>。 pylint:<code>missing-final-newline</code>, <code>trailing-newlines</code>.</p>
+<p>1.6.4 <span style="color:red"><strong>【必须】</strong></span> 通常每个语句应该独占一行。 pylint:<code>multiple-statements</code>.</p>
+<p>如果测试结果与测试语句在一行放得下，你也可以将它们放在同一行。 如果是<code>if</code>语句, 只有在没有<code>else</code>时才能这样做。 特别地，绝不要对 <code>try</code>/<code>except</code> 这样做，因为<code>try</code>和<code>except</code>不能放在同一行。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>if foo:
+    bar(foo)
+else:
+    baz(foo)
+
+try:
+    bar(foo)
+except ValueError:
+    baz(foo)</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>if foo: bar(foo)
+else:   baz(foo)
+
+try:               bar(foo)
+except ValueError: baz(foo)
+
+try:
+  bar(foo)
+except ValueError: baz(foo)</code></pre>
+<p>1.6.5 <span style="color:orange"><strong>【推荐】</strong></span> 可以在代码段中的<code>空一行</code>来区分不同业务逻辑块。</p>
+<pre class="python"><code>&quot;&quot;&quot;This is the example module.
+
+This module does stuff.
+&quot;&quot;&quot;
+
+
+import os
+
+
+def foo():
+    pass
+
+
+class MyClass():
+
+    def __init__(self):
+        pass
+
+    def foo(self):
+        pass
+
+
+class AnotherClass(object):
+    &quot;&quot;&quot;Another class.
+
+    This is some comments for another class
+    &quot;&quot;&quot;
+
+    def __init__(self,
+                 a,
+                 b):
+        if a &gt; b:
+            self._min = b
+            self._max = a
+
+        else:
+            self._min = a
+            self._max = b
+
+        self._gap = self._max = self._min
+
+    def foo(self):
+        pass
+</code></pre>
+<h3 id="17-源文件编码">1.7 源文件编码</h3>
+<p>1.7.1 <span style="color:red"><strong>【必须】</strong></span> 源文件编码需统一使用 <code>UTF-8</code> 编码，以下内容需要增加到每一个python文件的头部。</p>
+<pre class="python"><code># -*- coding: utf-8 -*-</code></pre>
+<p>1.7.2 <span style="color:red"><strong>【必须】</strong></span> <strong>避免不同操作系统对文件换行处理的方式不同，一律使用<code>LF</code></strong>。 pylint:<code>mixed-line-endings</code>, <code>unexpected-line-ending-format</code>.</p>
+<h3 id="18-shebang">1.8 Shebang</h3>
+<p>1.8.1 <span style="color:red"><strong>【必须】</strong></span> 程序的main文件应该以 <code>#!/usr/bin/env python2</code> 或者 <code>#!/usr/bin/env python3</code> 开始， 可以同时支持Python2、Python3的<code>#!/usr/bin/env python</code>。</p>
+<p>非程序入口的文件不应该出现 Shebang 。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+#</code></pre>
+<h3 id="19-模块引用import">1.9 模块引用(import)</h3>
+<p>1.9.1 <span style="color:red"><strong>【必须】</strong></span> 每个导入应该独占一行。 pylint:<code>multiple-imports</code>.</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>import os
+import sys</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>import os, sys</code></pre>
+<p>1.9.2 <span style="color:red"><strong>【必须】</strong></span> 导入总应该放在文件顶部，位于模块注释和文档字符串之后，模块全局变量和常量之前。 pylint:<code>wrong-import-order</code>.</p>
+<p>导入应该按照从最通用到最不通用的顺序分组, 每个分组之间，需要空一行:</p>
+<ul>
+<li>
+标准库导入
+</li>
+<li>
+第三方库导入
+</li>
+<li>
+本地导入
+</li>
+</ul>
+<p>每种分组中，建议每个模块的完整包路径按 <strong><em>字典序</em></strong> 排序，并忽略大小写。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>import foo
+from foo import bar
+from foo.bar import baz
+from foo.bar import Quux
+from Foob import ar</code></pre>
+<p>1.9.3 <span style="color:red"><strong>【必须】</strong></span> 避免使用 <code>from &lt;module&gt; import *</code>，因为可能会造成命名空间的污染。 pylint:<code>wildcard-import</code>.</p>
+<p>1.9.4 <span style="color:red"><strong>【必须】</strong></span> 禁止导入了模块却不使用它。 pylint:<code>unused-import</code>.</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>import os  # used
+
+dir_path = os.path.abspath(&#39;.&#39;)</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>import os   # unused !
+
+# dir_path = os.path.abspath(&#39;.&#39;)</code></pre>
+<h3 id="110-模块中的魔术变量dunders">1.10 模块中的魔术变量(dunders)</h3>
+<p>1.10.1 <span style="color:red"><strong>【必须】</strong></span> 对于两个 <code>_</code> 开头和两个 <code>_</code> 结尾的变量， 如 <code>__all__</code>，<code>__author__</code>，<code>__version__</code>等，应该放在模块文档之后， 其他模块导入之前（<code>__future__</code> 除外）。</p>
+<p>1.10.2 <span style="color:red"><strong>【必须】</strong></span> Python 要求 <code>future</code> 导入必须出现在其他模块导入之前。 pylint:<code>misplaced-future</code>.</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code># -*- coding: utf-8 -*-
+#
+# Copyright @ 2020 Tencent.com
+
+&quot;&quot;&quot;This is the example module.
+
+This module does stuff.
+&quot;&quot;&quot;
+
+from __future__ import barry_as_FLUFL
+
+__all__ = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
+__version__ = &#39;0.1&#39;
+__author__ = &#39;Cardinal Biggles&#39;
+
+import os
+import sys</code></pre>
+<h3 id="111-注释">1.11 注释</h3>
+<blockquote>
+<p>有效的注释有助于帮助开发者更快地理解代码，模块，函数，方法，以及行内注释的都有各自的风格。</p>
+</blockquote>
+<p>1.11.1 <span style="color:red"><strong>【必须】</strong></span> 所有<code>#</code>开头的注释，必须与所在的代码块同级，并置放在代码之上。 pycodestyle:<code>E262 inline comment should start with '# '</code>.</p>
+<p>1.11.2 <span style="color:red"><strong>【必须】</strong></span> 注释的每一行都应该以<code>#</code>和一个空格开头。 pycodestyle:<code>E266 too many leading '#' for block comment</code>, <code>E262 inline comment should start with '# '</code>.</p>
+<p>1.11.3 <span style="color:red"><strong>【必须】</strong></span> 行内注释<code>#</code>与代码离开至少2个空格。 pycodestyle:<code>E261 at least two spaces before inline comment</code>.</p>
+<p>1.11.4 <span style="color:red"><strong>【必须】</strong></span> 块注释：对于复杂的操作，可以在代码之前写若干行注释，对简单的代码，可以放在行内。与代码离开至少2个空格。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code># this is a very complex operation, please
+# read this carefully
+
+if i &amp; (i-1) == 0:
+    # do my job ...
+
+# 单行注释，为可读性，至少离开代码2个空格
+x = x + 1                 # Compensate for border</code></pre>
+<p>1.11.5 <span style="color:red"><strong>【必须】</strong></span> TODO 注释需要加上名字。</p>
+<p>TODO注释应该在所有开头处包含<code>TODO</code>字符串，紧跟着是用括号括起来的你的名字， email地址或其它标识符，然后是一个可选的冒号。 接着必须有一行注释，解释要做什么。 主要目的是为了有一个统一的TODO格式，这样添加注释的人就可以搜索到(并可以按需提供更多细节)。 写了TODO注释并不保证写的人会亲自解决问题。 当你写了一个TODO，请注上你的名字。</p>
+<blockquote>
+<p>为临时代码使用TODO注释, 它是一种短期解决方案。常见的IDE在提交代码时， 会检查变更中包含了TODO并提醒开发者，防止提交是忘记还有未完成的代码。 如果TODO是<code>将来做某事</code>的形式, 那么请确保包含一个指定的日期或者一个特定的事件（条件）。 相同地，也可以留下<code>FIXME</code>, <code>NOTES</code> 注释。</p>
+</blockquote>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code># TODO(zhangsan): Change this to use relations.
+# FIXME(zhangsan@xx.com): Please fix me here.
+# NOTES(zhangsan): This is some notes.</code></pre>
+<h3 id="112-文档字符串">1.12 文档字符串</h3>
+<p>Docstring 文档字符串提供了将文档与 Python 模块，函数，类和方法相关联的便捷方法。</p>
+<pre class="python"><code>def foobar():
+    &quot;&quot;&quot;Return a foobang
+
+    Optional plotz says to frobnicate the bizbaz first.
+    &quot;&quot;&quot;</code></pre>
+<p><a href="https://www.python.org/dev/peps/pep-0257/">PEP 257</a> 全面描述了文档字符串的风格。</p>
+<p>1.12.1 <span style="color:orange"><strong>【推荐】</strong></span> 需对外发布的public 模块，函数，类，方法等需要包含文档字符串。内部使用的方法，函数等，要求使用简单的注释描述功能。 pylint:<code>missing-module-docstring</code>, <code>missing-class-docstring</code>, <code>missing-function-docstring</code>.</p>
+<p>一个函数或方法，如果可以直接被其他开发者使用，需要提供文档明确其含义，需要指出输入，输出，以及异常内容。</p>
+<p>1.12.2 <span style="color:red"><strong>【必须】</strong></span> 第一行应为文档名，空一行后，输入文档描述。</p>
+<p>1.12.3 <span style="color:orange"><strong>【推荐】</strong></span> 在使用文档字符串时，推荐使用 <code>reStructuredText</code> 风格类型。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>def fetch_bigtable_rows(big_table, keys, other_silly_variable=None):
+    &quot;&quot;&quot;Fetches rows from a Bigtable.
+
+    Retrieves rows pertaining to the given keys from the Table instance
+    represented by big_table.  Silly things may happen if
+    other_silly_variable is not None.
+
+    :param big_table: An open Bigtable Table instance.
+    :param keys: A sequence of strings representing the key of each table row
+        to fetch.
+    :param other_silly_variable: Another optional variable, that has a much
+        longer name than the other args, and which does nothing.
+
+    :return: A dict mapping keys to the corresponding table row data
+        fetched. Each row is represented as a tuple of strings. For
+        example:
+
+        {&#39;Serak&#39;: (&#39;Rigel VII&#39;, &#39;Preparer&#39;),
+         &#39;Zim&#39;: (&#39;Irk&#39;, &#39;Invader&#39;),
+         &#39;Lrrr&#39;: (&#39;Omicron Persei 8&#39;, &#39;Emperor&#39;)}
+
+        If a key from the keys argument is missing from the dictionary,
+        then that row was not found in the table.
+
+    :raises ValueError: if `keys` is empty.
+    :raises IOError: An error occurred accessing the bigtable.Table object.
+    &quot;&quot;&quot;
+    pass</code></pre>
+<p>1.12.4 <span style="color:orange"><strong>【推荐】</strong></span> 类应该在其定义下有一个用于描述该类的文档字符串。 如果类有公共属性(Attributes)，那么文档中应该有一个属性(Attributes)段， 并且应该遵守和函数参数相同的格式。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>class SampleClass(object):
+    &quot;&quot;&quot;Summary of class here.
+
+    Longer class information....
+    Longer class information....
+
+    :ivar likes_spam: A boolean indicating if we like SPAM or not.
+    :ivar eggs: An integer count of the eggs we have laid.
+    &quot;&quot;&quot;
+
+    def __init__(self, likes_spam=False):
+        &quot;&quot;&quot;Inits SampleClass with blah.&quot;&quot;&quot;
+        self.likes_spam = likes_spam
+        self.eggs = 0
+
+    def public_method(self):
+        &quot;&quot;&quot;Performs operation blah.&quot;&quot;&quot;</code></pre>
+<h3 id="113-类型提示">1.13 类型提示</h3>
+<p>Python 是动态语言，在运行时无需指定变量类型。 虽然运行时不会执行函数与变量类型注解，但类型提示有助于阅读代码、重构、静态代码检查与IDE的语法提示。 推荐在项目中使用该特性。 更多使用可以参考 <a href="https://docs.python.org/zh-cn/3/library/typing.html">类型标注支持</a>。</p>
+<p>类型提示示例代码</p>
+<pre class="python"><code>from typing import List
+
+
+class Container(object):
+    def __init__(self) -&gt; None:
+        self.elements: List[int] = []
+
+    def append(self, element: int) -&gt; None:
+        self.elements.append(element)
+
+
+def greeting(name: str) -&gt; str:
+    return &#39;Hello &#39; + name
+
+
+# 变量定义
+lang: str = &#39;zh&#39;
+success_code: int = 0</code></pre>
+<p>1.13.1 <span style="color:red"><strong>【必须】</strong></span> 模块级变量，类和实例变量以及局部变量的注释应在冒号后面有一个空格。 pycodestyle:<code>E231 missing whitespace after ':'</code>.</p>
+<p>1.13.2 <span style="color:red"><strong>【必须】</strong></span> 冒号前不应有空格。</p>
+<p>1.13.3 <span style="color:red"><strong>【必须】</strong></span> 如果有赋值符，则等号在两边应恰好有一个空格。 pycodestyle:<code>E225 missing whitespace around operator</code>.</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>code: int = 10
+
+class Point(object):
+    coords: Tuple[int, int] = (0, 0)
+    label: str = &#39;&lt;unknown&gt;&#39;
+
+def broadcast(servers: Sequence[Server],
+              message: str = &#39;spaces around equality sign&#39;) -&gt; None:
+    pass</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>code:int  # No space after colon
+code : int  # Space before colon
+
+class Test(object):
+    result: int=0  # No spaces around equality sign</code></pre>
+<p>1.13.4 <span style="color:orange"><strong>【推荐】</strong></span> 当使用类型提示出现循环引用时，可以在导入的头部使用 <code>if typing.TYPE_CHECKING</code> ， 且对类型注解使用<code>双引号</code>或<code>单引号</code>进行修饰。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>import typing
+
+if typing.TYPE_CHECKING:  # 运行时不导入
+    # For type annotation
+    from typing import Any, Dict, List, Sequence  # NOQA
+    from sphinx.application import Sphinx  # NOQA
+
+
+class Parser(docutils.parsers.Parser):
+
+    def set_application(self, app: &quot;Sphinx&quot;) -&gt; None:  # 同时采用引号
+        pass</code></pre>
+<h3 id="114-字符串">1.14 字符串</h3>
+<p>1.14.1 <span style="color:orange"><strong>【推荐】</strong></span> 即使参数都是字符串, 也要使用%操作符或者格式化方法格式化字符串。不过也不能一概而论, 你需要在+和%之间权衡。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code># 更推荐
+x = f&#39;name: {name}; score: {n}&#39;  # Python3.6+ 以上支持
+x = &#39;name: {name}; score: {n}&#39;.format(name=name, n=n)
+x = &#39;name: {name}; score: {n}&#39;.format(**{&quot;name&quot;: name, &quot;n&quot;: n})
+x = &#39;name: %(name)s; score: %(n)d&#39; % {&quot;name&quot;: name, &quot;n&quot;: n}
+
+# 可接受
+x = &#39;%s, %s!&#39; % (imperative, expletive)
+x = &#39;{}, {}!&#39;.format(imperative, expletive)
+x = &#39;name: %s; score: %d&#39; % (name, n)
+x = &#39;name: {}; score: {}&#39;.format(name, n)</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>x = &#39;%s%s&#39; % (a, b)  # use + in this case
+x = &#39;{}{}&#39;.format(a, b)  # use + in this case
+x = imperative + &#39;, &#39; + expletive + &#39;!&#39;
+x = &#39;name: &#39; + name + &#39;; score: &#39; + str(n)</code></pre>
+<p>1.14.2 <span style="color:orange"><strong>【推荐】</strong></span> 避免在循环中用<code>+</code>和<code>+=</code>操作符来累加字符串。 由于字符串是不可变的, 这样做会创建不必要的临时对象, 并且导致二次方而不是线性的运行时间。 作为替代方案, 你可以将每个子串加入列表, 然后在循环结束后用 <code>.join</code> 连接列表。 (也可以将每个子串写入一个 io.StringIO 缓存中。) pylint:<code>consider-using-join</code>.</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>items = [&#39;&lt;table&gt;&#39;]
+for last_name, first_name in employee_list:
+    items.append(&#39;&lt;tr&gt;&lt;td&gt;%s, %s&lt;/td&gt;&lt;/tr&gt;&#39; % (last_name, first_name))
+items.append(&#39;&lt;/table&gt;&#39;)
+employee_table = &#39;&#39;.join(items)</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>employee_table = &#39;&lt;table&gt;&#39;
+for last_name, first_name in employee_list:
+    employee_table += &#39;&lt;tr&gt;&lt;td&gt;%s, %s&lt;/td&gt;&lt;/tr&gt;&#39; % (last_name, first_name)
+employee_table += &#39;&lt;/table&gt;&#39;</code></pre>
+<p>1.14.3 <span style="color:orange"><strong>【推荐】</strong></span> 在同一个文件中, 保持使用字符串引号的一致性。 使用单引号<code>'</code>或者双引号<code>"</code>引用字符串, 并在同一文件中一直沿用这种风格。 当字符串中包含单引号或者双引号时，为提高可读性，使用另外一种引号，代替转义字符。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>Python(&#39;Why are you hiding your eyes?&#39;)
+Gollum(&quot;I&#39;m scared of lint errors.&quot;)
+Narrator(&#39;&quot;Good!&quot; thought a happy Python reviewer.&#39;)</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>Python(&quot;Why are you hiding your eyes?&quot;)
+Gollum(&#39;The lint. It burns. It burns us.&#39;)
+Gollum(&quot;Always the great lint. Watching. Watching.&quot;)</code></pre>
+<p>1.14.4 <span style="color:red"><strong>【必须】</strong></span> 如果要引用的字符串为多行时，需要使用双引号引用字符串。</p>
+<p>1.14.5 <span style="color:red"><strong>【必须】</strong></span> 文档字符串（docstring）必须使用三重双引号 <code>"""</code>。</p>
+<p>1.14.6 <span style="color:blue"><strong>【可选】</strong></span> 避免在代码中使用三重引号<code>"""</code>，因为当使用三重引号时，缩进方式与其他部分不一致，容易引起误导。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>print(&quot;This is much nicer.\n&quot;
+      &quot;Do it this way.\n&quot;)</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>print(&quot;&quot;&quot;This is pretty ugly.
+Don&#39;t do this.
+&quot;&quot;&quot;)</code></pre>
+<p>1.14.7 <span style="color:orange"><strong>【推荐】</strong></span> 检查前缀和后缀时，使用 <code>.startswith()</code> 和 <code>.endswith()</code> 代替字符串切片。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>if foo.startswith(&#39;bar&#39;):</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>if foo[:3] == &#39;bar&#39;:</code></pre>
+<h3 id="115-文件和sockets">1.15 文件和sockets</h3>
+<p>1.15.1 <span style="color:red"><strong>【必须】</strong></span> 在文件和sockets结束时，显式的关闭它。</p>
+<p>除文件外， sockets或其他类似文件的对象在没有必要的情况下打开，会有许多副作用，例如：</p>
+<ol>
+<li>它们可能会消耗有限的系统资源，如文件描述符。 如果这些资源在使用后没有及时归还系统，那么用于处理这些对象的代码会将资源消耗殆尽。</li>
+<li>持有文件将会阻止对于文件的其他诸如移动、删除之类的操作。</li>
+<li>仅仅是从逻辑上关闭文件和sockets，那么它们仍然可能会被其共享的程序在无意中进行读或者写操作。只有当它们真正被关闭后，对于它们尝试进行读或者写操作将会抛出异常, 并使得问题快速显现出来。</li>
+</ol>
+<p>而且，幻想当文件对象析构时，文件和sockets会自动关闭，试图将文件对象的生命周期和文件的状态绑定在一起的想法, 都是不现实的。因为有如下原因：</p>
+<ol>
+<li>没有任何方法可以确保运行环境会真正的执行文件的析构. 不同的Python实现采用不同的内存管理技术, 比如延时垃圾处理机制. 延时垃圾处理机制可能会导致对象生命周期被任意无限制的延长。</li>
+<li>对于文件意外的引用,会导致对于文件的持有时间超出预期(比如对于异常的跟踪, 包含有全局变量等)。</li>
+</ol>
+<p>1.15.2 <span style="color:orange"><strong>【推荐】</strong></span> 推荐使用 <code>with</code> 语句管理文件。</p>
+<pre class="python"><code>with open(&quot;hello.txt&quot;) as hello_file:
+    for line in hello_file:
+        print(line)</code></pre>
+<p>对于不支持使用<code>with</code>语句的类似文件的对象,使用<code>contextlib.closing()</code>：</p>
+<pre class="python"><code>import contextlib
+
+with contextlib.closing(urllib.urlopen(&quot;http://www.python.org/&quot;)) as front_page:
+    for line in front_page:
+        print(line)</code></pre>
+<p>Legacy AppEngine 中Python 2.5的代码如使用<code>with</code>语句, 需要添加 <code>from __future__ import with_statement</code>.</p>
+<h3 id="116-访问控制">1.16 访问控制</h3>
+<blockquote>
+<p>在Python中，对于琐碎又不太重要的访问函数, 应该直接使用公有变量来取代它们，这样可以避免额外的函数调用开销。 当添加更多功能时，也可以用属性(property)来保持语法的一致性。</p>
+</blockquote>
+<p>1.16.1 <span style="color:orange"><strong>【推荐】</strong></span> 如果访问属性后需要复杂的逻辑处理，或者变量的访问开销很显著， 那么应该使用像 <code>get_foo()</code> 和 <code>set_foo()</code> 这样的函数调用。 如果之前的代码行为已经通过属性(property)访问，那么就不要将新的访问函数与属性绑定。 否则，任何试图通过老方法访问变量的代码就没法运行，使用者也就会意识到复杂性发生了变化。 （如果可以重构这个代码是最好的了）</p>
+<h3 id="117-main">1.17 Main</h3>
+<blockquote>
+<p>即使是一个打算被用作脚本的文件, 也应该是可导入的。 并且简单的导入不应该导致这个脚本的主功能(main functionality)被执行，这是一种副作用。 主功能应该放在一个main()函数中。</p>
+</blockquote>
+<p>1.17.1 <span style="color:red"><strong>【必须】</strong></span> 所有的文件都应该可以被导入。 对不需要作为程序入口地方添加 <code>if __name__ == '__main__'</code>。</p>
+<p>在Python中，pydoc以及单元测试要求模块必须是可导入的。 你的代码应该在执行主程序前总是检查 <code>if __name__ == '__main__'</code>， 这样当模块被导入时主程序就不会被执行。 所有的顶级代码在模块导入时都会被执行。 要小心不要去调用函数，创建对象，或者执行那些不应该在使用pydoc时执行的操作。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>def main():
+      ...
+
+if __name__ == &#39;__main__&#39;:
+    main()</code></pre>
+<h3 id="118-命名">1.18 命名</h3>
+<blockquote>
+<p>module_name, package_name, ClassName, method_name, ExceptionName, function_name, GLOBAL_VAR_NAME, instance_var_name, function_parameter_name, local_var_name.</p>
+</blockquote>
+<p>应该避免的名称：</p>
+<ol>
+<li>单字符名称，除了计数器和迭代器。</li>
+<li>包/模块名中的连字符(-)。</li>
+<li>双下划线开头并结尾的名称(Python保留，例如__init__)。</li>
+</ol>
+<p>1.18.1 <span style="color:orange"><strong>【推荐】</strong></span> 命名约定规则如下： pylint:<code>invalid-name</code>.</p>
+<ol>
+<li>所谓<code>内部(Internal)</code>表示仅模块内可用, 或者, 在类内是保护或私有的。</li>
+<li>用单下划线<code>(_)</code>开头表示模块变量或函数是protected的(使用from module import *时不会包含)。</li>
+<li>用双下划线<code>(__)</code>开头的实例变量或方法表示类内私有。</li>
+<li>将相关的类和顶级函数放在同一个模块里。不像Java，没必要限制一个类一个模块。</li>
+<li>对类名使用大写字母开头的单词(如CapWords, 即Pascal风格)，但是模块名应该用小写加下划线的方式(如lower_with_under.py)。尽管已经有很多现存的模块使用类似于CapWords.py这样的命名，但现在已经不鼓励这样做, 因为如果模块名碰巧和类名一致，这会让人困扰。</li>
+</ol>
+<p>Python之父Guido推荐的规范：</p>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Public</th>
+<th>Internal</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Modules</td>
+<td>lower_with_under</td>
+<td>_lower_with_under</td>
+</tr>
+<tr class="even">
+<td>Packages</td>
+<td>lower_with_under</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Classes</td>
+<td>CapWords</td>
+<td>_CapWords</td>
+</tr>
+<tr class="even">
+<td>Exceptions</td>
+<td>CapWords</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Functions</td>
+<td>lower_with_under()</td>
+<td>_lower_with_under()</td>
+</tr>
+<tr class="even">
+<td>Global/Class Constants</td>
+<td>CAPS_WITH_UNDER</td>
+<td>_CAPS_WITH_UNDER</td>
+</tr>
+<tr class="odd">
+<td>Global/Class Variables</td>
+<td>lower_with_under</td>
+<td>_lower_with_under</td>
+</tr>
+<tr class="even">
+<td>Instance Variables</td>
+<td>lower_with_under</td>
+<td>_lower_with_under (protected) or __lower_with_under (private)</td>
+</tr>
+<tr class="odd">
+<td>Method Names</td>
+<td>lower_with_under()</td>
+<td>_lower_with_under() (protected) or __lower_with_under() (private)</td>
+</tr>
+<tr class="even">
+<td>Function/Method Parameters</td>
+<td>lower_with_under</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Local Variables</td>
+<td>lower_with_under</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="二编码规范">二、编码规范</h2>
+<h3 id="21-三目运算符">2.1 三目运算符</h3>
+<p>2.1.1 <span style="color:red"><strong>【必须】</strong></span> 三目操作符判断，python 不支持三目运算符，但可使用如下方式，禁止使用复杂难懂的逻辑判断。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>x = a if a &gt;= b else b</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>x = a &gt;= b and a or b</code></pre>
+<h3 id="22-none-条件的判断">2.2 None 条件的判断</h3>
+<p>2.2.1 <span style="color:red"><strong>【必须】</strong></span> 为提升可读性，在判断条件中应使用 <code>is not</code>，而不使用 <code>not ... is</code>。 pycodestyle:<code>E714 test for object identity should be 'is not'</code>.</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>if foo is not None:</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>if not foo is None:</code></pre>
+<h3 id="23-lambda匿名函数">2.3 lambda匿名函数</h3>
+<p>2.3.1 <span style="color:red"><strong>【必须】</strong></span> 使用 def 定义简短函数而不是使用 lambda。 pycodestyle:<code>E731 do not assign a lambda expression, use a def</code>.</p>
+<p>使用def的方式有助于在trackbacks中打印有效的类型信息，明确使用<code>f</code>函数而不是一个lambda的调用。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>def f(x): return 2 * x</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>f = lambda x: 2 * x</code></pre>
+<h3 id="24-异常">2.4 异常</h3>
+<p>2.4.1 <span style="color:red"><strong>【必须】</strong></span> 异常类继承自 <code>Exception</code>，而不是 <code>BaseException</code>。</p>
+<p>2.4.2 <span style="color:red"><strong>【必须】</strong></span> 使用新版本抛出异常的方式，禁止使用废弃的方式。 pycodestyle:<code>W602 deprecated form of raising exception</code>.</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>raise ValueError(&#39;message&#39;)</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>raise ValueError, &#39;message&#39;</code></pre>
+<p>2.4.3 <span style="color:red"><strong>【必须】</strong></span> 捕获异常时，需要指明具体异常，而不是捕获所有异常。 除非已经在当前线程的最外层（记得还是要打印一条traceback）。 pylint:<code>broad-except</code>, <code>bare-except</code>.</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>try:
+    import platform_specific_module
+except ImportError:
+    platform_specific_module = None
+
+try:
+    do_something()
+except Exception as ex:
+    print(traceback.format_exc())
+    do_handle_exception()</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>try:
+    import platform_specific_module
+except Exception:  # broad-except
+    platform_specific_module = None
+
+try:
+    do_something()
+except Exception:  # 框架等未明确异常场景，建议增加 traceback 打印
+    platform_specific_module = None</code></pre>
+<p>2.4.4 <span style="color:orange"><strong>【推荐】</strong></span> 建议在代码中用异常替代函数的错误返回码。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>def write_data():
+    if check_file_exist():
+        do_something()
+    else:
+        raise FileNotExist()</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>def write_data():
+    if check_file_exist():
+        do_something()
+        return 0
+    else:
+        return FILE_NOT_EXIST</code></pre>
+<p>2.4.5 <span style="color:orange"><strong>【推荐】</strong></span> 在 <code>except</code> 子句中重新抛出原有异常时，不能用 <code>raise ex</code>，而是用 <code>raise</code>。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>try:
+    raise MyException()
+except MyException as ex:
+    try_handle_exception()
+    raise  # 可以保留原始的 traceback
+
+
+try:
+    raise MyException()
+except MyException as ex:
+    raise AnotherException(str(ex))  # 允许的，建议保留好之前的异常栈信息，用于定位问题</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>try:
+    raise MyException()
+except MyException as ex:
+    try_handle_exception()
+    raise ex  # 异常栈信息从这里开始，原始的raise异常栈信息消息</code></pre>
+<p>2.4.6 <span style="color:orange"><strong>【推荐】</strong></span> 所有 <code>try</code>/<code>except</code> 子句的代码要尽可的少，以免屏蔽其他的错误。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>try:
+    value = collection[key]
+except KeyError:
+    return key_not_found(key)
+else:
+    return handle_value(value)</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>try:
+    # 范围太广
+    return handle_value(collection[key])
+except KeyError:
+    # 会捕捉到 handle_value() 中的 KeyError
+    return key_not_found(key)</code></pre>
+<h3 id="25-条件表达式">2.5 条件表达式</h3>
+<p>2.5.1 <span style="color:orange"><strong>【推荐】</strong></span> 函数或者方法在没有返回时要明确返回<code>None</code>。 pylint:<code>inconsistent-return-statements</code>.</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>def foo(x):
+    if x &gt;= 0:
+        return math.sqrt(x)
+    else:
+        return None
+
+def bar(x):
+    if x &lt; 0:
+        return None
+    return math.sqrt(x)</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>def foo(x):
+    if x &gt;= 0:
+        return math.sqrt(x)
+
+def bar(x):
+    if x &lt; 0:
+        return
+    return math.sqrt(x)</code></pre>
+<p>2.5.2 <span style="color:orange"><strong>【推荐】</strong></span> 对于未知的条件分支或者不应该进入的分支，建议抛出异常，而不是返回一个值（比如说<code>None</code> 或<code>False</code>）。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>def f(x):
+    if x in (&#39;SUCCESS&#39;,):
+        return True
+    else:
+        raise MyException()  # 如果一定不会走到的条件，可以增加异常，防止将来未知的语句执行。</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>def f(x):
+    if x in (&#39;SUCCESS&#39;,):
+        return True
+    return None</code></pre>
+<p>2.5.3 <span style="color:blue"><strong>【可选】</strong></span> <code>if</code> 与 <code>else</code> 尽量一起出现，而不是全部都是<code>if</code>子句。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>if condition:
+    do_something()
+else:
+    # 增加说明注释
+    pass
+
+if condition:
+    do_something()
+# 这里增加注释说明为什么不用写else子句
+# else:
+#     pass</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>if condition:
+    do_something()
+if another_condition:  # 不能确定是否笔误为 elif ，还是开启全新一个if条件
+    do_another_something()
+else:
+    do_else_something()</code></pre>
+<h3 id="26-truefalse-布尔运算">2.6 True/False 布尔运算</h3>
+<p>2.6.1 <span style="color:red"><strong>【必须】</strong></span> 不要用 <code>==</code> 与 <code>True</code>、 <code>False</code> 进行布尔运算。 pylint:<code>singleton-comparison</code>.</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>if greeting:
+   pass</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>if greeting == True:
+   pass
+
+if greeting is True:  # Worse
+   pass</code></pre>
+<p>2.6.2 <span style="color:red"><strong>【必须】</strong></span> 对序列（字符串、列表 、元组），空序列为 false 的情况。 pylint:<code>len-as-condition</code>.</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>if not seq:
+   pass
+
+if seq:
+   pass</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>if len(seq):
+   pass
+
+if not len(seq):
+   pass</code></pre>
+<h3 id="27-列表推导式">2.7 列表推导式</h3>
+<p>2.7.1 <span style="color:red"><strong>【必须】</strong></span> 禁止超过1个for语句或过滤器表达式，否则使用传统<code>for</code>循环语句替代。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>number_list = [1, 2, 3, 10, 20, 55]
+odd = [i for i in number_list if i % 2 == 1]
+
+result = []
+for x in range(10):
+    for y in range(5):
+        if x * y &gt; 10:
+            result.append((x, y))</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>result = [(x, y) for x in range(10) for y in range(5) if x * y &gt; 10]  # for 语句</code></pre>
+<p>2.7.2 <span style="color:orange"><strong>【推荐】</strong></span> 列表推导式适用于简单场景。 如果语句过长，每个部分应该单独置于一行： 映射表达式， for语句， 过滤器表达式。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>fizzbuzz = []
+for n in range(100):
+    if n % 3 == 0 and n % 5 == 0:
+        fizzbuzz.append(f&#39;fizzbuzz {n}&#39;)
+    elif n % 3 == 0:
+        fizzbuzz.append(f&#39;fizz {n}&#39;)
+    elif n % 5 == 0:
+        fizzbuzz.append(f&#39;buzz {n}&#39;)
+    else:
+        fizzbuzz.append(n)
+
+
+for n in range(1, 11):
+    print(n)</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code># 条件过于复杂，应该采用for语句展开
+fizzbuzz = [
+    f&#39;fizzbuzz {n}&#39; if n % 3 == 0 and n % 5 == 0
+    else f&#39;fizz {n}&#39; if n % 3 == 0
+    else f&#39;buzz {n}&#39; if n % 5 == 0
+    else n
+    for n in range(100)
+]
+
+
+[print(n) for n in range(1, 11)]  # 无返回值</code></pre>
+<h3 id="28-函数">2.8 函数</h3>
+<p>2.8.1 <span style="color:red"><strong>【必须】</strong></span> 模块内部禁止定义重复函数声明。 pylint:<code>function-redefined</code>.</p>
+<p>禁止重复的函数定义。</p>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>def get_x(x):
+    return x
+
+def get_x(x):  # 模块内重复定义
+    return x</code></pre>
+<p>2.8.2 <span style="color:red"><strong>【必须】</strong></span> 函数参数中，不允许出现可变类型变量作为默认值。 pylint:<code>dangerous-default-value</code>.</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>def f(x=0, y=None, z=None):
+    if y is None:
+        y = []
+    if z is None:
+        z = {}</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>def f(x=0, y=[], z={}):
+    pass
+
+def f(a, b=time.time()):
+    pass</code></pre>
+<h3 id="29-变量">2.9 变量</h3>
+<p>2.9.1 <span style="color:red"><strong>【必须】</strong></span> 禁止定义了变量却不使用它。 pylint:<code>unused-variable</code>.</p>
+<p>在代码里到处定义变量却没有使用它，不完整的代码结构看起来像是个代码错误。 即使没有使用，但是定义变量仍然需要消耗资源，并且对阅读代码的人也会造成困惑，不知道这些变量是要做什么的。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>def get_x_plus_y(x, y):
+    return x + y</code></pre>
+<p><span class="bad_example_span" style="color:#dc143c"><strong><em>错误示范</em></strong></span></p>
+<pre class="python"><code>some_unused_var = 42
+
+# 定义了变量不意味着就是使用了
+y = 10
+y = 5
+
+# 对自身的操作并不意味着使用了
+z = 0
+z = z + 1
+
+# 未使用的函数参数
+def get_x(x, y):
+    return x</code></pre>
+<p>2.9.2 <span style="color:orange"><strong>【推荐】</strong></span> 使用双下划线 <code>__</code> 来代表不需要的变量，单下划线 <code>_</code> 容易与 <code>gettext()</code> 函数的别名冲突。</p>
+<p><span class="good_example_span" style="color:#228b22"><strong><em>正确示范</em></strong></span></p>
+<pre class="python"><code>path = &#39;/tmp/python/foobar.txt&#39;
+dir_name, __ = os.path.split(path)</code></pre>
+<h2 id="工具与配置">工具与配置</h2>
+<h3 id="flake8">flake8</h3>
+<p><a href="https://flake8.pycqa.org/"><code>flake8</code></a> 是一个结合了 pycodestyle，pyflakes，mccabe 检查 Python 代码规范的工具。</p>
+<p>使用方法：</p>
+<pre class="bash"><code>flake8 {source_file_or_directory}</code></pre>
+<p>在项目中创建 <code>setup.cfg</code> 或者 <code>tox.ini</code> 文件，添加 <code>[flake8]</code> 部分。</p>
+<p>推荐的配置文件如下：</p>
+<pre class="ini"><code>[flake8]
+ignore =
+    ;W503 line break before binary operator
+    W503,
+    ;E203 whitespace before ‘:’
+    E203,
+
+; exclude file
+exclude =
+    .tox,
+    .git,
+    __pycache__,
+    build,
+    dist,
+    *.pyc,
+    *.egg-info,
+    .cache,
+    .eggs
+
+max-line-length = 120</code></pre>
+<p>如果需要屏蔽告警可以增加行内注释 <code># noqa</code>，例如：</p>
+<pre class="python"><code>example = lambda: &#39;example&#39;  # noqa: E731</code></pre>
+<h3 id="pylint">pylint</h3>
+<p><a href="https://www.pylint.org/"><code>pylint</code></a> 是一个能够检查编码质量、编码规范的工具。</p>
+<p>配置项较多，单独一个配置文件配置，详情可查阅：<a href="https://git.code.oa.com/standards/python/blob/master/.pylintrc">.pylintrc</a></p>
+<p>使用方法：</p>
+<pre class="bash"><code>pylint {source_file_or_directory}</code></pre>
+<p>如果遇到一些实际情况与代码冲突的，可以在行内禁用相关检查，例如 ：</p>
+<pre class="python"><code>try:
+    do_something()
+except Exception as ex:  # pylint: disable=broad-except
+    pass</code></pre>
+<p>如果需要对多行的进行禁用规则，可以配套使用 <code># pylint: disable=具体错误码</code>/<code># pylint: enable=具体错误码</code>。</p>
+<pre class="python"><code># pylint: disable=invalid-name
+这里的代码块会被忽略相关的告警
+app = Flask(__name__)
+# pylint: enable=invalid-name</code></pre>
+<h3 id="black">black</h3>
+<p><a href="https://github.com/psf/black"><code>black</code></a> 是一个官方的 Python 代码格式化工具。</p>
+<p>使用方法：</p>
+<pre class="bash"><code>black {source_file_or_directory}</code></pre>
+<p>如果不想格式化部分代码，可以配套使用 <code># fmt: off</code>/<code># fmt: on</code> 临时关闭格式化。</p>
+<pre class="python"><code># fmt: off
+在这的代码不会被格式化
+# fmt: on</code></pre>
+<h3 id="editorconfig">EditorConfig</h3>
+<p>EditorConfig 可以帮助开发同一项目下的跨多 IDE 的开发人员保持一致编码风格。</p>
+<p>在项目的根目录下放置 <a href="https://git.code.oa.com/standards/python/blob/master/.editorconfig"><code>.editorconfig</code></a> 文件，可以让编辑器规范文件对格式。参考配置如下：</p>
+<pre class="ini"><code># https://editorconfig.org
+
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+insert_final_newline = true
+charset = utf-8
+end_of_line = lf
+
+[*.py]
+max_line_length = 120
+
+[*.bat]
+indent_style = tab
+end_of_line = crlf
+
+[LICENSE]
+insert_final_newline = false
+
+[Makefile]
+indent_style = tab</code></pre>
+<p>支持常见的 IDE ，配置说明及 IDE 的支持情况可参考官网 <a href="https://editorconfig.org/">editorconfig.org</a>。</p>
+<!-- anything you put here will go before the closing </body> tag
+     (ie: after the README’s contents) Markdown will become HTML  -->
+
+      <footer class="site-footer">
+        <span class="site-footer-credits">This page was generated with <a href="https://tajmone.github.io/gh-themes-magick/"><strong>gh-themes-magick</strong></a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+    <script src="javascripts/custom.js"></script>
+  </body>
+</html>

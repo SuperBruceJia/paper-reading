@@ -1,0 +1,41 @@
+
+@font-face{
+  font-family:'Glyphicons Halflings';
+  src:url("https://stackpath.bootstrapcdn.com/bootstrap/3.3.6/fonts/glyphicons-halflings-regular.eot");
+  src:url("https://stackpath.bootstrapcdn.com/bootstrap/3.3.6/fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"),
+  url("https://stackpath.bootstrapcdn.com/bootstrap/3.3.6/fonts/glyphicons-halflings-regular.woff2") format("woff2"),
+  url("https://stackpath.bootstrapcdn.com/bootstrap/3.3.6/fonts/glyphicons-halflings-regular.woff") format("woff"),
+  url("https://stackpath.bootstrapcdn.com/bootstrap/3.3.6/fonts/glyphicons-halflings-regular.ttf") format("truetype"),
+  url("https://stackpath.bootstrapcdn.com/bootstrap/3.3.6/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular") format("svg")
+}
+
+/* .rule_item::before{
+    color: #f29900;
+    content: "\e013";
+    font-family: "Glyphicons Halflings";
+    margin-left: -1.5em;
+    position: absolute;
+} */
+
+p.good_example:before{
+    color: #228b22;
+    content: "\e125";
+    font-family: "Glyphicons Halflings";
+    margin-left: -1.5em;
+    position: absolute;
+}
+
+p.bad_example:before{
+    color: #dc143c;
+    content: "\e126";
+    font-family: "Glyphicons Halflings";
+    margin-left: -1.5em;
+    position: absolute;
+}
+
+.good_example_pre {
+    background-color: #f6fff6 !important;
+}
+.bad_example_pre {
+    background-color: #fff6f6 !important;
+}

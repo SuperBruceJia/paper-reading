@@ -1,0 +1,125 @@
+# Python 编码风格与规范
+
+[TOC]
+
+[![code_style](https://img.shields.io/badge/code_style-python-brightgreen.svg)](https://git.code.oa.com/standards/python)
+
+
+## 前言
+
+为了让不同编码习惯的开发者更好的协作配合，并且形成良好的基础编码规范与风格，我们以 [PEP8](https://www.python.org/dev/peps/pep-0008/) 为基础，修改了陈旧的规则，丰富了示例，并整理了工作中常见的不规范操作，最终形成此 Python 编码规范与风格。
+
+本规范适用于所有使用 Python 语言作为开发语言的软件产品。
+
+由于 Python2 在 [2020 年停止维护](https://www.python.org/doc/sunset-python-2/)，建议新增的项目使用 Python3.6+，可以使用到更多的高级特性。如果项目有兼容性需求需要支持老版本 Python 的，那么不涉及的特性可以忽略。 本规范的示例采用符合 Python3.6+ 的语法。
+
+- <span style="color: red">**必须（Mandatory）**</span>：用户必须采用；
+- <span style="color: orange">**推荐（Preferable）**</span>：用户理应采用，但如有特殊情况，可以不采用；
+- <span style="color: blue">**可选（Optional）**</span>：用户可参考，自行决定是否采用；
+
+未明确指明的则默认为 <span style="color: red">**必须（Mandatory）**</span>。
+
+
+## 一、编码风格
+
+规范地代码布局有助于帮助开发者更容易地理解业务逻辑。
+
+{% for item_rule in style_rules %}
+{{ item_rule.item_string }}
+{% endfor %}
+
+## 二、编码规范
+
+{% for item_rule in language_rules %}
+{{ item_rule.item_string }}
+{% endfor %}
+
+## 工具与配置
+
+### flake8
+
+[`flake8`](https://flake8.pycqa.org/) 是一个结合了 pycodestyle，pyflakes，mccabe 检查 Python 代码规范的工具。
+
+
+使用方法：
+
+```bash
+flake8 {source_file_or_directory}
+```
+
+在项目中创建 `setup.cfg` 或者 `tox.ini` 文件，添加 `[flake8]` 部分。
+
+推荐的配置文件如下：
+
+```ini
+{{ flake8_config }}
+```
+
+如果需要屏蔽告警可以增加行内注释 `# noqa`，例如：
+
+```python
+example = lambda: 'example'  # noqa: E731
+```
+
+### pylint
+
+[`pylint`](https://www.pylint.org/) 是一个能够检查编码质量、编码规范的工具。
+
+配置项较多，单独一个配置文件配置，详情可查阅：[.pylintrc](https://git.code.oa.com/standards/python/blob/master/.pylintrc)
+
+使用方法：
+
+```bash
+pylint {source_file_or_directory}
+```
+
+如果遇到一些实际情况与代码冲突的，可以在行内禁用相关检查，例如 ：
+
+```python
+try:
+    do_something()
+except Exception as ex:  # pylint: disable=broad-except
+    pass
+```
+
+如果需要对多行的进行禁用规则，可以配套使用 `# pylint: disable=具体错误码`/`# pylint: enable=具体错误码`。
+
+```python
+# pylint: disable=invalid-name
+这里的代码块会被忽略相关的告警
+app = Flask(__name__)
+# pylint: enable=invalid-name
+```
+
+
+### black
+
+[`black`](https://github.com/psf/black) 是一个官方的 Python 代码格式化工具。
+
+使用方法：
+
+```bash
+black {source_file_or_directory}
+```
+
+如果不想格式化部分代码，可以配套使用 `# fmt: off`/`# fmt: on` 临时关闭格式化。
+
+```python
+# fmt: off
+在这的代码不会被格式化
+# fmt: on
+```
+
+### EditorConfig
+
+EditorConfig 可以帮助开发同一项目下的跨多 IDE 的开发人员保持一致编码风格。
+
+在项目的根目录下放置
+[`.editorconfig`](https://git.code.oa.com/standards/python/blob/master/.editorconfig)
+文件，可以让编辑器规范文件对格式。参考配置如下：
+
+```ini
+{{ editorconfig_config }}
+```
+
+支持常见的 IDE ，配置说明及 IDE 的支持情况可参考官网 [editorconfig.org](https://editorconfig.org/)。

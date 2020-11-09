@@ -1,0 +1,28 @@
+---
+
+name_en:
+name: 源文件编码
+description:
+rules:
+  - name: xx
+    level: Mandatory
+    summary: 源文件编码需统一使用 `UTF-8` 编码，以下内容需要增加到每一个python文件的头部。
+    description: |
+      ```python
+      # -*- coding: utf-8 -*-
+      ```
+    bad_example:
+    good_example:
+    pylint:
+    pycodestyle:
+
+  - name: xx
+    level: Mandatory
+    summary: "**避免不同操作系统对文件换行处理的方式不同，一律使用`LF`**。"
+    description:
+    bad_example:
+    good_example:
+    pylint:
+      - mixed-line-endings
+      - unexpected-line-ending-format
+    pycodestyle:

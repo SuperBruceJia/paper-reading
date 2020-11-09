@@ -1,0 +1,127 @@
+---
+
+name: 空行
+description:
+full_description: |
+  ```python
+  """This is the example module.
+
+  This module does stuff.
+  """
+
+
+  import os
+
+
+  def foo():
+      pass
+
+
+  class MyClass():
+
+      def __init__(self):
+          pass
+
+      def foo(self):
+          pass
+
+
+  class AnotherClass(object):
+      """Another class.
+
+      This is some comments for another class
+      """
+
+      def __init__(self,
+                   a,
+                   b):
+          if a > b:
+              self._min = b
+              self._max = a
+
+          else:
+              self._min = a
+              self._max = b
+
+          self._gap = self._max = self._min
+
+      def foo(self):
+          pass
+
+  ```
+
+rules:
+  - name: xx
+    level: Mandatory
+    summary: 模块中的一级函数和类定义之间，需要`空两行`。
+    description:
+    bad_example:
+    good_example:
+    pylint:
+    pycodestyle:
+      - E302 expected 2 blank lines
+
+  - name: xx
+    level: Mandatory
+    summary: 类中函数定义之间，`空一行`。
+    description:
+    bad_example:
+    good_example:
+    pylint:
+    pycodestyle:
+      - E302 expected 1 blank line
+
+  - name: xx
+    level: Mandatory
+    summary: 源文件末尾有且仅有 `一行空行`。
+    description:
+    bad_example:
+    good_example:
+    pylint:
+      - missing-final-newline
+      - trailing-newlines
+    pycodestyle:
+
+  - name: xx
+    level: Mandatory
+    summary: 通常每个语句应该独占一行。
+    description: 如果测试结果与测试语句在一行放得下，你也可以将它们放在同一行。
+                 如果是`if`语句, 只有在没有`else`时才能这样做。
+                 特别地，绝不要对 `try`/`except` 这样做，因为`try`和`except`不能放在同一行。
+    bad_example: |
+      ```  python
+      if foo: bar(foo)
+      else:   baz(foo)
+
+      try:               bar(foo)
+      except ValueError: baz(foo)
+
+      try:
+        bar(foo)
+      except ValueError: baz(foo)
+      ```
+    good_example: |
+      ```python
+      if foo:
+          bar(foo)
+      else:
+          baz(foo)
+
+      try:
+          bar(foo)
+      except ValueError:
+          baz(foo)
+      ```
+    pylint:
+      - multiple-statements
+    pycodestyle:
+
+
+  - name: xx
+    level: Preferable
+    summary: 可以在代码段中的`空一行`来区分不同业务逻辑块。
+    description:
+    bad_example:
+    good_example:
+    pylint:
+    pycodestyle:

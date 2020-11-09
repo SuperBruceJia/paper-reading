@@ -1,0 +1,132 @@
+---
+
+name_en:
+name: 字符串
+description:
+full_description:
+rules:
+  - name: xx
+    level: Preferable
+    summary: 即使参数都是字符串, 也要使用%操作符或者格式化方法格式化字符串。不过也不能一概而论, 你需要在+和%之间权衡。
+    description:
+    bad_example: |
+      ```python
+      x = '%s%s' % (a, b)  # use + in this case
+      x = '{}{}'.format(a, b)  # use + in this case
+      x = imperative + ', ' + expletive + '!'
+      x = 'name: ' + name + '; score: ' + str(n)
+      ```
+    good_example: |
+      ```python
+      # 更推荐
+      x = f'name: {name}; score: {n}'  # Python3.6+ 以上支持
+      x = 'name: {name}; score: {n}'.format(name=name, n=n)
+      x = 'name: {name}; score: {n}'.format(**{"name": name, "n": n})
+      x = 'name: %(name)s; score: %(n)d' % {"name": name, "n": n}
+
+      # 可接受
+      x = '%s, %s!' % (imperative, expletive)
+      x = '{}, {}!'.format(imperative, expletive)
+      x = 'name: %s; score: %d' % (name, n)
+      x = 'name: {}; score: {}'.format(name, n)
+      ```
+    pylint:
+    pycodestyle:
+
+  - name: xx
+    level: Preferable
+    summary: 避免在循环中用`+`和`+=`操作符来累加字符串。
+             由于字符串是不可变的, 这样做会创建不必要的临时对象, 并且导致二次方而不是线性的运行时间。
+             作为替代方案, 你可以将每个子串加入列表, 然后在循环结束后用 `.join` 连接列表。
+             (也可以将每个子串写入一个 io.StringIO 缓存中。)
+    description:
+    bad_example: |
+      ```python
+      employee_table = '<table>'
+      for last_name, first_name in employee_list:
+          employee_table += '<tr><td>%s, %s</td></tr>' % (last_name, first_name)
+      employee_table += '</table>'
+      ```
+    good_example: |
+      ```python
+      items = ['<table>']
+      for last_name, first_name in employee_list:
+          items.append('<tr><td>%s, %s</td></tr>' % (last_name, first_name))
+      items.append('</table>')
+      employee_table = ''.join(items)
+      ```
+    pylint:
+      - consider-using-join
+    pycodestyle:
+
+  - name: xx
+    level: Preferable
+    summary: 在同一个文件中, 保持使用字符串引号的一致性。
+             使用单引号`'`或者双引号`"`引用字符串, 并在同一文件中一直沿用这种风格。
+             当字符串中包含单引号或者双引号时，为提高可读性，使用另外一种引号，代替转义字符。
+    description:
+    bad_example: |
+      ```python
+      Python("Why are you hiding your eyes?")
+      Gollum('The lint. It burns. It burns us.')
+      Gollum("Always the great lint. Watching. Watching.")
+      ```
+    good_example: |
+      ```python
+      Python('Why are you hiding your eyes?')
+      Gollum("I'm scared of lint errors.")
+      Narrator('"Good!" thought a happy Python reviewer.')
+      ```
+    pylint:
+    pycodestyle:
+
+  - name: xx
+    level: Mandatory
+    summary: 如果要引用的字符串为多行时，需要使用双引号引用字符串。
+    description:
+    bad_example:
+    good_example:
+    pylint:
+    pycodestyle:
+
+  - name: xx
+    level: Mandatory
+    summary: 文档字符串（docstring）必须使用三重双引号 `"""`。
+    description:
+    bad_example:
+    good_example:
+    pylint:
+    pycodestyle:
+
+  - name: xx
+    level: Optional
+    summary: 避免在代码中使用三重引号`"""`，因为当使用三重引号时，缩进方式与其他部分不一致，容易引起误导。
+    description:
+    bad_example: |
+      ```python
+      print("""This is pretty ugly.
+      Don't do this.
+      """)
+      ```
+    good_example: |
+      ```python
+      print("This is much nicer.\n"
+            "Do it this way.\n")
+      ```
+    pylint:
+    pycodestyle:
+
+  - name: xx
+    level: Preferable
+    summary: 检查前缀和后缀时，使用 `.startswith()` 和 `.endswith()` 代替字符串切片。
+    description:
+    bad_example: |
+      ```python
+      if foo[:3] == 'bar':
+      ```
+    good_example: |
+      ```python
+      if foo.startswith('bar'):
+      ```
+    pylint:
+    pycodestyle:
