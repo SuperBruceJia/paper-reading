@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if [ -n "$PLUGIN_CHANGE_FILE" ]
+then
+    echo "change file from: $PLUGIN_CHANGE_FILE"
+    cat "$PLUGIN_CHANGE_FILE"
+    # ts$|vue$|
+    cat "$PLUGIN_CHANGE_FILE" | grep -E '\.js$|jsx$' | xargs -I {file} eslint --config /eslint/index.js "{file}"
+    ret=$?
+else
+    echo "eslint all the files"
+    # .ts,.tsx,.vue,
+    eslint --ext .js,.jsx --config /eslint/index.js .
+    ret=$?
+fi
+
+exit $ret

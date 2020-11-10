@@ -1,0 +1,7 @@
+dist
+site/vendor
+base.js
+import.js
+ts.js
+
+# 因为很多 case 只有具体语句没有完整环境 (比如只声明没有使用, 会导致 eslint 报错, 所以 test 整体忽略)

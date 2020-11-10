@@ -1,0 +1,15 @@
+## OS
+.DS_Store
+.idea
+*.log
+
+## Local
+node_modules
+
+## Built-files
+.cache
+dist
+
+/base.js
+/import.js
+/ts.js

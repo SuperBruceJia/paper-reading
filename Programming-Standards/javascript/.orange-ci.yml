@@ -1,0 +1,149 @@
+master:
+  review:
+    -
+      stages:
+        - name: CR 通过后自动合并
+          type: git:automerge
+          options:
+            mergeType: squash
+            mergeCommitMessage: $ORANGE_LATEST_COMMIT_MESSAGE
+          exports:
+            reviewedBy: REVIEWED_BY
+        - name: notify
+          type: wework:message
+          imports: https://git.code.oa.com/standards/secrets/blob/master/reviewer.yml
+          options:
+            robot: $robot
+            message: |
+              > CR 通过后自动合并 <@${ORANGE_BUILD_USER}> 
+              > 　
+              > ${ORANGE_MERGE_REQUEST_TITLE}
+              > [${ORANGE_EVENT_URL}](${ORANGE_EVENT_URL})
+              > 
+              > ${REVIEWED_BY}
+              
+  push:
+    - stages:
+        - name: Auto Tag
+          type: git:autotag
+  merge_request:
+    - runner:
+        network: idc-hk
+      services:
+        - docker
+      stages:
+        - name: make commitlist
+          type: git:commitList
+          options:
+            toFile: commits-data.json
+        - name: do commitlint
+          image: csighub.tencentyun.com/plugins/commitlint
+          settings:
+            from_file: commits-data.json
+        - name: do markdownlint
+          script: tnpm install && npm run markdownlint
+        - name: make changelist
+          type: git:changeList
+          options:
+            changed: changed.txt
+        # 将 test 里面的那些 bad case 加到 ignore 列表里
+        # test 还不能写死在 ignore 里, 因为运行测试用例需要跑 test 目录, 写死会导致测试用例跑不通
+        - name: ignore bad cases
+          script: echo "test" >> .eslintignore
+        # 这里只能用本机构造出来的镜像进行检查, 因为本次提交可能修改规则, 导致云端镜像检查不通过
+        - name: build image eslint-config-tencent
+          script: docker build --network host -t eslint-config-tencent:test .
+        - name: CCK-run image eslint-config-tencent
+          script: |
+            docker run --rm \
+            -e PLUGIN_CHANGE_FILE=changed.txt \
+            eslint-config-tencent:test
+
+        # 发送到走查专用群
+        - name: add reviewer
+          type: git:review
+          imports: https://git.code.oa.com/standards/secrets/blob/master/reviewer.yml
+          options:
+            reviewers: $reviewers
+            count: 2
+          exports:
+            reviewersForAt: CURR_REVIEWER_FOR_AT
+        - name: notify
+          type: wework:message
+          imports: https://git.code.oa.com/standards/secrets/blob/master/reviewer.yml
+          options:
+            robot: $robot
+            message: |
+              > ${CURR_REVIEWER_FOR_AT}
+              > 　
+              > ${ORANGE_MERGE_REQUEST_TITLE}
+              > [${ORANGE_EVENT_URL}](${ORANGE_EVENT_URL})
+              > 　
+              > from ${ORANGE_BUILD_USER}
+                      
+
+$:
+  tag_push:
+    - wework:
+        title: plugins/eslint-tencent
+      services:
+        - docker
+      env:
+        DOCKER_LATEST_TAG_CSIG: csighub.tencentyun.com/standards/eslint-config-tencent:latest
+        DOCKER_TAG_CSIG: csighub.tencentyun.com/standards/eslint-config-tencent:$ORANGE_BRANCH
+#        DOCKER_LATEST_TAG_DOCKERHUB: orangeciplugins/eslint:latest
+      stages:
+        - name: build image csig
+#          -t $DOCKER_LATEST_TAG_DOCKERHUB
+          script: docker build --network host -t $DOCKER_LATEST_TAG_CSIG -t $DOCKER_TAG_CSIG .
+
+        - name: docker login csig
+          script: docker login -u $DOCKER_USER -p $DOCKER_PWD csighub.tencentyun.com
+          imports: https://git.code.oa.com/standards/secrets/blob/master/docker-image.yml
+        - name: push image csig
+          script:
+            - docker push $DOCKER_LATEST_TAG_CSIG
+            - docker push $DOCKER_TAG_CSIG
+
+        - name: docker images
+          script: docker images > message.txt
+        - name: install
+          script: npm install --registry=http://r.tnpm.oa.com
+        - name: build npm
+          script: npm run build
+        - name: change version
+          script: npm version $ORANGE_BRANCH
+        - name: tnpm publish
+          image: plugins/npm
+          imports: https://git.code.oa.com/standards/secrets/blob/master/tnpm-publish.yml
+          settings:
+            username: $NPM_USER
+            password: $NPM_PASS
+            email: $NPM_EMAIL
+            registry: http://r.tnpm.oa.com
+            folder: ./
+        - name: comment to git
+          type: git:comment
+          options:
+            fromFile: message.txt
+        - name: message to self
+          type: wework:message
+          options:
+            fromFile: message.txt
+        - name: changelog
+          type: git:changeLog
+          options:
+            filename: CHANGELOG.md
+            target: master
+          envExport:
+            latestChangeLog: LATEST_CHANGE_LOG
+        - name: upload release
+          type: git:release
+          options:
+            description: ${LATEST_CHANGE_LOG}
+        - name: publish to wechat work
+          type: wework:message
+          options:
+            robot: 394658a4-f1e3-4936-a1ed-d118fb9a229a
+            message: ${LATEST_CHANGE_LOG}
+            lastMsg: "更多信息见[Changelog](https://git.code.oa.com/${ORANGE_REPO_SLUG}/releases/${ORANGE_BRANCH})"
