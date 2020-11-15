@@ -9,6 +9,12 @@ export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
 
 Tensorflow build from source
 
+安装protobuf
+pip uninstall protobuf
+pip uninstall google
+pip install google
+pip install protobuf
+
 下载Bazel 0.24.1版本：https://github.com/bazelbuild/bazel/releases/tag/0.24.1
 
 git clone --recurse-submodules https://github.com/tensorflow/tensorflow
