@@ -15,9 +15,12 @@ pip uninstall google
 pip install google
 pip install protobuf
 pip install google-cloud
+pip install keras_preprocessing
 
-下载Bazel 0.24.1版本：https://github.com/bazelbuild/bazel/releases/tag/0.24.1
+Tensorflow 1.14: 下载Bazel 0.24.1版本：https://github.com/bazelbuild/bazel/releases/tag/0.24.1
+Tensorflow 1.15.2: 下载Bazel 0.26.1版本: https://github.com/bazelbuild/bazel/releases/tag/0.26.1
 
+// TensorFlow 
 git clone --recurse-submodules https://github.com/tensorflow/tensorflow
 
 cd tensorflow
