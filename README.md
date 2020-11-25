@@ -2,11 +2,11 @@
 
 This repo is primarily for personal paper reading and presentations.
 
-**Current Focus**: NLP
+**Current Focus**: Edge Computing, Distributed Machine Learning, Recommendation System, Natural Language Processing
 
 ---
 
-## Published or Under Review Papers
+## Published, Under Review, or to be submitted Papers
 
 1. A novel approach of decoding EEG four-class motor imagery tasks via scout ESI and CNN [download](https://github.com/SuperBruceJia/paper-reading/raw/master/Paper-Submiting/A%20novel%20approach%20of%20decoding%20EEG%20four-class%20motor%20imagery%20tasks%20via%20scout%20ESI%20and%20CNN.pdf)
 
@@ -38,7 +38,7 @@ This repo is primarily for personal paper reading and presentations.
 
 2. Graph Convolutional Neural Networks (Chebyshev Approximation) [download](https://github.com/SuperBruceJia/paper-reading/raw/master/Graph-Neural-Network/GCNs-Net-Shuyue%20Jia.pdf)
 
-### Others
+### Others Tutorials
 
 1. Work during Undergraduate [download](https://github.com/SuperBruceJia/paper-reading/raw/master/other-presentations/Undergraduate-work-Presentation-Shuyue%20Jia.pdf)
 
