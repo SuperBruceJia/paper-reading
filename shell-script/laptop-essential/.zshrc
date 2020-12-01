@@ -28,7 +28,7 @@ CASE_SENSITIVE="true"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -43,7 +43,7 @@ CASE_SENSITIVE="true"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -81,11 +81,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+   export EDITOR='vim'
+else
+   export EDITOR='mvim'
+ fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -125,7 +125,7 @@ export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
 export PATH=$PATH:/usr/local/bin
 
 export PATH="/usr/local/opt/bison/bin:$PATH"
-
+export PATH=/bin:/usr/bin:/usr/local/bin:${PATH} 
 source /Users/shuyuej/Library/Preferences/org.dystroy.broot/launcher/bash/br
 
 alias ll="ls -al"
@@ -134,7 +134,7 @@ alias cl="clear"
 alias speed="speedtest-cli"
 alias youtube="youtube-dl -f best -i"
 alias cpu="htop" 
-alias clone="git clone"
+alias clone="git clone --recurse-submodules"
 alias cpu_version="sysctl machdep.cpu.brand_string"
 alias cpu_thread="sysctl -n machdep.cpu.thread_count"
 alias lzd='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -v ~/.config/lazydocker:/.config/jesseduffield/lazydocker lazyteam/lazydocker'
@@ -161,11 +161,10 @@ alias lla="la -l"
 
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 export PATH=$PATH:/Users/shuyuej/.gem/specs/rubygems.org%443/quick/Marshal.4.8
-# export HADOOP_HOME=/Users/shuyuej/Desktop/hadoop-2.9.2
+# export HADOOP_HOME=/Users/shuyuej/Desktop/hadoop-3.3.0/bin
 # export HADOOP_MAPRED_HOME=$HADOOP_HOME
 # export HADOOP_COMMON_HOME=$HADOOP_HOME
 # export HADOOP_HDFS_HOME=$HADOOP_HOME
-
 # export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
 # export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
 
@@ -190,11 +189,17 @@ export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
 export PATH="/usr/local/protobuf:$PATH"
 export PATH="/usr/local/protobuf/bin:$PATH"
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
-export PATH="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home:$PATH"
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+# export PATH="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home:$PATH"
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
 
-# export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+# export JAVA_8_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+# export JAVA_HOME=$JAVA_8_HOME
+# export JAVA_HOME=`/usr/libexec/java_home`
+# export JAVA_HOME=$(/usr/libexec/java_home)
+# export JAVA_HOME=`/usr/libexec/java_home -d 64 -v 1.8.0_272`
+# export JAVA_HOME=$(/usr/libexec/java_home -d 64 -v 1.8.0_272)
+
 export OPENSSL_INCLUDE_DIR=/usr/local/opt/openssl@1.1/include
 export OPENSSL_ROOT_DIR=/usr/local/opt/openssl@1.1
 export PATH="/usr/local/opt/openssl@1.1:$PATH"
@@ -202,7 +207,6 @@ export PATH="/usr/local/opt/openssl@1.1:$PATH"
 export PATH="/usr/local/Cellar/bzip2/1.0.8:$PATH"                                                                                                      
 export PATH="/usr/local/Cellar/snappy/1.1.8:$PATH"
 export PATH="/usr/local/opt/qt/bin:$PATH"
-# export PATH="/usr/local/Cellar/opencv/4.3.0_2:$PATH"
 export OPENCV_HOME=/usr/local/Cellar/opencv/4.3.0_2
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 export PATH="/usr/local/texlive/2020:$PATH"
@@ -219,20 +223,10 @@ if type brew &>/dev/null; then
 fi
 
 eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
-eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
-export PATH="/usr/local/opt/bison/bin:$PATH"
 export PATH="/usr/local/opt/bison/bin:$PATH"
 export PATH="/usr/local/opt/qt/bin:$PATH"
-export PATH="/usr/local/opt/qt/bin:$PATH"
-eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
-export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
-export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
-export PATH="/usr/local/opt/bison/bin:$PATH"
-export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
-export PATH="/usr/local/opt/sqlite/bin:$PATH"
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
 export PATH="/usr/local/opt/libpcap/bin:$PATH"
-export PATH="/usr/local/opt/qt/bin:$PATH"
 export PATH="/usr/local/opt/vtk@8.2/bin:$PATH"
 
 # The next line updates PATH for the Google Cloud SDK.
@@ -249,3 +243,16 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 # fpath=(/var/root/.oh-my-zsh/plugins/zsh-completions/src $fpath)
 
 export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="/usr/local/opt/python@3.9/bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH="/Users/shuyuej/Desktop/tensorflow/tensorflow:$PATH"
+export PATH="/Users/shuyuej/Desktop/DL-Framework/ttensorflow/tensorflow:$PATH"
+export PATH="/usr/local/opt/flex/bin:$PATH"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
+export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+

@@ -39,9 +39,15 @@ export PATH="/usr/local/opt/qt/bin:$PATH"
 
 # export PATH="/usr/local/opt/openjdk/bin:$PATH"
 # export JAVA_HOME=$(/usr/libexec/java_home)
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
-export PATH="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home:$PATH"
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+# export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
+# export PATH="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home:$PATH"
+
+# Java Configuration
+# export JAVA_8_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+# export JAVA_HOME=$JAVA_8_HOME
+# export JAVA_HOME=`/usr/libexec/java_home -d 64 -v 1.8.0_272`                                                                                                             
+# export JAVA_HOME=$(/usr/libexec/java_home -d 64 -v 1.8.0_272)
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 export PATH="/usr/local/opt/ruby/bin:$PATH"
@@ -55,10 +61,7 @@ export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 source /Users/shuyuej/Library/Preferences/org.dystroy.broot/launcher/bash/br
 
-# export OPENSSL_INCLUDE_DIR=/usr/local/Cellar/openssl@1.1/1.1.1g/include
-# export OPENSSL_ROOT_DIR=/usr/local/Cellar/openssl@1.1/1.1.1g
-# export PATH="/usr/local/Cellar/openssl@1.1/1.1.1g:$PATH"
-
 [ -z "$ZSH_NAME" ] && [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
+export PATH="$HOME/.cargo/bin:$PATH"
