@@ -1,0 +1,20 @@
+1. Download the archive file manually as mention at the README file.
+2. Unpack it and rename all files inside x86_64/ folder. They all contain _11_0. Rename it to _10_16
+3. Open install_venv.sh and rename those filenames (macosx_11_0 to macosx_10_16)
+arch_list_x86_64=( numpy-1.18.5-cp38-cp38-macosx_10_16_x86_64.whl grpcio-1.33.2-cp38-cp38-macosx_10_16_x86_64.whl h5py-2.10.0-cp38-cp38-macosx_10_16_x86_64.whl scipy-1.5.4-cp38-cp38-macosx_10_16_x86_64.whl tensorflow_addons-0.11.2+mlcompute-cp38-cp38-macosx_10_16_x86_64.whl )
+4. Scroll down and rename macosx_11_0 to macosx_10_16
+5. "$python_bin" -m pip install --upgrade --force -t "$VIRTUAL_ENV/lib/python3.8/site-packages/" --no-dependencies "$package_dir"/tensorflow_macos*-cp38-cp38-macosx_10_16_$arch.whl
+
+6. Open terminal, go inside your tensorflow_macos folder and run
+./install_venv.sh /Users/<your user>/tensorflow_macos_venv/
+Those steps worked for me. :-D
+
+
+
+
+
+
+
+7. Use this script to activate environment
+  . "/Users/shuyuej/tensorflow_macos_venv/bin/activate"
+
