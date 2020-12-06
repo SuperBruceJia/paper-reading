@@ -305,6 +305,7 @@ pip install --upgrade bs4 --user
 pip install --upgrade pandas-profiling --user
 pip install --upgrade Django --user
 pip install --upgrade gym --user
+pip install --upgrade onnx --user
 
 
 export PATH=/Users/shuyuej/anaconda3/bin:$PATH
