@@ -2,19 +2,7 @@
 
 This repo is primarily for personal paper reading and presentations.
 
-**Current Focus**: Edge Computing, Distributed Machine Learning, Recommendation System, Natural Language Processing
-
 ---
-
-## Published, Under Review, or to be submitted Papers
-
-1. A novel approach of decoding EEG four-class motor imagery tasks via scout ESI and CNN [download](https://github.com/SuperBruceJia/paper-reading/raw/master/Paper-Submiting/A%20novel%20approach%20of%20decoding%20EEG%20four-class%20motor%20imagery%20tasks%20via%20scout%20ESI%20and%20CNN.pdf)
-
-2. GCNs-Net: A Graph Convolutional Neural Network Approach for Decoding Time-resolved EEG Motor Imagery Signals [download](https://github.com/SuperBruceJia/paper-reading/raw/master/Paper-Submiting/GCNs-Net-%20A%20Graph%20Convolutional%20Neural%20Network%20Approach%20for%20Decoding%20Time-resolved%20EEG%20Motor%20Imagery%20Signals.pdf)
-
-3. Deep Feature Mining via Attention-based BiLSTM-GCN for Human Motor Imagery Recognition [download](https://github.com/SuperBruceJia/paper-reading/raw/master/Paper-Submiting/Deep%20Feature%20Mining%20via%20Attention-based%20BiLSTM-GCN%20for%20Human%20Motor%20ImageryRecognition.pdf)
-
-4. Attention-based Graph ResNet for Motor Intent Detection from Raw EEG signals [download](https://github.com/SuperBruceJia/paper-reading/raw/master/Paper-Submiting/Attention-based%20Graph%20ResNet%20for%20Motor%20Intent%20Detection%20from%20Raw%20EEG%20signals.pdf)
 
 ## Presentations
 
@@ -49,4 +37,6 @@ This repo is primarily for personal paper reading and presentations.
 4. TensorFlow-for-Deep-Learning [download](https://github.com/SuperBruceJia/paper-reading/raw/master/other-presentations/TensorFlow-for-Deep-Learning.pdf)
 
 5. Benchmarks of Medical Report Generation [download](https://github.com/SuperBruceJia/paper-reading/raw/master/other-presentations/Benchmark-Medical_Report_Generation.pptx)
+
+6. A Summary Note on *Multiplicative* Attention Mechanism [download](https://github.com/SuperBruceJia/paper-reading/raw/master/Machine-Learning/Attention-Mechanism/Attention-Mechanism-Notes.pdf)
 
