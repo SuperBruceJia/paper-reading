@@ -97,6 +97,13 @@ deactivate
 conda create --name new_env_name --clone old_env_name 
 删除某个环境
 conda remove --name your_env_name --all
+删除从不使用的包
+conda clean --packages
+删除tar包
+conda clean --tarballs
+删除索引缓存,锁定文件,未使用的包和tar包
+conda clean -a
+
 
 列举当前活跃环境下的所有包：
 conda list
