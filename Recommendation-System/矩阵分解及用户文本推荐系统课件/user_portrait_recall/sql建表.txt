@@ -1,0 +1,21 @@
+create table dockeyword_to_article(
+id int(11) not null auto_increment,
+dockeyword varchar(10) default null,
+article varchar(200) default null,
+primary key(id)
+)engine=innodb CHARACTER SET = utf8;
+
+create table user_portrait(
+id int(11) not null auto_increment,
+portrait_types varchar(10) default null,
+interest_cate varchar(40) default null,
+interest_dockeyword varchar(200) default null,
+primary key(id)
+)engine=innodb CHARACTER SET = utf8;
+
+create table cate_to_article(
+id int(11) not null auto_increment,
+cate varchar(10) default null,
+article_with_score varchar(200) default null,
+primary key(id)
+)engine=innodb CHARACTER SET = utf8;

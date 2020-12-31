@@ -1,0 +1,52 @@
+mysql安装教程：https://blog.csdn.net/qq_37598011/article/details/93489404
+安装包百度云：链接：https://pan.baidu.com/s/1pO5rgbZc-4HIDZHH2pMKqQ  提取码：zbaz
+
+数据库mysql启动文件地址：/usr/local/mysql/bin
+启动mysql命令：./mysql -uroot -p   密码：123456
+
+
+创建数据库： 
+create database recommend_article_portrait;
+
+创建数据库：  
+create table article_portrait(
+id int(11) not null auto_increment,
+docid varchar(10) default null,
+doccate varchar(10) default null,
+dockeyword varchar(100) default null,
+primary key(id)
+)engine=innodb CHARACTER SET = utf8;
+
+批量导入数据：
+load data local infile '/data/article_portrait.txt' into table article_portrait(docid,doccate,dockeyword); 
+
+查看所有数据：
+select * from article_portrait;
+
+查看前十行数据：
+select * from article_portrait limit 10;
+
+按照表中列名显示数据：
+select docid,doccate from article_portrait;
+
+python导入数据查看数据是否导入成功：
+select * from article_portrait where docid = 10001;
+
+往表格中插入一行数据
+insert into article_portrait(docid,doccate,dockeyword) values("10000", "科技", "人工智能,推荐系统,cv,nlp");
+
+有条件的改变表格中某一行的值
+update article_portrait set docid="10001" where docid="10000";
+
+有条件的删除表数据中的某一行
+delete from article_portrait where docid="10001";
+
+查看有哪些分类
+select distinct doccate from article_portrait;
+
+查看每个分类多少条数据
+select count(docid) from article_portrait where doccate="体育";
+
+redis安装教程：https://blog.csdn.net/qq_39135287/article/details/83474865
+
+登录到redis的命令：./redis-cli -h 39.97.120.102 -p 6379 -a 000000 -c --raw
