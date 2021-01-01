@@ -1,0 +1,21 @@
+OPENMP：
+
+视频导读：https://www.youtube.com/playlist?list=PLLX-Q6B8xqZ8n8bwjGdzBJ25X2utwnoEG
+
+文本教材：open教程.pdf
+
+MPI教程：
+https://mpitutorial.com/tutorials/
+
+入门： https://mpitutorial.com/tutorials/mpi-hello-world/
+
+Cluster：
+https://mpitutorial.com/tutorials/running-an-mpi-cluster-within-a-lan/
+
+
+NCCL教程：
+
+官方API和使用案例：https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/index.html
+
+文档：NCCL2.0技术架构概览
+
