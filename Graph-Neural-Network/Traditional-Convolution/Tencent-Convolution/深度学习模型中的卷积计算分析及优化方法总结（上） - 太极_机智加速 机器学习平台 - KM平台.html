@@ -1,0 +1,2859 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!-- saved from url=(0067)http://km.oa.com/group/38920/articles/show/383216?kmref=author_post -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+				<meta name="huaban" content="nopin">
+		<script type="text/javascript">window._client_time_init = new Date();</script>		<title>深度学习模型中的卷积计算分析及优化方法总结（上） - 太极/机智加速 机器学习平台 - KM平台</title>
+		<link rel="stylesheet" type="text/css" href="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/tui_km-b21c9c3a3e.css">		<link rel="stylesheet" type="text/css" href="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/background-897efb9388.css">		<link rel="stylesheet" type="text/css" href="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/tui-87704b1ceb.css"><link rel="stylesheet" type="text/css" href="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/reset-c6d9fb3b28.css"><link rel="stylesheet" type="text/css" href="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/common-a7443b6ff4.css">		<link rel="stylesheet" type="text/css" href="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/users.css">					<link rel="stylesheet" type="text/css" href="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/km_articles-696bba18a2.css">				<link rel="stylesheet" type="text/css" href="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/groups.css">		<script type="text/javascript">
+			var km_path = 'http://km.oa.com/', km_file_ver = 20201109113334;
+			var TOP_SYSTEM = 'KM';
+			var _fullbase='http://km.oa.com/';
+			var _base='/';
+			var current_user = 'shuyuejia';
+			var is_dev = '';
+			var km_layout_name = "group";
+			var avatar_path = "http://dayu.oa.com/avatars/";
+		</script>
+		<script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/monitor-45326e61dd.js"></script>		<script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/sea-636f8908c9.js"></script>		<script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/sea_config-47d8d52143.js"></script>		<script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/jquery-1.9.0.min.js"></script><script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/jquery-migrate-1.2.1.min.js"></script><script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/common-a4f75d4ef1.js"></script><script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/popup-2f45b6a1c1.js"></script><script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/jquery.input_hint_label-6426659697.js"></script><script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/json2-2ee84c1e82.js"></script><script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/bootstrap-modal-a3a8f0e1b2.js"></script><script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/jquery.tooltip.js"></script><script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/clipboard.min-f06c52bfdd.js"></script>		<script src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/jwplayer.js"></script> 
+		<script>jwplayer.key="45FoKzf1Cs2kfDRORgBWOt2UiQfyLV5d+Un74g==";</script>
+	<script charset="utf-8" async="" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/km_header.js"></script><script charset="utf-8" async="" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/secure.js"></script><script charset="utf-8" async="" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/tag_chooser.js"></script><script charset="utf-8" async="" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/groups_top.js"></script><script charset="utf-8" async="" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/km_user_chooser.js"></script><script charset="utf-8" async="" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/lodash_4.17.10.js"></script><script charset="utf-8" async="" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/operations.js"></script><script charset="utf-8" async="" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/comment.js"></script><script charset="utf-8" async="" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/agile_carousel.alpha.js"></script><script charset="utf-8" async="" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/txtpl.js"></script><script charset="utf-8" async="" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/popbox.js"></script><script charset="utf-8" async="" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/jquery.chainedSelects.js"></script><script charset="utf-8" async="" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/bootstrap-button.js"></script><script charset="utf-8" async="" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/jquery.tooltip.js"></script><script charset="utf-8" async="" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/jquery.cookie.js"></script><script charset="utf-8" async="" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/actions.js"></script><script charset="utf-8" async="" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/feedback.js"></script><script charset="utf-8" async="" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/json2.js"></script><script charset="utf-8" async="" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/km_pages.js"></script><script charset="utf-8" async="" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/highlight.min.js"></script><script charset="utf-8" async="" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/jquery.autocomplete.js"></script><script charset="utf-8" async="" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/jquery.autosize.min.js"></script><script charset="utf-8" async="" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/enable_changed_form_confirm.js"></script></head>
+	<!--用户K吧-->
+	<body data-new-gr-c-s-check-loaded="14.984.0" data-gr-ext-installed="" style="zoom: 1;">
+		
+		<span id="bulletin_span" element_name="bulletin.thtml" style="display:none"></span>
+<script type="text/javascript">
+    $(function(){
+        function detectZoom (){
+            var ratio = 0,
+                screen = window.screen,
+                ua = navigator.userAgent.toLowerCase();
+            //mac为视网膜屏幕，ratio为两倍
+
+            if (~ua.indexOf('msie')) {
+                if (screen.deviceXDPI && screen.logicalXDPI) {
+                    ratio = screen.deviceXDPI / screen.logicalXDPI;
+                }
+            }
+            else if (window.devicePixelRatio !== undefined) {
+                ratio = window.devicePixelRatio;
+            }
+            else if (window.outerWidth !== undefined && window.innerWidth !== undefined ) {
+                ratio = window.outerWidth / window.innerWidth;
+            }
+            if (window.outerWidth !== undefined && window.innerWidth !== undefined) {
+                var temp = window.outerWidth / window.innerWidth;
+                if (Math.round(temp * 100) === 100 || window.outerWidth === 0) {
+                    ratio = 1;
+                }
+                if (~ua.indexOf('edge') && Math.round(temp * 100) > 95 && Math.round(temp * 100) < 105 ) {
+                    ratio = 1;
+                }
+            }
+            // if ( ua.indexOf('macintosh') > 0 ) {
+            //     ratio = 1;
+            // }
+            if (ratio){
+                ratio = Math.round(ratio * 100);
+            }
+            return ratio;
+        }
+        function show_zoom(zoom){
+            var zoom_warn = $("#zoom_warn");
+            if(zoom != 100 && zoom != undefined){
+                if(zoom > 100 ){
+                    $("#bulletin_span").after("<div id='zoom_warn' class='bulletin'><p>你的浏览器目前处于放大状态，会导致页面显示不正常，你可以键盘按“ctrl+数字0”组合键恢复初始状态。<span class='stop-remind'>不再显示</span></p>");
+                }else{
+                    $("#bulletin_span").after("<div id='zoom_warn' class='bulletin'><p>你的浏览器目前处于缩小状态，会导致页面显示不正常，你可以键盘按“ctrl+数字0”组合键恢复初始状态。<span class='stop-remind'>不再显示</span></p>");
+                }
+            }else{
+                zoom_warn.remove();
+            }
+        }
+
+        $(".stop-remind").live('click',function(){
+            setCookie("stop_remind","stop_remind");
+            $("#zoom_warn").remove();
+        });
+
+        if( !getCookie("stop_remind") ){
+            show_zoom(detectZoom());
+        }
+        $(window).resize(function(){
+            setTimeout(function () {
+                if( !getCookie("stop_remind") ){
+                    var zoom = detectZoom();
+                    $("#zoom_warn").remove();
+                    show_zoom(zoom);
+                }
+            }, 500)
+        });
+    });
+</script>
+<span element_name="bulletin.thtml-end" style="display:none"></span>
+						
+<link rel="stylesheet" type="text/css" href="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/km_header-36604e2296.css"><link rel="stylesheet" type="text/css" href="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/jquery.autocomplete.css"><link rel="stylesheet" type="text/css" href="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/km_menu_carousel.css"><div class="km-header km-header-mini clearfix" id="km-header-mini">
+	<div class="bottom-navigation-wrap clearfix">
+		<ul class="bottom-navigation">
+			<li class="nav"><a class="bg-sprites-km logo" href="http://km.oa.com/?kmref=km_header"></a></li>
+			<li class="nav"><a class="nav-a " href="http://km.oa.com/?kmref=km_header">首页</a></li>
+			<li class="nav"><a class="nav-a " href="http://km.oa.com/discovery?kmref=km_header">发现</a></li>
+			<li class="nav"><a class="nav-a " href="http://km.oa.com/read?kmref=km_header">悦读</a></li>
+			<li class="nav"><a class="nav-a " href="http://km.oa.com/q?kmref=km_header">乐问</a></li>
+			<li class="nav relative">
+				<a class="nav-a" href="https://tencent.lexiangla.com/lives?company_from=tencent&amp;kmref=km_header" target="_blank">直播</a>
+			</li>
+			<li class="nav nav-app nav-channel relative">
+				<a class="nav-a" href="javascript:void(0)">应用<span class="bg-sprites-km arrow-down-icon"></span></a>
+				<ul class="km-dropdown-box">
+					<li class="arrow-up">
+						<em>◆</em>
+						<span>◆</span>
+					</li>
+					<li class="item item-sms">
+						<a title="课程" class="item-a" href="https://tencent.lexiangla.com/classes?company_from=tencent&amp;kmref=km_header" target="_blank">
+							<span class="bg-classes-km classes-icon"></span>
+							<div class="title">课程</div>
+						</a>
+					</li>
+					<li class="item item-sms">
+						<a title="轻知" class="item-a" href="http://km.oa.com/cheeses?kmref=km_header">
+							<span class="bg-cheeses-km cheeses-icon"></span>
+							<div class="title">轻知</div>
+						</a>
+					</li>
+					<li class="item item-event">
+						<a title="活动" class="item-a" href="http://km.oa.com/events?kmref=km_header">
+							<span class="bg-sprites-km event-icon"></span>
+							<div class="title">活动</div>
+						</a>
+					</li>
+					<li class="item item-survey">
+						<a title="投票" class="item-a" href="http://km.oa.com/surveys?kmref=km_header">
+							<span class="bg-sprites-km survey-icon"></span>
+							<div class="title">投票</div>
+						</a>
+					</li>
+					<li class="item item-knowledge">
+						<a title="文集" class="item-a" href="http://km.oa.com/knowledges?kmref=km_header">
+							<span class="bg-sprites-km knowledge-icon"></span>
+							<div class="title">文集</div>
+						</a>
+					</li>
+					<li class="item item-slide">
+						<a title="积木" class="item-a" href="http://km.oa.com/superpage?kmref=km_header">
+							<span class="bg-sprites-km slide-icon"></span>
+							<div class="title">积木</div>
+						</a>
+					</li>
+					<li class="item item-journal">
+						<a title="期刊" class="item-a" href="http://km.oa.com/journals?kmref=km_header">
+							<span class="bg-sprites-km journal-icon"></span>
+							<div class="title">期刊</div>
+						</a>
+					</li>
+					<li class="item item-sms">
+						<a title="定时短信" class="item-a" href="http://km.oa.com/sms?kmref=km_header">
+							<span class="bg-sprites-km sms-icon"></span>
+							<div class="title">定时短信</div>
+						</a>
+					</li>
+					
+					
+				</ul>
+			</li>
+			<li class="nav nav-kbar relative" id="my-kbars">
+				<a class="nav-a" href="javascript:void(0)">我的K吧<span class="bg-sprites-km arrow-down-icon"></span></a>
+				<ul class="km-dropdown-box">
+					<li class="arrow-up">
+						<em>◆</em>
+						<span>◆</span>
+					</li>
+					<li class="my-kbars-list" id="top_my_kbars_list"></li>
+					<li class="kbar-shortcut-link">
+						<a class="left manage-kbars" href="javascript:void(0)">K吧排序</a>
+						<a class="right" href="http://km.oa.com/groups/catalog/cat?kmref=km_header">浏览K吧</a>
+						<div class="separator">|</div>
+						<a class="right" href="http://km.oa.com/pages/creategroupwelcome?kmref=km_header">创建K吧</a>
+					</li>
+				</ul>
+			</li>
+			<li class="right">
+				<div class="quick-entry clearfix">
+					<div class="entry create-entry left relative pointer">
+						<span class="bg-sprites-km create-icon"></span><span class="bg-sprites-km arrow-down-icon"></span>
+						<ul class="km-dropdown hide">
+							<li class="arrow-up">
+								<em>◆</em>
+								<span>◆</span>
+							</li>
+							<li class="item"><a class="item-a" href="http://km.oa.com/user/shuyuejia/articles/add?kmref=km_header">发表文章</a></li>
+							<li class="item"><a class="item-a" href="http://km.oa.com/q/add?kmref=km_header">乐问提问</a></li>
+							<li class="item"><a class="item-a" href="http://km.oa.com/cheeses/add?kmref=km_header">发布轻知</a></li>
+							<li class="item"><a class="item-a" href="http://km.oa.com/events/add?kmref=km_header">发起活动</a></li>
+							<li class="item"><a class="item-a" href="http://km.oa.com/surveys/add?kmref=km_header">发起投票</a></li>
+						</ul>
+					</div>
+					<div class="msg-entry left relative pointer">
+						<span class="tips-icon bg-sprites-km"></span>
+						<span class="tips-count hide">2</span>
+						<span class="bg-sprites-km msg-icon"></span><span class="bg-sprites-km arrow-down-icon"></span>
+						<div class="km-dropdown">
+							<div class="my-tips hide">
+								<div class="arrow-up">
+									<em>◆</em>
+									<span>◆</span>
+								</div>
+								<div class="close">
+									<span class="bg-sprites-km close-icon"></span>
+								</div>
+								<ul class="my-tips-list"></ul>
+							</div>
+							<div class="my-tips-unchecked hide">
+								<div class="arrow-up">
+									<em>◆</em>
+									<span>◆</span>
+								</div>
+								<ul class="my-tips-list"><li class="item"><a class="item-a clearfix" href="http://km.oa.com/tips?kmref=km_header"><span class="left">系统消息</span><span class="right pointer a-blue">查看</span></a></li><li class="item"><a class="item-a clearfix" href="http://km.oa.com/twitters?type=at&amp;kmref=km_header"><span class="left">@我的微博</span><span class="right pointer a-blue">查看</span></a></li></ul>
+							</div>
+						</div>
+					</div>
+					<div class="entry personal-entry left relative pointer">
+						<span class="bg-sprites-km msg-icon"></span>
+						<a title="shuyuejia" href="http://km.oa.com/user/shuyuejia" class="no_decoration">
+							<img class="avatar" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/profile.jpg">
+						</a>
+						<span class="bg-sprites-km arrow-down-icon"></span>
+						<ul class="km-dropdown hide">
+							<li class="arrow-up">
+								<em>◆</em>
+								<span>◆</span>
+							</li>
+							<li class="item"><a class="item-a" href="http://km.oa.com/user/shuyuejia/articles?kmref=km_header">我的文章</a></li>
+							<li class="item"><a class="item-a" href="http://km.oa.com/q/related_feed?kmref=km_header">我的乐问</a></li>
+							<li class="item"><a class="item-a" href="http://km.oa.com/cheeses/mine?kmref=km_header">我的轻知</a></li>
+							<li class="item"><a class="item-a" href="http://km.oa.com/user/shuyuejia/docs?kmref=km_header">我的文档</a></li>
+							<li class="item"><a class="item-a" href="http://km.oa.com/user/shuyuejia/my_knowledges?kmref=km_header">我的文集</a></li>
+
+							<li class="item separator"><a class="item-a" href="http://km.oa.com/user/shuyuejia/events?kmref=km_header">我的活动</a></li>
+							<li class="item"><a class="item-a" href="http://km.oa.com/user/shuyuejia/surveys?kmref=km_header">我的投票</a></li>
+
+							<li class="item separator"><a class="item-a" href="http://km.oa.com/user/shuyuejia/bookmarks?kmref=km_header">我的收藏</a></li>
+							<li class="item "><a class="item-a" href="http://km.oa.com/footprint">我的足迹</a></li>
+							<li class="item"><a class="item-a" href="http://km.oa.com/user/shuyuejia/draft?kmref=km_header">我的草稿</a></li>
+
+							<li class="item separator"><a class="item-a" href="http://km.oa.com/users/logout">退出登录</a></li>
+						</ul>
+					</div>
+				</div>
+			</li>
+			<li class="nav-search right relative">
+				<form class="km-search-box left" method="get" action="http://km.oa.com/search">
+					<input type="text" name="q" class="js-search-keyword search-keyword left ac_input" id="search-keyword-app" data-is_search_app="1" autocomplete="off">
+					<input type="submit" class="js-search-btn-default bg-sprites-km search-btn" value="搜索">
+															<input type="submit" class="js-search-btn search-btn-all pointer hide" data-action="http://km.oa.com/search" value="搜全站">
+					<input type="submit" class="js-search-btn search-btn-app pointer hide" data-action="http://km.oa.com/group/jizhi/searchingroup" value="搜本吧">
+									</form>
+			</li>
+		</ul>
+	</div>
+	<div class="km-header-shadow km-header-shadow-bg absolute"></div>
+</div>
+<div id="manage-kbars-box" class="modal manage-kbars-modal">
+	<div class="modal_header">
+		<a class="close" data-dismiss="modal" href="javascript:void(0);">×</a>
+		K吧排序
+	</div>
+	<div class="modal_body">
+	</div>
+</div>
+<div id="csrf_token" style="display:none;">30a85543a32ab617f90aa19b212732dd5704739d222abebd5b1193e38e6cb55e5b55b18ea28fe64d</div>
+
+<script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/stats.js"></script>
+<script type="text/javascript">
+	function groups_manager_callback() {
+		location.reload();
+	}
+
+	function groups_manager_cancel_callback() {
+		$('#manage-kbars-box').modal('hide');
+	}
+	seajs.use(['common/km_header', 'secure', 'tag_chooser/tag_chooser']);
+</script>
+		<div class="km-tui-body-full">
+			<span element_name="groups/groups_top_baner.thtml" style="display:none"></span>
+<style>
+/* 只能通过background的方式才能做到背景图片的垂直居中效果，所有这里需要用php控制样式 */
+.top-bg {
+	background: url(http://km.oa.com/files/groups/banners/38920.jpg?t=142998708) center center no-repeat;
+	width: 100%;
+	height: 300px;
+}
+</style>
+
+<!-- k吧二维码，放页面顶部防止ie7下样式兼容 -->
+<div id="group-qrcode" class="group-qrcode absolute hide">
+	<img id="code-img" src="http://km.oa.com/group/38920/wechat_image">
+	<div class="secondary mb_s">扫一扫，手机上K吧</div>
+	</div>
+<div id="wechat_operate" class="modal">
+	<div class="modal_header">
+		<a class="close" href="javascript:void(0);" data-dismiss="modal">×</a>微信运营
+	</div>
+	<div class="modal_body padding">
+		<div class="qr_line relative hide" style="display: block;">
+			<div class="qr_block relative">
+				<span>支持微信阅读原文可访问的K吧地址</span>
+				<div class="mt_m">
+					<input type="text" id="wechat_group_url" class="km-ipt-w3" value="http://km.tencent.com/pkm/pages/ikm?q=group/38920" readonly="">
+					<a href="javascript:void(0);" class="btn" id="url_copy_btn">复制</a>
+				</div>
+				<div class="gray mt_m">
+					<span>此地址仅支持通过微信公众账号的阅读原文打开</span>
+					<a href="http://km.oa.com/group/469/articles/show/155242" target="_blank">如何使用？请点击这里</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal_footer"></div>
+</div>
+
+<!-- 顶部banner -->
+<div class="groups-top top-bg relative">
+	<div class="group-top-bg-shadow absolute"></div>
+	<div class="top-info relative clearfix">
+		<div class="group-attr relative">
+				<a class="group-icon left bg-sprites-1" href="http://km.oa.com/group/jizhi">
+			<img src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/38920.jpg" class="hot_bar_img" title="" onerror="javascript:this.src=&#39;http://km.oa.com/img/group_medium.png&#39;">		</a>
+			<a href="http://km.oa.com/group/38920" class="group-name">太极/机智加速 机器学习平台</a>
+												<span group_id="38920" class="group_level_show group-level bg-kbar-level group-degree-5"></span>
+			<span element_name="level_grow.thtml" style="display:none"></span>
+<style>
+/*----o feed user card----*/
+.mLevelLayer {
+	border-collapse: collapse;
+	border-spacing:0;
+}
+.mLevelLayer .top_r,.mLevelLayer .top_l,.mLevelLayer .bottom_r,.mLevelLayer .bottom_l {
+	height:5px;
+	width:5px;
+	background: url(http://km.oa.com/img/user_card_border.png) no-repeat scroll transparent;
+}
+.mLevelLayer .top_c,.mLevelLayer .bottom_c,.mLevelLayer .mid_l, .mLevelLayer .mid_r {
+	width:5px;
+	background: url(http://km.oa.com/img/user_card_border.png) repeat scroll transparent;
+}
+.mLevelLayer .mid_c {
+	background:none repeat scroll 0 0 #FFFFFF;
+}
+.layerArrow {
+	background:url(http://km.oa.com/img/user_card_arrow.png) no-repeat;
+	height:17px;
+	position:absolute;
+	left:-3px;
+	top:20px;
+	width:9px;
+}
+.layerUpArrow {
+	background:url(http://km.oa.com/img/user_card_up_arrow.png) no-repeat;
+	height:9px;
+	position:absolute;
+	left:20px;
+	top:-3px;
+	width:17px;
+}
+.mLevelLayer .layerBox {
+	border: 1px solid #bdc2c5;
+}
+.level_score_bar {
+	background:url("http://km.oa.com/img/blue.png") repeat-x scroll 0 0 transparent;
+	height:10px;
+}
+.level_up_score_bar {
+	background:#cccccc;
+	background:url("http://km.oa.com/img/gray.png") repeat-x scroll 0 0 transparent;
+	height:10px;
+}
+.level_info_count {
+	display:inline-block;
+	background:url("http://km.oa.com/img/blue.png") repeat-x scroll 0 0 transparent;
+	height:10px;
+	width:10px;
+	margin-top:6px;
+	margin-right:5px;
+}
+.level_info_count_span {
+	display:inline-block;
+	width:90px;
+	overflow:hidden;
+}
+.up_level {
+	background:url("http://km.oa.com/img/km_icons.png") no-repeat scroll 0 -1690px transparent;
+	padding-left:18px;
+}
+#group_level_card_content {
+	padding:2px;
+}
+/*----x feed user card----*/
+</style>
+<div style="position: absolute;clear:both;z-index:780;display:none;" id="level_card">
+	<div>
+		<table class="mLevelLayer">
+			<tbody>
+				<tr>
+					<td class="top_l"></td>
+					<td class="top_c"></td>
+					<td class="top_r"></td>
+				</tr>
+				<tr>
+					<td class="mid_l"></td>
+					<td class="mid_c">
+					<div class="layerBox">
+						<div style="width: 298px;" class="layerBoxCon1"> 
+						    <div class="name_card">
+							    <div id="layerArrow"></div>
+								<div id="group_level_card_content">
+								    
+	 							</div>
+ 							</div> 
+ 						</div> 
+ 					</div>              
+					</td>
+					<td class="mid_r"></td>
+				</tr>
+				<tr>
+					<td class="bottom_l"></td>
+					<td class="bottom_c"></td>
+					<td class="bottom_r"></td>
+				</tr>
+				
+			</tbody>
+		</table>
+	</div>
+</div>
+<script type="text/javascript">
+var on_level_layer = false;
+function level_card(left, top, group_id, class_name) {
+	$("#level_card").css("left",(left+10)+"px");
+	
+	top = top +20 ;
+	$("#level_card").css("top",top+"px");
+	
+	$("#layerArrow").removeClass("layerArrow");
+	$("#layerArrow").addClass("layerUpArrow");
+	//alert(top);
+	$.get("http://km.oa.com/groups/ajax_get_level_info/"+group_id, function(data) {
+		var html = level_card_info_handle(data);
+		$("#group_level_card_content").empty().html(html); 
+		$("#level_card").show(); 
+		is_card_expand = true;
+	});
+	
+}
+function level_card_info_handle(data) {
+	var level_info = eval('(' + data + ')');
+	html = '<div style="margin:10px;text-align:left;">'+
+		'<div class="left"><span class="group_degree group_degree_'+level_info.degree+'"></span>'+
+		'<span style="vertical-align:middle">'+level_info.type_detail + level_info.degree + '级</span></div>' +
+		'<div class="up_level right secondary" style="vertical-align:middle">'+ (level_info.degree + 1) + '级</div><div class="fix"></div>'+
+		'<div class="left mt_s level_score_bar" style="width:'+ (272*((level_info.level_wide_score - level_info.up_level_score)/level_info.level_wide_score)) +
+		'px"></div><div style="width:' + (272*(level_info.up_level_score/level_info.level_wide_score)) + 
+		'px" class="left mt_s level_up_score_bar"></div><span class="fix" style="font-size:0;"></span>' + 
+		'<div class="left secondary">' + (level_info.score - (level_info.level_wide_score - level_info.up_level_score)) + '</div>' +
+		'<div style="margin-right:2px;" class="right secondary">' + (level_info.level_wide_score + (level_info.score - (level_info.level_wide_score - level_info.up_level_score))) + '</div>' +
+		'<div class="fix mb_l">' +
+		'<div style="margin-top:10px;">' +
+		'<span class="secondary level_info_count_span"><span class="level_info_count"></span>内容(' + level_info.content_count + ')</span>' +
+		'<span class="secondary level_info_count_span"><span class="level_info_count"></span>动态(' + level_info.feed_count + ')</span>' +
+		'<span class="secondary level_info_count_span"><span class="level_info_count"></span>成员(' + level_info.member_count + ')</span>' +
+		'</div>' +
+		'<div style="margin-top:10px"><span>当前积分:<span style="color:#336699">'+ level_info.score +'</span></span>' +
+		'<span class="ml_l">升级需要分数:<span style="color:#336699">'+ level_info.up_level_score +'</span></span></div>' +
+		'<div><a class="right mt_s" target="_blank" href="'+ level_info.remark_url +'">了解成长机制</a><div class="fix"></div></div>'
+		'</div>'
+	return html;
+}
+function hide_level_card() {
+	if (!on_level_layer) {
+		$("#level_card").hide();
+	}
+}
+$(document).ready(function(){
+	var t_c;
+    $('.tui-main, .left_nav').delegate(".group_degree_badge", "mouseover", function() {
+    	var position = $(this).offset();
+    	var group_id = $(this).attr("group_id");
+    	var left_p = parseInt(position.left)-28;
+        var top_p = parseInt(position.top);
+        t_c = setTimeout("level_card(" + left_p + "," + top_p +"," + "'" + group_id +"'" +"," + "'" + this.className +"'"+")",100);
+
+		if (!this.onmouseout) {
+			this.onmouseout = function() {
+				clearTimeout(t_c);
+		        setTimeout("hide_level_card()", 100);
+	    	};
+		}
+    });
+
+    //若为k吧内的展示
+    $(".group_level_show").mouseover(function(){
+    	var position = $(this).offset();
+    	var group_id = $(this).attr("group_id");
+    	var parent_position =  $(this).parent().offset();
+    	var left_p = parseInt(position.left)-parseInt(parent_position.left)-26;
+        var top_p = parseInt(position.top)-124;
+        t_c = setTimeout("level_card(" + left_p + "," + top_p +"," + "'" + group_id +"'" +"," + "'" + this.className +"'"+")",100);
+
+		if (!this.onmouseout) {
+			this.onmouseout = function() {
+				clearTimeout(t_c);
+		        setTimeout("hide_level_card()", 100);
+	    	};
+		}
+    });
+
+    $(".mLevelLayer").mouseover(function() {
+        on_level_layer = true;
+    	$("#level_card").show();
+    });
+	
+	$(".mLevelLayer").mouseout(function() {
+    	on_level_layer = false;
+    	$("#level_card").hide();
+    });
+	
+});
+</script>
+<span element_name="level_grow.thtml-end" style="display:none"></span>
+			<div class="mt_l">
+								<span class="kbar-attention-btn-wrap relative hide-important">
+					<span class="kbar-attention-btn unattention-btn bg-sprites-1">已加入</span>
+					<span class="unfollow-btn-wrap">
+												<a id="receive_rtx" href="javascript:void(0);" data-url="/group/jizhi/subscribe" class="hide-important kbar-attention-btn receive-rtx-btn absolute bg-sprites-1">接收推送消息</a>
+						<a id="quit_rtx" href="http://km.oa.com/group/jizhi/unsubscribe" class=" kbar-attention-btn receive-rtx-btn absolute bg-sprites-1">不接收推送消息</a>
+						<a id="quit_dept" href="http://km.oa.com/group/38920/quit" class="kbar-attention-btn unfollow-btn absolute bg-sprites-1">退出</a>
+					</span>
+				</span>
+								<span class="bg-sprites-1 group-qrcode-icon relative"></span>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+	seajs.use('elements/groups/groups_top');
+</script>
+<span element_name="groups/groups_top_baner.thtml-end" style="display:none"></span>
+			<span element_name="groups/navigation.thtml" style="display:none"></span>
+<div class="group-navigation relative">
+	<ul class="group-nav clearfix">
+		<li class="item app-main ">
+			<a href="http://km.oa.com/group/38920" class="item-a">首页</a>
+		</li>
+				<li class="item app-topic 
+			 
+			">
+			<a class="item-a" href="http://km.oa.com/group/38920/topics">
+				<span class="title">团队讨论</span>
+			</a>
+						<a class="add-logo bg_sprites add-topic-logo" title="添加讨论" href="http://km.oa.com/group/38920/topics/add">
+			</a>
+					</li>
+					<li class="item app-article 
+			active 
+			">
+			<a class="item-a" href="http://km.oa.com/group/38920/articles">
+				<span class="title">团队文章</span>
+			</a>
+						<a class="add-logo bg_sprites add-article-logo" title="添加文章" href="http://km.oa.com/group/38920/articles/add">
+			</a>
+					</li>
+					<li class="item app-event 
+			 
+			">
+			<a class="item-a" href="http://km.oa.com/group/38920/events">
+				<span class="title">团队活动</span>
+			</a>
+						<a class="add-logo bg_sprites add-event-logo" title="添加活动" href="http://km.oa.com/group/38920/events/add">
+			</a>
+					</li>
+					<li class="item app-survey 
+			 
+			">
+			<a class="item-a" href="http://km.oa.com/group/38920/surveys">
+				<span class="title">团队投票</span>
+			</a>
+						<a class="add-logo bg_sprites add-survey-logo" title="添加投票" href="http://km.oa.com/group/38920/surveys/add">
+			</a>
+					</li>
+					<li class="item app-photo 
+			 
+			">
+			<a class="item-a" href="http://km.oa.com/group/38920/photos/albums">
+				<span class="title">团队相册</span>
+			</a>
+						<a class="add-logo bg_sprites add-photo-logo" title="添加相册" href="http://km.oa.com/group/38920/photos/album_create">
+			</a>
+					</li>
+				</ul>
+</div>
+
+<!-- 变量供模块化内部函数使用 -->
+<span id="is_admin" class="hide" data-is-admin=""></span>
+<span id="is_member" class="hide" data-is-member=""></span>
+<span id="is_dept" class="hide" data-is-dept="1"></span>
+<span id="playlist_id" class="hide" data-playlist-id="0"></span>
+<span id="group_id" class="hide" data-group-id="38920"></span>
+<span id="current_user" class="hide" data-current-user="shuyuejia"></span>
+
+<script type="text/javascript">
+	seajs.use('elements/groups/groups_top');
+	function video_upload_success(video_id) {
+		$("#upload_box").hide();
+		var playlist_id = $("#playlist_id").data("playlist-id");
+		var href = 'http://km.oa.com/group/38920/videos/add/' + video_id;
+		if ( playlist_id != 0 ){
+			href += '?playlist_id=' + playlist_id;
+		}
+		location.href = href;
+	}
+</script>
+<span element_name="groups/navigation.thtml-end" style="display:none"></span>
+		</div>
+		<div class="km-tui-body clearfix group-body-important">
+			<span element_name="app_header_bar.thtml" style="display:none"></span>
+	<span element_name="app_header_bar.thtml-end" style="display:none"></span>
+			<div class="clearfix">
+<span element_name="articles/post.thtml" style="display:none"></span>
+<link rel="stylesheet" type="text/css" href="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/markdownEditor-90fe812c0c.css"><link rel="stylesheet" type="text/css" href="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/watermark-2a3bb5c02c.css"><link rel="stylesheet" type="text/css" href="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/coding_style-1a7d39f11b.css"><link rel="stylesheet" type="text/css" href="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/Mathjax-75061475e2.css"><script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/watermark.js"></script>
+
+<div class="middle-main-l article_middle_main left">
+	<div id="article_header">
+				<div class="km_view_head">
+			<div class="article_title_l">深度学习模型中的卷积计算分析及优化方法总结（上）<span class="article_icon"><span class="bg_sprites authorship_author" title="原创文章"></span><span class="bg_sprites recommend" title="KM推荐文章"></span></span>
+			</div>
+			<ul class="metadata secondary js_operations_bar">
+				<li class="a_black">
+					<a href="http://km.oa.com/user/slashwang" target="_blank" class="no_widget">slashwang</a> 
+				</li>
+				<li>
+					2019年06月24日 15:43				</li>
+				<li>
+					浏览(190)
+				</li>
+			    <li id="bookmark_btn_top" class="line_height_12">   <a class="bookmark_link" href="javascript:void(0);">    收藏<span class="bookmark_count">(15)</span>   </a>  </li>    <li class="line_height_12">   <a class="comment_link" href="javascript:void(0);">评论<span>(2)</span></a>  </li>      <li class="relative share_to_list">   <!-- 分享组件上面部分 --> <span element_name="actions/share_to_top.thtml" style="display:none"></span>   <div class="original_menu pointer">  <span id="more_management" class="more_management">   <a href="javascript:void(0);" class="share_link">分享</a>  </span>  <span id="more_management_copy" class="more_management_copy">   <a href="javascript:void(0);" class="share_link">分享</a>  </span>  <div id="more_div" class="popbox hide">   <ul id="xy">    <li class="js_share_to_rtx">     <a class="share_icon_small share_rtx_icon_small bg_sprites" href="javascript:void(0);">企业微信</a>    </li>    <li class="js_share_to_eamil">     <a class="share_icon_small share_email_icon_small bg_sprites" href="javascript:void(0);">邮件</a>    </li>    <li class="js_share_to_qrcode">     <a class="share_icon_small share_qrcode_icon_small bg_sprites" href="javascript:void(0);">二维码</a>    </li>   </ul>  </div> </div>   <span element_name="actions/share_to_top.thtml-end" style="display:none"></span>  </li>     </ul>
+		</div>
+	</div>
+	<span element_name="vip_info.thtml" style="display:none"></span>
+<style>
+	.vip_info_block {
+		background:none repeat scroll 0 0 #F5F5F5;
+		border:1px solid #D6D6D6;
+		margin:10px 0;
+		overflow:hidden;
+		padding:10px;
+	}
+	.vip_info_more_link {
+		padding-left:10px;
+	}
+	.article_middle_main .vip_info_block {
+		font-size: 12px;
+	}
+</style>
+<span element_name="vip_info.thtml-end" style="display:none"></span>
+		
+	<!-- 记录时间，用于记录文单渲染前的花费时间 -->
+	<script>
+		_article_cost = {};
+		_article_pre_time = new Date();
+		_article_cost['_article_pre_cost'] = _article_pre_time - _client_time_init;
+	</script>
+	
+	<!-- 文章导语 -->
+			<div class="lead_words">
+			<span class="lead_title mr_s">| 导语</span>
+			<span class="lead_content">本文旨在从性能优化的角度介绍深度学习模型中最重要的操作之一：卷积，并总结自AlexNet以来出现的各种模型层面及操作层面的卷积优化方法，最后也简要介绍一些未来的卷积优化研究方向。
+本篇主要介绍卷积的计算方法以及操作层面的卷积优化方法。</span>
+		</div>
+	
+	<div class="km_view_content km_article_content stackedit-markdown default watermarked" id="article_content"><div class="watermark" style="background-image: url(&quot;http://km.oa.com/files/personalBg/0f09f316d5500809ad37f57e5928c323.png&quot;);"></div><div class="watermarkHide" style="background-image: url(&quot;http://km.oa.com/files/personalBgHide/0f09f316d5500809ad37f57e5928c323.png&quot;);"></div>
+		<p>本文并非深度学习教程以及卷积的初级教程，本文假设读者有一定程度的深度学习经验并了解卷积算法的基本原理。</p>
+<p></p><div style="text-align: center;"><img src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/1561005757_48_w535_h299.gif" style="position: relative; z-index: 2;"><br><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;text-align:center;color: #999;padding: 10px;"> [ 一个标准单通道卷积操作 (引自https://arxiv.org/pdf/1603.07285.pdf) ]</div></div><p></p>
+<h2 id="h2-u5377u79EFu8BA1u7B97u7B80u4ECB"><a name="卷积计算简介" class="reference-link"></a><span class="header-link octicon octicon-link"></span>卷积计算简介</h2><p>对卷积操作熟悉的朋友可以直接跳转到<a href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post##%E5%8D%B7%E7%A7%AF%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95">卷积优化方法</a>一节。同时，我们假设读者已经熟悉深度学习模型中卷积操作其实表示的是<a href="https://zh.wikipedia.org/wiki/%E4%BA%92%E7%9B%B8%E5%85%B3" target="_blank">互相关</a>操作而非数学上的卷积操作。并在此后的文章中使用更易理解的卷积来替代互相关。</p>
+<h3 id="h3-u4E00u4E9Bu672Fu8BEDu548Cu6982u5FF5"><a name="一些术语和概念" class="reference-link"></a><span class="header-link octicon octicon-link"></span>一些术语和概念</h3><p>尺寸：如果讨论二维卷积，输入尺寸包括空间上的高度（H）以及宽度（W），还有通道的个数：分别包括输入通道数（C_in）和输出通道数（C_out）。以下我们均在不失一般性的情况下以二维卷积举例。</p>
+<ul>
+<li><p>input: 一个卷积的输入是一个空间尺寸为H和W，通道个数为C_in的张量。</p>
+</li><li><p>kernel: 一个卷积操作的kernel是一个空间尺寸为K_h和K_w，通道个数与input一致（C_in）的张量，通常一个卷积操作包含数个kernel，每个kernel负责学习某个特定的输入特征。kernel的总数决定了feature map的通道数（C_out）。</p>
+</li><li><p>feature map(output)：一个卷积操作的输出通常为空间尺寸为H和W（在很多情况下，可以通过padding输入来保证输出的空间尺寸与输入相同，本文假设输出尺寸与输入尺寸相等），通道个数为C_out的张量。</p>
+</li></ul>
+<p>假设我们的input尺寸为5x5，并有三个通道，某个kernel的尺寸为3x3，我们分别对每个通道进行卷积计算（第一步）并规约结果（第二步）：<br></p><div style="text-align: center;"><img src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/1561005798_51_w800_h295.gif" style="position: relative; z-index: 2;" class="amplify"><br><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;text-align:center;color: #999;padding: 10px;"> [ 多通道卷积操作（第一步） ]</div></div><br><div style="text-align: center;"><img src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/1561005835_49_w800_h312.gif" style="position: relative; z-index: 2;" class="amplify"><br><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;text-align:center;color: #999;padding: 10px;"> [ 多通道卷积操作（第二步） ]</div></div><br>多个（C_out个）kernel的计算结果组成了最终的feature map。<p></p>
+<p>整个过程可以用下图表示：<br></p><div style="text-align: center;"><img src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/1561005875_13_w800_h220.png" style="position: relative; z-index: 2;" class="amplify"><br><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;text-align:center;color: #999;padding: 10px;"> [ 卷积计算的input, kernel, 以及output ]</div></div><p></p>
+<h3 id="h3-u5185u5B58u9700u6C42"><a name="内存需求" class="reference-link"></a><span class="header-link octicon octicon-link"></span>内存需求</h3><p>在stride为1，且保持输入输出空间大小不变的前提下，每一层的卷积操作会要求K_h x K_w x C_in x C_out的参数量，并生成H x W x C_out的feature map。同时，根据计算卷积的不同操作，还会在卷积计算时需要不定长度的额外的缓存空间。</p>
+<h3 id="h3-u7B97u529Bu9700u6C42"><a name="算力需求" class="reference-link"></a><span class="header-link octicon octicon-link"></span>算力需求</h3><p>此处我们考虑算力的基本单位为FLOP，即Floating-point Operations，浮点操作个数。这里的浮点操作主要指乘加操作，即<a href="https://en.wikipedia.org/wiki/Multiply%E2%80%93accumulate_operation" target="_blank">MAC</a>操作。<br><code>y = w[0]*x[0] + w[1]*x[1] + w[2]*x[2] + ... + w[n-1]*x[n-1]</code><br>上述操作是几乎所有深度学习运算负载的终极形态（除了激活函数和某些loss函数中出现的超越函数之外），可以看到n个MAC操作对应着n次乘法以及n-1次加法，于是一个MAC操作近似于2个FLOP。本文中假设深度学习模型运行的硬件均支持FMA，即融合加乘操作，则可将一个MAC操作近似为一个FLOP。</p>
+<p>根据这个假设，一个标准的上述前向卷积操作，需要的FLOP为：<br>K_h x K_w x C_in x H x W x C_out</p>
+<h3 id="h3-u8BA1u7B97u5F62u5F0F"><a name="计算形式" class="reference-link"></a><span class="header-link octicon octicon-link"></span>计算形式</h3><p>对于卷积操作的最底层优化，始于不同形式的卷积计算形式。目前较为常用的几类卷积计算方法有：</p>
+<h4 id="h4-u76F4u63A5u8BA1u7B97"><a name="直接计算" class="reference-link"></a><span class="header-link octicon octicon-link"></span>直接计算</h4><p>直接计算是按照卷积计算定义出发的实现，面对不同的kernel尺寸，不同的输入输出通道大小，以及不同的输入输出尺寸，需要进行不同的特化，较为难于优化。但是在通道数较少以及某些depthwise convolution计算中能获得更好的性能。</p>
+<h4 id="h4-u9690u5F0Fu77E9u9635u4E58u6CD5"><a name="隐式矩阵乘法" class="reference-link"></a><span class="header-link octicon octicon-link"></span>隐式矩阵乘法</h4><p>该方法顾名思义是将卷积操作转换成矩阵乘法，即可利用矩阵乘法已经研究非常透彻的优化技术来对计算进行优化。其中一种（来自caffe的）实现方法如下：<br></p><div style="text-align: center;"><img src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/1561014839_61_w550_h252.png" style="position: relative; z-index: 2;"><br><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;text-align:center;color: #999;padding: 10px;"> [ 对输入张量的转换 ]</div></div><br><div style="text-align: center;"><img src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/1561014870_43_w1050_h632.png" style="position: relative; z-index: 2;" class="amplify"><br><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;text-align:center;color: #999;padding: 10px;"> [ 利用矩阵乘法计算最终的卷积值 ]</div></div><p></p>
+<h4 id="h4-fft-"><a name="FFT变换" class="reference-link"></a><span class="header-link octicon octicon-link"></span>FFT变换</h4><p>由<a href="https://zh.wikipedia.org/wiki/%E5%8D%B7%E7%A7%AF%E5%AE%9A%E7%90%86" target="_blank">卷积定理</a>可知，两个函数f和g的卷积（即这里的input和kernel的卷积）可以表示为两个函数傅里叶变换之后的乘积的傅里叶反变换。于是通过分别对input和kernel进行傅里叶变换，并在变换后进行矩阵乘法，接着反变换回时域空间，我们可以实现卷积运算。具体的算法细节可以参考Facebook的<a href="https://arxiv.org/pdf/1412.7580.pdf" target="_blank">fbfft</a>以及CUDA的cuFFT。基于FFT的卷积计算在kernel的尺寸较大时（如7x7,11x11等）容易取得更好的性能。</p>
+<h4 id="h4-winograd-"><a name="Winograd变换" class="reference-link"></a><span class="header-link octicon octicon-link"></span>Winograd变换</h4><p>Winograd变换也是一种对原函数进行变换之后进行矩阵乘法的算法，通过复用kernel对空间邻近区域的卷积时重叠空间上的计算结果，可以对传统卷积操作中的计算<a href="https://arxiv.org/pdf/1509.09308.pdf" target="_blank">减少2.25倍</a>。从而实现提速。该算法对小stride的小尺寸kernel（相邻卷积运算时空间重叠区域很大）提速效果明显。</p>
+<h4 id="h4-autotune"><a name="Autotune" class="reference-link"></a><span class="header-link octicon octicon-link"></span>Autotune</h4><p>目前cuDNN里对各类算法都有<a href="https://docs.nvidia.com/deeplearning/sdk/cudnn-developer-guide/index.html#cudnnConvolutionFwdAlgo_t" target="_blank">包括</a>。实际场景中，训练时面对固定的模型常常需要几百万次的重复运行特定顺序的卷积，所以通常在训练的前k个warmup步时，可以通过尝试上述不同实现对卷积进行autotune，在warmup结束之后采用autotune中对该尺寸配置性能最佳的卷积计算内部实现。</p>
+<h4 id="h4-u65B0u7684u4F18u5316u65B9u6CD5"><a name="新的优化方法" class="reference-link"></a><span class="header-link octicon octicon-link"></span>新的优化方法</h4><p>就在本文写作的最近，笔者了解到一些底层卷积计算方面的新动向，因此在此一并包含，力图做到全面。<a href="https://arxiv.org/pdf/1907.02129.pdf" target="_blank" title="Indirect Convolution">The Indirect Convolution Alrogithm</a>在隐式矩阵乘法方法的基础上进行了改进，取消了im2col耗费带宽和内存的做法，而是在更小的一片缓存中保存矩阵乘法计算需要的向量数据的片段地址。<a href="https://arxiv.org/pdf/1809.10170.pdf" target="_blank" title="高性能零拷贝的直接卷及计算">高性能零拷贝的直接卷及计算</a>这一工作则是通过循环内外顺序更换，张量切分，以及张量存储格式转换等优化手段对上述的卷积直接计算方法进行了优化。我相信未来从底层实现出发进行的卷积计算优化还会继续有新的研究进展。</p>
+<h2 id="h2-u5377u79EFu4F18u5316u65B9u6CD5"><a name="卷积优化方法" class="reference-link"></a><span class="header-link octicon octicon-link"></span>卷积优化方法</h2><p>从卷积计算的不同实现方式往上层前进，可以从卷积的算法层面进行改进，从而分别在算力和内存上对卷积计算达到优化的效果。这类优化又可以从尺度上简要划分为操作层面的优化以及模型层面的优化。</p>
+<h3 id="h3-u64CDu4F5Cu5C42u9762u7684u4F18u5316"><a name="操作层面的优化" class="reference-link"></a><span class="header-link octicon octicon-link"></span>操作层面的优化</h3><p>本节力图尽量包括CNN模型进化过程中出现的对性能影响较大的卷积类型，但不可能完全，如有遗漏欢迎在留言中指出。</p>
+<h4 id="h4-separable-convolution"><a name="Separable Convolution" class="reference-link"></a><span class="header-link octicon octicon-link"></span>Separable Convolution</h4><p>熟悉图像处理和信号处理的读者应该对separable的方式并不陌生。在著名的Edge detector <a href="https://en.wikipedia.org/wiki/Sobel_operator" target="_blank">Sobel Operator</a>的实现中，就用到了这个卷积的这个性质：<br></p><div style="text-align: center;"><img src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/1561021934_51_w800_h174.png" style="position: relative; z-index: 2;" class="amplify"><br><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;text-align:center;color: #999;padding: 10px;"> [ Sobel Operator中filter的分解 ]</div></div><br>在padding为0，stride为1的情况下，对单通道的尺寸为H和W的输入进行KxK的卷积计算需要O(KxKxHxW)的计算，而空间拆分之后的卷积计算仅需要O(KxHxW)的计算。<br>最著名的spatial separable convolution的应用在<a href="https://arxiv.org/pdf/1602.07261.pdf" target="_blank">Inception v4模型</a>中，以及之后的<a href="https://arxiv.org/pdf/1707.07012.pdf" target="_blank">NasNET</a>中搜索空间里的元操作。<p></p>
+<p>另一个维度上的separable convolution是depthwise separable convolution。<br></p><div style="text-align: center;"><img src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/1561097171_63_w549_h816.png" style="position: relative; z-index: 2;"><br><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;text-align:center;color: #999;padding: 10px;"> [ depthwise separable convolution根据通道和空间分别做两次卷积 ]</div></div><br>注意很多人会将depthwise separable convolution同depthwise convolution搞混。前者才是广泛应用的，而后者属于group convolution的一个特殊形式，我们会在后面马上讲到。Depthwise separable顾名思义就是将之前的kernel分解成K_h x K_w x 1的C_in个kernel，以及1 x 1 x C_in的C_out个kernel。经过这种拆解可以看出得到的输出没有改变，但是参数和计算量都降低了：<p></p>
+<p>参数量与传统卷积操作对比：<br>传统卷积操作：<br>C_in x (K_h x K_w x C_out)<br>depthwise separable convolution:<br>C_in x (K_h x K_w + C_out)<br>可以看到在深层网络中C_out达到几百上千的规模时，能大大节省参数量。</p>
+<p>计算量与传统卷积操作对比：<br>传统卷积操作：<br>K_h x K_w x C_out x H x W x C_in<br>depthwise separable convolution:<br>(K_h x K_w + C_out) x H x W x C_in<br>同样也是在C_out数量增大时能够节约大量计算。</p>
+<p>工业界上应用depthwise separable convolution的最重要的两个模型即<a href="https://arxiv.org/pdf/1610.02357.pdf" target="_blank">Xception</a>以及<a href="https://arxiv.org/pdf/1704.04861.pdf" target="_blank">MobileNet</a>。可以看到由于参数量和计算量的双重优化，该操作非常适合移动端等资源受限场景下的模型。后面会看到在MNasNet这种以性能优化为指标的网络结构搜索中也最终包括了大量depthwise separable convolution。</p>
+<h4 id="h4-group-convolution"><a name="Group Convolution" class="reference-link"></a><span class="header-link octicon octicon-link"></span>Group Convolution</h4><p></p><div style="text-align: center;"><img src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/1561107772_49_w527_h161.png" style="position: relative; z-index: 2;"><br><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;text-align:center;color: #999;padding: 10px;"> [ AlexNet的分组卷积结构 ]</div></div><br>分组卷积来自AlexNet，当时的主要原因是单个GTX 580 GPU无法保存所有的参数。然而，原文中并未指出的一个副作用即分组让模型的表达能力增强了。如下图显示，分为两组的filter明显具有各自的不同特性：对颜色不敏感而对基础形状更敏感的黑白filter组，以及对颜色敏感的filter组。<br><div style="text-align: center;"><img src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/1561107906_27_w217_h85.png" style="position: relative; z-index: 2;"><br><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;text-align:center;color: #999;padding: 10px;"> [ AlexNet中的第一层卷积filter被分为两组 ]</div></div><br>对此的量化分析显示，2组提升了模型精度，而分为4组导致模型精度降低。我相信分为更多组之后，各个不同的输入输出通道之间共享的信息和可学习的信息严重降低，从而影响了最终的精度。为了弥补精度的损失，需要想办法让输入输出通道间的信息实现共享。我们在depthwise separable convolution中已经看到了其中一种办法就是添加1x1的卷积。这也是<a href="https://arxiv.org/pdf/1611.05431.pdf" target="_blank">ResNeXt</a>中选择的办法。然而这种卷积操作非常耗时，如何能够在耗时少的情况下也能保持精度呢？<br>另一种办法就是在分组卷积结束之后增添一层便宜的Channel Shuffle。<br><div style="text-align: center;"><img src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/1561109257_52_w1144_h426.png" style="position: relative; z-index: 2;" class="amplify"><br><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;text-align:center;color: #999;padding: 10px;"> [ 普通的分组卷积（a）channel shuffle示意（b）以及添加channel shuffle之后的输出示意（c） ]</div></div><br>并且可以通过将输出通道数量改为原输出通道数的0.5或0.25倍，获得更大的性能提升。使用该操作的<a href="https://arxiv.org/pdf/1707.01083.pdf" target="_blank">ShuffleNet</a>取得了比其他模型更少参数量获得更高精度的结果。<p></p>
+<h4 id="h4-octave-convolution"><a name="Octave Convolution" class="reference-link"></a><span class="header-link octicon octicon-link"></span>Octave Convolution</h4><p>在此之前的卷积优化方法中均没有涉及到对feature map中冗余信息的优化。事实上，这部分信息像其他图像及信号数据一样也含有冗余。<br></p><div style="text-align: center;"><img src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/1561112063_75_w795_h591.png" style="position: relative; z-index: 2;" class="amplify"><br><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;text-align:center;color: #999;padding: 10px;"> [ Octave Convolution通过压缩feature map中的低频信息来降低冗余信息 ]</div></div><br><a href="https://arxiv.org/pdf/1904.05049.pdf" target="_blank">Octave Convolution</a>的实现非常直观及简单。在一组连续的卷积层的开始将feature map区分为高频和维度减半（即octave的含义）的低频部分，之后每次生成的用作下层输入的feature map分别通过上层的高低频feature map在降（升）采样后的卷积进行叠加。同时也可以应用于前述的组卷积和深度分解卷积。<br><div style="text-align: left;"><img src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/1561309789_8_w861_h540.png" style="position: relative; z-index: 2;" class="amplify"></div><br>这里需要注意的一点是，虽然论文中声称可以无缝替换其他的多层卷积模型，但是一旦拆分出高低频的feature map之后，整个过程中就要一直保持下去，这是开发上的一处额外的麻烦。<p></p>
+<p>Octave Convolution能够在算力和内存上都进行优化：<br></p><div style="text-align: center;"><img src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/1561361173_18_w435_h426.png" style="position: relative; z-index: 2;"><br><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;text-align:center;color: #999;padding: 10px;"> [ 通过调节alpha值，会产生不同的精度和算力的取舍 ]</div></div><br>对内存的节约主要体现在被减半的低频feature map，对算力的优化也体现在新的卷积操作减少了feature map的尺寸从而节约了计算。具体的推导请参见原论文。<br><div style="text-align: center;"><img src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/1561361379_38_w533_h116.png" style="position: relative; z-index: 2;"><br><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;text-align:center;color: #999;padding: 10px;"> [ 不同alpha值下算力和内存的优化程度 ]</div></div><br><div style="text-align: center;"><img src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/1561361440_74_w858_h575.png" style="position: relative; z-index: 2;" class="amplify"><br><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;text-align:center;color: #999;padding: 10px;"> [ 不同alpha值下在各类模型上对算力和精度的优化效果 ]</div></div><br>令人更加高兴的是，因为压缩的低频feature map的副作用是提高卷积计算时的作用域，所以能够在减少算力的同时提高精度。<p></p>
+<p>鉴于篇幅原因，对模型层面的优化以及使用AutoML进行卷积神经网络结构搜索的内容放在下篇介绍。</p>
+	</div>
+
+    <div class="update-time">最后更新于 2019-07-25 08:40</div>
+	<!-- 记录时间，用于记录文单渲染时的花费时间 -->
+	<script>
+		_article_render_time = new Date();
+		_article_cost['_article_render_cost'] = _article_render_time - _article_pre_time;
+	</script>
+	
+	<!-- 展示视频 -->
+		
+	
+	<!--知识申报模块-->
+
+	<div class="knowledge-apply-mod relative" style="display:none ">
+		<div class="left-content">
+			<img class="know-img" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/know_apply_pc.png">
+			<div class="text-content">
+				<p><span>腾讯知识奖期评选进行中</span></p>
+				<p><span>点击申报推荐本文参加评选</span></p>
+			</div>
+		</div>
+		<div class="right-content">
+			<button class="apply-btn  show " data-postid="411333" data-groupid="38920" id="apply-article-ope">本文申报</button>
+			<button class="has-apply-btn hide">已申报</button>
+		</div>
+	</div>
+					
+	<!-- 红包打赏区块 -->
+			<div class="post-reward-area relative">
+			<div class="post-reward-panel absolute hide">
+				<img class="post-reward-qrcode" src="http://km.oa.com/articles/get_reward_qr_code?post_id=411333">
+				<div class="post-reward-qrcode-tip">微信扫一扫赞赏</div>
+				<div class="arrow-bottom">
+	                <span class="arror-icon">◆</span>
+	            </div>
+			</div>
+			<!-- 是否出现打赏引导与按钮 -->
+							<div class="post-reward-tip-wrapper">
+					<span class="post-reward-tip gray ">
+						如果觉得我的文章对您有用，请随意赞赏
+											</span>
+									</div>
+
+				<button class="post-reward-btn">赏</button>
+			
+			<!-- 打赏人区域 -->
+			<div class="post-reward-count hide">
+				<a data-toggle="modal" data-target="#reward-detail-modal" href="javascript:void();" class="pointer">0人已赞赏</a>
+			</div>
+
+					</div>
+		<div id="reward-detail-modal" class="modal">
+			<div class="modal_body" style="width: 588px;">
+				<div class="rewards-details">
+					<div class="author-info">
+						<span class="bg-sprites-km absolute rewards-close pointer" data-dismiss="modal"></span>
+						<img class="author-tag" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/pc_author_tag.png"><span class="author-tag-title">文章作者</span>
+						<a href="http://km.oa.com/user/slashwang"><img class="circular avatar jump" data-url="http://km.oa.com/user/slashwang" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/profile(1).jpg"></a>
+						<a target="_blank" class="author-name" href="http://km.oa.com/user/slashwang">slashwang(王洋子豪)</a>
+						<div class="author-reward">本文累计获得赞赏0次，赞赏金额0.00元</div>
+					</div>
+					<div class="rewards-list">
+						<ul> 
+							<li class="reward-header">
+								<span class="right">赞赏金额</span>
+								<span>赞赏人</span>
+							</li>
+													</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	<div class="confidentialnew">
+	<span element_name="confidentialnew.thtml" style="display:none"></span>
+		<span class="confidential-line left"></span>
+		<div class="confidential-text confidential-pos-article">
+			仅供内部学习与交流，未经公司授权切勿外传
+		</div>
+	<span element_name="confidentialnew.thtml-end" style="display:none"></span>
+</div>
+	
+	<div class="confidential-article">
+				<span class="secondary">标签：</span><span><a href="http://km.oa.com/group/jizhi/articles?tag_id=112042" title="卷积神经网络" target="_blank">卷积神经...</a>(3) <a href="http://km.oa.com/group/jizhi/articles?tag_id=70010" title="深度学习" target="_blank">深度学习</a>(2) <a href="http://km.oa.com/group/jizhi/articles?tag_id=172989" title="机智加速训练平台" target="_blank">机智加速...</a>(1) </span>
+			</div>
+
+	<!-- 微信二维码推广模块 -->
+	<!-- 二维码分享区块公共组件 -->
+<span element_name="qr_code_share.thtml" style="display:none"></span>
+<!-- 活动的二维码在右侧，特殊处理一下 -->
+	<div class="qr-code-share subtract-margin-top right-border">
+		<div class="qr-code-share-inner">
+			<img src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/get_wechat_image" class="qr-code-img left qr_code_share_image">	
+			<div class="wording-big">本文专属二维码，扫一扫还能分享朋友圈</div>
+			<div class="wording-small js_operations_bar">
+				想要微信公众号推广本文章？<a href="javascript:void(0);" id="qr-code-share-link" class="js_share_to_qrcode">点击获取链接</a>
+			</div>
+		</div>
+	</div>
+<span element_name="qr_code_share.thtml-end" style="display:none"></span>
+
+<script type="text/javascript">
+$(function() {
+	//当前页面url(去除参数) 
+	var url = window.location.protocol + "//" + window.location.host + window.location.pathname;
+	var wechat_image_url = km_path + 'operations/get_wechat_image?target_url=' + url;
+
+	$('.qr-code-img').attr('src', wechat_image_url);
+});
+</script>
+
+	<span element_name="related_posts.thtml" style="display:none"></span>
+
+<div id="related-posts" style="display: block;">
+</div>
+
+<script id="related-posts-template" type="text/x-handlebars-template">
+	{{#if related_posts}}
+		<h4 class="related-title">相关阅读</h4>
+		<ul class="related-list">
+			{{#each related_posts}}
+			<li class="single_line bulleted">
+				<a title="{{title}}" href="{{../km_path}}posts/show/{{id}}?kmref=related_post" target="_blank" class="a_black line_height_32">
+					{{title}}
+				</a>
+			</li>
+			{{/each}}
+		</ul>
+	{{/if}}
+</script>
+
+<script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/json2-2ee84c1e82.js"></script><script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/handlebars.js"></script><script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/handlebars_extend.js"></script><script>
+$(function () {
+	var post_id = '411333';
+	var url = km_path + 'articles/related_posts';
+
+	// 拉取相关文章超时处理
+	$.ajax({
+		url: url,
+		type: 'GET',
+		data: {
+			post_id: post_id
+		},
+		success: function(data) {
+			var data = {
+				related_posts: JSON.parse(data),
+				km_path: km_path
+			};
+			// 相关阅读模板渲染
+			var source = $('#related-posts-template').html();
+			var template = Handlebars.compile(source);
+			$('#related-posts').empty().hide().html(template(data)).fadeIn(1000);
+		},
+		error: function() {
+			// 后台出错(502)不做处理
+		}
+	});
+});
+</script>
+
+<span element_name="related_posts.thtml-end" style="display:none"></span>
+	<div class="js_operations_bar">
+	<span element_name="operations.thtml" style="display:none"></span>
+<div id="operations">
+<span element_name="actions/digg_favor.thtml" style="display:none"></span>
+
+<div id="digg_favor" class="digg_favor clearfix"> <div id="digg_favor_bar" class="digg_favor_bar">  <div class="left">   <div class="digg" id="digg">   </div>   <div class="digg-fs"><span>我顶</span>&nbsp;<span class="num">(6)</span></div>  </div>  <div class="left">   <div class="bookmark" id="bookmark_btn">   </div>   <div class="digg-fs bookmark-text"><span>收藏</span>&nbsp;<span class="num">(15)</span></div>  </div> </div>  <div id="bookmark_div" class="modal bookmark_modal">  <div class="modal_header">   <a class="close" data-dismiss="modal" href="javascript:void(0);">×</a>      收藏文章  </div>  <div class="modal_body padding"></div>  <div class="modal_footer">   <a class="k_button submit" onclick="bookmark_submit();" href="javascript:void(0)">确定</a>   <a class="k_button_secondary" onclick="bookmark_submit_cancel();" href="javascript:void(0);">取消</a>  </div> </div>  <div class="hide" id="arrowup"></div> <span id="latest_digged_user_list" class="hide">    franklan, knightliang, cathyxhuang, sampsonsong, garryling, hopezhou最近顶过此文 </span> <div class="clear"></div> </div>
+
+<script id="digg_favor_tpl" type="text/txTpl">
+<div id="digg_favor_bar" class="digg_favor_bar">
+	<div class="left">
+		<div class="<%= !digg.is_digged ? 'digg' : 'digged'; %>" id="digg">
+		</div>
+		<div class="digg-fs"><span><%= !digg.is_digged ? '我顶' : '已顶'; %></span>&nbsp;<span class="num">(<%= digg.digg_count; %>)</span></div>
+	</div>
+	<div class="left">
+		<div class="<%= !favor.is_bookmarked ? 'bookmark' : 'unbookmark'; %>" id="bookmark_btn">
+		</div>
+		<div class="digg-fs bookmark-text"><span><%= !favor.is_bookmarked ? '收藏' : '已收藏'; %></span>&nbsp;<span class="num">(<%= favor.bookmark_count; %>)</span></div>
+	</div>
+</div>
+
+<div id="bookmark_div" class="modal bookmark_modal">
+	<div class="modal_header">
+		<a class="close" data-dismiss="modal" href="javascript:void(0);">&times;</a>
+		<% 
+		switch (favor.target_type) {
+			case 'Post'       : title = '收藏文章'; break;
+			case 'Doc'        : title = '收藏文档'; break;
+			case 'Knowledge'  : title = '收藏文集'; break;
+			case 'Attachment' : title = '收藏附件'; break;
+			case 'Slide'      : title = '收藏幻灯片'; break;
+			case 'Video'      : title = '收藏视频'; break;
+			default           : title = '收藏';
+		}
+		%>
+		<%= title; %>
+	</div>
+	<div class="modal_body padding"></div>
+	<div class="modal_footer">
+		<a class="k_button submit" onclick="bookmark_submit();" href="javascript:void(0)">确定</a>
+		<a class="k_button_secondary" onclick="bookmark_submit_cancel();" href="javascript:void(0);">取消</a>
+	</div>
+</div>
+
+<div class="hide" id="arrowup"></div>
+<span id="latest_digged_user_list" class="hide">
+	<%
+		var user_list = "";
+		var length = digg.latest_digged_user_list.length;
+		for (var i = 0; i < length; i++) {
+			var user = digg.latest_digged_user_list[i];
+			user_list += user.created_by;
+			if (user.is_expert) {
+				user_list += "<span class='vip_link'>&nbsp;&nbsp;&nbsp;&nbsp;</span>";
+			}
+			if (i < length - 1) {
+				user_list += ', ';
+			}
+		}
+	%>
+	<%= user_list; %>最近顶过此文
+</span>
+<div class="clear"></div>
+</script>
+
+<span element_name="actions/digg_favor.thtml-end" style="display:none"></span>
+<span element_name="actions/op_post.thtml" style="display:none"></span>
+
+<ul id="bar_actions" class="bar_actions secondary">      <li class="reship-to">   <div class="original_menu pointer">  <span id="more_management" class="more_management">   <a class="reship_link js-reship-btn" href="javascript:void(0);" title="转载到我的K吧">    转载       </a>  </span>   </div> </li>      <li>   <span class="original_menu">    <a id="post2k_btn" class="post2k_link" href="javascript:void(0);" title="加入到我的文集">     收录    </a>   </span>  </li>      <li>   <span class="original_menu">    <a id="comment_btn" href="javascript:void(0);" class="comment_link" title="去评论">     评论    </a><span class="gray">(2)</span>   </span>  </li>  <li>      <span class="original_menu">          <div class="feed-tips feed-tips-first">选中文章内容可快速反馈</div>          <a id="feed_btn" href="javascript:void(0);" class="feed_link" title="去反馈">     反馈    </a>      </span>  </li>   </ul>
+
+<script id="bar_actions_top_tpl" type="text/txTpl">
+	<% if (typeof favor !== 'undefined' && !favor.is_bookmarked) { %>
+	<li id="bookmark_btn_top" class="line_height_12">
+		<a class="bookmark_link" href="javascript:void(0);">
+			收藏<span class="bookmark_count">(<%= favor.bookmark_count; %>)</span>
+		</a>
+	</li>
+	<% } else { %>
+	<li id="bookmarked_top" class="line_height_12">
+		<a class="cancel_bookmark_link bookmarked" href="javascript:void(0);">
+			已收藏<span class="bookmark_count">(<%= favor.bookmark_count; %>)</span>
+		</a>
+	</li>
+	<% } if (typeof comment !== 'undefined') { %>
+	<li class="line_height_12">
+		<a class="comment_link" href="javascript:void(0);">评论<span>(<%= comment.reply_count; %>)</span></a>
+	</li>
+	<% } %>
+	<% if (typeof share_to !== 'undefined') { %>
+	<li class="relative share_to_list">
+		<!-- 分享组件上面部分 -->
+<span element_name="actions/share_to_top.thtml" style="display:none"></span>
+
+<% if (typeof share_to !== 'undefined' && !share_to.notice) { %>
+<div class="original_menu pointer">
+	<span id="more_management" class="more_management">
+		<a href="javascript:void(0);" class="share_link">分享</a>
+	</span>
+	<span id="more_management_copy" class="more_management_copy">
+		<a href="javascript:void(0);" class="share_link">分享</a>
+	</span>
+	<div id="more_div" class="popbox hide">
+		<ul id="xy">
+			<li class="js_share_to_rtx<%= share_to.rtx ? '' : ' hide-important'; %>">
+				<a class="share_icon_small share_rtx_icon_small bg_sprites" href="javascript:void(0);">企业微信</a>
+			</li>
+			<li class="js_share_to_eamil<%= share_to.email ? '' : ' hide-important'; %>">
+				<a class="share_icon_small share_email_icon_small bg_sprites" href="javascript:void(0);">邮件</a>
+			</li>
+			<li class="js_share_to_qrcode<%= share_to.qr_code ? '' : ' hide-important'; %>">
+				<a class="share_icon_small share_qrcode_icon_small bg_sprites" href="javascript:void(0);">二维码</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<% } %>
+
+<span element_name="actions/share_to_top.thtml-end" style="display:none"></span>
+	</li>
+	<% } %>
+	<% if (typeof edit !== 'undefined' && edit.edit_url) { %>
+	<li id="edit_link" class="relative line_height_12 to_edit_link">
+		<div class="original_menu pointer">
+	<span id="more_management" class="more_management">
+		<a href="<%= edit.edit_url; %>" class="edit_link">编辑</a>
+	</span>
+	<span id="more_management_copy"><a href="<%= edit.edit_url; %>" class="edit_link">编辑</a></span>
+	<div id="more_div" class="popbox hide">
+		<ul id="xy">
+			<li>
+				<a href="<%= edit.edit_url; %>">编辑</a>
+			</li>
+			<% if (typeof remove !== 'undefined') { %>
+			<li>
+				<a id="bar_action_delete" href="javascript:void(0);" class="delete_entity">删除</a>
+			</li>
+			<% } %>
+			<% if (typeof top !== 'undefined' && typeof essential !== 'undefined') { %>
+			<li class="separator">
+				<a class="uptop_btn" href="javascript:void(0);">
+					<%= !top.is_top ? '置顶' : '取消置顶'; %>
+				</a>
+			</li>
+			<li>
+				<a class="essential_btn" href="javascript:void(0);">
+					<%= !essential.is_essential ? '精华' : '取消精华'; %>
+				</a>
+			</li>
+			<% } %>
+			<% if (typeof km_recommend !== 'undefined' && !km_recommend.is_recommended) { %>
+			<li>
+				<a href="javascript:void(0);" onclick="do_post_mailpool();" id="post_mailpool_btn">KM推荐</a>
+			</li>
+			<% } else if (typeof km_recommend !== 'undefined' && km_recommend.is_recommended) { %>
+			<li>
+				<a href="javascript:void(0);">已推荐</a>
+			</li>
+			<% } %>
+			<% if (typeof edit_picture !== 'undefined' && typeof edit_picture === 'object') { %>
+			<li>
+				<a class="edit_pic_btn" href="javascript:void(0)">文章配图</a>
+			</li>
+			<% } %>
+			<% if (typeof edit_summary !== 'undefined' && typeof edit_summary === 'object') { %>
+			<li>
+				<a id="edit_summary_btn" href="javascript:void(0);" onclick="edit_post_summary()">更改摘要</a>
+			</li>
+			<% } %>
+			<% if (typeof export_comments !== 'undefined') { %>
+			<li>
+				<a id="export_comments" href="<%= export_comments.url; %>">导出评论</a>
+			</li>
+			<% } %>
+			<% if (typeof export_viewed_records !== 'undefined') { %>
+			<li>
+				<a class="export_access_state" href="javascript:void(0)" data-url="<%= export_viewed_records.url; %>&export=1">导出访问记录</a>
+			</li>
+			<% } %>
+
+            <% if (operation_data.is_admin) { %>
+            <li>
+                <a class="search_hide_btn" href="javascript:void(0);">
+                    <%= is_hidden === '0' ? '从全局搜索中隐藏' : '解除全局搜索隐藏'; %>
+                </a>
+            </li>
+            <% } %>
+		</ul>
+	</div>
+</div>
+	</li>
+	<% } %>
+</script>
+
+<script id="bar_actions_tpl" type="text/txTpl">
+	<% if (typeof edit !== 'undefined' && edit.edit_url) { %>
+	<li class="to_edit_link">
+		<div class="original_menu pointer">
+	<span id="more_management" class="more_management">
+		<a href="<%= edit.edit_url; %>" class="edit_link">编辑</a>
+	</span>
+	<span id="more_management_copy"><a href="<%= edit.edit_url; %>" class="edit_link">编辑</a></span>
+	<div id="more_div" class="popbox hide">
+		<ul id="xy">
+			<li>
+				<a href="<%= edit.edit_url; %>">编辑</a>
+			</li>
+			<% if (typeof remove !== 'undefined') { %>
+			<li>
+				<a id="bar_action_delete" href="javascript:void(0);" class="delete_entity">删除</a>
+			</li>
+			<% } %>
+			<% if (typeof top !== 'undefined' && typeof essential !== 'undefined') { %>
+			<li class="separator">
+				<a class="uptop_btn" href="javascript:void(0);">
+					<%= !top.is_top ? '置顶' : '取消置顶'; %>
+				</a>
+			</li>
+			<li>
+				<a class="essential_btn" href="javascript:void(0);">
+					<%= !essential.is_essential ? '精华' : '取消精华'; %>
+				</a>
+			</li>
+			<% } %>
+			<% if (typeof km_recommend !== 'undefined' && !km_recommend.is_recommended) { %>
+			<li>
+				<a href="javascript:void(0);" onclick="do_post_mailpool();" id="post_mailpool_btn">KM推荐</a>
+			</li>
+			<% } else if (typeof km_recommend !== 'undefined' && km_recommend.is_recommended) { %>
+			<li>
+				<a href="javascript:void(0);">已推荐</a>
+			</li>
+			<% } %>
+			<% if (typeof edit_picture !== 'undefined' && typeof edit_picture === 'object') { %>
+			<li>
+				<a class="edit_pic_btn" href="javascript:void(0)">文章配图</a>
+			</li>
+			<% } %>
+			<% if (typeof edit_summary !== 'undefined' && typeof edit_summary === 'object') { %>
+			<li>
+				<a id="edit_summary_btn" href="javascript:void(0);" onclick="edit_post_summary()">更改摘要</a>
+			</li>
+			<% } %>
+			<% if (typeof export_comments !== 'undefined') { %>
+			<li>
+				<a id="export_comments" href="<%= export_comments.url; %>">导出评论</a>
+			</li>
+			<% } %>
+			<% if (typeof export_viewed_records !== 'undefined') { %>
+			<li>
+				<a class="export_access_state" href="javascript:void(0)" data-url="<%= export_viewed_records.url; %>&export=1">导出访问记录</a>
+			</li>
+			<% } %>
+
+            <% if (operation_data.is_admin) { %>
+            <li>
+                <a class="search_hide_btn" href="javascript:void(0);">
+                    <%= is_hidden === '0' ? '从全局搜索中隐藏' : '解除全局搜索隐藏'; %>
+                </a>
+            </li>
+            <% } %>
+		</ul>
+	</div>
+</div>
+	</li>
+	<% } %>
+	<% if (typeof reship !== 'undefined') { %>
+	<li class="reship-to">
+		<div class="original_menu pointer">
+	<span id="more_management" class="more_management">
+		<a class="reship_link js-reship-btn" href="javascript:void(0);" title="转载到我的K吧">
+			转载
+			<% if (reship.reship_count != 0) { %>
+				(<%= reship.reship_count %>)<span class="arrow-icon"></span>
+			<% } %>
+		</a>
+	</span>
+	<% if (reship.reship_count != 0 && reship.reship_records) { %>
+	<span id="more_management_copy">
+		<a class="reship_link js-reship-btn" href="javascript:void(0);" title="转载到我的K吧">
+			转载
+				(<%= reship.reship_count %>)<span class="arrow-icon"></span>
+		</a>
+	</span>
+	<div id="more_div" class="popbox hide">
+		<ul id="xy">
+			<% for (var i = 0, length = reship.reship_records.length; i < length; i++) { %>
+			<li>
+				<p class="list">
+					<% if (reship.reship_records[i].created_by) { %>
+					<a href="<%= km_path + 'user/' + reship.reship_records[i].created_by %>" target="_blank"><%= reship.reship_records[i].created_by %></a>
+					<% } %>
+					转载到了
+					<a href="<%= km_path + 'group/' + reship.reship_records[i].group_id %>" target="_blank"><%= reship.reship_records[i].group_name %></a>
+					<% if (reship.reship_records[i].is_able_to_cancel_reship) { %>
+					<a href="javascript:void(0)" class="js-cancel-reship ml_l" data-cancel_reship_url="<%= reship.reship_records[i].cancel_reship_url %>">取消转载</a>
+					<% } %>
+				</p>
+			</li>
+			<% } %>
+		</ul>
+	</div>
+	<% } %>
+</div>	</li>
+	<% } %>
+	<% if (typeof post2k !== 'undefined') { %>
+	<li>
+		<span class="original_menu">
+			<a id="post2k_btn" class="post2k_link" href="javascript:void(0);" title="加入到我的文集">
+				收录
+			</a>
+		</span>
+	</li>
+	<% } %>
+	<% if (typeof comment !== 'undefined') { %>
+	<li>
+		<span class="original_menu">
+			<a id="comment_btn" href="javascript:void(0);" class="comment_link" title="去评论">
+				评论
+			</a><span class="gray">(<%= comment.reply_count; %>)</span>
+		</span>
+	</li>
+	<li>
+	    <span class="original_menu">
+	        <div class="feed-tips">选中文章内容可快速反馈</div>
+	        <a id="feed_btn" href="javascript:void(0);" class="feed_link" title="去反馈">
+				反馈
+			</a>
+	    </span>
+	</li>
+	<% } %>
+</script>
+<script>
+    var showPostFeedTips = window.localStorage.getItem("show_post_feed_tips");
+    if (!showPostFeedTips) {
+        var intv = setInterval(function () {
+            var tar = $(".feed-tips");
+            if (tar[0]) {
+                tar[0].className = tar[0].className + " feed-tips-first";
+                tar.live('mouseout', function () {
+                    tar[0].className = 'feed-tips';
+                    window.localStorage.setItem("show_post_feed_tips", "1");
+                });
+                clearInterval(intv);
+            }
+        }, 2000);
+    }
+</script>
+
+<span element_name="actions/op_post-end.thtml" style="display:none"></span>
+<!-- 分享组件下面部分 -->
+<span element_name="actions/share_to.thtml" style="display:none"></span>
+
+<script id="share_to_tpl" type="text/txTpl">
+<% if (typeof share_to !== 'undefined' && !share_to.is_hide_share_to) { %>
+	<div class="share-top-only share-to-bottom">
+		<div class="left gray">分享到&nbsp;</div>
+		<div class="bg_sprites share_icon share_rtx_icon js_share_to_rtx<%= share_to.rtx ? '' : ' hide'; %>" title="分享到企业微信"></div>
+		<div class="bg_sprites share_icon share_email_icon js_share_to_eamil<%= share_to.email ? '' : ' hide'; %>" title="分享到邮件"></div>
+		<div id="share_to_wechat" class="bg_sprites share_icon share_qrcode_icon js_share_to_qrcode<%= share_to.qr_code ? '' : ' hide'; %>" title="分享到微信"></div>
+	</div>
+<% } %>
+</script>
+
+<span element_name="actions/share_to.thtml-end" style="display:none"></span><!-- 上下部分分享组件公用modal部分 -->
+<span element_name="actions/share_to_modal.thtml" style="display:none"></span>
+
+<div id="share_list" class="share_list clearfix">   <div class="share-top-only share-to-bottom">   <div class="left gray">分享到&nbsp;</div>   <div class="bg_sprites share_icon share_rtx_icon js_share_to_rtx" title="分享到企业微信"></div>   <div class="bg_sprites share_icon share_email_icon js_share_to_eamil" title="分享到邮件"></div>   <div id="share_to_wechat" class="bg_sprites share_icon share_qrcode_icon js_share_to_qrcode" title="分享到微信"></div>  </div>       <!-- 分享到rtx modal start -->  <div id="share_to_rtx_modal" class="modal">   <div class="modal_header">    <a class="close" href="javascript:void(0);" onclick="return close_mail_modal(this)">×</a>    <span class="title">分享到企业微信</span>   </div>   <div class="modal_body padding">    <input type="hidden" name="target_id" id="mail_target_id" value="">    <input type="hidden" name="target_type" id="mail_target_type" value="">    <input type="hidden" name="group_id" id="group_id" value="38920">    <div class="inputfield">     <label class="km_label" for="mail_toValue">发送给：</label>     <div class="km_user_chooser_wrap relative clearfix">      <a title="点此获得上一次输入内容" onclick="return get_last_name(this)" href="javascript:void(0)">       <img src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/left_arrow.gif" style="vertical-align:top">      </a>     </div>      <!-- 如果是吧内文章可以发到全吧成员 -->     <div class="users_categories ml_85 mt_s" style="max-height : 150px;overflow-y : auto;">           </div>     <div class="clear"></div>    </div>     <!-- 设置发送方式 -->    <div class="inputfield share_type hide">     <label class="km_label">通<span style="visibility:hidden">藏</span>过：</label>     <input type="checkbox" value="rtx" name="data[Message][send_type]" id="send_rtx">     <label for="send_rtx">企业微信</label>     <input type="checkbox" value="mail" name="data[Message][send_type]" id="send_mail">     <label for="send_mail">Email</label>    </div>    <div class="inputfield">     <label class="km_label" for="email_title">主<span style="visibility:hidden">藏</span>题：</label>     <input id="email_title" type="text" name="mail_title" readonly="readonly" value="shuyuejia向你推荐文章：" class="km_input" style="width:400px;">     <input id="email_title_valid" type="hidden" name="mail_title_valid" value="989ae703361b8b118cd09192626cfe8c" class="km_input" style="width:400px;">    </div>     <div class="inputfield">     <label class="km_label">分享理由：</label>     <div class="relative">      <textarea id="email_recommend_words" name="recommend_words" rows="3" class="km_input" style="width:400px;"></textarea>     </div>    </div>   </div>   <div class="modal_footer">    <span id="email_operation_action_message" class="operation_action_message"></span>    <input type="button" class="k_button butten_success_ie" id="email_submit" onclick="javascript:email_submit(this)" value="发送">    <input type="button" class="k_button_secondary" onclick="javascript:close_mail_modal(this)" value="取消">   </div>  </div>  <!-- 分享到rtx modal end -->      <!-- 分享到邮件 modal start -->  <div id="share_to_email_modal" class="modal">   <div class="modal_header">    <a class="close" href="javascript:void(0);" onclick="return close_mail_modal(this)">×</a>    <span class="title">分享到邮件</span>   </div>   <div class="modal_body padding">    <input type="hidden" name="target_id" id="mail_target_id" value="">    <input type="hidden" name="target_type" id="mail_target_type" value="">    <input type="hidden" name="group_id" id="group_id" value="38920">    <div class="inputfield">     <label class="km_label" for="mail_toValue">发送给：</label>     <div class="km_user_chooser_wrap relative clearfix">      <a title="点此获得上一次输入内容" onclick="return get_last_name(this)" href="javascript:void(0)">       <img src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/left_arrow.gif" style="vertical-align:top">      </a>     </div>     <!-- 如果是吧内文章可以发到全吧成员 -->     <div class="users_categories ml_85 mt_s" style="max-height : 150px;overflow-y : auto;">           </div>     <div class="clear"></div>     <div class="ml_85 mt_s">      <label>发送方式：</label>      <label><input type="checkbox" value="bcc" name="bcc" id="send_bcc">&nbsp;密送</label>     </div>    </div>     <!-- 设置发送方式 -->    <div class="inputfield share_type hide">     <label class="km_label">通<span style="visibility:hidden">藏</span>过：</label>     <input type="checkbox" value="rtx" name="data[Message][send_type]" id="send_rtx">     <label for="send_rtx">企业微信</label>     <input type="checkbox" value="mail" name="data[Message][send_type]" id="send_mail">     <label for="send_mail">Email</label>    </div>    <div class="inputfield">     <label class="km_label" for="email_title">主<span style="visibility:hidden">藏</span>题：</label>     <input id="email_title" type="text" name="mail_title" class="km_input" style="width:400px;">    </div>     <div class="inputfield">     <label class="km_label">分享理由：</label>     <div class="relative">      <textarea id="email_recommend_words" name="recommend_words" rows="3" class="km_input" style="width:400px;"></textarea>     </div>    </div>       </div>   <div class="modal_footer">    <span id="email_operation_action_message" class="operation_action_message"></span>    <input type="button" class="k_button butten_success_ie" id="email_submit" onclick="javascript:email_submit(this)" value="发送">    <input type="button" class="k_button_secondary" onclick="javascript:close_mail_modal(this)" value="取消">   </div>  </div>  <!-- 分享到邮件modal end -->      <!-- 分享到微博modal start -->  <div id="share_to_twitter_modal" class="modal">   <div id="share_to_twitter_box">    <div class="modal_header">     <a class="close" data-dismiss="modal" href="javascript:void(0);" onclick="close_twitter_share_modal();">×</a>     <span>分享到微博</span>    </div>    <div class="modal_body padding clearfix" id="share_to_twitter_content">     <form method="post" class="share_to_twitter_form" id="share_to_twitter_form">      <div class="share_to_twitter_textarea_block">       <textarea name="data[Twitter][content]" id="share_to_twitter_form_content"></textarea>       <div class="share_to_twitter_at">        <span class="secondary">让你的同事也知道:</span>        <a href="javascript:void(0)" class="ml_s hide" onclick="return share_to_twitter_post_at(this)"></a>        <a href="javascript:void(0)" class="ml_s hide" onclick="return share_to_twitter_post_at(this)"></a>        <a href="javascript:void(0)" class="ml_s" onclick="return share_to_twitter_post_at()">@其他同事</a>       </div>      </div>      <input type="hidden" id="root_twitter_id" name="data[Twitter][root_twitter_id]">      <input type="hidden" name="data[Twitter][submit_type]" value="retweet">      <input id="twitter_share_group_id" type="hidden" name="data[Twitter][group_id]" value="38920">      <input id="twitter_share_place_type" type="hidden" name="data[Twitter][place_type]" value="group">      <input id="twitter_share_place_id" type="hidden" name="data[Twitter][place_id]" value="38920">      <input id="twitter_share_pic_url" type="hidden" name="data[Twitter][pic_url]" value="">      <input id="twitter_share_pic_name" type="hidden" name="data[Twitter][pic_name]" value="">      <input id="twitter_share_link_url" type="hidden" name="data[Twitter][link_url]" value="">      <input id="twitter_share_app_type" type="hidden" name="data[Twitter][app_type]" value="">      <input id="twitter_share_app_target_id" type="hidden" name="data[Twitter][app_target_id]" value="">      <div id="twitter_share_pic"></div>      <div id="group_account_id_wrap" class="group_account_id_wrap hide">       <input id="twitter_share_group_account_id" type="checkbox" name="data[Twitter][group_account_id]" value="">       <label for="twitter_share_group_account_id">以K吧官方帐号分享此微博</label>      </div>     </form>     <div class="share_to_twitter_count right mt_s" id="share_to_twitter_count">140</div>    </div>    <div class="modal_footer">     <input type="button" value="确定" class="k_button butten_success_ie" id="share_twitter">     <input type="button" value="取消" class="k_button_secondary" data-dismiss="modal">    </div>   </div>   <div class="km_box hide" id="twitter_result_box">    <div class="success_twitter_share font_14">分享成功!</div>   </div>  </div>  <!-- 分享到微博modal end -->      <!-- 分享到微信（二维码）modal start -->  <div id="share_to_qrcode_modal" class="modal">   <div class="modal_header">    <a class="close" data-dismiss="modal" href="javascript:void(0);">×</a>    分享到微信   </div>   <div class="modal_body padding">       <div class="pl_l left">     <img id="share_wechat_image" class="mr_l" src="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post">     <a id="share_wechat_image_download" class="pointer" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post">下载二维码</a>    </div>    <div class="pr_l left">     <div class="font_14 mb_l">手机扫一扫，分享给同事</div>     <div class="clearfix">      <input type="text" class="left" id="wechat_url" value="" readonly="">      <span class="left pointer" id="copy_btn">复制</span>     </div>     <div class="mt_m">      此地址可以通过手机或者电脑打开      <a href="http://km.oa.com/group/469/articles/show/155242" target="_blank">如何使用？请点击这里</a>     </div>    </div>      </div>  </div>  <!-- 分享到微信（二维码）modal end -->      </div>
+<div class="hide">
+    <span element_name="km_user_chooser.thtml" style="display:none"></span>
+<link rel="stylesheet" type="text/css" href="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/km_user_chooser.css">
+<style>
+.name_panel{
+	border : 1px solid #ebebeb;
+	overflow:hidden;
+	overflow-y : auto;
+}
+</style>
+<div class="km_input km_ac_input  clearfix name_panel" id="email_to_users_select" style="min-height: 26px; width: 408px; max-height: 100px;"><span class="name_input_errorMsg" style="display: none;">Error</span><span class="name_input_wrap" style="width:266px"><input type="text" class="name_edit_input ignore_changed_check" style="border:none;" placeholder=" 输入姓名或邮件组(邮件组不能超过1000人)"><span class="name_width_agent"></span></span></div>
+<input name="data[mail][to]" type="hidden" id="mail_to_user" class="" value="">
+<script type="text/javascript">
+	seajs.use(['km_user_chooser/km_user_chooser','km_user_chooser/lodash_4.17.10'], function () {
+		var eleId = 'email_to_users_select';
+		var isPlaceHolder = ($('.user_chooser_placeholder')[0] ? $('.user_chooser_placeholder').data('placeholder') : "");
+		window['email_to_users_select'] = new Tencent_UI_Widget.NameSelector($("#"+eleId), {
+			"onContentChange" : function(data, fulldata){
+				$("#mail_to_user").val(data).trigger('change');
+			},
+			"data_type" : "0",
+			"initValue" : "",
+			"isShowErrorItem" : false,
+			"width" : 408,
+			"visibleLine" : 6,
+			"maxHeight" : 100,
+			"zIndex" : 100010,
+			"height" : 26,
+			"limit" : 0,
+			"isPlaceHolder" : isPlaceHolder,
+			"isUseMemory" : 1		});
+	});
+</script>
+<span element_name="km_user_chooser.thtml-end" style="display:none"></span>
+
+	<span element_name="km_user_chooser.thtml" style="display:none"></span>
+<link rel="stylesheet" type="text/css" href="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/km_user_chooser.css">
+<style>
+.name_panel{
+	border : 1px solid #ebebeb;
+	overflow:hidden;
+	overflow-y : auto;
+}
+</style>
+<div class="km_input km_ac_input  clearfix name_panel" id="rtx_to_users_select" style="min-height: 26px; width: 408px; max-height: 100px;"><span class="name_input_errorMsg" style="display: none;">Error</span><span class="name_input_wrap" style="width:266px"><input type="text" class="name_edit_input ignore_changed_check" style="border:none;" placeholder=" 输入姓名或邮件组(邮件组不能超过1000人)"><span class="name_width_agent"></span></span></div>
+<input name="data[mail][to]" type="hidden" id="rtx_to_user" class="" value="">
+<script type="text/javascript">
+	seajs.use(['km_user_chooser/km_user_chooser','km_user_chooser/lodash_4.17.10'], function () {
+		var eleId = 'rtx_to_users_select';
+		var isPlaceHolder = ($('.user_chooser_placeholder')[0] ? $('.user_chooser_placeholder').data('placeholder') : "");
+		window['rtx_to_users_select'] = new Tencent_UI_Widget.NameSelector($("#"+eleId), {
+			"onContentChange" : function(data, fulldata){
+				$("#rtx_to_user").val(data).trigger('change');
+			},
+			"data_type" : "3",
+			"initValue" : "",
+			"isShowErrorItem" : false,
+			"width" : 408,
+			"visibleLine" : 6,
+			"maxHeight" : 100,
+			"zIndex" : 100010,
+			"height" : 26,
+			"limit" : 0,
+			"isPlaceHolder" : isPlaceHolder,
+			"isUseMemory" : 1		});
+	});
+</script>
+<span element_name="km_user_chooser.thtml-end" style="display:none"></span>
+</div>
+
+<script id="share_to_modal_tpl" type="text/txTpl">
+<% if (typeof share_to !== 'undefined') { %>
+	<% if (share_to.rtx) { %>
+	<!-- 分享到rtx modal start -->
+	<div id="share_to_rtx_modal" class="modal">
+		<div class="modal_header">
+			<a class="close" href="javascript:void(0);" onclick="return close_mail_modal(this)">&times;</a>
+			<span class="title">分享到企业微信</span>
+		</div>
+		<div class="modal_body padding">
+			<input type="hidden" name="target_id" id="mail_target_id" value=""/>
+			<input type="hidden" name="target_type" id="mail_target_type" value=""/>
+			<input type="hidden" name="group_id" id="group_id" value="<%= !share_to.rtx.group_id ? '-1' : share_to.rtx.group_id; %>" />
+			<div class="inputfield">
+				<label class="km_label" for="mail_toValue">发送给：</label>
+				<div class="km_user_chooser_wrap relative clearfix">
+					<a title="点此获得上一次输入内容" onclick="return get_last_name(this)" href="javascript:void(0)">
+						<img src="<%= km_path + 'img/left_arrow.gif'; %>" style="vertical-align:top" />
+					</a>
+				</div>
+
+				<!-- 如果是吧内文章可以发到全吧成员 -->
+				<div class="users_categories ml_85 mt_s" style="max-height : 150px;overflow-y : auto;">
+					<% if (share_to.rtx.is_show_subgroup) { %>
+					<label>同时发送：</label>
+					<label>
+						<input type="checkbox" value="sendall" id="sendall" />
+						本吧成员
+					</label>
+					<label>
+						<input type="checkbox" value="admin" id="sendgroupmanager" class="ml_s"/>
+						本吧管理员
+					</label>
+					<% if (share_to.rtx.subgroup) { %>
+					<% for(var i = 0; i < share_to.rtx.subgroup.length; i++) { %>
+					<label>
+						<input type="checkbox" value="<%= share_to.rtx.subgroup[i].id; %>" id="subgroup_<%= share_to.rtx.subgroup[i].id; %>" class="ml_s"/>
+						<%= share_to.rtx.subgroup[i].name.substr(0, 8); %>
+					</label>
+					<% }}} %>
+				</div>
+				<div class="clear"></div>
+			</div>
+
+			<!-- 设置发送方式 -->
+			<div class="inputfield share_type hide">
+				<label class="km_label">通<span style="visibility:hidden">藏</span>过：</label>
+				<input type="checkbox" value="rtx" name="data[Message][send_type]" id="send_rtx" />
+				<label for="send_rtx">企业微信</label>
+				<input type="checkbox" value="mail" name="data[Message][send_type]" id="send_mail"/>
+				<label for="send_mail">Email</label>
+			</div>
+			<div class="inputfield">
+				<label class="km_label" for="email_title">主<span style="visibility:hidden">藏</span>题：</label>
+				<input id="email_title" type="text" name="mail_title" readonly="readonly" value="<%= htmlspecialchars(share_to.rtx.topic_info); %>" class="km_input" style="width:400px;"/>
+				<input id="email_title_valid" type="hidden" name="mail_title_valid" value="<%= share_to.rtx.valid %>" class="km_input" style="width:400px;"/>
+			</div>
+
+			<div class="inputfield">
+				<label class="km_label">分享理由：</label>
+				<div class="relative">
+					<textarea id="email_recommend_words" name="recommend_words" rows="3" class="km_input" style="width:400px;"></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="modal_footer">
+			<span id="email_operation_action_message" class="operation_action_message"></span>
+			<input type="button" class="k_button butten_success_ie" id="email_submit" onclick="javascript:email_submit(this)" value="发送">
+			<input type="button" class="k_button_secondary" onclick="javascript:close_mail_modal(this)" value="取消">
+		</div>
+	</div>
+	<!-- 分享到rtx modal end -->
+	<% } %>
+	<% if (share_to.email) { %>
+	<!-- 分享到邮件 modal start -->
+	<div id="share_to_email_modal" class="modal">
+		<div class="modal_header">
+			<a class="close" href="javascript:void(0);" onclick="return close_mail_modal(this)">&times;</a>
+			<span class="title">分享到邮件</span>
+		</div>
+		<div class="modal_body padding">
+			<input type="hidden" name="target_id" id="mail_target_id" value=""/>
+			<input type="hidden" name="target_type" id="mail_target_type" value=""/>
+			<input type="hidden" name="group_id" id="group_id" value="<%= !share_to.email.group_id ? '-1' : share_to.email.group_id; %>" />
+			<div class="inputfield">
+				<label class="km_label" for="mail_toValue">发送给：</label>
+				<div class="km_user_chooser_wrap relative clearfix">
+					<a title="点此获得上一次输入内容" onclick="return get_last_name(this)" href="javascript:void(0)">
+						<img src="<%= km_path + 'img/left_arrow.gif'; %>" style="vertical-align:top" />
+					</a>
+				</div>
+				<!-- 如果是吧内文章可以发到全吧成员 -->
+				<div class="users_categories ml_85 mt_s" style="max-height : 150px;overflow-y : auto;">
+					<% if (share_to.email.is_show_subgroup) { %>
+					<label>同时发送：</label>
+					<label>
+						<input type="checkbox" value="sendall" id="sendall" />
+						本吧成员
+					</label>
+					<label>
+						<input type="checkbox" value="admin" id="sendgroupmanager" class="ml_s"/>
+						本吧管理员
+					</label>
+					<% if (share_to.email.subgroup) { %>
+					<% for(var i = 0; i < share_to.email.subgroup.length; i++) { %>
+					<label>
+						<input type="checkbox" value="<%= share_to.email.subgroup[i].id; %>" id="subgroup_<%= share_to.email.subgroup[i].id; %>" class="ml_s"/>
+						<%= share_to.email.subgroup[i].name.substr(0, 8); %>
+					</label>
+					<% }}} %>
+				</div>
+				<div class="clear"></div>
+				<div class="ml_85 mt_s">
+					<label>发送方式：</label>
+					<label><input type="checkbox" value="bcc" name="bcc" id="send_bcc" />&nbsp;密送</label>
+				</div>
+			</div>
+
+			<!-- 设置发送方式 -->
+			<div class="inputfield share_type hide">
+				<label class="km_label">通<span style="visibility:hidden">藏</span>过：</label>
+				<input type="checkbox" value="rtx" name="data[Message][send_type]" id="send_rtx" />
+				<label for="send_rtx">企业微信</label>
+				<input type="checkbox" value="mail" name="data[Message][send_type]" id="send_mail"/>
+				<label for="send_mail">Email</label>
+			</div>
+			<div class="inputfield">
+				<label class="km_label" for="email_title">主<span style="visibility:hidden">藏</span>题：</label>
+				<input id="email_title" type="text" name="mail_title" class="km_input" style="width:400px;"/>
+			</div>
+
+			<div class="inputfield">
+				<label class="km_label">分享理由：</label>
+				<div class="relative">
+					<textarea id="email_recommend_words" name="recommend_words" rows="3" class="km_input" style="width:400px;"></textarea>
+				</div>
+			</div>
+			<% if (date.getHours() === 16 || (date.getHours() === 17 && date.getMinutes() <= 30)) { %>
+				<div class="gray send_tips">温馨提示：下午16：00-17:30为公司邮件系统繁忙时段，推送可能会有延迟，请耐心等待 </div>
+			<% } %>
+		</div>
+		<div class="modal_footer">
+			<span id="email_operation_action_message" class="operation_action_message"></span>
+			<input type="button" class="k_button butten_success_ie" id="email_submit" onclick="javascript:email_submit(this)" value="发送">
+			<input type="button" class="k_button_secondary" onclick="javascript:close_mail_modal(this)" value="取消">
+		</div>
+	</div>
+	<!-- 分享到邮件modal end -->
+	<% } %>
+	<% if (share_to.twitter) { %>
+	<!-- 分享到微博modal start -->
+	<div id="share_to_twitter_modal" class="modal">
+		<div id="share_to_twitter_box">
+			<div class="modal_header">
+				<a class="close" data-dismiss="modal" href="javascript:void(0);" onclick="close_twitter_share_modal();">&times;</a>
+				<span>分享到微博</span>
+			</div>
+			<div class="modal_body padding clearfix" id="share_to_twitter_content">
+				<form method="post" class="share_to_twitter_form" id="share_to_twitter_form">
+					<div class="share_to_twitter_textarea_block">
+						<textarea name="data[Twitter][content]" id="share_to_twitter_form_content"></textarea>
+						<div class="share_to_twitter_at">
+							<span class="secondary">让你的同事也知道:</span>
+							<a href="javascript:void(0)" class="ml_s hide" onclick="return share_to_twitter_post_at(this)"></a>
+							<a href="javascript:void(0)" class="ml_s hide" onclick="return share_to_twitter_post_at(this)"></a>
+							<a href="javascript:void(0)" class="ml_s" onclick="return share_to_twitter_post_at()">@其他同事</a>
+						</div>
+					</div>
+					<input type="hidden" id="root_twitter_id" name="data[Twitter][root_twitter_id]">
+					<input type="hidden" name="data[Twitter][submit_type]" value="retweet">
+					<input id="twitter_share_group_id" type="hidden" name="data[Twitter][group_id]" value="<%= share_to.twitter.group_id === '' ? '' : share_to.twitter.group_id; %>">
+					<input id="twitter_share_place_type" type="hidden" name="data[Twitter][place_type]" value="<%= share_to.twitter.group_id === '' ? '' : 'group'; %>">
+					<input id="twitter_share_place_id" type="hidden" name="data[Twitter][place_id]" value="<%= share_to.twitter.group_id === '' ? '' : share_to.twitter.group_id; %>">
+					<input id="twitter_share_pic_url" type="hidden" name="data[Twitter][pic_url]" value="">
+					<input id="twitter_share_pic_name" type="hidden" name="data[Twitter][pic_name]" value="">
+					<input id="twitter_share_link_url" type="hidden" name="data[Twitter][link_url]" value="">
+					<input id="twitter_share_app_type" type="hidden" name="data[Twitter][app_type]" value="">
+					<input id="twitter_share_app_target_id" type="hidden" name="data[Twitter][app_target_id]" value="">
+					<div id="twitter_share_pic"></div>
+					<div id="group_account_id_wrap" class="group_account_id_wrap hide">
+						<input id="twitter_share_group_account_id" type="checkbox" name="data[Twitter][group_account_id]" value="" />
+						<label for="twitter_share_group_account_id">以K吧官方帐号分享此微博</label>
+					</div>
+				</form>
+				<div class="share_to_twitter_count right mt_s" id="share_to_twitter_count">140</div>
+			</div>
+			<div class="modal_footer">
+				<input type="button" value="确定" class="k_button butten_success_ie" id="share_twitter">
+				<input type="button" value="取消" class="k_button_secondary" data-dismiss="modal">
+			</div>
+		</div>
+		<div class="km_box hide" id="twitter_result_box">
+			<div class="success_twitter_share font_14">分享成功!</div>
+		</div>
+	</div>
+	<!-- 分享到微博modal end -->
+	<% } %>
+	<% if (share_to.qr_code) { %>
+	<!-- 分享到微信（二维码）modal start -->
+	<div id="share_to_qrcode_modal" class="modal">
+		<div class="modal_header">
+			<a class="close" data-dismiss="modal" href="javascript:void(0);">&times;</a>
+			分享到微信
+		</div>
+		<div class="modal_body padding">
+		<% if (!share_to.qr_code.qr_body) { %>
+			<div class="pl_l left">
+				<img id="share_wechat_image" class="mr_l" src="">
+				<a id="share_wechat_image_download" class="pointer" href="">下载二维码</a>
+			</div>
+			<div class="pr_l left">
+				<div class="font_14 mb_l">手机扫一扫，分享给同事</div>
+				<div class="clearfix">
+					<input type="text" class="left" id="wechat_url" value="" readonly />
+					<span class="left pointer" id="copy_btn">复制</span>
+				</div>
+				<div class="mt_m">
+					此地址可以通过手机或者电脑打开
+					<a href="<%= km_path + 'group/469/articles/show/155242'; %>" target="_blank">如何使用？请点击这里</a>
+				</div>
+			</div>
+		<% } else { %>
+		<%= share_to.qr_code.qr_body; %>
+		<% } %>
+		</div>
+	</div>
+	<!-- 分享到微信（二维码）modal end -->
+	<% } %>
+	<% if (share_to.notice) { %>
+	<!-- 发给同事modal start -->
+	<div id="send_mail_modal" class="modal">
+		<div class="modal_header">
+			<a class="close" href="javascript:void(0);" onclick="return close_mail_modal(this)">&times;</a>
+			<span class="title">发给同事</span>
+		</div>
+		<div class="modal_body padding">
+			<input type="hidden" name="target_id" id="mail_target_id" value=""/>
+			<input type="hidden" name="target_type" id="mail_target_type" value=""/>
+			<input type="hidden" name="group_id" id="group_id" value="<%= typeof share_to.notice.group_id === 'number' ? share_to.notice.group_id : '-1'; %>" />
+			<div class="inputfield">
+				<label class="km_label" for="mail_toValue">发送给：</label>
+				<div class="km_user_chooser_wrap relative clearfix">
+					<a title="点此获得上一次输入内容" onclick="return get_last_name(this)" href="javascript:void(0)">
+						<img src="<%= km_path + 'img/left_arrow.gif'; %>" style="vertical-align:top" />
+					</a>
+				</div>
+				<!-- 如果是吧内文章可以发到全吧成员 -->
+				<% if (share_to.notice.subgroup) { %>
+				<div class="users_categories ml_85 mt_s" style="max-height : 150px;overflow-y : auto;">
+					<label>同时发送：</label>
+					<label>
+						<input type="checkbox" value="sendall" id="sendall" />
+						本吧成员
+					</label>
+					<label>
+						<input type="checkbox" value="admin" id="sendgroupmanager" class="ml_s"/>
+						本吧管理员
+					</label>
+					<% for(var i = 0; i < share_to.notice.subgroup.length; i++) { %>
+					<label>
+						<input type="checkbox" value="<%= share_to.notice.subgroup[i].id; %>" id="subgroup_<%= share_to.notice.subgroup[i].id; %>" class="ml_s"/>
+						<%= share_to.notice.subgroup[i].name.substr(0, 8); %>
+					</label>
+					<% } %>
+				</div>
+				<div class="clear"></div>
+				<% } %>
+			</div>
+
+			<!-- 设置发送方式 -->
+			<div class="inputfield share_type">
+				<label class="km_label">通<span style="visibility:hidden">藏</span>过：</label>
+				<input type="checkbox" value="rtx" name="data[Message][send_type]" id="send_rtx" />
+				<label for="send_rtx" class="mr_s">企业微信</label>
+				<span class="send_mail_wrap">
+					<input type="checkbox" value="mail" name="data[Message][send_type]" id="send_mail" checked />
+					<label for="send_mail">Email</label>
+					(<label><input type="checkbox" value="bcc" name="bcc" id="send_bcc" />&nbsp;密送</label>)
+				</span>
+			</div>
+			<div class="inputfield">
+				<label class="km_label" for="email_title">主<span style="visibility:hidden">藏</span>题：</label>
+				<input id="email_title" type="text" name="mail_title" readonly="readonly" value="<%= share_to.notice.topic_info; %>" class="km_input" style="width:400px;"/>
+			</div>
+
+			<div class="inputfield">
+				<label class="km_label">分享理由：</label>
+				<div class="relative">
+					<textarea id="email_recommend_words" name="recommend_words" rows="3" class="km_input" style="width:400px;"></textarea>
+				</div>
+			</div>
+			<% date = new Date(); %>
+			<% if (date.getHours() === 16 || (date.getHours() === 17 && date.getMinutes() <= 30)) { %>
+				<div class="gray send_tips">温馨提示：下午16：00-17:30为公司邮件系统繁忙时段，推送可能会有延迟，请耐心等待 </div>
+			<% } %>
+		</div>
+		<div class="modal_footer">
+			<span id="email_operation_action_message" class="operation_action_message"></span>
+			<input type="button" class="k_button butten_success_ie" id="email_submit" onclick="javascript:email_submit(this)" value="发送">
+			<input type="button" class="k_button_secondary" onclick="javascript:close_mail_modal(this)" value="取消">
+		</div>
+	</div>
+	<!-- 发给同事modal end -->
+	<% } %>
+<% } %>
+</script>
+
+<span element_name="zero_clipboard.thtml" style="display: none"></span>
+<script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/tag_show.js"></script><script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/km_toast.js"></script><!--去掉原先的flash复制插件，使用clipboard.js-->
+<script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/clipboard.min-f06c52bfdd.js"></script><script>
+var km_path = 'http://km.oa.com/';
+var copy_btn = '#copy_btn';
+var copy = '#wechat_url';
+var msg = "复制成功，现在你可以粘贴（ctrl+v）到其他地方。";
+
+/**
+ * zeroClipboard 初始化时需要被绑定dom元素为visible，以确定位置信息，
+ * 因此若需要绑定到modal中的dom元素，则需要在modal弹出时再初始化复制组件
+ */
+var modal_trigger = '.js_share_to_qrcode';
+
+if(modal_trigger === '') {
+	_init_clip_binding();
+} else {
+	// async_trigger 可能还没渲染，因此用delegate绑定事件
+	$('body').delegate(modal_trigger, 'click', _modal_init_clip_binding);
+}
+
+function _init_clip_binding() {
+    $(copy_btn).attr("data-clipboard-target", copy);
+    var clipboard = new ClipboardJS(copy_btn);
+
+    clipboard.on('success', function(e) {
+        $.km_toast('success', msg);
+        e.clearSelection();
+    });
+
+    clipboard.on('error', function(e) {
+        window.alert("复制链接出错，请稍后再试或反馈KM热线");
+    });
+}
+
+function _modal_init_clip_binding() {
+	// modal 弹出后再初始化
+	setTimeout(function() {
+		_init_clip_binding();
+
+		// 防止多次初始化
+		$('body').undelegate(modal_trigger, 'click');
+	}, 50);
+}
+
+</script>
+<span element_name="zero_clipboard.thtml-end" style="display: none"></span>
+<span element_name="actions/share_to_modal.thtml-end" style="display:none"></span></div>
+<img id="download_arrowup" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/arrow_down.gif">
+<div id="post2k_div" class="popbox left_align hide" target_id="411333"></div>
+<div id="reship_div" class="popbox left_align hide" target_type="Post" target_id="411333"></div>
+<div id="mail_div" class="modal" target_type="Post" target_id="411333"></div>
+<div id="related_modal" class="modal"></div>
+<div id="file_upload_box" class="modal">
+	<div class="modal_header">
+		<a class="close" data-dismiss="modal" href="javascript:void(0);">×</a>
+		重新上传附件
+	</div>
+	<form id="attach_form" action="http://km.oa.com/attachments/refresh/" method="post" enctype="multipart/form-data">
+		<div class="modal_body padding_xl">
+			<div class="textfield">
+				<label>上传附件:</label>
+				<input type="file" id="attachment_refresh" size="30" name="attachment_refresh">
+	
+				<div id="err_msg" class="hide" style="color:red">请先选择一个文件</div>
+			</div>
+			<div class="textfield">
+				<label>下载权限:</label>
+				<input id="downloadable" name="downloadable" type="checkbox" value="1" checked="">
+				<label for="downloadable"> 附件允许下载</label>
+			</div>
+		</div>
+		<div class="modal_footer">
+			<span id="msg_box" class="hide">文件上传成功</span>
+			<input id="submit_button" class="k_button" type="button" value="确定">
+			<input class="k_button_secondary" type="button" value="取消" data-dismiss="modal">
+		</div>
+	</form>
+</div>
+<div id="operation_modal" class="modal">
+	<div class="modal_header">
+		<a class="close" data-dismiss="modal" href="javascript:void(0);">×</a>
+		<span></span>
+	</div>
+	<div class="modal_body"></div>
+</div>
+<span class="js-operations-data" style="display: none;" data-target_type="Post" data-target_id="411333" data-group_id="38920" data-url_prefix="group/38920/" data-current_user="shuyuejia" data-km_path="http://km.oa.com/" data-entity_data="-1" data-is_km_admin="" data-is_admin=""></span>
+<link rel="stylesheet" type="text/css" href="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/operations-faf3f58943.css"><link href="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/feedback.css" type="text/css" rel="stylesheet">
+<script>
+seajs.use('common/operations');
+</script>
+
+<script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/html2canvas.min.js"></script><script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/post_feedback.js"></script>
+<span element_name="operations.thtml-end" style="display:none"></span>
+	</div>
+	
+	<span element_name="commentscay.thtml" style="display:none"></span>
+<div id="super-comments" class="super-comments">
+	<div class="title km-block-title-bar">
+		<span id="super-comments-count"></span>
+		<span class="wording km-block-title blue-border">大家评论</span>
+	</div>
+	<div id="super-comments-content">
+		<div class="comment">
+<div class="km-comment-container">
+	<div class="comment js-comment-1916486">
+		<a target="_blank" href="http://km.oa.com/user/huchengliu" class="figure">
+			<img src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/profile(2).jpg" class="avatar-fix badge_img" nick="huchengliu">
+		</a>
+		<div class="comment-main">
+			<div class="comment-head">
+				<a target="_blank" href="http://km.oa.com/user/huchengliu">huchengliu</a>
+				<div class="right gray font_12">2019-06-24 15:52:48</div>
+			</div>
+			<div class="comment-content rich_text km_view_content" style=""><img src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/76.gif" alt=""></div>
+			<div class="comment-operator">
+				<span class="digg mr_m">
+					<a href"javascript:void(0);"="" data-comment-id="1916486" class="js-comment-digg gray pointer">
+						<span class="bg_sprites comment-icon comment-digg-icon"></span> 顶
+					</a>
+				</span>
+				<a href="javascript:void(0);" class="comment-reply js-comment-reply gray mr_m" data-comment-id="1916486">
+					<span class="bg_sprites comment-icon comment-reply-icon"></span> 回复
+				</a>
+			</div>
+			<div class="replies">
+			</div>
+			<div id="km-comment-box" class="km-comment-box comment-box-1916486 hide" data-target-type="Comment" data-target-id="1916486">
+				<div class="comment-textarea-wrapper">
+					<textarea class="comment-textarea js-comment-textarea ac_input" rows="3" autocomplete="off"></textarea>
+				</div>
+				<div class="comment-handle">
+					<a class="js-comment-face gray mr_m" title="表情" href="javascript:void(0);">
+						<span class="comment-icon comment-face-icon bg_sprites"></span> 表情
+					</a>
+					<input type="button" value="发表评论" class="js-comment-submit live_ignore_save_notice km-btn km-btn-default right" data-target-id="1916486" data-operate="Reply" _check_id="0">
+					<a class="js-comment-reply gray reply-cancel right" href="javascript:void(0);" data-comment-id="1916486">
+						取消
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="comment js-comment-1916670">
+		<a target="_blank" href="http://km.oa.com/user/hopezhou" class="figure">
+			<img src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/profile(3).jpg" class="avatar-fix badge_img" nick="hopezhou">
+		</a>
+		<div class="comment-main">
+			<div class="comment-head">
+				<a target="_blank" href="http://km.oa.com/user/hopezhou">hopezhou</a>
+				<div class="right gray font_12">2019-06-24 19:02:53</div>
+			</div>
+			<div class="comment-content rich_text km_view_content">赞。</div>
+			<div class="comment-operator">
+				<span class="digg mr_m">
+					<a href"javascript:void(0);"="" data-comment-id="1916670" class="js-comment-digg gray pointer">
+						<span class="bg_sprites comment-icon comment-digg-icon"></span> 顶
+					</a>
+				</span>
+				<a href="javascript:void(0);" class="comment-reply js-comment-reply gray mr_m" data-comment-id="1916670">
+					<span class="bg_sprites comment-icon comment-reply-icon"></span> 回复
+				</a>
+			</div>
+			<div class="replies">
+			</div>
+			<div id="km-comment-box" class="km-comment-box comment-box-1916670 hide" data-target-type="Comment" data-target-id="1916670">
+				<div class="comment-textarea-wrapper">
+					<textarea class="comment-textarea js-comment-textarea ac_input" rows="3" autocomplete="off"></textarea>
+				</div>
+				<div class="comment-handle">
+					<a class="js-comment-face gray mr_m" title="表情" href="javascript:void(0);">
+						<span class="comment-icon comment-face-icon bg_sprites"></span> 表情
+					</a>
+					<input type="button" value="发表评论" class="js-comment-submit live_ignore_save_notice km-btn km-btn-default right" data-target-id="1916670" data-operate="Reply" _check_id="1">
+					<a class="js-comment-reply gray reply-cancel right" href="javascript:void(0);" data-comment-id="1916670">
+						取消
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="commentsPagination" class="asynPagination"></div>
+</div>
+		<div id="commentsPagination" class="asynPagination hide"><div class="pages"></div></div>
+		<div id="km-comment-box" class="km-comment-box">
+			<a target="_blank" href="http://km.oa.com/user/shuyuejia" class="figure">
+				<img src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/avatar.jpg" class="avatar badge_img" nick="shuyuejia">
+			</a>
+			<div class="comment-textarea-wrap overflow-hidden">
+				<div class="comment-textarea-wrapper">
+					<textarea id="comment-textarea" class="comment-textarea js-comment-textarea ac_input" rows="4" autocomplete="off" _value="" _check_id="4"></textarea>
+				</div>
+				<div class="comment-handle">
+					<a class="js-comment-face gray mr_m" title="表情" href="javascript:void(0);">
+						<span class="comment-icon comment-face-icon bg_sprites"></span>
+					</a>
+					<a class="full_comment no_decoration js-init-editor" href="javascript:void(0);">
+		                切换到更多功能
+					</a>
+					<input type="button" value="发表评论" class="send-comment js-comment-submit live_ignore_save_notice km-btn km-btn-default right" data-operate="Comment" _check_id="2">
+				</div>
+			</div>
+			<div class="km-richeditor overflow-hidden hide">
+				<div class="mb_m"><div id="mceu_11" class="mce-tinymce mce-container mce-panel" hidefocus="1" tabindex="-1" role="application" style="visibility: hidden; border-width: 1px;"><div id="mceu_11-body" class="mce-container-body mce-stack-layout"><div id="mceu_12" class="mce-toolbar-grp mce-container mce-panel mce-stack-layout-item mce-first" hidefocus="1" tabindex="-1" role="group"><div id="mceu_12-body" class="mce-container-body mce-stack-layout"><div id="mceu_13" class="mce-container mce-toolbar mce-stack-layout-item mce-first mce-last" role="toolbar"><div id="mceu_13-body" class="mce-container-body mce-flow-layout"><div id="mceu_14" class="mce-container mce-flow-layout-item mce-first mce-btn-group" role="group"><div id="mceu_14-body"><div id="mceu_0" class="mce-widget mce-btn mce-btn-small mce-first" tabindex="-1" role="button" aria-label="Bold"><button id="mceu_0-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-bold"></i></button></div><div id="mceu_1" class="mce-widget mce-btn mce-btn-small" tabindex="-1" role="button" aria-label="Italic"><button id="mceu_1-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-italic"></i></button></div><div id="mceu_2" class="mce-widget mce-btn mce-btn-small" tabindex="-1" role="button" aria-label="Underline"><button id="mceu_2-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-underline"></i></button></div><div id="mceu_3" class="mce-widget mce-btn mce-btn-small mce-colorbutton mce-last" role="button" tabindex="-1" aria-haspopup="true" aria-label="Text color"><button role="presentation" hidefocus="1" type="button" tabindex="-1"><i class="mce-ico mce-i-forecolor"></i><span id="mceu_3-preview" class="mce-preview"></span></button><button type="button" class="mce-open" hidefocus="1" tabindex="-1"> <i class="mce-caret"></i></button></div></div></div><div id="mceu_15" class="mce-container mce-flow-layout-item mce-btn-group" role="group"><div id="mceu_15-body"><div id="mceu_4" class="mce-widget mce-btn mce-btn-small mce-first mce-last" tabindex="-1" role="button" aria-label="一键美化"><button id="mceu_4-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-removeformat"></i></button></div></div></div><div id="mceu_16" class="mce-container mce-flow-layout-item mce-btn-group" role="group"><div id="mceu_16-body"></div></div><div id="mceu_17" class="mce-container mce-flow-layout-item mce-btn-group" role="group"><div id="mceu_17-body"><div id="mceu_5" class="mce-widget mce-btn mce-btn-small mce-first" tabindex="-1" role="button" aria-label="Insert/edit link"><button id="mceu_5-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-link"></i></button></div><div id="mceu_6" class="mce-widget mce-btn mce-btn-small" tabindex="-1" role="button" aria-label="上传图片"><button id="mceu_6-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-km_imgimport"></i></button></div><div id="mceu_7" class="mce-widget mce-btn mce-btn-small" tabindex="-1" role="button" aria-label="截屏"><button id="mceu_7-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-disabled_screen"></i></button></div><div id="mceu_8" class="mce-widget mce-btn mce-btn-small" tabindex="-1" role="button" aria-label="插入代码"><button id="mceu_8-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-insert_code"></i></button></div><div id="mceu_9" class="mce-widget mce-btn mce-btn-small mce-last" tabindex="-1" role="button" aria-label="Source code"><button id="mceu_9-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-code"></i></button></div></div></div><div id="mceu_18" class="mce-container mce-flow-layout-item mce-last mce-btn-group" role="group"><div id="mceu_18-body"><div id="mceu_10" class="mce-widget mce-btn mce-btn-small mce-first mce-last" tabindex="-1" role="button" aria-label="Fullscreen"><button id="mceu_10-button" role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-fullscreen"></i></button></div></div></div></div></div></div></div><div id="mceu_19" class="mce-edit-area mce-container mce-panel mce-stack-layout-item mce-last" hidefocus="1" tabindex="-1" role="group" style="border-width: 1px 0px 0px;"><iframe id="km-editor_ifr" frameborder="0" allowtransparency="true" title="在编辑区按ALT-F9打开菜单，按ALT-F10打开工具栏，按ALT-0查看帮助" style="width: 100%; height: 100px; display: block;" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/saved_resource.html"></iframe></div></div></div><textarea id="km-editor" name="km-editor" style="display: none;" aria-hidden="true"></textarea></div>
+				<input type="button" value="发表评论" class="km-btn km-btn-default right comment-submit-button live_ignore_save_notice" _check_id="3">
+			</div>
+		</div>
+	</div>
+</div>
+<div class="autocomplete-box" style="position: absolute; display: none; z-index: 20000; width: 157px;">
+	<input type="text" value="@" autocomplete="off" class="ac_input">
+	<div class="autocomplete-box-tip">@团队，团队成员会在[提到我的]页收到</div>
+</div>
+
+<div id="comment-common-data" class="hide" data-target-type="Post" data-target-id="411333" data-limit="50" data-current-user="shuyuejia" data-avatar-path="http://dayu.oa.com/avatars/"></div>
+
+<!-- 评论、回复列表展示的模板，包括评论、回复框 -->
+<script id="comment-box-template" type="text/x-handlebars-template">
+<div class="km-comment-container">
+	{{#each comments}}
+	<div class="comment js-comment-{{id}}">
+		<a target="_blank" href="{{profileUrl created_by}}" class="figure">
+			<img src="{{avatarUrl created_by}}" class="avatar-fix badge_img" nick="{{created_by}}" />
+		</a>
+		<div class="comment-main">
+			<div class="comment-head">
+				<a target="_blank" href="{{profileUrl created_by}}">{{created_by}}</a>
+				{{#ifCondition commentable_src 'pc' operator = '!='}}
+					{{#ifCondition commentable_src 'h5'}}
+					<a class="js-show-cell bg_sprites cell_link" href="javascript:void(0);" title="来自腾讯KM 微信企业号"></a>
+					{{else}}
+					<a class="js-show-cell bg_sprites cell_link" href="javascript:void(0);" title="来自腾讯手机KM {{commentable_src}}客户端"></a>
+					{{/ifCondition}}
+				{{/ifCondition}}
+				{{#ifCondition is_expert '1'}}
+				<span class="vip_link pointer" title="{{description}}">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				{{/ifCondition}}
+				{{#ifCondition commentable_owner created_by}}
+					<span class="gray">(楼主)</span>
+				{{/ifCondition}}
+				<div class="right gray font_12">{{created}}</div>
+			</div>
+			<div class="comment-content rich_text km_view_content">{{{content}}}</div>
+			<div class="comment-operator">
+				<span class="digg mr_m">
+				{{#if is_digged}}
+					<span class="bg_sprites comment-icon comment-digged-icon"></span> 顶
+					{{#if digg_count}}
+						<span>(<span class="digg-count">{{digg_count}}</span>)</span>
+					{{/if}}
+				{{else}}
+					<a href"javascript:void(0);" data-comment-id="{{id}}" class="js-comment-digg gray pointer">
+						<span class="bg_sprites comment-icon comment-digg-icon"></span> 顶
+						{{#if digg_count}}
+							<span>(<span class="digg-count">{{digg_count}}</span>)</span>
+						{{/if}}
+					</a>
+				{{/if}}
+				</span>
+				<a href="javascript:void(0);" class="comment-reply js-comment-reply gray mr_m" data-comment-id="{{id}}">
+					<span class="bg_sprites comment-icon comment-reply-icon"></span> 回复
+					{{#ifCondition reply_count '0' operator='!='}}
+						<span>(<span class="digg-count">{{reply_count}}</span>)</span>
+					{{/ifCondition}}
+				</a>
+				{{#if is_creator}}
+					<a href="javascript:void(0);" class="comment-delete js-comment-delete gray" data-comment-id="{{id}}" data-comment-type="Comment">
+						<span class="bg_sprites comment-icon comment-delete-icon"></span> 删除
+					</a>
+				{{/if}}
+			</div>
+			<div class="replies">
+			{{#each replies}}
+			<div class="reply js-comment-{{id}}">
+				<a target="_blank" href="{{profileUrl created_by}}" class="figure">
+					<img src="{{avatarUrl created_by}}" class="avatar-fix-s badge_img" nick="{{created_by}}" />
+				</a>
+				<div class="comment-main">
+					<div class="comment-head">
+						<a target="_blank" href="{{profileUrl created_by}}">{{created_by}}</a>
+						{{#ifCondition commentable_src 'pc' operator = '!='}}
+							{{#ifCondition commentable_src 'h5'}}
+							<a class="js-show-cell bg_sprites cell_link" href="javascript:void(0);" title="来自腾讯KM 微信企业号"></a>
+							{{else}}
+							<a class="js-show-cell bg_sprites cell_link" href="javascript:void(0);" title="来自腾讯手机KM {{commentable_src}}客户端"></a>
+							{{/ifCondition}}
+						{{/ifCondition}}
+						{{#ifCondition is_expert '1'}}
+						<span class="vip_link pointer" title="{{reply_description}}">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+						{{/ifCondition}}
+						{{#ifCondition ../commentable_owner created_by}}
+							<span class="gray">(楼主)</span>
+						{{/ifCondition}}
+                        <div class="right gray font_12">{{created}}</div>
+					</div>
+					<div class="comment-content km_view_content_text">{{{content}}}</div>
+					<div class="comment-operator">
+                        <a href="javascript:void(0);" class="comment-reply js-comment-reply gray mr_m" data-comment-id="{{../id}}" data-comment-nick="{{created_by}}">
+                            <span class="bg_sprites comment-icon comment-reply-icon"></span> 回复
+                        </a>
+						{{#if is_creator}}
+							<a href="javascript:void(0);" class="comment-delete js-comment-delete gray" data-comment-id="{{id}}" data-comment-type="Reply">
+								<span class="bg_sprites comment-icon comment-delete-icon"></span> 删除
+							</a>
+						{{/if}}
+					</div>
+				</div>
+			</div>
+			{{/each}}
+			</div>
+			<div id="km-comment-box" class="km-comment-box comment-box-{{id}} hide" data-target-type="Comment" data-target-id="{{id}}">
+				<div class="comment-textarea-wrapper">
+					<textarea class="comment-textarea js-comment-textarea" rows="3"></textarea>
+				</div>
+				<div class="comment-handle">
+					<a class="js-comment-face gray mr_m" title="表情" href="javascript:void(0);">
+						<span class="comment-icon comment-face-icon bg_sprites"></span> 表情
+					</a>
+					<input type="button" value="发表评论" class="js-comment-submit live_ignore_save_notice km-btn km-btn-default right" data-target-id="{{id}}" data-operate="Reply" />
+					<a class="js-comment-reply gray reply-cancel right" href="javascript:void(0);" data-comment-id="{{id}}">
+						取消
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{/each}}
+</div>
+<div id="commentsPagination" class="asynPagination"></div>
+</script>
+
+<!-- 评论、回复追加模板 -->
+<script id="comment-add-template" type="text/x-handlebars-template">
+{{#ifCondition kmComment.type 'Comment'}}
+<div class="comment js-comment-{{kmComment.id}}">
+{{else}}
+<div class="reply js-comment-{{kmComment.id}}">
+{{/ifCondition}}
+	<a target="_blank" href="{{kmComment.profile_url}}" class="figure">
+		<img data-nick="{{kmComment.nick}}" src="{{kmComment.avatar_url}}" class="avatar-fix badge_img" />
+	</a>
+	<div class="comment-main">
+		<div class="comment-head">
+			<a target="_blank" href="{{kmComment.profile_url}}">{{kmComment.nick}}</a>
+			{{#ifCondition kmComment.is_expert '1'}}
+			<span class="vip_link pointer" title="{{kmComment.expert_info}}">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			{{/ifCondition}}
+			<div class="right gray font_12">
+                {{kmComment.created}}
+            </div>
+		</div>
+		<div class="comment-content rich_text km_view_content">{{{kmComment.content}}}</div>
+		<div class="comment-operator">
+			<span class="digg mr_m">
+				<a href"javascript:void(0);" data-comment-id="{{kmComment.id}}" class="js-comment-digg gray pointer">
+					<span class="bg_sprites comment-icon comment-digg-icon"></span> 顶
+				</a>
+			</span>
+            {{#ifCondition kmComment.type 'Comment'}}
+            <a href="javascript:void(0);" class="comment-reply js-comment-reply gray mr_m" data-comment-id="{{kmComment.id}}">
+                <span class="bg_sprites comment-icon comment-reply-icon"></span> 回复
+            </a>
+            {{else}}
+			<a href="javascript:void(0);" class="comment-reply js-comment-reply gray mr_m" data-comment-id="{{kmComment.target_id}}" data-comment-nick="{{kmComment.nick}}">
+				<span class="bg_sprites comment-icon comment-reply-icon"></span> 回复
+			</a>
+            {{/ifCondition}}
+			{{#ifCondition kmComment.type 'Comment'}}
+			<a href="javascript:void(0);" class="comment-delete js-comment-delete gray" data-comment-id="{{kmComment.id}}" data-comment-type="Comment">
+			{{else}}
+			<a href="javascript:void(0);" class="comment-delete js-comment-delete gray" data-comment-id="{{kmComment.id}}" data-comment-type="Reply">
+			{{/ifCondition}}
+				<span class="bg_sprites comment-icon comment-delete-icon"></span> 删除
+			</a>
+		</div>
+		<div class="replies"></div>
+		<div id="km-comment-box" class="km-comment-box comment-box-{{kmComment.id}} hide" data-target-type="Comment" data-target-id="{{kmComment.id}}">
+			<div class="comment-textarea-wrapper">
+				<textarea class="comment-textarea js-comment-textarea" rows="3"></textarea>
+			</div>
+			<div class="comment-handle">
+				<input type="button" value="发表评论" class="js-comment-submit live_ignore_save_notice km-btn km-btn-default right" data-target-id="{{kmComment.id}}" data-operate="Reply" />
+				<a class="js-comment-reply gray reply-cancel right" href="javascript:void(0);" data-comment-id="{{kmComment.id}}">
+					取消
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+</script>
+
+
+<script>
+	$(document).ready(function(){
+		$('body').append($('#face_wrap'));
+	}).click(function(){
+		$('#face_wrap').hide();
+	});
+	$('#face_wrap').find('.face_box').find('a').mouseover(function() {
+		var $this = $(this);
+		var i = $this.attr('i');
+		var cl = $this.attr('class');
+		var title = $this.attr('title');
+		var face_preview = $this.parent().parent().find('.face_preview');
+		if (i % 15 < 7) {
+			face_preview.css('left', 'auto');
+		} else {
+			face_preview.css('left', '11px');
+		}
+		face_preview.find('.face_img').find('img').attr('src', km_path + 'img/face/' + cl.substr(1) + '.gif')
+		face_preview.find('.face_name').text(title);
+	}).click(function() {
+		$this = $(this);
+		var title = $this.attr('title');
+
+		var face_target = window.face_target;
+		face_target.focus();
+		var cursorAt = face_target.selection().start;
+		var input_value = face_target.val();
+		var value = input_value.substr(0, cursorAt) + " /" + title + input_value.substr(cursorAt);
+		face_target.val(value);
+
+		var selection_start = cursorAt + 2 + title.length ;
+		face_target.selection(selection_start, selection_start);
+
+		var face_target_id = face_target.attr('id');
+		if (face_target_id == 'mini_form_content') {
+			calculate_twitter_length();
+		} else if (face_target_id == 'retweet_form_content') {
+			calculate_retweet_length();
+		} else if (face_target_id == 'retweet_form_content_root') {
+			calculate_retweet_root_length();
+		}
+
+		$('#face_wrap').hide();
+		return false;
+	});
+
+	$('#face_wrap').find('.face_box').mouseover(function() {
+		$(this).parent().find('.face_preview').show();
+	}).mouseout(function() {
+		$(this).parent().find('.face_preview').hide();
+	});
+
+	function close_face_wrap() {
+		$('#face_wrap').hide();
+		return false;
+	}
+
+</script>
+<span element_name="badge_twitter.thtml" style="display:none"></span>
+<link rel="stylesheet" type="text/css" href="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/badge-920fc84687.css"><div style="position: absolute;clear:both;z-index:10002;display:none;" id="user_card">
+    <div class="badge-layer mBlogLayer">
+        <div id="card-content">
+        </div>
+        <div class="arror-down">
+            <span class="arror">◆</span>
+            <span class="arror arror-shadow">◆</span>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+var avatar_path = 'http://dayu.oa.com/avatars/';
+$(function() {
+    var timer = null,
+        cache = {};
+
+    var $user_card = $("#user_card"),
+        $doc = $(document);
+
+    $doc.delegate('.badge_img', "mouseover", function(event) {
+        var badge_img = $(this),
+            nick = badge_img.attr('nick') || badge_img.attr('data-nick'),
+            class_name = badge_img.attr('class');
+
+        timer = setTimeout(function() {
+            user_card(badge_img, nick, class_name);
+        }, 500);
+    });
+
+    $doc.delegate('.badge_img', "mouseout", function() {
+        clearTimeout(timer);
+        timer = setTimeout(function() {
+            $user_card.hide();
+        }, 500);
+    });
+
+    $user_card.mouseover(function() {
+        clearTimeout(timer);
+        $user_card.show();
+    });
+
+    $user_card.mouseout(function() {
+        clearTimeout(timer);
+        $user_card.hide();
+    });
+
+    $user_card.delegate('.links a', 'click', function(e) {
+        var $this = $(this);
+        var $parent = $this.parent();
+        var nick = $this.attr("nick");
+        var group_id = $this.attr("group_id");
+
+        if ($this.hasClass("follow-btn")) {
+            //关注一个人
+            $.post(km_path + 'users/follow_user/' + nick, null, function(data) {
+                data = $.parseJSON(data);
+                if ('ok' == data.result) {
+                    $this.removeClass('follow-btn').addClass('unfollow-btn').html('<span class="icon bg-sprites-km"></span>已关注');
+                    cache[nick] = null;
+                }
+            });
+        } else if ($this.hasClass('unfollow-btn')) {
+            //取消关注一个人
+            $.post(km_path + 'users/unfollow_user/' + nick, null, function(data) {
+                data = $.parseJSON(data);
+                if ('ok' == data.result) {
+                    $this.removeClass('unfollow-btn').addClass('follow-btn').html('<span class="icon bg-sprites-km"></span>关注');
+                    cache[nick] = null;
+                }
+            });
+        } else if ($this.hasClass("follow_a_group")) {
+            //取消关注一个K吧
+            $.getJSON(km_path + 'groups/ajax_follow', {
+                "group_id": group_id,
+                "nick": nick
+            }, function(data) {
+                if ('followed' == data.msg) {
+                    $this.remove();
+                    $parent.append('<div class="unfollow_group_bar"><span class="unfollow_group"><span>已关注</span><a class="unbook_btn unfollow_a_group" group_id="' + group_id + '" nick="' + nick + '" href="javascript:void(0);">取消</a></span></div>');
+                    cache[nick] = null;
+                }
+            });
+        } else if ($this.hasClass("unfollow_a_group")) {
+            //关注一个K吧
+            $.getJSON(km_path + 'groups/ajax_unfollow', {
+                "group_id": group_id,
+                "nick": nick
+            }, function(data) {
+                if ('unfollowed' == data.msg) {
+                    $parent = $this.parent().parent().parent();
+                    $this.parent().parent().remove();
+                    $parent.append('<a group_id="' + group_id + '" nick="' + nick + '" title="关注该k吧后，k吧的微博将出现在你的微博首页" class="follow follow_a_group" href="javascript:void(0);"> </a>');
+                    cache[nick] = null;
+                }
+            });
+        }
+    });
+
+    function user_card(badge_img, nick, class_name) {
+        // 有缓存直接从缓存中取出，减少请求次数
+        if (cache[nick]) {
+            nick.substr(0, 2) == 'g_' ? render(class_name, cache[nick]) : render_user_card(cache[nick]);
+        } else {
+            $.get("http://km.oa.com/apis/user_card.php", {
+                "nick": nick
+            }, function(data) {
+                if (nick.substr(0, 2) == 'g_') {
+                    // k吧
+                    render(class_name, data);
+                } else {
+                    data = $.parseJSON(data);
+                    render_user_card(data);
+                    cache[nick] = data;
+                }
+            });
+        }
+
+        reset_pos(badge_img, class_name);
+    }
+
+    // 保留k吧的渲染
+    function render(class_name, data) {
+        if (class_name.indexOf('at_group') > 0) {
+            data = data.replace("官方微博", "所有成员");
+        }
+        $user_card.find('#card-content').empty().html(data);
+        $user_card.fadeIn('fast');
+    }
+
+    // 渲染用户模板
+    function render_user_card(data) {
+        var arr = ['<div id="user-card-content">',
+                    '<div class="card-header">',
+                        '<a target="_blank" href="' + km_path + 'user/' + data.nick + '"><img class="avatar" src="' + avatar_path + data.nick + '/profile.jpg" alt="' + data.nick + '"></a>',
+                        '<div class="info">',
+                            '<p class="name"><a href="' + km_path + 'user/' + data.nick + '">' + data.nick + '(' + data.name + ')</a> ' + data.level + '</p>',
+                        '</div>',
+                        '<a class="department single_line" href="javascript:void(0);" title="' + data.user_major_dept_info + '">' + data.user_major_dept_info + '</a>',
+                    '</div>',
+                    '<div class="card-body">',
+                        '<ul class="short-info">',
+                            '<li>文章数 <a target="_blank" href="' + km_path + 'user/' + data.nick + '/articles">' + data.post_count +'</a></li>',
+                            '<li>被赞同数 <a target="_blank" href="' + km_path + 'user/' + data.nick + '/q">' + data.agreed_count +'</a></li>',
+                            '<li>关注' + data.gender + ' <a target="_blank" href="' + km_path + 'user/' + data.nick + '/followed">' + data.followed_count + '</a></li>',
+                        '</ul>',
+                    '</div>',
+                    '<div class="card-footer links">'];
+        if (data.is_me) {
+            arr.push('<a class="unfollow-btn" href="javascript:void(0)"><span class="icon bg-sprites-km"></span>已关注</a>');
+        } else {
+            if (data.is_mine_friend) {
+                arr.push('<a nick="' + data.nick + '" class="unfollow-btn" href="javascript:void(0)"><span class="icon bg-sprites-km"></span>已关注</a>');                
+            } else {
+                arr.push('<a nick="' + data.nick + '" class="follow-btn" href="javascript:void(0)"><span class="icon bg-sprites-km"></span>关注</a>');
+            }
+        }
+        arr.push('</div>');
+        arr.push('</div>');
+        
+        $user_card.find('#card-content').empty().html(arr.join(''));
+        $user_card.fadeIn('fast');
+    }
+
+    function reset_pos(badge_img, class_name) {
+        var badge_img_size = { w : badge_img.width(), h : badge_img.height() },
+            offset = badge_img.offset(),
+            user_nick = badge_img.attr("nick"),
+            is_right_block = badge_img.attr("is_right_block"),
+            left_p, top_p,
+            window_size = { w : $(window).width(), h : $(window).height() };
+
+        left_p = offset.left - 175 + badge_img_size.w / 2;
+
+        if (user_nick && user_nick.substr(0, 2) == 'g_' && is_right_block != 1) {
+            top_p = offset.top - 156 + badge_img_size.h / 2;
+        } else {
+            top_p = offset.top - 266 + badge_img_size.h / 2;
+        }
+        $('.arror-down').removeClass('arror-up');
+        if (top_p - $(window).scrollTop() < -30) {
+            top_p += 300;
+            $('.arror-down').addClass('arror-up');
+        }
+
+        $user_card.css({
+            "left": left_p,
+            "top": top_p
+        });
+
+        if (class_name.indexOf('badge_img') >= 0) {
+            $("#layerArrow").removeClass("layerUpArrow");
+            $("#layerArrow").addClass("layerArrow");
+        } else {
+            $("#layerArrow").removeClass("layerArrow");
+            $("#layerArrow").addClass("layerUpArrow");
+        }
+    }
+});
+</script>
+<span element_name="badge_twitter.thtml-end" style="display:none"></span>
+<link rel="stylesheet" type="text/css" href="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/comment-bf72a4d373.css"><script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/bootstrap-button-6a75f3bae5.js"></script><script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/jquery.form.js"></script>
+<link rel="stylesheet" type="text/css" href="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/skin.min.css"><link rel="stylesheet" type="text/css" href="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/tinyMce-29efc5e6f4.css"><link rel="stylesheet" type="text/css" href="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/jquery.autocomplete.css"><script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/tinymce.min.js"></script><script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/plugins.min.js"></script><script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/jquery.autocomplete.js"></script>
+<script type="text/javascript">
+	// 评论富文本照片上传
+	qmEditorPhotoLoaded = function(a){
+		if(typeof a == 'string'){
+			var src = a.indexOf("<body>") !== -1 ? a.substring(a.indexOf("<body>") + 6, a.indexOf("</body>")) : a;
+			src = $.trim(src); // 去除前后可能存在的空格
+			var img = "<img src='" + src + "' />";
+			tinymce.activeEditor.execCommand('mceInsertContent',false,img);
+		}else{
+			var htm = a.contentWindow.document.body.innerHTML;
+			if($.trim(htm) != ""){
+				var img = $("<img />").attr("src",a);
+				img = "<img src='" + htm + "' />";
+				tinymce.activeEditor.execCommand('mceInsertRawHTML',false,img);
+				tinymce.activeEditor.windowManager.close();
+			}
+		}
+	}
+
+	// 检查上传的图片的格式
+	function check_img_format(e){
+		var file_name = $(e).val();
+		$("#ipt_UploadFile_name").text(file_name);
+		var arr = e.value.split("."),
+			arr_l = arr.length;
+		var error_type_array = ['bmp', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'txt', 'js', 'php', 'zip', 'rar', 'css', 'less'];
+
+		if(error_type_array.indexOf(arr[arr_l-1].toLowerCase()) >= 0){
+			alert("不支持上传这个类型的图片!");
+			document.forms['img_upload_form'].reset();
+		}
+	}
+
+	seajs.use(['common/comment'], function () {
+		// 评论加载
+		loadComment();
+	});
+</script>
+
+<iframe name="qmEditorPhotoIframe_km-editor" src="javascript:void((function(){document.open();document.close();})())" class="hide" onload="qmEditorPhotoLoaded(this);" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/saved_resource(1).html"></iframe>
+<span element_name="comments.thtml-end" style="display:none"></span>
+</div>
+<div class="right-side-bar article_right_side_bar right">
+	<span element_name="users/author_info.thtml" style="display:none"></span>
+<div class="tag_box">
+
+	
+	<div class="name_card clearfix about-author-bottom">
+		<div class="km-block-title-bar no_border">
+			<div class="km-block-title">关于作者</div>
+		</div>
+		<dl class="name no_padding clearFix">
+			<dt>
+				<a href="http://km.oa.com/user/slashwang" target="_blank" class="pic no_widget"><img src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/profile(4).jpg" nick="slashwang" class="avatar badge_img"></a>			</dt>
+			<dd class="name_card_con0 name-card">
+				<span class="user_name_link">
+                    <a href="http://km.oa.com/user/slashwang" target="_blank">slashwang(王洋子豪)</a>				</span>
+				<div class="user_influence">
+					<span class="user_level5 user_level_badge user_level user_logo_span" nick="slashwang" title="5级影响力"></span>				</div>
+								<p class="address single_line">
+                    WXG\技术架构部\系统平台一组员工                </p>
+			</dd>
+		</dl>
+	</div>
+		<div id="user_created_articles" class="user_created_articles clearFix">
+		<div class="km-block-title-bar no_border">
+			<div class="km-block-title">作者文章</div>
+		</div>
+		<ul class="article_list">
+						<li class="single_line bulleted">
+				<a href="http://km.oa.com/posts/show/431104?kmref=author_post" title="异构计算之道: GPU图计算的前世今生" target="_blank" class="a_black">异构计算之道: GPU图计算的前世今生</a>			</li>
+						<li class="single_line bulleted">
+				<a href="http://km.oa.com/posts/show/430180?kmref=author_post" title="现代并行计算系列文章之四：影响GPU性能的若干因素" target="_blank" class="a_black">现代并行计算系列文章之四：影响GPU性能的若干因素</a>			</li>
+						<li class="single_line bulleted">
+				<a href="http://km.oa.com/posts/show/416861?kmref=author_post" title="深度学习模型中的卷积计算分析及优化方法总结（下）" target="_blank" class="a_black">深度学习模型中的卷积计算分析及优化方法总结（下）</a>			</li>
+						<li class="single_line bulleted">
+				<a href="http://km.oa.com/posts/show/415011?kmref=author_post" title="机智AutoML：大规模并行实验调度及超参调优" target="_blank" class="a_black">机智AutoML：大规模并行实验调度及超参调优</a>			</li>
+						<li class="single_line bulleted">
+				<a href="http://km.oa.com/posts/show/411333?kmref=author_post" title="深度学习模型中的卷积计算分析及优化方法总结（上）" target="_blank" class="a_black">深度学习模型中的卷积计算分析及优化方法总结（上）</a>			</li>
+					</ul>
+	</div>
+	</div> 
+<script type="text/javascript">
+	$(".info-prize-desc").on("click",function(){
+		var url = km_path + "articles/show_certificated_articles";
+		window.open(url);
+		return false;
+	});
+	$(".avatar_prize_container").on("click",function(){
+		var url = km_path + "articles/show_certificated_articles";
+		window.open(url);
+		return false;
+	});	
+</script>
+<span element_name="users/author_info.thtml-end" style="display:none"></span>	<span element_name="articles/belong_to_knowledges.thtml" style="display:none"></span>
+<div class="tag_box recommend-articles">
+	</div>
+<span element_name="articles/belong_to_knowledges.thtml-end" style="display:none"></span>	<span element_name="users/recommend_articles.thtml" style="display:none"></span>
+<div class="tag_box recommend-articles">
+	</div> 
+<span element_name="users/recommend_articles.thtml-end" style="display:none"></span></div>
+
+<script type="text/javascript">
+$(function() {
+    var target_type = "post";
+    var use_current_url = 1;
+    $("#article_content").bind('copy', function() {
+        var url = "";
+        if (use_current_url) {
+            url = window.location.href;
+        } else {
+            switch(target_type) {
+                case 'question':
+                    url = km_path + "q/view/" + $(this).attr("data-target_id");
+                    break;
+                default:
+                    break;
+            }
+        }
+        var possibility = 0;
+        var text = '';
+        if ($.browser.msie) {
+            var selection = document.selection.createRange();
+            text = selection.text;
+        } else  {
+            var selection = window.getSelection();
+            text = selection.toString();
+        }
+        if(text.length > 500 && $.km_toast){
+            $.km_toast('success', '复制操作已记录（KM上的文章仅供内部学习与交流，未经公司授权切勿外传）');
+        }
+        possibility = (text.length + 120) / 200;
+        $.post(km_path + 'operations/lottery', {url: url, possibility: possibility}, function(ret) {
+            if (ret.result == 'ok') {
+                // some code here
+            }
+        }, 'json');
+    });
+});
+</script><script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/highlight.min(1).js"></script>
+
+<span class="hide" id="post_view_data" data-postid="411333" data-pkmpath="https://km.tencent.com/pkm/">
+</span>
+<span class="user_chooser_placeholder" data-placeholder="输入姓名或邮件组(邮件组不能超过1000人)">	
+</span>
+
+
+<script type="text/javascript">
+	//加水印
+	(new WaterMark({
+		watermarked: ".article_middle_main .km_view_content", 
+		img: km_path + 'pages/personalBg',
+		active: 1 })
+	).draw();
+
+	//记录次时间，用于记录文单渲染后的花费时间
+	_article_after_time = new Date();
+	_article_cost['_article_after_cost'] = _article_after_time - _article_render_time;
+	_client_field3 = '{"_article_pre_cost":'+_article_cost["_article_pre_cost"]+', "_article_render_cost":'+_article_cost['_article_render_cost']+', "_article_after_cost":'+_article_cost['_article_after_cost']+'}';
+
+	//PPT预览安全提醒冲突处理
+	if($(".confidential").find(".primary")[0]){
+		$(".attachment_secret_tip").hide();
+	}
+
+	//鼠标hover赞赏按钮 出现打赏二维码
+	$('.post-reward-btn').mouseover(function() {
+		$('.post-reward-panel').show();
+	});
+	$('.post-reward-btn').mouseout(function() {
+		$('.post-reward-panel').hide();
+	});
+
+	$(function() {
+		$('.cl-preview-section input[type=checkbox]').each(function(i, block) {
+			$(block).attr('disabled', 'disabled');
+		})
+		$('*:not(.cl-preview-section)>pre code:not(.prism)').each(function(i, block) {
+			// 兼容旧版代码块
+			hljs.highlightBlock(block);
+	  	});
+
+		//获取打赏二维码
+		var wechat_image_url = km_path + 'articles/get_reward_qr_code?post_id=' + $('#post_view_data').data('postid');
+
+		$('.post-reward-qrcode').attr('src', wechat_image_url);
+
+		// 点击作者头像和用户名区域跳转到个人资料页
+		$('.jump').on('click', function(e){
+			window.location.href = $(this).data('url');
+		});
+
+		$("#apply-article-ope").on("click",function(e){
+			var gid = $(this).data('groupid') || 0;
+			if(gid == "" || gid == "0" || gid == 0){
+				var action = km_path + 'articles/applyKnowledgeAwards';
+			}else{
+				var action = km_path + 'group/' + ($(this).data('groupid') || 0) + '/articles/applyKnowledgeAwards';
+			}
+			var tar = $(this);
+			$.ajax({
+				url: action,
+				type: 'get',
+				data: {
+					id :$(this).data('postid') || 0
+				},
+				dataType: 'json',
+				success: function(data) {
+					if(data.result && data.result == "ok") {
+						tar.hide();
+						$(".has-apply-btn").show();
+						//console.log("apply success");
+					}else{
+						$(".has-apply-btn").hide();
+						tar.show();
+						//console.log("apply failed");
+					}
+				}
+			});
+
+		});
+
+		// 编辑与修改打赏引导语
+		$(document).on('click', '.edit-reward-tip', function(){
+			$('.post-reward-tip').hide();
+			$('.input-reward-tip').css('display', 'inline').select();
+		});
+		$('.input-reward-tip').on('blur', function(){
+			var tip = $(this).val();
+			var action = km_path + 'articles/save_reward_tip';
+			var id = $('#post_view_data').data('postid');
+			var post_data = {'tip':tip,'id':id};
+
+			$(this).hide();
+			$('.post-reward-tip').html($(this).val() + '<span class="bg-sprites-km edit-reward-tip pointer"></span>');
+			$('.post-reward-tip').show();
+
+			$.ajax({
+				url: action,
+				type: 'get',
+				data: post_data,
+				dataType: 'json',
+				success: function(data) {
+					if(data.state == 1) {
+						return true;
+					}
+				}
+			});
+		});
+	});
+</script>
+<span element_name="articles/post.thtml-end" style="display:none"></span>
+</div>
+		</div><div class="select-feedback-tip" hotrep="hp.doc-center.feedback.selection.btn" id="feed_right_btn"><span class="feed_link"></span><span>内容反馈</span></div>
+		<div class="km-tui-footer">
+			<span element_name="km_footer.thtml" style="display:none"></span>
+<div class="font_14 footer-new">
+	<div>Copyright©1998-2020 Tencent Inc. All Rights Reserved</div>
+	<div class="admin-foot">
+		<div>腾讯公司研发管理部 版权所有</div>
+		<cake:nocache>
+							<div>
+				<a target="_blank" href="http://km.oa.com/chartlets/km/">广告申请</a>
+				<a id="km_feedback_button" href="javascript:void(0);">反馈问题</a>
+                			</div>
+				</cake:nocache>
+	</div>
+	<script type="text/javascript">
+$(document).ready(function() {
+    if(typeof(window._client_time_init) != "undefined") {
+        window._client_script_time = new Date() - window._client_time_init;
+    }
+});
+if(typeof(window._client_time_init) != "undefined") {
+    window._client_dom_time = new Date() - window._client_time_init;
+}
+</script>[<span id="dom_time" title="Html render time"><script type="text/javascript">if(typeof(window._client_dom_time) != "undefined"){document.write(_client_dom_time);}</script>2003</span>/<span id="client_time" title="Javascript time">5775</span>/<span id="server_time" title="Server time">207</span> ms]
+<script type="text/javascript">
+$(document).ready(function() {
+    if(typeof(window._client_script_time) != "undefined") {
+        $("#client_time").html(window._client_script_time);
+    }
+});
+</script><script type="text/javascript">window._osslog = {"field2":"10.14.87.234","field1":"author_post","module":"Dept","user":"shuyuejia","mvc_controller":"articles","mvc_action":"show","time_cost":207,"place":"kbar:38920","http_method":"GET","url":"\/group\/38920\/articles\/show\/383216?kmref=author_post","reference":"http:\/\/km.oa.com\/group\/24938\/articles\/show\/400944?kmref=knowledge","objid":"383216","isdev":false,"system":"KM"};
+        $(document).ready(function() {if(typeof(window._client_script_time) != "undefined") {window._osslog.client_script_time = window._client_script_time;}});
+        if(typeof(window._client_dom_time) != "undefined") {window._osslog.client_dom_time = window._client_dom_time;}
+        if(typeof(window._client_field3) != "undefined") {window._osslog.field3 = window._client_field3;} 
+        window._osslog.top_path="http://top.oa.com/";
+        </script><script type="text/javascript" src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/tracker.js" defer="defer"></script></div>
+<div id="bottom_bar_new">
+    <div id="km_ikm_new" class="pointer bg-sprites-km" title="扫描安装">
+    	<a href="http://km.oa.com/pages/ikm" target="_blank" class="ikm-link">
+        	<div id="ikm-qcode" class="hide">
+        		<img src="./深度学习模型中的卷积计算分析及优化方法总结（上） - 太极_机智加速 机器学习平台 - KM平台_files/km_qrcode.png">
+        		<div class="ikm-right-arrow"></div>
+        		<p class="center">扫一扫安装手机KM</p>
+        	</div>
+    	</a>
+    </div>
+	<div id="return_top_button" class="return_top_new bg-sprites-km pointer hide" onclick="javascript:window.scrollTo(0,0);" title="回到顶部" style="display: block;"></div>
+
+</div>
+
+<!--反馈使用的弹出框-->
+<div id="bootstrap_modal" class="modal hide">
+	<div class="modal_header">
+		<a class="close" data-dismiss="modal" href="javascript:void(0);">×</a>
+		<span class="title"></span>
+	</div>
+	<div class="modal_body"></div>
+</div>
+<span element_name="feedback_button.thtml-start" style="display:none"></span>
+<span id="feedback_ele_data" class="hide" data-security-alert="" data-q-convention-alert="" data-q-frequency-alert="">
+</span>
+
+<!-- 乐问公约弹框 -->
+<div class="q-convention hide">
+	<div class="q-convention-border bg-sprites-km img-q-convention-border"></div>
+	<div class="q-convention-modal">
+		<div class="q-convention-header">乐问公约考试</div>
+
+		<div class="q-convention-content">
+			<div class="q-convention-content-desc">
+			为把乐问建设成更美好的鹅厂内部社区，请大家：<br>
+			1.秉承真诚友善的态度参与互动，尊重包容不同观点；<br>
+			2.理性、客观的陈述问题、事实和观点，文明用语；<br><br>
+			你需要阅读<a href="http://km.oa.com/q/gongyue" target="_blank">《乐问公约》</a>并通过考试才能提问和回答。<br>
+			</div>
+		</div>
+
+		<a href="http://km.oa.com/q/convention"><div class="q-exam-btn active">进入考试</div></a>
+		<div class="q-convention-btn active">暂时跳过</div>
+	</div>
+</div>
+
+<script>
+	$(document).ready(function() {
+		$('#km_feedback_button').click(function(e) {
+			var current_url = window.location.href;
+			var url = _fullbase + 'common/feedback?system=km&feedback_url=' + encodeURIComponent(current_url);
+			$('#bootstrap_modal').addClass('modal_wide');
+			$('#bootstrap_modal').modal({
+				title: '反馈', 
+				iframe: true, 
+				url: url, 
+				width: '750px', 
+				height: '477px', 
+				show: true
+			});
+		});
+
+		// 在乐问相关页面，优先判断乐问公约弹框
+		if ($('#feedback_ele_data').data("q-convention-alert")) {
+			// 遮罩禁止背景滚动
+			$('html').css('hight', '100%');
+			$('html').css('overflow', 'hidden');
+
+			$('.q-convention').removeClass('hide');
+		} else {
+			//信息安全警告框的代码
+			if($("#feedback_ele_data").data("security-alert")) {
+				var url = km_path + 'pages/information_security_alert?isa_callback=read_confirm';
+				$('#flash_content').hide();
+				var ddd = $('#bootstrap_modal');
+				ddd.modal({
+					title: '信息安全声明', 
+					iframe: true, 
+					url: url, 
+					width: '100%', 
+					height: '360px', 
+					show: true,
+					backdrop: 'static'
+				});
+			}
+		}
+
+		// 乐问相关页面，判断是否需要唤起频率防沉迷提醒
+		if ($('#feedback_ele_data').data('q-frequency-alert')) {
+			var FREQUENCY_COOKIE_KEY = 'is_q_frequency_alert';
+			var FREQUENCY_TIME = 100;
+			var isAlerted = getCookie(FREQUENCY_COOKIE_KEY);
+
+			if (isAlerted) return;
+
+			$.get(km_path + 'gkm/api/question/user-frequency', function(res) {
+				if (res.code == 0) {
+					if (res.data.count > FREQUENCY_TIME) {
+						$.alert('今日乐问格外精彩，但也要注意劳逸结合哦！');
+						setCookie(FREQUENCY_COOKIE_KEY, true, 1); // one day
+					}
+				}
+			});
+		}
+	});
+
+	// 点击乐问公约同意，修改按钮状态
+	$('#q-convention-checkbox').change(function() {
+		// 被选中按钮更改状态
+		if ($('#q-convention-checkbox').attr('checked') == 'checked') {
+			$('.q-convention-btn').addClass('active');
+		} else {
+			$('.q-convention-btn').removeClass('active');
+		}
+	});
+
+	// 点击同意乐问公约
+	$('.q-convention-btn').click(function() {
+		if ($(this).hasClass('active')) {
+			setCookie('is_q_convention_exam_alerted', true, 90);
+			setCookie('is_alerted', true, 90);
+
+			$('html').css('hight', 'auto');
+			$('html').css('overflow', 'scroll');
+			$('.q-convention').addClass('hide');
+		};
+	});
+
+	function close_box() {
+		$('#bootstrap_modal').modal('hide');
+		$('#bootstrap_modal').removeClass('modal_wide');
+	}
+
+	function success_tips(url) {
+		close_box();
+		var wording = '反馈成功！你可以<a target="_blank" href="' + url + '">到CE上去查看</a>';
+		$.alert(wording);
+	}
+
+	function read_confirm() {
+		$('#flash_content').show();
+		setCookie('is_alerted', true, 90);
+		close_box();
+	}
+	
+</script>
+<span element_name="feedback_button.thtml-end" style="display:none"></span>
+
+<script>
+$(document).ready(function() {
+	var $window = $(window);
+	var $return_top_button = $('#return_top_button');
+
+	toggle_return_to_top_button($window, $return_top_button);
+	$window.scroll(function() {
+		toggle_return_to_top_button($window, $return_top_button);
+	});
+});
+function toggle_return_to_top_button ($window, $return_top_button) {
+	if ($window.scrollTop() >= 100) {
+		$return_top_button.show();
+	} else {
+		$return_top_button.hide();
+	}
+}
+</script>
+<span element_name="km_footer.thtml-end" style="display:none"></span>
+		</div>
+		<span element_name="message.thtml" style="display:none"></span>
+<span element_name="message.thtml-end" style="display:none"></span>
+	
+	<script>
+				
+				
+		$(document).ready(function() {
+			//团队吧创建引导
+						if(init_videos){
+				init_videos();
+			}
+		});
+	</script>
+
+<div id="face_wrap" class="face_wrap">
+	<div class="top_tab">
+		<a class="close" title="关闭" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" onclick="return close_face_wrap()"></a>
+	</div>
+
+	<div class="face_box">
+		<a title="微笑" class="f14" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="0"></a>
+		<a title="撇嘴" class="f1" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="1"></a>
+		<a title="色" class="f2" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="2"></a>
+		<a title="发呆" class="f3" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="3"></a>
+		<a title="得意" class="f4" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="4"></a>
+		<a title="流泪" class="f5" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="5"></a>
+		<a title="害羞" class="f6" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="6"></a>
+		<a title="闭嘴" class="f7" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="7"></a>
+		<a title="睡" class="f8" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="8"></a>
+		<a title="大哭" class="f9" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="9"></a>
+		<a title="尴尬" class="f10" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="10"></a>
+		<a title="发怒" class="f11" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="11"></a>
+		<a title="调皮" class="f12" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="12"></a>
+		<a title="呲牙" class="f13" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="13"></a>
+		<a title="惊讶" class="f0" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="14"></a>
+		<a title="难过" class="f15" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="15"></a>
+		<a title="酷" class="f16" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="16"></a>
+		<a title="冷汗" class="f96" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="17"></a>
+		<a title="抓狂" class="f18" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="18"></a>
+		<a title="吐" class="f19" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="19"></a>
+		<a title="偷笑" class="f20" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="20"></a>
+		<a title="可爱" class="f21" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="21"></a>
+		<a title="白眼" class="f22" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="22"></a>
+		<a title="傲慢" class="f23" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="23"></a>
+		<a title="饥饿" class="f24" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="24"></a>
+		<a title="困" class="f25" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="25"></a>
+		<a title="惊恐" class="f26" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="26"></a>
+		<a title="流汗" class="f27" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="27"></a>
+		<a title="憨笑" class="f28" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="28"></a>
+		<a title="大兵" class="f29" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="29"></a>
+		<a title="奋斗" class="f30" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="30"></a>
+		<a title="咒骂" class="f31" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="31"></a>
+		<a title="疑问" class="f32" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="32"></a>
+		<a title="嘘" class="f33" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="33"></a>
+		<a title="晕" class="f34" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="34"></a>
+		<a title="折磨" class="f35" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="35"></a>
+		<a title="衰" class="f36" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="36"></a>
+		<a title="骷髅" class="f37" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="37"></a>
+		<a title="敲打" class="f38" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="38"></a>
+		<a title="再见" class="f39" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="39"></a>
+		<a title="擦汗" class="f97" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="40"></a>
+		<a title="抠鼻" class="f98" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="41"></a>
+		<a title="鼓掌" class="f99" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="42"></a>
+		<a title="糗大了" class="f100" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="43"></a>
+		<a title="坏笑" class="f101" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="44"></a>
+		<a title="左哼哼" class="f102" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="45"></a>
+		<a title="右哼哼" class="f103" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="46"></a>
+		<a title="哈欠" class="f104" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="47"></a>
+		<a title="鄙视" class="f105" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="48"></a>
+		<a title="委屈" class="f106" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="49"></a>
+		<a title="快哭了" class="f107" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="50"></a>
+		<a title="阴险" class="f108" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="51"></a>
+		<a title="亲亲" class="f109" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="52"></a>
+		<a title="吓" class="f110" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="53"></a>
+		<a title="可怜" class="f111" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="54"></a>
+		<a title="菜刀" class="f112" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="55"></a>
+		<a title="西瓜" class="f89" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="56"></a>
+		<a title="啤酒" class="f113" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="57"></a>
+		<a title="篮球" class="f114" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="58"></a>
+		<a title="乒乓" class="f115" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="59"></a>
+		<a title="咖啡" class="f60" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="60"></a>
+		<a title="饭" class="f61" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="61"></a>
+		<a title="猪头" class="f46" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="62"></a>
+		<a title="玫瑰" class="f63" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="63"></a>
+		<a title="凋谢" class="f64" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="64"></a>
+		<a title="示爱" class="f116" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="65"></a>
+		<a title="爱心" class="f66" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="66"></a>
+		<a title="心碎" class="f67" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="67"></a>
+		<a title="蛋糕" class="f53" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="68"></a>
+		<a title="闪电" class="f54" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="69"></a>
+		<a title="炸弹" class="f55" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="70"></a>
+		<a title="刀" class="f56" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="71"></a>
+		<a title="足球" class="f57" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="72"></a>
+		<a title="瓢虫" class="f117" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="73"></a>
+		<a title="便便" class="f59" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="74"></a>
+		<a title="月亮" class="f75" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="75"></a>
+		<a title="太阳" class="f74" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="76"></a>
+		<a title="礼物" class="f69" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="77"></a>
+		<a title="拥抱" class="f49" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="78"></a>
+		<a title="强" class="f76" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="79"></a>
+		<a title="弱" class="f77" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="80"></a>
+		<a title="握手" class="f78" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="81"></a>
+		<a title="胜利" class="f79" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="82"></a>
+		<a title="抱拳" class="f118" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="83"></a>
+		<a title="勾引" class="f119" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="84"></a>
+		<a title="拳头" class="f120" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="85"></a>
+		<a title="差劲" class="f121" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="86"></a>
+		<a title="爱你" class="f122" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="87"></a>
+		<a title="NO" class="f123" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="88"></a>
+		<a title="OK" class="f124" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="89"></a>
+		<a title="爱情" class="f42" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="90"></a>
+		<a title="飞吻" class="f85" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="91"></a>
+		<a title="跳跳" class="f43" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="92"></a>
+		<a title="发抖" class="f41" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="93"></a>
+		<a title="怄火" class="f86" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="94"></a>
+		<a title="转圈" class="f125" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="95"></a>
+		<a title="磕头" class="f126" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="96"></a>
+		<a title="回头" class="f127" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="97"></a>
+		<a title="跳绳" class="f128" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="98"></a>
+		<a title="挥手" class="f129" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="99"></a>
+		<a title="激动" class="f130" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="100"></a>
+		<a title="街舞" class="f131" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="101"></a>
+		<a title="献吻" class="f132" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="102"></a>
+		<a title="左太极" class="f133" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="103"></a>
+		<a title="右太极" class="f134" href="http://km.oa.com/group/38920/articles/show/383216?kmref=author_post#" i="104"></a>
+	</div>
+	<div class="face_preview">
+		<div class="face_img"><img></div>
+		<div class="face_name"></div>
+	</div>
+</div><span class="hide placeholder_width" style="">输入姓名或邮件组(邮件组不能超过1000人)</span><div class="dropdown_wrapper" style="display: none; position: absolute; width: 408px; z-index: 100010;"><ul class="dropdown_items_box clearfix"></ul></div><span class="hide placeholder_width">输入姓名或邮件组(邮件组不能超过1000人)</span><div class="dropdown_wrapper" style="display: none; position: absolute; width: 408px; z-index: 100010;"><ul class="dropdown_items_box clearfix"></ul></div></body></html>

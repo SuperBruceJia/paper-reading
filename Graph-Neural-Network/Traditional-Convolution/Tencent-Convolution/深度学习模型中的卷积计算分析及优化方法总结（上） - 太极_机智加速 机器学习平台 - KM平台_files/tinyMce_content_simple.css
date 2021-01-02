@@ -1,0 +1,209 @@
+@charset "utf-8";
+/*
+   highlight insert_code
+*/
+@import "prism.css";
+@import "coding_style.css";
+/* CSS Document */
+body {
+  background-color: #FFFFFF;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Tahoma', 'Arial', 'Microsoft Yahei', '微软雅黑', 'Hiragino Sans GB', 'PingFang SC', STHeiTi, sans-serif;
+  font-size: 14px;
+  line-height: 1.8em;
+  color: #333;
+  margin: 5px 3px;
+  padding: 0 7px;
+  scrollbar-3dlight-color: #F0F0EE;
+  scrollbar-arrow-color: #676662;
+  scrollbar-base-color: #F0F0EE;
+  scrollbar-darkshadow-color: #DDDDDD;
+  scrollbar-face-color: #E0E0DD;
+  scrollbar-highlight-color: #F0F0EE;
+  scrollbar-shadow-color: #F0F0EE;
+  scrollbar-track-color: #F5F5F5;
+}
+body:focus {
+  outline: none;
+}
+address,
+blockquote,
+dd,
+div,
+dl,
+dt,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+p,
+ul,
+center,
+dir,
+hr,
+menu,
+pre {
+  display: block;
+  unicode-bidi: embed;
+}
+th {
+  font-weight: bolder;
+  text-align: center;
+}
+caption {
+  text-align: center;
+}
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+h2 {
+  font-size: 1.5em;
+  margin: 0.75em 0;
+}
+h3 {
+  font-size: 1.17em;
+  margin: 0.83em 0;
+}
+h4,
+blockquote,
+form,
+dl,
+dir,
+menu {
+  margin: 1.12em 0;
+}
+h5 {
+  font-size: .83em;
+  margin: 1.5em 0;
+}
+h6 {
+  font-size: .75em;
+  margin: 1.67em 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+b,
+strong {
+  font-weight: bolder;
+}
+blockquote {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+pre {
+  white-space: pre;
+}
+button,
+textarea,
+input,
+select {
+  display: inline-block;
+}
+big {
+  font-size: 1.17em;
+}
+small,
+sub,
+sup {
+  font-size: 0.83em;
+}
+sub {
+  vertical-align: sub;
+}
+sup {
+  vertical-align: super;
+}
+table {
+  border-spacing: 0px;
+  border-collapse: collapse;
+  border: 1px solid;
+}
+thead,
+tbody,
+tfoot {
+  vertical-align: middle;
+}
+td,
+th,
+tr {
+  vertical-align: inherit;
+}
+s,
+strike,
+del {
+  text-decoration: line-through;
+}
+hr {
+  border: 1px inset;
+}
+dir,
+menu,
+dd {
+  margin-left: 40px;
+}
+br:before {
+  content: "\A";
+  white-space: pre-line;
+}
+:link,
+:visited {
+  text-decoration: underline ;
+  color: #369;
+}
+:focus {
+  outline: thin dotted invert;
+}
+p {
+  margin: 0;
+  margin-bottom: 1em;
+}
+img {
+  max-width: 670px;
+}
+h1 {
+  font-size: 26px;
+  margin: 1.04em 0 .34em 0;
+}
+h2 {
+  font-size: 22px;
+  margin: 1.02em 0 .32em 0;
+}
+h3 {
+  font-size: 18px;
+  margin: 1.10em 0 .40em 0;
+}
+h4 {
+  margin: 1.18em 0 .48em 0;
+}
+h5 {
+  font-size: .83em;
+  margin: 1.26em 0 .54em 0;
+}
+h6 {
+  font-size: .75em;
+  margin: 1.34em 0 .62em 0;
+}
+pre code {
+  font-size: 14px;
+  line-height: 1.3em;
+  border-left: 4px solid #500;
+}
+a.mention-user,
+a.mention-holder {
+  text-decoration: none;
+  font-size: 14px;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Tahoma', 'Arial', 'Microsoft Yahei', '微软雅黑', 'Hiragino Sans GB', 'PingFang SC', STHeiTi, sans-serif;
+  color: #333;
+}
+a.mention-user {
+  color: #259;
+}

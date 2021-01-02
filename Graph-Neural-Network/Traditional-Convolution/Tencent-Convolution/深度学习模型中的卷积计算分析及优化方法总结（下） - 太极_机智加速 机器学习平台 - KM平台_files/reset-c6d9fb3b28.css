@@ -1,0 +1,126 @@
+/**
+ * 全站reset样式
+ */
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 100%;
+  font-size: 14px;
+  color: #444;
+  line-height: 20px;
+  text-align: left;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Tahoma', 'Arial', 'Microsoft Yahei', '微软雅黑', 'Hiragino Sans GB', 'PingFang SC', STHeiTi, sans-serif;
+  background-color: #fff;
+}
+img,
+iframe {
+  border: medium none;
+}
+input,
+textarea {
+  background-color: #fff;
+  outline: none;
+}
+textarea {
+  overflow-y: auto;
+  resize: none;
+}
+ul,
+li {
+  list-style: none;
+}
+h1 {
+  font-size: 138.5%;
+}
+h2 {
+  font-size: 123.1%;
+}
+h3 {
+  font-size: 108%;
+}
+h4 {
+  font-size: 100%;
+}
+a {
+  color: #369;
+  text-decoration: none;
+}
+a.a_black,
+.a_black a {
+  color: #444;
+}
+a.secondary,
+.secondary a,
+a.a_secondary,
+.a_secondary a {
+  color: #999 !important;
+}
+a.a_blue,
+.a_blue a {
+  color: #369 !important;
+}
+a:hover,
+a.a_black:hover,
+.a_black a:hover,
+a.a_secondary:hover,
+.a_secondary a:hover {
+  color: #369;
+  text-decoration: underline;
+}
+a.secondary:hover,
+.secondary a:hover {
+  color: #999;
+  text-decoration: none;
+}
+a.no_decoration,
+a.no_decoration:hover,
+.no_decoration a,
+.no_decoration a:hover {
+  text-decoration: none !important;
+}
+.underline,
+.underline a {
+  text-decoration: underline;
+}
+a:focus {
+  outline: none;
+}
+.primary,
+a.primary,
+.bulletin a {
+  color: #d40000;
+}
+.red-warn {
+  color: #d40000 !important;
+}
+.highlighted,
+a.highlighted {
+  color: #fff;
+  background-color: #39f;
+}

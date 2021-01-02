@@ -1,0 +1,316 @@
+@charset "utf-8";
+/*
+* badge全局样式
+* 后期样式会进行优化，不做过多的抽取
+*/
+.mBlogLayer {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.mBlogLayer .top_r,
+.mBlogLayer .top_l,
+.mBlogLayer .bottom_r,
+.mBlogLayer .bottom_l {
+  height: 5px;
+  width: 5px;
+  background: url(../../img/user_card_border.png) no-repeat scroll transparent;
+}
+.mBlogLayer .top_c,
+.mBlogLayer .bottom_c,
+.mBlogLayer .mid_l,
+.mBlogLayer .mid_r {
+  width: 5px;
+  background: url(../../img/user_card_border.png) repeat scroll transparent;
+}
+.mBlogLayer .mid_c {
+  background: none repeat scroll 0 0 #FFFFFF;
+}
+.mBlogLayer .layerArrow {
+  position: absolute;
+  left: -3px;
+  top: 20px;
+  height: 17px;
+  width: 9px;
+  background: url('../../img/user_card_arrow.png') no-repeat;
+}
+.mBlogLayer .layerUpArrow {
+  position: absolute;
+  left: 20px;
+  top: -3px;
+  height: 9px;
+  width: 17px;
+  background: url('../../img/user_card_up_arrow.png') no-repeat;
+}
+.mBlogLayer .layerUpRightArrow {
+  position: absolute;
+  left: 270px;
+  top: -3px;
+  height: 9px;
+  width: 17px;
+  background: url('../../img/user_card_up_arrow.png') no-repeat;
+}
+.mBlogLayer .layerBox {
+  border: 1px solid #bdc2c5;
+}
+.name_card .name,
+#group-card-content .name {
+  padding: 10px 10px 5px;
+  overflow: hidden;
+}
+.name_card dd,
+#group-card-content dd {
+  color: #777777;
+  line-height: 18px;
+  margin-top: -1px;
+  padding-left: 10px;
+}
+.name_card dt,
+#group-card-content dt,
+.name_card dd,
+#group-card-content dd,
+.name_card dt,
+#group-card-content dt,
+.name_card dd,
+#group-card-content dd {
+  display: inline;
+  float: left;
+}
+.name_card .links,
+#group-card-content .links {
+  background: none repeat scroll 0 0 #e8f3ff;
+  height: 38px;
+  line-height: 38px;
+  margin-top: 10px;
+  padding-left: 10px;
+}
+.name_card .picborder_r,
+#group-card-content .picborder_r {
+  height: 48px;
+  width: 48px;
+}
+.name_card .follow_count,
+#group-card-content .follow_count {
+  color: #004988;
+  font-weight: bold;
+}
+.name_card .follow,
+#group-card-content .follow {
+  background: url("../../img/km_sprite.png") repeat scroll -110px -978px transparent;
+  color: #FFFFFF;
+  display: block;
+  height: 22px;
+  text-decoration: none;
+  width: 58px;
+  margin-top: 10px;
+  margin-right: 10px;
+  float: right;
+}
+.links .mutual_followed {
+  background: url("../../img/user_card_mutex_followed.jpg") no-repeat scroll transparent;
+  height: 25px;
+  padding-left: 20px;
+  width: 60px;
+  margin-top: 8px;
+  float: right;
+  color: #808080;
+  line-height: 25px;
+}
+.links .followed {
+  background: url("../../img/user_card_followed.jpg") no-repeat scroll transparent;
+  height: 25px;
+  padding-left: 20px;
+  width: 60px;
+  margin-top: 8px;
+  float: right;
+  vertical-align: middle;
+  color: #808080;
+  line-height: 25px;
+}
+.links .unfollow_group {
+  background: transparent url("../../img/km_sprite.png") no-repeat scroll -1px -375px;
+  width: 121px;
+  display: inline-block;
+  color: #808080;
+}
+.links .unfollow_group a {
+  padding-left: 22px;
+}
+.links .unfollow_group span {
+  padding-left: 8px;
+}
+.links .unfollow_group_bar {
+  text-align: center;
+  height: 25px;
+  line-height: 25px;
+  overflow: hidden;
+  padding: 7px 0px 0px 15px;
+}
+/**
+ * badge样式 for 乐问
+ */
+.mBlogLayer_q_tag .follow {
+  background-position: -86px -154px;
+  line-height: 20px;
+  text-align: center;
+  padding-left: 5px;
+}
+.mBlogLayer_q_tag .unfollow_group_bar {
+  text-align: right;
+}
+.mBlogLayer_q_tag .unfollow_group_bar .unfollow_tag {
+  margin-right: 10px;
+  background-color: #d4d4d4;
+  display: inline-block;
+  padding: 0 5px;
+  color: #838383;
+}
+.mBlogLayer_q_tag .unfollow_group_bar .unfollow_tag a {
+  color: #838383;
+}
+.badge-layer {
+  width: 350px;
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+  /* 这是为IE 8，IE 7做的 */
+  border: 1px solid #dcdbdb\9;
+  "*"border: 1px solid #dcdbdb;
+}
+.badge-layer #card-content {
+  border: 1px solid #fff;
+}
+.badge-layer .arror-down .arror {
+  bottom: -14px;
+  border-color: #fff transparent transparent transparent;
+}
+.badge-layer .arror-down .arror-shadow {
+  border-color: #ccc transparent transparent transparent;
+  bottom: -15px;
+}
+.badge-layer .arror-up .arror {
+  top: -13px;
+  border-color: transparent transparent #1084d4 transparent;
+}
+.badge-layer .arror-up .arror-shadow {
+  border-color: transparent transparent #ccc transparent;
+  top: -14px;
+}
+.badge-layer .arror-down,
+.badge-layer .arror-up {
+  font-family: 'Helvetica Neue', 'Helvetica', 'Tahoma', 'Arial', 'Microsoft Yahei', '微软雅黑', 'Hiragino Sans GB', 'PingFang SC', STHeiTi, sans-serif;
+}
+.badge-layer .arror-down .arror,
+.badge-layer .arror-up .arror {
+  display: block;
+  position: absolute;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-width: 7px;
+  border-style: solid;
+  overflow: hidden;
+  font-size: 0;
+  line-height: 0;
+  vertical-align: top;
+  margin: 0 0 0 -7px;
+  z-index: 100;
+}
+.badge-layer .arror-down .arror-shadow,
+.badge-layer .arror-up .arror-shadow {
+  margin: 0 0 0 -7px;
+  z-index: 99;
+}
+#user-card-content .card-header {
+  text-align: center;
+  background-color: #1084d4;
+}
+#user-card-content .card-header a {
+  color: #fff;
+  text-decoration: none;
+}
+#user-card-content .card-header .avatar {
+  margin: 20px 0 10px;
+  width: 48px;
+  height: 48px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+#user-card-content .card-header .info {
+  font-size: 14px;
+  padding-bottom: 15px;
+  line-height: 14px;
+}
+#user-card-content .card-header .department {
+  display: block;
+  margin: 0 auto;
+  font-size: 12px;
+  padding-bottom: 15px;
+  height: 12px;
+  line-height: 12px;
+  width: 310px;
+  cursor: default;
+}
+#user-card-content .card-body {
+  text-align: center;
+  width: 327px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+#user-card-content .card-body .short-info {
+  overflow: hidden;
+  color: #444;
+  font-size: 14px;
+  line-height: 14px;
+  padding-top: 15px;
+  margin-left: -1px;
+}
+#user-card-content .card-body .short-info li {
+  float: left;
+  width: 108px;
+  border-left: 1px solid #444;
+}
+#user-card-content .card-body .short-info li a {
+  color: #444;
+}
+#user-card-content .card-footer {
+  padding-top: 15px;
+  text-align: center;
+}
+#user-card-content .card-footer .follow-btn,
+#user-card-content .card-footer .unfollow-btn {
+  margin-bottom: 15px;
+  text-decoration: none;
+  display: inline-block;
+  padding: 2px 6px;
+  font-size: 12px;
+  text-align: center;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 2px;
+}
+#user-card-content .card-footer .follow-btn {
+  background-color: #ffa904;
+}
+#user-card-content .card-footer .follow-btn .icon {
+  background-position: 0px -843px;
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  vertical-align: middle;
+}
+#user-card-content .card-footer .follow-btn:hover {
+  background-color: #ffa904;
+}
+#user-card-content .card-footer .unfollow-btn {
+  background-color: #b7b7b7;
+}
+#user-card-content .card-footer .unfollow-btn .icon {
+  background-position: -42px -1197px;
+  width: 20px;
+  height: 12px;
+  display: inline-block;
+  vertical-align: middle;
+}
+#user-card-content .card-footer .unfollow-btn:hover {
+  background-color: #b7b7b7;
+}

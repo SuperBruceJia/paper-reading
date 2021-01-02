@@ -1,0 +1,232 @@
+/* agile carousel styles */
+
+/* -----------------------------------*/
+/*-- outer containers --*/
+/* -----------------------------------*/
+
+/*-- the most outer container rendered by JS 
+Contains .slides .slide_content_... .persistent_content and controls that have "no_control_set" --*/
+
+.agile_carousel {
+	position: relative;
+	overflow: hidden;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/*-- container for all slides only --*/
+
+.agile_carousel .slides {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/*-- individual slide --*/
+
+.agile_carousel .slide {
+	float: left;
+}
+
+
+/* -----------------------------------*/
+/*-- default style for controls --*/
+/* -----------------------------------*/
+
+
+/*-- default styles for all control sets --*/
+
+.agile_carousel .control_set {
+	position: absolute;
+}
+
+/*-- default style for controls whose trigger type is "hover" --*/
+
+.agile_carousel .ac_hover {
+	cursor:text;	
+}
+
+/*-- style applied to all controls --*/
+.slide_button {
+	cursor: pointer;
+	display: block;
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	position: relative;
+}
+/*-- numbered button --*/
+
+.agile_carousel .numbered_button {
+    color: #000000;
+    font-size: 12px;
+    margin-right: 2px;
+    padding: 0 2px;
+}
+.agile_carousel .numbered_buttons_container .ac_selected,
+.agile_carousel .numbered_buttons_container .numbered_button:hover {
+    background-color: #666666;
+    color: #FFFFFF;
+}
+
+.agile_carousel .numbered_button {
+	float: left;
+}
+
+/*-- group numbered button --*/
+
+.agile_carousel .grouped_numbered_button {
+	float: left;
+}
+
+/* -------------------------------------------- */
+/*-- "things" that are not slides or controls --*/
+/* -------------------------------------------- */
+
+.current_slide_number {
+	cursor: text;
+	float:left;
+}
+
+.slide_count {
+	cursor: text;
+	float:left;
+}
+
+/* -------------------------------------------- */
+/*-- #basic_slideshow styles --*/
+/* -------------------------------------------- */
+
+/*-- hide the captions --*/
+#basic_slideshow .caption {
+	display: none;
+}
+
+
+/* -------------------------------------------- */
+/*-- #mykbars_list styles --*/
+/* -------------------------------------------- */
+
+/*-- outer container --*/
+
+#mykbars_list .agile_carousel {
+	background-color:#FFFFFF;
+}
+
+/*-- individual slides --*/
+
+#mykbars_list .slide_inner {
+	text-align: center;	
+	overflow: hidden;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #cfcece;
+	background-color: #fff;
+	text-align: center;
+	width: 144px;
+	margin: 0 auto;
+}
+
+/*-- large photos --*/
+
+#mykbars_list .photo_link {
+	width: 129px;
+	height: 137px;
+	overflow: hidden;
+	display: block;
+	margin: 8px auto 4px;
+}
+#mykbars_list .photo {
+	height: 137px;
+}
+
+/*-- for the links beneath the photos --*/
+
+#mykbars_list .caption:link, #mykbars_list .caption:visited, #mykbars_list .caption:hover {
+	color: #333333;
+	text-decoration: none;
+	width: 128px;
+	display: block;
+	margin: 0 auto;
+	padding-bottom: 3px;
+}
+#mykbars_list .caption:hover {
+	text-decoration: underline;
+}
+#mykbars_list .persistent_content{
+	position: absolute;
+	top: 2px;
+	left: 12px;
+	font-size: 14px;
+	text-shadow: 0px 1px 1px #ccc;
+	color: #B5B5B5;
+}
+
+/*-- .control_set_1 - includes: .previous_next_button --*/
+
+#mykbars_list .control_set_1 {
+	position: absolute;
+	margin: 4px 0;
+	bottom:10px;
+}
+#mykbars_list .previous_next_button {
+	height: 355px;
+	width: 30px;
+	position: absolute;
+	overflow: hidden;
+	text-indent: 1000px;
+	background-image: url(../agilecarousel/sprite_ac_normal.png);
+	background-color: #fff;
+	-moz-box-shadow: 0px 0px 2px #dfdfdf; /* FF3.5+ */
+	-webkit-box-shadow: 0px 0px 0px #dfdfdf; /* Saf3.0+, Chrome */
+	box-shadow: 0px 0px 2px #dfdfdf; /* Opera 10.5, IE9, Chrome 10+ */
+}
+#mykbars_list .previous_button {
+	background-position: 10px 160px;
+	border-top-right-radius:2px;
+}
+#mykbars_list .next_button {
+	background-position: -35px 160px;
+	right:0px;
+}
+#mykbars_list .previous_next_button:hover {
+	background-color: #EFEFEF;
+}
+#mykbars_list .previous_button:hover {
+	background-image: url(../agilecarousel/sprite_ac_hover.png);
+}
+#mykbars_list .next_button:hover {
+	background-image: url(../agilecarousel/sprite_ac_hover.png);
+}
+#mykbars_list .control_set_1 .ac_disabled ,
+#mykbars_list .control_set_2 .ac_disabled {
+	display:none;
+	background-image: url(../agilecarousel/sprite_ac_disabled.png);
+}
+		
+/*-- .control_set_2 - includes: group_numbered_buttons --*/
+
+#mykbars_list .control_set_2 {
+	position: relative;
+}
+#mykbars_list .slide_button {
+	float: left;
+}
+#mykbars_list .group_numbered_button {
+	color: #000;
+	padding: 0 2px;
+	font-size: 12px;
+	margin-right: 2px;
+	background-image: url(../agilecarousel/sprite_ac_normal.png);
+	background-position: -95px 0;
+	width: 10px;
+	height: 10px;
+	overflow: hidden;
+	text-indent: 1000px;
+	background-color: transparent;
+}
+#mykbars_list .group_numbered_button:hover, #mykbars_list .group_numbered_buttons_container .ac_selected {
+	background-image: url(../agilecarousel/sprite_ac_hover.png);
+}
+#top_my_kbars_list .previous_next_button {
+    background-image: url("../agilecarousel/sprite_ac_normal.png");
+}

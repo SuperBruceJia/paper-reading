@@ -1,0 +1,518 @@
+/**
+ * general
+ */
+.bg_sprites {
+  background: url(../../img/sprites.png) no-repeat;
+}
+.bg-sprites-1 {
+  background: url(../../img/sprites_1.png) no-repeat;
+}
+.bg-sprites-km {
+  background: url(../../img/sprites_km.png) no-repeat;
+}
+.bg_badges {
+  background: url(../../img/user_badges.png) no-repeat;
+}
+.bg_calendar {
+  background: url(../../img/calendar-5307b72faf.png) no-repeat;
+}
+.bg_repeat_x {
+  background: url(../../img/repeat-x.png) repeat-x;
+}
+.bg_month {
+  background: url(../../img/months.png) no-repeat;
+}
+.bg-kbar-level {
+  background: url(../../img/kbar_level.png) no-repeat;
+}
+.bg_icons {
+  background: url(../../img/km_icons.png) no-repeat;
+}
+/**
+ * 小金人图标
+ */
+.vip_big {
+  background: url(../../img/sprites_1.png) no-repeat -2px -166px;
+}
+.receiver-details {
+  background-image: url(../../img/questions/receiver_bg.png);
+}
+.gift-img {
+  background-image: url(../../img/questions/gift.png);
+}
+.lewen-gift-img {
+  background-image: url(../../img/operates/thanks_card_icon.svg);
+}
+.thanks-detail-wrapper:before {
+  background-image: url(../../img/questions/miniding.svg);
+}
+.thanks-close,
+.q-push-close {
+  background-image: url(../../img/questions/close.svg);
+}
+.q_question_thank_btn:before {
+  background-image: url(../../img/operates/thanks_card_icon.svg);
+}
+.q-thank-modal:before {
+  background-image: url(../../img/questions/miniding.svg);
+}
+.q-push-modal:before {
+  background-image: url(../../img/questions/Ding.svg);
+}
+.vip-icon {
+  background-image: url(../../img/questions/specialist.png);
+}
+.searcher:before {
+  background-image: url(../../img/questions/search.svg);
+}
+.candidate-img {
+  background-image: url(../../img/questions/banner.svg);
+}
+.vip_link {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  position: relative;
+  top: 2px;
+  line-height: 16px;
+  background: url(../../img/sprites.png) no-repeat 2px -3637px;
+  vertical-align: 0%\9;
+}
+.comment-head .vip_link {
+  background: url(../../img/sprites.png) no-repeat 0px -3640px;
+  vertical-align: 0%\9;
+}
+.related_list .vip_link {
+  background: url(../../img/sprites.png) no-repeat 2px -3638px;
+  vertical-align: 0%\9;
+}
+.q-operation-invite-list .vip_link {
+  margin-left: -2px;
+}
+/*
+* 乐问的1周年页面
+**/
+.q-sprite {
+  background: url(../../img/km_pictures/km_q_anniversary/q_sprite.png) no-repeat;
+  display: inline-block;
+}
+.show-window .first-page {
+  background: url(../../img/km_pictures/km_q_anniversary/page1-bg.png) center center no-repeat;
+}
+.show-window .first-page .first-page-bottom {
+  background: url(../../img/km_pictures/km_q_anniversary/page1-bg-bottom.png) center bottom repeat-x;
+}
+.show-window .second-page {
+  background: url('../../img/km_pictures/km_q_anniversary/page2-bg.png') center center no-repeat;
+}
+.show-window .second-page .sea-level .back-wave {
+  background: url(../../img/km_pictures/km_q_anniversary/wave-back.png) left bottom repeat-x;
+}
+.show-window .second-page .sea-level .front-wave {
+  background: url(../../img/km_pictures/km_q_anniversary/wave-front.png) left bottom repeat-x;
+}
+.show-window .second-page .tony-wishes {
+  background: url(../../img/km_pictures/km_q_anniversary/tony_wishes.png) left top no-repeat;
+}
+.show-window .second-page .sylau-wishes {
+  background: url(../../img/km_pictures/km_q_anniversary/sylau_wishes.png) left top no-repeat;
+}
+.show-window .second-page .dowson-wishes {
+  background: url(../../img/km_pictures/km_q_anniversary/dowson_wishes.png) left top no-repeat;
+}
+.show-window .second-page .xidan-wishes {
+  background: url(../../img/km_pictures/km_q_anniversary/xidan_wishes.png) left top no-repeat;
+}
+.show-window .third-page {
+  background: url('../../img/km_pictures/km_q_anniversary/page3-bg.png') center center no-repeat;
+}
+.show-window .third-page .page-3-bottom {
+  background: url('../../img/km_pictures/km_q_anniversary/sea-bed.png') left center repeat-x;
+}
+.show-window .fourth-page {
+  background: url('../../img/km_pictures/km_q_anniversary/stars.png') center center no-repeat;
+}
+.show-window .fourth-page .bottom-planet {
+  background: url('../../img/km_pictures/km_q_anniversary/moon-surface.png') center center no-repeat;
+}
+.show-window .fourth-page .waving-flag {
+  background: url(../../img/km_pictures/km_q_anniversary/waving-flag.png) left bottom no-repeat;
+}
+.show-window .fourth-page .planet1 {
+  background: url(../../img/km_pictures/km_q_anniversary/planet1.png) left top no-repeat;
+}
+.show-window .fourth-page .planet2 {
+  background: url(../../img/km_pictures/km_q_anniversary/planet2.png) left bottom no-repeat;
+}
+.show-window .fourth-page .q-ding-4 .img-1year {
+  background: url(../../img/km_pictures/km_q_anniversary/1year.png) left top no-repeat;
+}
+.show-window .fourth-page .q-ding-4 span.dingding-space {
+  background: url(../../img/km_pictures/km_q_anniversary/dingding-space.png) right top no-repeat;
+}
+.show-window #twitter_content_list .close_retweet {
+  background: url("../../img/km_sprite.png?v=27601") no-repeat scroll -101px -56px transparent;
+}
+.show-window .more-weekly {
+  background: url(../../img/km_pictures/km_q_anniversary/more_weekly.png) left top no-repeat;
+}
+/*一周年banner*/
+.q_anniversary_banner {
+  width: 980px;
+  left: 50%;
+  position: relative;
+  margin-left: -490px;
+  margin-top: 13px;
+  margin-bottom: -8px;
+}
+/**
+ * K吧头部K吧下拉菜单的翻页标志
+ */
+.top_my_kbars_list .group_numbered_button,
+.my-kbars-list .group_numbered_button {
+  float: left;
+  margin-right: 8px;
+  overflow: hidden;
+  text-indent: -1000px;
+  width: 6px;
+  height: 6px;
+  background: url(../../img/sprites.png) -234px -1802px;
+}
+/**
+ * 投票编辑页面“添加描述”前面的三角
+ * 样式来自css/pages/groups.css，要做图片合并
+ */
+.add_detail_info .front_desc {
+  background: url("../../img/tip2_ico.gif") no-repeat scroll -7px -154px transparent;
+  padding-left: 15px;
+}
+.add_detail_info .front_asc {
+  background: url("../../img/tip2_ico.gif") no-repeat scroll -7px -105px transparent;
+  padding-left: 15px;
+}
+/**
+ * 荣誉页面墙
+ * 个人空间需要做特殊的图片合并
+ */
+.reward_wall {
+  width: 940px;
+  height: 1120px;
+  background: url("../../img/reward/reward_bg.jpg") no-repeat;
+  padding: 10px 55px 35px 25px;
+}
+/**
+ * 同事评价鼠标hover时弹出来的信息框
+ */
+.nickpopCss {
+  background: url("../../img/tipshow/bubble_bg.gif?v=24523") no-repeat scroll 0 0 transparent;
+  display: none;
+  font-size: 12px;
+  line-height: 20px;
+  position: absolute;
+  z-index: 9999;
+}
+/**
+ * 个人资料搜索页面结果页的加关注操作
+ */
+.follow_action .follow {
+  background: url("../../img/km_sprite.png") no-repeat scroll 0 -151px transparent;
+  color: #FFFFFF;
+  display: block;
+  height: 25px;
+  line-height: 25px;
+  padding: 0;
+  text-align: left;
+  text-decoration: none;
+  text-indent: 25px;
+  width: 72px;
+}
+/**
+ * 个人头像上传页面
+ */
+.default-avatar {
+  background: url(../../img/avatar_sprite-28f6a75eb1.png) no-repeat;
+}
+/**
+ * 乐问页面需要的背景图片
+ */
+.q_top_topics .edit_btn,
+.related_tag .edit_btn,
+.subscribe_tag .edit_btn,
+.manage_tag .edit_btn,
+.browse_number_icon,
+.answer_number_icon,
+.vips_concern_icon,
+.answer_time_icon,
+.answer_invited_icon,
+.question_owner_icon,
+.question_edit_icon,
+.question_delete_icon,
+.agree_action,
+.disagree_action,
+.agree_count_area {
+  background: url(../../img/sprites.png) no-repeat;
+}
+.spliter_dotline,
+.standard_answer_icon {
+  background: url(../../img/sprites_km.png) repeat-x;
+}
+/**
+ * user_level
+ */
+.user_level {
+  background: url(../../img/user_level.png) no-repeat;
+}
+/**
+ * app头部模块
+ */
+.return_list {
+  background: url("../../img/km_icons.png") no-repeat scroll -6px -632px transparent;
+  padding-left: 20px;
+}
+.shortcut-link {
+  background: url("../../img/shortcut_btn2.gif") no-repeat scroll 0 0 transparent;
+  color: #FFFFFF !important;
+  display: inline-block;
+  font-weight: bold;
+  height: 25px;
+  line-height: 25px;
+  padding: 0 3px 0 15px;
+  text-align: center;
+  width: 87px;
+}
+/*
+* 乐问 热门问题
+* By jackyltpli
+*/
+.hot_question {
+  display: block;
+  width: 92px;
+  height: 92px;
+  top: 45px;
+  right: 365px;
+  background: url("../../img/km_pictures/hot_question.png") left top no-repeat;
+  z-index: 1000;
+}
+/**
+ * 手机发表乐问或评论时页面中展示的手机标志
+ */
+.cell_link {
+  background-position: 0px -5187px;
+  display: inline-block;
+  width: 15px;
+  height: 17px;
+  vertical-align: middle;
+  *vertical-align: -20%;
+}
+.agree_users_bg {
+  background-position: 1px -5319px;
+  display: inline-block;
+  width: 20px;
+  height: 17px;
+  vertical-align: middle;
+}
+/*
+* 问题PK页面
+*/
+.icon-pk {
+  background: url(../../img/sprites_km.png) no-repeat;
+  display: inline-block;
+  background-position: 0px -906px;
+  width: 35px;
+  height: 20px;
+  vertical-align: middle;
+}
+.icon-pk-large {
+  background: url(../../img/sprites.png) no-repeat;
+  display: inline-block;
+  background-position: 1px -6874px;
+  width: 36px;
+  height: 25px;
+  vertical-align: top;
+}
+/*
+ * 邮件首推文展示页面
+ **/
+.headline-message .headline-read-count i {
+  background: url(../../img/km_pictures/number.png) no-repeat;
+}
+/**
+ * k吧
+ */
+.group-top-bg-shadow {
+  background: url(../../img/group_top_bg_shadow.png) repeat;
+}
+/*头条icon*/
+.km-headline-icon-bg {
+  background: url(../../img/km_pictures/headline-bottom.png) no-repeat right top;
+}
+/*发现icons*/
+.find_Post {
+  background: url(../../img/sprites_1.png) no-repeat 0px -194px;
+}
+.find_Doc {
+  background: url(../../img/sprites_1.png) no-repeat 0px -324px;
+}
+.find_Survey {
+  background: url(../../img/sprites_1.png) no-repeat 0px -246px;
+}
+.find_Event {
+  background: url(../../img/sprites_1.png) no-repeat 0px -220px;
+}
+.find_Knowledge {
+  background: url(../../img/sprites_1.png) no-repeat 0px -298px;
+}
+.find_Q {
+  background: url(../../img/sprites_1.png) no-repeat 0px -272px;
+}
+.find_Topic {
+  background: url(../../img/sprites_1.png) no-repeat 0px -350px;
+}
+.logo_span {
+  padding-left: 29px;
+  padding-bottom: 16px;
+  margin: 0 0 0 0;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+}
+.title_span {
+  padding: 0px;
+  font-size: 14px;
+  color: #333;
+  line-height: 14px;
+}
+.title_a {
+  text-decoration: none;
+  color: #333;
+  word-wrap: break-word;
+}
+/*辣椒图标*/
+.hot_answer_icon {
+  background: url(../../img/sprites_1.png) no-repeat 0px -533px;
+}
+.standard_question_icon {
+  background: url(../../img/sprites_1.png) no-repeat 0px -492px;
+}
+/*灰色背景图片*/
+.focus_img_text {
+  background: url(../../img/opacity_000_40.png) repeat;
+}
+/*
+*推荐模块
+*/
+.hot-recommend-bolck .focus_img_text {
+  background: url(../../img/opacity_000_40.png) repeat;
+}
+/*
+*广告模块
+*/
+.advertisement-block .ad-rotator .pages li {
+  background: url(../../img/sprites_km.png) no-repeat -22px -585px;
+}
+.advertisement-block .ad-rotator .pages li.active {
+  background: url(../../img/sprites_km.png) no-repeat 0px -585px;
+}
+/*km 头部*/
+.km-header-shadow-bg {
+  background: url(../../img/km_header_shadow.png) repeat-x;
+}
+/*发现首页*/
+.discovery-item-bottom {
+  background-image: url(../../img/discovery/2.png);
+}
+.user-icons {
+  display: inline-block;
+  line-height: 0px;
+}
+.user-icons .share_award_logo {
+  padding-bottom: 1px;
+}
+.user-icons .agree_talented_logo {
+  padding-bottom: 1px;
+}
+.user-icons a:hover {
+  text-decoration: none;
+}
+/*KM用户影响力logo*/
+.user_logo {
+  width: 25px;
+  color: #fff;
+  text-decoration: none;
+  cursor: auto;
+  line-height: 0px;
+  text-shadow: 1px 1px 1px #333;
+}
+.user_logo .user_logo_span {
+  margin: 0 0 0 0;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+}
+.user_logo .user_level {
+  padding-bottom: 18px;
+  margin: 0 4px 0 0;
+}
+.user_logo .badge_box {
+  position: static;
+  width: 18px;
+  height: 18px;
+}
+/*KM用户影响力logo*/
+.user_influence_logo {
+  margin: 0 1px 0 3px;
+}
+.user_vip_logo {
+  margin: 0 1px 0 5px;
+}
+/*KM分享达人logo*/
+.share_award_logo {
+  margin: 0 0 0 2px;
+  background-position: 0px 0px;
+  cursor: pointer;
+  width: 17px;
+  height: 17px;
+  display: inline-block;
+  vertical-align: middle;
+}
+/* 百赞达人logo */
+.agree_talented_logo {
+  background-position: -24px -5320px;
+  cursor: pointer;
+  width: 19px;
+  height: 17px;
+  display: inline-block;
+  vertical-align: middle;
+}
+/* 千赞达人logo */
+.thousand_agree_user_logo {
+  background-position: -23px -7889px;
+  cursor: pointer;
+  width: 19px;
+  height: 17px;
+  display: inline-block;
+  vertical-align: middle;
+}
+/* 头条达人logo */
+.headline_user_logo {
+  background-position: -33px -3145px;
+  cursor: pointer;
+  width: 16px;
+  height: 17px;
+  display: inline-block;
+  vertical-align: middle;
+}
+/*发现首页顶部banner*/
+.bg-discovery-banner {
+  background: url(../../img/discovery_banner.jpg) center top no-repeat #5441a8;
+  height: 204px;
+  margin-bottom: 30px;
+}
+/*提示弹出框组件*/
+.km_toast .success {
+  background: url(../../img/sprites.png) 0px -7917px;
+}
+/*轻知推荐图标背景图*/
+.km_cheese_recommend {
+  background: url(../../img/cheeses_recommend-001f63fbf8.png) center top no-repeat;
+}

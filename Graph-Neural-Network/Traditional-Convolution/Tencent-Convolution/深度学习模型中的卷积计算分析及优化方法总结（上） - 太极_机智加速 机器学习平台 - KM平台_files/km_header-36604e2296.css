@@ -1,0 +1,789 @@
+@charset "utf-8";
+/**
+ * km new header
+ */
+/**
+ * km 大头，供首页使用
+ */
+.km-header-big {
+  /*顶部快速入口*/
+  /*底部导航*/
+}
+.km-header-big .top-entry {
+  width: 1024px;
+  margin: 0 auto;
+  font-size: 14px;
+}
+.km-header-big .top-entry .index-logo {
+  width: 300px;
+  max-width: 300px;
+  max-height: 90px;
+  overflow: hidden;
+}
+.km-header-big .top-entry .index-logo .default-logo {
+  margin-top: 22px;
+}
+.km-header-big .top-entry .arrow-down-icon {
+  width: 12px;
+  height: 10px;
+  display: inline-block;
+  *vertical-align: middle;
+  background-position: 3px -293px;
+}
+.km-header-big .top-entry .logo {
+  margin-right: 125px;
+  width: 175px;
+  height: 46px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: 0 0;
+  cursor: pointer;
+}
+.km-header-big .top-entry .logo img {
+  position: relative;
+  top: -23px;
+}
+.km-header-big .top-entry .km-search-box {
+  margin-top: 25px;
+  margin-bottom: 22px;
+}
+.km-header-big .top-entry .km-search-box .search-keyword {
+  padding: 5px;
+  width: 338px;
+  height: 26px;
+  line-height: 26px;
+  border: 2px solid #0d8de5;
+  border-right: 0;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+.km-header-big .top-entry .km-search-box .search-btn {
+  width: 50px;
+  height: 40px;
+  border: 0;
+  background-position: 11px -50px;
+  background-color: #0d8de5;
+  text-indent: -9999px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+.km-header-big .top-entry .km-search-box .search-btn:hover {
+  background-color: #0d87db;
+}
+.km-header-big .top-entry .quick-entry {
+  margin-top: 34px;
+  margin-bottom: 22px;
+  line-height: 22px;
+  color: #444;
+}
+.km-header-big .top-entry .create-entry {
+  margin-right: 10px;
+  padding-right: 10px;
+  border-right: 1px solid #d3d2d2;
+}
+.km-header-big .top-entry .create-entry .create-icon {
+  width: 19px;
+  height: 18px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: 0 -92px;
+  cursor: pointer;
+}
+.km-header-big .top-entry .msg-entry {
+  margin-right: 10px;
+  padding-right: 10px;
+  border-right: 1px solid #d3d2d2;
+}
+.km-header-big .top-entry .msg-entry .msg-icon {
+  width: 23px;
+  height: 18px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: -25px -92px;
+  cursor: pointer;
+}
+.km-header-big .bottom-navigation {
+  height: 44px;
+}
+.km-header-big .bottom-navigation .km-dropdown-box {
+  top: 43px;
+  left: -20px;
+}
+.km-header-big .bottom-navigation .nav .nav-a {
+  padding: 12px 30px;
+}
+.km-header-big .bottom-navigation .nav-ikm {
+  float: right !important;
+}
+.km-header-big .bottom-navigation .nav-ikm .nav-a {
+  padding: 12px 0;
+}
+.km-header-big .bottom-navigation .nav-ikm .nav-a:hover {
+  background-color: transparent !important;
+}
+.km-header-big .bottom-navigation .nav-ikm .ikm-icon {
+  width: 19px;
+  height: 19px;
+  display: inline-block;
+  vertical-align: bottom;
+  background-position: 0 -118px;
+}
+.km-header-big .bottom-navigation .liveroom-list {
+  width: 274px;
+  height: 24px;
+  line-height: 24px;
+  margin-top: 12px;
+  overflow: hidden;
+}
+.km-header-big .bottom-navigation .liveroom-list li {
+  white-space: nowrap;
+  overflow: hidden;
+}
+.km-header-big .bottom-navigation .liveroom-list a {
+  color: #ffffff;
+}
+.km-header-big .bottom-navigation .liveroom-list a .live-icon {
+  display: inline-block;
+  background-position: -17px -117px;
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+/**
+ * km 小头
+ */
+.km-header-mini {
+  /*搜索*/
+  /*快速创建入口*/
+}
+.km-header-mini .km-dropdown-box {
+  top: 49px;
+  left: -30px;
+}
+.km-header-mini .km-dropdown {
+  right: -6px !important;
+}
+.km-header-mini .logo {
+  margin: 13px 10px 0 0;
+  width: 110px;
+  height: 22px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: 0 -356px;
+  cursor: pointer;
+}
+.km-header-mini .nav .nav-a {
+  padding: 15px 20px;
+}
+.km-header-mini .nav-search {
+  width: 206px;
+  height: 50px;
+  z-index: 3;
+}
+.km-header-mini .km-search-box {
+  margin: 10px 10px 0 0;
+}
+.km-header-mini .km-search-box .search-keyword {
+  position: absolute;
+  right: 10px;
+  padding: 5px;
+  width: 184px;
+  height: 20px;
+  line-height: 20px;
+  border-radius: 2px;
+  background-color: #c4dbeb;
+  border-color: #c4dbeb;
+}
+.km-header-mini .km-search-box .search-keyword.focus {
+  background-color: #fff;
+}
+.km-header-mini .km-search-box .search-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  text-indent: -9999px;
+  border: 0;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: 0 -312px;
+  cursor: pointer;
+}
+.km-header-mini .km-search-box .search-btn-all {
+  position: absolute;
+  top: 12px;
+  right: 70px;
+  height: 28px;
+  padding: 4px 10px;
+  font-size: 12px;
+  color: #fff;
+  background-color: #1d99ee;
+  border: 0;
+}
+.km-header-mini .km-search-box .search-btn-all:hover {
+  background-color: #188edf;
+}
+.km-header-mini .km-search-box .search-btn-app {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  height: 28px;
+  padding: 4px 10px;
+  font-size: 12px;
+  color: #fff;
+  background-color: #71b842;
+  border: 0;
+}
+.km-header-mini .km-search-box .search-btn-app:hover {
+  background-color: #65aa37;
+}
+.km-header-mini .km-search-box input:focus {
+  border-color: transparent;
+}
+.km-header-mini .quick-entry {
+  margin-top: 13px;
+  line-height: 22px;
+}
+.km-header-mini .create-entry {
+  margin-right: 10px;
+}
+.km-header-mini .create-entry .create-icon {
+  width: 19px;
+  height: 18px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: 0px -2527px;
+  cursor: pointer;
+}
+.km-header-mini .msg-entry {
+  margin-right: 10px;
+}
+.km-header-mini .msg-entry .msg-icon {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: -28px -2527px;
+  cursor: pointer;
+}
+/**
+ * km 头部公用样式
+ */
+.km-header {
+  width: 100%;
+  line-height: 20px;
+  position: relative;
+  min-width: 1024px;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Tahoma', 'Arial', 'Microsoft Yahei', '微软雅黑', 'Hiragino Sans GB', 'PingFang SC', STHeiTi, sans-serif;
+  z-index: 1001;
+  /*底部导航*/
+}
+.km-header .msg-entry {
+  z-index: 2;
+}
+.km-header .msg-entry .tips-icon {
+  position: absolute;
+  left: 8px;
+  top: 1px;
+  width: 8px;
+  height: 8px;
+  background-position: 0 -539px;
+  display: none;
+}
+.km-header .msg-entry.has-tips .tips-icon {
+  display: inline-block;
+}
+.km-header .msg-entry .close-icon {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  width: 7px;
+  height: 7px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: 0 -341px;
+  cursor: pointer;
+}
+.km-header .msg-entry .km-dropdown {
+  width: 160px;
+}
+.km-header .msg-entry .km-dropdown .item-a {
+  padding-right: 20px;
+}
+.km-header .msg-entry .km-dropdown .a-blue {
+  color: #369;
+}
+.km-header .personal-entry img {
+  width: 22px;
+  height: 22px;
+  vertical-align: top;
+  border: none;
+}
+.km-header .personal-entry,
+.km-header .create-entry,
+.km-header .nav-kbar {
+  z-index: 2;
+}
+.km-header .km-dropdown {
+  width: 110px;
+  font-size: 12px;
+  position: absolute;
+  right: 0;
+  top: 36px;
+  background-color: #fff;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.45);
+}
+.km-header .km-dropdown .arrow-up {
+  font-size: 16px;
+  font-family: Simsun;
+  position: absolute;
+  top: -11px;
+  top: -10px\9;
+  right: 34px;
+}
+.km-header .km-dropdown .arrow-up em {
+  color: #d3d2d2;
+  width: 17px;
+  height: 12px;
+  overflow: hidden;
+  position: absolute;
+  font-style: normal;
+}
+.km-header .km-dropdown .arrow-up span {
+  color: #fff;
+  width: 17px;
+  height: 12px;
+  overflow: hidden;
+  position: absolute;
+  top: 1px;
+}
+.km-header .km-dropdown .item-a {
+  display: block;
+  padding: 8px 15px;
+  color: #444;
+  line-height: 14px;
+}
+.km-header .km-dropdown .item-a:hover {
+  background-color: #eee;
+  text-decoration: none;
+}
+.km-header .km-dropdown .separator {
+  border-top: 1px solid #ededed;
+}
+.km-header .bottom-navigation-wrap {
+  width: 100%;
+  background-color: #1084d4;
+  position: relative;
+  z-index: 1;
+}
+.km-header .bottom-navigation {
+  width: 1024px;
+  margin: 0 auto;
+  color: #fff;
+  font-size: 16px;
+}
+.km-header .bottom-navigation .nav {
+  float: left;
+}
+.km-header .bottom-navigation .nav .nav-a {
+  display: inline-block;
+  color: #fff;
+}
+.km-header .bottom-navigation .nav .nav-a:hover,
+.km-header .bottom-navigation .nav .nav-a.current {
+  text-decoration: none;
+  background-color: #1a79b9;
+}
+.km-header .bottom-navigation .arrow-down-icon {
+  width: 12px;
+  height: 10px;
+  display: inline-block;
+  *vertical-align: middle;
+  background-position: -26px -293px;
+}
+.km-header .nav-app .bg-classes-km {
+  background: url(../../img/classes-a42d608a09.png) no-repeat;
+}
+.km-header .nav-app .bg-cheeses-km {
+  background: url(../../img/cheeses-876e8522d2.png) no-repeat;
+}
+.km-header .nav-app .event-icon {
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: 0 -147px;
+  cursor: pointer;
+}
+.km-header .nav-app .cheeses-icon {
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: 0 0;
+  cursor: pointer;
+}
+.km-header .nav-app .classes-icon {
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: 0 0;
+  cursor: pointer;
+}
+.km-header .nav-app .survey-icon {
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: -87px -147px;
+  cursor: pointer;
+}
+.km-header .nav-app .photo-icon {
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: -173px -147px;
+  cursor: pointer;
+}
+.km-header .nav-app .cheese-icon {
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: -88px -489px;
+  cursor: pointer;
+}
+.km-header .nav-app .knowledge-icon {
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: -260px -147px;
+  cursor: pointer;
+}
+.km-header .nav-app .slide-icon {
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: 0 -197px;
+  cursor: pointer;
+}
+.km-header .nav-app .wishcard-icon {
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: -87px -197px;
+  cursor: pointer;
+}
+.km-header .nav-app .sms-icon {
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: -173px -197px;
+  cursor: pointer;
+}
+.km-header .nav-app .expert-icon {
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: -260px -197px;
+  cursor: pointer;
+}
+.km-header .nav-app .lab-icon {
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: 0 -247px;
+  cursor: pointer;
+}
+.km-header .nav-app .journal-icon {
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: -87px -247px;
+  cursor: pointer;
+}
+.km-header .nav-app .work-icon {
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: -173px -247px;
+  cursor: pointer;
+}
+.km-header .nav-app .twitter-icon {
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: -260px -247px;
+  cursor: pointer;
+}
+.km-header .nav-channel .km-dropdown-box .item-a {
+  width: 60px;
+  padding: 11px;
+}
+.km-header .nav-channel .news-icon {
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: 0 -389px;
+  cursor: pointer;
+}
+.km-header .nav-channel .neikan-icon {
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: -87px -389px;
+  cursor: pointer;
+}
+.km-header .nav-channel .volunteer-icon {
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: -173px -389px;
+  cursor: pointer;
+}
+.km-header .nav-channel .fund-icon {
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: -260px -389px;
+  cursor: pointer;
+}
+.km-header .nav-channel .career-icon {
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: 0 -439px;
+  cursor: pointer;
+}
+.km-header .nav-channel .communication-icon {
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: -87px -439px;
+  cursor: pointer;
+}
+.km-header .nav-channel .newsletter-km-icon {
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: -173px -439px;
+  cursor: pointer;
+}
+.km-header .nav-channel .newsletter-q-icon {
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: -260px -439px;
+  cursor: pointer;
+}
+.km-header .nav-channel .base-headline-icon {
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: 0 -489px;
+  cursor: pointer;
+}
+.km-header .nav-kbar .km-dropdown-box {
+  width: 368px;
+  padding: 0;
+}
+.km-header .nav-kbar .km-dropdown-box .arrow-up {
+  left: 74px;
+}
+.km-header .nav-kbar .km-dropdown-box .my-kbars-list {
+  height: 295px;
+}
+.km-header .nav-kbar .groups_list {
+  background-color: #FFFFFF;
+  overflow: hidden;
+  padding: 10px 20px;
+  width: 328px;
+}
+.km-header .nav-kbar .groups_list .item > div {
+  width: 72px;
+  overflow: hidden;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 14px;
+  padding: 8px 4px;
+  border: 1px solid #fff;
+}
+.km-header .nav-kbar .groups_list .item > div:hover {
+  border-color: #e9e9e9;
+}
+.km-header .nav-kbar .groups_list .item > div:hover a {
+  text-decoration: none;
+}
+.km-header .nav-kbar .groups_list .item > div a {
+  width: 72px;
+  margin: 0 auto 5px;
+  display: block;
+  overflow: hidden;
+  color: #444 !important;
+}
+.km-header .nav-kbar .groups_list .item > div img {
+  width: 40px;
+  height: 40px;
+  border-radius: 2px;
+}
+.km-header .nav-kbar .control_set_1 {
+  bottom: 10px;
+}
+.km-header .nav-kbar .control_set_1 .group_numbered_button:hover,
+.km-header .nav-kbar .control_set_1 .group_numbered_buttons_container .ac_selected {
+  background-position: -225px -1802px;
+}
+.km-header .nav-kbar .control_set_2 .previous_next_button {
+  width: 20px;
+  height: 295px;
+  position: absolute;
+  overflow: hidden;
+  text-indent: -9999px;
+  top: 0px;
+  background-color: #ffffff;
+}
+.km-header .nav-kbar .control_set_2 .previous_next_button:hover {
+  background-color: #efefef;
+}
+.km-header .nav-kbar .control_set_2 .previous_button {
+  left: 0;
+  background-position: 6px 137px;
+}
+.km-header .nav-kbar .control_set_2 .next_button {
+  left: 348px;
+  background-position: -40px 137px;
+}
+.km-header .nav-kbar .control_set_2 .ac_disabled {
+  display: none;
+}
+.km-header .nav-kbar .kbar-shortcut-link {
+  height: 20px;
+  line-height: 20px;
+  padding: 8px 20px;
+  background-color: #ededed;
+}
+.km-header .nav-kbar .kbar-shortcut-link a {
+  color: #444;
+}
+.km-header .nav-kbar .kbar-shortcut-link a:hover {
+  text-decoration: none;
+}
+.km-header .nav-kbar .kbar-shortcut-link .separator {
+  border: 0 !important;
+  float: right;
+  margin: 0px 5px 0;
+  color: #808080;
+}
+.km-header .nav-app:hover .km-dropdown-box,
+.km-header .nav-channel:hover .km-dropdown-box,
+.km-header .nav-kbar:hover .km-dropdown-box {
+  display: block;
+}
+.km-header .km-dropdown-box {
+  width: 340px;
+  display: none;
+  position: absolute;
+  padding: 10px;
+  font-size: 12px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.45);
+}
+.km-header .km-dropdown-box .arrow-up {
+  font-size: 16px;
+  font-family: Simsun;
+  position: absolute;
+  top: -10px;
+  top: -9px\9;
+  left: 58px;
+}
+.km-header .km-dropdown-box .arrow-up em {
+  color: #d3d2d2;
+  width: 17px;
+  height: 12px;
+  overflow: hidden;
+  position: absolute;
+  font-style: normal;
+}
+.km-header .km-dropdown-box .arrow-up span {
+  color: #fff;
+  width: 17px;
+  height: 12px;
+  overflow: hidden;
+  position: absolute;
+  top: 1px;
+}
+.km-header .km-dropdown-box .item {
+  float: left;
+}
+.km-header .km-dropdown-box .item-a {
+  display: inline-block;
+  width: 48px;
+  padding: 10px 17px;
+  color: #444;
+  line-height: 14px;
+  border: 1px solid #fff;
+}
+.km-header .km-dropdown-box .item-a:hover {
+  border-color: #e9e9e9;
+  text-decoration: none;
+}
+.km-header .km-dropdown-box .title {
+  color: #666;
+}
+.km-header .km-header-shadow {
+  bottom: -4px;
+  width: 100%;
+  height: 4px;
+  background-position: 0 0;
+}
+.manage-kbars-modal {
+  width: 761px;
+  height: 625px;
+}

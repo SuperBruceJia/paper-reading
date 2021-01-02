@@ -1,0 +1,32 @@
+.watermarked {
+  position: relative;
+}
+.watermarked .qq_video,
+.watermarked .video,
+.watermarked embed,
+.watermarked object {
+  position: relative;
+  z-index: 2;
+}
+.watermark {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  top: 0px;
+  pointer-events: none;
+  background-repeat: repeat;
+  opacity: 0.1;
+}
+.watermarkHide {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  top: 0px;
+  pointer-events: none;
+  background-repeat: repeat;
+  opacity: 0.05;
+}

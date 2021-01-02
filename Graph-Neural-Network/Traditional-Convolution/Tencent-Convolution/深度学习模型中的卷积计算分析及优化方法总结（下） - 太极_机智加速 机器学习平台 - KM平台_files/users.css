@@ -1,0 +1,1322 @@
+@charset "utf-8";
+/**
+ * 个人空间顶部banner
+ */
+.user-top {
+  width: 100%;
+  height: 390px;
+  text-align: center;
+  color: #fff;
+}
+.user-top.margin {
+  margin-bottom: 53px;
+}
+.user-top .avatar-l {
+  margin: 40px 0 15px;
+  border: 4px solid rgba(0, 0, 0, 0.4);
+}
+.user-top .user-nick {
+  font-size: 24px;
+  line-height: 24px;
+  margin-bottom: 10px;
+}
+.user-top .user-info {
+  font-size: 14px;
+  line-height: 14px;
+  margin-bottom: 30px;
+}
+.user-top .user-logo > span {
+  margin-right: -2px;
+  *margin-right: 4px;
+}
+.user-top .btn-attention {
+  display: inline-block;
+  padding: 7px 16px;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #ffa904;
+  color: #fff;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.user-top .btn-attention:hover {
+  background-color: #e49600;
+  color: #fff;
+  text-decoration: none;
+}
+.user-top .btn-attention .icon-atten {
+  width: 20px;
+  height: 19px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: 0 -1195px;
+}
+.user-top .btn-unattention-wrap {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+.user-top .btn-unattention-wrap .btn-unattention {
+  display: inline-block;
+  padding: 7px 13px;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #868686;
+  color: #fff;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.user-top .btn-unattention-wrap .btn-unattention:hover {
+  background-color: #7d7d7d;
+  color: #fff;
+  text-decoration: none;
+}
+.user-top .btn-unattention-wrap .btn-unattention .icon-attened {
+  width: 20px;
+  height: 19px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: -42px -1195px;
+}
+.user-top .btn-unattention-wrap .btn-unattention .icon-arrow {
+  width: 14px;
+  height: 19px;
+  display: inline-block;
+  vertical-align: middle;
+  background-position: -64px -1189px;
+}
+.user-top .btn-unattention-wrap .unfollow {
+  width: 103px;
+  height: 35px;
+  line-height: 35px;
+  margin-top: 2px;
+  text-align: center;
+  color: #444;
+  display: none;
+  background-color: #fff;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 0 5px 0 #777;
+  -moz-box-shadow: 0 0 5px 0 #777;
+  box-shadow: 0 0 5px 0 #777;
+}
+.user-top .btn-unattention-wrap .unfollow:hover {
+  color: #444;
+  text-decoration: none;
+}
+.user-top .btn-unattention-wrap:hover .unfollow {
+  display: block;
+}
+.user-top .edit-bg-btn {
+  background-position: 0 -2158px;
+  width: 39px;
+  height: 39px;
+  position: absolute;
+  right: 0;
+}
+.user-top .edit-bg-modal {
+  width: 100%;
+  height: 406px;
+  background: #0f171c;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 99999;
+  display: none;
+}
+.user-top .edit-bg-modal a {
+  cursor: pointer;
+}
+.user-top .edit-bg-modal .close-modal {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 10px;
+  left: 1430px;
+}
+.user-top .edit-bg-modal .close-modal a {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-position: -44px -2044px;
+}
+.user-top .edit-bg-modal .close-modal a:hover {
+  background-position: -67px -2044px;
+}
+.user-top .edit-bg-modal .edit-bg-header {
+  width: 819px;
+  height: 14px;
+  padding: 14px 0 8px 0;
+  margin: 0 auto;
+  border-bottom: 1px solid #272f32;
+  position: relative;
+  left: 3px;
+}
+.user-top .edit-bg-modal .edit-bg-header .choose-bg-btn {
+  margin: 0 50px 0 290px;
+}
+.user-top .edit-bg-modal .edit-bg-header .choose-bg-btn,
+.user-top .edit-bg-modal .edit-bg-header .upload-bg-btn {
+  width: 90px;
+  height: 14px;
+  display: block;
+  float: left;
+  position: relative;
+}
+.user-top .edit-bg-modal .edit-bg-header .btn {
+  height: 14px;
+  font-size: 14px;
+  color: #fff;
+  line-height: 14px;
+  display: block;
+  float: left;
+}
+.user-top .edit-bg-modal .edit-bg-header .choose-bg-btn .icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+  background-position: 0 -2048px;
+  display: block;
+  float: left;
+}
+.user-top .edit-bg-modal .edit-bg-header .upload-bg-btn .icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+  background-position: -24px -2048px;
+  background-repeat: no-repeat;
+  display: block;
+  float: left;
+}
+.user-top .edit-bg-modal .edit-bg-header .bottom-line {
+  width: 90px;
+  height: 1px;
+  display: block;
+  background: #3498db;
+  position: absolute;
+  top: 22px;
+  left: 0;
+}
+.user-top .edit-bg-modal .choose-bg-modal {
+  width: 1055px;
+  height: 346px;
+  padding-top: 23px;
+  margin: 0 auto;
+  display: block;
+}
+.user-top .edit-bg-modal .choose-bg-modal .last-page {
+  width: 45px;
+  height: 100%;
+  margin-right: 73px;
+  float: left;
+}
+.user-top .edit-bg-modal .choose-bg-modal .last-page a {
+  width: 100%;
+  height: 75px;
+  margin-top: 75px;
+  background-position: 8px -2062px;
+  display: block;
+}
+.user-top .edit-bg-modal .choose-bg-modal .last-page a:hover {
+  background-position: -102px -2062px;
+}
+.user-top .edit-bg-modal .choose-bg-modal .list {
+  width: 825px;
+  height: 100%;
+  margin-right: 42px;
+  float: left;
+}
+.user-top .edit-bg-modal .choose-bg-modal .list .all-pics {
+  width: 828px;
+  margin-right: -3px;
+  height: 226px;
+  overflow: hidden;
+  position: relative;
+}
+.user-top .edit-bg-modal .choose-bg-modal .list .pics {
+  width: 852px;
+  height: 226px;
+  margin-right: -24px;
+}
+.user-top .edit-bg-modal .choose-bg-modal .list .pics .onclick {
+  border-color: #3498db!important;
+}
+.user-top .edit-bg-modal .choose-bg-modal .list .choose-pages {
+  width: 253px;
+  height: 10px;
+  margin: 0 auto 0 auto;
+  position: relative;
+  left: 0;
+  top: -8px;
+}
+.user-top .edit-bg-modal .choose-bg-modal .list .choose-pages span {
+  height: 100%;
+  line-height: 10px;
+  display: block;
+  margin-right: -10px;
+  text-align: center;
+}
+.user-top .edit-bg-modal .choose-bg-modal .list .choose-pages span a {
+  width: 10px;
+  height: 10px;
+  margin-right: 10px;
+  display: inline-block;
+  background-position: -17px -2139px;
+}
+.user-top .edit-bg-modal .choose-bg-modal .list .choose-pages span .on {
+  background-position: 1px -2139px;
+}
+.user-top .edit-bg-modal .choose-bg-modal .list .choose-bg-op-btn {
+  width: 819px;
+}
+.user-top .edit-bg-modal .choose-bg-modal .list .choose-bg-op-btn .op-btn {
+  width: 253px;
+  height: 30px;
+  margin: 32px auto 0 auto;
+}
+.user-top .edit-bg-modal .choose-bg-modal .list .choose-bg-op-btn .op-btn a {
+  width: 84px;
+  padding-left: 0;
+  padding-right: 0;
+}
+.user-top .edit-bg-modal .choose-bg-modal .list .choose-bg-op-btn .op-btn .km-btn-default {
+  margin-right: 40px;
+}
+.user-top .edit-bg-modal .choose-bg-modal .pic {
+  width: 253px;
+  height: 93px;
+  border: 3px solid #0f171c;
+  margin: 0 24px 14px 0;
+  float: left;
+  cursor: pointer;
+}
+.user-top .edit-bg-modal .choose-bg-modal .pic:hover {
+  border-color: #3498db;
+}
+.user-top .edit-bg-modal .choose-bg-modal .pic img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.user-top .edit-bg-modal .choose-bg-modal .pic span {
+  width: 100%;
+  height: 27px;
+  line-height: 27px;
+  font-size: 12px;
+  color: #fff;
+  position: relative;
+  top: -27px;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99061926, endColorstr=#99061926);
+  background: rgba(6, 25, 38, 0.6);
+  display: block;
+}
+.user-top .edit-bg-modal .choose-bg-modal .next-page {
+  width: 45px;
+  height: 100%;
+  float: left;
+}
+.user-top .edit-bg-modal .choose-bg-modal .next-page a {
+  width: 100%;
+  height: 75px;
+  margin-top: 75px;
+  background-position: -30px -2062px;
+  display: block;
+}
+.user-top .edit-bg-modal .choose-bg-modal .next-page a:hover {
+  background-position: -140px -2062px;
+}
+.user-top .edit-bg-modal .upload-bg-modal {
+  height: 351px;
+  padding-top: 18px;
+  display: none;
+}
+.user-top .edit-bg-modal .upload-bg-modal .user_banner_wrapper .file_box {
+  float: none;
+  display: block;
+  margin: 0 auto;
+}
+.user-top .edit-bg-modal .upload-bg-modal .user_banner_wrapper .k_input_hint_group {
+  float: none;
+  display: block;
+  margin: 10px auto 16px auto;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Tahoma', 'Arial', 'Microsoft Yahei', '微软雅黑', 'Hiragino Sans GB', 'PingFang SC', STHeiTi, sans-serif;
+  font-size: 12px;
+}
+.user-top .edit-bg-modal .upload-bg-modal .user_banner_wrapper .banner_preview {
+  margin: 0 auto!important;
+}
+.user-top .edit-bg-modal .upload-bg-modal .user_banner_wrapper .banner_preview img {
+  position: relative;
+  left: 3px;
+}
+.user-top .edit-bg-modal .upload-bg-modal .user_banner_wrapper .banner_preview a {
+  height: 30px;
+  line-height: 30px;
+  font-size: 14px;
+  color: #fff;
+  opacity: 0.6;
+  display: none!important;
+}
+.user-top .edit-bg-modal .upload-bg-modal .upload-bg-op-btn {
+  width: 819px;
+  margin: 0 auto;
+}
+.user-top .edit-bg-modal .upload-bg-modal .upload-bg-op-btn .op-btn {
+  width: 253px;
+  height: 30px;
+  margin: 26px auto 0 auto;
+}
+.user-top .edit-bg-modal .upload-bg-modal .upload-bg-op-btn .op-btn a {
+  width: 84px;
+  padding-left: 0;
+  padding-right: 0;
+}
+.user-top .edit-bg-modal .upload-bg-modal .upload-bg-op-btn .op-btn .km-btn-default {
+  margin-right: 40px;
+}
+/**
+ * 个人资料页
+ */
+.basic-info {
+  margin-bottom: 15px;
+}
+.basic-info .edit-profile-btn {
+  padding-left: 17px;
+  margin: 10px;
+  background-position: 0 -1667px;
+}
+.basic-info .basic-info-list {
+  font-size: 14px;
+  line-height: 45px;
+}
+.basic-info .content ul {
+  width: 50%;
+  display: block;
+}
+.company-reward .title {
+  font-size: 14px;
+  margin: 15px 0;
+}
+.company-reward .content {
+  margin: 0 -19px 20px 0;
+}
+.company-reward .user-reward-block img {
+  width: 148px;
+  height: 210px;
+  margin-right: 25px;
+  float: left;
+  cursor: pointer;
+}
+.km-reward {
+  margin-top: 16px;
+}
+.km-reward .title {
+  font-size: 14px;
+  margin: 15px 0;
+}
+.friends-evaluation .evaluation-container {
+  margin: 20px 0;
+}
+.friends-evaluation .avatar {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  z-index: 1000;
+}
+.friends-evaluation .wording {
+  font-size: 14px;
+  padding: 4px 7px 4px 12px;
+  margin: 0 10px 0 12px;
+  display: inline-block;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  position: relative;
+  top: -15px;
+  left: 0px;
+  z-index: 100;
+}
+.tip a:hover {
+  text-decoration: none;
+}
+.tip .tip_delete {
+  display: none;
+  width: 13px;
+  height: 13px;
+  cursor: pointer;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+.tip:hover .tip_delete {
+  display: block;
+  background-position: -23px -3354px;
+}
+.tip_bubble_angle {
+  display: block;
+  position: absolute;
+  left: -15px;
+  top: 6px;
+  width: 15px;
+  height: 15px;
+  background-color: #333333;
+}
+#preview_profile_container {
+  overflow: hidden;
+  width: 180px;
+  height: 180px;
+}
+#preview_avatar_container {
+  overflow: hidden;
+  width: 48px;
+  height: 48px;
+}
+/*
+* 个人空间 我的乐问样式
+*/
+.right-banner {
+  border: 1px solid #efefef;
+}
+.right_side_bar.q-right-block {
+  height: auto;
+  min-height: 0px;
+}
+.right_side_bar.q-right-block .right-banner {
+  padding: 0px 15px;
+  border: 1px solid #E1E1E1;
+  height: 80px;
+}
+.bg-headline-users {
+  background-position: 50px -3181px;
+  height: 80px;
+}
+.bg-thousand-agree-users {
+  background-position: 42px -3267px;
+  height: 80px;
+}
+.bg-hundred-agree-users {
+  background-position: -265px -3267px;
+  height: 80px;
+}
+.right-wrapper {
+  border: 1px solid #efefef;
+  padding: 10px;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Tahoma', 'Arial', 'Microsoft Yahei', '微软雅黑', 'Hiragino Sans GB', 'PingFang SC', STHeiTi, sans-serif;
+}
+.right-wrapper .q-answer-info {
+  margin-top: 5px;
+}
+.right-wrapper .q-answer-info .q-user-answer-agree-count {
+  text-align: center;
+  width: 48px;
+  height: 45px;
+  margin-right: 10px;
+  border: 1px solid #e5e5e5;
+  color: #b5b5b5;
+}
+.right-wrapper .q-answer-info .q-user-answer-agree-count .q-answer-agree-number {
+  color: #666;
+  font-size: 16px;
+  line-height: 23px;
+}
+.right-wrapper .q-answer-info .q-answer-content {
+  float: left;
+  max-width: 208px;
+  max-height: 75px;
+  overflow: hidden;
+  line-height: 25px;
+  font-size: 12px;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Tahoma', 'Arial', 'Microsoft Yahei', '微软雅黑', 'Hiragino Sans GB', 'PingFang SC', STHeiTi, sans-serif;
+}
+/* 个人影响力主页 start */
+.influence-number {
+  color: #f97e03;
+}
+.influence-zone .title {
+  background-color: #F6F6F6;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 22px;
+  vertical-align: top;
+}
+.influence-zone .title a {
+  font-weight: normal;
+  right: 15px;
+}
+.influence-zone .user_influence {
+  display: inline-block;
+}
+.influence-zone .user_influence_pic {
+  display: inline-block;
+  margin-top: 1px;
+}
+.influence-zone .influence-type {
+  height: 100px;
+  padding-bottom: 40px;
+  position: relative;
+}
+.influence-zone .influence-type ul li {
+  float: left;
+  position: relative;
+  z-index: 2;
+}
+.influence-zone .influence-type ul li.power-introduction {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  height: 90px;
+  width: 122px;
+  border: 1px solid #ededed;
+  padding: 3px 10px 7px;
+  color: #999;
+  font-size: 12px;
+  line-height: 18px;
+  float: right;
+}
+.influence-zone .influence-type ul li.power-introduction .bold {
+  line-height: 25px;
+}
+.influence-zone .influence-type ul li.power-introduction .power-introduction-title {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 5px;
+}
+.influence-zone .time-line {
+  height: 3px;
+  background-color: #efefef;
+  width: 780px;
+  position: absolute;
+  left: 100px;
+  top: 50px;
+}
+.influence-zone .influence-power {
+  width: 100px;
+  height: 100px;
+  color: #fff;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+}
+.influence-zone .influence-power .power-name {
+  margin-top: 10px;
+}
+.influence-zone .influence-power .wording {
+  margin-top: 12px;
+  font-size: 14px !important;
+  color: #999;
+}
+.influence-zone .disseminate-power {
+  background-position: 0 -1292px;
+}
+.influence-zone .contribute-power {
+  background-position: -110px -1292px;
+}
+.influence-zone .professional-power {
+  background-position: -220px -1292px;
+}
+.influence-zone .power-milestone {
+  width: 18px;
+  height: 32px;
+  margin-left: 113px;
+}
+.influence-zone .disseminate-power-milestone {
+  background-position: 2px -1395px;
+  margin-top: 36px;
+}
+.influence-zone .contribute-power-milestone {
+  background-position: -24px -1395px;
+  margin-top: 36px;
+}
+.influence-zone .professional-power-milestone {
+  background-position: -50px -1395px;
+  margin-top: 36px;
+}
+.influence-zone .top-milestones,
+.influence-zone .bottom-milestones {
+  top: 0;
+  left: 94px;
+  width: 800px;
+}
+.influence-zone .top-milestones li,
+.influence-zone .bottom-milestones li {
+  width: 262px;
+  text-align: center;
+}
+.influence-zone .top-milestones .milestone-margin,
+.influence-zone .bottom-milestones .milestone-margin {
+  margin-right: 0px;
+}
+.influence-zone .bottom-milestones {
+  top: 62px;
+  left: 225px;
+}
+.influence-zone .milestone-begin {
+  top: 20px;
+  left: -28px;
+}
+.influence-zone .milestone-begin .milestone-info {
+  width: 74px;
+}
+.influence-zone .milestone-info {
+  padding: 9px 10px;
+  margin: 0 auto;
+  font-size: 12px;
+  color: #999;
+  height: 22px;
+  line-height: 16px;
+  display: inline-block;
+  width: 94px;
+  position: relative;
+  text-align: center;
+  font-weight: normal;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #fff;
+}
+.influence-zone .milestone-info.arrow-up {
+  line-height: 28px;
+  background-position: 0 -1427px;
+}
+.influence-zone .milestone-info.arrow-down {
+  background-position: -124px -1427px;
+}
+.influence-zone .milestone-info .info-arrow-up {
+  display: inline-block;
+  width: 14px;
+  height: 10px;
+  position: absolute;
+  top: 27px;
+  left: 42%;
+  z-index: 10;
+}
+.influence-zone .milestone-info .info-arrow-down {
+  display: inline-block;
+  width: 14px;
+  height: 10px;
+  position: absolute;
+  top: -9px;
+  left: 43%;
+  z-index: 10;
+}
+.friends-evaluation .empty_block {
+  margin: 15px 0;
+}
+/* end 个人影响力主页 */
+/*
+ * 新版个人中心
+ */
+.right-section {
+  margin-bottom: 40px;
+}
+.right-section .km-block-title-bar {
+  height: 44px;
+}
+.right-section.border {
+  border: 1px solid #ededed;
+}
+.right-section .section-header {
+  padding: 0 15px;
+  border-bottom: 1px solid #ededed;
+}
+.right-section .section-header .section-title {
+  color: #444;
+  line-height: 36px;
+  font-size: 16px;
+}
+.right-section .section-header .more {
+  color: #999;
+  font-size: 12px;
+  line-height: 36px;
+  text-decoration: none;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Tahoma', 'Arial', 'Microsoft Yahei', '微软雅黑', 'Hiragino Sans GB', 'PingFang SC', STHeiTi, sans-serif;
+}
+.right-section .section-header .more:after {
+  content: ">>";
+}
+/* 新版个人中心左侧栏和右侧栏 */
+.user-feeds-wrapper {
+  background-color: #fff;
+  color: #444;
+  margin-bottom: 75px;
+}
+.user-feeds-wrapper #timeline {
+  position: absolute;
+  font-size: 12px;
+  margin-left: -75px;
+  margin-top: -46px;
+}
+.user-feeds-wrapper #timeline .time-link {
+  text-align: right;
+  margin-bottom: 1px;
+  color: #666;
+  padding: 0 5px;
+  line-height: 25px;
+  display: block;
+  border-right: 5px solid #d2d2d2;
+  text-decoration: none;
+  width: 41px;
+}
+.user-feeds-wrapper #timeline .time-link:hover {
+  border-color: #8f8f8f;
+}
+.user-feeds-wrapper #timeline .active {
+  border-color: #8f8f8f;
+}
+.user-feeds-wrapper #feeds .feed-content {
+  margin-left: 60px;
+}
+.user-feeds-wrapper #loading {
+  float: none;
+}
+/* 个人空间乐问首页 */
+#user-q {
+  margin-bottom: 75px;
+}
+#user-q #feeds .feed-content {
+  margin-left: 60px;
+}
+.personal-short-info {
+  border: 1px solid #efefef;
+}
+.personal-short-info ul {
+  padding: 18px 0;
+  overflow: hidden;
+  margin-left: -1px;
+}
+.personal-short-info ul li {
+  float: left;
+  width: 33%;
+  height: 40px;
+  border-left: 1px solid #efefef;
+  text-align: center;
+}
+.personal-short-info ul li .num {
+  color: #444;
+  font-size: 18px;
+}
+.personal-short-info ul li a {
+  color: #444;
+}
+.personal-short-info ul li .title {
+  color: #999;
+  font-size: 14px;
+}
+/* 个人影响力模块 start */
+.influence-panel {
+  overflow: hidden;
+  height: 205px;
+}
+.section-content .influence-title {
+  padding-bottom: 7px;
+}
+.section-content .influence-value {
+  color: #fba66c;
+}
+.section-content .top-arrow-yellow,
+.section-content .top-arrow-gray {
+  position: absolute;
+  top: -7px;
+  left: 0;
+  content: '';
+  width: 7px;
+  height: 7px;
+  display: block;
+  background-image: url(../../img/sprites_km.png);
+}
+.section-content .top-arrow-yellow {
+  background-position: 0 -1081px;
+}
+.section-content .top-arrow-gray {
+  background-position: -30px -1081px;
+}
+.section-content .influence-bar {
+  background-color: #edeeee;
+  color: #999;
+  font-size: 12px;
+  line-height: 20px;
+  height: 20px;
+  white-space: nowrap;
+}
+.section-content .influence-rank-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #fabc46;
+  color: #fff;
+  line-height: 20px;
+  height: 20px;
+  overflow: hidden;
+}
+.section-content {
+  padding: 10px 10px 15px 10px;
+}
+/*
+*  个人影响力模块对IE8及以下的老版本canvas兼容
+*  不与现行版本统一
+*  只在user/show.thtml中有，改造后可以去除
+*/
+.influence-panel-ie {
+  background-color: #f5fbff;
+  padding: 15px 0;
+  margin-bottom: 30px;
+  border: 1px solid #e2e2e2;
+}
+.influence-panel-ie .influence-annulus {
+  background-position: 2px -5735px;
+  width: 250px;
+  height: 250px;
+  margin: 0 auto;
+  text-align: center;
+}
+.influence-panel-ie .influence-value {
+  color: #c90404;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Tahoma', 'Arial', 'Microsoft Yahei', '微软雅黑', 'Hiragino Sans GB', 'PingFang SC', STHeiTi, sans-serif;
+  font-size: 20px;
+  font-size: 30px;
+  padding-top: 60px;
+  line-height: 32px;
+}
+.influence-panel-ie .influence-title {
+  display: inline-block;
+  font-size: 16px;
+  color: #595959;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Tahoma', 'Arial', 'Microsoft Yahei', '微软雅黑', 'Hiragino Sans GB', 'PingFang SC', STHeiTi, sans-serif;
+  line-height: 24px;
+  font-weight: bold;
+}
+.influence-panel-ie .user_influence_pic {
+  display: inline-block;
+  position: relative;
+}
+.influence-panel-ie .influence-rank {
+  font-size: 12px;
+  margin-top: 13px;
+  color: #808080;
+  vertical-align: top;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Tahoma', 'Arial', 'Microsoft Yahei', '微软雅黑', 'Hiragino Sans GB', 'PingFang SC', STHeiTi, sans-serif;
+}
+.influence-panel-ie .influence-rank .influence-value {
+  font-size: 16px;
+  line-height: 20px;
+  padding: 0px 3px;
+  font-weight: bold;
+}
+.influence-panel-ie .influence-detail {
+  font-size: 12px;
+  margin-top: 5px;
+  color: #808080;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Tahoma', 'Arial', 'Microsoft Yahei', '微软雅黑', 'Hiragino Sans GB', 'PingFang SC', STHeiTi, sans-serif;
+  padding: 0 37px;
+}
+/* end 个人影响力模块 */
+/* 个人资料 */
+.user-info-panel {
+  margin-bottom: 31px;
+}
+.user-info-panel .km-block-title-bar {
+  height: 37px;
+}
+.user-info-panel ul {
+  padding: 8px 0px 13px 11px;
+}
+.user-info-panel ul li {
+  line-height: 29px;
+  width: 280px;
+}
+.user-info-panel ul li span {
+  color: #1a8bd9;
+}
+/* 荣誉 */
+.rewards-panel .reward {
+  height: 40px;
+  margin-bottom: 20px;
+}
+.rewards-panel .reward .icon-reward {
+  display: block;
+  float: left;
+  width: 40px;
+  height: 40px;
+  margin-right: 5px;
+}
+.rewards-panel .reward .icon-reward-default {
+  background-position: 0px -1098px;
+}
+.rewards-panel .reward .icon-reward-outstanding-research,
+.rewards-panel .reward .icon-reward-outstanding-operation {
+  background-position: -196px -1098px;
+}
+.rewards-panel .reward .icon-reward-micro-creation {
+  background-position: -49px -1098px;
+}
+.rewards-panel .reward .icon-reward-covid {
+  background-position: -339px -1098px;
+}
+.rewards-panel .reward .icon-reward-code-culture {
+  background-position: -147px -1098px;
+}
+.rewards-panel .reward .icon-reward-patent {
+  background-position: -98px -1098px;
+}
+.rewards-panel .reward .icon-reward-knowledge {
+  background-position: -244px -1098px;
+}
+.rewards-panel .reward .icon-reward-social {
+  background-position: -292px -1098px;
+}
+.rewards-panel .reward .reward-detail {
+  float: left;
+  color: #999;
+  width: 239px;
+}
+.rewards-panel .reward .reward-detail .reward-title {
+  color: #444;
+}
+.rewards-panel .reward .reward-detail .reward-intro {
+  display: block;
+  font-size: 12px;
+  width: 269px;
+  color: #999;
+  text-decoration: none;
+}
+.rewards-panel .reward .reward-detail .reward-created-time {
+  color: #999;
+}
+/* 最近来访（人际关系） */
+.iconlist .icon-item {
+  margin: 14px 8px 2px -2px;
+  text-align: center;
+  width: 75px;
+  font-size: 12px;
+}
+.iconlist .icon-item .item-a {
+  display: block;
+  text-decoration: none;
+}
+.iconlist .icon-item .item-a img {
+  margin: 0 auto;
+}
+/* 相册 */
+.photos-panel .section-content {
+  margin-right: -20px;
+}
+.photos-panel .photo,
+.photos-panel .last-photo {
+  margin-right: 7px;
+}
+.photos-panel .photo img,
+.photos-panel .last-photo img {
+  width: 90px;
+  height: 90px;
+  display: block;
+}
+.photos-panel .last-photo {
+  margin-right: 0;
+}
+/* 好友评价 */
+#opinion-form {
+  margin-top: 34px;
+}
+#my_opinion {
+  width: 227px;
+  margin-right: -1px;
+  height: 26px;
+  border: 1px solid #d8d8d8;
+  padding: 0 8px;
+}
+.my-opinion-btn {
+  width: 48px;
+  margin-right: 0 !important;
+  padding: 0;
+  height: 28px;
+  border-radius: 0;
+}
+.tag_box .tag_box_lis .item .word {
+  border: none;
+  border-radius: 0;
+  cursor: default;
+}
+.tag_box .tag_box_lis .item:hover {
+  color: #444;
+}
+/* 个人荣誉页面 */
+.user-reward {
+  color: #444;
+  font-size: 14px;
+  padding-bottom: 30px;
+}
+.user-reward p {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  line-height: 14px;
+}
+.user-reward .km-block-title-bar-underline {
+  margin-top: 40px;
+}
+.user-reward .user-reward-img-block {
+  margin-right: -20px;
+}
+.user-reward .user-reward-img-block .img-reward {
+  width: 230px;
+  height: 326px;
+  margin-right: 21px;
+  margin-top: 10px;
+  float: left;
+  cursor: pointer;
+}
+.user-reward .user-reward-list {
+  padding-top: 10px;
+  line-height: 14px;
+}
+.user-reward .user-reward-list div {
+  margin-top: 20px;
+}
+.user-reward .user-reward-notice {
+  margin-top: 10px;
+  border: 1px #fadc80 solid;
+  background: #fff9e3;
+  padding: 5px 5px;
+  color: #666;
+}
+/*o 我的k吧 */
+.my_kbar_panel .km_box {
+  padding-bottom: 8px;
+  *padding-bottom: 35px;
+}
+.my_kbar_panel .km_box .my_kbars {
+  margin-top: 10px;
+}
+.my_kbar_panel .km_box .my_kbars .kbar_item {
+  width: 273px;
+  height: 98px;
+  border: 1px solid #E5E5E5;
+  padding-top: 13px;
+  padding-left: 12px;
+  margin-bottom: 27px;
+  margin-right: 80px;
+  background-color: #f5f5f7;
+}
+.my_kbar_panel .km_box .my_kbars .kbar_item_last {
+  margin-right: 0px;
+}
+.my_kbars .btn_attention {
+  padding: 1px 7px;
+  height: 20px;
+  line-height: 20px;
+  background-image: none;
+  background-color: #EAEAEA;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  top: -3px;
+}
+.my_kbars .btn_attention > .icon_atten {
+  padding-left: 10px;
+  background-position: 0px -2626px;
+  display: inline-block;
+}
+.my_kbars .btn_attention > .icon_attened {
+  padding-left: 13px;
+  background-position: 0px -2642px;
+}
+.my_kbars .btn_attention > .icon_attened_each {
+  padding-left: 15px;
+  background-position: 0px -2659px;
+}
+.my_kbars .btn_unattention {
+  color: #808080;
+  cursor: default;
+}
+.my_kbars .btn_unattention:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+.my_kbars .btn_unattention {
+  cursor: pointer;
+}
+.my_kbars .join {
+  background-color: #4aa3dd;
+  color: #FFF;
+}
+.my_kbars .join:hover {
+  text-decoration: none;
+  background-color: #52b1ef;
+}
+/*end 我的k吧 */
+/*o k_block */
+.k_block .block_img {
+  width: 80px;
+  height: 80px;
+}
+.k_block .block_info {
+  margin-left: 12px;
+}
+.k_block .block_info .block_deail {
+  margin: 8px auto 2px;
+}
+.k_block .block_info .block_deail a {
+  cursor: pointer;
+}
+.k_block .block_info .block_intro {
+  margin-bottom: 4px;
+}
+.k_block .block_info a.block_intro {
+  margin-top: 5px;
+}
+.k_block .block_name {
+  font-size: 14px;
+  font-weight: normal;
+  margin-top: 5px;
+}
+.k_block .unattention {
+  height: 20px;
+  width: 67px;
+  text-align: center;
+  background-color: #EAEAEA;
+  color: #808080;
+  display: block;
+}
+/*end k_block */
+/*o user search box*/
+.search_panel {
+  padding: 23px 32px;
+  border: 1px solid #E1E1E1;
+  *position: relative;
+  margin-bottom: 20px;
+}
+.search_panel .search_box_wrap {
+  height: 26px;
+  border: 1px solid #D8D8D8;
+}
+.search_panel .search_box_wrap .search_place_holder {
+  *z-index: 0;
+  top: 2px;
+  left: 2px;
+}
+.search_panel .search_box_wrap input.search_box {
+  border: 0px;
+  height: 28px;
+  line-height: 28px;
+  padding: 0px;
+  padding-left: 3px;
+  background-color: transparent;
+  *z-index: 2;
+}
+.search_panel .search_box_wrap input.search_btn {
+  margin-right: 0px;
+  height: 30px;
+  width: 40px;
+  border: 0px;
+  margin-top: -1px;
+  background-position: 0px 0px;
+}
+.search_panel .search_box_wrap input.search_btn:hover {
+  background-position: -60px 0px;
+}
+.searchbox_width_213 {
+  width: 203px;
+}
+/*end user search box*/
+#tags_extend {
+  float: right;
+  width: 45px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+#tags_extend .logo {
+  display: inline-block;
+  width: 12px;
+  height: 15px;
+  vertical-align: middle;
+  background-position: 0 -3224px;
+  *background-position: 0 -3222px;
+  *margin-right: 5px;
+}
+#tags_extend .logo.asc {
+  background-position: -20px -3224px;
+  *background-position: -20px -3222px;
+}
+.k_express_list .k_express_item .div_height {
+  margin-left: 120px;
+}
+/* 关注页 */
+.follow_user_item {
+  margin-top: 20px;
+}
+.follow_user_item .main {
+  width: 82%;
+}
+.follow_user_item .has_followed,
+.follow_user_item .follow_cancel {
+  text-decoration: none;
+  color: #444;
+}
+.follow_user_item li .followed_info {
+  font-size: 12px;
+  display: block;
+  text-align: center;
+}
+/* 个人荣誉图片放大 */
+#enlarge-img-modal .modal_body img {
+  display: block;
+  margin: 0 auto;
+}
+/**
+ * 标签搜索页面
+ */
+.info-search-list {
+  padding: 10px 0;
+  border-bottom: 1px solid #efefef;
+}
+/* 收藏——文集 */
+.knowledge-list .knowledge-item {
+  padding-bottom: 35px;
+}
+/* 收藏——乐问 */
+.q-list .wording {
+  line-height: 18px;
+}
+.q-list .q-answer-right {
+  padding-left: 63px;
+}
+.km_articles {
+  margin-top: 23px;
+}
+.tag-user-options {
+  padding: 9px 10px 13px 10px;
+}
+.photo-block {
+  padding: 13px 0px 14px 10px;
+  width: 302px;
+}
+.photo-block .photo-link {
+  display: block;
+  font-size: 0;
+  margin-right: 10px;
+}
+.reward-block {
+  padding: 19px 0 0 10px;
+}
+.recent-visitor-block {
+  padding: 0 0 10px 0;
+}
+.radius-back {
+  width: 291px;
+  height: 82px;
+  float: left;
+  position: relative;
+  background-position: 0px -2389px;
+  top: -85px;
+  z-index: -1;
+  left: -1px;
+}
+/*mac下宽度少了一个px，会导致样式错乱*/
+.form_element_block label.title-for-MAC {
+  width: 61px;
+}

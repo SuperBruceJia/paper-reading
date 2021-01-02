@@ -1,0 +1,142 @@
+@charset "utf-8";
+/**
+ * km前端框架样式
+ */
+.k_tui_header,
+.k_tui_footer {
+  margin: 0 auto;
+}
+.k_tui_body {
+  width: 1024px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+}
+.k_tui_body .k_tui_menu {
+  width: 145px;
+}
+.k_tui_body .k_tui_main {
+  width: 794px;
+  padding: 10px 20px;
+  min-height: 700px;
+  background-color: #fff;
+  border-left: 1px solid #e5e5e5;
+}
+.k_tui_body.k_tui_body_mb {
+  padding-bottom: 45px;
+}
+.k_tui_footer {
+  overflow: hidden;
+  color: #909090;
+  width: 100%;
+  height: 153px;
+  line-height: 2em;
+  text-align: center;
+  padding-top: 40px;
+}
+.k_tui_footer .k_tui_footer a {
+  text-decoration: underline;
+}
+.middle_main {
+  width: 600px;
+  min-height: 500px;
+  padding-left: 20px;
+  padding-right: 0;
+}
+.middle_main_m {
+  width: 630px;
+  min-height: 500px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.middle_main_l {
+  width: 680px;
+  min-height: 500px;
+  padding-left: 20px;
+  padding-right: 0;
+}
+.middle_main_xl {
+  width: 700px;
+  min-height: 500px;
+  padding-left: 20px;
+  padding-right: 0;
+}
+.full_content {
+  width: 940px;
+}
+.right_side_bar {
+  width: 300px;
+  min-height: 500px;
+  padding-left: 0;
+  padding-right: 20px;
+}
+.right-side-bar-m {
+  width: 240px;
+  min-height: 500px;
+  padding-left: 0;
+  padding-right: 0;
+}
+.editor_statement {
+  border: 1px solid #E1E1E1;
+  padding: 6px;
+  margin-bottom: 10px;
+}
+/**
+ * 改版新框架
+ */
+.km-tui-header {
+  font-family: 'Helvetica Neue', 'Helvetica', 'Tahoma', 'Arial', 'Microsoft Yahei', '微软雅黑', 'Hiragino Sans GB', 'PingFang SC', STHeiTi, sans-serif;
+  margin-bottom: 30px;
+}
+.km-tui-body {
+  width: 1024px;
+  margin: 0 auto;
+  min-height: 740px;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Tahoma', 'Arial', 'Microsoft Yahei', '微软雅黑', 'Hiragino Sans GB', 'PingFang SC', STHeiTi, sans-serif;
+}
+.km-tui-body.pd-m {
+  padding-bottom: 20px;
+}
+.km-tui-body.border {
+  border: 1px solid #efefef;
+}
+.km-tui-body-full {
+  width: 100%;
+  margin-top: -30px !important;
+}
+@-moz-document url-prefix() {
+  .km-tui-body-full {
+    margin-top: 0;
+  }
+}
+.middle-main {
+  width: 1024px;
+}
+.middle-main.padding {
+  width: 984px;
+  padding: 0 20px 20px;
+}
+.middle-main-l {
+  width: 660px;
+  min-height: 500px;
+  padding-left: 0;
+  padding-right: 0;
+}
+.left-main {
+  width: 660px;
+}
+.right-side-bar {
+  width: 314px;
+  min-height: 500px;
+  padding-left: 0;
+}
+.right-border {
+  border: 1px solid #efefef;
+}
+.full-content {
+  width: 1024px;
+}
+.full-content-center {
+  width: 1024px;
+  margin: 0 auto;
+}
