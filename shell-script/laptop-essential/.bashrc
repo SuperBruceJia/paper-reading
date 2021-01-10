@@ -11,3 +11,4 @@
 
 
 
+source "$HOME/.cargo/env"

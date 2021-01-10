@@ -64,4 +64,4 @@ source /Users/shuyuej/Library/Preferences/org.dystroy.broot/launcher/bash/br
 [ -z "$ZSH_NAME" ] && [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
-export PATH="$HOME/.cargo/bin:$PATH"
+source "$HOME/.cargo/env"
