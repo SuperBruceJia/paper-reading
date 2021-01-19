@@ -1,3 +1,13 @@
+npm install -g npm-check
+
+npm-check -u -g
+npm-check -u
+
+
+
+
+
+
 npm install -g npm
 npm install -g spdy --save-dev
 npm install -g request --save-dev
@@ -401,4 +411,7 @@ vconsole - 微信小程序推出的调试工具，直接内嵌在页面内，支
 
 
 
+npm install -g eslint
+eslint --init
+eslint yourfile.js
 
