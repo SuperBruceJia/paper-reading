@@ -1,10 +1,24 @@
-conda activate tensorflow2
 
-python gen2.py -d ./output -v v1.13.0
+brew install dashing
 
-cd XXXXXXX
+pip install --user tqdm python-magic cchardet beautifulsoup4 lxml pygmentize
+
+git clone https://github.com/SuperBruceJia/dash-docset-tensorflow.git
+
+cd dash-docset-tensorflow
+
+wget -nc -np --compression=gzip --domains=www.tensorflow.org -e robots=off --adjust-extension -r 'https://www.tensorflow.org/versions/r1.15/api_docs/'
+
+cp dashing.json icon*.png main.css www.tensorflow.org
+
+./preprocess.sh www.tensorflow.org
+
+cd www.tensorflow.org/
 
 dashing build
+
+######################################################################################################################################################
+
 
 
 
