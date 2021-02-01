@@ -1,0 +1,10 @@
+conda activate tensorflow2
+
+python gen2.py -d ./output -v v1.13.0
+
+cd XXXXXXX
+
+dashing build
+
+
+
