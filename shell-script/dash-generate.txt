@@ -20,6 +20,23 @@ dashing build
 
 ######################################################################################################################################################
 
+conda activate tensorflow2
+
+pip install -U setuptools wheel pip pygments misaka gast git+https://github.com/tensorflow/docs
+git clone --depth 1 --branch r2.4 https://github.com/tensorflow/tensorflow
+pushd tensorflow/tensorflow/tools/docs
+python generate2.py --code_url_prefix "https://github.com/tensorflow/tensorflow/blob/v2.4.0/tensorflow/" --output_dir=../../../../tf_generated_docs
+popd
+python gen.py tf_generated_docs out_dir
+cp dashing.json icon*.png style.css out_dir
+pygmentize -S default -f html >> out_dir/style.css
+sed -E 's/href="([^"]+)\.md"/href="\1.html"/g' out_dir/tf.html > out_dir/index.html
+rm out_dir/tf.html
+find out_dir/tf -type f -exec sed -i '' -E 's/href="([^"]+)\.md"/href="\1.html"/g' {} \;
+cd out_dir
+dashing build
+
+
 
 
 
