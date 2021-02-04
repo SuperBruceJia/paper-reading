@@ -1,0 +1,5 @@
+xcode-select --install
+
+https://developer.apple.com/download/more/
+
+
