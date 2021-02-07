@@ -1,0 +1,152 @@
+brew install openjdk@8                                                                                
+sudo ln -sfn /usr/local/opt/openjdk@8/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-8.
+echo 'export PATH="/usr/local/opt/openjdk@8/bin:$PATH"' >> ~/.zshrc
+export CPPFLAGS="-I/usr/local/opt/openjdk@8/include"
+export JAVA_8_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents
+
+
+################################################################################################################################################
+
+
+# Kafka and ZooKepper
+brew install kafka
+brew install zookeeper
+
+kafka-server-start /usr/local/etc/kafka/server.properties
+zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties
+
+
+################################################################################################################################################
+
+
+# Hadoop
+git clone https://github.com/apache/hadoop.git && cd hadoop
+git checkout branch-2.10.1
+mvn package -Pdist,native -DskipTests -Dtar
+
+# Hadoop
+export HADOOP="/Users/shuyuej/Desktop/hadoop/hadoop-dist/target/hadoop-2.10.1/bin"
+export HADOOP_HOME="/Users/shuyuej/Desktop/hadoop/hadoop-dist/target/hadoop-2.10.1"
+export HADOOP_PREFIX=$HADOOP_HOME
+export HADOOP_COMMON_HOME=$HADOOP_PREFIX
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${HADOOP_HOME}/lib/native
+export JAVA_LIBRARY_PATH=$JAVA_LIBRARY_PATH:${HADOOP_HOME}/lib/native
+export PATH=$PATH:$HADOOP_HOME/bin
+export PATH=$HADOOP_HOME/bin:$PATH
+export PATH="/Users/shuyuej/Desktop/hadoop:$PATH"
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_PREFIX/lib/native
+export HADOOP_OPTS="-Djava.library.path=$HADOOP_COMMON_LIB_NATIVE_DIR"
+export HADOOP_OPTS="-Djava.library.path=${HADOOP_HOME}/lib/native"
+export HADOOP_CONF_DIR=$HADOOP_PREFIX/etc/hadoop
+export HADOOP_HDFS_HOME=$HADOOP_PREFIX
+export HADOOP_MAPRED_HOME=$HADOOP_PREFIX
+export HADOOP_YARN_HOME=$HADOOP_PREFIX  
+export JAVA_LIBRARY_PATH=$HADOOP_HOME/lib/native:$JAVA_LIBRARY_PATH
+
+open hadoop-env.sh
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
+HADOOP_OPTS="-Djava.net.preferIPv4Stack=true"
+
+open core-site.xml
+<configuration>
+  <property>
+    <name>fs.defaultFS</name>
+    <value>hdfs://localhost:9000</value>
+  </property>
+</configuration>
+
+open hdfs-site.xml
+<configuration>
+  <property>
+    <name>dfs.replication</name>
+    <value>1</value>
+  </property>
+</configuration>
+
+open mapred-site.xml
+<configuration>
+  <property>
+    <name>mapreduce.framework.name</name>
+    <value>yarn</value>
+  </property>
+  <property>
+    <name>mapreduce.application.classpath</name>   <value>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*:$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*</value>
+  </property>
+</configuration>
+
+open yarn-site.xml
+<configuration>
+    <property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce_shuffle</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.env-whitelist</name>
+        <value>JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_MAPRED_HOME</value>
+    </property>
+</configuration>
+
+
+ssh localhost
+ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+chmod 0600 ~/.ssh/authorized_keys
+
+cd bin
+./hadoop namenode -format
+
+cd libexec/sbin
+./start-all.sh
+./stop-all.sh
+jps
+
+http://localhost:9870
+http://localhost:8088
+http://localhost:8088/cluster
+
+cd bin
+./hadoop checknative -a
+
+
+################################################################################################################################################
+
+
+# Redis
+
+brew install redis
+
+redis -v
+
+redis-cli
+redis-server
+
+
+################################################################################################################################################
+
+
+# Big Data
+alias redis="/usr/local/Cellar/redis/6.0.10/bin/redis-server"
+alias hadoop-start="/Users/shuyuej/Desktop/hadoop/hadoop-dist/target/hadoop-2.10
+alias hadoop-stop="/Users/shuyuej/Desktop/hadoop/hadoop-dist/target/hadoop-2.10.
+alias spark-start="/usr/local/Cellar/apache-spark/3.0.1/libexec/sbin/start-all.s
+alias spark-stop="/usr/local/Cellar/apache-spark/3.0.1/libexec/sbin/stop-all.sh"
+alias spark-shell="/usr/local/Cellar/apache-spark/3.0.1/bin/spark-shell"
+
+
+################################################################################################################################################
+
+
+# Flink
+
+brew install apache-flink
+
+export PATH=/usr/local/Cellar/apache-flink/1.12.1/libexec/bin:$PATH
+
+
+################################################################################################################################################
+
+
+
+
+
