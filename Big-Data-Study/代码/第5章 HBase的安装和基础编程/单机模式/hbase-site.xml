@@ -1,0 +1,6 @@
+<configuration>
+        <property>
+                <name>hbase.rootdir</name>
+                <value>file:///usr/local/hbase/hbase-tmp</value>
+        </property>
+</configuration>

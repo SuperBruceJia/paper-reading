@@ -1,0 +1,22 @@
+<project>
+    <groupId>cn.edu.xmu</groupId>
+    <artifactId>simple-project</artifactId>
+    <modelVersion>4.0.0</modelVersion>
+    <name>Simple Project</name>
+    <packaging>jar</packaging>
+    <version>1.0</version>
+    <repositories>
+        <repository>
+            <id>jboss</id>
+            <name>JBoss Repository</name>
+            <url>http://repository.jboss.com/maven2/</url>
+        </repository>
+    </repositories>
+    <dependencies>
+        <dependency> <!-- Spark dependency -->
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_2.11</artifactId>
+            <version>2.4.0</version>
+        </dependency>
+    </dependencies>
+</project>

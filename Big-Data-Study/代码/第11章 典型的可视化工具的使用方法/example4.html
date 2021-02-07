@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>testD3-6-SVG.html</title>
+    <script type="text/javascript" src="http://d3js.org/d3.v5.min.js"></script>
+    <style type="text/css">
+        .pumpkin {
+            fill: yellow;
+           stroke: orange;
+               stroke-width: 5;
+       }
+   </style>
+   </head>
+   <body>
+   <script type="text/javascript"></script>
+   <svg width=500 height=960>
+       <rect x="0" y="0" width="500" height="50"/>
+       <ellipse cx="250" cy="225" rx="100" ry="25"/>
+       <line x1="0" y1="120" x2="500" y2="50" stroke="black"/>
+       <text x="250" y="155" font-family="sans-serif"
+               font-size="25" fill="gray">Easy-peasy</text>
+       <circle cx="25" cy="80" r="20"
+               fill="rgba(128, 0, 128, 0.75)"
+               stroke="rgba(0, 255, 0, 0.25)"
+               stroke-width="100"/>
+       <circle cx="75" cy="80" r="20"
+               fill="rgba(0, 255, 0, 0.75)"
+               stroke="rgba(0, 0, 255, 0.25)" stroke-width="10"/>
+       <circle cx="125" cy="80" r="20"
+               fill="rgba(255, 255, 0, 0.75)"
+               stroke="rgba(255, 0, 0, 0.25)" stroke-width="10"/>
+       <rect x="0" y="300" width="30" height="30" fill="purple"/>
+       <rect x="20" y="305" width="30" height="30" fill="blue"/>
+       <rect x="40" y="310" width="30" height="30" fill="green"/>
+       <rect x="60" y="315" width="30" height="30" fill="yellow"/>
+       <rect x="80" y="320" width="30" height="30" fill="red"/>
+       <circle cx="25" cy="425" r="22" class="pumpkin"/>
+       <circle cx="25" cy="525" r="20" fill="rgba(128, 0, 128, 1.0)"/>
+       <circle cx="50" cy="525" r="20" fill="rgba(0, 0, 255, 0.75)"/>
+       <circle cx="75" cy="525" r="20" fill="rgba(0, 255, 0, 0.5)"/>
+       <circle cx="100" cy="525" r="20" fill="rgba(255, 255, 0, 0.25)"/>
+       <circle cx="125" cy="525" r="20" fill="rgba(255, 0, 0, 0.1)"/>
+       <circle cx="25" cy="625" r="20" fill="purple"
+               stroke="green" stroke-width="10"
+               opacity="0.9"/>
+       <circle cx="65" cy="625" r="20" fill="green"
+               stroke="blue" stroke-width="10"
+               opacity="0.5"/>
+       <circle cx="105" cy="625" r="20" fill="yellow"
+               stroke="red" stroke-width="10"
+               opacity="0.1"/>
+   </svg>
+   </body>
+</html>

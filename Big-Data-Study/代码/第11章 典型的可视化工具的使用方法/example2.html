@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>testD3-1.html</title>
+    <script type="text/javascript" src="http://d3js.org/d3.v5.min.js"></script>
+  </head>
+  <body>
+    This is my HTML page. <br>
+  </body>
+  <script type="text/javascript">
+  var dataset = [ 5, 10, 15, 20, 25 ];
+  d3.select("body").selectAll("p")
+    .data(dataset)
+    .enter()
+    .append("p")
+    .text("New paragraph!");
+  </script>
+</html>
