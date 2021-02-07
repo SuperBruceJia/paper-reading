@@ -38,14 +38,14 @@ export PATH="/usr/local/opt/qt/bin:$PATH"
 [ -r /Users/shuyuej/.bashrc ] && source /Users/shuyuej/.bashrc
 
 # export PATH="/usr/local/opt/openjdk/bin:$PATH"
-# export JAVA_HOME=$(/usr/libexec/java_home)
-# export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
-# export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
-# export PATH="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home:$PATH"
+export JAVA_HOME=$(/usr/libexec/java_home)
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
+export PATH="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home:$PATH"
 
 # Java Configuration
-# export JAVA_8_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
-# export JAVA_HOME=$JAVA_8_HOME
+export JAVA_8_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+export JAVA_HOME=$JAVA_8_HOME
 # export JAVA_HOME=`/usr/libexec/java_home -d 64 -v 1.8.0_272`                                                                                                             
 # export JAVA_HOME=$(/usr/libexec/java_home -d 64 -v 1.8.0_272)
 
@@ -65,3 +65,4 @@ source /Users/shuyuej/Library/Preferences/org.dystroy.broot/launcher/bash/br
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 source "$HOME/.cargo/env"
+

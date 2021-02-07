@@ -88,17 +88,11 @@ else
  fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
+# alias
+alias zshconfig="mate ~/.zshrc"
+alias ohmyzsh="mate ~/.oh-my-zsh"
 export PATH=/Users/shuyuej/anaconda3/bin:$PATH
 source ~/.bash_profile
 
@@ -124,13 +118,17 @@ export PATH=$PATH:/Users/shuyuej/.local/bin
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
 export PATH=$PATH:/usr/local/bin
 
+# Intel OneAPI
+export PATH=$PATH:/opt/intel/oneapi
+export PATH="/opt/intel/oneapi:$PATH"
+
 export PATH="/usr/local/opt/bison/bin:$PATH"
 export PATH=/bin:/usr/bin:/usr/local/bin:${PATH} 
 source /Users/shuyuej/Library/Preferences/org.dystroy.broot/launcher/bash/br
 
+# alias
 alias ll="ls -al"
 alias cl="clear"
-
 alias speed="speedtest-cli"
 alias youtube="youtube-dl -f best -i"
 alias cpu="htop" 
@@ -141,46 +139,53 @@ alias lzd='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -v ~
 alias pcat='pygmentize -f terminal256 -O style=native -g'
 alias fd='find'
 alias task='asynctask -f'
-
-# Save a lot of typing for common commands
+alias disk='df'
+alias memory='free'
+alias core='nproc'
 alias gs="git status"
 alias gc="git commit"
 alias v="vim"
-
-# Save you from mistyping
 alias sl=ls
-
-# Overwrite existing commands for better defaults
 alias mv="mv -i"           # -i prompts before overwrite
 alias mkdir="mkdir -p"     # -p make parent dirs as needed
 alias df="df -h"           # -h prints human readable format
-
-# Alias can be composed
 alias la="ls -A"
 alias lla="la -l"
-
 # Download Papers from Sci-hub
 alias sci='python /Users/shuyuej/Desktop/Codes/sci-downloads.py '
+# Big Data
+alias redis="/usr/local/Cellar/redis/6.0.10/bin/redis-server"
+alias hadoop-start="/Users/shuyuej/Desktop/hadoop/hadoop-dist/target/hadoop-2.10.1/sbin/start-all.sh"
+alias hadoop-stop="/Users/shuyuej/Desktop/hadoop/hadoop-dist/target/hadoop-2.10.1/sbin/stop-all.sh"
+alias spark-start="/usr/local/Cellar/apache-spark/3.0.1/libexec/sbin/start-all.sh"
+alias spark-stop="/usr/local/Cellar/apache-spark/3.0.1/libexec/sbin/stop-all.sh"
+alias spark-shell="/usr/local/Cellar/apache-spark/3.0.1/bin/spark-shell"
+
+# Hadoop
+export HADOOP="/Users/shuyuej/Desktop/hadoop/hadoop-dist/target/hadoop-2.10.1/bin"
+export HADOOP_HOME="/Users/shuyuej/Desktop/hadoop/hadoop-dist/target/hadoop-2.10.1"
+export HADOOP_PREFIX=$HADOOP_HOME
+export HADOOP_COMMON_HOME=$HADOOP_PREFIX
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${HADOOP_HOME}/lib/native
+export JAVA_LIBRARY_PATH=$JAVA_LIBRARY_PATH:${HADOOP_HOME}/lib/native
+export PATH=$PATH:$HADOOP_HOME/bin
+export PATH=$HADOOP_HOME/bin:$PATH
+export PATH="/Users/shuyuej/Desktop/hadoop:$PATH"
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_PREFIX/lib/native
+export HADOOP_OPTS="-Djava.library.path=$HADOOP_COMMON_LIB_NATIVE_DIR"
+export HADOOP_OPTS="-Djava.library.path=${HADOOP_HOME}/lib/native"
+export HADOOP_CONF_DIR=$HADOOP_PREFIX/etc/hadoop  
+export HADOOP_HDFS_HOME=$HADOOP_PREFIX  
+export HADOOP_MAPRED_HOME=$HADOOP_PREFIX  
+export HADOOP_YARN_HOME=$HADOOP_PREFIX  
+export JAVA_LIBRARY_PATH=$HADOOP_HOME/lib/native:$JAVA_LIBRARY_PATH
+
+# Spark
+export PATH=/usr/local/Cellar/apache-flink/1.12.1/libexec/bin:$PATH
 
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 export PATH=$PATH:/Users/shuyuej/.gem/specs/rubygems.org%443/quick/Marshal.4.8
-# export HADOOP_HOME=/Users/shuyuej/Desktop/hadoop-3.3.0/bin
-# export HADOOP_MAPRED_HOME=$HADOOP_HOME
-# export HADOOP_COMMON_HOME=$HADOOP_HOME
-# export HADOOP_HDFS_HOME=$HADOOP_HOME
-# export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
-# export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
-
-# export HIVE_HOME=/usr/local/apache-hive-3.1.2-bin
-
-# export PATH="/Users/shuyuej/Desktop/hadoop-2.9.2/bin:$PATH"
-# export PATH="/usr/local/apache-hive-3.1.2-bin/bin:$PATH"
-
-# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HADOOP_HOME/lib/native
-# export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
-# export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib:$HADOOP_COMMON_LIB_NATIVE_DIR"
-
-# export PATH="/usr/local/hadoop/lib/native:$PATH"
 export PATH="/usr/local/opt/bzip2/bin:$PATH"
 export PATH="/usr/local/Cellar/snappy/1.1.8:$PATH"
 export PATH="/usr/local/Cellar/zstd/1.4.4:$PATH"
@@ -192,21 +197,12 @@ export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
 export PATH="/usr/local/protobuf:$PATH"
 export PATH="/usr/local/protobuf/bin:$PATH"
 
-# export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
-# export PATH="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home:$PATH"
-# export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
-
-# export JAVA_8_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
-# export JAVA_HOME=$JAVA_8_HOME
-# export JAVA_HOME=`/usr/libexec/java_home`
-# export JAVA_HOME=$(/usr/libexec/java_home)
-# export JAVA_HOME=`/usr/libexec/java_home -d 64 -v 1.8.0_272`
-# export JAVA_HOME=$(/usr/libexec/java_home -d 64 -v 1.8.0_272)
+# JAVA
+export JAVA_8_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
 
 export OPENSSL_INCLUDE_DIR=/usr/local/opt/openssl@1.1/include
 export OPENSSL_ROOT_DIR=/usr/local/opt/openssl@1.1
 export PATH="/usr/local/opt/openssl@1.1:$PATH"
-
 export PATH="/usr/local/Cellar/bzip2/1.0.8:$PATH"                                                                                                      
 export PATH="/usr/local/Cellar/snappy/1.1.8:$PATH"
 export PATH="/usr/local/opt/qt/bin:$PATH"
@@ -241,30 +237,34 @@ if [ -f '/Users/shuyuej/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/s
 
 [ -z "$ZSH_NAME" ] && [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-
-# fpath=(/var/root/.oh-my-zsh/plugins/zsh-completions/src $fpath)
-
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="/usr/local/opt/python@3.9/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export PATH="/Users/shuyuej/Desktop/tensorflow/tensorflow:$PATH"
-export PATH="/Users/shuyuej/Desktop/DL-Framework/ttensorflow/tensorflow:$PATH"
 export PATH="/usr/local/opt/flex/bin:$PATH"
 export PATH="/usr/local/opt/llvm/bin:$PATH"
-
-export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 export PATH="/usr/local/opt/python@3.8/bin:$PATH"
-
 export PATH=/opt/intel/bin:$PATH
 export LD_LIBRARY_PATH=/opt/intel/lib/intel64:/opt/intel/mkl/lib/intel64:$LD_LIBRARY_PATH
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="/usr/local/opt/llvm/bin:$PATH"
-export PATH="$PATH:/Users/shuyuej/Desktop/flutter/bin"
+eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
+export PATH="/usr/local/opt/bison/bin:$PATH"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+export PATH="/usr/local/opt/tcl-tk/bin:$PATH"
+export PATH="/usr/local/opt/apr/bin:$PATH"
+export PATH="/usr/local/opt/apr-util/bin:$PATH"
+
+export JAVA_8_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+export PATH="/usr/local/opt/openjdk@8/bin:$PATH"
+
+export MAVEN_OPTS="-Xms256m -Xmx512m -Djava.awt.headless=true"
+
+
+
 
 
 
