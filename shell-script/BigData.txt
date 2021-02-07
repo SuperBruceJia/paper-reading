@@ -12,7 +12,10 @@ export JAVA_8_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents
 brew install kafka
 brew install zookeeper
 
-kafka-server-start /usr/local/etc/kafka/server.properties
+zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties & kafka-server-start /usr/local/etc/kafka/server.properties
+
+brew services start kafka
+
 zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties
 
 
