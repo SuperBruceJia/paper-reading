@@ -1,4 +1,4 @@
-
+brew install openjdk@8
 sudo ln -sfn /usr/local/opt/openjdk@8/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-8.jdk
-
-
+echo 'export PATH="/usr/local/opt/openjdk@8/bin:$PATH"' >> ~/.zshrc
+export CPPFLAGS="-I/usr/local/opt/openjdk@8/include"

@@ -1,0 +1,23 @@
+ssh localhost
+sudo systemsetup -f -setremotelogin on
+ssh localhost 
+
+
+git clone https://github.com/apache/hadoop.git
+cd hadoop
+git checkout branch-2.7.1
+
+mvn clean package -Pdist,native -Dmaven.test.skip=true -Dmaven.javadoc.skip=true
+mvn package -Pdist,native -DskipTests -Dtar
+
+mkdir -p $HADOOP_INSTALL/lib/native/osx
+cp -r hadoop-dist/target/hadoop-2.7.1/lib/native/* $HADOOP_INSTALL/lib/native/osx
+export HADOOP_OPTS="$HADOOP_OPTS -Djava.library.path=$HADOOP_INSTALL/lib/native/osx”
+hadoop checknative
+
+
+
+
+
+
+
