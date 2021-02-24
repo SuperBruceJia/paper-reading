@@ -24,7 +24,7 @@ This repo is primarily for personal paper reading and presentations.
 
 1. Dynamic Graph Convolutional Neural Networks Survey [download](https://github.com/SuperBruceJia/paper-reading/raw/master/Graph-Neural-Network/Dynamic-GCN-Survey.pptx)
 
-2. Graph Convolutional Neural Networks (Chebyshev Approximation) [download](https://github.com/SuperBruceJia/paper-reading/raw/master/Graph-Neural-Network/GCNs-Net-Shuyue%20Jia.pdf)
+2. Graph Convolutional Neural Networks (Chebyshev Approximation) [download](https://drive.google.com/file/d/1ecMbtZV2eH14sRAqWIIf1iRvDAC7DMDs/view?usp=sharing)
 
 ### Others Tutorials
 
