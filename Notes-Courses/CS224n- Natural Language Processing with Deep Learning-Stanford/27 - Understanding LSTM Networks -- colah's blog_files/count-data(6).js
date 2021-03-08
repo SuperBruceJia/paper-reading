@@ -1,0 +1,5 @@
+var DISQUSWIDGETS;
+
+if (typeof DISQUSWIDGETS != 'undefined') {
+    DISQUSWIDGETS.displayCount({"text":{"and":"and","comments":{"zero":"0 Comments","multiple":"{num} Comments","one":"1 Comment"}},"counts":[{"id":"\/posts\/2015-08-Understanding-LSTMs\/disqussion-67","comments":0},{"id":"\/posts\/2015-08-Understanding-LSTMs\/disqussion-66","comments":0},{"id":"\/posts\/2015-08-Understanding-LSTMs\/disqussion-65","comments":8},{"id":"\/posts\/2015-08-Understanding-LSTMs\/disqussion-7","comments":0},{"id":"\/posts\/2015-08-Understanding-LSTMs\/disqussion-63","comments":0},{"id":"\/posts\/2015-08-Understanding-LSTMs\/disqussion-8","comments":3},{"id":"\/posts\/2015-08-Understanding-LSTMs\/disqussion-9","comments":0},{"id":"\/posts\/2015-08-Understanding-LSTMs\/disqussion-69","comments":1},{"id":"\/posts\/2015-08-Understanding-LSTMs\/disqussion-68","comments":0},{"id":"\/posts\/2015-08-Understanding-LSTMs\/disqussion-64","comments":1}]});
+}
