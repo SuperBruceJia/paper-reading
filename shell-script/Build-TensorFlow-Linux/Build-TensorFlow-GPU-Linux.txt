@@ -1,0 +1,159 @@
+https://www.tensorflow.org/install/source#gpu
+
+##############################################################################################################################
+
+sudo apt-get install gcc-7 g++-7
+
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 9
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 1
+
+sudo update-alternatives --display gcc
+
+
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 9
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 1
+
+sudo update-alternatives --display g++
+
+##############################################################################################################################
+
+conda create --name tensorflow python=3.6 numpy scipy
+
+##############################################################################################################################
+
+python -m pip install --upgrade pip --user
+pip install --upgrade cython --user
+pip install --upgrade textblob --user
+pip install --upgrade nltk --user
+pip install --upgrade jieba --user
+pip install --upgrade visdom --user
+pip install --upgrade keras --user
+pip install --upgrade pillow --user
+pip install --upgrade opencv-python --user
+pip install --upgrade opencv-contrib-python --user
+pip install --upgrade theano --user
+pip install --upgrade scipy --user
+pip install --upgrade pandas --user
+
+pip install --upgrade xlrd --user
+pip install --upgrade statsmodels --user
+pip install --upgrade seaborn --user
+pip install --upgrade plotly --user
+pip install --upgrade bokeh --user
+pip install --upgrade pydot --user
+pip install --upgrade scikit-learn --user
+pip install --upgrade scikit-image --user
+pip install --upgrade sklearn --user
+pip install --upgrade pyedflib --user
+pip install --upgrade bs4 --user
+pip install --upgrade ignite --user
+pip install --upgrade cython --user
+pip install --upgrade keras --user
+
+pip install --upgrade opencv-python --user
+pip install --upgrade opencv-contrib-python --user
+pip install --upgrade theano --user
+pip install --upgrade numpy --user
+pip install --upgrade scipy --user
+pip install --upgrade pandas --user
+pip install --upgrade xlrd --user
+pip install --upgrade statsmodels --user
+pip install --upgrade matplotlib --user
+pip install --upgrade seaborn --user
+pip install --upgrade plotly --user
+pip install --upgrade bokeh --user
+pip install --upgrade pydot --user
+
+pip install --upgrade scikit-learn --user
+pip install --upgrade scikit-image --user
+pip install --upgrade sklearn --user
+pip install --upgrade XGBoost --user
+pip install --upgrade LightGBM --user
+pip install --upgrade CatBoost --user
+pip install --upgrade Eli5 --user
+pip install --upgrade NLTK --user
+pip install --upgrade Gensim --user
+pip install --upgrade jupyter --user
+pip install --upgrade notebook --user
+pip install --upgrade pyedflib --user
+pip install --upgrade bs4 --user
+pip install --upgrade pandas-profiling --user
+pip install --upgrade Django --user
+pip install --upgrade gym --user
+pip install --upgrade onnx --user
+
+##############################################################################################################################
+
+pip uninstall protobuf
+pip uninstall google
+
+pip install google
+pip install protobuf
+pip install google-cloud
+pip install keras_preprocessing
+
+##############################################################################################################################
+
+pip uninstall numpy
+conda uninstall numpy
+pip uninstall protobuf
+
+pip install 'numpy<1.19.0'
+pip install 'six>=1.9.0'
+pip install 'protobuf<3.0'
+
+##############################################################################################################################
+
+Tensorflow 1.14: 下载Bazel 0.24.1版本：https://github.com/bazelbuild/bazel/releases/tag/0.24.1
+chmod +x bazel-0.24.1-installer-linux-x86_64.sh
+./bazel-0.24.1-installer-linux-x86_64.sh --user
+
+##############################################################################################################################
+
+source activate tensorflow
+
+##############################################################################################################################
+
+git clone --recurse-submodules https://github.com/tensorflow/tensorflow
+cd tensorflow
+git checkout r1.14
+
+##############################################################################################################################
+
+https://github.com/clearlinux-pkgs/tensorflow/releases/tag/1.14.0-83
+# https://github.com/clearlinux-pkgs/tensorflow/releases/tag/1.15.0-90
+
+patch -p1 <Add-grpc-fix-for-gettid.patch
+
+##############################################################################################################################
+
+./configure
+bazel build --config=opt --config=cuda --copt=-march=native //tensorflow/tools/pip_package:build_pip_package
+
+# bazel clean --expunge
+# sudo rm -rf /home/shuyuej/.cache/bazel
+# sudo rm -rf /root/.cache/bazel
+
+##############################################################################################################################
+
+./bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
+
+pip install /tmp/tensorflow_pkg/tensorflow-1.14.1-cp36-cp36m-linux_x86_64.whl
+
+##############################################################################################################################
+
+python
+
+import tensorflow as tf
+
+with tf.Session() as sess:
+  devices = sess.list_devices()
+
+
+
+
+
+
+
+
+
