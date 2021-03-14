@@ -1,0 +1,47 @@
+
+wget ftp://apache.uib.no/pub/apache/storm/apache-storm-2.1.0/apache-storm-2.1.0.tar.gz
+
+cd apache-storm-2.1.0
+
+#################################################################################
+
+sudo vim conf/storm.yaml
+
+storm.zookeeper.servers:
+	- "localhost"
+nimus.seeds: ["localhost"]
+
+#################################################################################
+
+./bin/storm nimbus
+
+./bin/storm supervisor
+
+./bin/storm ui
+
+#################################################################################
+
+localhost:8080
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

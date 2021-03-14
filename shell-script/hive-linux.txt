@@ -1,0 +1,86 @@
+# Hive
+export HIVE_HOME="/home/shuyuej/Desktop/apache-hive-3.1.2-bin"
+export PATH=$PATH:$HIVE_HOME/bin
+
+##########################################################################################
+
+#vhttp://apache-hive-3.1.2-bin.tar.gz/
+# tar -xzf apache-hive-3.1.2-bin.tar.gz
+
+##########################################################################################
+
+cd /home/shuyuej/Desktop/hadoop-3.2.1/etc/hadoop
+
+sudo vim core-site.xml
+
+<configuration>
+  <property>
+    <name>hadoop.proxyuser.dataflair.groups</name>
+    <value>*</value>
+  </property>
+  <property>
+    <name>hadoop.proxyuser.dataflair.hosts</name>
+    <value>*</value>
+  </property>
+  <property>
+    <name>hadoop.proxyuser.server.hosts</name>
+    <value>*</value>
+  </property>
+  <property>
+    <name>hadoop.proxyuser.server.groups</name>
+    <value>*</value>
+  </property>
+</configuration>
+
+##########################################################################################
+
+hadoop fs -mkdir /tmp
+
+hadoop fs -mkdir /user
+hadoop fs -mkdir /user/hive
+hadoop fs -mkdir /user/hive/warehouse
+
+hadoop fs -ls -R /
+
+##########################################################################################
+
+hadoop fs -chmod g+w /tmp
+
+hadoop fs -ls /
+
+hadoop fs -chmod g+w /user/hive/warehouse
+
+##########################################################################################
+
+cd /home/shuyuej/Desktop/apache-hive-3.1.2-bin
+
+sudo bin/schematool -dbType derby -initSchema
+
+sudo bin/hiveserver2
+
+sudo bin/beeline -n dataflair -u jdbc:hive2://localhost:10000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
