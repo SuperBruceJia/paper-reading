@@ -114,6 +114,10 @@ cd bin
 sudo cp /usr/local/lib/libzstd.1.dylib /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/bin/
 sudo cp /usr/local/Cellar/snappy/1.1.9/lib/libsnappy.1.dylib /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/bin/
 
+
+http://localhost:50030 (MapReduce的Web页面) 
+http://localhost:50070 (HDFS的web页面)
+
 ################################################################################################################################################
 
 
