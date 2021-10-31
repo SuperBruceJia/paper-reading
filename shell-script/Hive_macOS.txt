@@ -1,0 +1,90 @@
+# Hive
+export HIVE_HOME="/Users/shuyuej/Desktop/hadoop/hadoop-dist/target/hadoop-2.10.1/apache-hive-2.3.9-bin"
+export PATH=$PATH:$HIVE_HOME/bin
+
+cd conf
+
+sudo cp hive-default.xml.template hive-site.xml
+
+# Add the following
+
+    <property>
+        <name>javax.jdo.option.ConnectionUserName</name>
+        <value>root</value>
+    </property>
+    <property>
+        <name>javax.jdo.option.ConnectionPassword</name>
+        <value>123456</value>
+    </property>
+   <property>
+        <name>javax.jdo.option.ConnectionURL</name>
+        <value>jdbc:mysql://localhost/metastore?createDatabaseIfNotExist=true</value>
+    </property>
+    <property>
+        <name>javax.jdo.option.ConnectionDriverName</name>
+        <value>com.mysql.cj.jdbc.Driver</value>
+    </property>
+    <property>
+        <name>hive.metastore.schema.verification</name>
+        <value>false</value>
+    </property>
+
+
+ ########################################################################################################################################################################################
+
+# Delete: https://blog.csdn.net/sunxiaoju/article/details/102247369
+
+<property>
+<name>javax.jdo.option.ConnectionPassword</name>
+<value>mine</value>
+<description>password to use against metastore database</description> </property>
+
+sproperty>
+<name>javax.jdo.option. ConnectionURL</name>
+<value>jdbc:derby:;databaseName=metastore_db;create=true</value>
+<description>
+JDBC connect string for a JDBC metastore.
+To use SSL to encrypt/authenticate the connection, provide database-specific ssL flag in the connection URL. For example, jdbc:postgresql://myhost/db?ssl=true for postgres database.
+</description>
+</property>
+
+
+<property>
+<name>javax. ido option. connectionDriverName</name>
+<valueorg. apache derby. jdbc. EmbeddedDriver</value>
+<description>Driver class name for a JDBC metastore</description:
+</property>
+
+<property
+<name>javax. ido option. ConnectionUserName</name>
+<value>APP</value>
+<description>Username to use against metastore database</description>
+</property>
+
+########################################################################################################################################################################################
+
+mkdir tmp
+/system:java.io.tmpdir
+system:java.io.tmpdir --> /Users/shuyuej/Desktop/hadoop/hadoop-dist/target/hadoop-2.10.1/apache-hive-2.3.9-bin/tmp
+
+/hive.exec.local.scratchdir
+${system:user.name} --> ${user.name}
+
+########################################################################################################################################################################################
+
+# Copy MySQL Conneector to Hive
+sudo cp /Users/shuyuej/mysql-connector-java-8.0.25/mysql-connector-java-8.0.25.jar ~/Desktop/hadoop/hadoop-dist/target/hadoop-2.10.1/apache-hive-2.3.9-bin/lib
+
+schematool -dbType mysql -initSchema 
+schematool -dbType mysql -info
+
+show databases;
+
+https://www.jianshu.com/p/5716fe32ed17
+https://blog.csdn.net/sunxiaoju/article/details/102247369
+
+
+
+
+
+
