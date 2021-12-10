@@ -235,11 +235,37 @@ Multiple Instruction stream, Multiple Data stream
 
 <img width="896" alt="image" src="https://user-images.githubusercontent.com/31528604/145530492-3ca918ae-a99c-48e4-8ee3-0473507f8786.png">
 
+---
+
+<img width="1254" alt="image" src="https://user-images.githubusercontent.com/31528604/145540561-b24e6e81-3c20-4668-8337-2558a70d3b7e.png">
+
 ## Parallel Computation 
 Shared Memory
 
+### MPI -> Message Passing Interface
+
+<img width="1253" alt="image" src="https://user-images.githubusercontent.com/31528604/145540860-8a5823d5-33d3-4538-8df2-65d3c8b5f603.png">
+
+Point-to-Point Communication: Standard (regular) send, Buffered send, Synchronous send, Ready send
+
+Meaning of blocking or non-blocking communication: 
+
+**Blocking**: the program will not return from the subroutine call until the copy to/from the system buffer has finished.
+
+**Non-blocking**: the program immediately returns from the subroutine call. It is not assured that the copy to/from the system buffer has completed so that user has to make sure of the completion of the copy.
+
 ## Distributed Computation 
 Distributed Memory -> Message Passing
+
+### OpenMP -> Open specification for Multi-Processing
+
+Fork and Join: Master thread spawns a team of threads as needed
+
+<img width="1256" alt="image" src="https://user-images.githubusercontent.com/31528604/145540751-458a85ad-82f1-4e14-95f7-e2e7f2f81055.png">
+
+---
+
+<img width="1253" alt="image" src="https://user-images.githubusercontent.com/31528604/145540610-bd2af391-e39b-4aa2-b166-3d7c5e871853.png">
 
 ## Hybrid Distributed-Shared Memory
 
