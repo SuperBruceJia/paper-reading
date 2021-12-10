@@ -16,6 +16,12 @@ YB (Yottabyte)
 
 <img width="1284" alt="image" src="https://user-images.githubusercontent.com/31528604/145532442-158dacec-36d3-4cf5-93ce-c585a0e5592e.png">
 
+<img width="1205" alt="image" src="https://user-images.githubusercontent.com/31528604/145537912-c868ecf8-c3f6-41cf-9841-42666d2e6fa4.png">
+
+<img width="1207" alt="image" src="https://user-images.githubusercontent.com/31528604/145538019-80abe98b-375c-451c-93d5-d748d5471744.png">
+
+<img width="1206" alt="image" src="https://user-images.githubusercontent.com/31528604/145538043-95185ab5-f687-4ffd-8ca8-9eaee35f9f4b.png">
+
 ## Data Structures: Characteristics of Big Data
 
 **Structured** - defined data type, format, structure
