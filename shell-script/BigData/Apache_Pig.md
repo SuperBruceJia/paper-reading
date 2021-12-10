@@ -8,6 +8,8 @@ Traditional RDBMS (Relational DataBase Management Systems, e.g., SQL)
 
 Pig- Address the drawbacks of Parallel RDBMS and MapReduce at the same time.
 
+Be careful: Pig is CASE-SENSITIVE to relation name, data (and some command)
+
 ### grunt
 
 **Node.js** (js-based server) package manager
