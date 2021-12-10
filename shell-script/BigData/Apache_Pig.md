@@ -14,6 +14,8 @@ Be careful: Pig is CASE-SENSITIVE to relation name, data (and some command)
 
 <img width="1227" alt="image" src="https://user-images.githubusercontent.com/31528604/145536676-4e877ee0-c254-4e1f-a9a7-47389cb9b341.png">
 
+<img width="1221" alt="image" src="https://user-images.githubusercontent.com/31528604/145537342-cd31b424-5e92-4219-bc5b-bf97db36f7a8.png">
+
 ### grunt
 
 **Node.js** (js-based server) package manager
