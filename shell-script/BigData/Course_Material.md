@@ -14,6 +14,8 @@ ZB (Zettabyte)
 
 YB (Yottabyte)
 
+<img width="1284" alt="image" src="https://user-images.githubusercontent.com/31528604/145532442-158dacec-36d3-4cf5-93ce-c585a0e5592e.png">
+
 ## Data Structures: Characteristics of Big Data
 
 **Structured** - defined data type, format, structure
@@ -29,6 +31,8 @@ YB (Yottabyte)
 
 **Unstructured**
     Data with no inherent structure - text docs, PDF's, images, video
+
+<img width="1241" alt="image" src="https://user-images.githubusercontent.com/31528604/145532477-11bbe76b-3094-4fca-afe6-12559ed643af.png">
 
 ## Types of Data Repositories from an Analyst Perspective
 
@@ -48,6 +52,8 @@ Data -> Target Data -> Preprocessed Data -> Transformed Data -> Patterns -> Know
 
 Selection, Preprocessing, Transformation, Data Mining, Interpretation and Evaluation
 
+<img width="1189" alt="image" src="https://user-images.githubusercontent.com/31528604/145532555-ccb19423-6ce8-4885-b224-6e1709a4640b.png">
+
 ## Data Analytics Lifecycle
 
 Phase 1: Discovery
@@ -62,9 +68,13 @@ Phase 5: Result Communication
 
 Phase 6: Resultant Operation
 
+<img width="1191" alt="image" src="https://user-images.githubusercontent.com/31528604/145532581-926ea123-ade1-48c9-9199-1952ffea0888.png">
+
 ## ETL
 
 **ETL steps**: extract, transform, load
+
+<img width="1187" alt="image" src="https://user-images.githubusercontent.com/31528604/145532671-59111b34-83a7-4879-9ed4-ed34a1257d68.png">
 
 Shneiderman's mantra: "Overview first, zoom and filter, then details-on-demand"
 
@@ -100,6 +110,10 @@ discovers the relationships and interesting patterns
 
 <img width="902" alt="image" src="https://user-images.githubusercontent.com/31528604/145528106-75417b4d-e8e0-4277-9b4c-ae5db208594a.png">
 
+<img width="1274" alt="image" src="https://user-images.githubusercontent.com/31528604/145533070-60f13ced-c8f9-42b9-ad64-607d0bd330ba.png">
+
+<img width="1275" alt="image" src="https://user-images.githubusercontent.com/31528604/145533102-9da63a71-834d-4100-b65e-2df4c43c9146.png">
+
 Parsing: NLP
 
 Imposes a structure on the unstructured text
@@ -124,6 +138,8 @@ Tokenization separates words from the text
 
 Case folding reduces all letters to lowercase
 
+<img width="1269" alt="image" src="https://user-images.githubusercontent.com/31528604/145533372-9f7a937e-befd-4209-ac08-909b31587301.png">
+
 ### Term Frequency Inverse Document Frequency (TF-IDF)
 
 Topic modeling
@@ -140,6 +156,26 @@ Autoregressive Integrated Moving Average (**ARIMA**) model
 
 → model the underlying Structure of observations over time
 
+<img width="1173" alt="image" src="https://user-images.githubusercontent.com/31528604/145533754-8e646b26-60e8-40bd-9b40-fadb261365d9.png">
+
+<img width="1168" alt="image" src="https://user-images.githubusercontent.com/31528604/145533782-4ce1ec59-f0e0-4d91-a701-78c27da72e2d.png">
+
+<img width="1173" alt="image" src="https://user-images.githubusercontent.com/31528604/145533893-3bede75c-48d1-4ef5-8790-9421225fe3f9.png">
+
+<img width="1168" alt="image" src="https://user-images.githubusercontent.com/31528604/145533923-b1d37105-809b-4520-a744-3dd27d2ce2e2.png">
+
+<img width="1171" alt="image" src="https://user-images.githubusercontent.com/31528604/145534009-1ae25ddc-b118-4deb-a6d7-c01176bfd6a4.png">
+
+<img width="1162" alt="image" src="https://user-images.githubusercontent.com/31528604/145534032-71a3a32d-963e-4ef5-aec4-8949b4129a74.png">
+
+<img width="1171" alt="image" src="https://user-images.githubusercontent.com/31528604/145534108-b8e2847b-f1d4-4af8-8d4f-0001281777e6.png">
+
+<img width="1172" alt="image" src="https://user-images.githubusercontent.com/31528604/145534130-10045927-560d-4d4b-bc6c-2d18de8049ec.png">
+
+<img width="1170" alt="image" src="https://user-images.githubusercontent.com/31528604/145534279-44f56f6c-9cbf-49bf-9942-04930c85ce26.png">
+
+<img width="1167" alt="image" src="https://user-images.githubusercontent.com/31528604/145534305-c0acafd0-5cfd-4966-93ff-348adf144cfb.png">
+
 **time series**: ordered sequence of **equally spaced values**
 
 one variable → 有sequence dependency 
@@ -149,6 +185,8 @@ one variable → 有sequence dependency
 (X1, X2, X3, ......) ordered data
 
 <img width="972" alt="image" src="https://user-images.githubusercontent.com/31528604/145529664-471f7e87-a6f8-4f2a-8f81-09deb3296f52.png">
+
+<img width="1169" alt="image" src="https://user-images.githubusercontent.com/31528604/145534456-6dfbe4a1-0390-4b64-ab34-0f05f011d486.png">
 
 # Parallel Computing Theory
 
