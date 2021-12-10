@@ -12,6 +12,12 @@ export SPARK_MASTER_HOST=127.0.0.1
 
 export SPARK_LOCAL_IP=127.0.0.1
 
+# Course Material
+
+https://github.com/SuperBruceJia/paper-reading/blob/master/Big-Data-Study/L8_Spark_2021.pdf
+
+---
+
 <img width="1210" alt="image" src="https://user-images.githubusercontent.com/31528604/145539085-37304d81-fb38-4541-90c7-0184c604ef52.png">
 
 <img width="1208" alt="image" src="https://user-images.githubusercontent.com/31528604/145539116-6fc32ed2-13b0-4fd8-bceb-9f8d73b1f86c.png">
