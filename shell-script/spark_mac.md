@@ -18,6 +18,7 @@ https://github.com/SuperBruceJia/paper-reading/blob/master/Big-Data-Study/L8_Spa
 
 ---
 
+# Overview
 <img width="1210" alt="image" src="https://user-images.githubusercontent.com/31528604/145539085-37304d81-fb38-4541-90c7-0184c604ef52.png">
 
 <img width="1208" alt="image" src="https://user-images.githubusercontent.com/31528604/145539116-6fc32ed2-13b0-4fd8-bceb-9f8d73b1f86c.png">
@@ -39,3 +40,15 @@ https://github.com/SuperBruceJia/paper-reading/blob/master/Big-Data-Study/L8_Spa
 <img width="1208" alt="image" src="https://user-images.githubusercontent.com/31528604/145539365-3cebeef4-5194-4737-a834-3b9cd83a1c6f.png">
 
 <img width="1207" alt="image" src="https://user-images.githubusercontent.com/31528604/145539382-42fc14cd-0444-4918-9a23-28ce0eaa56e7.png">
+
+# Resilient Distributed Datasets (RDD)
+
+<img width="1208" alt="image" src="https://user-images.githubusercontent.com/31528604/145540153-2c274304-d35a-46d8-af28-7ed991f9f655.png">
+
+<img width="1205" alt="image" src="https://user-images.githubusercontent.com/31528604/145540232-b6cabd1c-76d9-4492-90fd-2f1d0bab2e13.png">
+
+<img width="1208" alt="image" src="https://user-images.githubusercontent.com/31528604/145540290-6e4eb75f-399a-42b5-94ae-23445c482020.png">
+
+<img width="1210" alt="image" src="https://user-images.githubusercontent.com/31528604/145540323-2cee81f1-3553-4882-b97f-917085ae9d9d.png">
+
+<img width="1207" alt="image" src="https://user-images.githubusercontent.com/31528604/145540394-478ecd60-6661-4d63-8b4e-b65a258ddbb7.png">
