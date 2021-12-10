@@ -2,6 +2,18 @@
 
 **Five V**: volume, varity, velocity, value, veracity
 
+## Data Evolution & Rise of Big Data Sources
+
+TB (Terabyte) - 1990s (RDBMS & DATA WAREHOUSE)
+
+PB (Petabyte) - 2000s (CONTENT & DIGITAL ASSET MANAGEMENT)
+
+EB (Exabyte) - 2010s (NO-SQL & KEY VALUE)
+
+ZB (Zettabyte)
+
+YB (Yottabyte)
+
 ## Data Structures: Characteristics of Big Data
 
 **Structured** - defined data type, format, structure
@@ -53,6 +65,16 @@ Phase 6: Resultant Operation
 **ETL steps**: extract, transform, load
 
 Shneiderman's mantra: "Overview first, zoom and filter, then details-on-demand"
+
+## Business Intelligence
+
+Optimize business operations
+
+Identify business risk
+
+Predict new business opportunities
+
+Comply with laws or regulatory requirements
 
 # Data Computing: Text Data
 
