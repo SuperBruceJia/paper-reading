@@ -26,9 +26,25 @@ dept = LOAD 'ex_data/emp_dept/dept.csv' AS (deptno:INT, dname:CHARARRAY, loc: CH
 
 salgrade = LOAD 'ex_data/emp_dept/salgrade.csv' AS (grade:INT, losal:INT, hisal:INT);
 
+### describe = Describe the schema of a relation (table)
+
+describe emp
+
 ### DUMP = Output all records of the relation
 
 DUMP emp;
+
+### Schema
+
+Schema in Pig : Fit Data into the pre-defined tuple {} as data structure
+
+### Load
+
+**Relation_name**: We must mention the relation in which the data is to be stored. Input file path - We must mention the HDFS directory where the files are stored (In MapReduce mode).
+
+**Function**: We must choose a function from a set of loading functions provided by Apache Pig.
+
+**Schema**: We must define the data schema.
 
 ##################################################################################################
 
