@@ -2,6 +2,8 @@
 
 Course Materials
 
+Dec 10, 2021
+
 # MPI Demo
 
 mpic++ mpi_pi_reduce.c -o test
