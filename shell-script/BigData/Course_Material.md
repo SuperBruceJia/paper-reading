@@ -192,35 +192,34 @@ one variable → 有sequence dependency
 
 Serial Computing: 
 
-A problem is broken into a discrete series of instructions
-Instructions are executed sequentially one after another
-Executed on a single processor
-Only one instruction may execute at any moment in time
+    Instructions are executed sequentially one after another
 
 Parallel Computing: 
 
-**simultaneous** use of multiple compute resources to solve a computational problem:
-A problem is broken into discrete parts that can be solved **concurrently**
-
-Each part is further broken down to a series of instructions
-Instructions from each part execute simultaneously on different processors
-An overall control/coordination mechanism is employed
+    Instructions from each part execute simultaneously on different processors
 
 <img width="952" alt="image" src="https://user-images.githubusercontent.com/31528604/145530032-336870ce-9b3e-40cd-b780-30554eab55eb.png">
 
+## von Neumann Architecture
+
+1. Memory
+2. Control Unit
+3. Arithmetic Logic Unit
+4. Input/Output
+
 ## Flynn's Classical Taxonomy
 
-### sisd SIMD
+### SISD SIMD
 
-Single Instruction stream Single Data stream
+Single Instruction stream, Single Data stream
 
-Single Instruction stream Multiple Data stream
+Single Instruction stream, Multiple Data stream
 
 ### MISD MIMD
 
-Multiple Instruction stream Single Data stream
+Multiple Instruction stream, Single Data stream
 
-Multiple Instruction stream Multiple Data stream
+Multiple Instruction stream, Multiple Data stream
 
 <img width="964" alt="image" src="https://user-images.githubusercontent.com/31528604/145530426-ffaf733a-9fcd-497f-ae63-b87031f6b7d3.png">
 
@@ -230,4 +229,17 @@ Multiple Instruction stream Multiple Data stream
 Shared Memory
 
 ## Distributed Computation 
-Message Passing
+Distributed Memory -> Message Passing
+
+## Hybrid Distributed-Shared Memory
+
+<img width="1203" alt="image" src="https://user-images.githubusercontent.com/31528604/145535348-5734b6fe-4b23-4099-bb5e-538a9c459a2a.png">
+
+<img width="1041" alt="image" src="https://user-images.githubusercontent.com/31528604/145535499-9b792cc6-1b27-408d-9658-fe0de4db6e00.png">
+
+1. Understand the Problem - hotspots, bottlenecks
+2. Communications - embarrassingly parallel
+3. Data Dependencies
+4. Load Balancing
+5. Input/Output (I/O)
+
