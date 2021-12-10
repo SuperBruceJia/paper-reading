@@ -40,7 +40,9 @@ Schema in Pig : Fit Data into the pre-defined tuple {} as data structure
 
 ### Load
 
-**Relation_name**: We must mention the relation in which the data is to be stored. Input file path - We must mention the HDFS directory where the files are stored (In MapReduce mode).
+**Relation_name**: We must mention the relation in which the data is to be stored. 
+
+**Input file path**: We must mention the HDFS directory where the files are stored (In MapReduce mode).
 
 **Function**: We must choose a function from a set of loading functions provided by Apache Pig.
 
