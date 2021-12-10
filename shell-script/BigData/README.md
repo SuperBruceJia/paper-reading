@@ -16,10 +16,6 @@
 
 <img width="1222" alt="image" src="https://user-images.githubusercontent.com/31528604/145537775-e67e708c-97f5-40e0-805b-12c5248e099b.png">
 
-<img width="1205" alt="image" src="https://user-images.githubusercontent.com/31528604/145538772-32ee020c-569a-400b-aeba-706b59098a2c.png">
-
-<img width="1206" alt="image" src="https://user-images.githubusercontent.com/31528604/145538801-f259385a-6ee9-44ef-8a05-799512f03690.png">
-
 ## Course Material - CS5488-Big Data Algorithms and Techniques, City University of Hong Kong (CityU)
 
 https://github.com/SuperBruceJia/paper-reading/tree/master/Big-Data-Study
