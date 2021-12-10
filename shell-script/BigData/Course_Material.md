@@ -24,6 +24,8 @@ YB (Yottabyte)
 
 <img width="1204" alt="image" src="https://user-images.githubusercontent.com/31528604/145538138-89af50c4-e06e-4395-bbfe-e6203f125ad4.png">
 
+<img width="1212" alt="image" src="https://user-images.githubusercontent.com/31528604/145538311-b7cfb691-69bf-4d73-b11e-207b83b54d41.png">
+
 ## Data Structures: Characteristics of Big Data
 
 **Structured** - defined data type, format, structure
