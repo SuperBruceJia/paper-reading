@@ -1,5 +1,0 @@
-hdfs dfs -put ../emp_dept /input_data
-hdfs dfs -ls /input_data
-
-
-
