@@ -10,6 +10,10 @@ Pig- Address the drawbacks of Parallel RDBMS and MapReduce at the same time.
 
 Be careful: Pig is CASE-SENSITIVE to relation name, data (and some command)
 
+<img width="1227" alt="image" src="https://user-images.githubusercontent.com/31528604/145536654-f06b65c0-2884-432a-b180-7e1b52ca962d.png">
+
+<img width="1227" alt="image" src="https://user-images.githubusercontent.com/31528604/145536676-4e877ee0-c254-4e1f-a9a7-47389cb9b341.png">
+
 ### grunt
 
 **Node.js** (js-based server) package manager
@@ -20,6 +24,8 @@ Be careful: Pig is CASE-SENSITIVE to relation name, data (and some command)
 
 **Grunt Shell**: Run Pig code interactively, similar to a python shell.
 
+<img width="1227" alt="image" src="https://user-images.githubusercontent.com/31528604/145536874-69ef9a6c-70dc-4a2c-9298-69b21f3bf918.png">
+
 ### You can use Pig Latin's LOAD operator to load data from the file system (HDFS / Local) into Apache Pig.
 
 Relation_name = LOAD 'Input file path' USING function AS schema;
@@ -27,6 +33,8 @@ Relation_name = LOAD 'Input file path' USING function AS schema;
 dept = LOAD 'ex_data/emp_dept/dept.csv' AS (deptno:INT, dname:CHARARRAY, loc: CHARARRAY);
 
 salgrade = LOAD 'ex_data/emp_dept/salgrade.csv' AS (grade:INT, losal:INT, hisal:INT);
+
+<img width="1225" alt="image" src="https://user-images.githubusercontent.com/31528604/145536939-34c05c0b-964b-40cb-a42d-a254f457cd92.png">
 
 ### describe = Describe the schema of a relation (table)
 
@@ -63,6 +71,10 @@ result1 = FILTER emp BY ename == 'SMITH';
 result2 = FOREACH result1 GENERATE hiredate;
 
 DUMP result2;
+
+<img width="1227" alt="image" src="https://user-images.githubusercontent.com/31528604/145537007-c3c4a135-007b-40a5-ad61-5486c540d2fb.png">
+
+<img width="1225" alt="image" src="https://user-images.githubusercontent.com/31528604/145537073-dda48e73-1d3d-4b9a-8422-7fffe02b32f8.png">
 
 ##################################################################################################
 
@@ -108,7 +120,11 @@ jointCnt = JOIN deptEmp BY deptno, dept BY deptno;
 
 DUMP jointCnt;
 
+<img width="1226" alt="image" src="https://user-images.githubusercontent.com/31528604/145536838-bb2baa8b-76a9-4d40-9ee8-d837ea8939d3.png">
+
 ### https://www.tutorialspoint.com/apache_pig/index.htm
+
+<img width="1226" alt="image" src="https://user-images.githubusercontent.com/31528604/145537153-d6239cbd-812c-41a8-b7f6-e68641c821d9.png">
 
 ```
 User = load ‘users’ as (ID, age);
@@ -120,4 +136,6 @@ Smmd = foreach Grpd generate group, COUNT(Jnd) as sales; Srtd = order Smmd by sa
 Top5 = limit Srtd 5;
 store Top5 into ‘top5sales’
 ```
+
+<img width="1220" alt="image" src="https://user-images.githubusercontent.com/31528604/145536741-095f28e3-1298-4bac-a34f-958216324c05.png">
 
