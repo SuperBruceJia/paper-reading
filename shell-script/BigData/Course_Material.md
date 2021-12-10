@@ -161,17 +161,35 @@ Only one instruction may execute at any moment in time
 
 Parallel Computing: 
 
-**simultaneous** use of multiple compute resources to solve a
-computational problem:
-A problem is broken into discrete parts that can be solved
-**concurrently**
+**simultaneous** use of multiple compute resources to solve a computational problem:
+A problem is broken into discrete parts that can be solved **concurrently**
+
 Each part is further broken down to a series of instructions
-Instructions from each part execute simultaneously on different
-processors
+Instructions from each part execute simultaneously on different processors
 An overall control/coordination mechanism is employed
 
 <img width="952" alt="image" src="https://user-images.githubusercontent.com/31528604/145530032-336870ce-9b3e-40cd-b780-30554eab55eb.png">
 
-Flynn's Classical Taxonomy
+## Flynn's Classical Taxonomy
 
+### sisd SIMD
 
+Single Instruction stream Single Data stream
+
+Single Instruction stream Multiple Data stream
+
+### MISD MIMD
+
+Multiple Instruction stream Single Data stream
+
+Multiple Instruction stream Multiple Data stream
+
+<img width="964" alt="image" src="https://user-images.githubusercontent.com/31528604/145530426-ffaf733a-9fcd-497f-ae63-b87031f6b7d3.png">
+
+<img width="896" alt="image" src="https://user-images.githubusercontent.com/31528604/145530492-3ca918ae-a99c-48e4-8ee3-0473507f8786.png">
+
+## Parallel Computation 
+Shared Memory
+
+## Distributed Computation 
+Message Passing
