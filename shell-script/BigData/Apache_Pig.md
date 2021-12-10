@@ -2,6 +2,12 @@
 
 Apache Pig = Pig (Hadoop-based Database) + Pig-Latin (SQL-like Command)
 
+(Pig = Hadoop-based Platform with Pig-Latin)
+
+Traditional RDBMS (Relational DataBase Management Systems, e.g., SQL)
+
+Pig- Address the drawbacks of Parallel RDBMS and MapReduce at the same time.
+
 ### You can use Pig Latin's LOAD operator to load data from the file system (HDFS / Local) into Apache Pig.
 
 Relation_name = LOAD 'Input file path' USING function AS schema;
@@ -65,3 +71,15 @@ jointCnt = JOIN deptEmp BY deptno, dept BY deptno;
 DUMP jointCnt;
 
 ### https://www.tutorialspoint.com/apache_pig/index.htm
+
+```
+User = load ‘users’ as (ID, age);
+Fltrd = filter users by age >= 18 and age <= 25;
+Purchases = load “purchaes” as (ID, goods);
+Jnd = join Fltrd by ID, Purchases by User;
+Grpd = group Jnd by goods;
+Smmd = foreach Grpd generate group, COUNT(Jnd) as sales; Srtd = order Smmd by sales desc;
+Top5 = limit Srtd 5;
+store Top5 into ‘top5sales’
+```
+
