@@ -62,6 +62,8 @@ Phase 5: Result Communication
 
 Phase 6: Resultant Operation
 
+## ETL
+
 **ETL steps**: extract, transform, load
 
 Shneiderman's mantra: "Overview first, zoom and filter, then details-on-demand"
@@ -95,3 +97,81 @@ discovers the relationships and interesting patterns
 **Bag-of-words**: word frequency (count how many occurrences for each word) 
 
 **Cons**: Loses all order-specific information and symantic meaning! Severely limits context!
+
+<img width="902" alt="image" src="https://user-images.githubusercontent.com/31528604/145528106-75417b4d-e8e0-4277-9b4c-ae5db208594a.png">
+
+Parsing: NLP
+
+Imposes a structure on the unstructured text
+
+**Part-of-Speech (POS) Tagging**: 
+    "he saw a fox" => PRP VBD DT NN
+
+    pronoun (PRP), verb (VBD), determiner (DT), noun (NN)
+    
+**Lemmatization** With Dictionary
+    finds dictionary base forms
+    obesity causes many problems => obesity cause many problem
+
+**Stemming** Without Dictionary,
+    (e.g., Porter's stemming algorithm) systematic
+    Similar to lemmatization but dictionary not required
+    obesity causes many problems => obes caus mani problem
+    
+<img width="903" alt="image" src="https://user-images.githubusercontent.com/31528604/145528390-b2192b0c-34cd-4a15-a4ff-dad3bd3e19ad.png">
+
+Tokenization separates words from the text
+
+Case folding reduces all letters to lowercase
+
+### Term Frequency Inverse Document Frequency (TF-IDF)
+
+Topic modeling
+
+Latent Dirichlet Allocation (LDA)
+
+**Sentiment analysis** is a group of tasks that use statistics and NLP to mine opinions from texts
+
+# Time Series
+
+Box-Jenkins Methodology
+
+Autoregressive Integrated Moving Average (**ARIMA**) model
+
+→ model the underlying Structure of observations over time
+
+**time series**: ordered sequence of **equally spaced values**
+
+one variable → 有sequence dependency 
+
+**Data are not independent**: Much of the statistical theory relies on the data being independent and identically distributed
+
+(X1, X2, X3, ......) ordered data
+
+<img width="972" alt="image" src="https://user-images.githubusercontent.com/31528604/145529664-471f7e87-a6f8-4f2a-8f81-09deb3296f52.png">
+
+# Parallel Computing Theory
+
+Serial Computing: 
+
+A problem is broken into a discrete series of instructions
+Instructions are executed sequentially one after another
+Executed on a single processor
+Only one instruction may execute at any moment in time
+
+Parallel Computing: 
+
+**simultaneous** use of multiple compute resources to solve a
+computational problem:
+A problem is broken into discrete parts that can be solved
+**concurrently**
+Each part is further broken down to a series of instructions
+Instructions from each part execute simultaneously on different
+processors
+An overall control/coordination mechanism is employed
+
+<img width="952" alt="image" src="https://user-images.githubusercontent.com/31528604/145530032-336870ce-9b3e-40cd-b780-30554eab55eb.png">
+
+Flynn's Classical Taxonomy
+
+
