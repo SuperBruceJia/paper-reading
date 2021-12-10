@@ -8,6 +8,16 @@ Traditional RDBMS (Relational DataBase Management Systems, e.g., SQL)
 
 Pig- Address the drawbacks of Parallel RDBMS and MapReduce at the same time.
 
+### grunt
+
+**Node.js** (js-based server) package manager
+
+**Grunt** is a task management tool based on Node.js. It can automatically run the tasks you set.
+
+**Node.js** is an open source, cross-platform runtime environment that can run JavaScript on the server side.
+
+**Grunt Shell**: Run Pig code interactively, similar to a python shell.
+
 ### You can use Pig Latin's LOAD operator to load data from the file system (HDFS / Local) into Apache Pig.
 
 Relation_name = LOAD 'Input file path' USING function AS schema;
