@@ -70,9 +70,13 @@ DUMP result2;
 
 Relation_name2 = ORDER Relatin_name1 BY (ASC|DESC);
 
+order_by_data = ORDER student_details BY age DESC;
+
 ### The LIMIT operator is used to obtain a limited number of tuples from the relationship.
 
 Result = LIMIT Relation_name required number of tuples;
+
+limit_data = LIMIT student_details 4;
 
 joinDate1 = FOREACH emp GENERATE ename, hiredate ; 
 
@@ -86,11 +90,15 @@ earliestJoinDate = LIMIT joinDate2 1 ;
 
 GROUP ... BY ...
 
+Group_data = GROUP Relation_name BY age;
+
 FOREACH ... GENERATE group as deptno, COUNT(emp) AS ...
 
 ### The JOIN operator is used to combine records from two or more relations.
 
 JOIN ... BY ..., ... BY ...
+
+result = JOIN relation1 BY columnname, relation2 BY columnname;
 
 empDept = GROUP emp BY deptno;
 
