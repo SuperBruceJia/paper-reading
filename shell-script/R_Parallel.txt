@@ -1,3 +1,5 @@
+https://github.com/SuperBruceJia/paper-reading/blob/master/Big-Data-Study/L9_Parallel%20ComputingOthers_2021.pdf
+
 SNOW - Simple Network Of Workstations
 parallel
 foreach
