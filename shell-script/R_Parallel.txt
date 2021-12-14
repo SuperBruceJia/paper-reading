@@ -1,0 +1,5 @@
+SNOW - Simple Network Of Workstations
+parallel
+foreach
+doParallel
+SparkR
