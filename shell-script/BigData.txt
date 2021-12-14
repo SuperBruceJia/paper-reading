@@ -1,5 +1,29 @@
 Reference:
 https://towardsdatascience.com/installing-hadoop-on-a-mac-ec01c67b003c
+https://medium.com/@labuewilfred/how-to-install-hadoop-on-mac-os-9fb50a6f8053
+https://zhuanlan.zhihu.com/p/33117305
+https://phoenixnap.com/kb/install-hadoop-ubuntu
+
+# 编译安装Hadoop
+http://www.manongjc.com/detail/12-zhekntnqtzolpgs.html
+https://stackoverflow.com/questions/40815773/compiling-hadoop-native-libs-from-source-on-mac-os
+https://blog.csdn.net/u011666720/article/details/99674659
+
+# Hadoop "Unable to load native-hadoop library for your platform" warning
+https://stackoverflow.com/questions/19943766/hadoop-unable-to-load-native-hadoop-library-for-your-platform-warning
+
+# Hive: Exception in thread "main" java.lang.NoSuchMethodError: com.google.common.base.Preconditions.checkArgument(ZLjava/lang/String;Ljava/lang/Object;)
+https://kontext.tech/column/hadoop/415/hive-exception-in-thread-main-javalangnosuchmethoderror-comgooglecommon
+
+# win10编译Hadoop3.0.2源码遇到的坑
+https://blog.csdn.net/qq_37475168/article/details/90746823
+
+# (cmake-compile) on project hadoop-common: make failed with error code 2
+https://stackoverflow.com/questions/51233285/cmake-compile-on-project-hadoop-common-make-failed-with-error-code-2
+
+
+################################################################################################################################################
+
 
 brew install openjdk@8                                                                                
 sudo ln -sfn /usr/local/opt/openjdk@8/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-8.
