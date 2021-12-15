@@ -1,0 +1,73 @@
+/*
+  City University of Hong Kong
+  Canvas Override CSS
+*/
+
+/* removing browse courses link in login screen */
+.ic-Login-header__links a[href="/search/all_courses"]
+{
+	display: none !important;
+}
+
+/* Removing forgot password link in login screen */
+.forgot_password_link
+{
+	display: none;
+}
+
+/* removing change default email address icon in profile settings */
+.email_meta a[aria-label="Set default email address"]
+{
+	display: none !important;
+}
+
+/* canvas main navigation top left logo styling */
+.ic-app-header__logomark-container
+{
+	background-image: linear-gradient(
+		to top right,
+		#6B203E,
+		#77224A 21%,
+		#991E54 43%,
+		#BF165E 65%,
+		#D06185 77%,
+		#E8A6BA 89%,
+		#FADBE8 100%
+	);
+	background-size: 200% 200%;
+	background-position: 100% 100%;
+	transition: background-position 0.5s;
+}
+
+.ic-app-header__logomark-container:hover
+{
+	background-position: 100% 0;
+}
+
+.ic-app-header__logomark
+{
+	margin-bottom: 0;
+	background-size: 48px;
+}
+
+h1, h2, .h1, .h2
+{
+	color: #bf165e;
+}
+
+/* removing add people email address and sis id options */
+label[for=peoplesearch_radio_cc_path]
+{
+	display: none !important;
+}
+
+label[for=peoplesearch_radio_sis_user_id]
+{
+	display: none !important;
+}
+
+/* removing add people instruction */
+.peoplesearch__instructions
+{
+	display: none;
+}
