@@ -1,3 +1,3 @@
 <p align="center">
-  <img src='paper-submiting/Address and Postal code.JPG'>
+  <img src='USA_Address.JPG'>
 </p>
