@@ -19,3 +19,13 @@
 Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu/~robins/YouAndYourResearch.html), [in Chinese](http://www.yidianzixun.com/article/0LZ4zQZV)
 
 [计算机视觉 | 哥大读博五年总结](https://zhuanlan.zhihu.com/p/338193330)
+
+---
+
+[CS Rankings](http://csrankings.org/#/index?all&us)
+
+1. [Univ. of Illinois at Urbana-Champaign](https://grad.illinois.edu/admissions/instructions/04c)
+2. [Univ. of California, Davis](https://grad.ucdavis.edu/applying-uc-davis)
+3. [University of Wisconsin Madison](https://grad.wisc.edu/apply/requirements/)
+
+
