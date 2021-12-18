@@ -27,5 +27,7 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 1. [Univ. of Illinois at Urbana-Champaign](https://grad.illinois.edu/admissions/instructions/04c)
 2. [Univ. of California, Davis](https://grad.ucdavis.edu/applying-uc-davis)
 3. [University of Wisconsin Madison](https://grad.wisc.edu/apply/requirements/)
-
+4. [Northeastern University](https://coe.northeastern.edu/academics-experiential-learning/graduate-school-of-engineering/graduate-admissions/)
+5. [University of Washington](https://grad.uw.edu/admission/understanding-the-application-process/international-applicant-information/english-proficiency-tests/)
+6. [Columbia University](https://www.gradengineering.columbia.edu/faq/standardized-test-scores)
 
