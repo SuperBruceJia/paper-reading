@@ -31,4 +31,5 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 5. [University of Washington](https://grad.uw.edu/admission/understanding-the-application-process/international-applicant-information/english-proficiency-tests/)
 6. [Columbia University](https://www.gradengineering.columbia.edu/faq/standardized-test-scores)
 7. [The University of Chicago](https://grad.uchicago.edu/admissions/apply/english-language-requirements/)
-8. [University of Oxford](https://www.ox.ac.uk/admissions/graduate/applying-to-oxford/application-guide/qualifications-languages-funding#content-tab--4)
+8. [Rutgers University](https://grad.rutgers.edu/admissions/international-students)
+9. [University of Oxford](https://www.ox.ac.uk/admissions/graduate/applying-to-oxford/application-guide/qualifications-languages-funding#content-tab--4)
