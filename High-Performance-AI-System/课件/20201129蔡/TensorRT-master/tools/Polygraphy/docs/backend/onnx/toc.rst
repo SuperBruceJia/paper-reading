@@ -1,6 +1,0 @@
-====
-ONNX
-====
-
-.. toctree::
-    loader

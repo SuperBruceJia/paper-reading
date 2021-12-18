@@ -1,6 +1,0 @@
-==========
-Common
-==========
-
-.. toctree::
-    loader

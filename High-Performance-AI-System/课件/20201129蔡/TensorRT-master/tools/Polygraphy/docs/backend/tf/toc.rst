@@ -1,7 +1,0 @@
-==========
-TensorFlow
-==========
-
-.. toctree::
-    loader
-    runner

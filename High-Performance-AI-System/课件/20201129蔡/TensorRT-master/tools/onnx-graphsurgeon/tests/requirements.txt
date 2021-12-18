@@ -1,4 +1,0 @@
-pytest
-onnx
-onnxruntime
-numpy
