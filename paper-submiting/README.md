@@ -4,4 +4,12 @@
 
 ---
 
+[PhD/PostDoc/有奖Master及其他学术相关openings](https://www.1point3acres.com/bbs/forum-173-1.html)
+
+[教授之间相互交流专区](https://www.1point3acres.com/bbs/forum.php?mod=forumdisplay&fid=328)
+
+---
+
+Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu/~robins/YouAndYourResearch.html), [in Chinese](http://www.yidianzixun.com/article/0LZ4zQZV)
+
 [计算机视觉 | 哥大读博五年总结](https://zhuanlan.zhihu.com/p/338193330)
