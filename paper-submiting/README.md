@@ -22,7 +22,7 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 
 ---
 
-[CS Rankings](http://csrankings.org/#/index?all&us)
+[CS Rankings and Chosen Schools: ](http://csrankings.org/#/index?all&us)
 
 1. [Univ. of Illinois at Urbana-Champaign](https://grad.illinois.edu/admissions/instructions/04c)
 2. [Univ. of California, Davis](https://grad.ucdavis.edu/applying-uc-davis)
