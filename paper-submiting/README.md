@@ -24,6 +24,7 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 
 [CS Rankings and Chosen Schools: ](http://csrankings.org/#/index?all&us)
 
+**USA**:
 1. [Univ. of Illinois at Urbana-Champaign](https://grad.illinois.edu/admissions/instructions/04c)
 2. [Univ. of California, Davis](https://grad.ucdavis.edu/applying-uc-davis)
 3. [University of Wisconsin Madison](https://grad.wisc.edu/apply/requirements/)
@@ -32,4 +33,8 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 6. [Columbia University](https://www.gradengineering.columbia.edu/faq/standardized-test-scores)
 7. [The University of Chicago](https://grad.uchicago.edu/admissions/apply/english-language-requirements/)
 8. [Rutgers University](https://grad.rutgers.edu/admissions/international-students)
-9. [University of Oxford](https://www.ox.ac.uk/admissions/graduate/applying-to-oxford/application-guide/qualifications-languages-funding#content-tab--4)
+
+**UK/Europe**:
+1. [University of Oxford](https://www.ox.ac.uk/admissions/graduate/applying-to-oxford/application-guide/qualifications-languages-funding#content-tab--4)
+
+**Canada**:
