@@ -12,6 +12,8 @@
 
 [Philip Guo - A Five-Minute Guide to Ph.D. Program Applications](https://pg.ucsd.edu/PhD-application-tips.htm)
 
+[Andrej Karpathy - A Survival Guide to a PhD](http://karpathy.github.io/2016/09/07/phd/)
+
 [Jiayi Weng - 申请回忆录](https://trinkle23897.github.io/posts/application)
 
 ---
