@@ -27,14 +27,15 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 [CS Rankings and Chosen Schools: ](http://csrankings.org/#/index?all&us)
 
 **USA**:
-1. [Univ. of Illinois at Urbana-Champaign](https://grad.illinois.edu/admissions/instructions/04c)
-2. [Univ. of California, Davis](https://grad.ucdavis.edu/applying-uc-davis)
-3. [University of Wisconsin Madison](https://grad.wisc.edu/apply/requirements/)
-4. [Northeastern University](https://coe.northeastern.edu/academics-experiential-learning/graduate-school-of-engineering/graduate-admissions/)
-5. [University of Washington](https://grad.uw.edu/admission/understanding-the-application-process/international-applicant-information/english-proficiency-tests/)
-6. [Columbia University](https://www.gradengineering.columbia.edu/faq/standardized-test-scores)
-7. [The University of Chicago](https://grad.uchicago.edu/admissions/apply/english-language-requirements/)
-8. [Rutgers University](https://grad.rutgers.edu/admissions/international-students)
+1. [California Institute of Technology](https://gradoffice.caltech.edu/admissions/checklist)
+2. [University of Washington](https://grad.uw.edu/admission/understanding-the-application-process/international-applicant-information/english-proficiency-tests/)
+3. [Univ. of Illinois at Urbana-Champaign](https://grad.illinois.edu/admissions/instructions/04c)
+4. [Univ. of California, Davis](https://grad.ucdavis.edu/applying-uc-davis)
+5. [University of Wisconsin Madison](https://grad.wisc.edu/apply/requirements/)
+6. [Northeastern University](https://coe.northeastern.edu/academics-experiential-learning/graduate-school-of-engineering/graduate-admissions/)
+7. [Columbia University](https://www.gradengineering.columbia.edu/faq/standardized-test-scores)
+8. [The University of Chicago](https://grad.uchicago.edu/admissions/apply/english-language-requirements/)
+9. [Rutgers University](https://grad.rutgers.edu/admissions/international-students)
 
 **UK/Europe**:
 1. [University of Oxford](https://www.ox.ac.uk/admissions/graduate/applying-to-oxford/application-guide/qualifications-languages-funding#content-tab--4)
