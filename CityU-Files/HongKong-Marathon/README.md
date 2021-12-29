@@ -1,4 +1,4 @@
-# Hong Kong Marathon and Training
+# CityU Marathon and Training
 
 ![Xnip2021-12-29_17-49-08](https://user-images.githubusercontent.com/31528604/147649218-46ca9df5-c2f8-49cf-a127-4eeecef1399a.jpg)
 
