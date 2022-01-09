@@ -60,6 +60,7 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 11. [University of Colorado Boulder](https://www.colorado.edu/graduateschool/admissions/prepare-apply/international-students/english-proficiency-requirements)
 12. [Boston University](https://www.bu.edu/eng/prospective-graduate/apply/international-students/)
 13. [Johns Hopkins University](https://engineering.jhu.edu/admissions/graduate-admissions/full-time-programs/how-to-apply/international-students/)
+14. [Rice University](https://graduate.rice.edu/admissions/application-faq)
 
 **UK/Europe**:
 1. [University of Oxford](https://www.ox.ac.uk/admissions/graduate/applying-to-oxford/application-guide/qualifications-languages-funding#content-tab--4)
