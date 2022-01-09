@@ -56,6 +56,7 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 7. [Columbia University in the City of New York](https://www.gradengineering.columbia.edu/faq/standardized-test-scores)
 8. [The University of Chicago](https://grad.uchicago.edu/admissions/apply/english-language-requirements/)
 9. [Rutgers University](https://grad.rutgers.edu/admissions/international-students)
+10. [Ohio State University](http://gpadmissions.osu.edu/intl/additional-requirements-to-apply.html)
 
 **UK/Europe**:
 1. [University of Oxford](https://www.ox.ac.uk/admissions/graduate/applying-to-oxford/application-guide/qualifications-languages-funding#content-tab--4)
