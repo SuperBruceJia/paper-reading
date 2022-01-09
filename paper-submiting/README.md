@@ -62,6 +62,7 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 13. [Johns Hopkins University](https://engineering.jhu.edu/admissions/graduate-admissions/full-time-programs/how-to-apply/international-students/)
 14. [Rice University](https://graduate.rice.edu/admissions/application-faq)
 15. [Oregon State University](https://gradschool.oregonstate.edu/admissions/international)
+16. [Northwestern University](https://www.mccormick.northwestern.edu/computer-science/academics/graduate/admissions/faq.html#english)
 
 **UK/Europe**:
 1. [University of Oxford](https://www.ox.ac.uk/admissions/graduate/applying-to-oxford/application-guide/qualifications-languages-funding#content-tab--4)
