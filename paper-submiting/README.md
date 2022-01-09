@@ -1,4 +1,7 @@
-# 不忘初心，方得始终！
+# Paper Submission
+
+![image](https://user-images.githubusercontent.com/31528604/148673263-528686ec-c16d-4f03-9766-1b9fbdb7ae86.png)
+
 ## Golden Gate Bridge, San Francisco, United States of America
 
 ![Xnip2022-01-01_17-37-54](https://user-images.githubusercontent.com/31528604/147847921-33cfc480-211b-46b6-98c1-af62bd212f54.jpg)
