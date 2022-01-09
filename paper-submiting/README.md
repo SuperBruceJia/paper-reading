@@ -58,6 +58,7 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 9. [Rutgers University](https://grad.rutgers.edu/admissions/international-students)
 10. [Ohio State University](http://gpadmissions.osu.edu/intl/additional-requirements-to-apply.html)
 11. [University of Colorado Boulder](https://www.colorado.edu/graduateschool/admissions/prepare-apply/international-students/english-proficiency-requirements)
+12. [Boston University](https://www.bu.edu/eng/prospective-graduate/apply/international-students/)
 
 **UK/Europe**:
 1. [University of Oxford](https://www.ox.ac.uk/admissions/graduate/applying-to-oxford/application-guide/qualifications-languages-funding#content-tab--4)
