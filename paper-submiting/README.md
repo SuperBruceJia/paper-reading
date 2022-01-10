@@ -48,22 +48,26 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 
 **USA**:
 1. [California Institute of Technology](https://gradoffice.caltech.edu/admissions/FAQ)
-2. [The University of Washington](https://grad.uw.edu/admission/understanding-the-application-process/international-applicant-information/english-proficiency-tests/)
-3. [Univ. of Illinois at Urbana-Champaign](https://grad.illinois.edu/admissions/instructions/04c)
-4. [Univ. of California, Davis](https://grad.ucdavis.edu/applying-uc-davis)
-5. [University of Wisconsin Madison](https://grad.wisc.edu/apply/requirements/)
-6. [Northeastern University](https://coe.northeastern.edu/academics-experiential-learning/graduate-school-of-engineering/graduate-admissions/)
-7. [Columbia University in the City of New York](https://www.gradengineering.columbia.edu/faq/standardized-test-scores)
-8. [The University of Chicago](https://grad.uchicago.edu/admissions/apply/english-language-requirements/)
-9. [Rutgers University](https://grad.rutgers.edu/admissions/international-students)
-10. [Ohio State University](http://gpadmissions.osu.edu/intl/additional-requirements-to-apply.html)
-11. [University of Colorado Boulder](https://www.colorado.edu/graduateschool/admissions/prepare-apply/international-students/english-proficiency-requirements)
-12. [Boston University](https://www.bu.edu/eng/prospective-graduate/apply/international-students/)
-13. [Johns Hopkins University](https://engineering.jhu.edu/admissions/graduate-admissions/full-time-programs/how-to-apply/international-students/)
-14. [Rice University](https://graduate.rice.edu/admissions/application-faq)
-15. [Oregon State University](https://gradschool.oregonstate.edu/admissions/international)
-16. [Northwestern University](https://www.mccormick.northwestern.edu/computer-science/academics/graduate/admissions/faq.html#english)
+2. [Univ. of Illinois at Urbana-Champaign](https://grad.illinois.edu/admissions/instructions/04c)
+3. [Univ. of California, Davis](https://grad.ucdavis.edu/applying-uc-davis)
+4. [University of Wisconsin Madison](https://grad.wisc.edu/apply/requirements/)
+5. [Northeastern University](https://coe.northeastern.edu/academics-experiential-learning/graduate-school-of-engineering/graduate-admissions/)
+6. [Columbia University in the City of New York](https://www.gradengineering.columbia.edu/faq/standardized-test-scores)
+7. [The University of Chicago](https://grad.uchicago.edu/admissions/apply/english-language-requirements/)
+8. [Rutgers University](https://grad.rutgers.edu/admissions/international-students)
+9. [Ohio State University](http://gpadmissions.osu.edu/intl/additional-requirements-to-apply.html)
+10. [University of Colorado Boulder](https://www.colorado.edu/graduateschool/admissions/prepare-apply/international-students/english-proficiency-requirements)
+11. [Boston University](https://www.bu.edu/eng/prospective-graduate/apply/international-students/)
+12. [Johns Hopkins University](https://engineering.jhu.edu/admissions/graduate-admissions/full-time-programs/how-to-apply/international-students/)
+13. [Rice University](https://graduate.rice.edu/admissions/application-faq)
+14. [Oregon State University](https://gradschool.oregonstate.edu/admissions/international)
+15. [Northwestern University](https://www.mccormick.northwestern.edu/computer-science/academics/graduate/admissions/faq.html#english)
+
+**English Language Requirements**:
+
+1. [The University of Washington](https://grad.uw.edu/admission/understanding-the-application-process/international-applicant-information/english-proficiency-tests/)
 
 **UK/Europe**:
+
 1. [University of Oxford](https://www.ox.ac.uk/admissions/graduate/applying-to-oxford/application-guide/qualifications-languages-funding#content-tab--4)
 2. [The University of Edinburgh](https://www.ed.ac.uk/studying/postgraduate/applying/your-application/entry-requirements/english-requirements/approved-universities)
