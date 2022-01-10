@@ -50,7 +50,6 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 2. [California Institute of Technology](https://gradoffice.caltech.edu/admissions/FAQ)
 3. [Univ. of California, Davis](https://grad.ucdavis.edu/english-language-examinations)
 4. [University of Wisconsin Madison](https://grad.wisc.edu/apply/requirements/)
-5. [Northeastern University](https://coe.northeastern.edu/academics-experiential-learning/graduate-school-of-engineering/graduate-admissions/)
 6. [Columbia University in the City of New York](https://www.gradengineering.columbia.edu/faq/standardized-test-scores)
 7. [The University of Chicago](https://grad.uchicago.edu/admissions/apply/english-language-requirements/)
 8. [Rutgers University](https://grad.rutgers.edu/admissions/international-students)
@@ -66,6 +65,7 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 
 1. [The University of Washington](https://grad.uw.edu/admission/understanding-the-application-process/international-applicant-information/english-proficiency-tests/)
 2. [Univ. of Illinois at Urbana-Champaign](https://grad.illinois.edu/admissions/instructions/04c)
+3. [Northeastern University](https://coe.northeastern.edu/academics-experiential-learning/graduate-school-of-engineering/graduate-admissions/)
 
 **UK/Europe**:
 
