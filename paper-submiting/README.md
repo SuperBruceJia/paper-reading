@@ -48,7 +48,7 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 
 **USA**:
 2. [California Institute of Technology](https://gradoffice.caltech.edu/admissions/FAQ)
-3. [Univ. of California, Davis](https://grad.ucdavis.edu/applying-uc-davis)
+3. [Univ. of California, Davis](https://grad.ucdavis.edu/english-language-examinations)
 4. [University of Wisconsin Madison](https://grad.wisc.edu/apply/requirements/)
 5. [Northeastern University](https://coe.northeastern.edu/academics-experiential-learning/graduate-school-of-engineering/graduate-admissions/)
 6. [Columbia University in the City of New York](https://www.gradengineering.columbia.edu/faq/standardized-test-scores)
