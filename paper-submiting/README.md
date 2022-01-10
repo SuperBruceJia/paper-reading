@@ -47,7 +47,7 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 [CS Rankings and Chosen Schools: ](http://csrankings.org/#/index?all&us)
 
 **USA**:
-1. [California Institute of Technology](https://gradoffice.caltech.edu/admissions/checklist)
+1. [California Institute of Technology](https://gradoffice.caltech.edu/admissions/FAQ)
 2. [The University of Washington](https://grad.uw.edu/admission/understanding-the-application-process/international-applicant-information/english-proficiency-tests/)
 3. [Univ. of Illinois at Urbana-Champaign](https://grad.illinois.edu/admissions/instructions/04c)
 4. [Univ. of California, Davis](https://grad.ucdavis.edu/applying-uc-davis)
