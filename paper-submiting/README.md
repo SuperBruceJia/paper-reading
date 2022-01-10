@@ -47,16 +47,17 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 [CS Rankings and Chosen Schools: ](http://csrankings.org/#/index?all&us)
 
 **USA**:
-2. [California Institute of Technology](https://gradoffice.caltech.edu/admissions/FAQ)
-3. [Univ. of California, Davis](https://grad.ucdavis.edu/english-language-examinations)
-4. [University of Wisconsin Madison](https://grad.wisc.edu/apply/requirements/)
-7. [The University of Chicago](https://grad.uchicago.edu/admissions/apply/english-language-requirements/)
-8. [Rutgers University](https://grad.rutgers.edu/admissions/international-students)
-11. [Boston University](https://www.bu.edu/eng/prospective-graduate/apply/international-students/)
-12. [Johns Hopkins University](https://engineering.jhu.edu/admissions/graduate-admissions/full-time-programs/how-to-apply/international-students/)
-13. [Rice University](https://graduate.rice.edu/admissions/application-faq)
-14. [Oregon State University](https://gradschool.oregonstate.edu/admissions/international)
-15. [Northwestern University](https://www.mccormick.northwestern.edu/computer-science/academics/graduate/admissions/faq.html#english)
+
+1. [California Institute of Technology](https://gradoffice.caltech.edu/admissions/FAQ)
+2. [Univ. of California, Davis](https://grad.ucdavis.edu/english-language-examinations)
+3. [University of Wisconsin Madison](https://grad.wisc.edu/apply/requirements/)
+4. [The University of Chicago](https://grad.uchicago.edu/admissions/apply/english-language-requirements/)
+5. [Rutgers University](https://grad.rutgers.edu/admissions/international-students)
+6. [Boston University](https://www.bu.edu/eng/prospective-graduate/apply/international-students/)
+7. [Johns Hopkins University](https://engineering.jhu.edu/admissions/graduate-admissions/full-time-programs/how-to-apply/international-students/)
+8. [Rice University](https://graduate.rice.edu/admissions/application-faq)
+9. [Oregon State University](https://gradschool.oregonstate.edu/admissions/international)
+10. [Northwestern University](https://www.mccormick.northwestern.edu/computer-science/academics/graduate/admissions/)
 
 **English Language Requirements**:
 
