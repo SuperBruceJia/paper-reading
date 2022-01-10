@@ -52,7 +52,6 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 4. [University of Wisconsin Madison](https://grad.wisc.edu/apply/requirements/)
 7. [The University of Chicago](https://grad.uchicago.edu/admissions/apply/english-language-requirements/)
 8. [Rutgers University](https://grad.rutgers.edu/admissions/international-students)
-9. [Ohio State University](http://gpadmissions.osu.edu/intl/additional-requirements-to-apply.html)
 10. [University of Colorado Boulder](https://www.colorado.edu/graduateschool/admissions/prepare-apply/international-students/english-proficiency-requirements)
 11. [Boston University](https://www.bu.edu/eng/prospective-graduate/apply/international-students/)
 12. [Johns Hopkins University](https://engineering.jhu.edu/admissions/graduate-admissions/full-time-programs/how-to-apply/international-students/)
@@ -66,6 +65,7 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 2. [Univ. of Illinois at Urbana-Champaign](https://grad.illinois.edu/admissions/instructions/04c)
 3. [Northeastern University](https://coe.northeastern.edu/academics-experiential-learning/graduate-school-of-engineering/graduate-admissions/)
 4. [Columbia University in the City of New York](https://www.gradengineering.columbia.edu/faq/standardized-test-scores)
+5. [Ohio State University](http://gpadmissions.osu.edu/intl/additional-requirements-to-apply.html)
 
 **UK/Europe**:
 
