@@ -60,6 +60,10 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 10. [Northwestern University](https://www.mccormick.northwestern.edu/computer-science/academics/graduate/admissions/)
 11. [University of Massachusetts at Amherst](https://www.umass.edu/graduate/apply/international-applicants)
 
+**Canada**:
+
+1. [University of Waterloo](https://uwaterloo.ca/graduate-studies-postdoctoral-affairs/future-students/applying-graduate-school/before-you-apply/admission-and-english-language-proficiency-requirements)
+2. 
 **English Language Requirements**:
 
 1. [The University of Washington](https://grad.uw.edu/admission/understanding-the-application-process/international-applicant-information/english-proficiency-tests/)
