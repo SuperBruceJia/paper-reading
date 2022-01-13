@@ -63,7 +63,8 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 **Canada**:
 
 1. [University of Waterloo](https://uwaterloo.ca/graduate-studies-postdoctoral-affairs/future-students/applying-graduate-school/before-you-apply/admission-and-english-language-proficiency-requirements)
-2. 
+2. [University of British Columbia](https://www.grad.ubc.ca/prospective-students/graduate-degree-programs/phd-computer-science)
+
 **English Language Requirements**:
 
 1. [The University of Washington](https://grad.uw.edu/admission/understanding-the-application-process/international-applicant-information/english-proficiency-tests/)
