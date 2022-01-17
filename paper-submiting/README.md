@@ -71,7 +71,12 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 1. [University of Waterloo](https://uwaterloo.ca/graduate-studies-postdoctoral-affairs/future-students/applying-graduate-school/before-you-apply/admission-and-english-language-proficiency-requirements)
 2. [University of British Columbia](https://www.grad.ubc.ca/prospective-students/graduate-degree-programs/phd-computer-science)
 
-**English Language Requirements**:
+**UK/Europe**:
+
+1. [University of Oxford](https://www.ox.ac.uk/admissions/graduate/applying-to-oxford/application-guide/qualifications-languages-funding#content-tab--4)
+2. [The University of Edinburgh](https://www.ed.ac.uk/studying/postgraduate/applying/your-application/entry-requirements/english-requirements/approved-universities)
+
+**Others need English Language Proof**:
 
 1. [The University of Washington](https://grad.uw.edu/admission/understanding-the-application-process/international-applicant-information/english-proficiency-tests/)
 2. [Univ. of Illinois at Urbana-Champaign](https://grad.illinois.edu/admissions/instructions/04c)
@@ -79,8 +84,3 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 4. [Columbia University in the City of New York](https://www.gradengineering.columbia.edu/faq/standardized-test-scores)
 5. [Ohio State University](http://gpadmissions.osu.edu/intl/additional-requirements-to-apply.html)
 6. [University of Colorado Boulder](https://www.colorado.edu/graduateschool/admissions/prepare-apply/international-students/english-proficiency-requirements)
-
-**UK/Europe**:
-
-1. [University of Oxford](https://www.ox.ac.uk/admissions/graduate/applying-to-oxford/application-guide/qualifications-languages-funding#content-tab--4)
-2. [The University of Edinburgh](https://www.ed.ac.uk/studying/postgraduate/applying/your-application/entry-requirements/english-requirements/approved-universities)
