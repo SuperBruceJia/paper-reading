@@ -50,7 +50,7 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 
 ---
 
-[CS Rankings and Chosen Schools: ](http://csrankings.org/#/index?all&us)
+[Chosen PhD School:](http://csrankings.org/#/index?all&us)
 
 **USA**:
 
