@@ -4,6 +4,12 @@
 
 ---
 
+## Feel blessed and find the courage to make life a blessing! 
+
+![IMG_1538](https://user-images.githubusercontent.com/31528604/149688861-11d5b9e3-5722-4e24-bd6a-8f2e21479838.JPG)
+
+---
+
 ## Golden Gate Bridge, San Francisco, United States of America
 
 ![Xnip2022-01-01_17-37-54](https://user-images.githubusercontent.com/31528604/147847921-33cfc480-211b-46b6-98c1-af62bd212f54.jpg)
