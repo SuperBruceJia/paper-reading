@@ -10,7 +10,13 @@
 
 ---
 
-## Marathon Ceremony at CityU in Hong Kong 
+## Good time with foreign friend
+
+![D2A04C05-AD5B-49DB-B8B2-3EDA42169801](https://user-images.githubusercontent.com/31528604/149881388-c5c7a8f1-a497-4840-9d39-3ff3faf26c83.JPG)
+
+---
+
+## Marathon Ceremony at CityU in Hong Kong
 
 ![IMG_7241_Original](https://user-images.githubusercontent.com/31528604/149879972-019ade26-1564-45c7-94d7-9d2fd0225ebf.jpg)
 
