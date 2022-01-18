@@ -10,6 +10,12 @@
 
 ---
 
+## Marathon Ceremony at CityU in Hong Kong 
+
+![IMG_7241_Original](https://user-images.githubusercontent.com/31528604/149879972-019ade26-1564-45c7-94d7-9d2fd0225ebf.jpg)
+
+---
+
 ## Golden Gate Bridge, San Francisco, United States of America
 
 ![Xnip2022-01-01_17-37-54](https://user-images.githubusercontent.com/31528604/147847921-33cfc480-211b-46b6-98c1-af62bd212f54.jpg)
