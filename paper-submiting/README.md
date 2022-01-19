@@ -86,7 +86,7 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 **UK/Europe**:
 
 1. ✓ [University of Oxford](https://www.ox.ac.uk/admissions/graduate/applying-to-oxford/application-guide/qualifications-languages-funding#content-tab--4)
-2. [The University of Edinburgh](https://www.ed.ac.uk/studying/postgraduate/applying/your-application/entry-requirements/english-requirements/approved-universities)
+2. ✓ [The University of Edinburgh](https://www.ed.ac.uk/studying/postgraduate/applying/your-application/entry-requirements/english-requirements/approved-universities)
 
 **Others need English Language Proof**:
 
