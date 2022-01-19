@@ -66,7 +66,7 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 
 **USA**:
 
-1. [California Institute of Technology](https://gradoffice.caltech.edu/admissions/FAQ)
+1. ✓ [California Institute of Technology](https://gradoffice.caltech.edu/admissions/FAQ)
 2. [Univ. of California, Davis](https://grad.ucdavis.edu/english-language-examinations)
 3. [University of Wisconsin Madison](https://grad.wisc.edu/apply/requirements/)
 4. [The University of Chicago](https://grad.uchicago.edu/admissions/apply/english-language-requirements/)
@@ -85,7 +85,7 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 
 **UK/Europe**:
 
-1. [University of Oxford](https://www.ox.ac.uk/admissions/graduate/applying-to-oxford/application-guide/qualifications-languages-funding#content-tab--4)
+1. ✓ [University of Oxford](https://www.ox.ac.uk/admissions/graduate/applying-to-oxford/application-guide/qualifications-languages-funding#content-tab--4)
 2. [The University of Edinburgh](https://www.ed.ac.uk/studying/postgraduate/applying/your-application/entry-requirements/english-requirements/approved-universities)
 
 **Others need English Language Proof**:
@@ -96,3 +96,7 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 4. [Columbia University in the City of New York](https://www.gradengineering.columbia.edu/faq/standardized-test-scores)
 5. [Ohio State University](http://gpadmissions.osu.edu/intl/additional-requirements-to-apply.html)
 6. [University of Colorado Boulder](https://www.colorado.edu/graduateschool/admissions/prepare-apply/international-students/english-proficiency-requirements)
+
+**Hong Kong**：
+
+1. ✓ CUHK 
