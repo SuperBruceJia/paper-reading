@@ -67,7 +67,7 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 **USA**:
 
 1. ✓ [California Institute of Technology](https://gradoffice.caltech.edu/admissions/FAQ)
-2. [Univ. of California, Davis](https://grad.ucdavis.edu/english-language-examinations)
+2. ✓ [Univ. of California, Davis](https://grad.ucdavis.edu/english-language-examinations)
 3. [University of Wisconsin Madison](https://grad.wisc.edu/apply/requirements/)
 4. [The University of Chicago](https://grad.uchicago.edu/admissions/apply/english-language-requirements/)
 5. [Rutgers University](https://grad.rutgers.edu/admissions/international-students)
