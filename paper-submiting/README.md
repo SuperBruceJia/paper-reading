@@ -71,7 +71,7 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 3. ✓ [University of Wisconsin Madison](https://grad.wisc.edu/apply/requirements/)
 4. ✓ [The University of Chicago](https://grad.uchicago.edu/admissions/apply/english-language-requirements/)
 5. [Rutgers University](https://grad.rutgers.edu/admissions/international-students)
-6. [Boston University](https://www.bu.edu/eng/prospective-graduate/apply/international-students/)
+6. ✓ [Boston University](https://www.bu.edu/eng/prospective-graduate/apply/international-students/)
 7. [Johns Hopkins University](https://engineering.jhu.edu/admissions/graduate-admissions/full-time-programs/how-to-apply/international-students/)
 8. [Rice University](https://graduate.rice.edu/admissions/application-faq)
 9. [Oregon State University](https://gradschool.oregonstate.edu/admissions/international)
