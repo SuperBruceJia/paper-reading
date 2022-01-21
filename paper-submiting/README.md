@@ -88,6 +88,13 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 1. [University of Oxford](https://www.ox.ac.uk/admissions/graduate/applying-to-oxford/application-guide/qualifications-languages-funding#content-tab--4)
 2. [The University of Edinburgh](https://www.ed.ac.uk/studying/postgraduate/applying/your-application/entry-requirements/english-requirements/approved-universities)
 
+**Hong Kong**：
+
+1. CUHK
+2. HKUST
+3. HKU
+4. CityU 
+
 **Others need English Language Proof**:
 
 1. [The University of Washington](https://grad.uw.edu/admission/understanding-the-application-process/international-applicant-information/english-proficiency-tests/)
@@ -96,7 +103,3 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 4. [Columbia University in the City of New York](https://www.gradengineering.columbia.edu/faq/standardized-test-scores)
 5. [Ohio State University](http://gpadmissions.osu.edu/intl/additional-requirements-to-apply.html)
 6. [University of Colorado Boulder](https://www.colorado.edu/graduateschool/admissions/prepare-apply/international-students/english-proficiency-requirements)
-
-**Hong Kong**：
-
-1. ✓ CUHK 
