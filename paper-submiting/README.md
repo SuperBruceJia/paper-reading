@@ -73,7 +73,7 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 5. ✓ [Rutgers University](https://grad.rutgers.edu/admissions/international-students)
 6. ✓ [Boston University](https://www.bu.edu/eng/prospective-graduate/apply/international-students/)
 7. ✓ [Johns Hopkins University](https://engineering.jhu.edu/admissions/graduate-admissions/full-time-programs/how-to-apply/international-students/)
-8. [Rice University](https://graduate.rice.edu/admissions/application-faq)
+8. ✓ [Rice University](https://graduate.rice.edu/admissions/application-faq)
 9. [Oregon State University](https://gradschool.oregonstate.edu/admissions/international)
 10. ✓ [Northwestern University](https://www.mccormick.northwestern.edu/computer-science/academics/graduate/admissions/)
 11. [University of Massachusetts at Amherst](https://www.umass.edu/graduate/apply/international-applicants)
