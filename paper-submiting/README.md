@@ -54,6 +54,10 @@
 
 [Jiayi Weng - 申请回忆录](https://trinkle23897.github.io/posts/application)
 
+[How to Do Research With a Professor](https://www.cs.jhu.edu/~jason/advice/how-to-work-with-a-professor.html)
+
+[How to Be a Successful PhD Student (in Computer Science (in NLP/ML))](https://www.cs.jhu.edu/~mdredze/publications/HowtoBeaSuccessfulPhDStudent.1_1.pdf)
+
 ---
 
 Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu/~robins/YouAndYourResearch.html), [in Chinese](http://www.yidianzixun.com/article/0LZ4zQZV)
