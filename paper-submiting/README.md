@@ -70,16 +70,16 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 
 **USA**:
 
-1. [California Institute of Technology](https://gradoffice.caltech.edu/admissions/FAQ)
-2. [Univ. of California, Davis](https://grad.ucdavis.edu/english-language-examinations)
-3. [University of Wisconsin Madison](https://grad.wisc.edu/apply/requirements/)
-4. [The University of Chicago](https://grad.uchicago.edu/admissions/apply/english-language-requirements/)
-5. [Rutgers University](https://grad.rutgers.edu/admissions/international-students)
-6. [Boston University](https://www.bu.edu/eng/prospective-graduate/apply/international-students/)
-7. [Johns Hopkins University](https://engineering.jhu.edu/admissions/graduate-admissions/full-time-programs/how-to-apply/international-students/)
-8. [Rice University](https://graduate.rice.edu/admissions/application-faq)
-9. [Oregon State University](https://gradschool.oregonstate.edu/admissions/international)
-10. [Northwestern University](https://www.mccormick.northwestern.edu/computer-science/academics/graduate/admissions/)
+1. [The University of Chicago](https://grad.uchicago.edu/admissions/apply/english-language-requirements/)
+2. [Northwestern University](https://www.mccormick.northwestern.edu/computer-science/academics/graduate/admissions/)
+3. [Johns Hopkins University](https://engineering.jhu.edu/admissions/graduate-admissions/full-time-programs/how-to-apply/international-students/)
+4. [Boston University](https://www.bu.edu/eng/prospective-graduate/apply/international-students/)
+5. [Univ. of California, Davis](https://grad.ucdavis.edu/english-language-examinations)
+6. [Rutgers University](https://grad.rutgers.edu/admissions/international-students)
+7. [California Institute of Technology](https://gradoffice.caltech.edu/admissions/FAQ)
+8. [University of Wisconsin Madison](https://grad.wisc.edu/apply/requirements/)
+9. [Rice University](https://graduate.rice.edu/admissions/application-faq)
+10. [Oregon State University](https://gradschool.oregonstate.edu/admissions/international)
 11. [University of Massachusetts at Amherst](https://www.umass.edu/graduate/apply/international-applicants)
 
 **Canada**:
@@ -91,13 +91,6 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 
 1. [University of Oxford](https://www.ox.ac.uk/admissions/graduate/applying-to-oxford/application-guide/qualifications-languages-funding#content-tab--4)
 2. [The University of Edinburgh](https://www.ed.ac.uk/studying/postgraduate/applying/your-application/entry-requirements/english-requirements/approved-universities)
-
-**Hong Kong**：
-
-1. CUHK
-2. HKUST
-3. HKU
-4. CityU 
 
 **Others need English Language Proof**:
 
