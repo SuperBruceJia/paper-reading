@@ -64,6 +64,7 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 
 [计算机视觉 | 哥大读博五年总结](https://zhuanlan.zhihu.com/p/338193330)
 
+[Mentoring plan for PhD students - Joyce Chai](https://cse.engin.umich.edu/people/faculty/mentor/chaijy)
 ---
 
 [Chosen PhD School:](http://csrankings.org/#/index?all&us)
