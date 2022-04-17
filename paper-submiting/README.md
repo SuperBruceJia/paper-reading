@@ -58,6 +58,8 @@
 
 [How to Be a Successful PhD Student (in Computer Science (in NLP/ML))](https://www.cs.jhu.edu/~mdredze/publications/HowtoBeaSuccessfulPhDStudent.1_1.pdf)
 
+[2021 Fall 申请回忆录 (北美 CS PhD) - 吴紫屹](https://zhuanlan.zhihu.com/p/350439006)
+
 ---
 
 Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu/~robins/YouAndYourResearch.html), [in Chinese](http://www.yidianzixun.com/article/0LZ4zQZV)
