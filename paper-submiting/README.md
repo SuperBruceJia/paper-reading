@@ -73,17 +73,26 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 
 **USA**:
 
-1. [The University of Chicago](https://grad.uchicago.edu/admissions/apply/english-language-requirements/)
-2. [Northwestern University](https://www.mccormick.northwestern.edu/computer-science/academics/graduate/admissions/)
-3. [Johns Hopkins University](https://engineering.jhu.edu/admissions/graduate-admissions/full-time-programs/how-to-apply/international-students/)
-4. [Boston University](https://www.bu.edu/eng/prospective-graduate/apply/international-students/)
-5. [Univ. of California, Davis](https://grad.ucdavis.edu/english-language-examinations)
-6. [Rutgers University](https://grad.rutgers.edu/admissions/international-students)
-7. [California Institute of Technology](https://gradoffice.caltech.edu/admissions/FAQ)
-8. [University of Wisconsin Madison](https://grad.wisc.edu/apply/requirements/)
-9. [Rice University](https://graduate.rice.edu/admissions/application-faq)
-10. [Oregon State University](https://gradschool.oregonstate.edu/admissions/international)
-11. [University of Massachusetts at Amherst](https://www.umass.edu/graduate/apply/international-applicants)
+## Choosing PhD School
+
+1. [University of Michigan](https://umich.edu/)
+2. [University of Massachusetts Amherst](https://www.umass.edu/)
+3. [Duke University](https://duke.edu/)
+4. [The University of Chicago](https://www.uchicago.edu/)
+5. [Northwestern University](https://www.northwestern.edu/)
+6. [University of California, Riverside](https://www.ucr.edu/)
+7. [Brown University](https://www.brown.edu/)
+8. [Boston University](https://www.bu.edu/)
+9. [University of California, Davis](https://www.ucdavis.edu/)
+10. [Johns Hopkins University](https://www.jhu.edu/)
+11. [The University of North Carolina at Chapel Hill](https://www.unc.edu/)
+12. [Rice University](https://www.rice.edu/)
+13. [University of Notre Dame](https://www.nd.edu/)
+14. [Georgetown University](https://www.georgetown.edu/)
+21. [Rutgers University](https://grad.rutgers.edu/admissions/international-students)
+22. [California Institute of Technology](https://gradoffice.caltech.edu/admissions/FAQ)
+23. [University of Wisconsin Madison](https://grad.wisc.edu/apply/requirements/)
+25. [Oregon State University](https://gradschool.oregonstate.edu/admissions/international)
 
 **Canada**:
 
