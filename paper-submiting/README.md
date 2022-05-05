@@ -69,13 +69,11 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 [Mentoring plan for PhD students - Joyce Chai](https://cse.engin.umich.edu/people/faculty/mentor/chaijy)
 ---
 
-[Chosen PhD School:](http://csrankings.org/#/index?all&us)
+## [Chosen PhD School:](http://csrankings.org/#/index?all&us)
 
 ---
 
 **USA**:
-
-## Choosing PhD School
 
 1. [University of Michigan](https://umich.edu/)
 2. [University of Massachusetts Amherst](https://www.umass.edu/)
