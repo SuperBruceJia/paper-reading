@@ -71,6 +71,8 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 
 [Chosen PhD School:](http://csrankings.org/#/index?all&us)
 
+---
+
 **USA**:
 
 ## Choosing PhD School
@@ -93,6 +95,8 @@ Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu
 22. [California Institute of Technology](https://gradoffice.caltech.edu/admissions/FAQ)
 23. [University of Wisconsin Madison](https://grad.wisc.edu/apply/requirements/)
 25. [Oregon State University](https://gradschool.oregonstate.edu/admissions/international)
+
+---
 
 **Canada**:
 
