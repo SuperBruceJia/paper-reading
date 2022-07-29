@@ -1,0 +1,5 @@
+
+/Users/shuyuej/Pictures/Photos Library.photoslibrary
+
+cp -r originals /Users/shuyuej/Downloads
+
