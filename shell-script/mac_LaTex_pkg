@@ -1,5 +1,0 @@
-cd /usr/local/texlive/2022/bin/universal-darwin
-
-sudo ./tlmgr update --self
-
-sudo ./tlmgr install XXX
