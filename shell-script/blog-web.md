@@ -3,7 +3,9 @@ sudo npm install -g hexo-cli
 ----------------------------------
 
 sudo hexo init blog
+
 cd blog
+
 sudo npm install
 
 ----------------------------------
@@ -15,6 +17,7 @@ sudo hexo s
 https://github.com/SuperBruceJia/blog/tree/gh-pages
 
 Branch: gh-pages
+
 Location: /root
 
 ----------------------------------
@@ -34,12 +37,15 @@ sudo npm install hexo-deployer-git --save
 ----------------------------------
 
 sudo hexo clean
+
 sudo hexo g
+
 sudo hexo d
 
 ----------------------------------
 
 sudo npm install hexo-generator-sitemap --save
+
 sudo npm install hexo-generator-baidu-sitemap --save
 
 # sitemap
