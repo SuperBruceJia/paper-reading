@@ -29,5 +29,3 @@
 Richard Hamming - You and Your Research: [in English](http://www.cs.virginia.edu/~robins/YouAndYourResearch.html), [in Chinese](http://www.yidianzixun.com/article/0LZ4zQZV)
 
 [计算机视觉 | 哥大读博五年总结](https://zhuanlan.zhihu.com/p/338193330)
-
-[Mentoring plan for PhD students - Joyce Chai](https://cse.engin.umich.edu/people/faculty/mentor/chaijy)
