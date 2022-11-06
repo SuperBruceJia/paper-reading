@@ -1,12 +1,9 @@
-# Reading Papers and Presentations
+# Paper Reading and Presentation
 
-This repo is primarily for personal paper reading and presentations.
+This repo is primarily for personal paper reading, presentations, and material collection.
 
----
+## Presentation and Publication
 
-## Presentations
+Please move to my [personal webpage](https://shuyuej.com) for details.
 
-Please move to my personal website for details: [https://shuyuej.com](https://shuyuej.com/).
-
-Enjoy your journey and have a great day!
-
+🏆 Enjoy your journey and have a nice day!
