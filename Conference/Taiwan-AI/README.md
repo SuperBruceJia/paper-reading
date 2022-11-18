@@ -1,4 +1,4 @@
-# 2022台灣人工智慧年會
+# 2022 中国台灣人工智慧年會
 ## Prof. Hsiang-Tsung Kung @ Harvard
 ### 10 Trillion-parameter Model -> Fundamental Model in the future
 ![image](https://user-images.githubusercontent.com/31528604/202607785-10430bbe-d910-4323-b6a1-c6775ad07cb2.png)
@@ -42,6 +42,10 @@
 ![image](https://user-images.githubusercontent.com/31528604/202653698-70bc8f93-f9c9-437e-b5ea-47615e03665d.png)
 ![image](https://user-images.githubusercontent.com/31528604/202653817-0c0a22a3-fc4f-4292-a7dc-745647740052.png)
 ![image](https://user-images.githubusercontent.com/31528604/202654091-fe56be5f-8fc4-4f3c-a86b-fbbd3adc6edd.png)
+![image](https://user-images.githubusercontent.com/31528604/202654406-5b577f1a-704a-4d84-bd4e-3a7867efda53.png)
+![image](https://user-images.githubusercontent.com/31528604/202654460-3aea63a4-956d-4af3-a415-cf401590de64.png)
+![image](https://user-images.githubusercontent.com/31528604/202654610-42611953-5a48-4f05-b883-8ce0d608ce8a.png)
+![image](https://user-images.githubusercontent.com/31528604/202654873-c6f98a9f-1298-4dd9-bdf4-acc00a3b6b30.png)
 
 
 ## Prof. Edward Chang @ Stanford
