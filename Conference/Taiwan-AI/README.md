@@ -45,7 +45,12 @@
 ![image](https://user-images.githubusercontent.com/31528604/202654406-5b577f1a-704a-4d84-bd4e-3a7867efda53.png)
 ![image](https://user-images.githubusercontent.com/31528604/202654460-3aea63a4-956d-4af3-a415-cf401590de64.png)
 ![image](https://user-images.githubusercontent.com/31528604/202654610-42611953-5a48-4f05-b883-8ce0d608ce8a.png)
-![image](https://user-images.githubusercontent.com/31528604/202654873-c6f98a9f-1298-4dd9-bdf4-acc00a3b6b30.png)
+![image](https://user-images.githubusercontent.com/31528604/202654973-328bdc05-1bbc-4660-93e4-53361386cbfa.png)
+![image](https://user-images.githubusercontent.com/31528604/202655122-75f55a27-27e1-4d1d-bfcf-ffe711d6aa60.png)
+![image](https://user-images.githubusercontent.com/31528604/202655156-35dc309a-103e-47b4-8aff-c315365fc270.png)
+![image](https://user-images.githubusercontent.com/31528604/202655326-78195eba-550a-4a0e-a67e-b3dd586aeffd.png)
+![image](https://user-images.githubusercontent.com/31528604/202655469-79a5d5e1-8c28-420b-a01e-1ac578016108.png)
+![image](https://user-images.githubusercontent.com/31528604/202655609-c6acabdb-329b-4886-9447-69c0ef1e3ba6.png)
 
 
 ## Prof. Edward Chang @ Stanford
