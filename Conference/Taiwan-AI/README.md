@@ -21,7 +21,7 @@
 ![image](https://user-images.githubusercontent.com/31528604/202631857-ade612b3-c127-42c3-a248-13af70602f55.png)
 
 ## Prof. Edward Chang @ Stanford
-![image](https://user-images.githubusercontent.com/31528604/202642950-2efaa6d0-3513-4216-a878-fc04f24105e4.png)
+![image](https://user-images.githubusercontent.com/31528604/202643200-f53770aa-8908-49b2-a19b-dac116291fd0.png)
 
 ## Timetable
 ![image](https://user-images.githubusercontent.com/31528604/202067196-dfdc483e-5904-4168-aaae-9b2daa7bdea1.png)
