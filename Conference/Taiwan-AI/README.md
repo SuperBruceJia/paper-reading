@@ -38,6 +38,9 @@
 ![image](https://user-images.githubusercontent.com/31528604/202653108-dd728721-2df5-4281-9cc6-a89d573cb1b3.png)
 ![image](https://user-images.githubusercontent.com/31528604/202653243-2fb81117-e4e1-44b0-a4bd-0b9fa9225e90.png)
 ![image](https://user-images.githubusercontent.com/31528604/202653273-dcdd65cf-be55-4df7-81bb-84c667571079.png)
+![image](https://user-images.githubusercontent.com/31528604/202653555-d2b87c3a-ce16-4a79-849e-2ab212c7d5cf.png)
+![image](https://user-images.githubusercontent.com/31528604/202653698-70bc8f93-f9c9-437e-b5ea-47615e03665d.png)
+![image](https://user-images.githubusercontent.com/31528604/202653817-0c0a22a3-fc4f-4292-a7dc-745647740052.png)
 
 
 ## Prof. Edward Chang @ Stanford
