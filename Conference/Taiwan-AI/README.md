@@ -1,5 +1,5 @@
 # 2022 中国台灣人工智慧年會
-## Large-Scale Al Foundation Model
+# Large-Scale Al Foundation Model
 
 ## Prof. Hsiang-Tsung Kung @ Harvard
 ### (1) 10 Trillion-parameter Model -> Fundamental Model in the future
