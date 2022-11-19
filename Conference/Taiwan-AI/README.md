@@ -80,6 +80,8 @@
 ![image](https://user-images.githubusercontent.com/31528604/202828698-bf8bedc4-5434-4533-bc82-38f223195cb2.png)
 ![image](https://user-images.githubusercontent.com/31528604/202828828-69e2e4f1-d2be-4a52-bb8e-e158675cdf33.png)
 ![image](https://user-images.githubusercontent.com/31528604/202828890-c83efb42-5796-4206-b2c2-4c1079fc5527.png)
+![image](https://user-images.githubusercontent.com/31528604/202829082-2b8c331b-f2b4-4ace-8bf8-ad8e1d175170.png)
+![image](https://user-images.githubusercontent.com/31528604/202829111-83913b8c-736f-43f1-84d2-e527d0cb0dad.png)
 
 ## Timetable
 ![image](https://user-images.githubusercontent.com/31528604/202067196-dfdc483e-5904-4168-aaae-9b2daa7bdea1.png)
