@@ -6,6 +6,8 @@
 ### (2) Homomorphic Encryption
 ![image](https://user-images.githubusercontent.com/31528604/202607785-10430bbe-d910-4323-b6a1-c6775ad07cb2.png)
 
+---
+
 ## Dr. Bor-Sung Liang
 ![image](https://user-images.githubusercontent.com/31528604/202651326-e3e1b59f-9818-4356-9b38-f95b6abd2397.png)
 ![image](https://user-images.githubusercontent.com/31528604/202651356-9d60f3b8-c9e4-4d8e-be9f-7a5cb599188b.png)
@@ -45,7 +47,9 @@
 ![image](https://user-images.githubusercontent.com/31528604/202656293-89b07759-28d8-4ee4-9220-3382f58e3905.png)
 ![image](https://user-images.githubusercontent.com/31528604/202656714-b6170cb6-f2cf-416b-92b1-8dbcfb734068.png)
 
-## Prof. Edward Chang @ Stanford
+---
+
+## Model Generative AI with Consciousness - Prof. Edward Chang @ Stanford
 ![image](https://user-images.githubusercontent.com/31528604/202643200-f53770aa-8908-49b2-a19b-dac116291fd0.png)
 ![image](https://user-images.githubusercontent.com/31528604/202841225-1c502b55-2e2b-4fd1-a04f-6b49fcfbb012.png)
 ![image](https://user-images.githubusercontent.com/31528604/202841230-ab92cd0d-ab90-45af-ba26-be4029c1a03a.png)
@@ -97,6 +101,8 @@
 ![image](https://user-images.githubusercontent.com/31528604/202842673-0bbd2411-dc67-4ded-961d-1e7d4dfa5569.png)
 ![image](https://user-images.githubusercontent.com/31528604/202842684-e7c953cd-25b9-4aa5-ba32-2e46b8286fcf.png)
 
+---
+
 ## Prof. Prof. Ren C. Luo @ National Taiwan University, China
 ![image](https://user-images.githubusercontent.com/31528604/202628593-f6ebfe7a-b735-4c82-aa05-567e67b76be4.png)
 ![image](https://user-images.githubusercontent.com/31528604/202628561-f9d4a1c7-cc06-41e4-9216-34f2ddd443f1.png)
@@ -113,6 +119,8 @@
 ![image](https://user-images.githubusercontent.com/31528604/202631733-d9e54f97-cef5-4b01-941d-927c5cb871df.png)
 ![image](https://user-images.githubusercontent.com/31528604/202631835-ae6ee025-3ee0-447a-a9fe-1fc4bf504256.png)
 ![image](https://user-images.githubusercontent.com/31528604/202631857-ade612b3-c127-42c3-a248-13af70602f55.png)
+
+---
 
 ## Data-Centric Al with Trust - Wei-Chao Chen
 ![image](https://user-images.githubusercontent.com/31528604/202835111-a053abd5-0f33-4c03-8b7f-c0df2ca4f744.png)
@@ -140,6 +148,8 @@
 ![image](https://user-images.githubusercontent.com/31528604/202835971-8c6b0b19-b330-4898-806e-7b3e0e9cba36.png)
 ![image](https://user-images.githubusercontent.com/31528604/202835982-4c51bb74-59b2-4285-8f5e-700435c2ffeb.png)
 ![image](https://user-images.githubusercontent.com/31528604/202835992-d71ad945-6182-4ea0-bd0f-4b3cdca1ecf1.png)
+
+---
 
 ## Recent Advances in Vision and Language Models - Frank Wang
 ![image](https://user-images.githubusercontent.com/31528604/202836079-8df74308-8d14-4052-8ed3-bee27f5218c3.png)
@@ -177,6 +187,8 @@
 ![image](https://user-images.githubusercontent.com/31528604/202836880-600ff8b4-3037-46a1-a841-97a669377830.png)
 ![image](https://user-images.githubusercontent.com/31528604/202836894-b5443b1c-76f6-444a-a76a-422c7b81d317.png)
 
+---
+
 ## Colley Hwang
 ![image](https://user-images.githubusercontent.com/31528604/202828134-64047ef4-f060-4bff-ad26-fdc840afd6a0.png)
 ![image](https://user-images.githubusercontent.com/31528604/202828145-1eecca64-1fc5-4fd5-9e2b-f7ea48a5a124.png)
@@ -194,6 +206,8 @@
 ![image](https://user-images.githubusercontent.com/31528604/202828890-c83efb42-5796-4206-b2c2-4c1079fc5527.png)
 ![image](https://user-images.githubusercontent.com/31528604/202829082-2b8c331b-f2b4-4ace-8bf8-ad8e1d175170.png)
 ![image](https://user-images.githubusercontent.com/31528604/202829111-83913b8c-736f-43f1-84d2-e527d0cb0dad.png)
+
+---
 
 ## Prof. Shih-Hao Hung, National Taiwan University, China
 ![image](https://user-images.githubusercontent.com/31528604/202838031-3dea9fbe-f8b1-4892-9c08-09f511fd6012.png)
@@ -221,6 +235,8 @@
 ![image](https://user-images.githubusercontent.com/31528604/202839016-0840ff99-1cda-4ab6-acf5-5e90c28acfb6.png)
 ![image](https://user-images.githubusercontent.com/31528604/202839027-b6df1053-85fc-45f3-ad5d-30ec9a1072db.png)
 ![image](https://user-images.githubusercontent.com/31528604/202839030-84d8a2a7-5af0-4190-bcc5-a81089e3d9fc.png)
+
+---
 
 ## Timetable
 ![image](https://user-images.githubusercontent.com/31528604/202067196-dfdc483e-5904-4168-aaae-9b2daa7bdea1.png)
