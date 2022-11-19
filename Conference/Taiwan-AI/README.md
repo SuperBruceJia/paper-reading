@@ -47,6 +47,34 @@
 
 ## Prof. Edward Chang @ Stanford
 ![image](https://user-images.githubusercontent.com/31528604/202643200-f53770aa-8908-49b2-a19b-dac116291fd0.png)
+![image](https://user-images.githubusercontent.com/31528604/202841225-1c502b55-2e2b-4fd1-a04f-6b49fcfbb012.png)
+![image](https://user-images.githubusercontent.com/31528604/202841230-ab92cd0d-ab90-45af-ba26-be4029c1a03a.png)
+![image](https://user-images.githubusercontent.com/31528604/202841239-616ae144-35af-42df-9ccf-d2d0e038886c.png)
+![image](https://user-images.githubusercontent.com/31528604/202841255-871cc6a7-a492-4ca8-97f9-db81c2009e8c.png)
+![image](https://user-images.githubusercontent.com/31528604/202841290-90e40a81-355a-42d3-bfe6-eae8b4ff4af3.png)
+![image](https://user-images.githubusercontent.com/31528604/202841310-32729077-9f04-4981-84cb-18de85e34d72.png)
+![image](https://user-images.githubusercontent.com/31528604/202841377-60e59708-572a-4d89-b1e7-603a79ab5b3e.png)
+![image](https://user-images.githubusercontent.com/31528604/202841380-15accb4f-0b09-4be6-8147-4c4a6188da6b.png)
+![image](https://user-images.githubusercontent.com/31528604/202841401-af19649d-0585-4573-bc47-720c2b5a700f.png)
+![image](https://user-images.githubusercontent.com/31528604/202841430-0c99a6ba-dec9-4074-b316-f878051fa07c.png)
+![image](https://user-images.githubusercontent.com/31528604/202841464-943ea7a5-5a18-494f-89a2-33b31c264fb0.png)
+![image](https://user-images.githubusercontent.com/31528604/202841507-40371877-fe63-4956-98ae-2ecda857fcf1.png)
+![image](https://user-images.githubusercontent.com/31528604/202841581-607e00d4-e282-4f50-ae02-e2affdd8df53.png)
+![image](https://user-images.githubusercontent.com/31528604/202841619-b4d5bd4c-679e-46e6-a484-39008c23c425.png)
+![image](https://user-images.githubusercontent.com/31528604/202841628-1ff4ab9d-0fb9-4bef-82fe-16eb06894483.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Prof. Prof. Ren C. Luo @ National Taiwan University, China
 ![image](https://user-images.githubusercontent.com/31528604/202628593-f6ebfe7a-b735-4c82-aa05-567e67b76be4.png)
