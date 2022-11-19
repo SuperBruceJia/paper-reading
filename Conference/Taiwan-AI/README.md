@@ -92,6 +92,20 @@
 ![image](https://user-images.githubusercontent.com/31528604/202835982-4c51bb74-59b2-4285-8f5e-700435c2ffeb.png)
 ![image](https://user-images.githubusercontent.com/31528604/202835992-d71ad945-6182-4ea0-bd0f-4b3cdca1ecf1.png)
 
+## Recent Advances in Vision and Language Models - Frank Wang
+![image](https://user-images.githubusercontent.com/31528604/202836079-8df74308-8d14-4052-8ed3-bee27f5218c3.png)
+![image](https://user-images.githubusercontent.com/31528604/202836084-f5f5682e-549d-489f-b6e3-95b73135e4e3.png)
+![image](https://user-images.githubusercontent.com/31528604/202836115-4740d74a-688c-49b4-864e-e415bf53740f.png)
+![image](https://user-images.githubusercontent.com/31528604/202836134-8a93f829-673c-4e51-8bb7-f065e5d64b90.png)
+![image](https://user-images.githubusercontent.com/31528604/202836200-7cef9dd1-9a71-4cdd-902c-85ddd15d5992.png)
+![image](https://user-images.githubusercontent.com/31528604/202836202-e8090bc5-a602-4769-bd17-0956bf08def4.png)
+![image](https://user-images.githubusercontent.com/31528604/202836249-2c2cf109-86e1-41ab-a0ee-284510ad94f1.png)
+![image](https://user-images.githubusercontent.com/31528604/202836261-a4a8f384-03e9-4675-a3cc-c13f5b88e812.png)
+![image](https://user-images.githubusercontent.com/31528604/202836271-5ac0f7ae-e5e8-4408-9620-cd9a2fa94c22.png)
+![image](https://user-images.githubusercontent.com/31528604/202836283-fcd78252-889a-440c-9aee-3f0918969ad0.png)
+![image](https://user-images.githubusercontent.com/31528604/202836300-d821a37c-f443-4a44-addf-b63d9221d8ee.png)
+![image](https://user-images.githubusercontent.com/31528604/202836382-cd58b463-7c90-45eb-9da9-8ccbf2ce5ed2.png)
+
 ## Colley Hwang
 ![image](https://user-images.githubusercontent.com/31528604/202828134-64047ef4-f060-4bff-ad26-fdc840afd6a0.png)
 ![image](https://user-images.githubusercontent.com/31528604/202828145-1eecca64-1fc5-4fd5-9e2b-f7ea48a5a124.png)
