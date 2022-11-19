@@ -105,6 +105,15 @@
 ![image](https://user-images.githubusercontent.com/31528604/202836283-fcd78252-889a-440c-9aee-3f0918969ad0.png)
 ![image](https://user-images.githubusercontent.com/31528604/202836300-d821a37c-f443-4a44-addf-b63d9221d8ee.png)
 ![image](https://user-images.githubusercontent.com/31528604/202836382-cd58b463-7c90-45eb-9da9-8ccbf2ce5ed2.png)
+![image](https://user-images.githubusercontent.com/31528604/202836467-a3643268-8a13-4841-aec9-d0d201595466.png)
+![image](https://user-images.githubusercontent.com/31528604/202836497-51d91be0-2086-4805-b571-257f3afb5876.png)
+![image](https://user-images.githubusercontent.com/31528604/202836542-ca1a038f-114b-4845-b743-dd95708bdd9d.png)
+![image](https://user-images.githubusercontent.com/31528604/202836559-ce6bf410-e6ea-4d1d-a9b9-7e192ebef892.png)
+![image](https://user-images.githubusercontent.com/31528604/202836576-e2ba73ff-792a-4627-bee3-83bd5702f56c.png)
+![image](https://user-images.githubusercontent.com/31528604/202836621-c63246f7-46d4-4f8a-8990-a6e00f50d3af.png)
+![image](https://user-images.githubusercontent.com/31528604/202836625-16e11f09-7c29-4215-9c27-2859b08f31e2.png)
+![image](https://user-images.githubusercontent.com/31528604/202836629-9c80f595-38a3-40ee-8575-6cd24a3b5366.png)
+![image](https://user-images.githubusercontent.com/31528604/202836663-0ea63fb4-8e3b-46c5-9ab2-e63084494095.png)
 
 ## Colley Hwang
 ![image](https://user-images.githubusercontent.com/31528604/202828134-64047ef4-f060-4bff-ad26-fdc840afd6a0.png)
