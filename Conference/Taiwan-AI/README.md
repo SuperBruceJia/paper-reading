@@ -65,6 +65,16 @@
 ![image](https://user-images.githubusercontent.com/31528604/202631835-ae6ee025-3ee0-447a-a9fe-1fc4bf504256.png)
 ![image](https://user-images.githubusercontent.com/31528604/202631857-ade612b3-c127-42c3-a248-13af70602f55.png)
 
+## Wei-Chao Chen
+![image](https://user-images.githubusercontent.com/31528604/202835111-a053abd5-0f33-4c03-8b7f-c0df2ca4f744.png)
+![image](https://user-images.githubusercontent.com/31528604/202835155-18011bd5-d1e3-4ad4-8b4c-2596f0d1ed26.png)
+![image](https://user-images.githubusercontent.com/31528604/202835223-d6484a7d-ebd5-4791-b23c-bab479edeec2.png)
+![image](https://user-images.githubusercontent.com/31528604/202835344-09591236-677d-4cb8-a6d7-db8ccbb0fb72.png)
+![image](https://user-images.githubusercontent.com/31528604/202835384-f6758478-1652-400b-b672-70b27fb15fb1.png)
+![image](https://user-images.githubusercontent.com/31528604/202835433-ab0f9c30-477b-4442-b0ba-4632944aef30.png)
+![image](https://user-images.githubusercontent.com/31528604/202835471-370d2d9c-2f60-47f1-8f46-4793c31bee0d.png)
+
+
 ## Colley Hwang
 ![image](https://user-images.githubusercontent.com/31528604/202828134-64047ef4-f060-4bff-ad26-fdc840afd6a0.png)
 ![image](https://user-images.githubusercontent.com/31528604/202828145-1eecca64-1fc5-4fd5-9e2b-f7ea48a5a124.png)
