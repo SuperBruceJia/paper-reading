@@ -1,55 +1,15 @@
 # 2022 中国台灣人工智慧年會
-# Large-Scale Al Foundation Model
+## (1) Large-scale Al Foundation Model (2) Generative AI
 
-## Prof. Hsiang-Tsung Kung @ Harvard
+# Prof. Hsiang-Tsung Kung @ Harvard
 ### (1) 10 Trillion-parameter Model -> Fundamental Model in the future
 ### (2) Homomorphic Encryption
 ![image](https://user-images.githubusercontent.com/31528604/202607785-10430bbe-d910-4323-b6a1-c6775ad07cb2.png)
 
 ---
 
-## Dr. Bor-Sung Liang
-![image](https://user-images.githubusercontent.com/31528604/202651326-e3e1b59f-9818-4356-9b38-f95b6abd2397.png)
-![image](https://user-images.githubusercontent.com/31528604/202651356-9d60f3b8-c9e4-4d8e-be9f-7a5cb599188b.png)
-![image](https://user-images.githubusercontent.com/31528604/202651495-3ae95c24-00da-44f0-8896-58465c34271e.png)
-![image](https://user-images.githubusercontent.com/31528604/202651576-d52175d9-0955-49a1-834b-79f92f0892f1.png)
-![image](https://user-images.githubusercontent.com/31528604/202651843-dde6e4d0-d04f-469d-8144-ec616b6c62b4.png)
-![image](https://user-images.githubusercontent.com/31528604/202652048-69d26771-7b4c-410d-b9d6-4389029627c7.png)
-![image](https://user-images.githubusercontent.com/31528604/202652064-5e2cf4c1-01ed-4529-a943-0002b175f1f1.png)
-![image](https://user-images.githubusercontent.com/31528604/202652561-872dd509-3904-4a7a-a726-d7e1ae6158a4.png)
-![image](https://user-images.githubusercontent.com/31528604/202652603-70e1fecc-d883-45f1-9a94-c514c1a6fe63.png)
-![image](https://user-images.githubusercontent.com/31528604/202652695-e1c7cc97-c5d6-4625-8d20-cf8067700e0f.png)
-![image](https://user-images.githubusercontent.com/31528604/202652841-c80a7181-a3df-4d7a-b8b8-55f35633ac26.png)
-![image](https://user-images.githubusercontent.com/31528604/202652816-f0b1740f-00c7-4127-a333-ed0317c64d29.png)
-![image](https://user-images.githubusercontent.com/31528604/202652942-c6598661-99fd-43e6-84e0-14af984b70b9.png)
-![image](https://user-images.githubusercontent.com/31528604/202653077-dd06eee5-ccd1-49e0-b4d9-818d452e8c7d.png)
-![image](https://user-images.githubusercontent.com/31528604/202653108-dd728721-2df5-4281-9cc6-a89d573cb1b3.png)
-![image](https://user-images.githubusercontent.com/31528604/202653243-2fb81117-e4e1-44b0-a4bd-0b9fa9225e90.png)
-![image](https://user-images.githubusercontent.com/31528604/202653273-dcdd65cf-be55-4df7-81bb-84c667571079.png)
-![image](https://user-images.githubusercontent.com/31528604/202653555-d2b87c3a-ce16-4a79-849e-2ab212c7d5cf.png)
-![image](https://user-images.githubusercontent.com/31528604/202653698-70bc8f93-f9c9-437e-b5ea-47615e03665d.png)
-![image](https://user-images.githubusercontent.com/31528604/202653817-0c0a22a3-fc4f-4292-a7dc-745647740052.png)
-![image](https://user-images.githubusercontent.com/31528604/202654091-fe56be5f-8fc4-4f3c-a86b-fbbd3adc6edd.png)
-![image](https://user-images.githubusercontent.com/31528604/202654406-5b577f1a-704a-4d84-bd4e-3a7867efda53.png)
-![image](https://user-images.githubusercontent.com/31528604/202654460-3aea63a4-956d-4af3-a415-cf401590de64.png)
-![image](https://user-images.githubusercontent.com/31528604/202654610-42611953-5a48-4f05-b883-8ce0d608ce8a.png)
-![image](https://user-images.githubusercontent.com/31528604/202654973-328bdc05-1bbc-4660-93e4-53361386cbfa.png)
-![image](https://user-images.githubusercontent.com/31528604/202655122-75f55a27-27e1-4d1d-bfcf-ffe711d6aa60.png)
-![image](https://user-images.githubusercontent.com/31528604/202655156-35dc309a-103e-47b4-8aff-c315365fc270.png)
-![image](https://user-images.githubusercontent.com/31528604/202655326-78195eba-550a-4a0e-a67e-b3dd586aeffd.png)
-![image](https://user-images.githubusercontent.com/31528604/202655469-79a5d5e1-8c28-420b-a01e-1ac578016108.png)
-![image](https://user-images.githubusercontent.com/31528604/202655609-c6acabdb-329b-4886-9447-69c0ef1e3ba6.png)
-![image](https://user-images.githubusercontent.com/31528604/202655732-a4ecb730-de17-4e9e-bbad-b64d51f4eac2.png)
-![image](https://user-images.githubusercontent.com/31528604/202655882-25920631-28d3-443d-857f-a064473e8f1a.png)
-![image](https://user-images.githubusercontent.com/31528604/202655977-3b082207-da78-4c13-b4c4-df446810f746.png)
-![image](https://user-images.githubusercontent.com/31528604/202656153-c06f1ab0-7200-4604-8b74-338804d17d97.png)
-![image](https://user-images.githubusercontent.com/31528604/202656216-5a39e15b-0813-4397-af79-10401ba74e8f.png)
-![image](https://user-images.githubusercontent.com/31528604/202656293-89b07759-28d8-4ee4-9220-3382f58e3905.png)
-![image](https://user-images.githubusercontent.com/31528604/202656714-b6170cb6-f2cf-416b-92b1-8dbcfb734068.png)
-
----
-
-## Model Generative AI with Consciousness - Prof. Edward Chang @ Stanford
+# Model Generative AI with Consciousness - Prof. Edward Chang @ Stanford
+## (1) Large-scale Al Foundation Model (2) Generative AI
 ![image](https://user-images.githubusercontent.com/31528604/202643200-f53770aa-8908-49b2-a19b-dac116291fd0.png)
 ![image](https://user-images.githubusercontent.com/31528604/202841225-1c502b55-2e2b-4fd1-a04f-6b49fcfbb012.png)
 ![image](https://user-images.githubusercontent.com/31528604/202841230-ab92cd0d-ab90-45af-ba26-be4029c1a03a.png)
@@ -103,7 +63,48 @@
 
 ---
 
-## Prof. Prof. Ren C. Luo @ National Taiwan University, China
+# Dr. Bor-Sung Liang
+![image](https://user-images.githubusercontent.com/31528604/202651326-e3e1b59f-9818-4356-9b38-f95b6abd2397.png)
+![image](https://user-images.githubusercontent.com/31528604/202651356-9d60f3b8-c9e4-4d8e-be9f-7a5cb599188b.png)
+![image](https://user-images.githubusercontent.com/31528604/202651495-3ae95c24-00da-44f0-8896-58465c34271e.png)
+![image](https://user-images.githubusercontent.com/31528604/202651576-d52175d9-0955-49a1-834b-79f92f0892f1.png)
+![image](https://user-images.githubusercontent.com/31528604/202651843-dde6e4d0-d04f-469d-8144-ec616b6c62b4.png)
+![image](https://user-images.githubusercontent.com/31528604/202652048-69d26771-7b4c-410d-b9d6-4389029627c7.png)
+![image](https://user-images.githubusercontent.com/31528604/202652064-5e2cf4c1-01ed-4529-a943-0002b175f1f1.png)
+![image](https://user-images.githubusercontent.com/31528604/202652561-872dd509-3904-4a7a-a726-d7e1ae6158a4.png)
+![image](https://user-images.githubusercontent.com/31528604/202652603-70e1fecc-d883-45f1-9a94-c514c1a6fe63.png)
+![image](https://user-images.githubusercontent.com/31528604/202652695-e1c7cc97-c5d6-4625-8d20-cf8067700e0f.png)
+![image](https://user-images.githubusercontent.com/31528604/202652841-c80a7181-a3df-4d7a-b8b8-55f35633ac26.png)
+![image](https://user-images.githubusercontent.com/31528604/202652816-f0b1740f-00c7-4127-a333-ed0317c64d29.png)
+![image](https://user-images.githubusercontent.com/31528604/202652942-c6598661-99fd-43e6-84e0-14af984b70b9.png)
+![image](https://user-images.githubusercontent.com/31528604/202653077-dd06eee5-ccd1-49e0-b4d9-818d452e8c7d.png)
+![image](https://user-images.githubusercontent.com/31528604/202653108-dd728721-2df5-4281-9cc6-a89d573cb1b3.png)
+![image](https://user-images.githubusercontent.com/31528604/202653243-2fb81117-e4e1-44b0-a4bd-0b9fa9225e90.png)
+![image](https://user-images.githubusercontent.com/31528604/202653273-dcdd65cf-be55-4df7-81bb-84c667571079.png)
+![image](https://user-images.githubusercontent.com/31528604/202653555-d2b87c3a-ce16-4a79-849e-2ab212c7d5cf.png)
+![image](https://user-images.githubusercontent.com/31528604/202653698-70bc8f93-f9c9-437e-b5ea-47615e03665d.png)
+![image](https://user-images.githubusercontent.com/31528604/202653817-0c0a22a3-fc4f-4292-a7dc-745647740052.png)
+![image](https://user-images.githubusercontent.com/31528604/202654091-fe56be5f-8fc4-4f3c-a86b-fbbd3adc6edd.png)
+![image](https://user-images.githubusercontent.com/31528604/202654406-5b577f1a-704a-4d84-bd4e-3a7867efda53.png)
+![image](https://user-images.githubusercontent.com/31528604/202654460-3aea63a4-956d-4af3-a415-cf401590de64.png)
+![image](https://user-images.githubusercontent.com/31528604/202654610-42611953-5a48-4f05-b883-8ce0d608ce8a.png)
+![image](https://user-images.githubusercontent.com/31528604/202654973-328bdc05-1bbc-4660-93e4-53361386cbfa.png)
+![image](https://user-images.githubusercontent.com/31528604/202655122-75f55a27-27e1-4d1d-bfcf-ffe711d6aa60.png)
+![image](https://user-images.githubusercontent.com/31528604/202655156-35dc309a-103e-47b4-8aff-c315365fc270.png)
+![image](https://user-images.githubusercontent.com/31528604/202655326-78195eba-550a-4a0e-a67e-b3dd586aeffd.png)
+![image](https://user-images.githubusercontent.com/31528604/202655469-79a5d5e1-8c28-420b-a01e-1ac578016108.png)
+![image](https://user-images.githubusercontent.com/31528604/202655609-c6acabdb-329b-4886-9447-69c0ef1e3ba6.png)
+![image](https://user-images.githubusercontent.com/31528604/202655732-a4ecb730-de17-4e9e-bbad-b64d51f4eac2.png)
+![image](https://user-images.githubusercontent.com/31528604/202655882-25920631-28d3-443d-857f-a064473e8f1a.png)
+![image](https://user-images.githubusercontent.com/31528604/202655977-3b082207-da78-4c13-b4c4-df446810f746.png)
+![image](https://user-images.githubusercontent.com/31528604/202656153-c06f1ab0-7200-4604-8b74-338804d17d97.png)
+![image](https://user-images.githubusercontent.com/31528604/202656216-5a39e15b-0813-4397-af79-10401ba74e8f.png)
+![image](https://user-images.githubusercontent.com/31528604/202656293-89b07759-28d8-4ee4-9220-3382f58e3905.png)
+![image](https://user-images.githubusercontent.com/31528604/202656714-b6170cb6-f2cf-416b-92b1-8dbcfb734068.png)
+
+---
+
+# Prof. Prof. Ren C. Luo @ National Taiwan University, China
 ![image](https://user-images.githubusercontent.com/31528604/202628593-f6ebfe7a-b735-4c82-aa05-567e67b76be4.png)
 ![image](https://user-images.githubusercontent.com/31528604/202628561-f9d4a1c7-cc06-41e4-9216-34f2ddd443f1.png)
 ![image](https://user-images.githubusercontent.com/31528604/202628647-6f9dd4c4-80b9-4c27-970c-ef1e28cffa60.png)
@@ -122,7 +123,7 @@
 
 ---
 
-## Data-Centric Al with Trust - Wei-Chao Chen
+# Data-Centric Al with Trust - Wei-Chao Chen
 ![image](https://user-images.githubusercontent.com/31528604/202835111-a053abd5-0f33-4c03-8b7f-c0df2ca4f744.png)
 ![image](https://user-images.githubusercontent.com/31528604/202835155-18011bd5-d1e3-4ad4-8b4c-2596f0d1ed26.png)
 ![image](https://user-images.githubusercontent.com/31528604/202835223-d6484a7d-ebd5-4791-b23c-bab479edeec2.png)
@@ -151,7 +152,7 @@
 
 ---
 
-## Recent Advances in Vision and Language Models - Frank Wang
+# Recent Advances in Vision and Language Models - Frank Wang
 ![image](https://user-images.githubusercontent.com/31528604/202836079-8df74308-8d14-4052-8ed3-bee27f5218c3.png)
 ![image](https://user-images.githubusercontent.com/31528604/202836084-f5f5682e-549d-489f-b6e3-95b73135e4e3.png)
 ![image](https://user-images.githubusercontent.com/31528604/202836115-4740d74a-688c-49b4-864e-e415bf53740f.png)
@@ -209,7 +210,7 @@
 
 ---
 
-## Prof. Shih-Hao Hung, National Taiwan University, China
+# Prof. Shih-Hao Hung, National Taiwan University, China
 ![image](https://user-images.githubusercontent.com/31528604/202838031-3dea9fbe-f8b1-4892-9c08-09f511fd6012.png)
 ![image](https://user-images.githubusercontent.com/31528604/202838056-66c79776-9f6c-4b48-87fc-a14301bc2eeb.png)
 ![image](https://user-images.githubusercontent.com/31528604/202838105-dfa18cf4-33c5-4233-8556-31005e03cbc8.png)
@@ -238,6 +239,6 @@
 
 ---
 
-## Timetable
+# Timetable
 ![image](https://user-images.githubusercontent.com/31528604/202067196-dfdc483e-5904-4168-aaae-9b2daa7bdea1.png)
 ![image](https://user-images.githubusercontent.com/31528604/202413647-c85bd577-c147-4532-8aa6-c275988b5e9e.png)
