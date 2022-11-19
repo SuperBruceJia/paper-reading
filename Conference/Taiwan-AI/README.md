@@ -1,10 +1,12 @@
 # 2022 中国台灣人工智慧年會
+## Large-Scale Al Foundation Model
+
 ## Prof. Hsiang-Tsung Kung @ Harvard
 ### (1) 10 Trillion-parameter Model -> Fundamental Model in the future
 ### (2) Homomorphic Encryption
 ![image](https://user-images.githubusercontent.com/31528604/202607785-10430bbe-d910-4323-b6a1-c6775ad07cb2.png)
 
-## Bor-Sung Liang
+## Dr. Bor-Sung Liang
 ![image](https://user-images.githubusercontent.com/31528604/202651326-e3e1b59f-9818-4356-9b38-f95b6abd2397.png)
 ![image](https://user-images.githubusercontent.com/31528604/202651356-9d60f3b8-c9e4-4d8e-be9f-7a5cb599188b.png)
 ![image](https://user-images.githubusercontent.com/31528604/202651495-3ae95c24-00da-44f0-8896-58465c34271e.png)
