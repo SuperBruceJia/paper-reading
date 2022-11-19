@@ -65,7 +65,7 @@
 ![image](https://user-images.githubusercontent.com/31528604/202631835-ae6ee025-3ee0-447a-a9fe-1fc4bf504256.png)
 ![image](https://user-images.githubusercontent.com/31528604/202631857-ade612b3-c127-42c3-a248-13af70602f55.png)
 
-## Wei-Chao Chen
+## Data-Centric Al with Trust - Wei-Chao Chen
 ![image](https://user-images.githubusercontent.com/31528604/202835111-a053abd5-0f33-4c03-8b7f-c0df2ca4f744.png)
 ![image](https://user-images.githubusercontent.com/31528604/202835155-18011bd5-d1e3-4ad4-8b4c-2596f0d1ed26.png)
 ![image](https://user-images.githubusercontent.com/31528604/202835223-d6484a7d-ebd5-4791-b23c-bab479edeec2.png)
@@ -73,7 +73,24 @@
 ![image](https://user-images.githubusercontent.com/31528604/202835384-f6758478-1652-400b-b672-70b27fb15fb1.png)
 ![image](https://user-images.githubusercontent.com/31528604/202835433-ab0f9c30-477b-4442-b0ba-4632944aef30.png)
 ![image](https://user-images.githubusercontent.com/31528604/202835471-370d2d9c-2f60-47f1-8f46-4793c31bee0d.png)
-
+![image](https://user-images.githubusercontent.com/31528604/202835537-2b36f226-f181-4305-94aa-71531dfef6f7.png)
+![image](https://user-images.githubusercontent.com/31528604/202835573-a4e7ed65-3843-4726-befb-83577b52eac5.png)
+![image](https://user-images.githubusercontent.com/31528604/202835604-d4a93204-f122-477b-ae4b-a857b94a4be4.png)
+![image](https://user-images.githubusercontent.com/31528604/202835622-972d95bb-c4ce-4de1-ab63-1353f05e5c7a.png)
+![image](https://user-images.githubusercontent.com/31528604/202835653-c2840fe9-de89-45d5-b401-49203fd34353.png)
+![image](https://user-images.githubusercontent.com/31528604/202835683-15ea9ef6-dda2-4aea-9fc3-3e0f286d7773.png)
+![image](https://user-images.githubusercontent.com/31528604/202835693-fe01f169-43e5-4b5b-ba7b-68355e861eaa.png)
+![image](https://user-images.githubusercontent.com/31528604/202835744-3e104f57-90fc-44d7-ae0d-328e645f9749.png)
+![image](https://user-images.githubusercontent.com/31528604/202835786-cbd4c74c-9afb-4e85-8326-87049a940758.png)
+![image](https://user-images.githubusercontent.com/31528604/202835807-ba858a11-6720-48fd-bf27-9b9471aadb35.png)
+![image](https://user-images.githubusercontent.com/31528604/202835842-bcaef30f-0f60-4b90-9181-075769070392.png)
+![image](https://user-images.githubusercontent.com/31528604/202835850-3dc16437-e9f2-43b0-9556-12b571b9720e.png)
+![image](https://user-images.githubusercontent.com/31528604/202835891-b461fbb3-9848-4e0b-bba2-b19cf9e94ccd.png)
+![image](https://user-images.githubusercontent.com/31528604/202835931-75dbed28-892c-4053-ae1a-b392b3828af3.png)
+![image](https://user-images.githubusercontent.com/31528604/202835940-3b36bf7d-1ccc-4844-941b-d05ff81f3ca4.png)
+![image](https://user-images.githubusercontent.com/31528604/202835971-8c6b0b19-b330-4898-806e-7b3e0e9cba36.png)
+![image](https://user-images.githubusercontent.com/31528604/202835982-4c51bb74-59b2-4285-8f5e-700435c2ffeb.png)
+![image](https://user-images.githubusercontent.com/31528604/202835992-d71ad945-6182-4ea0-bd0f-4b3cdca1ecf1.png)
 
 ## Colley Hwang
 ![image](https://user-images.githubusercontent.com/31528604/202828134-64047ef4-f060-4bff-ad26-fdc840afd6a0.png)
