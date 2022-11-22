@@ -1,4 +1,4 @@
-# Course
+# Course and Tutorials
 
 (1) Stanford CS324 - CS324 - Advances in Foundation Models
 
