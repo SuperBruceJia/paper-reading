@@ -24,3 +24,9 @@ Link: https://crfm.stanford.edu/workshop.html
 By foundation model (e.g. BERT, GPT-3, DALL-E), we mean a single model that is trained on raw data, potentially across multiple modalities, which can be usefully adapted to a wide range of tasks. These models have demonstrated clear potential, which we see as the beginnings of a sweeping paradigm shift in AI. They represent a dramatic increase in capability in terms of accuracy, generation quality, and extrapolation to new tasks, but they also pose clear risks such as use for widespread disinformation, potential exacerbation of historical inequities, and problematic centralization of power.
 
 ---
+
+(4) Self-supervised Learning
+
+Link: https://github.com/SuperBruceJia/paper-reading/tree/master/Self-supervised%20Learning
+
+---
