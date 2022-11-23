@@ -1,4 +1,5 @@
-# Course and Tutorials
+# Foundation Model
+## Course and Tutorials
 
 (1) Stanford CS324 - CS324 - Advances in Foundation Models
 
@@ -16,7 +17,7 @@ Pre-trained language models (PLMs) are language models that are pre-trained on l
 
 ---
 
-(3) Workshop on Foundation Models
+(3) Stanford Workshop on Foundation Models
 
 Link: https://crfm.stanford.edu/workshop.html
 
