@@ -1,4 +1,5 @@
 # Connections between Convolution and Self-attention
+### Self-attention layers can express any convolutional layers
 1. [On the Connection between Local Attention and Dynamic Depth-wise Convolution](https://arxiv.org/abs/2106.04263)
 2. [Demystifying Local Vision Transformer: Sparse Connectivity, Weight Sharing, and Dynamic Weight](https://jingdongwang2017.github.io/Pubs/Demystify_Local_Attention.pdf)
 
