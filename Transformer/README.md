@@ -15,4 +15,7 @@
 
 3. [On the Relationship between Self-Attention and Convolutional Layers](https://arxiv.org/abs/1911.03584)
 ### A single multi-head self-attention layer using relative positional encoding can be re-parametrized to express any convolutional layer.
+
+<img width="1090" alt="image" src="https://user-images.githubusercontent.com/31528604/203744261-95b5cba9-81ec-4daf-bd8c-7e5fd94d4878.png">
+
 ![image](https://user-images.githubusercontent.com/31528604/203018832-cce8a3a4-17ab-4712-8501-d567255faeda.png)
