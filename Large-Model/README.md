@@ -1,7 +1,7 @@
 # Foundation Model
 ## Course and Tutorials
 
-(1) Stanford CS324 - CS324 - Advances in Foundation Models
+(1) Stanford CS324 - Advances in Foundation Models
 
 Link: https://stanford-cs324.github.io/winter2022/
 
@@ -17,7 +17,7 @@ Pre-trained language models (PLMs) are language models that are pre-trained on l
 
 ---
 
-(3) Stanford Workshop on Foundation Models
+(3) Stanford Workshop - Foundation Models
 
 Link: https://crfm.stanford.edu/workshop.html
 
@@ -25,7 +25,15 @@ By foundation model (e.g. BERT, GPT-3, DALL-E), we mean a single model that is t
 
 ---
 
-(4) Self-supervised Learning
+(4) NeurIPS 2022 Tutorial - Foundational Robustness of Foundation Models
+
+Link: https://nips.cc/virtual/2022/tutorial/55796 and https://sites.google.com/view/neurips2022-frfm-turotial
+
+Foundation models adopting the methodology of deep learning with pre-training on large-scale unlabeled data and finetuning with task-specific supervision are becoming a mainstream technique in machine learning. Although foundation models hold many promises in learning general representations and few-shot/zero-shot generalization across domains and data modalities, at the same time they raise unprecedented challenges and considerable risks in robustness and privacy due to the use of the excessive volume of data and complex neural network architectures. This tutorial aims to deliver a Coursera-like online tutorial containing comprehensive lectures, a hands-on and interactive Jupyter/Colab live coding demo, and a panel discussion on different aspects of trustworthiness in foundation models.
+
+---
+
+(5) Self-supervised Learning
 
 Link: https://github.com/SuperBruceJia/paper-reading/tree/master/Self-supervised%20Learning
 
