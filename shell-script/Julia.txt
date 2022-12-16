@@ -19,6 +19,7 @@ It can be a little unclear how to shut it down. I generally first close the brow
 
 using Pkg
 Pkg.update()
+Pkg.gc()
 
 Pkg.add("Clustering")
 Pkg.add("Gadfly")
