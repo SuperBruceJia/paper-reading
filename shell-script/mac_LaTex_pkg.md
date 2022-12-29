@@ -1,11 +1,17 @@
 # Install LaTex Package through Terminal
-
+```shell
 cd /usr/local/texlive/2022/bin/universal-darwin
 
 sudo ./tlmgr update --self
 
 sudo ./tlmgr install XXX
+```
 
+# Compile Tex files via Terminal
+
+```shell
+/usr/local/texlive/2022/bin/universal-darwin/pdflatex -interaction=batchmode thesis_body.tex
+```
 
 # EPS File to PDF file
 
