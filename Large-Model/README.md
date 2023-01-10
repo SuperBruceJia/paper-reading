@@ -33,7 +33,15 @@ Foundation models adopting the methodology of deep learning with pre-training on
 
 ---
 
-(5) Self-supervised Learning
+(5) Neural Scaling Laws and Foundation Models
+
+Link: https://sites.google.com/view/nsl-course/schedule
+
+This seminar-style course will focus on recent advances in the rapidly developing area of "foundation models", i.e. large-scale neural network models (e.g., GPT-3, CLIP, DALL-e, etc) pretrained on very large, diverse datasets. Such models often demonstrate significant improvement in their few-shot generalization abilities, as compared to their smaller-scale counterparts, across a wide range of downstream tasks - what one could call a "transformation of quantity into quality" or an "emergent behavior". This is an important step towards a long-standing objective of achieving Artificial General Intelligence (AGI). By AGI here we mean literally a "general", i.e. broad, versatile AI capable of quickly adapting to a wide range of situations and tasks, both novel and those encountered before - i.e. achieving a good stability (memory) vs plasticity (adaptation) trade-off, using the continual learning terminology. In this course, we will survey most recent advances in large-scale pretrained models, focusing specifically on empirical scaling laws of such systems' performance, with increasing compute, model size, and pretraining data (power laws, phase transitions). We will also explore the trade-off between the increasing AI capabilities and AI safety/alignment with human values, considering a range of evaluation metrics beyond the predictive performance. Finally, we will touch upon several related fields, including transfer-, continual- and meta-learning, as well as out-of-distribution generalization, robustness and invariant/causal predictive modeling.
+
+---
+
+(6) Self-supervised Learning
 
 Link: https://github.com/SuperBruceJia/paper-reading/tree/master/Self-supervised%20Learning
 
