@@ -1,8 +1,8 @@
 PHOTODIR=$1
 PHOTOFORMAT=$2
 
-IFS_OLD=$IFS # 先保存 IFS 变量
-IFS=$'\n' # 将 IFS 改为换行符
+IFS_OLD=$IFS
+IFS=$'\n'
 
 if [ ! -d "$PHOTODIR"/new ]; then
     mkdir "$PHOTODIR"/new
