@@ -104,7 +104,7 @@ End Sub
 <img width="1680" alt="image" src="https://user-images.githubusercontent.com/31528604/212066255-765d880b-41c7-4f4f-98b1-7d005708c090.png">
 <img width="1680" alt="image" src="https://user-images.githubusercontent.com/31528604/212066434-f14219db-a490-49b1-b7cb-077f0b409d6f.png">
 <img width="1680" alt="image" src="https://user-images.githubusercontent.com/31528604/212066892-8e4daa14-4e61-4ae9-be34-d2eab3a35afa.png">
-<img width="1680" alt="image" src="https://user-images.githubusercontent.com/31528604/212066967-eb16b904-e8f2-4e30-ba3f-91dd9b59a18c.png">
+<img width="1680" alt="image" src="https://user-images.githubusercontent.com/31528604/212072506-acb4ea09-31a3-4e8e-a56d-8cc2c6ae2e20.png">
 <img width="1680" alt="image" src="https://user-images.githubusercontent.com/31528604/212070779-1934222d-49bd-4c3a-9750-d00c15358b0a.png">
 
 ### Recover Original PPT
