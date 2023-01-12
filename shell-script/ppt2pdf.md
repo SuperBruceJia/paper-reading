@@ -23,7 +23,7 @@ For i = 1 To n
         Dim oshp As Shape
         With s2.Shapes
             Set oshp = .AddTextbox(msoTextOrientationHorizontal, 905, 510, 100, 50)
-            oshp.TextFrame.TextRange.Font.Name = "Arial"
+            oshp.TextFrame.TextRange.Font.Name = "Times New Roman"
             oshp.TextFrame.TextRange.Font.Size = 12
             oshp.TextFrame.TextRange.InsertAfter "" & i
         End With
