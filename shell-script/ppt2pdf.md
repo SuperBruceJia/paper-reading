@@ -1,5 +1,5 @@
 # Convert PowerPoint to PDF with Animations
-## Macro Code
+## Visual Basic Code
 ```vim
 Option Explicit
 
