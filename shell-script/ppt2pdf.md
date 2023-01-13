@@ -1,4 +1,11 @@
-# Convert PowerPoint to PDF with Animations
+# Convert PowerPoint (PPT) to PDF with Animations
+## Table of Contents
+<ul>
+    <li><a href="#Visual-Basic-Code">Visual Basic Code</a></li>
+    <li><a href="#Convert-PDF-with-Animations">Tutorial - Convert PDF with Animations</a></li>
+    <li><a href="#Recover-Original-PPT">Tutorial - Recover Original PPT</a></li>
+</ul>
+
 ## Visual Basic Code
 ```vim
 Option Explicit
