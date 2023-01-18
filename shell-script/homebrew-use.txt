@@ -1,5 +1,3 @@
-
-
 brew update
 brew cleanup
 brew upgrade -f 
@@ -21,28 +19,11 @@ brew cask uninstall sublime-text  #卸载sublime
 
 source ~/.zshrc
 
-
-
 brew cask install java
 brew install scala
 brew install apache-spark
 
 spark-shell
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 **PRELIMINARY**
 // Install Xcode Tools:     xcode-select —install
@@ -118,10 +99,3 @@ brew prune
 brew info
 **brew info
 ** 显示软件包信息，一般包括：
-
-作者：坚持编程_lyz
-链接：https://www.jianshu.com/p/61f209cd0e91
-来源：简书
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-
-
