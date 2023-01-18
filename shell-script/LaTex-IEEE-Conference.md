@@ -113,7 +113,7 @@
       Number of Reference Images & 29 & 30 & 25 \\
       Number of Images & 779 & 866 & 3,000 \\
       Number of Distortion Types & 5 & 6 & 24 \\
-      Number of Distortion Levels & $5\sim8$ & $4\sim5$ & 5 \\
+      Number of Distortion Levels & $5\sim8$ & $3\sim5$ & 5 \\
       Annotation & DMOS & DMOS & MOS \\
       Range & [0, 100] & [0, 1] & [0, 9]\\
       \bottomrule
