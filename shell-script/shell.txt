@@ -1,5 +1,3 @@
-
-
 cat /etc/shells
 
 切换bash：chsh -s /bin/bash
