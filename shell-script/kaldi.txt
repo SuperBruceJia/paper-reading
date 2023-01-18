@@ -13,8 +13,5 @@ cd ../src
 make depend -j 8
 make -j 8
 
-
 cd ../egs/yesno/s5
 ./run.sh
-
-
