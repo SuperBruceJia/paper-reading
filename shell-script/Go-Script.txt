@@ -1,4 +1,3 @@
-
 Run your first Go program by executing:
 go run hello.go
 
@@ -16,4 +15,3 @@ Using the godoc command, you can generate a program documentation.
 godoc fmt                # documentation for package fmt
 godoc fmt Printf         # documentation for fmt.Printf
 godoc -src fmt           # fmt package interface in Go source form
-
