@@ -1,4 +1,4 @@
-# Install LaTex Package through Terminal
+# Install LaTeX Package through Terminal
 ```shell
 cd /usr/local/texlive/2022/bin/universal-darwin
 
@@ -41,5 +41,3 @@ brew link --overwrite ghostscript
   \label{Accuracy and Loss various dataset}
 \end{figure}
 ```
-
-
