@@ -9,7 +9,6 @@ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 1
 
 sudo update-alternatives --display gcc
 
-
 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 9
 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 1
 
@@ -148,12 +147,3 @@ import tensorflow as tf
 
 with tf.Session() as sess:
   devices = sess.list_devices()
-
-
-
-
-
-
-
-
-
