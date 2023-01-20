@@ -214,6 +214,10 @@ Sitemap: https://shuyuej.com/blog/baidusitemap.xml
 
 # redefine Configuration
 
+```shell
+git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redefine
+```
+
 ```yml
 # ---------------------------------------------------------------------------------------
 #  Your basic info
