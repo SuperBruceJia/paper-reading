@@ -1,4 +1,8 @@
-## run.sh
+# Create a `.sh` file
+
+e.g., `run.sh`
+
+# Write the following to the `run.sh`
 
 ```bash
 #! /bin/bash
@@ -11,4 +15,7 @@ python x6.py
 python x7.py
 ```
 
-## source run.sh
+# Run the following in Shell
+```shell
+source run.sh
+```
