@@ -1,3 +1,4 @@
+```shell
 export SPARK_SCALA_VERSION=2.12
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
@@ -11,6 +12,7 @@ export SPARK_MASTER_WEBUI_PORT=8080
 export SPARK_MASTER_HOST=127.0.0.1
 
 export SPARK_LOCAL_IP=127.0.0.1
+```
 
 # Course Material
 
