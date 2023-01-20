@@ -1,4 +1,4 @@
-```vim
+```shell
 sudo npm install -g hexo-cli
 
 sudo hexo init blog
@@ -184,7 +184,7 @@ baidusitemap:
 
 ----------------------------------
 
-```
+```shell
 cd /source 
 sudo vim robots.txt
 
