@@ -1,9 +1,10 @@
 # See the first 10 lines of the csv file
+
 head -n 10 dept.csv
 
-Get number of columns:
-    head -1 myfile.csv | sed 's/[^,]//g' | wc -c    
-    awk -F, '{ print NF; exit }' myfile.csv
+# Get number of columns:
+head -1 myfile.csv | sed 's/[^,]//g' | wc -c    
+awk -F, '{ print NF; exit }' myfile.csv
 
-Get number of lines:
-    wc -l myfile.csv
+# Get number of lines:
+wc -l myfile.csv
