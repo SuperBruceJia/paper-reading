@@ -14,4 +14,4 @@ arch_list_x86_64=( numpy-1.18.5-cp38-cp38-macosx_10_16_x86_64.whl grpcio-1.33.2-
 Those steps worked for me. :-D
 
 7. Use this script to activate environment
-  . "/Users/shuyuej/tensorflow_macos_venv/bin/activate"
+. "/Users/shuyuej/tensorflow_macos_venv/bin/activate"
