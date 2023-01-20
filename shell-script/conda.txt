@@ -210,41 +210,6 @@ pip install --upgrade jupyter
 pip install --upgrade notebook
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 python -m pip install --upgrade pip --user
 pip install --upgrade cython --user
 pip install --upgrade textblob --user
