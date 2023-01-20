@@ -78,10 +78,10 @@
 ## Framework Figure
 ```latex
 \begin{figure*}[!ht]
-	\centering
-	\includegraphics[width=.95\linewidth]{overview.pdf}
-	\caption{XXX.}
-	\label{Overview}
+    \centering
+    \includegraphics[width=.95\linewidth]{overview.pdf}
+    \caption{XXX.}
+    \label{Overview}
 \end{figure*}
 ```
 
@@ -90,9 +90,9 @@
 ## Contributions Summary
 ```latex
 \begin{itemize}
-  \item XXX.
-  \item XXX.
-  \item XXX.
+    \item XXX.
+    \item XXX.
+    \item XXX.
 \end{itemize}
 ```
 
@@ -101,7 +101,7 @@
 ## Table
 ```latex
 \begin{table}[!t]
-    \centering
+  \centering
   \caption{Brief summary of the LIVE, CSIQ, and TID2013 databases}
   \label{database}
   % \resizebox{\linewidth}{!}{
