@@ -1,3 +1,5 @@
+# Spark on macOS
+
 ```shell
 export SPARK_SCALA_VERSION=2.12
 
