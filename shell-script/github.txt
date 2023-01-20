@@ -1,13 +1,8 @@
 find . -type f -name '.DS_Store' -delete
 
 git init
-
 git add . 
-
 git commit -m "update"
-
 git remote add origin https://github.com/SuperBruceJia/SuperBruceJia.github.io.git
-
 git pull origin master
-
 git push -u origin master -f
