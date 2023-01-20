@@ -23,6 +23,7 @@ Location: /root
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 
+# Hexo Configuration
 ```yml
 # Hexo Configuration
 ## Docs: https://hexo.io/docs/configuration.html
@@ -183,6 +184,8 @@ baidusitemap:
 ```
 
 ----------------------------------
+
+# redefine Configuration
 
 ```shell
 cd /source 
