@@ -1,20 +1,15 @@
+# macOS Homebrew
 brew update
 brew cleanup
 brew upgrade -f 
 brew cask upgrade
 
 # Cask 常用命令
-
 brew cask search        #列出所有可以被安装的软件
-
 brew cask search sublime    #查找所有和sublime相关的应用
-
 brew cask list          #列出所有通过cask安装的软件
-
 brew cask info sublime-text  #查看 sublime 的信息
-
 brew cask install sublime-text  # 安装sublime
-
 brew cask uninstall sublime-text  #卸载sublime
 
 source ~/.zshrc
@@ -37,23 +32,20 @@ Install:                    brew cask install (discord)
 Update:                     brew cask upgrade
 Help:                       brew cask help
  
- 
 **HTOP**
 //Install htop:             brew install htop
 Run:                        sudo htop
  
- 
 **SPEEDTEST**
 //Install Speedtest         brew install speedtest-cli
 Run:                        speedtest-cli
- 
  
 **YOUTUBE-DL**
 //Install youtube-dl:       brew install youtube-dl
 //Install ffmpeg:           brew install youtube-dl ffmpeg
 Download highest-res vid:   youtube-dl -f bestvideo+bestaudio ‘link’
 Help:                       youtube-dl --help
- 
+
 **IMAGEMAGICK**
 //Install ImageMagick:      brew install imagemagick
 Add border (sample):        convert testing.png -border 1x1 -bordercolor black result.png
@@ -61,7 +53,6 @@ Resize (sample):            convert testing.png -resize 1920 (or x1080) example.
 Add effect (sample):        convert testing.png -charcoal 2 example.png
 Change multiple (sample):   for file in *.png; do convert $file -resize 1920 small-$file; done
 Help:                       convert help
-
 
 brew update
 更新 brew
