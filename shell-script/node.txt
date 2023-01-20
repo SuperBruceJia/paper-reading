@@ -1,8 +1,7 @@
+# Node JS
 node -v
 
 npm init
-
-
 
 npm install nodemon --save-dev
 
