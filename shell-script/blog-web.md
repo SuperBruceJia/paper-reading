@@ -1,3 +1,5 @@
+# Building Blog via Hexo
+
 ```shell
 sudo npm install -g hexo-cli
 
@@ -10,15 +12,13 @@ sudo npm install
 sudo hexo s
 ```
 
-----------------------------------
+# GitHub Configuration
 
 https://github.com/SuperBruceJia/blog/tree/gh-pages
 
 Branch: gh-pages
 
 Location: /root
-
-----------------------------------
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
@@ -159,6 +159,8 @@ sudo npm install hexo-deployer-git --save
 
 ----------------------------------
 
+# Deploy Hexo
+
 ```shell
 sudo hexo clean
 
@@ -169,13 +171,14 @@ sudo hexo d
 
 ----------------------------------
 
+# sitemap
+
 ```shell
 sudo npm install hexo-generator-sitemap --save
 
 sudo npm install hexo-generator-baidu-sitemap --save
 ```
 
-# sitemap
 ```shell
 sitemap:
   path: sitemap.xml
@@ -208,6 +211,8 @@ Sitemap: https://shuyuej.com/blog/baidusitemap.xml
 ```
 
 ----------------------------------
+
+# redefine Configuration
 
 ```yml
 # ---------------------------------------------------------------------------------------
