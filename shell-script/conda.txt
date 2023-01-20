@@ -15,7 +15,6 @@ activate yolo
 activate paddlepaddle
 activate mxnet
 
-
 deactivate
 
 spyder --new-instance
@@ -104,7 +103,6 @@ conda clean --tarballs
 删除索引缓存,锁定文件,未使用的包和tar包
 conda clean -a
 
-
 列举当前活跃环境下的所有包：
 conda list
 
@@ -137,24 +135,19 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-
 docker
 安装tf:
 docker pull tensorflow/tensorflow  
 docker pull tensorflow/tensorflow:nightly-devel-gpu
 
-
 docker run -it --rm tensorflow/tensorflow \
     python -c "import tensorflow as tf; print(tf.__version__)"
 
-
 docker run -it tensorflow/tensorflow bash
-
 
 AttributeError: 'NoneType' object has no attribute 'flush'
 conda install -c anaconda spyder ipykernel=4.8.2
 spyder --reset
-
 
 conda install spyder
 
@@ -170,7 +163,6 @@ pip install --upgrade torchvision
 
 pip install https://download.pytorch.org/whl/cu100/torch-1.1.0-cp35-cp35m-win_amd64.whl
 pip install https://download.pytorch.org/whl/cu100/torchvision-0.3.0-cp35-cp35m-win_amd64.whl
-
 
 # CNTK
 pip install --user --upgrade --no-deps cntk-gpu
@@ -314,22 +306,9 @@ pip install --upgrade Django --user
 pip install --upgrade gym --user
 pip install --upgrade onnx --user
 
-
 export PATH=/Users/shuyuej/anaconda3/bin:$PATH
 
-
-
-
 conda install captum -c pytorch
-
-
-
-
-
-
-
-
-
 
 pip install --upgrade textblob
 pip install --upgrade spacy
@@ -348,41 +327,6 @@ pip install --upgrade artifici_lda
 pip install --upgrade flair
 pip install --upgrade kashgari
 pip install --upgrade nlp-architect
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 pip install --upgrade urllib 
@@ -532,15 +476,6 @@ pip install --upgrade tproxy
 pip install --upgrade tensornetwork
 
 
-
-
-
-
-
-
-
-
-
 python -m pip install --upgrade pip
 pip install --upgrade cython
 pip install --upgrade keras
@@ -629,10 +564,6 @@ pip install --user bs4
 pip install --user autopep8
 pip install --user elephas
 
-
-
-
-
 pip uninstall notebook
 pip install notebook==5.7.4
 
@@ -640,13 +571,9 @@ pip install notebook==5.7.4
 pip install --upgrade botorch
 pip install --upgrade ax-platform
 
-
-
 pip install bert-base==0.0.7 -i https://pypi.python.org/simple
 
 # server
 pip install bert-serving-server
 # client, independent of `bert-serving-server`  
 pip install bert-serving-client  
-
-
