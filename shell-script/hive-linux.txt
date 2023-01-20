@@ -59,28 +59,3 @@ sudo bin/schematool -dbType derby -initSchema
 sudo bin/hiveserver2
 
 sudo bin/beeline -n dataflair -u jdbc:hive2://localhost:10000
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
