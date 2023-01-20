@@ -1,3 +1,4 @@
+# Compile Kaldi ASR
 brew install OpenFst
 brew install subversion
 brew link subversion
