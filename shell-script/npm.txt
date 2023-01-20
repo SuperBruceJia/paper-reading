@@ -3,11 +3,6 @@ npm install -g npm-check
 npm-check -u -g
 npm-check -u
 
-
-
-
-
-
 npm install -g npm
 npm install -g spdy --save-dev
 npm install -g request --save-dev
@@ -148,7 +143,6 @@ npm install -g node-inspector --save-dev
 npm install -g weinre --save-dev
 npm install -g spy-debugger --save-dev
 npm install -g vconsole --save-dev
-
 
 0. 概述
 收藏和调研过的一些 npm 包的集合。(Npm packages)
@@ -409,9 +403,6 @@ weinre - phonegap 时代的产物，WebView 远程调试神器，不支持 node 
 spy-debugger - 页面远程调试 & 抓包工具，不支持 node v4+
 vconsole - 微信小程序推出的调试工具，直接内嵌在页面内，支持控制台、网络、系统信息.
 
-
-
 npm install -g eslint
 eslint --init
 eslint yourfile.js
-
