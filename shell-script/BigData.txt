@@ -21,9 +21,7 @@ https://blog.csdn.net/qq_37475168/article/details/90746823
 # (cmake-compile) on project hadoop-common: make failed with error code 2
 https://stackoverflow.com/questions/51233285/cmake-compile-on-project-hadoop-common-make-failed-with-error-code-2
 
-
 ################################################################################################################################################
-
 
 brew install openjdk@8                                                                                
 sudo ln -sfn /usr/local/opt/openjdk@8/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-8.
@@ -31,9 +29,7 @@ echo 'export PATH="/usr/local/opt/openjdk@8/bin:$PATH"' >> ~/.zshrc
 export CPPFLAGS="-I/usr/local/opt/openjdk@8/include"
 export JAVA_8_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents
 
-
 ################################################################################################################################################
-
 
 # Kafka and ZooKepper
 brew install kafka
@@ -45,9 +41,7 @@ brew services start kafka
 
 zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties
 
-
 ################################################################################################################################################
-
 
 # Hadoop
 git clone https://github.com/apache/hadoop.git && cd hadoop
@@ -117,7 +111,6 @@ open yarn-site.xml
     </property>
 </configuration>
 
-
 ssh localhost
 ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
@@ -141,27 +134,21 @@ cd bin
 sudo cp /usr/local/lib/libzstd.1.dylib /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/bin/
 sudo cp /usr/local/Cellar/snappy/1.1.9/lib/libsnappy.1.dylib /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/bin/
 
-
 http://localhost:50030 (MapReduce的Web页面) 
 http://localhost:50070 (HDFS的web页面)
 
 ################################################################################################################################################
-
 
 # Redis
 
 brew install redis
 
 redis -v
-
 redis-cli
 redis-server
-
 redis-cli shutdown
 
-
 ################################################################################################################################################
-
 
 # Big Data
 alias redis="/usr/local/Cellar/redis/6.0.10/bin/redis-server"
@@ -171,20 +158,10 @@ alias spark-start="/usr/local/Cellar/apache-spark/3.0.1/libexec/sbin/start-all.s
 alias spark-stop="/usr/local/Cellar/apache-spark/3.0.1/libexec/sbin/stop-all.sh"
 alias spark-shell="/usr/local/Cellar/apache-spark/3.0.1/bin/spark-shell"
 
-
 ################################################################################################################################################
-
 
 # Flink
 
 brew install apache-flink
 
 export PATH=/usr/local/Cellar/apache-flink/1.12.1/libexec/bin:$PATH
-
-
-################################################################################################################################################
-
-
-
-
-
