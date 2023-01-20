@@ -29,8 +29,7 @@ sudo cp hive-default.xml.template hive-site.xml
         <value>false</value>
     </property>
 
-
- ########################################################################################################################################################################################
+##############################################################################################
 
 # Delete: https://blog.csdn.net/sunxiaoju/article/details/102247369
 
@@ -48,7 +47,6 @@ To use SSL to encrypt/authenticate the connection, provide database-specific ssL
 </description>
 </property>
 
-
 <property>
 <name>javax. ido option. connectionDriverName</name>
 <valueorg. apache derby. jdbc. EmbeddedDriver</value>
@@ -61,7 +59,7 @@ To use SSL to encrypt/authenticate the connection, provide database-specific ssL
 <description>Username to use against metastore database</description>
 </property>
 
-########################################################################################################################################################################################
+##############################################################################################
 
 mkdir tmp
 /system:java.io.tmpdir
@@ -70,7 +68,7 @@ system:java.io.tmpdir --> /Users/shuyuej/Desktop/hadoop/hadoop-dist/target/hadoo
 /hive.exec.local.scratchdir
 ${system:user.name} --> ${user.name}
 
-########################################################################################################################################################################################
+#################################################################################################
 
 # Copy MySQL Conneector to Hive
 sudo cp /Users/shuyuej/mysql-connector-java-8.0.25/mysql-connector-java-8.0.25.jar ~/Desktop/hadoop/hadoop-dist/target/hadoop-2.10.1/apache-hive-2.3.9-bin/lib
@@ -82,9 +80,3 @@ show databases;
 
 https://www.jianshu.com/p/5716fe32ed17
 https://blog.csdn.net/sunxiaoju/article/details/102247369
-
-
-
-
-
-
