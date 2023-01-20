@@ -77,13 +77,12 @@
 
 ## Framework Figure
 ```latex
-	\begin{figure*}[!ht]
-		\centering
-		\includegraphics[width=.95\linewidth]{overview.pdf}
-		\caption{XXX.}
-		\label{Overview}
-	\end{figure*}
-
+\begin{figure*}[!ht]
+	\centering
+	\includegraphics[width=.95\linewidth]{overview.pdf}
+	\caption{XXX.}
+	\label{Overview}
+\end{figure*}
 ```
 
 ---
@@ -105,7 +104,7 @@
     \centering
   \caption{Brief summary of the LIVE, CSIQ, and TID2013 databases}
   \label{database}
-% \resizebox{\linewidth}{!}{
+  % \resizebox{\linewidth}{!}{
     \begin{tabular}{lccc}
       \toprule
       Database & LIVE & CSIQ & TID2013 \\ 
@@ -118,6 +117,6 @@
       Range & [0, 100] & [0, 1] & [0, 9]\\
       \bottomrule
     \end{tabular}
-% }
+  % }
 \end{table}
 ```
