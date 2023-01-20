@@ -1,8 +1,5 @@
-
 find . -type f -name '.DS_Store' -delete
-
 find . -type f -name ._\* -delete
-
 
 # Ubuntu install pcat
 sudo apt-get install python-pygments && alias pcat="pygmentize -f terminal256 -O style=native -g"
