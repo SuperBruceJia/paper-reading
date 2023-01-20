@@ -35,8 +35,3 @@ rm out_dir/tf.html
 find out_dir/tf -type f -exec sed -i '' -E 's/href="([^"]+)\.md"/href="\1.html"/g' {} \;
 cd out_dir
 dashing build
-
-
-
-
-
