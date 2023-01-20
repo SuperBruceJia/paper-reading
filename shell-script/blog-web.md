@@ -1,6 +1,5 @@
+```vim
 sudo npm install -g hexo-cli
-
-----------------------------------
 
 sudo hexo init blog
 
@@ -8,9 +7,8 @@ cd blog
 
 sudo npm install
 
-----------------------------------
-
 sudo hexo s
+```
 
 ----------------------------------
 
@@ -154,30 +152,39 @@ limit: 20
 
 ----------------------------------
 
+```shell
 sudo npm install hexo-deployer-git --save
+```
 
 ----------------------------------
 
+```shell
 sudo hexo clean
 
 sudo hexo g
 
 sudo hexo d
+```
 
 ----------------------------------
 
+```shell
 sudo npm install hexo-generator-sitemap --save
 
 sudo npm install hexo-generator-baidu-sitemap --save
+```
 
 # sitemap
+```shell
 sitemap:
   path: sitemap.xml
 baidusitemap:
   path: baidusitemap.xml
+```
 
 ----------------------------------
 
+```
 cd /source 
 sudo vim robots.txt
 
@@ -195,7 +202,6 @@ Disallow: /fancybox/
 
 Sitemap: https://shuyuej.com/blog/sitemap.xml
 Sitemap: https://shuyuej.com/blog/baidusitemap.xml
+```
 
 ----------------------------------
-
-
