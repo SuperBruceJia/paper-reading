@@ -542,3 +542,6 @@ pip install bert-base==0.0.7 -i https://pypi.python.org/simple
 pip install bert-serving-server
 # client, independent of `bert-serving-server`  
 pip install bert-serving-client  
+
+Problem: Trying to get PyCharm to work, keep getting "No Python interpreter selected"
+Solution: I has to close PyCharm, delete the .idea folder then open PyCharm again.
