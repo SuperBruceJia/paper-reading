@@ -1,0 +1,618 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     25909,        610]
+NotebookOptionsPosition[     20490,        502]
+NotebookOutlinePosition[     22406,        548]
+CellTagsIndexPosition[     22109,        538]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"square", "[", "x_", "]"}], ":=", 
+  RowBox[{"x", "^", "2"}]}]], "Input",
+ CellChangeTimes->{{3.75498472588065*^9, 3.7549847403981104`*^9}},
+ CellLabel->"In[57]:=",ExpressionUUID->"eec34136-8dbf-474e-b347-abea2ad8268d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"square", "[", "100", "]"}]], "Input",
+ CellChangeTimes->{{3.7549847459118185`*^9, 3.7549847496313868`*^9}},
+ CellLabel->"In[58]:=",ExpressionUUID->"b28cad3b-eb47-4030-89db-7891d092a59e"],
+
+Cell[BoxData["10000"], "Output",
+ CellChangeTimes->{3.7549847503030634`*^9},
+ CellLabel->"Out[58]=",ExpressionUUID->"985ad882-d6e6-4c71-81fc-92d2c734f5b9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Fibonacci Numbers", "Subsection",
+ CellChangeTimes->{{3.754984792904469*^9, 
+  3.7549848005973067`*^9}},ExpressionUUID->"18ad5fe1-c119-48bd-85ce-\
+7b1ae63af925"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Fibonacci"}]], "Input",
+ CellChangeTimes->{{3.7549848043994555`*^9, 3.754984811964185*^9}},
+ CellLabel->"In[59]:=",ExpressionUUID->"2b2d8697-daab-43f4-bb0b-57fa0bddaae7"],
+
+Cell[BoxData[
+ RowBox[{"\<\"\\!\\(\\*RowBox[{\\\"Fibonacci\\\", \\\"[\\\", StyleBox[\\\"n\\\
+\", \\\"TI\\\"], \\\"]\\\"}]\\) gives the Fibonacci number \
+\\!\\(\\*SubscriptBox[StyleBox[\\\"F\\\", \\\"TI\\\"], StyleBox[\\\"n\\\", \\\
+\"TI\\\"]]\\). \\n\\!\\(\\*RowBox[{\\\"Fibonacci\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"n\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"x\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\\) gives the Fibonacci polynomial \
+\\!\\(\\*RowBox[{SubscriptBox[StyleBox[\\\"F\\\", \\\"TI\\\"], StyleBox[\\\"n\
+\\\", \\\"TI\\\"]], \\\"(\\\", StyleBox[\\\"x\\\", \\\"TI\\\"], \
+\\\")\\\"}]\\). \"\>", "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Fibonacci"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.754984812475817*^9},
+ CellTags->
+  "Info593755013612-1885247",ExpressionUUID->"7a61402b-11c2-42c5-a05e-\
+aa4da1f1438a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"Fibonacci", "[", "n", "]"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", " ", "1", ",", " ", "10"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7549848210639634`*^9, 3.754984835729892*^9}},
+ CellLabel->"In[60]:=",ExpressionUUID->"f8458093-58d1-464d-b9e2-b3c6ae6c59e3"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "1", ",", "2", ",", "3", ",", "5", ",", "8", ",", "13", ",", "21",
+    ",", "34", ",", "55"}], "}"}]], "Output",
+ CellChangeTimes->{3.7549848362566624`*^9},
+ CellLabel->"Out[60]=",ExpressionUUID->"e7833a2b-3912-42f0-baec-136e5d5b461d"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fib", "[", "n_", "]"}], ":=", 
+  RowBox[{
+   RowBox[{"fib", "[", 
+    RowBox[{"n", "-", "1"}], "]"}], "+", 
+   RowBox[{"fib", "[", 
+    RowBox[{"n", "-", "2"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.7549848711078215`*^9, 3.7549848977170506`*^9}},
+ CellLabel->"In[61]:=",ExpressionUUID->"e99cec36-de34-4aa7-9976-190f32f525c4"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fib", "[", "1", "]"}], ":=", "1"}]], "Input",
+ CellChangeTimes->{{3.7549849036280537`*^9, 3.7549849120510635`*^9}},
+ CellLabel->"In[62]:=",ExpressionUUID->"915bc9eb-dcd0-45d7-9974-ecfa080962cd"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fib", "[", "2", "]"}], ":=", "1"}]], "Input",
+ CellChangeTimes->{{3.754984913702529*^9, 3.754984919901368*^9}},
+ CellLabel->"In[63]:=",ExpressionUUID->"ab302464-a9bb-438e-8773-23c861536465"],
+
+Cell[BoxData[
+ RowBox[{"fib", "[", "100", "]"}]], "Input",
+ CellChangeTimes->{{3.754984921616785*^9, 3.7549849251057415`*^9}},
+ CellLabel->"In[64]:=",ExpressionUUID->"dc0a16d9-52af-46dd-96f5-160b23283f9a"],
+
+Cell[BoxData[
+ RowBox[{"?", "clear"}]], "Input",
+ CellChangeTimes->{{3.7549850608367944`*^9, 
+  3.7549850624540386`*^9}},ExpressionUUID->"c82d848d-6ff6-44e5-a378-\
+dbe6d94b1f65"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"fib", "[", "1", "]"}], ":=", "1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"fib", "[", "2", "]"}], ":=", "1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"fib", "[", 
+    RowBox[{"n_Integer", " ", "/;", " ", 
+     RowBox[{"n", ">", "2"}]}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"fib", "[", 
+     RowBox[{"n", "-", "1"}], "]"}], "+", 
+    RowBox[{"fib", "[", 
+     RowBox[{"n", "-", "2"}], "]"}]}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.754985086959614*^9, 3.7549851398002524`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"d7588ea4-2eec-4c07-b6a8-0de6536367f8"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "fib"}]], "Input",
+ CellChangeTimes->{{3.75498514257784*^9, 3.7549851460460467`*^9}},
+ CellLabel->"In[4]:=",ExpressionUUID->"bee910bd-2f26-437e-a863-7071060d361c"],
+
+Cell[CellGroupData[{
+
+Cell["Global`fib", "Print", "PrintUsage",
+ CellChangeTimes->{3.7549851464859266`*^9},
+ CellTags->
+  "Info43755013946-3229446",ExpressionUUID->"7e42e9c5-84e6-4332-8420-\
+a5151829e125"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {GridBox[{
+       {
+        RowBox[{
+         RowBox[{"fib", "[", "1", "]"}], ":=", "1"}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{"fib", "[", "2", "]"}], ":=", "1"}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{"fib", "[", 
+          RowBox[{"n_Integer", "/;", 
+           RowBox[{"n", ">", "2"}]}], "]"}], ":=", 
+         RowBox[{
+          RowBox[{"fib", "[", 
+           RowBox[{"n", "-", "1"}], "]"}], "+", 
+          RowBox[{"fib", "[", 
+           RowBox[{"n", "-", "2"}], "]"}]}]}]}
+      },
+      BaselinePosition->{Baseline, {1, 1}},
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{"Columns" -> {{
+           Scaled[0.999]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}}]}
+   },
+   BaselinePosition->{Baseline, {1, 1}},
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}}],
+  Definition[$CellContext`fib],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7549851465078945`*^9},
+ CellTags->
+  "Info43755013946-3229446",ExpressionUUID->"195e9d45-2863-44c6-9e3b-\
+479e80adef0a"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"fib", "[", "3.5", "]"}]], "Input",
+ CellChangeTimes->{{3.754985149933257*^9, 3.7549851547706633`*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"efd2c8f0-733d-4ab0-a2f3-650bc391bff1"],
+
+Cell[BoxData[
+ RowBox[{"fib", "[", "3.5`", "]"}]], "Output",
+ CellChangeTimes->{3.7549851553433475`*^9},
+ CellLabel->"Out[5]=",ExpressionUUID->"206e2283-c765-496d-97c4-2ed1ea6a4547"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"fib", "[", "n", "]"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", " ", "1", ",", " ", "100"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7549851607108173`*^9, 3.754985174074317*^9}},
+ CellLabel->"In[6]:=",ExpressionUUID->"e420bf81-a9e4-4b92-bfdb-f150dbfe68af"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Options"}]], "Input",
+ CellChangeTimes->{{3.7549856648143616`*^9, 3.7549856679127007`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"80e0645d-2df3-40b4-a0e1-2858568b38c1"],
+
+Cell[BoxData[
+ RowBox[{"\<\"\\!\\(\\*RowBox[{\\\"Options\\\", \\\"[\\\", \
+StyleBox[\\\"symbol\\\", \\\"TI\\\"], \\\"]\\\"}]\\) gives the list of \
+default options assigned to a symbol. \\n\\!\\(\\*RowBox[{\\\"Options\\\", \\\
+\"[\\\", StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\"]\\\"}]\\) gives the options \
+explicitly specified in a particular expression such as a graphics object. \
+\\n\\!\\(\\*RowBox[{\\\"Options\\\", \\\"[\\\", StyleBox[\\\"stream\\\", \
+\\\"TI\\\"], \\\"]\\\"}]\\) or \\!\\(\\*RowBox[{\\\"Options\\\", \\\"[\\\", \
+StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"sname\\\\\\\",\\\\\\\"TI\
+\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\"]\\\"}]\\) gives \
+options associated with a particular stream. \
+\\n\\!\\(\\*RowBox[{\\\"Options\\\", \\\"[\\\", StyleBox[\\\"object\\\", \
+\\\"TI\\\"], \\\"]\\\"}]\\) gives options associated with an external object \
+such as a NotebookObject. \\n\\!\\(\\*RowBox[{\\\"Options\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"obj\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"name\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\\) gives the setting for the option \
+\\!\\(\\*StyleBox[\\\"name\\\", \\\"TI\\\"]\\). \
+\\n\\!\\(\\*RowBox[{\\\"Options\\\", \\\"[\\\", RowBox[{StyleBox[\\\"obj\\\", \
+\\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"name\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"name\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\\) gives a list of the settings for \
+the options \\!\\(\\*SubscriptBox[StyleBox[\\\"name\\\", \\\"TI\\\"], \
+StyleBox[\\\"i\\\", \\\"TI\\\"]]\\). \"\>", "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Options"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.7549856685539627`*^9},
+ CellTags->
+  "Info13755014468-4589220",ExpressionUUID->"4863ec4c-b9a7-42bc-a7fb-\
+23845457beff"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Plot", "]"}]], "Input",
+ CellChangeTimes->{{3.7549875139278955`*^9, 3.754987521281972*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"b5c02146-2527-48d5-91d2-51a1b602fd07"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"AlignmentPoint", "\[Rule]", "Center"}], ",", 
+   RowBox[{"AspectRatio", "\[Rule]", 
+    FractionBox["1", "GoldenRatio"]}], ",", 
+   RowBox[{"Axes", "\[Rule]", "True"}], ",", 
+   RowBox[{"AxesLabel", "\[Rule]", "None"}], ",", 
+   RowBox[{"AxesOrigin", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"AxesStyle", "\[Rule]", 
+    RowBox[{"{", "}"}]}], ",", 
+   RowBox[{"Background", "\[Rule]", "None"}], ",", 
+   RowBox[{"BaselinePosition", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"BaseStyle", "\[Rule]", 
+    RowBox[{"{", "}"}]}], ",", 
+   RowBox[{"ClippingStyle", "\[Rule]", "None"}], ",", 
+   RowBox[{"ColorFunction", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"ColorFunctionScaling", "\[Rule]", "True"}], ",", 
+   RowBox[{"ColorOutput", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"ContentSelectable", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"CoordinatesToolOptions", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"DisplayFunction", "\[RuleDelayed]", "$DisplayFunction"}], ",", 
+   RowBox[{"Epilog", "\[Rule]", 
+    RowBox[{"{", "}"}]}], ",", 
+   RowBox[{"Evaluated", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"EvaluationMonitor", "\[Rule]", "None"}], ",", 
+   RowBox[{"Exclusions", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"ExclusionsStyle", "\[Rule]", "None"}], ",", 
+   RowBox[{"Filling", "\[Rule]", "None"}], ",", 
+   RowBox[{"FillingStyle", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"FormatType", "\[RuleDelayed]", "TraditionalForm"}], ",", 
+   RowBox[{"Frame", "\[Rule]", "False"}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", "None"}], ",", 
+   RowBox[{"FrameStyle", "\[Rule]", 
+    RowBox[{"{", "}"}]}], ",", 
+   RowBox[{"FrameTicks", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"FrameTicksStyle", "\[Rule]", 
+    RowBox[{"{", "}"}]}], ",", 
+   RowBox[{"GridLines", "\[Rule]", "None"}], ",", 
+   RowBox[{"GridLinesStyle", "\[Rule]", 
+    RowBox[{"{", "}"}]}], ",", 
+   RowBox[{"ImageMargins", "\[Rule]", "0.`"}], ",", 
+   RowBox[{"ImagePadding", "\[Rule]", "All"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"ImageSizeRaw", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"LabelingSize", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"LabelStyle", "\[Rule]", 
+    RowBox[{"{", "}"}]}], ",", 
+   RowBox[{"MaxRecursion", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"Mesh", "\[Rule]", "None"}], ",", 
+   RowBox[{"MeshFunctions", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"#1", "&"}], "}"}]}], ",", 
+   RowBox[{"MeshShading", "\[Rule]", "None"}], ",", 
+   RowBox[{"MeshStyle", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"Method", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"PerformanceGoal", "\[RuleDelayed]", "$PerformanceGoal"}], ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "None"}], ",", 
+   RowBox[{"PlotLabels", "\[Rule]", "None"}], ",", 
+   RowBox[{"PlotLegends", "\[Rule]", "None"}], ",", 
+   RowBox[{"PlotPoints", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"Full", ",", "Automatic"}], "}"}]}], ",", 
+   RowBox[{"PlotRangeClipping", "\[Rule]", "True"}], ",", 
+   RowBox[{"PlotRangePadding", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"PlotRegion", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"PlotStyle", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"PlotTheme", "\[RuleDelayed]", "$PlotTheme"}], ",", 
+   RowBox[{"PreserveImageOptions", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"Prolog", "\[Rule]", 
+    RowBox[{"{", "}"}]}], ",", 
+   RowBox[{"RegionFunction", "\[Rule]", 
+    RowBox[{"(", 
+     RowBox[{"True", "&"}], ")"}]}], ",", 
+   RowBox[{"RotateLabel", "\[Rule]", "True"}], ",", 
+   RowBox[{"ScalingFunctions", "\[Rule]", "None"}], ",", 
+   RowBox[{"TargetUnits", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"Ticks", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"TicksStyle", "\[Rule]", 
+    RowBox[{"{", "}"}]}], ",", 
+   RowBox[{"WorkingPrecision", "\[Rule]", "MachinePrecision"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.7549875217264705`*^9},
+ CellLabel->"Out[2]=",ExpressionUUID->"9b1d3755-511f-4298-9186-f1421d9fca0c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "OptionValue"}]], "Input",
+ CellChangeTimes->{{3.7549875384602623`*^9, 3.7549876473896503`*^9}},
+ CellLabel->"In[4]:=",ExpressionUUID->"8a461fe3-1f22-4b90-a679-ff6feafc6aaf"],
+
+Cell[BoxData[
+ RowBox[{"\<\"\\!\\(\\*RowBox[{\\\"OptionValue\\\", \\\"[\\\", \
+StyleBox[\\\"name\\\", \\\"TI\\\"], \\\"]\\\"}]\\) gives the value of \
+\\!\\(\\*StyleBox[\\\"name\\\", \\\"TI\\\"]\\) in options matched by \
+OptionsPattern. \\n\\!\\(\\*RowBox[{\\\"OptionValue\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"name\\\", \\\
+\"TI\\\"]}], \\\"]\\\"}]\\) gives the value of \
+\\!\\(\\*StyleBox[\\\"name\\\", \\\"TI\\\"]\\) for options associated with \
+the head \\!\\(\\*StyleBox[\\\"f\\\", \\\"TI\\\"]\\). \
+\\n\\!\\(\\*RowBox[{\\\"OptionValue\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"opts\\\", \\\
+\"TI\\\"], \\\",\\\", StyleBox[\\\"name\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) \
+extracts option values from the explicit list of rules \
+\\!\\(\\*StyleBox[\\\"opts\\\", \
+\\\"TI\\\"]\\).\\n\\!\\(\\*RowBox[{\\\"OptionValue\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"], \\\",\\\", RowBox[{\\\"{\\\
+\", RowBox[{SubscriptBox[StyleBox[\\\"name\\\", \\\"TI\\\"], StyleBox[\\\"1\\\
+\", \\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"name\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\\) extracts several option \
+values.\"\>", "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/OptionValue"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.754987648245298*^9},
+ CellTags->
+  "Info43755016448-4589220",ExpressionUUID->"b3ec11b1-9239-47ed-a065-\
+1c3237bba82e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"??", "Options"}]], "Input",
+ CellChangeTimes->{{3.7549881023525724`*^9, 3.7549881091556673`*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"56d5f544-5572-48a2-9919-d77da6d12d9b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\<\"\\!\\(\\*RowBox[{\\\"Options\\\", \\\"[\\\", \
+StyleBox[\\\"symbol\\\", \\\"TI\\\"], \\\"]\\\"}]\\) gives the list of \
+default options assigned to a symbol. \\n\\!\\(\\*RowBox[{\\\"Options\\\", \\\
+\"[\\\", StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\"]\\\"}]\\) gives the options \
+explicitly specified in a particular expression such as a graphics object. \
+\\n\\!\\(\\*RowBox[{\\\"Options\\\", \\\"[\\\", StyleBox[\\\"stream\\\", \
+\\\"TI\\\"], \\\"]\\\"}]\\) or \\!\\(\\*RowBox[{\\\"Options\\\", \\\"[\\\", \
+StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"sname\\\\\\\",\\\\\\\"TI\
+\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\"]\\\"}]\\) gives \
+options associated with a particular stream. \
+\\n\\!\\(\\*RowBox[{\\\"Options\\\", \\\"[\\\", StyleBox[\\\"object\\\", \
+\\\"TI\\\"], \\\"]\\\"}]\\) gives options associated with an external object \
+such as a NotebookObject. \\n\\!\\(\\*RowBox[{\\\"Options\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"obj\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"name\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\\) gives the setting for the option \
+\\!\\(\\*StyleBox[\\\"name\\\", \\\"TI\\\"]\\). \
+\\n\\!\\(\\*RowBox[{\\\"Options\\\", \\\"[\\\", RowBox[{StyleBox[\\\"obj\\\", \
+\\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"name\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"name\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\\) gives a list of the settings for \
+the options \\!\\(\\*SubscriptBox[StyleBox[\\\"name\\\", \\\"TI\\\"], \
+StyleBox[\\\"i\\\", \\\"TI\\\"]]\\). \"\>", "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Options"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.754988110163948*^9},
+ CellTags->
+  "Info53755016910-4589220",ExpressionUUID->"b860c208-6dcc-4cb7-becb-\
+c8f04320e742"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     RowBox[{
+      RowBox[{"Attributes", "[", "Options", "]"}], "=", 
+      RowBox[{"{", "Protected", "}"}]}]}
+   },
+   BaselinePosition->{Baseline, {1, 1}},
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}}],
+  Definition[Options],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7549881102001214`*^9},
+ CellTags->
+  "Info53755016910-4589220",ExpressionUUID->"cccfdae7-20ab-4218-8378-\
+2911a3fc69d6"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Map"}]], "Input",
+ CellChangeTimes->{{3.754988133268538*^9, 3.754988135225234*^9}},
+ CellLabel->"In[6]:=",ExpressionUUID->"729cde75-394c-4431-bdc2-f80ff9ee6b93"],
+
+Cell[BoxData[
+ RowBox[{"\<\"\\!\\(\\*RowBox[{\\\"Map\\\", \\\"[\\\", RowBox[{StyleBox[\\\"f\
+\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"expr\\\", \\\"TI\\\"]}], \
+\\\"]\\\"}]\\) or \\!\\(\\*RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \
+\\\"/@\\\", StyleBox[\\\"expr\\\", \\\"TI\\\"]}]\\) applies \
+\\!\\(\\*StyleBox[\\\"f\\\", \\\"TI\\\"]\\) to each element on the first \
+level in \\!\\(\\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\\). \\n\\!\\(\\*RowBox[{\
+\\\"Map\\\", \\\"[\\\", RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"levelspec\\\", \\\
+\"TI\\\"]}], \\\"]\\\"}]\\) applies \\!\\(\\*StyleBox[\\\"f\\\", \
+\\\"TI\\\"]\\) to parts of \\!\\(\\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\\) \
+specified by \\!\\(\\*StyleBox[\\\"levelspec\\\", \\\"TI\\\"]\\). \
+\\n\\!\\(\\*RowBox[{\\\"Map\\\", \\\"[\\\", StyleBox[\\\"f\\\", \\\"TI\\\"], \
+\\\"]\\\"}]\\) represents an operator form of Map that can be applied to an \
+expression.\"\>", "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Map"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.7549881356895514`*^9},
+ CellTags->
+  "Info63755016935-4589220",ExpressionUUID->"0e503060-2e71-448e-a0f3-\
+f4af72ec63a6"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1536, 781},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+Magnification:>1.2 Inherited,
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (March 6, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info593755013612-1885247"->{
+  Cell[1635, 53, 926, 18, 85, "Print",ExpressionUUID->"7a61402b-11c2-42c5-a05e-aa4da1f1438a",
+   CellTags->"Info593755013612-1885247"]},
+ "Info43755013946-3229446"->{
+  Cell[5358, 157, 183, 4, 56, "Print",ExpressionUUID->"7e42e9c5-84e6-4332-8420-a5151829e125",
+   CellTags->"Info43755013946-3229446"],
+  Cell[5544, 163, 1277, 39, 103, "Print",ExpressionUUID->"195e9d45-2863-44c6-9e3b-479e80adef0a",
+   CellTags->"Info43755013946-3229446"]},
+ "Info13755014468-4589220"->{
+  Cell[7834, 235, 2040, 33, 197, "Print",ExpressionUUID->"4863ec4c-b9a7-42bc-a7fb-23845457beff",
+   CellTags->"Info13755014468-4589220"]},
+ "Info43755016448-4589220"->{
+  Cell[14436, 372, 1645, 29, 141, "Print",ExpressionUUID->"b3ec11b1-9239-47ed-a065-1c3237bba82e",
+   CellTags->"Info43755016448-4589220"]},
+ "Info53755016910-4589220"->{
+  Cell[16342, 413, 2038, 33, 197, "Print",ExpressionUUID->"b860c208-6dcc-4cb7-becb-c8f04320e742",
+   CellTags->"Info53755016910-4589220"],
+  Cell[18383, 448, 529, 16, 27, "Print",ExpressionUUID->"cccfdae7-20ab-4218-8378-2911a3fc69d6",
+   CellTags->"Info53755016910-4589220"]},
+ "Info63755016935-4589220"->{
+  Cell[19154, 475, 1308, 23, 113, "Print",ExpressionUUID->"0e503060-2e71-448e-a0f3-f4af72ec63a6",
+   CellTags->"Info63755016935-4589220"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info593755013612-1885247", 20829, 513},
+ {"Info43755013946-3229446", 20996, 516},
+ {"Info13755014468-4589220", 21300, 521},
+ {"Info43755016448-4589220", 21469, 524},
+ {"Info53755016910-4589220", 21639, 527},
+ {"Info63755016935-4589220", 21946, 532}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 253, 5, 35, "Input",ExpressionUUID->"eec34136-8dbf-474e-b347-abea2ad8268d"],
+Cell[CellGroupData[{
+Cell[836, 29, 210, 3, 35, "Input",ExpressionUUID->"b28cad3b-eb47-4030-89db-7891d092a59e"],
+Cell[1049, 34, 155, 2, 39, "Output",ExpressionUUID->"985ad882-d6e6-4c71-81fc-92d2c734f5b9"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1241, 41, 167, 3, 65, "Subsection",ExpressionUUID->"18ad5fe1-c119-48bd-85ce-7b1ae63af925"],
+Cell[CellGroupData[{
+Cell[1433, 48, 199, 3, 35, "Input",ExpressionUUID->"2b2d8697-daab-43f4-bb0b-57fa0bddaae7"],
+Cell[1635, 53, 926, 18, 85, "Print",ExpressionUUID->"7a61402b-11c2-42c5-a05e-aa4da1f1438a",
+ CellTags->"Info593755013612-1885247"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2598, 76, 340, 7, 35, "Input",ExpressionUUID->"f8458093-58d1-464d-b9e2-b3c6ae6c59e3"],
+Cell[2941, 85, 287, 6, 39, "Output",ExpressionUUID->"e7833a2b-3912-42f0-baec-136e5d5b461d"]
+}, Open  ]],
+Cell[3243, 94, 365, 9, 35, "Input",ExpressionUUID->"e99cec36-de34-4aa7-9976-190f32f525c4"],
+Cell[3611, 105, 229, 4, 35, "Input",ExpressionUUID->"915bc9eb-dcd0-45d7-9974-ecfa080962cd"],
+Cell[3843, 111, 225, 4, 35, "Input",ExpressionUUID->"ab302464-a9bb-438e-8773-23c861536465"],
+Cell[4071, 117, 205, 3, 35, "Input",ExpressionUUID->"dc0a16d9-52af-46dd-96f5-160b23283f9a"],
+Cell[4279, 122, 178, 4, 35, "Input",ExpressionUUID->"c82d848d-6ff6-44e5-a378-dbe6d94b1f65"],
+Cell[4460, 128, 657, 18, 84, "Input",ExpressionUUID->"d7588ea4-2eec-4c07-b6a8-0de6536367f8"],
+Cell[CellGroupData[{
+Cell[5142, 150, 191, 3, 35, "Input",ExpressionUUID->"bee910bd-2f26-437e-a863-7071060d361c"],
+Cell[CellGroupData[{
+Cell[5358, 157, 183, 4, 56, "Print",ExpressionUUID->"7e42e9c5-84e6-4332-8420-a5151829e125",
+ CellTags->"Info43755013946-3229446"],
+Cell[5544, 163, 1277, 39, 103, "Print",ExpressionUUID->"195e9d45-2863-44c6-9e3b-479e80adef0a",
+ CellTags->"Info43755013946-3229446"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6870, 208, 204, 3, 35, "Input",ExpressionUUID->"efd2c8f0-733d-4ab0-a2f3-650bc391bff1"],
+Cell[7077, 213, 182, 3, 39, "Output",ExpressionUUID->"206e2283-c765-496d-97c4-2ed1ea6a4547"]
+}, Open  ]],
+Cell[7274, 219, 334, 7, 35, "Input",ExpressionUUID->"e420bf81-a9e4-4b92-bfdb-f150dbfe68af"],
+Cell[CellGroupData[{
+Cell[7633, 230, 198, 3, 35, "Input",ExpressionUUID->"80e0645d-2df3-40b4-a0e1-2858568b38c1"],
+Cell[7834, 235, 2040, 33, 197, "Print",ExpressionUUID->"4863ec4c-b9a7-42bc-a7fb-23845457beff",
+ CellTags->"Info13755014468-4589220"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9911, 273, 209, 3, 35, "Input",ExpressionUUID->"b5c02146-2527-48d5-91d2-51a1b602fd07"],
+Cell[10123, 278, 4071, 84, 283, "Output",ExpressionUUID->"9b1d3755-511f-4298-9186-f1421d9fca0c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14231, 367, 202, 3, 35, "Input",ExpressionUUID->"8a461fe3-1f22-4b90-a679-ff6feafc6aaf"],
+Cell[14436, 372, 1645, 29, 141, "Print",ExpressionUUID->"b3ec11b1-9239-47ed-a065-1c3237bba82e",
+ CellTags->"Info43755016448-4589220"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16118, 406, 199, 3, 35, "Input",ExpressionUUID->"56d5f544-5572-48a2-9919-d77da6d12d9b"],
+Cell[CellGroupData[{
+Cell[16342, 413, 2038, 33, 197, "Print",ExpressionUUID->"b860c208-6dcc-4cb7-becb-c8f04320e742",
+ CellTags->"Info53755016910-4589220"],
+Cell[18383, 448, 529, 16, 27, "Print",ExpressionUUID->"cccfdae7-20ab-4218-8378-2911a3fc69d6",
+ CellTags->"Info53755016910-4589220"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18961, 470, 190, 3, 35, "Input",ExpressionUUID->"729cde75-394c-4431-bdc2-f80ff9ee6b93"],
+Cell[19154, 475, 1308, 23, 113, "Print",ExpressionUUID->"0e503060-2e71-448e-a0f3-f4af72ec63a6",
+ CellTags->"Info63755016935-4589220"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
