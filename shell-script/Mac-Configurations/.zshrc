@@ -9,7 +9,7 @@ export ZSH="/var/root/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="rkj-repos"
-ZSH_THEME="af-magic"
+ZSH_THEME="jonathan"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -125,12 +125,13 @@ export PATH="/opt/intel/oneapi:$PATH"
 export PATH="/usr/local/opt/bison/bin:$PATH"
 export PATH=/bin:/usr/bin:/usr/local/bin:${PATH} 
 source /Users/shuyuej/Library/Preferences/org.dystroy.broot/launcher/bash/br
+export PATH="/usr/local/lib/ruby/gems/3.0.0/bin:$PATH"
 
 # alias
 alias ll="ls -al"
 alias cl="clear"
 alias speed="speedtest-cli"
-alias youtube="youtube-dl -f best -i"
+alias youtube="/Users/shuyuej/Desktop/Codes/youtube-dl/youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' -i"
 alias cpu="htop" 
 alias clone="git clone --recurse-submodules"
 alias cpu_version="sysctl machdep.cpu.brand_string"
@@ -151,15 +152,36 @@ alias mkdir="mkdir -p"     # -p make parent dirs as needed
 alias df="df -h"           # -h prints human readable format
 alias la="ls -A"
 alias lla="la -l"
+alias weather="ansiweather -l hongkong"
+# alias homepage="cd ~/../../Volumes/Research/Personal_Files/Homepage"
+alias homepage="/Users/shuyuej/Desktop/Codes/SuperBruceJia.github.io"
+alias blog="cd /Users/shuyuej/Desktop/Codes/blog"
+alias paper="cd /Users/shuyuej/Desktop/paper-reading"
+alias ds="find . -type f -name '.DS_Store' -delete"
+alias research="cd ~/../../Volumes/Research"
+alias cleards="find . -type f -name '.DS_Store' -delete"
+alias cleardot="find . -type f -name ._\* -delete"
+
 # Download Papers from Sci-hub
-alias sci='python /Users/shuyuej/Desktop/Codes/sci-downloads.py '
+alias sci='python3 /Users/shuyuej/Desktop/Codes/sci-downloads.py '
+
+# wechat restart
+alias wechat='codesign --sign - --force --deep /Applications/WeChat.app'
+
 # Big Data
 alias redis="/usr/local/Cellar/redis/6.0.10/bin/redis-server"
 alias hadoop-start="/Users/shuyuej/Desktop/hadoop/hadoop-dist/target/hadoop-2.10.1/sbin/start-all.sh"
 alias hadoop-stop="/Users/shuyuej/Desktop/hadoop/hadoop-dist/target/hadoop-2.10.1/sbin/stop-all.sh"
-alias spark-start="/usr/local/Cellar/apache-spark/3.0.1/libexec/sbin/start-all.sh"
-alias spark-stop="/usr/local/Cellar/apache-spark/3.0.1/libexec/sbin/stop-all.sh"
-alias spark-shell="/usr/local/Cellar/apache-spark/3.0.1/bin/spark-shell"
+
+# alias spark-start="/usr/local/Cellar/apache-spark/3.2.0/libexec/sbin/start-all.sh"
+# alias spark-stop="/usr/local/Cellar/apache-spark/3.2.0/libexec/sbin/stop-all.sh"
+# alias spark-shell="/usr/local/Cellar/apache-spark/3.2.0/bin/spark-shell"
+alias spark-start="/Users/shuyuej/Desktop/hadoop/hadoop-dist/target/hadoop-2.10.1/spark-3.0.1-bin-hadoop2.7/sbin/start-all.sh"
+alias spark-stop="/Users/shuyuej/Desktop/hadoop/hadoop-dist/target/hadoop-2.10.1/spark-3.0.1-bin-hadoop2.7/sbin/stop-all.sh"
+alias spark-shell="/Users/shuyuej/Desktop/hadoop/hadoop-dist/target/hadoop-2.10.1/spark-3.0.1-bin-hadoop2.7/bin/spark-shell"
+
+alias kafka-stop="/usr/local/Cellar/kafka/2.7.0/bin/kafka-server-stop"
+alias zookeeper-stop="/usr/local/Cellar/kafka/2.7.0/bin/zookeeper-server-stop"
 
 # Hadoop
 export HADOOP="/Users/shuyuej/Desktop/hadoop/hadoop-dist/target/hadoop-2.10.1/bin"
@@ -181,8 +203,18 @@ export HADOOP_MAPRED_HOME=$HADOOP_PREFIX
 export HADOOP_YARN_HOME=$HADOOP_PREFIX  
 export JAVA_LIBRARY_PATH=$HADOOP_HOME/lib/native:$JAVA_LIBRARY_PATH
 
+# Hive
+export HIVE_HOME="/Users/shuyuej/Desktop/hadoop/hadoop-dist/target/hadoop-2.10.1/apache-hive-2.3.9-bin"
+export PATH=$PATH:$HIVE_HOME/bin
+
+# SQL
+export PATH=$PATH:/usr/local/mysql-8.0.20-macos10.15-x86_64/bin
+
 # Spark
-export PATH=/usr/local/Cellar/apache-flink/1.12.1/libexec/bin:$PATH
+# export PATH="/Users/shuyuej/Desktop/hadoop/hadoop-dist/target/hadoop-2.10.1/spark-3.0.1-bin-hadoop2.7"
+
+# Kafka
+# export PATH=/usr/local/Cellar/kafka/2.7.0/bin:$PATH
 
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 export PATH=$PATH:/Users/shuyuej/.gem/specs/rubygems.org%443/quick/Marshal.4.8
@@ -211,10 +243,10 @@ export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 export PATH="/usr/local/texlive/2020:$PATH"
 export PATH="/usr/local/texlive/2020/bin/x86_64-darwin/:$PATH"
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
-export PATH="/usr/local/opt/python@3.8/bin:$PATH"
-export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+# export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+# export PATH="/usr/local/opt/python@3.8/bin:$PATH"
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
-export PATH="/Users/shuyuej/Library/Python/2.7/bin:$PATH"
+# export PATH="/Users/shuyuej/Library/Python/2.7/bin:$PATH"
 
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
@@ -222,7 +254,7 @@ if type brew &>/dev/null; then
   compinit
 fi
 
-eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
+# eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 export PATH="/usr/local/opt/bison/bin:$PATH"
 export PATH="/usr/local/opt/qt/bin:$PATH"
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
@@ -238,22 +270,22 @@ if [ -f '/Users/shuyuej/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/s
 [ -z "$ZSH_NAME" ] && [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export PATH="/usr/local/opt/ruby/bin:$PATH"
-export PATH="/usr/local/opt/python@3.9/bin:$PATH"
+# export PATH="/usr/local/opt/python@3.9/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export PATH="/usr/local/opt/flex/bin:$PATH"
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
-export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+# export PATH="/usr/local/opt/python@3.8/bin:$PATH"
 export PATH=/opt/intel/bin:$PATH
 export LD_LIBRARY_PATH=/opt/intel/lib/intel64:/opt/intel/mkl/lib/intel64:$LD_LIBRARY_PATH
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="/usr/local/opt/llvm/bin:$PATH"
-eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
+# eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 export PATH="/usr/local/opt/bison/bin:$PATH"
 export PATH="/usr/local/opt/llvm/bin:$PATH"
-export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+# export PATH="/usr/local/opt/python@3.8/bin:$PATH"
 export PATH="/usr/local/opt/tcl-tk/bin:$PATH"
 export PATH="/usr/local/opt/apr/bin:$PATH"
 export PATH="/usr/local/opt/apr-util/bin:$PATH"
@@ -261,10 +293,189 @@ export PATH="/usr/local/opt/apr-util/bin:$PATH"
 export JAVA_8_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
 export PATH="/usr/local/opt/openjdk@8/bin:$PATH"
 
-export MAVEN_OPTS="-Xms256m -Xmx512m -Djava.awt.headless=true"
+# export MAVEN_OPTS="-Xms256m -Xmx512m -Djava.awt.headless=true"
+
+export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+
+if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+  __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
+  source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
+fi
+export PATH="/usr/local/opt/berkeley-db@4/bin:$PATH"
+export PATH="/usr/local/opt/erlang@22/bin:$PATH"
+export PATH="/usr/local/opt/ghc@9/bin:$PATH"
+
+source /usr/local/opt/chruby/share/chruby/auto.sh
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+export PATH="/usr/local/opt/cython/bin:$PATH"
+# export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+# eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
+export PATH="/usr/local/opt/icu4c/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+export PATH="/usr/local/opt/unzip/bin:$PATH"
+# export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
+
+PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/vtk@8.2/bin:$PATH"
+export PATH="/usr/local/opt/bison/bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="/usr/local/opt/sqlite/bin:$PATH"
+
+export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
+export GUILE_LOAD_COMPILED_PATH="/usr/local/lib/guile/3.0/site-ccache"
+export GUILE_SYSTEM_EXTENSIONS_PATH="/usr/local/lib/guile/3.0/extensions"
+
+# export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+
+export PATH="/usr/local/opt/luajit-openresty/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/luajit-openresty/lib"
+export CPPFLAGS="-I/usr/local/opt/luajit-openresty/include"
+export PKG_CONFIG_PATH="/usr/local/opt/luajit-openresty/lib/pkgconfig"
+
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/llvm/lib"
+export CPPFLAGS="-I/usr/local/opt/llvm/include"
+
+export PATH="/usr/local/opt/erlang@22/bin:$PATH"
+
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  autoload -Uz compinit
+  compinit
+fi
+
+export CC=/usr/bin/gcc
+export PATH="/usr/local/opt/node@12/bin:$PATH"
+export PATH="/usr/local/opt/bison/bin:$PATH"
+
+export SSH_AUTH_SOCK=/Users/shuyuej/Library/Containers/org.hejki.osx.sshce.agent/Data/socket.ssh
+export PATH="/usr/local/opt/swift/bin:$PATH"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+
+# Spqrk
+export SPARK_HOME="/Users/shuyuej/Desktop/hadoop/hadoop-dist/target/hadoop-2.10.1/spark-3.0.1-bin-hadoop2.7"
+export PATH="$SPARK_HOME/bin/:$PATH"
+#export PYTHONPATH="/Users/shuyuej/Desktop/hadoop/hadoop-dist/target/hadoop-2.10.1/spark-3.0.1-bin-hadoop2.7/python/:$PYTHONP$"
+
+# Pig
+export PIG_HOME="/Users/shuyuej/Desktop/hadoop/hadoop-dist/target/hadoop-2.10.1/pig-0.17.0"
+export PATH="$PIG_HOME/bin/:$PATH"
+
+# Hbase
+export HBASE_HOME="/Users/shuyuej/Desktop/hadoop/hadoop-dist/target/hadoop-2.10.1/hbase-2.4.7"
+export PATH=$PATH:$HBASE_HOME/bin
+
+# Zookeeper
+export ZOOKEEPER_HOME="/Users/shuyuej/Desktop/hadoop/hadoop-dist/target/hadoop-2.10.1/apache-zookeeper-3.7.0-bin"
+export PATH=$PATH:$ZOOKEEPER_HOME/bin
+
+source /opt/intel/bin/compilervars.sh intel64
+
+# export PATH="/Users/shuyuej/mysql-connector-java-8.0.25"
+# export PATH="/usr/local/opt/swift/bin:$PATH"
+# export PATH="/usr/local/opt/ghc@9/bin:$PATH"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="/usr/local/opt/node@12/bin:$PATH"
+
+PATH="/usr/local/opt/libtool/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/swift/bin:$PATH"
+export PATH="/usr/local/opt/node@12/bin:$PATH"
+
+# export Torch_DIR=/Users/shuyuej/anaconda3/envs/pytorch/lib/python3.6/site-packages/torch/share/cmake/Torch
+export PATH="/usr/local/opt/node@12/bin:$PATH"
+export PATH="/usr/local/opt/swift/bin:$PATH"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+# source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
+LDFLAGS="-L/usr/local/opt/llvm/lib/c++ -Wl,-rpath,/usr/local/opt/llvm/lib/c++"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+
+# added by Anaconda3 2019.03 installer
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$(CONDA_REPORT_ERRORS=false '/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    \eval "$__conda_setup"
+else
+    if [ -f "/anaconda3/etc/profile.d/conda.sh" ]; then
+# . "/anaconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
+        CONDA_CHANGEPS1=false conda activate base
+    else
+        \export PATH="/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda init <<<
+#export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH="/usr/local/sbin:$PATH"
+# added by Anaconda3 2019.07 installer
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$(CONDA_REPORT_ERRORS=false '/Users/shuyuej/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    \eval "$__conda_setup"
+else
+    if [ -f "/Users/shuyuej/anaconda3/etc/profile.d/conda.sh" ]; then
+# . "/Users/shuyuej/anaconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
+        CONDA_CHANGEPS1=false conda activate base
+    else
+        \export PATH="/Users/shuyuej/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda init <<<
+[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
+export PATH="/usr/local/opt/qt/bin:$PATH"
+# Added by install_latest_perl_osx.pl
+[ -r /Users/shuyuej/.bashrc ] && source /Users/shuyuej/.bashrc
+
+# export PATH="/usr/local/opt/openjdk/bin:$PATH"
+export JAVA_HOME=$(/usr/libexec/java_home)
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
+export PATH="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home:$PATH"
+
+# Java Configuration
+export JAVA_8_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+export JAVA_HOME=$JAVA_8_HOME
+# export JAVA_HOME=`/usr/libexec/java_home -d 64 -v 1.8.0_272`
+# export JAVA_HOME=$(/usr/libexec/java_home -d 64 -v 1.8.0_272)
+
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+alias vi=vim
+alias vim=mvim
+alias mvim='/usr/local/bin/mvim -v'
+alias task='asynctask -f'
+
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+[ -f $HOME/bin/zsh ] && exec $HOME/bin/zsh -l
+
+source /Users/shuyuej/Library/Preferences/org.dystroy.broot/launcher/bash/br
+
+[ -z "$ZSH_NAME" ] && [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
+source "$HOME/.cargo/env"
 
 
-
-
-
-
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/shuyuej/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/shuyuej/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/shuyuej/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/shuyuej/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
