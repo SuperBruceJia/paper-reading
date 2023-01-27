@@ -1,0 +1,380 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11805,        372]
+NotebookOptionsPosition[      9238,        283]
+NotebookOutlinePosition[     10399,        322]
+CellTagsIndexPosition[     10190,        314]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Functions\[CloseCurlyQuote] Usage", "Section",
+ CellChangeTimes->{{3.6909239464909687`*^9, 3.690923954151401*^9}, {
+  3.69092415997696*^9, 3.690924163360314*^9}, {3.69092534810293*^9, 
+  3.6909253487798843`*^9}, {3.690927735290201*^9, 3.690927742252027*^9}}],
+
+Cell["\<\
+Hello and welcome. In this lecture we\[CloseCurlyQuote]ll take a quick look \
+at how to add usage documentation to our functions.\
+\>", "Text",
+ CellChangeTimes->{{3.6909239714252377`*^9, 3.6909239941591043`*^9}, {
+  3.6909240350279703`*^9, 3.6909240454513063`*^9}, {3.6909241315831127`*^9, 
+  3.690924141815173*^9}, {3.690925363330758*^9, 3.690925363731484*^9}, {
+  3.690925527698565*^9, 3.6909255299920692`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Introduction", "Subsection",
+ CellChangeTimes->{{3.690924149055037*^9, 3.69092415054421*^9}}],
+
+Cell["\<\
+In our lecture on functions, we defined our own Fibonacci function:\
+\>", "Text",
+ CellChangeTimes->{{3.690924169416383*^9, 3.6909241794558*^9}, {
+  3.690924215887991*^9, 3.690924263044034*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"fib", "[", "1", "]"}], ":=", "1"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fib", "[", "2", "]"}], ":=", "1"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fib", "[", "n_", "]"}], ":=", 
+  RowBox[{
+   RowBox[{"fib", "[", 
+    RowBox[{"n", "-", "1"}], "]"}], "+", 
+   RowBox[{"fib", "[", 
+    RowBox[{"n", "-", "2"}], "]"}]}]}]}], "Input",
+ CellChangeTimes->{{3.690924264151585*^9, 3.6909242815797358`*^9}}],
+
+Cell[TextData[{
+ "If we ask for information about ",
+ StyleBox["fib", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.690924292068281*^9, 3.6909243018823767`*^9}, {
+  3.690994701820904*^9, 3.69099470273703*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "fib"}]], "Input",
+ CellChangeTimes->{{3.690924303085767*^9, 3.690924303867693*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Global`fib", "Print", "PrintUsage",
+ CellChangeTimes->{3.690926258127762*^9},
+ CellTags->"Info43690897458-8859743"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {GridBox[{
+       {
+        RowBox[{
+         RowBox[{"fib", "[", "1", "]"}], ":=", "1"}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{"fib", "[", "2", "]"}], ":=", "1"}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{"fib", "[", "n_", "]"}], ":=", 
+         RowBox[{
+          RowBox[{"fib", "[", 
+           RowBox[{"n", "-", "1"}], "]"}], "+", 
+          RowBox[{"fib", "[", 
+           RowBox[{"n", "-", "2"}], "]"}]}]}]}
+      },
+      BaselinePosition->{Baseline, {1, 1}},
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{"Columns" -> {{
+           Scaled[0.999]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}}]}
+   },
+   BaselinePosition->{Baseline, {1, 1}},
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}}],
+  Definition[$CellContext`fib],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.690926258190295*^9},
+ CellTags->"Info43690897458-8859743"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[TextData[{
+ "We get back the definition, but we don\[CloseCurlyQuote]t get back any \
+usage information. Compare it to the built in ",
+ StyleBox["Fibonacci", "Code"],
+ " function:"
+}], "Text",
+ CellChangeTimes->{{3.690924306139435*^9, 3.690924323825469*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Fibonacci"}]], "Input",
+ CellChangeTimes->{{3.690924325461422*^9, 3.690924327267033*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Fibonacci\\\", \\\"[\\\", \
+StyleBox[\\\"n\\\", \\\"TI\\\"], \\\"]\\\"}]\) gives the Fibonacci number \
+\!\(\*SubscriptBox[StyleBox[\\\"F\\\", \\\"TI\\\"], StyleBox[\\\"n\\\", \
+\\\"TI\\\"]]\). \\n\!\(\*RowBox[{\\\"Fibonacci\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"n\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"x\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\) gives the Fibonacci polynomial \
+\!\(\*RowBox[{SubscriptBox[StyleBox[\\\"F\\\", \\\"TI\\\"], \
+StyleBox[\\\"n\\\", \\\"TI\\\"]], \\\"(\\\", StyleBox[\\\"x\\\", \\\"TI\\\"], \
+\\\")\\\"}]\). \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Fibonacci"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.6909262583527737`*^9},
+ CellTags->"Info53690897458-8859743"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Adding Usage Documentation", "Subsection",
+ CellChangeTimes->{{3.6909243480495863`*^9, 3.690924355953578*^9}, {
+  3.690925555975816*^9, 3.690925559311686*^9}}],
+
+Cell["\<\
+To add usage documentation, we simply write the function name, followed by \
+two colons and then word \
+\[OpenCurlyDoubleQuote]usage,\[CloseCurlyDoubleQuote] then set that equal to \
+your usage string:\
+\>", "Text",
+ CellChangeTimes->{{3.690924384688036*^9, 3.690924420957162*^9}, {
+  3.690925383652553*^9, 3.690925384298671*^9}, {3.690925548695991*^9, 
+  3.6909255529998913`*^9}, {3.6909260758769207`*^9, 3.690926076907187*^9}, {
+  3.690927880481173*^9, 3.6909279057912188`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fib", "::", "usage"}], "=", 
+  "\"\<fib[n] gives the Fibonacci number \!\(\*SubscriptBox[\(F\), \
+\(n\)]\).\>\""}]], "Input",
+ CellChangeTimes->{{3.690924421971262*^9, 3.6909244382771053`*^9}, {
+   3.690925300245659*^9, 3.690925312561984*^9}, {3.690925388647043*^9, 
+   3.6909254074986143`*^9}, 3.6909261436693172`*^9, {3.690926175490089*^9, 
+   3.6909261758879128`*^9}, {3.6909262143927307`*^9, 3.690926234582347*^9}}],
+
+Cell[BoxData["\<\"fib[n] gives the Fibonacci number \
+\\!\\(\\*SubscriptBox[\\(F\\), \\(n\\)]\\).\"\>"], "Output",
+ CellChangeTimes->{{3.6909262355181513`*^9, 3.6909262584200563`*^9}}]
+}, Open  ]],
+
+Cell["Now if we ask for information about fib:", "Text",
+ CellChangeTimes->{{3.69092532609416*^9, 3.6909253350436077`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "fib"}]], "Input",
+ CellChangeTimes->{{3.690925336499654*^9, 3.6909253380804787`*^9}}],
+
+Cell[BoxData[
+ StyleBox["\<\"fib[n] gives the Fibonacci number \!\(\*SubscriptBox[\(F\), \
+\(n\)]\).\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.69092625853537*^9},
+ CellTags->"Info73690897458-8859743"]
+}, Open  ]],
+
+Cell["\<\
+We get back the usage string for fib instead. If you wanted to see the \
+original definition of fib, use two question marks:\
+\>", "Text",
+ CellChangeTimes->{{3.69092628242936*^9, 3.690926297603693*^9}, {
+  3.6909263364508944`*^9, 3.690926352931019*^9}, {3.690926394435289*^9, 
+  3.6909264038076057`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"??", "fib"}]], "Input",
+ CellChangeTimes->{{3.690926405360524*^9, 3.690926407370041*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ StyleBox["\<\"\\\"fib[n] gives the Fibonacci number \
+\\!\\(\\*SubscriptBox[\\(F\\), \\(n\\)]\\).\\\"\"\>", "MSG"]], "Print", \
+"PrintUsage",
+ CellChangeTimes->{3.69092640773171*^9},
+ CellTags->"Info83690897607-8859743"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {GridBox[{
+       {
+        RowBox[{
+         RowBox[{"fib", "[", "1", "]"}], ":=", "1"}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{"fib", "[", "2", "]"}], ":=", "1"}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{"fib", "[", "n_", "]"}], ":=", 
+         RowBox[{
+          RowBox[{"fib", "[", 
+           RowBox[{"n", "-", "1"}], "]"}], "+", 
+          RowBox[{"fib", "[", 
+           RowBox[{"n", "-", "2"}], "]"}]}]}]}
+      },
+      BaselinePosition->{Baseline, {1, 1}},
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{"Columns" -> {{
+           Scaled[0.999]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}}]}
+   },
+   BaselinePosition->{Baseline, {1, 1}},
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}}],
+  Definition[$CellContext`fib],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6909264077750053`*^9},
+ CellTags->"Info83690897607-8859743"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Summary", "Subsection",
+ CellChangeTimes->{{3.690926418125841*^9, 3.6909264191891127`*^9}}],
+
+Cell["\<\
+Adding usage documentation can be very helpful, especially when you share \
+your notebooks with others. We hope you had fun. See you at the next lecture!\
+\
+\>", "Text",
+ CellChangeTimes->{{3.690926461124868*^9, 3.6909265128580093`*^9}, {
+  3.6909265602345123`*^9, 3.690926572288232*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{939, 1035},
+WindowMargins->{{177, Automatic}, {Automatic, 0}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info43690897458-8859743"->{
+  Cell[2429, 77, 121, 2, 63, "Print",
+   CellTags->"Info43690897458-8859743"],
+  Cell[2553, 81, 1144, 35, 132, "Print",
+   CellTags->"Info43690897458-8859743"]},
+ "Info53690897458-8859743"->{
+  Cell[4133, 134, 871, 17, 94, "Print",
+   CellTags->"Info53690897458-8859743"]},
+ "Info73690897458-8859743"->{
+  Cell[6657, 198, 217, 4, 62, "Print",
+   CellTags->"Info73690897458-8859743"]},
+ "Info83690897607-8859743"->{
+  Cell[7367, 221, 235, 5, 62, "Print",
+   CellTags->"Info83690897607-8859743"],
+  Cell[7605, 228, 1146, 35, 132, "Print",
+   CellTags->"Info83690897607-8859743"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info43690897458-8859743", 9588, 295},
+ {"Info53690897458-8859743", 9780, 300},
+ {"Info73690897458-8859743", 9892, 303},
+ {"Info83690897607-8859743", 10003, 306}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 264, 3, 95, "Section"],
+Cell[847, 27, 424, 7, 76, "Text"],
+Cell[CellGroupData[{
+Cell[1296, 38, 99, 1, 65, "Subsection"],
+Cell[1398, 41, 204, 4, 46, "Text"],
+Cell[1605, 47, 448, 12, 111, "Input"],
+Cell[2056, 61, 211, 6, 46, "Text"],
+Cell[CellGroupData[{
+Cell[2292, 71, 112, 2, 48, "Input"],
+Cell[CellGroupData[{
+Cell[2429, 77, 121, 2, 63, "Print",
+ CellTags->"Info43690897458-8859743"],
+Cell[2553, 81, 1144, 35, 132, "Print",
+ CellTags->"Info43690897458-8859743"]
+}, Open  ]]
+}, Open  ]],
+Cell[3724, 120, 263, 6, 76, "Text"],
+Cell[CellGroupData[{
+Cell[4012, 130, 118, 2, 48, "Input"],
+Cell[4133, 134, 871, 17, 94, "Print",
+ CellTags->"Info53690897458-8859743"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5053, 157, 165, 2, 65, "Subsection"],
+Cell[5221, 161, 490, 9, 76, "Text"],
+Cell[CellGroupData[{
+Cell[5736, 174, 454, 8, 48, "Input"],
+Cell[6193, 184, 184, 2, 48, "Output"]
+}, Open  ]],
+Cell[6392, 189, 123, 1, 46, "Text"],
+Cell[CellGroupData[{
+Cell[6540, 194, 114, 2, 48, "Input"],
+Cell[6657, 198, 217, 4, 62, "Print",
+ CellTags->"Info73690897458-8859743"]
+}, Open  ]],
+Cell[6889, 205, 315, 6, 76, "Text"],
+Cell[CellGroupData[{
+Cell[7229, 215, 113, 2, 48, "Input"],
+Cell[CellGroupData[{
+Cell[7367, 221, 235, 5, 62, "Print",
+ CellTags->"Info83690897607-8859743"],
+Cell[7605, 228, 1146, 35, 132, "Print",
+ CellTags->"Info83690897607-8859743"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8812, 270, 97, 1, 65, "Subsection"],
+Cell[8912, 273, 298, 6, 76, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

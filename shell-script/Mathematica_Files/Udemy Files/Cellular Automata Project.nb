@@ -1,0 +1,258 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9808,        249]
+NotebookOptionsPosition[      9339,        227]
+NotebookOutlinePosition[      9726,        244]
+CellTagsIndexPosition[      9683,        241]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Cellular Automata", "Section",
+ CellChangeTimes->{{3.672277390509433*^9, 3.67227739857311*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Labeled", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"ArrayPlot", "[", 
+      RowBox[{
+       RowBox[{"CellularAutomaton", "[", 
+        RowBox[{"r", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", "1", "}"}], ",", "0"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"t", ",", "All"}], "}"}]}], "]"}], ",", 
+       RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Column", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Text", "[", 
+          RowBox[{"\"\<Rule \>\"", "<>", 
+           RowBox[{"ToString", "@", "r"}], "<>", "\"\<  (\>\"", "<>", 
+           RowBox[{"ToString", "[", 
+            RowBox[{"Row", "@", 
+             RowBox[{"IntegerDigits", "[", 
+              RowBox[{"r", ",", "2", ",", "8"}], "]"}]}], "]"}], "<>", 
+           "\"\<)\>\""}], "]"}], ",", 
+         RowBox[{"GraphicsRow", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Graphics", "[", 
+             RowBox[{
+              RowBox[{"{", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"EdgeForm", "[", 
+                 RowBox[{"Directive", "[", 
+                  RowBox[{"Gray", ",", "Thin"}], "]"}], "]"}], ",", 
+                "\[IndentingNewLine]", 
+                RowBox[{"#", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"1", ",", "1"}], "]"}], "]"}], ",", 
+                RowBox[{"Rectangle", "[", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "0"}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"1", ",", "1"}], "}"}]}], "]"}], ",", 
+                "\[IndentingNewLine]", 
+                RowBox[{"#", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"1", ",", "2"}], "]"}], "]"}], ",", 
+                RowBox[{"Rectangle", "[", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"1", ",", "0"}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"2", ",", "1"}], "}"}]}], "]"}], ",", 
+                "\[IndentingNewLine]", 
+                RowBox[{"#", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"1", ",", "3"}], "]"}], "]"}], ",", 
+                RowBox[{"Rectangle", "[", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"2", ",", "0"}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"3", ",", "1"}], "}"}]}], "]"}], ",", 
+                "\[IndentingNewLine]", 
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], ",", 
+                RowBox[{"Rectangle", "[", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"1", ",", 
+                    RowBox[{"-", "0.1"}]}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"2", ",", 
+                    RowBox[{"-", "1.1"}]}], "}"}]}], "]"}]}], 
+               "\[IndentingNewLine]", "}"}], ",", 
+              RowBox[{"ImageSize", "\[Rule]", "50"}]}], "]"}], "&"}], "/@", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"Thread", "[", 
+              RowBox[{"List", "[", 
+               RowBox[{
+                RowBox[{"Tuples", "[", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"1", ",", "0"}], "}"}], ",", "3"}], "]"}], ",", 
+                RowBox[{"IntegerDigits", "[", 
+                 RowBox[{"r", ",", "2", ",", "8"}], "]"}]}], "]"}], "]"}], "/.", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"0", "\[Rule]", "White"}], ",", 
+               RowBox[{"1", "\[Rule]", "Black"}]}], "}"}]}], ")"}]}], "]"}]}],
+         "}"}], ",", 
+       RowBox[{"Alignment", "\[Rule]", "Center"}]}], "]"}], ",", "Top"}], 
+    "]"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"r", ",", "90", ",", "\"\<Rule Number\>\""}], "}"}], ",", "0", 
+     ",", "255", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"t", ",", "31", ",", "\"\<Time Step\>\""}], "}"}], ",", "1", 
+     ",", "100", ",", "1"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.672259601854356*^9, 3.672259652184121*^9}, {
+  3.67225968362396*^9, 3.672259709893462*^9}, {3.672259805922871*^9, 
+  3.6722599832154922`*^9}, {3.672260029783245*^9, 3.672260185650792*^9}, {
+  3.672260459807577*^9, 3.6722604937894163`*^9}, {3.672260757966799*^9, 
+  3.672260796977755*^9}, {3.672261718678402*^9, 3.672261743389131*^9}, {
+  3.672261777462569*^9, 3.672261777547518*^9}, {3.672437976632917*^9, 
+  3.672438285138714*^9}, {3.672438342768455*^9, 3.672438348595951*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`r$$ = 90, $CellContext`t$$ = 31, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`r$$], 90, "Rule Number"}, 0, 255, 1}, {{
+       Hold[$CellContext`t$$], 31, "Time Step"}, 1, 100, 1}}, 
+    Typeset`size$$ = {720., {186., 287.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`r$133447$$ = 0, $CellContext`t$133448$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`r$$ = 90, $CellContext`t$$ = 31}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`r$$, $CellContext`r$133447$$, 0], 
+        Hold[$CellContext`t$$, $CellContext`t$133448$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Labeled[
+        ArrayPlot[
+         CellularAutomaton[$CellContext`r$$, {{1}, 0}, {$CellContext`t$$, 
+           All}], ImageSize -> Large], 
+        Column[{
+          Text[
+           StringJoin["Rule ", 
+            ToString[$CellContext`r$$], "  (", 
+            ToString[
+             Row[
+              IntegerDigits[$CellContext`r$$, 2, 8]]], ")"]], 
+          GraphicsRow[
+           Map[Graphics[{
+              EdgeForm[
+               Directive[Gray, Thin]], 
+              Part[#, 1, 1], 
+              Rectangle[{0, 0}, {1, 1}], 
+              Part[#, 1, 2], 
+              Rectangle[{1, 0}, {2, 1}], 
+              Part[#, 1, 3], 
+              Rectangle[{2, 0}, {3, 1}], 
+              Part[#, 2], 
+              Rectangle[{1, -0.1}, {2, -1.1}]}, ImageSize -> 50]& , 
+            ReplaceAll[
+             Thread[{
+               Tuples[{1, 0}, 3], 
+               IntegerDigits[$CellContext`r$$, 2, 8]}], {
+             0 -> White, 1 -> Black}]]]}, Alignment -> Center], Top], 
+      "Specifications" :> {{{$CellContext`r$$, 90, "Rule Number"}, 0, 255, 
+         1}, {{$CellContext`t$$, 31, "Time Step"}, 1, 100, 1}}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{775., {299., 306.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.672259652955467*^9, {3.6722596839578247`*^9, 3.6722597154029503`*^9}, {
+   3.6722598064650106`*^9, 3.6722598427789087`*^9}, {3.67225989610942*^9, 
+   3.672259931314135*^9}, {3.672259969864909*^9, 3.6722599838282146`*^9}, 
+   3.672260030902842*^9, {3.672260077107417*^9, 3.672260122126244*^9}, {
+   3.6722601537636623`*^9, 3.672260186036512*^9}, {3.672260471380474*^9, 
+   3.672260494136668*^9}, 3.672260827953846*^9, {3.672261730765997*^9, 
+   3.672261778050901*^9}, 3.6722773226597023`*^9, {3.672437999726915*^9, 
+   3.672438105782714*^9}, {3.672438141607976*^9, 3.672438203311854*^9}, 
+   3.6724382475406427`*^9, 3.67243828595751*^9, {3.6724383433607807`*^9, 
+   3.6724383569026003`*^9}}]
+}, {2}]]
+}, Open  ]],
+
+Cell["\:2b10 Your Awesome Implementation \:2b0e", "Section",
+ CellChangeTimes->{{3.665786881982531*^9, 3.665787004511878*^9}, 
+   3.665787055682787*^9, {3.665787249136897*^9, 3.6657872655491133`*^9}, {
+   3.66578912510607*^9, 3.665789125980506*^9}}]
+},
+WindowSize->{960, 978},
+WindowMargins->{{Automatic, 445}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"10.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (October 9, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 101, 1, 80, "Section"],
+Cell[CellGroupData[{
+Cell[706, 27, 4833, 115, 330, "Input"],
+Cell[5542, 144, 3520, 74, 625, "Output"]
+}, {2}]]
+}, Open  ]],
+Cell[9086, 222, 249, 3, 80, "Section"]
+}
+]
+*)
+
+(* End of internal cache information *)

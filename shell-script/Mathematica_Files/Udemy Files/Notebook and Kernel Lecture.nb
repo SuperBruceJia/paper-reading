@@ -1,0 +1,957 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     31645,        949]
+NotebookOptionsPosition[     25858,        753]
+NotebookOutlinePosition[     26560,        780]
+CellTagsIndexPosition[     26431,        774]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Mathematica", "Section",
+ CellChangeTimes->{{3.662052047906989*^9, 3.66205205250211*^9}, {
+  3.691007287306983*^9, 3.691007324905665*^9}}],
+
+Cell[TextData[{
+ "Hello and welcome! In today\[CloseCurlyQuote]s lecture, \
+we\[CloseCurlyQuote]re going to introduce you to ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ". "
+}], "Text",
+ CellChangeTimes->{{3.691007234636808*^9, 3.6910072367647257`*^9}, {
+  3.6910072702521963`*^9, 3.691007356096195*^9}, {3.691007622381571*^9, 
+  3.6910076255571423`*^9}, {3.691007755078267*^9, 3.691007783277103*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Introduction", "Subsection",
+ CellChangeTimes->{{3.6910073644958344`*^9, 3.6910073656719913`*^9}}],
+
+Cell[TextData[{
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " is a computing environment that consists of a front end, called the \
+Notebook front end, a back end, called the Kernel and a programming language, \
+called the Wolfram Language. The Wolfram Language is the name of the \
+programming language used within ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ". The Kernel is the back end system which interprets the Wolfram Language \
+and executes all the code. The Notebook front end is the interface we use to \
+write Wolfram Language code, which evaluates in the Kernel, and then displays \
+the results of the evaluation. "
+}], "Text",
+ CellChangeTimes->{{3.691007435822459*^9, 3.6910074756757174`*^9}, {
+  3.691007638372027*^9, 3.69100763988487*^9}, {3.691007762326939*^9, 
+  3.691007878745637*^9}, {3.6910080212795477`*^9, 3.69100804643344*^9}, {
+  3.6910161085425987`*^9, 3.691016109906872*^9}, {3.691020357282054*^9, 
+  3.691020357499229*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["The Notebook Front End", "Subsection",
+ CellChangeTimes->{{3.691007607294066*^9, 3.691007610509856*^9}, {
+  3.691008051338976*^9, 3.691008058393941*^9}}],
+
+Cell[TextData[{
+ "Let\[CloseCurlyQuote]s get started by launching ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ". At the splash screen, click New Document. We are now presented with a \
+blank Notebook. "
+}], "Text",
+ CellChangeTimes->{{3.6910073906710987`*^9, 3.6910074304457397`*^9}, {
+   3.691008065138095*^9, 3.691008093863884*^9}, 3.6910092126194363`*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Cells", "Subsubsection",
+ CellChangeTimes->{{3.691008297219376*^9, 3.691008297690474*^9}}],
+
+Cell[TextData[{
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " Notebooks are made up of Cells. Cells can contain many different kinds of \
+things including code, text and graphics. "
+}], "Text",
+ CellChangeTimes->{{3.691008299298595*^9, 3.691008413030818*^9}, {
+   3.691008450908577*^9, 3.691008499772332*^9}, 3.691009486224638*^9}],
+
+Cell[TextData[{
+ "You can choose a cell type by clicking Format \[RightArrow] Style. Let\
+\[CloseCurlyQuote]s create a Title. We\[CloseCurlyQuote]ll call it: \
+Introduction to Technical Computing with ",
+ StyleBox["Mathematica.",
+  FontSlant->"Italic"]
+}], "Text",
+ CellChangeTimes->{{3.69100848468631*^9, 3.691008528385494*^9}, {
+   3.691008827486697*^9, 3.691008829605248*^9}, {3.691009497560257*^9, 
+   3.691009502870771*^9}, {3.69100953565534*^9, 3.691009546453176*^9}, 
+   3.69102040883578*^9}],
+
+Cell["\<\
+Let\[CloseCurlyQuote]s create a second one, Chapter. We\[CloseCurlyQuote]ll \
+call it: Introduction to Cells.\
+\>", "Text",
+ CellChangeTimes->{{3.69100854852693*^9, 3.691008560689885*^9}, {
+   3.6910088387286177`*^9, 3.691008839838599*^9}, {3.691009529615418*^9, 
+   3.691009532077919*^9}, 3.691020419369637*^9}],
+
+Cell["We can also create Sections and Subsections.", "Text",
+ CellChangeTimes->{{3.691008579006929*^9, 3.691008592719035*^9}, {
+  3.691009562372427*^9, 3.691009585674686*^9}}],
+
+Cell["Let\[CloseCurlyQuote]s create an Item: This is an Item.", "Text",
+ CellChangeTimes->{{3.691009587876713*^9, 3.691009596347164*^9}, 
+   3.691020431011436*^9}],
+
+Cell["Let\[CloseCurlyQuote]s create a Subitem: This is a Subitem.", "Text",
+ CellChangeTimes->{{3.691009598587304*^9, 3.6910096357344007`*^9}, 
+   3.691020438331232*^9}],
+
+Cell["\<\
+Cells can be nested, meaning, you can create more cells within cells. The \
+brackets on the right hand side represent the hierarchy of each cell. If you \
+double click the bracket corresponding to the Introduction to Cells chapter, \
+the cells contained within the chapter get collapsed. This is very useful \
+when organizing your documents.\
+\>", "Text",
+ CellChangeTimes->{{3.69100860432198*^9, 3.6910086156463823`*^9}, {
+   3.6910086963974257`*^9, 3.6910086967225857`*^9}, {3.6910088517419243`*^9, 
+   3.691008852132627*^9}, 3.691009650665516*^9, {3.6910204578904333`*^9, 
+   3.691020470018446*^9}, {3.691020509705617*^9, 3.6910205754163837`*^9}, {
+   3.691020722309758*^9, 3.6910207322594013`*^9}}],
+
+Cell[TextData[{
+ "My personal preference is to use Section, Subsection and Sub-subsection. In \
+fact, all of our lectures are published as ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " notebooks, and the sections are organized in this way."
+}], "Text",
+ CellChangeTimes->{{3.691008707367155*^9, 3.691008805678418*^9}, {
+  3.69100887068333*^9, 3.691008899594974*^9}, {3.691016191968251*^9, 
+  3.691016207335904*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Evaluating Expressions", "Subsubsection",
+ CellChangeTimes->{{3.691009458017673*^9, 3.6910094606001883`*^9}}],
+
+Cell["Let\[CloseCurlyQuote]s evaluate an expression:", "Text",
+ CellChangeTimes->{3.691009214555317*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"1", "+", "1"}]], "Input",
+ CellChangeTimes->{{3.691008094605235*^9, 3.691008095095023*^9}}],
+
+Cell[BoxData["2"], "Output",
+ CellChangeTimes->{3.691021549144868*^9, 3.6910216280389853`*^9}]
+}, Open  ]],
+
+Cell["Now we type Shift + Enter to evaluate. And we get:", "Text",
+ CellChangeTimes->{{3.691008100567395*^9, 3.691008133915941*^9}, {
+  3.6910082079822206`*^9, 3.691008208309636*^9}}],
+
+Cell[BoxData["2"], "Output",
+ CellChangeTimes->{3.691008146406925*^9}],
+
+Cell["\<\
+You\[CloseCurlyQuote]ll notice that our code is in a Cell. If we go to Format \
+\[Rule] Style, we see that this is an Input Cell. \
+\>", "Text",
+ CellChangeTimes->{{3.691009475023926*^9, 3.6910094771457853`*^9}, {
+  3.691009678893394*^9, 3.691009761495494*^9}, {3.691016236878881*^9, 
+  3.6910162391584997`*^9}}],
+
+Cell["\<\
+And, the result of the evaluation is contained in an Output Cell.\
+\>", "Text",
+ CellChangeTimes->{{3.6910097453291616`*^9, 3.691009750563122*^9}}],
+
+Cell["\<\
+Note that you can also expand and collapse Input Cells as well as Output \
+Cells. This is useful for when you\[CloseCurlyQuote]re preparing technical \
+notebooks where you would like to show the results of your code, but you don\
+\[CloseCurlyQuote]t want the code to be immediately visible.\
+\>", "Text",
+ CellChangeTimes->{{3.6910090602414513`*^9, 3.691009122268873*^9}}],
+
+Cell["\<\
+Let\[CloseCurlyQuote]s do some arithmetic and put it in a section called: \
+Arithmetic. So we go to Format \[Rule] Style \[Rule] Section, and we type \
+Arithmetic\
+\>", "Text",
+ CellChangeTimes->{{3.691009793674541*^9, 3.691009876437845*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Arithmetic", "Subsection",
+ CellChangeTimes->{{3.662052270897462*^9, 3.66205227301475*^9}}],
+
+Cell["Let\[CloseCurlyQuote]s try some simple arithmetic. \
+Let\[CloseCurlyQuote]s do:", "Text",
+ CellChangeTimes->{{3.691009884189542*^9, 3.691009886581514*^9}, {
+  3.691009958815037*^9, 3.691009964373604*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"5", "-", "2"}]], "Input",
+ CellChangeTimes->{{3.6620522854040413`*^9, 3.662052286494503*^9}}],
+
+Cell[BoxData["3"], "Output",
+ CellChangeTimes->{3.662052289628352*^9, 3.691012741748349*^9, 
+  3.691021549324793*^9, 3.691021628217122*^9}]
+}, Open  ]],
+
+Cell["We can also multiply:", "Text",
+ CellChangeTimes->{{3.691009971525206*^9, 3.691009976332999*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"5", "*", "4"}]], "Input",
+ CellChangeTimes->{{3.6620523025036373`*^9, 3.662052309749305*^9}}],
+
+Cell[BoxData["20"], "Output",
+ CellChangeTimes->{3.6620523129610147`*^9, 3.691012741888308*^9, 
+  3.6910215493829927`*^9, 3.691021628261834*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Another way to multiply is to do 5 <space> 4. ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " automatically inserts the multiplication symbol:"
+}], "Text",
+ CellChangeTimes->{{3.691009978684585*^9, 3.6910099966924477`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"5", " ", "4"}]], "Input",
+ CellChangeTimes->{{3.662052319627389*^9, 3.662052321724102*^9}}],
+
+Cell[BoxData["20"], "Output",
+ CellChangeTimes->{3.662052330665296*^9, 3.6910127419981737`*^9, 
+  3.691021549433092*^9, 3.6910216283134127`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "We can also do division. To do division in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ", we use the slash operator:"
+}], "Text",
+ CellChangeTimes->{{3.691010028285947*^9, 3.691010041684175*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"20", "/", "5"}]], "Input",
+ CellChangeTimes->{{3.662052339501917*^9, 3.662052347041161*^9}}],
+
+Cell[BoxData["4"], "Output",
+ CellChangeTimes->{3.662052349805994*^9, 3.691012742100583*^9, 
+  3.691021549481793*^9, 3.691021628368084*^9}]
+}, Open  ]],
+
+Cell["\<\
+Let\[CloseCurlyQuote]s try something a little different. \
+Let\[CloseCurlyQuote]s try 20 divided by 3:\
+\>", "Text",
+ CellChangeTimes->{{3.691010054555583*^9, 3.691010063977934*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"20", "/", "3"}]], "Input",
+ CellChangeTimes->{{3.662052359868411*^9, 3.662052361258236*^9}}],
+
+Cell[BoxData[
+ FractionBox["20", "3"]], "Output",
+ CellChangeTimes->{3.6620523631016207`*^9, 3.6910127422141323`*^9, 
+  3.691021549530776*^9, 3.691021628413925*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "So the result here might not be what you expect. You might have expected to \
+see 6.66 repeating. Instead ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " returned 20 over 3. In ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ", the result of any evaluation is always expressed in the simplest exact \
+symbolic form. Since 6.66 repeating is not an exact form, ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " will not continue to evaluate. Now suppose you wanted the numeric value. \
+To do that, we use a built-in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " function that computes values numerically, and it is called ",
+ StyleBox["N",
+  FontWeight->"Bold"],
+ ": "
+}], "Text",
+ CellChangeTimes->{{3.691010075571086*^9, 3.691010246641342*^9}, {
+  3.691020876524378*^9, 3.6910208872183933`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"N", "[", 
+  RowBox[{"20", "/", "3"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6620524206889067`*^9, 3.662052429033852*^9}}],
+
+Cell[BoxData["6.666666666666667`"], "Output",
+ CellChangeTimes->{3.662052431877026*^9, 3.691012742316617*^9, 
+  3.691021549583392*^9, 3.6910216284646053`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Notice that in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ", we call a function using square brackets. Now, the result of our \
+evaluation is 6.66667. What if we wanted to see 10 digits of 20 over 3? The \
+function ",
+ StyleBox["N",
+  FontWeight->"Bold"],
+ " takes an optional second argument for precision."
+}], "Text",
+ CellChangeTimes->{{3.691010257689863*^9, 3.691010359221191*^9}, {
+  3.691020925655004*^9, 3.6910210356849127`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"N", "[", 
+  RowBox[{
+   RowBox[{"20", "/", "3"}], ",", "10"}], "]"}]], "Input",
+ CellChangeTimes->{{3.691021011153784*^9, 3.691021015567049*^9}}],
+
+Cell[BoxData["6.6666666666666666667`10."], "Output",
+ CellChangeTimes->{3.691021015870407*^9, 3.691021549650174*^9, 
+  3.691021628531683*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Now we have 10 digits of precision. In ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ", the arguments to a function are separated by a comma."
+}], "Text",
+ CellChangeTimes->{{3.6910103627085457`*^9, 3.691010374572136*^9}, {
+   3.691010406563571*^9, 3.691010433377933*^9}, 3.6910209482805777`*^9, {
+   3.691021039142274*^9, 3.69102105755028*^9}}],
+
+Cell[TextData[{
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " provides all other mathematical operators that you might expect as well as \
+mathematical constants. In the next lecture you will learn about the \
+Documentation Center wherein you\[CloseCurlyQuote]ll be able to search for \
+the other ",
+ StyleBox["Operators",
+  FontWeight->"Bold"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.691010436281487*^9, 3.691010461745058*^9}, 
+   3.691010537760234*^9, {3.691021081998004*^9, 3.6910211707716913`*^9}, {
+   3.6910212240205603`*^9, 3.6910212647142477`*^9}, {3.69102132390998*^9, 
+   3.69102133568259*^9}, {3.691091155277964*^9, 3.6910912162560387`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Constants", "Subsection",
+ CellChangeTimes->{{3.691010667746079*^9, 3.691010668704597*^9}}],
+
+Cell[TextData[{
+ "Similarly to ",
+ StyleBox["Operators",
+  FontWeight->"Bold"],
+ " ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " also knows about mathematical constants such as ",
+ StyleBox["Pi",
+  FontWeight->"Bold"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.691010685207899*^9, 3.6910106935514307`*^9}, {
+  3.6910213581839933`*^9, 3.691021412086997*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["Pi"], "Input",
+ CellChangeTimes->{{3.662052562728436*^9, 3.662052563414*^9}}],
+
+Cell[BoxData["\[Pi]"], "Output",
+ CellChangeTimes->{3.662052569297986*^9, 3.6910127427790613`*^9, 
+  3.6910215497487183`*^9, 3.691021628579299*^9}]
+}, Open  ]],
+
+Cell["\<\
+Again, Mathematica returns the simplest exact symbolic form, which in this \
+case is the symbol Pi.\
+\>", "Text",
+ CellChangeTimes->{{3.691010695671021*^9, 3.691010725862123*^9}}],
+
+Cell["Another constant defined is E:", "Text",
+ CellChangeTimes->{{3.691010734909979*^9, 3.6910107464532022`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["E"], "Input",
+ CellChangeTimes->{3.662052584483499*^9}],
+
+Cell[BoxData["\[ExponentialE]"], "Output",
+ CellChangeTimes->{3.662052587460355*^9, 3.69101274289085*^9, 
+  3.691021549863908*^9, 3.6910216286305017`*^9}]
+}, Open  ]],
+
+Cell["\<\
+Again, Mathematica returns the simplest exact symbolic form, which in this \
+case is the symbol E.\
+\>", "Text",
+ CellChangeTimes->{{3.691010765038698*^9, 3.6910107683668003`*^9}}],
+
+Cell["\<\
+Now, for both of these, we can evaluate the expressions numerically, using \
+the N function:\
+\>", "Text",
+ CellChangeTimes->{{3.691010772092175*^9, 3.6910107900360928`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"N", "[", "Pi", "]"}]], "Input",
+ CellChangeTimes->{{3.662052600930627*^9, 3.662052605392993*^9}}],
+
+Cell[BoxData["3.141592653589793`"], "Output",
+ CellChangeTimes->{3.662052607262904*^9, 3.691012743000915*^9, 
+  3.691021549981781*^9, 3.691021628678977*^9}]
+}, Open  ]],
+
+Cell["And we get back 5 digits of Pi.", "Text",
+ CellChangeTimes->{{3.6910108056134644`*^9, 3.69101081022792*^9}}],
+
+Cell["Similarly, we can get 5 digits of E:", "Text",
+ CellChangeTimes->{{3.691010816349382*^9, 3.6910108217081337`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"N", "[", "E", "]"}]], "Input",
+ CellChangeTimes->{{3.662052613332621*^9, 3.662052616647944*^9}}],
+
+Cell[BoxData["2.718281828459045`"], "Output",
+ CellChangeTimes->{3.662052618137311*^9, 3.6910127431012287`*^9, 
+  3.6910215501349783`*^9, 3.691021628732808*^9}]
+}, Open  ]],
+
+Cell["Let\[CloseCurlyQuote]s take a look at a few functions:", "Text",
+ CellChangeTimes->{{3.6910109272303047`*^9, 3.691010937749015*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Functions", "Subsection",
+ CellChangeTimes->{{3.662052643543261*^9, 3.662052660839672*^9}}],
+
+Cell["We can do the square root of nine:", "Text",
+ CellChangeTimes->{{3.691010939734387*^9, 3.6910109518848124`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Sqrt", "[", "9", "]"}]], "Input",
+ CellChangeTimes->{{3.662052699187798*^9, 3.662052709722131*^9}}],
+
+Cell[BoxData["3"], "Output",
+ CellChangeTimes->{3.662052711354517*^9, 3.691012743211803*^9, 
+  3.6910215502171087`*^9, 3.6910216287794523`*^9}]
+}, Open  ]],
+
+Cell["As well as the square root of two:", "Text",
+ CellChangeTimes->{{3.691010954332546*^9, 3.691010958444682*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Sqrt", "[", "2", "]"}]], "Input",
+ CellChangeTimes->{{3.6910109611221447`*^9, 3.691010964516941*^9}}],
+
+Cell[BoxData[
+ SqrtBox["2"]], "Output",
+ CellChangeTimes->{3.691010965091523*^9, 3.691012743313867*^9, 
+  3.6910215503849287`*^9, 3.691021628830181*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Another way that we can apply the ",
+ StyleBox["N",
+  FontWeight->"Bold"],
+ " function is to put two slashes after our expression, then type ",
+ StyleBox["N",
+  FontWeight->"Bold"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.691010966899398*^9, 3.691010967539311*^9}, {
+   3.6910124203596363`*^9, 3.691012457506525*^9}, 3.6910214883524227`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Sqrt", "[", "2", "]"}], "//", "N"}]], "Input",
+ CellChangeTimes->{{3.662052715585045*^9, 3.6620527198821497`*^9}, {
+  3.6620527525105057`*^9, 3.662052753718029*^9}}],
+
+Cell[BoxData["1.4142135623730951`"], "Output",
+ CellChangeTimes->{3.66205272270557*^9, 3.6620527656771097`*^9, 
+  3.691012743411559*^9, 3.691021550448563*^9, 3.691021628881723*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["The Kernel", "Subsection",
+ CellChangeTimes->{{3.69100892699517*^9, 3.691008927963088*^9}}],
+
+Cell["\<\
+So, we\[CloseCurlyQuote]ve evaluated a bunch of expressions now. Let\
+\[CloseCurlyQuote]s try and understand how it all works. When you evaluate an \
+expression with Shift + Enter, the expression is sent to the Kernel. The \
+Kernel then evaluates the expression and returns a result. The result is in \
+then displayed in the Notebook.\
+\>", "Text",
+ CellChangeTimes->{{3.6910125332844954`*^9, 3.691012598666292*^9}, {
+  3.691021639395327*^9, 3.691021642921455*^9}}],
+
+Cell["\<\
+As you evaluate expressions, you\[CloseCurlyQuote]ll notice that each Input \
+and Output cell is labeled with a number to the left. These numbers represent \
+the sequence of interactions with the Kernel. We can get the output of a \
+previous evaluation by using the Out function:\
+\>", "Text",
+ CellChangeTimes->{{3.691012600971367*^9, 3.6910126767301064`*^9}, {
+  3.6910127234243*^9, 3.691012731930257*^9}, {3.691012818353053*^9, 
+  3.691012825454815*^9}, {3.691013142349131*^9, 3.691013143933639*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Out"}]], "Input",
+ CellChangeTimes->{{3.691092516501686*^9, 3.6910925173633137`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"%\\\", StyleBox[\\\"n\\\", \\\"TI\\\"]}]\
+\\) or \\!\\(\\*RowBox[{\\\"Out\\\", \\\"[\\\", StyleBox[\\\"n\\\", \
+\\\"TI\\\"], \\\"]\\\"}]\\) is a global object that is assigned to be the \
+value produced on the \\!\\(\\*StyleBox[\\\"n\\\", \
+\\\"TI\\\"]\\)\\!\\(\\*SuperscriptBox[\\\"\[Null]\\\", \\\"th\\\"]\\) output \
+line. \\n% gives the last result generated. \\n%% gives the result before \
+last. \\!\\(\\*RowBox[{\\\"%%\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"], \
+\\\"%\\\"}]\\) (\\!\\(\\*StyleBox[\\\"k\\\", \\\"TI\\\"]\\) times) gives the \
+\\!\\(\\*StyleBox[\\\"k\\\", \
+\\\"TI\\\"]\\)\\!\\(\\*SuperscriptBox[\\\"\[Null]\\\", \\\"th\\\"]\\) \
+previous result. \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Out"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.691092518056793*^9},
+ CellTags->"Info23691070917-9290011"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Out", "[", "15", "]"}]], "Input",
+ CellChangeTimes->{{3.691012826300014*^9, 3.691012830302805*^9}, {
+  3.6910215656066027`*^9, 3.6910215658033743`*^9}}],
+
+Cell[BoxData["1.4142135623730951`"], "Output",
+ CellChangeTimes->{3.691012830691195*^9, 3.6910128790616713`*^9, 
+  3.6910215505333347`*^9, 3.69102164616957*^9}]
+}, Open  ]],
+
+Cell["\<\
+The shorthand for the most recent evaluation is the percent sign:\
+\>", "Text",
+ CellChangeTimes->{{3.691012834238338*^9, 3.691012863703405*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["%"], "Input",
+ CellChangeTimes->{3.691012881226451*^9}],
+
+Cell[BoxData["1.4142135623730951`"], "Output",
+ CellChangeTimes->{3.69101288246397*^9, 3.691021550668024*^9, 
+  3.691021655578557*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Restart the Kernel", "Subsubsection",
+ CellChangeTimes->{{3.6910128985422983`*^9, 3.691012900598076*^9}}],
+
+Cell[TextData[{
+ "So, the Kernel basically has a history. Sometimes, the history of your \
+evaluations can become complicated. You can get a clean start by restarting \
+the Kernel. In other words, you don\[CloseCurlyQuote]t have to restart the \
+Notebook Front End to get a clean back end. To restart the Kernel, click \
+Evaluation \[Rule] Quit Kernel \[Rule] Local. Then confirm that you want to \
+Quit. You can then click Evaluation \[Rule] Start Kernel \[Rule] Local to \
+start a new one. Note that if you don\[CloseCurlyQuote]t start a kernel and \
+just run an evaluation in the Notebook, ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " will start one for you."
+}], "Text",
+ CellChangeTimes->{{3.6910129026618643`*^9, 3.6910131047675867`*^9}, {
+  3.6910217063627777`*^9, 3.6910217369677267`*^9}, {3.691021809373755*^9, 
+  3.691021811094302*^9}}],
+
+Cell["Now, if we evaluate an expression:", "Text",
+ CellChangeTimes->{{3.6910130784239197`*^9, 3.6910130795597563`*^9}, {
+  3.691013110270178*^9, 3.691013117710856*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"1", "+", "1"}]], "Input",
+ CellChangeTimes->{{3.691013118441078*^9, 3.691013118918764*^9}}],
+
+Cell[BoxData["2"], "Output",
+ CellChangeTimes->{3.691013122617076*^9, 3.691021550789384*^9, 
+  3.6910218529667187`*^9}]
+}, Open  ]],
+
+Cell["You\[CloseCurlyQuote]ll notice that the sequence numbers have restarted \
+at 1.", "Text",
+ CellChangeTimes->{{3.691013123531197*^9, 3.691013131901278*^9}, {
+  3.691021824716964*^9, 3.69102182549302*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Aborting Evaluation", "Subsubsection",
+ CellChangeTimes->{{3.6910198032522793`*^9, 3.6910198056680803`*^9}}],
+
+Cell[TextData[{
+ "What happens if you write some code that\[CloseCurlyQuote]s taking a really \
+long time to evaluate? We will use the ",
+ StyleBox["Pause", "Code"],
+ " function to simulate long running code. "
+}], "Text",
+ CellChangeTimes->{{3.6910131491653976`*^9, 3.6910131540845137`*^9}, {
+  3.69101923371209*^9, 3.691019240292508*^9}, {3.691019293339714*^9, 
+  3.6910193104664097`*^9}, {3.691019358449293*^9, 3.691019369624693*^9}, {
+  3.691021927884564*^9, 3.691021946122518*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Pause"}]], "Input",
+ CellChangeTimes->{{3.691019376452202*^9, 3.6910193773288317`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Pause\\\", \\\"[\\\", StyleBox[\\\"n\\\", \
+\\\"TI\\\"], \\\"]\\\"}]\) pauses for at least \!\(\*StyleBox[\\\"n\\\", \
+\\\"TI\\\"]\) seconds. \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Pause"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.6910215509682426`*^9},
+ CellTags->"Info193690999950-6618469"]
+}, Open  ]],
+
+Cell["Let\[CloseCurlyQuote]s Pause the Kernel for 100 seconds:", "Text",
+ CellChangeTimes->{{3.6910193796649933`*^9, 3.6910193926241407`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Pause", "[", "100", "]"}]], "Input",
+ CellChangeTimes->{{3.6910193940259867`*^9, 3.691019395632206*^9}}],
+
+Cell[BoxData["$Aborted"], "Output",
+ CellChangeTimes->{3.69101948663064*^9, 3.691021611252076*^9}]
+}, Open  ]],
+
+Cell["Now, you\[CloseCurlyQuote]ll notice that we can\[CloseCurlyQuote]t \
+evaluate anything:", "Text",
+ CellChangeTimes->{{3.691019397855835*^9, 3.6910194068309317`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"1", "+", "1"}]], "Input",
+ CellChangeTimes->{{3.691019408563854*^9, 3.691019409167604*^9}}],
+
+Cell[TextData[{
+ "That\[CloseCurlyQuote]s because the Kernel is busy. When the Kernel is \
+finished with the ",
+ StyleBox["Pause", "Code",
+  FontWeight->"Bold"],
+ ", it will evaluate the remaining cells. If you want, you can abort the \
+evaluation. Click Evaluation \[Rule] Abort Evaluation. And you\
+\[CloseCurlyQuote]ll see that the Pause\[CloseCurlyQuote]s output is \
+$Aborted. There is a keyboard shortcut for this operation. In Mac it is \
+\[OpenCurlyDoubleQuote]Command+.\[CloseCurlyDoubleQuote], and in Windows it \
+is \[OpenCurlyDoubleQuote]Alt+.\[CloseCurlyDoubleQuote]."
+}], "Text",
+ CellChangeTimes->{{3.6910194111346617`*^9, 3.69101952383601*^9}, {
+  3.691019789340507*^9, 3.691019790836603*^9}, {3.691022006097384*^9, 
+  3.691022053512705*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Summary", "Subsection",
+ CellChangeTimes->{{3.69101981421378*^9, 3.691019817587819*^9}}],
+
+Cell["\<\
+In this lecture we looked at how to use the Notebook Front End, we learned \
+about the Kernel and we evaluated some Wolfram Language code. We hope you had \
+fun, and see you at the next lecture!\
+\>", "Text",
+ CellChangeTimes->{{3.691019819067683*^9, 3.691019823044083*^9}, {
+  3.691020091869046*^9, 3.691020135274251*^9}, {3.691022065712842*^9, 
+  3.691022090215889*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{939, 1035},
+WindowMargins->{{156, Automatic}, {Automatic, 0}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info23691070917-9290011"->{
+  Cell[19121, 570, 1005, 19, 123, "Print",
+   CellTags->"Info23691070917-9290011"]},
+ "Info193690999950-6618469"->{
+  Cell[23352, 684, 474, 11, 65, "Print",
+   CellTags->"Info193690999950-6618469"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info23691070917-9290011", 26208, 765},
+ {"Info193690999950-6618469", 26324, 768}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 144, 2, 95, "Section"],
+Cell[727, 26, 410, 9, 46, "Text"],
+Cell[CellGroupData[{
+Cell[1162, 39, 104, 1, 65, "Subsection"],
+Cell[1269, 42, 967, 18, 223, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2273, 65, 159, 2, 65, "Subsection"],
+Cell[2435, 69, 367, 8, 76, "Text"],
+Cell[CellGroupData[{
+Cell[2827, 81, 96, 1, 52, "Subsubsection"],
+Cell[2926, 84, 337, 7, 76, "Text"],
+Cell[3266, 93, 499, 10, 76, "Text"],
+Cell[3768, 105, 322, 6, 46, "Text"],
+Cell[4093, 113, 175, 2, 46, "Text"],
+Cell[4271, 117, 163, 2, 46, "Text"],
+Cell[4437, 121, 169, 2, 46, "Text"],
+Cell[4609, 125, 712, 11, 164, "Text"],
+Cell[5324, 138, 424, 9, 105, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5785, 152, 115, 1, 52, "Subsubsection"],
+Cell[5903, 155, 104, 1, 46, "Text"],
+Cell[CellGroupData[{
+Cell[6032, 160, 115, 2, 48, "Input"],
+Cell[6150, 164, 94, 1, 48, "Output"]
+}, Open  ]],
+Cell[6259, 168, 183, 2, 46, "Text"],
+Cell[6445, 172, 70, 1, 48, "Output"],
+Cell[6518, 175, 322, 6, 76, "Text"],
+Cell[6843, 183, 157, 3, 46, "Text"],
+Cell[7003, 188, 382, 6, 135, "Text"],
+Cell[7388, 196, 252, 5, 76, "Text"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7689, 207, 97, 1, 65, "Subsection"],
+Cell[7789, 210, 210, 3, 46, "Text"],
+Cell[CellGroupData[{
+Cell[8024, 217, 117, 2, 48, "Input"],
+Cell[8144, 221, 139, 2, 48, "Output"]
+}, Open  ]],
+Cell[8298, 226, 103, 1, 46, "Text"],
+Cell[CellGroupData[{
+Cell[8426, 231, 117, 2, 48, "Input"],
+Cell[8546, 235, 144, 2, 48, "Output"]
+}, Open  ]],
+Cell[8705, 240, 248, 6, 76, "Text"],
+Cell[CellGroupData[{
+Cell[8978, 250, 115, 2, 48, "Input"],
+Cell[9096, 254, 144, 2, 48, "Output"]
+}, Open  ]],
+Cell[9255, 259, 222, 6, 46, "Text"],
+Cell[CellGroupData[{
+Cell[9502, 269, 116, 2, 48, "Input"],
+Cell[9621, 273, 139, 2, 48, "Output"]
+}, Open  ]],
+Cell[9775, 278, 192, 4, 46, "Text"],
+Cell[CellGroupData[{
+Cell[9992, 286, 116, 2, 48, "Input"],
+Cell[10111, 290, 164, 3, 65, "Output"]
+}, Open  ]],
+Cell[10290, 296, 839, 22, 194, "Text"],
+Cell[CellGroupData[{
+Cell[11154, 322, 146, 3, 48, "Input"],
+Cell[11303, 327, 158, 2, 48, "Output"]
+}, Open  ]],
+Cell[11476, 332, 465, 12, 105, "Text"],
+Cell[CellGroupData[{
+Cell[11966, 348, 169, 4, 48, "Input"],
+Cell[12138, 354, 141, 2, 48, "Output"]
+}, Open  ]],
+Cell[12294, 359, 370, 8, 76, "Text"],
+Cell[12667, 369, 658, 14, 105, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13362, 388, 97, 1, 65, "Subsection"],
+Cell[13462, 391, 363, 13, 76, "Text"],
+Cell[CellGroupData[{
+Cell[13850, 408, 91, 1, 48, "Input"],
+Cell[13944, 411, 147, 2, 48, "Output"]
+}, Open  ]],
+Cell[14106, 416, 189, 4, 76, "Text"],
+Cell[14298, 422, 114, 1, 46, "Text"],
+Cell[CellGroupData[{
+Cell[14437, 427, 69, 1, 48, "Input"],
+Cell[14509, 430, 154, 2, 48, "Output"]
+}, Open  ]],
+Cell[14678, 435, 190, 4, 76, "Text"],
+Cell[14871, 441, 184, 4, 76, "Text"],
+Cell[CellGroupData[{
+Cell[15080, 449, 121, 2, 48, "Input"],
+Cell[15204, 453, 156, 2, 48, "Output"]
+}, Open  ]],
+Cell[15375, 458, 114, 1, 46, "Text"],
+Cell[15492, 461, 120, 1, 46, "Text"],
+Cell[CellGroupData[{
+Cell[15637, 466, 120, 2, 48, "Input"],
+Cell[15760, 470, 160, 2, 48, "Output"]
+}, Open  ]],
+Cell[15935, 475, 138, 1, 46, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16110, 481, 97, 1, 65, "Subsection"],
+Cell[16210, 484, 118, 1, 46, "Text"],
+Cell[CellGroupData[{
+Cell[16353, 489, 123, 2, 48, "Input"],
+Cell[16479, 493, 143, 2, 48, "Output"]
+}, Open  ]],
+Cell[16637, 498, 116, 1, 46, "Text"],
+Cell[CellGroupData[{
+Cell[16778, 503, 125, 2, 48, "Input"],
+Cell[16906, 507, 152, 3, 48, "Output"]
+}, Open  ]],
+Cell[17073, 513, 358, 10, 76, "Text"],
+Cell[CellGroupData[{
+Cell[17456, 527, 200, 4, 48, "Input"],
+Cell[17659, 533, 180, 2, 48, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17888, 541, 97, 1, 65, "Subsection"],
+Cell[17988, 544, 475, 8, 135, "Text"],
+Cell[18466, 554, 513, 8, 135, "Text"],
+Cell[CellGroupData[{
+Cell[19004, 566, 114, 2, 48, "Input"],
+Cell[19121, 570, 1005, 19, 123, "Print",
+ CellTags->"Info23691070917-9290011"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20163, 594, 176, 3, 48, "Input"],
+Cell[20342, 599, 160, 2, 48, "Output"]
+}, Open  ]],
+Cell[20517, 604, 155, 3, 46, "Text"],
+Cell[CellGroupData[{
+Cell[20697, 611, 69, 1, 48, "Input"],
+Cell[20769, 614, 134, 2, 48, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20940, 621, 111, 1, 52, "Subsubsection"],
+Cell[21054, 624, 856, 15, 223, "Text"],
+Cell[21913, 641, 169, 2, 46, "Text"],
+Cell[CellGroupData[{
+Cell[22107, 647, 115, 2, 48, "Input"],
+Cell[22225, 651, 119, 2, 48, "Output"]
+}, Open  ]],
+Cell[22359, 656, 209, 3, 46, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22605, 664, 114, 1, 52, "Subsubsection"],
+Cell[22722, 667, 486, 9, 76, "Text"],
+Cell[CellGroupData[{
+Cell[23233, 680, 116, 2, 48, "Input"],
+Cell[23352, 684, 474, 11, 65, "Print",
+ CellTags->"Info193690999950-6618469"]
+}, Open  ]],
+Cell[23841, 698, 142, 1, 46, "Text"],
+Cell[CellGroupData[{
+Cell[24008, 703, 128, 2, 48, "Input"],
+Cell[24139, 707, 98, 1, 48, "Output"]
+}, Open  ]],
+Cell[24252, 711, 171, 2, 46, "Text"],
+Cell[24426, 715, 115, 2, 48, "Input"],
+Cell[24544, 719, 758, 14, 164, "Text"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25351, 739, 94, 1, 65, "Subsection"],
+Cell[25448, 742, 382, 7, 105, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

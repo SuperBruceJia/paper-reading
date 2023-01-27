@@ -1,0 +1,1439 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     61098,       1431]
+NotebookOptionsPosition[     56713,       1282]
+NotebookOutlinePosition[     57098,       1299]
+CellTagsIndexPosition[     57055,       1296]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Blending Model Project", "Title",
+ CellChangeTimes->{
+  3.697057174453452*^9, {3.702515081861511*^9, 3.702515083175725*^9}}],
+
+Cell["\<\
+This notebook will help you with your implementation of the final project. It \
+provides the function definitions for you to fill out as well as tests to \
+verify that you\[CloseCurlyQuote]ve written each piece.\
+\>", "Text",
+ CellChangeTimes->{{3.697057198920978*^9, 3.6970573099816647`*^9}}],
+
+Cell["\<\
+Since this project is bigger than any we\[CloseCurlyQuote]ve done before, it \
+will be easier to work with smaller more modular pieces of code that we can \
+verify independently. As such, we\[CloseCurlyQuote]ve included tests in the \
+starter code below to help you verify that you\[CloseCurlyQuote]re on the \
+right track. You don\[CloseCurlyQuote]t need to use this starter code to \
+solve the project, and if you feel confident that you can do it by yourself, \
+by all means, have at it! Otherwise, we welcome you to follow along with a \
+little bit of hand holding from us.\
+\>", "Text",
+ CellChangeTimes->{{3.697057311349491*^9, 3.6970573740437307`*^9}, {
+  3.701974207516917*^9, 3.7019742665439463`*^9}, {3.701974325492982*^9, 
+  3.701974345916894*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Constants", "Section",
+ CellChangeTimes->{{3.697057430506605*^9, 3.6970574314574738`*^9}}],
+
+Cell["\<\
+We will be drawing our creatures in a 50x50 area. Let\[CloseCurlyQuote]s \
+define some constants so that we don\[CloseCurlyQuote]t have to write the \
+number 50 everywhere.\
+\>", "Text",
+ CellChangeTimes->{{3.697057437632826*^9, 3.6970575250217648`*^9}, {
+  3.697062911525661*^9, 3.697062911613408*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"xmin", "=", "0"}], ";", 
+  RowBox[{"xmax", "=", "50"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ymin", "=", "0"}], ";", 
+  RowBox[{"ymax", "=", "50"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.697057533766706*^9, 3.697057548429675*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Creatures", "Section",
+ CellChangeTimes->{{3.697057562804502*^9, 3.697057564556756*^9}}],
+
+Cell["\<\
+We will represent our creatures as expressions with the head \
+BlendingCreature. Let\[CloseCurlyQuote]s create a few prototypical creatures \
+that we will make use of in our tests:\
+\>", "Text",
+ CellChangeTimes->{{3.697057566956531*^9, 3.697057594683879*^9}, {
+  3.697062909765778*^9, 3.6970629098226547`*^9}, {3.701974867281122*^9, 
+  3.7019748865605164`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"bc1", "=", 
+   RowBox[{"BlendingCreature", "[", 
+    RowBox[{"0.1", ",", 
+     RowBox[{"{", 
+      RowBox[{"20", ",", "40"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"bc2", "=", 
+   RowBox[{"BlendingCreature", "[", 
+    RowBox[{"0.4", ",", 
+     RowBox[{"{", 
+      RowBox[{"30", ",", "40"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"bc3", "=", 
+   RowBox[{"BlendingCreature", "[", 
+    RowBox[{"0.7", ",", 
+     RowBox[{"{", 
+      RowBox[{"40", ",", "30"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"bc4", "=", 
+   RowBox[{"BlendingCreature", "[", 
+    RowBox[{"0.9", ",", 
+     RowBox[{"{", 
+      RowBox[{"40", ",", "20"}], "}"}]}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.6970575977643967`*^9, 3.697057646626451*^9}, {
+  3.702521927309495*^9, 3.702521929050393*^9}}],
+
+Cell["\<\
+The first part of our creature is its Trait value. The second part is the \
+location (x, y coordinate) of the creature.\
+\>", "Text",
+ CellChangeTimes->{{3.71363631363549*^9, 3.7136363613047523`*^9}, {
+  3.713637122160194*^9, 3.713637127421668*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Accessors", "Section",
+ CellChangeTimes->{{3.6970576834174433`*^9, 3.697057684528063*^9}}],
+
+Cell[TextData[{
+ "The first function to write is the Traits function. This function will get \
+the traits of our BlendingCreature. So for example, ",
+ StyleBox["Traits[bc1]", "Code"],
+ " should return ",
+ StyleBox["0.1", "Code"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.697057722215457*^9, 3.697057728270287*^9}, {
+   3.697057777349078*^9, 3.697057821299684*^9}, 3.702521935778325*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Traits", "[", "creature_BlendingCreature", "]"}], ":=", "Null", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Fill", " ", "me", " ", "in"}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.6970577298712263`*^9, 3.6970577545981073`*^9}, {
+   3.69705799969311*^9, 3.6970580065815563`*^9}, {3.6970580402934504`*^9, 
+   3.697058071019301*^9}, {3.697059445547626*^9, 3.6970594477056923`*^9}, 
+   3.69705967851015*^9, {3.697062157554139*^9, 3.6970621582441263`*^9}}],
+
+Cell["Our second function gets the location of the creature.", "Text",
+ CellChangeTimes->{{3.697058098985426*^9, 3.6970581128413267`*^9}, {
+  3.697062905749936*^9, 3.697062905813842*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Location", "[", "creature_BlendingCreature", "]"}], ":=", "Null", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Fill", " ", "me", " ", "in"}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.697058114476972*^9, 3.697058124649664*^9}, 
+   3.6970594513734007`*^9, 3.697059676983111*^9, 3.697062161645197*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Tests", "Subsection",
+ CellChangeTimes->{{3.701974444642325*^9, 3.7019744451223516`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Verify the accessors", "Subsubsection",
+ CellChangeTimes->{{3.697062085363174*^9, 3.697062090083747*^9}, 
+   3.697062930300584*^9, {3.701974309191289*^9, 3.701974314669613*^9}}],
+
+Cell[TextData[{
+ "Here\[CloseCurlyQuote]s our first set of tests. These should evaluate the \
+",
+ StyleBox["True", "Code"],
+ " if you\[CloseCurlyQuote]ve written your code above correctly!"
+}], "Text",
+ CellChangeTimes->{{3.70197437118088*^9, 3.70197438726694*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Traits", "[", "bc1", "]"}], "===", "0.1"}]], "Input",
+ CellChangeTimes->{{3.697057836189814*^9, 3.6970578396831303`*^9}, {
+   3.697057873267894*^9, 3.6970578744821568`*^9}, {3.701973695637179*^9, 
+   3.7019736963736763`*^9}, 3.7025219406708107`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Traits", "[", "bc2", "]"}], "===", "0.4"}]], "Input",
+ CellChangeTimes->{{3.6970581385796747`*^9, 3.6970581428086*^9}, {
+   3.701973700110165*^9, 3.70197370053336*^9}, 3.702521941627123*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Location", "[", "bc3", "]"}], "===", 
+  RowBox[{"{", 
+   RowBox[{"40", ",", "30"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.697058145731196*^9, 3.697058152631872*^9}, {
+   3.701973703437724*^9, 3.701973703853462*^9}, 3.702521942640122*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Location", "[", "bc4", "]"}], "===", 
+  RowBox[{"{", 
+   RowBox[{"40", ",", "20"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.6970581551564198`*^9, 3.69705816083149*^9}, {
+   3.7019737065574512`*^9, 3.701973707029462*^9}, 3.702521943966948*^9}]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Evolution", "Section",
+ CellChangeTimes->{{3.697058392088963*^9, 3.6970583946793756`*^9}}],
+
+Cell["\<\
+Now let\[CloseCurlyQuote]s write the functions that will evolve our creatures.\
+\>", "Text",
+ CellChangeTimes->{{3.69705839670289*^9, 3.697058409502901*^9}}],
+
+Cell["\<\
+The first function is Procreate. Procreate will evolve two blending creatures \
+by blending their traits and producing some number of offspring.  \
+\>", "Text",
+ CellChangeTimes->{{3.697058410926413*^9, 3.69705841328622*^9}, {
+   3.697058463964697*^9, 3.697058576896261*^9}, {3.6970589365411253`*^9, 
+   3.697059038578637*^9}, 3.69705909672821*^9}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Use the mean of the parent creatures\[CloseCurlyQuote] traits as the \
+offspring\[CloseCurlyQuote]s traits.\
+\>", "Item",
+ CellChangeTimes->{{3.697059044452044*^9, 3.6970590854431477`*^9}}],
+
+Cell["\<\
+Use a random number between xmin, ymin and xmax, ymax for the offspring's \
+location.\
+\>", "Item",
+ CellChangeTimes->{{3.697059044452044*^9, 3.6970590852064123`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Procreate", "[", 
+   RowBox[{"mother_BlendingCreature", ",", "father_BlendingCreature", ",", 
+    RowBox[{"OptionsPattern", "[", 
+     RowBox[{"{", 
+      RowBox[{"ChildCount", "\[Rule]", "1"}], "}"}], "]"}]}], "]"}], ":=", 
+  "Null", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Fill", " ", "me", " ", "in"}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.696480382820127*^9, 3.69648038355877*^9}, {
+   3.696480431365302*^9, 3.696480434894802*^9}, {3.6964805311533947`*^9, 
+   3.69648055572878*^9}, {3.696480607894912*^9, 3.696480609038704*^9}, {
+   3.696481225264845*^9, 3.696481226074621*^9}, {3.6964817355603857`*^9, 
+   3.696481749767474*^9}, {3.69648187445708*^9, 3.6964819789768476`*^9}, {
+   3.696485266954054*^9, 3.696485283065517*^9}, {3.6964887775000343`*^9, 
+   3.696488786842452*^9}, {3.6964888249483147`*^9, 3.6964888585200987`*^9}, {
+   3.6970473806700697`*^9, 3.697047418961844*^9}, {3.697058216314651*^9, 
+   3.6970582174268827`*^9}, {3.697059173701398*^9, 3.697059217674262*^9}, 
+   3.697059267980551*^9, 3.6970594539104013`*^9, {3.697059668747794*^9, 
+   3.697059671753937*^9}, 3.697062164349049*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Tests", "Subsection",
+ CellChangeTimes->{{3.701974482224745*^9, 3.701974482775489*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Verify that Procreate of bc1 and bc2 produces offspring with trait value 0.25\
+\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.697061984966942*^9, 3.6970620384531307`*^9}, 
+   3.6970629347888412`*^9, {3.702521955003128*^9, 3.702521956105712*^9}}],
+
+Cell[BoxData[
+ RowBox[{"MatchQ", "[", 
+  RowBox[{
+   RowBox[{"Procreate", "[", 
+    RowBox[{"bc1", ",", "bc2"}], "]"}], ",", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"BlendingCreature", "[", 
+      RowBox[{"0.25", ",", 
+       RowBox[{"{", 
+        RowBox[{"x_", ",", "y_"}], "}"}]}], "]"}], "}"}], "/;", 
+    RowBox[{
+     RowBox[{"xmin", "\[LessEqual]", "x", "\[LessEqual]", "xmax"}], "&&", 
+     RowBox[{"ymin", "\[LessEqual]", "y", "\[LessEqual]", "ymax"}]}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.697059230259359*^9, 3.697059247193615*^9}, {
+   3.6970593010399017`*^9, 3.6970593370773897`*^9}, 3.697059431758791*^9, {
+   3.697059529697315*^9, 3.697059568614009*^9}, {3.702521958805942*^9, 
+   3.7025219599083443`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Verify that Procreate with ChildCount \[Rule] 2 produces two offspring\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.697061984966942*^9, 3.697062067556243*^9}, 
+   3.697062938588951*^9}],
+
+Cell[BoxData[
+ RowBox[{"MatchQ", "[", 
+  RowBox[{
+   RowBox[{"Procreate", "[", 
+    RowBox[{"bc1", ",", "bc2", ",", 
+     RowBox[{"ChildCount", "\[Rule]", "2"}]}], "]"}], ",", 
+   RowBox[{
+    RowBox[{"offspring", ":", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"BlendingCreature", "[", 
+        RowBox[{"0.25", ",", "_"}], "]"}], ".."}], "}"}]}], "/;", 
+    RowBox[{
+     RowBox[{"Length", "[", "offspring", "]"}], "\[Equal]", "2"}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.69705935217303*^9, 3.697059424915639*^9}, {
+  3.702521960999501*^9, 3.7025219621695747`*^9}}]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Initialization", "Section",
+ CellChangeTimes->{{3.6970606457119904`*^9, 3.697060649783867*^9}}],
+
+Cell[TextData[{
+ "Create a function to generate a population of blending creatures, where ",
+ StyleBox["size", "Code"],
+ " is the number of creatures in the initial generation."
+}], "Text",
+ CellChangeTimes->{{3.697060454981244*^9, 3.6970605296029167`*^9}, {
+  3.6970628986065903`*^9, 3.6970628986618013`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"InitializeBlendingPopulation", "[", "size_Integer", "]"}], ":=", 
+  "Null", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Fill", " ", "me", " ", "in"}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{3.697060510967992*^9, 3.6970621663578033`*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Tests", "Subsection",
+ CellChangeTimes->{{3.7019746261468554`*^9, 3.7019746277699347`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Verify that InitializeBlendingPopulation returns 20 creatures\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.697061967351475*^9, 3.697061979527329*^9}, 
+   3.6970629529163017`*^9}],
+
+Cell[BoxData[
+ RowBox[{"MatchQ", "[", 
+  RowBox[{
+   RowBox[{"InitializeBlendingPopulation", "[", "20", "]"}], ",", 
+   RowBox[{
+    RowBox[{"creatures", ":", 
+     RowBox[{"{", 
+      RowBox[{"_BlendingCreature", ".."}], "}"}]}], "/;", 
+    RowBox[{
+     RowBox[{"Length", "[", "creatures", "]"}], "\[Equal]", "20"}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.697060544715961*^9, 3.69706059316936*^9}}]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Simulation", "Section",
+ CellChangeTimes->{{3.69706067488667*^9, 3.6970606769093*^9}}],
+
+Cell[TextData[{
+ "Now we need a function that will evolve one generation into the next \
+generation. The evolve function must be stable, meaning that the number of \
+creatures in the next generation must be equal to the number in the previous \
+generation. Code the ",
+ StyleBox["Evolve", "Code"],
+ " function to pick pairs of parent creatures, and have them produce pairs of \
+offspring. Then return the flattened list of offspring as the next generation."
+}], "Text",
+ CellChangeTimes->{{3.6970606848211412`*^9, 3.697060701140963*^9}, {
+   3.697060735420905*^9, 3.697060780834126*^9}, {3.697060817889277*^9, 
+   3.6970609032542152`*^9}, {3.697061201482946*^9, 3.697061201523489*^9}, 
+   3.697062075259774*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Evolve", "[", 
+   RowBox[{"population", ":", 
+    RowBox[{"{", "__BlendingCreature", "}"}]}], "]"}], ":=", "Null", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Fill", " ", "me", " ", "in"}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.697060725748899*^9, 3.69706073125646*^9}, 
+   3.6970621682366247`*^9}],
+
+Cell[TextData[{
+ "Evolve generates the next generation from the current generation. We need a \
+function to simulate all the generations in our simulation. We will call this \
+function ",
+ StyleBox["BlendingSimulate", "Code"],
+ ". We\[CloseCurlyQuote]ve written some starter code for you. ",
+ StyleBox["BlockRandom", "Code"],
+ " is a function that localizes pseudorandom number generation. ",
+ StyleBox["SeedRandom", "Code"],
+ " is a function that sets the current random number seed. Long story short, \
+these functions allow our simulation to be ",
+ StyleBox["repeatable",
+  FontSlant->"Italic"],
+ " for the same seed values."
+}], "Text",
+ CellChangeTimes->{{3.6970611836682043`*^9, 3.697061185277289*^9}, {
+  3.6970612165781612`*^9, 3.6970613133111763`*^9}, {3.6970613467586203`*^9, 
+  3.6970613689008093`*^9}, {3.697062196377059*^9, 3.697062196650983*^9}, {
+  3.6970622371099586`*^9, 3.697062237590279*^9}, {3.701973445871869*^9, 
+  3.7019734539589443`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"BlendingSimulate", "[", 
+   RowBox[{
+   "seed_Integer", ",", "numberOfGenerations_Integer", ",", 
+    "initialPopulationSize_Integer"}], "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"BlockRandom", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"SeedRandom", "[", "seed", "]"}], ";", "\[IndentingNewLine]", 
+    "Null"}], 
+   RowBox[{"(*", " ", 
+    RowBox[{"Fill", " ", "me", " ", "in"}], " ", "*)"}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.6970613213758497`*^9, 3.6970613385667973`*^9}, {
+   3.6970621104375057`*^9, 3.6970621242764387`*^9}, 3.697062172171104*^9}],
+
+Cell["\<\
+Extra credit: how would you modify BlendingSimulate so that it doesn\
+\[CloseCurlyQuote]t recompute the simulation every time the function is \
+called with the same arguments?\
+\>", "Text",
+ CellChangeTimes->{{3.6970622440294724`*^9, 3.697062270197158*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Tests", "Subsection",
+ CellChangeTimes->{{3.701974694216819*^9, 3.701974694807371*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Verify that Evolving a population produces a new population of the same size\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.697061643818967*^9, 3.697061670618466*^9}, 
+   3.6970629572922077`*^9, {3.701974674993908*^9, 3.7019746753041267`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"initPop", "=", 
+     RowBox[{"InitializeBlendingPopulation", "[", "20", "]"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"With", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"nextGen", "=", 
+       RowBox[{"Evolve", "[", "initPop", "]"}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"And", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"MatchQ", "[", 
+        RowBox[{"nextGen", ",", 
+         RowBox[{
+          RowBox[{"creatures", ":", 
+           RowBox[{"{", 
+            RowBox[{"_BlendingCreature", ".."}], "}"}]}], "/;", 
+          RowBox[{
+           RowBox[{"Length", "[", "creatures", "]"}], "\[Equal]", "20"}]}]}], 
+        "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"nextGen", "=!=", "initPop"}]}], "\[IndentingNewLine]", 
+      "]"}]}], "\[IndentingNewLine]", "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.69706167636066*^9, 3.697061762071661*^9}, {
+  3.697061824559229*^9, 3.697061955016506*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Verify that the simulation is repeatable for the same arguments\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.697061595844596*^9, 3.6970616149326553`*^9}, 
+   3.697062962547941*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"BlendingSimulate", "[", 
+   RowBox[{"0", ",", "20", ",", "200"}], "]"}], "===", 
+  RowBox[{"BlendingSimulate", "[", 
+   RowBox[{"0", ",", "20", ",", "200"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6970615078330307`*^9, 3.697061511032398*^9}, {
+  3.697061563904456*^9, 3.697061587949218*^9}, {3.697063544825716*^9, 
+  3.697063546247661*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Verify that the simulation produces different results for different seeds\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.697061595844596*^9, 3.697061631435689*^9}, 
+   3.697062966507677*^9, 3.70252467366331*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"BlendingSimulate", "[", 
+   RowBox[{"0", ",", "20", ",", "200"}], "]"}], "=!=", 
+  RowBox[{"BlendingSimulate", "[", 
+   RowBox[{"1", ",", "20", ",", "200"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6970615078330307`*^9, 3.697061511032398*^9}, {
+   3.697061563904456*^9, 3.697061587949218*^9}, {3.6970616350593653`*^9, 
+   3.697061637019559*^9}, 3.6970635496959*^9}]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Rendering", "Section",
+ CellChangeTimes->{{3.697059732497171*^9, 3.697059735031404*^9}}],
+
+Cell[TextData[{
+ "The ",
+ StyleBox["ColorBinarize", "Code"],
+ " function is provided to help you render readable text on your creatures."
+}], "Text",
+ CellChangeTimes->{{3.697059793526235*^9, 3.697059812084386*^9}, {
+  3.697060213406019*^9, 3.6970602157502604`*^9}, {3.697062892462349*^9, 
+  3.697062892918498*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ColorBinarize", "[", "color_RGBColor", "]"}], ":=", 
+  RowBox[{
+   RowBox[{"Round", "[", 
+    RowBox[{"Mean", "[", 
+     RowBox[{"List", "@@", "color"}], "]"}], "]"}], "/.", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"0", "\[Rule]", "White"}], ",", 
+     RowBox[{"1", "\[Rule]", "Black"}]}], "}"}]}]}]], "Input",
+ CellChangeTimes->{{3.696487415373748*^9, 3.6964874375484858`*^9}, {
+  3.696487585493565*^9, 3.696487594157699*^9}}],
+
+Cell[TextData[{
+ StyleBox["HeredityColor", "Code"],
+ " returns the color to use to render the creature. If the trait is 0, render \
+the creature as black. If the trait is 1, render the creature as white. For \
+all other values between 0 and 1, render the creature using a grayscale \
+gradient."
+}], "Text",
+ CellChangeTimes->{{3.6970598820992937`*^9, 3.697059943816104*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"HeredityColor", "[", "creature_BlendingCreature", "]"}], ":=", 
+  "Null", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Fill", " ", "me", " ", "in"}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.69705984354031*^9, 3.697059878874744*^9}, 
+   3.69706217507614*^9}],
+
+Cell["\<\
+CreatureName returns the string that will go inside each creature\
+\[CloseCurlyQuote]s disk. It shouldn\[CloseCurlyQuote]t be long, so for our \
+blending trait, round it to the nearest tenth.\
+\>", "Text",
+ CellChangeTimes->{{3.697060955636661*^9, 3.6970609838029013`*^9}, {
+  3.6970623026855307`*^9, 3.697062321546774*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"CreatureName", "[", "creature_BlendingCreature", "]"}], ":=", 
+  "Null", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Fill", " ", "me", " ", "in"}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.697062322827454*^9, 3.697062335151455*^9}}],
+
+Cell["\<\
+Our first render function will return the drawing commands to render the \
+creature as a disk, with background color HeredityColor, and its name in the \
+center.\
+\>", "Text",
+ CellChangeTimes->{{3.697062381864579*^9, 3.69706244839845*^9}, {
+  3.697062583849414*^9, 3.697062636920394*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Render", "[", "creature_BlendingCreature", "]"}], ":=", "Null", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Fill", " ", "me", " ", "in"}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.696489032555457*^9, 3.69648903389811*^9}, {
+  3.696489145553155*^9, 3.6964891819890013`*^9}, {3.6970475570744257`*^9, 
+  3.697047589225329*^9}, {3.6970477222228727`*^9, 3.697047724983316*^9}, {
+  3.6970623447308693`*^9, 3.697062369534542*^9}}],
+
+Cell["\<\
+Our second render function will return the drawing commands to render a \
+population of creatures.\
+\>", "Text",
+ CellChangeTimes->{{3.6970624622376013`*^9, 3.697062470917473*^9}, 
+   3.69706250148457*^9, {3.697062534531144*^9, 3.697062554898993*^9}, {
+   3.697062872055163*^9, 3.6970628817591553`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Render", "[", 
+   RowBox[{"population", ":", 
+    RowBox[{"{", "___BlendingCreature", "}"}]}], "]"}], ":=", "Null", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Fill", " ", "me", " ", "in"}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{
+  3.6970625253079367`*^9, {3.6970625578511877`*^9, 3.6970625623518057`*^9}, {
+   3.70197949211193*^9, 3.7019794926387377`*^9}}],
+
+Cell["\<\
+Our last render function produces the histogram of the various trait values \
+for a given population.\
+\>", "Text",
+ CellChangeTimes->{{3.697064059470538*^9, 3.6970641283148603`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"TraitHistogram", "[", 
+   RowBox[{"population", ":", 
+    RowBox[{"{", "___BlendingCreature", "}"}]}], "]"}], ":=", "Null", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Fill", " ", "me", " ", "in"}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.6970640981853313`*^9, 3.6970641013798857`*^9}, {
+  3.697064139066393*^9, 3.697064163465513*^9}, {3.701979494414441*^9, 
+  3.7019794948139553`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Tests", "Subsection",
+ CellChangeTimes->{{3.7019745477341843`*^9, 3.7019745481890173`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Verify that HeredityColor of bc1 is GrayLevel of 0.1", "Subsubsection",
+ CellChangeTimes->{{3.697061984966942*^9, 3.697062010429854*^9}, 
+   3.697062940660616*^9, 3.702522201278598*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ColorConvert", "[", 
+   RowBox[{
+    RowBox[{"HeredityColor", "[", "bc1", "]"}], ",", "\"\<RGB\>\""}], "]"}], "===", 
+  RowBox[{"RGBColor", "[", 
+   RowBox[{"0.1", ",", "0.1", ",", "0.1"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.697059961487466*^9, 3.6970600463983727`*^9}, {
+   3.697060091387376*^9, 3.6970601493851852`*^9}, {3.701973717029397*^9, 
+   3.7019737177487097`*^9}, 3.702522202459016*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Verify that HeredityColor of bc2 is GrayLevel of 0.4", "Subsubsection",
+ CellChangeTimes->{{3.697061984966942*^9, 3.697061997006812*^9}, 
+   3.6970629489803534`*^9, 3.702522203369958*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ColorConvert", "[", 
+   RowBox[{
+    RowBox[{"HeredityColor", "[", "bc2", "]"}], ",", "\"\<RGB\>\""}], "]"}], "===", 
+  RowBox[{"RGBColor", "[", 
+   RowBox[{"0.4", ",", "0.4", ",", "0.4"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.697059961487466*^9, 3.6970600463983727`*^9}, {
+   3.697060091387376*^9, 3.6970601801516933`*^9}, {3.701973723869001*^9, 
+   3.7019737243567467`*^9}, 3.7025222043265247`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Verify that rendering a creature returns a list", "Subsubsection",
+ CellChangeTimes->{{3.6970629700991983`*^9, 3.6970629906507673`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"MatchQ", "[", 
+  RowBox[{
+   RowBox[{"Render", "[", "bc1", "]"}], ",", "_List"}], "]"}]], "Input",
+ CellChangeTimes->{{3.697062647065681*^9, 3.697062647271583*^9}, {
+   3.69706359212691*^9, 3.697063602981882*^9}, 3.70252220558643*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Verify that rendering a population returns a list", "Subsubsection",
+ CellChangeTimes->{{3.6970629700991983`*^9, 3.6970629906507673`*^9}, {
+  3.6970639272837267`*^9, 3.697063928202074*^9}}],
+
+Cell[BoxData[
+ RowBox[{"MatchQ", "[", 
+  RowBox[{
+   RowBox[{"Render", "[", 
+    RowBox[{"InitializeBlendingPopulation", "[", "20", "]"}], "]"}], ",", 
+   "_List"}], "]"}]], "Input",
+ CellChangeTimes->{{3.697063935526126*^9, 3.697063951193268*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Verify that we can render a column of graphics", "Subsubsection",
+ CellChangeTimes->{{3.6970642303844213`*^9, 3.697064253622072*^9}}],
+
+Cell["\<\
+This is not an automated test. Eyeball your render and make sure it looks \
+like our render:\
+\>", "Text",
+ CellChangeTimes->{{3.7019747965968637`*^9, 3.7019748321942873`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Column", "[", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"TraitHistogram", "[", 
+      RowBox[{
+       RowBox[{"BlendingSimulate", "[", 
+        RowBox[{"0", ",", "20", ",", "200"}], "]"}], "[", 
+       RowBox[{"[", "2", "]"}], "]"}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Graphics", "[", 
+      RowBox[{
+       RowBox[{"Render", "[", 
+        RowBox[{
+         RowBox[{"BlendingSimulate", "[", 
+          RowBox[{"0", ",", "20", ",", "200"}], "]"}], "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "]"}], ",", 
+       RowBox[{"ImageSize", "\[Rule]", "Large"}], ",", 
+       RowBox[{"PlotRange", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"xmin", ",", "xmax"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"ymin", ",", "ymax"}], "}"}]}], "}"}]}], ",", 
+       RowBox[{"ImagePadding", "\[Rule]", "20"}]}], "]"}]}], 
+    "\[IndentingNewLine]", "}"}], ",", " ", "Center"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6970642591756763`*^9, 3.697064341164143*^9}}],
+
+Cell["Which should look something like:", "Text",
+ CellChangeTimes->{{3.697064293420527*^9, 3.697064299340609*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     GraphicsBox[{
+       {RGBColor[0.987148, 0.8073604000000001, 0.49470040000000004`], 
+        EdgeForm[{Opacity[0.609], Thickness[Small]}], {}, 
+        {RGBColor[0.987148, 0.8073604000000001, 0.49470040000000004`], 
+         EdgeForm[{Opacity[0.609], Thickness[Small]}], 
+         TagBox[
+          TooltipBox[
+           TagBox[
+            {RGBColor[0., 0., 0.], 
+             DynamicBox[{
+               FEPrivate`If[
+                CurrentValue["MouseOver"], 
+                EdgeForm[{
+                  GrayLevel[0.5], 
+                  AbsoluteThickness[1.5], 
+                  Opacity[0.66]}], {}, {}], 
+               RectangleBox[{0., 0}, {0.1, 62}, "RoundingRadius" -> 0]},
+              
+              ImageSizeCache->{{21.388660928742993`, 
+               39.97348333212024}, {-30.758020922796312`, 
+               49.57878718771335}}]},
+            StatusArea[#, 62]& ,
+            TagBoxNote->"62"],
+           StyleBox["62", {}, StripOnInput -> False]],
+          Annotation[#, 
+           Style[62, {}], "Tooltip"]& ], 
+         TagBox[
+          TooltipBox[
+           TagBox[
+            {RGBColor[0.5, 0.5, 0.5], 
+             DynamicBox[{
+               FEPrivate`If[
+                CurrentValue["MouseOver"], 
+                EdgeForm[{
+                  GrayLevel[0.5], 
+                  AbsoluteThickness[1.5], 
+                  Opacity[0.66]}], {}, {}], 
+               
+               RectangleBox[{0.5, 0}, {0.6000000000000001, 92}, 
+                "RoundingRadius" -> 0]},
+              
+              ImageSizeCache->{{111.1877729456292, 
+               129.77259534900645`}, {-69.32825065368809, 
+               49.578787187713345`}}]},
+            StatusArea[#, 92]& ,
+            TagBoxNote->"92"],
+           StyleBox["92", {}, StripOnInput -> False]],
+          Annotation[#, 
+           Style[92, {}], "Tooltip"]& ], 
+         TagBox[
+          TooltipBox[
+           TagBox[
+            {RGBColor[1., 1., 1.], 
+             DynamicBox[{
+               FEPrivate`If[
+                CurrentValue["MouseOver"], 
+                EdgeForm[{
+                  GrayLevel[0.5], 
+                  AbsoluteThickness[1.5], 
+                  Opacity[0.66]}], {}, {}], 
+               RectangleBox[{1., 0}, {1.1, 46}, "RoundingRadius" -> 0]},
+              
+              ImageSizeCache->{{200.98688496251543`, 
+               219.57170736589268`}, {-10.187231732987364`, 
+               49.57878718771335}}]},
+            StatusArea[#, 46]& ,
+            TagBoxNote->"46"],
+           StyleBox["46", {}, StripOnInput -> False]],
+          Annotation[#, 
+           Style[46, {}], "Tooltip"]& ]}, {}, {}}, {{}, {}, {}}},
+      AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+      Axes->{True, True},
+      AxesLabel->{None, None},
+      AxesOrigin->{-0.022000000000000002`, 0},
+      FrameLabel->{{None, None}, {None, None}},
+      FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+      GridLines->{None, None},
+      GridLinesStyle->Directive[
+        GrayLevel[0.5, 0.4]],
+      PlotRange->{{0., 1.1}, {All, All}},
+      PlotRangePadding->{{
+         Scaled[0.02], 
+         Scaled[0.02]}, {
+         Scaled[0.02], 
+         Scaled[0.05]}},
+      Ticks->{Automatic, Automatic}]},
+    {
+     GraphicsBox[{
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{13, 9}], 
+        {GrayLevel[1], InsetBox["0.`", {13, 9}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{27, 33}], 
+        {GrayLevel[1], InsetBox["0.`", {27, 33}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{38, 12}], 
+        {GrayLevel[1], InsetBox["0.`", {38, 12}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{21, 16}], 
+        {GrayLevel[1], InsetBox["0.`", {21, 16}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{5, 31}], 
+        {GrayLevel[1], InsetBox["0.`", {5, 31}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{31, 4}], 
+        {GrayLevel[1], InsetBox["0.`", {31, 4}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{20, 28}], 
+        {GrayLevel[1], InsetBox["0.`", {20, 28}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{24, 23}], 
+        {GrayLevel[1], InsetBox["0.`", {24, 23}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{33, 40}], 
+        {GrayLevel[1], InsetBox["0.`", {33, 40}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{7, 8}], 
+        {GrayLevel[1], InsetBox["0.`", {7, 8}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{30, 50}], 
+        {GrayLevel[1], InsetBox["0.`", {30, 50}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{32, 19}], 
+        {GrayLevel[1], InsetBox["0.`", {32, 19}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{34, 37}], 
+        {GrayLevel[1], InsetBox["0.5`", {34, 37}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{37, 18}], 
+        {GrayLevel[1], InsetBox["0.5`", {37, 18}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{18, 26}], 
+        {GrayLevel[0], InsetBox["1.`", {18, 26}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{28, 41}], 
+        {GrayLevel[0], InsetBox["1.`", {28, 41}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{33, 28}], 
+        {GrayLevel[0], InsetBox["1.`", {33, 28}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{23, 50}], 
+        {GrayLevel[0], InsetBox["1.`", {23, 50}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{42, 18}], 
+        {GrayLevel[1], InsetBox["0.5`", {42, 18}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{36, 4}], 
+        {GrayLevel[1], InsetBox["0.5`", {36, 4}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{11, 50}], 
+        {GrayLevel[0], InsetBox["1.`", {11, 50}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{5, 45}], 
+        {GrayLevel[0], InsetBox["1.`", {5, 45}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{7, 39}], 
+        {GrayLevel[1], InsetBox["0.5`", {7, 39}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{15, 23}], 
+        {GrayLevel[1], InsetBox["0.5`", {15, 23}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{7, 45}], 
+        {GrayLevel[1], InsetBox["0.5`", {7, 45}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{28, 2}], 
+        {GrayLevel[1], InsetBox["0.5`", {28, 2}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{43, 43}], 
+        {GrayLevel[1], InsetBox["0.`", {43, 43}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{16, 8}], 
+        {GrayLevel[1], InsetBox["0.`", {16, 8}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{49, 10}], 
+        {GrayLevel[0], InsetBox["1.`", {49, 10}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{4, 17}], 
+        {GrayLevel[0], InsetBox["1.`", {4, 17}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{9, 40}], 
+        {GrayLevel[1], InsetBox["0.5`", {9, 40}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{3, 18}], 
+        {GrayLevel[1], InsetBox["0.5`", {3, 18}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{4, 35}], 
+        {GrayLevel[1], InsetBox["0.`", {4, 35}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{2, 45}], 
+        {GrayLevel[1], InsetBox["0.`", {2, 45}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{9, 42}], 
+        {GrayLevel[0], InsetBox["1.`", {9, 42}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{14, 50}], 
+        {GrayLevel[0], InsetBox["1.`", {14, 50}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{27, 29}], 
+        {GrayLevel[1], InsetBox["0.5`", {27, 29}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{0, 45}], 
+        {GrayLevel[1], InsetBox["0.5`", {0, 45}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{14, 24}], 
+        {GrayLevel[0], InsetBox["1.`", {14, 24}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{28, 44}], 
+        {GrayLevel[0], InsetBox["1.`", {28, 44}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{7, 8}], 
+        {GrayLevel[1], InsetBox["0.5`", {7, 8}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{29, 18}], 
+        {GrayLevel[1], InsetBox["0.5`", {29, 18}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{29, 37}], 
+        {GrayLevel[1], InsetBox["0.5`", {29, 37}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{17, 12}], 
+        {GrayLevel[1], InsetBox["0.5`", {17, 12}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{29, 50}], 
+        {GrayLevel[1], InsetBox["0.`", {29, 50}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{7, 0}], 
+        {GrayLevel[1], InsetBox["0.`", {7, 0}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{38, 19}], 
+        {GrayLevel[1], InsetBox["0.5`", {38, 19}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{3, 12}], 
+        {GrayLevel[1], InsetBox["0.5`", {3, 12}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{41, 26}], 
+        {GrayLevel[1], InsetBox["0.`", {41, 26}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{2, 11}], 
+        {GrayLevel[1], InsetBox["0.`", {2, 11}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{40, 50}], 
+        {GrayLevel[1], InsetBox["0.`", {40, 50}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{3, 21}], 
+        {GrayLevel[1], InsetBox["0.`", {3, 21}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{15, 5}], 
+        {GrayLevel[1], InsetBox["0.5`", {15, 5}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{0, 41}], 
+        {GrayLevel[1], InsetBox["0.5`", {0, 41}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{40, 4}], 
+        {GrayLevel[1], InsetBox["0.`", {40, 4}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{19, 45}], 
+        {GrayLevel[1], InsetBox["0.`", {19, 45}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{4, 31}], 
+        {GrayLevel[1], InsetBox["0.5`", {4, 31}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{0, 26}], 
+        {GrayLevel[1], InsetBox["0.5`", {0, 26}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{19, 22}], 
+        {GrayLevel[1], InsetBox["0.5`", {19, 22}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{31, 30}], 
+        {GrayLevel[1], InsetBox["0.5`", {31, 30}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{5, 24}], 
+        {GrayLevel[1], InsetBox["0.5`", {5, 24}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{2, 22}], 
+        {GrayLevel[1], InsetBox["0.5`", {2, 22}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{8, 14}], 
+        {GrayLevel[0], InsetBox["1.`", {8, 14}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{20, 31}], 
+        {GrayLevel[0], InsetBox["1.`", {20, 31}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{29, 28}], 
+        {GrayLevel[1], InsetBox["0.5`", {29, 28}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{44, 50}], 
+        {GrayLevel[1], InsetBox["0.5`", {44, 50}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{10, 50}], 
+        {GrayLevel[0], InsetBox["1.`", {10, 50}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{21, 36}], 
+        {GrayLevel[0], InsetBox["1.`", {21, 36}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{32, 20}], 
+        {GrayLevel[0], InsetBox["1.`", {32, 20}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{27, 49}], 
+        {GrayLevel[0], InsetBox["1.`", {27, 49}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{1, 17}], 
+        {GrayLevel[1], InsetBox["0.5`", {1, 17}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{3, 20}], 
+        {GrayLevel[1], InsetBox["0.5`", {3, 20}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{5, 37}], 
+        {GrayLevel[1], InsetBox["0.5`", {5, 37}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{26, 43}], 
+        {GrayLevel[1], InsetBox["0.5`", {26, 43}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{47, 1}], 
+        {GrayLevel[1], InsetBox["0.5`", {47, 1}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{0, 4}], 
+        {GrayLevel[1], InsetBox["0.5`", {0, 4}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{50, 27}], 
+        {GrayLevel[1], InsetBox["0.`", {50, 27}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{8, 22}], 
+        {GrayLevel[1], InsetBox["0.`", {8, 22}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{19, 4}], 
+        {GrayLevel[1], InsetBox["0.5`", {19, 4}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{25, 31}], 
+        {GrayLevel[1], InsetBox["0.5`", {25, 31}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{29, 36}], 
+        {GrayLevel[1], InsetBox["0.`", {29, 36}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{38, 17}], 
+        {GrayLevel[1], InsetBox["0.`", {38, 17}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{8, 33}], 
+        {GrayLevel[0], InsetBox["1.`", {8, 33}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{13, 23}], 
+        {GrayLevel[0], InsetBox["1.`", {13, 23}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{13, 16}], 
+        {GrayLevel[1], InsetBox["0.`", {13, 16}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{22, 3}], 
+        {GrayLevel[1], InsetBox["0.`", {22, 3}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{12, 30}], 
+        {GrayLevel[1], InsetBox["0.`", {12, 30}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{41, 41}], 
+        {GrayLevel[1], InsetBox["0.`", {41, 41}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{20, 5}], 
+        {GrayLevel[1], InsetBox["0.5`", {20, 5}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{50, 5}], 
+        {GrayLevel[1], InsetBox["0.5`", {50, 5}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{44, 36}], 
+        {GrayLevel[1], InsetBox["0.`", {44, 36}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{15, 35}], 
+        {GrayLevel[1], InsetBox["0.`", {15, 35}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{5, 30}], 
+        {GrayLevel[1], InsetBox["0.5`", {5, 30}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{11, 40}], 
+        {GrayLevel[1], InsetBox["0.5`", {11, 40}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{34, 32}], 
+        {GrayLevel[0], InsetBox["1.`", {34, 32}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{33, 8}], 
+        {GrayLevel[0], InsetBox["1.`", {33, 8}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{10, 26}], 
+        {GrayLevel[1], InsetBox["0.5`", {10, 26}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{12, 45}], 
+        {GrayLevel[1], InsetBox["0.5`", {12, 45}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{21, 36}], 
+        {GrayLevel[1], InsetBox["0.`", {21, 36}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{23, 9}], 
+        {GrayLevel[1], InsetBox["0.`", {23, 9}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{3, 47}], 
+        {GrayLevel[1], InsetBox["0.`", {3, 47}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{44, 23}], 
+        {GrayLevel[1], InsetBox["0.`", {44, 23}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{32, 27}], 
+        {GrayLevel[1], InsetBox["0.5`", {32, 27}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{27, 15}], 
+        {GrayLevel[1], InsetBox["0.5`", {27, 15}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{38, 22}], 
+        {GrayLevel[1], InsetBox["0.`", {38, 22}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{14, 39}], 
+        {GrayLevel[1], InsetBox["0.`", {14, 39}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{38, 35}], 
+        {GrayLevel[1], InsetBox["0.`", {38, 35}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{25, 9}], 
+        {GrayLevel[1], InsetBox["0.`", {25, 9}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{43, 13}], 
+        {GrayLevel[1], InsetBox["0.5`", {43, 13}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{37, 19}], 
+        {GrayLevel[1], InsetBox["0.5`", {37, 19}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{13, 40}], 
+        {GrayLevel[1], InsetBox["0.`", {13, 40}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{30, 49}], 
+        {GrayLevel[1], InsetBox["0.`", {30, 49}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{48, 8}], 
+        {GrayLevel[1], InsetBox["0.`", {48, 8}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{4, 50}], 
+        {GrayLevel[1], InsetBox["0.`", {4, 50}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{12, 17}], 
+        {GrayLevel[1], InsetBox["0.5`", {12, 17}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{21, 48}], 
+        {GrayLevel[1], InsetBox["0.5`", {21, 48}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{5, 17}], 
+        {GrayLevel[1], InsetBox["0.`", {5, 17}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{40, 4}], 
+        {GrayLevel[1], InsetBox["0.`", {40, 4}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{37, 6}], 
+        {GrayLevel[1], InsetBox["0.`", {37, 6}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{31, 46}], 
+        {GrayLevel[1], InsetBox["0.`", {31, 46}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{29, 47}], 
+        {GrayLevel[1], InsetBox["0.5`", {29, 47}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{31, 36}], 
+        {GrayLevel[1], InsetBox["0.5`", {31, 36}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{12, 8}], 
+        {GrayLevel[1], InsetBox["0.`", {12, 8}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{9, 29}], 
+        {GrayLevel[1], InsetBox["0.`", {9, 29}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{28, 45}], 
+        {GrayLevel[1], InsetBox["0.5`", {28, 45}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{48, 3}], 
+        {GrayLevel[1], InsetBox["0.5`", {48, 3}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{24, 25}], 
+        {GrayLevel[1], InsetBox["0.`", {24, 25}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{19, 50}], 
+        {GrayLevel[1], InsetBox["0.`", {19, 50}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{23, 5}], 
+        {GrayLevel[1], InsetBox["0.5`", {23, 5}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{33, 15}], 
+        {GrayLevel[1], InsetBox["0.5`", {33, 15}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{22, 29}], 
+        {GrayLevel[0], InsetBox["1.`", {22, 29}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{31, 16}], 
+        {GrayLevel[0], InsetBox["1.`", {31, 16}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{6, 1}], 
+        {GrayLevel[1], InsetBox["0.`", {6, 1}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{17, 10}], 
+        {GrayLevel[1], InsetBox["0.`", {17, 10}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{17, 42}], 
+        {GrayLevel[1], InsetBox["0.5`", {17, 42}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{17, 2}], 
+        {GrayLevel[1], InsetBox["0.5`", {17, 2}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{31, 13}], 
+        {GrayLevel[1], InsetBox["0.5`", {31, 13}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{19, 12}], 
+        {GrayLevel[1], InsetBox["0.5`", {19, 12}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{23, 29}], 
+        {GrayLevel[1], InsetBox["0.5`", {23, 29}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{10, 4}], 
+        {GrayLevel[1], InsetBox["0.5`", {10, 4}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{4, 41}], 
+        {GrayLevel[1], InsetBox["0.`", {4, 41}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{42, 29}], 
+        {GrayLevel[1], InsetBox["0.`", {42, 29}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{37, 25}], 
+        {GrayLevel[0], InsetBox["1.`", {37, 25}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{36, 16}], 
+        {GrayLevel[0], InsetBox["1.`", {36, 16}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{30, 27}], 
+        {GrayLevel[1], InsetBox["0.`", {30, 27}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{46, 22}], 
+        {GrayLevel[1], InsetBox["0.`", {46, 22}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{38, 45}], 
+        {GrayLevel[1], InsetBox["0.5`", {38, 45}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{45, 0}], 
+        {GrayLevel[1], InsetBox["0.5`", {45, 0}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{47, 15}], 
+        {GrayLevel[0], InsetBox["1.`", {47, 15}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{5, 23}], 
+        {GrayLevel[0], InsetBox["1.`", {5, 23}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{10, 33}], 
+        {GrayLevel[0], InsetBox["1.`", {10, 33}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{46, 13}], 
+        {GrayLevel[0], InsetBox["1.`", {46, 13}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{40, 13}], 
+        {GrayLevel[1], InsetBox["0.5`", {40, 13}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{0, 29}], 
+        {GrayLevel[1], InsetBox["0.5`", {0, 29}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{42, 44}], 
+        {GrayLevel[0], InsetBox["1.`", {42, 44}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{9, 27}], 
+        {GrayLevel[0], InsetBox["1.`", {9, 27}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{38, 9}], 
+        {GrayLevel[1], InsetBox["0.5`", {38, 9}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{46, 34}], 
+        {GrayLevel[1], InsetBox["0.5`", {46, 34}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{18, 35}], 
+        {GrayLevel[1], InsetBox["0.5`", {18, 35}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{45, 1}], 
+        {GrayLevel[1], InsetBox["0.5`", {45, 1}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{49, 16}], 
+        {GrayLevel[1], InsetBox["0.5`", {49, 16}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{43, 41}], 
+        {GrayLevel[1], InsetBox["0.5`", {43, 41}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{12, 47}], 
+        {GrayLevel[1], InsetBox["0.5`", {12, 47}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{33, 18}], 
+        {GrayLevel[1], InsetBox["0.5`", {33, 18}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{26, 13}], 
+        {GrayLevel[0], InsetBox["1.`", {26, 13}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{16, 33}], 
+        {GrayLevel[0], InsetBox["1.`", {16, 33}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{50, 6}], 
+        {GrayLevel[1], InsetBox["0.5`", {50, 6}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{48, 22}], 
+        {GrayLevel[1], InsetBox["0.5`", {48, 22}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{37, 34}], 
+        {GrayLevel[1], InsetBox["0.5`", {37, 34}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{10, 39}], 
+        {GrayLevel[1], InsetBox["0.5`", {10, 39}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{1, 22}], 
+        {GrayLevel[1], InsetBox["0.5`", {1, 22}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{14, 38}], 
+        {GrayLevel[1], InsetBox["0.5`", {14, 38}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{22, 23}], 
+        {GrayLevel[0], InsetBox["1.`", {22, 23}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{12, 46}], 
+        {GrayLevel[0], InsetBox["1.`", {12, 46}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{16, 12}], 
+        {GrayLevel[0], InsetBox["1.`", {16, 12}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{28, 44}], 
+        {GrayLevel[0], InsetBox["1.`", {28, 44}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{42, 19}], 
+        {GrayLevel[1], InsetBox["0.5`", {42, 19}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{7, 32}], 
+        {GrayLevel[1], InsetBox["0.5`", {7, 32}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{0, 32}], 
+        {GrayLevel[0], InsetBox["1.`", {0, 32}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{27, 5}], 
+        {GrayLevel[0], InsetBox["1.`", {27, 5}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{1, 17}], 
+        {GrayLevel[1], InsetBox["0.5`", {1, 17}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{25, 36}], 
+        {GrayLevel[1], InsetBox["0.5`", {25, 36}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{14, 3}], 
+        {GrayLevel[0], InsetBox["1.`", {14, 3}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{26, 11}], 
+        {GrayLevel[0], InsetBox["1.`", {26, 11}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{17, 2}], 
+        {GrayLevel[0], InsetBox["1.`", {17, 2}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{13, 16}], 
+        {GrayLevel[0], InsetBox["1.`", {13, 16}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{25, 43}], 
+        {GrayLevel[0], InsetBox["1.`", {25, 43}]}}, 
+       {RGBColor[1., 1., 1.], EdgeForm[GrayLevel[0]], DiskBox[{8, 35}], 
+        {GrayLevel[0], InsetBox["1.`", {8, 35}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{23, 30}], 
+        {GrayLevel[1], InsetBox["0.5`", {23, 30}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{23, 16}], 
+        {GrayLevel[1], InsetBox["0.5`", {23, 16}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{22, 7}], 
+        {GrayLevel[1], InsetBox["0.5`", {22, 7}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{49, 49}], 
+        {GrayLevel[1], InsetBox["0.5`", {49, 49}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{46, 39}], 
+        {GrayLevel[1], InsetBox["0.5`", {46, 39}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{32, 27}], 
+        {GrayLevel[1], InsetBox["0.5`", {32, 27}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{36, 46}], 
+        {GrayLevel[1], InsetBox["0.5`", {36, 46}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{27, 34}], 
+        {GrayLevel[1], InsetBox["0.5`", {27, 34}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{11, 4}], 
+        {GrayLevel[1], InsetBox["0.`", {11, 4}]}}, 
+       {RGBColor[0., 0., 0.], EdgeForm[GrayLevel[0]], DiskBox[{20, 30}], 
+        {GrayLevel[1], InsetBox["0.`", {20, 30}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{0, 20}], 
+        {GrayLevel[1], InsetBox["0.5`", {0, 20}]}}, 
+       {RGBColor[0.5, 0.5, 0.5], EdgeForm[GrayLevel[0]], DiskBox[{45, 6}], 
+        {GrayLevel[1], InsetBox["0.5`", {45, 6}]}}},
+      ImagePadding->20,
+      ImageSize->Large,
+      PlotRange->{{0, 50}, {0, 50}}]}
+   },
+   DefaultBaseStyle->"Column",
+   GridBoxAlignment->{"Columns" -> {{Center}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Column"]], "Output",
+ CellChangeTimes->{3.697064342921144*^9}]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Manipulate", "Section",
+ CellChangeTimes->{{3.697063983953307*^9, 3.697063985559499*^9}}],
+
+Cell["\<\
+Your Manipulate should be able to control the seed value and the currently \
+visible generation!\
+\>", "Text",
+ CellChangeTimes->{{3.697064431017723*^9, 3.697064478134203*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1249, 1395},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 130, 2, 114, "Title"],
+Cell[713, 26, 303, 5, 61, "Text"],
+Cell[1019, 33, 769, 12, 109, "Text"],
+Cell[CellGroupData[{
+Cell[1813, 49, 96, 1, 80, "Section"],
+Cell[1912, 52, 313, 6, 37, "Text"],
+Cell[2228, 60, 283, 7, 66, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2548, 72, 94, 1, 80, "Section"],
+Cell[2645, 75, 372, 7, 61, "Text"],
+Cell[3020, 84, 911, 29, 118, "Input"],
+Cell[3934, 115, 259, 5, 37, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4230, 125, 96, 1, 80, "Section"],
+Cell[4329, 128, 384, 9, 61, "Text"],
+Cell[4716, 139, 483, 8, 39, "Input"],
+Cell[5202, 149, 187, 2, 37, "Text"],
+Cell[5392, 153, 329, 6, 39, "Input"],
+Cell[CellGroupData[{
+Cell[5746, 163, 95, 1, 54, "Subsection"],
+Cell[CellGroupData[{
+Cell[5866, 168, 183, 2, 66, "Subsubsection"],
+Cell[6052, 172, 265, 6, 57, "Text"],
+Cell[6320, 180, 284, 5, 60, "Input"],
+Cell[6607, 187, 225, 4, 60, "Input"],
+Cell[6835, 193, 275, 6, 60, "Input"],
+Cell[7113, 201, 278, 6, 60, "Input"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7452, 214, 96, 1, 80, "Section"],
+Cell[7551, 217, 167, 3, 37, "Text"],
+Cell[7721, 222, 358, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[8104, 232, 199, 4, 37, "Item"],
+Cell[8306, 238, 177, 4, 37, "Item"]
+}, Open  ]],
+Cell[8498, 245, 1145, 20, 66, "Input"],
+Cell[CellGroupData[{
+Cell[9668, 269, 93, 1, 54, "Subsection"],
+Cell[CellGroupData[{
+Cell[9786, 274, 254, 5, 66, "Subsubsection"],
+Cell[10043, 281, 734, 18, 60, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10814, 304, 195, 4, 66, "Subsubsection"],
+Cell[11012, 310, 581, 16, 60, "Input"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11654, 333, 101, 1, 80, "Section"],
+Cell[11758, 336, 310, 6, 37, "Text"],
+Cell[12071, 344, 267, 6, 39, "Input"],
+Cell[CellGroupData[{
+Cell[12363, 354, 97, 1, 54, "Subsection"],
+Cell[CellGroupData[{
+Cell[12485, 359, 188, 4, 66, "Subsubsection"],
+Cell[12676, 365, 407, 11, 60, "Input"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13144, 383, 92, 1, 80, "Section"],
+Cell[13239, 386, 711, 12, 85, "Text"],
+Cell[13953, 400, 333, 8, 39, "Input"],
+Cell[14289, 410, 962, 19, 109, "Text"],
+Cell[15254, 431, 636, 14, 144, "Input"],
+Cell[15893, 447, 267, 5, 61, "Text"],
+Cell[CellGroupData[{
+Cell[16185, 456, 93, 1, 54, "Subsection"],
+Cell[CellGroupData[{
+Cell[16303, 461, 251, 4, 53, "Subsubsection"],
+Cell[16557, 467, 1043, 27, 245, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17637, 499, 190, 4, 53, "Subsubsection"],
+Cell[17830, 505, 377, 8, 48, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18244, 518, 219, 4, 53, "Subsubsection"],
+Cell[18466, 524, 401, 8, 48, "Input"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18928, 539, 94, 1, 80, "Section"],
+Cell[19025, 542, 315, 7, 37, "Text"],
+Cell[19343, 551, 465, 12, 39, "Input"],
+Cell[19811, 565, 374, 7, 61, "Text"],
+Cell[20188, 574, 289, 7, 39, "Input"],
+Cell[20480, 583, 334, 6, 61, "Text"],
+Cell[20817, 591, 264, 6, 39, "Input"],
+Cell[21084, 599, 299, 6, 76, "Text"],
+Cell[21386, 607, 455, 8, 48, "Input"],
+Cell[21844, 617, 313, 6, 46, "Text"],
+Cell[22160, 625, 389, 9, 48, "Input"],
+Cell[22552, 636, 193, 4, 46, "Text"],
+Cell[22748, 642, 419, 9, 48, "Input"],
+Cell[CellGroupData[{
+Cell[23192, 655, 97, 1, 67, "Subsection"],
+Cell[CellGroupData[{
+Cell[23314, 660, 191, 2, 66, "Subsubsection"],
+Cell[23508, 664, 437, 9, 60, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23982, 678, 193, 2, 66, "Subsubsection"],
+Cell[24178, 682, 439, 9, 60, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24654, 696, 142, 1, 66, "Subsubsection"],
+Cell[24799, 699, 258, 5, 60, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25094, 709, 195, 2, 66, "Subsubsection"],
+Cell[25292, 713, 248, 6, 60, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25577, 724, 139, 1, 66, "Subsubsection"],
+Cell[25719, 727, 186, 4, 57, "Text"],
+Cell[25908, 733, 1089, 27, 225, "Input"],
+Cell[27000, 762, 115, 1, 57, "Text"],
+Cell[27118, 765, 29222, 499, 1393, "Output"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[56401, 1271, 95, 1, 100, "Section"],
+Cell[56499, 1274, 186, 4, 46, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

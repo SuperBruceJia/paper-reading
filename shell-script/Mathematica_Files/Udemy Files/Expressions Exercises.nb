@@ -1,0 +1,402 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10624,        393]
+NotebookOptionsPosition[      8153,        302]
+NotebookOutlinePosition[      8542,        319]
+CellTagsIndexPosition[      8499,        316]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Expressions", "Title",
+ CellChangeTimes->{{3.679347745920734*^9, 3.679347747022862*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Basic Exercises", "Section",
+ CellChangeTimes->{{3.679268101491219*^9, 3.6792681102023153`*^9}, {
+  3.679347749566636*^9, 3.6793477500547533`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell["What is the head of the expression:", "Text",
+ CellChangeTimes->{{3.6792684332940483`*^9, 3.679268443220779*^9}, {
+  3.679269139226048*^9, 3.6792691411070023`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"3", "+", "x"}]], "Input",
+ CellChangeTimes->{{3.679268453434638*^9, 3.679268461140213*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Hint", "Subsubsection",
+ CellChangeTimes->{{3.679268571657256*^9, 3.679268572031859*^9}}],
+
+Cell["Use the Head function", "Text",
+ CellChangeTimes->{{3.679268575143621*^9, 3.6792685841514063`*^9}}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.679268466628261*^9, 3.679268467747819*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Head", "[", 
+  RowBox[{"3", "+", "x"}], "]"}]], "Input",
+ CellChangeTimes->{{3.679268470810409*^9, 3.67926847280369*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell["What is the head of the expression:", "Text",
+ CellChangeTimes->{{3.6792688428465643`*^9, 3.679268850765163*^9}, {
+  3.6792691345009623`*^9, 3.679269137643145*^9}}],
+
+Cell[BoxData[
+ RowBox[{"3", " ", "x"}]], "Input",
+ CellChangeTimes->{{3.679268856827839*^9, 3.679268868988295*^9}, {
+   3.6792688993400173`*^9, 3.6792689129249687`*^9}, 3.679268948211705*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.679268881037225*^9, 3.6792688817640877`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Head", "[", 
+  RowBox[{"3", "x"}], "]"}]], "Input",
+ CellChangeTimes->{{3.679268888189521*^9, 3.679268890004821*^9}, {
+  3.679268920010681*^9, 3.679268956073607*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell["What is the full form of the expression:", "Text",
+ CellChangeTimes->{{3.679269042053528*^9, 3.67926905009568*^9}, {
+  3.679269131898383*^9, 3.679269132354185*^9}}],
+
+Cell[BoxData[
+ RowBox[{"3", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"x", "^", "2"}], "+", 
+    RowBox[{"2", "x"}], "+", "1"}], ")"}]}]], "Input",
+ CellChangeTimes->{{3.679269061573814*^9, 3.679269068454187*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.679269077413319*^9, 3.679269078131996*^9}}],
+
+Cell[BoxData[
+ RowBox[{"FullForm", "[", 
+  RowBox[{"3", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"x", "^", "2"}], "+", 
+     RowBox[{"2", "x"}], "+", "1"}], ")"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.679269078950595*^9, 3.679269085685978*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell["What is the second part of the expression:", "Text",
+ CellChangeTimes->{{3.679269111459858*^9, 3.6792691284698267`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"3", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"x", "^", "2"}], "+", 
+    RowBox[{"2", "x"}], "+", "1"}], ")"}]}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.6792691521215067`*^9, 3.679269152858666*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Part", "[", 
+  RowBox[{
+   RowBox[{"3", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"x", "^", "2"}], "+", 
+      RowBox[{"2", "x"}], "+", "1"}], ")"}]}], ",", "2"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6792691547694283`*^9, 3.679269164833351*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Compute the sum of the following list by ",
+ StyleBox["Apply", "Code"],
+ "ing the ",
+ StyleBox["Plus", "Code"],
+ " function:"
+}], "Text",
+ CellChangeTimes->{{3.679269281854278*^9, 3.679269311491634*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"5", ",", "4", ",", "3", ",", "2", ",", "1"}], "}"}]], "Input",
+ CellChangeTimes->{{3.6792693126059227`*^9, 3.679269317027605*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.679269322205316*^9, 3.679269322956358*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Plus", "@@", 
+  RowBox[{"{", 
+   RowBox[{"5", ",", "4", ",", "3", ",", "2", ",", "1"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.679269327461525*^9, 3.679269330003743*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell["Apply the List function to the expression from Question 4", "Text",
+ CellChangeTimes->{{3.679269392498275*^9, 3.679269407640141*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.679269410743985*^9, 3.679269411608611*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Apply", "[", 
+  RowBox[{"List", ",", 
+   RowBox[{"3", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"x", "^", "2"}], "+", 
+      RowBox[{"2", "x"}], "+", "1"}], ")"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.679269416721648*^9, 3.679269454070607*^9}}],
+
+Cell[TextData[{
+ "Or, use @@ notation, but wrap the expression in parentheses so that ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " evaluates the expression in the correct order:"
+}], "Text",
+ CellChangeTimes->{{3.679269506405505*^9, 3.679269506547927*^9}, {
+  3.679269537533646*^9, 3.679269562017857*^9}}],
+
+Cell[BoxData[
+ RowBox[{"List", "@@", 
+  RowBox[{"(", 
+   RowBox[{"3", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"x", "^", "2"}], "+", 
+      RowBox[{"2", "x"}], "+", "1"}], ")"}]}], ")"}]}]], "Input",
+ CellChangeTimes->{{3.679269510581938*^9, 3.6792695158130302`*^9}}]
+}, Closed]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Advanced Exercises", "Section",
+ CellChangeTimes->{{3.67934781058254*^9, 3.679347814653398*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell["Compute the product of all the values in the list:", "Text",
+ CellChangeTimes->{{3.6792695883616734`*^9, 3.679269600528717*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"5", ",", "4", ",", "3", ",", "2", ",", "1"}], "}"}]], "Input",
+ CellChangeTimes->{{3.679269603017514*^9, 3.679269605183984*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.679269607864357*^9, 3.679269608536384*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Times", "@@", 
+  RowBox[{"{", 
+   RowBox[{"5", ",", "4", ",", "3", ",", "2", ",", "1"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.679269610127696*^9, 3.679269613912244*^9}}]
+}, Closed]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1280, 878},
+WindowMargins->{{178, Automatic}, {Automatic, 63}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"10.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (October 9, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 94, 1, 114, "Title"],
+Cell[CellGroupData[{
+Cell[699, 27, 153, 2, 80, "Section"],
+Cell[CellGroupData[{
+Cell[877, 33, 194, 6, 54, "Subsection"],
+Cell[1074, 41, 170, 2, 37, "Text"],
+Cell[1247, 45, 115, 2, 35, "Input"],
+Cell[CellGroupData[{
+Cell[1387, 51, 95, 1, 43, "Subsubsection"],
+Cell[1485, 54, 105, 1, 57, "Text"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1627, 60, 99, 1, 34, "Subsubsection"],
+Cell[1729, 63, 145, 3, 35, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1923, 72, 194, 6, 54, "Subsection"],
+Cell[2120, 80, 170, 2, 37, "Text"],
+Cell[2293, 84, 191, 3, 35, "Input"],
+Cell[CellGroupData[{
+Cell[2509, 91, 101, 1, 43, "Subsubsection"],
+Cell[2613, 94, 190, 4, 35, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2852, 104, 194, 6, 54, "Subsection"],
+Cell[3049, 112, 170, 2, 37, "Text"],
+Cell[3222, 116, 212, 6, 35, "Input"],
+Cell[CellGroupData[{
+Cell[3459, 126, 99, 1, 43, "Subsubsection"],
+Cell[3561, 129, 251, 7, 53, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3861, 142, 194, 6, 54, "Subsection"],
+Cell[4058, 150, 126, 1, 37, "Text"],
+Cell[4187, 153, 146, 5, 35, "Input"],
+Cell[CellGroupData[{
+Cell[4358, 162, 101, 1, 43, "Subsubsection"],
+Cell[4462, 165, 277, 8, 53, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4788, 179, 194, 6, 54, "Subsection"],
+Cell[4985, 187, 221, 7, 37, "Text"],
+Cell[5209, 196, 170, 3, 35, "Input"],
+Cell[CellGroupData[{
+Cell[5404, 203, 99, 1, 43, "Subsubsection"],
+Cell[5506, 206, 196, 4, 43, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5751, 216, 194, 6, 54, "Subsection"],
+Cell[5948, 224, 139, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[6112, 229, 99, 1, 43, "Subsubsection"],
+Cell[6214, 232, 279, 8, 36, "Input"],
+Cell[6496, 242, 315, 7, 37, "Text"],
+Cell[6814, 251, 273, 8, 35, "Input"]
+}, Closed]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7148, 266, 102, 1, 80, "Section"],
+Cell[CellGroupData[{
+Cell[7275, 271, 194, 6, 54, "Subsection"],
+Cell[7472, 279, 134, 1, 37, "Text"],
+Cell[7609, 282, 168, 3, 35, "Input"],
+Cell[CellGroupData[{
+Cell[7802, 289, 99, 1, 43, "Subsubsection"],
+Cell[7904, 292, 197, 4, 43, "Input"]
+}, Closed]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

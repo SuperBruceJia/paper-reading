@@ -1,0 +1,174 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5700,        166]
+NotebookOptionsPosition[      5267,        146]
+NotebookOutlinePosition[      5651,        163]
+CellTagsIndexPosition[      5608,        160]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Simple Damped Pendulum - Linearized", "Section",
+ CellChangeTimes->{{3.663855466071539*^9, 3.663855476015725*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Theta", "[", 
+    RowBox[{"t_", ",", "theta0_", ",", "thetad0_", ",", "l_", ",", "b_"}], 
+    "]"}], ":=", "\[IndentingNewLine]", 
+   RowBox[{"With", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{"wd", "=", 
+       RowBox[{
+        RowBox[{"Sqrt", "[", 
+         RowBox[{
+          RowBox[{"-", 
+           RowBox[{"b", "^", "2"}]}], "+", 
+          RowBox[{"4", " ", 
+           RowBox[{"9.81", "/", "l"}]}]}], "]"}], "/", "2"}]}], 
+      "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Exp", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "b"}], "/", "2"}], " ", "t"}], "]"}], 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"theta0", " ", 
+         RowBox[{"Cos", "[", 
+          RowBox[{"wd", " ", "t"}], "]"}]}], "+", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"thetad0", "+", 
+            RowBox[{
+             RowBox[{"b", "/", "2"}], " ", "theta0"}]}], ")"}], "/", "wd"}], 
+         " ", 
+         RowBox[{"Sin", "[", 
+          RowBox[{"wd", " ", "t"}], "]"}]}]}], ")"}]}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.6636890333828287`*^9, 3.663689042900975*^9}, {
+   3.663689247894302*^9, 3.663689253549069*^9}, {3.663689820245495*^9, 
+   3.663689825342022*^9}, {3.663690191569172*^9, 3.663690193706953*^9}, {
+   3.663855498371978*^9, 3.66385551970125*^9}, {3.6638555726914997`*^9, 
+   3.663855623605854*^9}, {3.663855858465534*^9, 3.663855859171327*^9}, {
+   3.663855890255467*^9, 3.6638559039982567`*^9}, {3.663855962364872*^9, 
+   3.663855990480041*^9}, {3.6638561023847923`*^9, 3.663856102654105*^9}, {
+   3.663856245429253*^9, 3.6638562471075563`*^9}, 3.66385777672401*^9, {
+   3.665366108122531*^9, 3.6653661129014683`*^9}, 3.665446063033667*^9, {
+   3.665788728971692*^9, 3.665788750027008*^9}, {3.665788785482638*^9, 
+   3.665788789025577*^9}, {3.665788950179179*^9, 3.665788958211463*^9}, {
+   3.6657890676065273`*^9, 3.665789070414174*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Thetad", "[", 
+    RowBox[{"t_", ",", "theta0_", ",", "thetad0_", ",", "l_", ",", "b_"}], 
+    "]"}], " ", ":=", " ", "\[IndentingNewLine]", 
+   RowBox[{"With", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"wd", "=", 
+        RowBox[{
+         RowBox[{"Sqrt", "[", 
+          RowBox[{
+           RowBox[{"b", "^", "2"}], "+", 
+           RowBox[{"4", " ", 
+            RowBox[{"9.81", "/", "l"}]}]}], "]"}], "/", "2"}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"A", "=", "theta0"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"B", "=", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"thetad0", "+", 
+           RowBox[{
+            RowBox[{"b", "/", "2"}], " ", "theta0"}]}], ")"}], "/", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Sqrt", "[", 
+            RowBox[{
+             RowBox[{"-", 
+              RowBox[{"b", "^", "2"}]}], "+", 
+             RowBox[{"4", " ", 
+              RowBox[{"9.81", "/", "l"}]}]}], "]"}], "/", "2"}], ")"}]}]}]}], 
+      "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Exp", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "b"}], "/", "2"}], " ", "t"}], "]"}], 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"B", " ", "wd"}], "-", 
+           RowBox[{"A", " ", 
+            RowBox[{"b", "/", "2"}]}]}], ")"}], " ", 
+         RowBox[{"Cos", "[", 
+          RowBox[{"wd", " ", "t"}], "]"}]}], "-", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"b", "/", "2"}], " ", "B"}], "+", 
+           RowBox[{"A", " ", "wd"}]}], ")"}], " ", 
+         RowBox[{"Sin", "[", 
+          RowBox[{"wd", " ", "t"}], "]"}]}]}], ")"}]}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.66385727953047*^9, 3.663857367319875*^9}, 
+   3.663857434275066*^9, 3.663857773461028*^9, {3.665366120265786*^9, 
+   3.6653661208118258`*^9}, {3.665788760178417*^9, 3.665788772042893*^9}, {
+   3.665788813584757*^9, 3.6657888512720537`*^9}, {3.665788963292248*^9, 
+   3.665788974506884*^9}, {3.665789051504758*^9, 3.665789063310845*^9}}]
+}, Open  ]],
+
+Cell["\:2b10 Your Awesome Implementation \:2b0e", "Section",
+ CellChangeTimes->{{3.665786881982531*^9, 3.665787004511878*^9}, 
+   3.665787055682787*^9, {3.665787249136897*^9, 3.6657872655491133`*^9}, {
+   3.66578912510607*^9, 3.665789125980506*^9}}]
+},
+WindowSize->{1398, 855},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 120, 1, 80, "Section"],
+Cell[703, 25, 2040, 49, 144, "Input"],
+Cell[2746, 76, 2253, 62, 196, "Input"]
+}, Open  ]],
+Cell[5014, 141, 249, 3, 80, "Section"]
+}
+]
+*)
+

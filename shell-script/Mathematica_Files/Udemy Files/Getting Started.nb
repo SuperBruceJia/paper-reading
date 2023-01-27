@@ -1,0 +1,193 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6682,        185]
+NotebookOptionsPosition[      5929,        155]
+NotebookOutlinePosition[      6352,        173]
+CellTagsIndexPosition[      6309,        170]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Getting Started with Mathematica", "Section",
+ CellChangeTimes->{{3.6908625367273397`*^9, 3.690862540231907*^9}, {
+   3.690863008385591*^9, 3.6908630084908133`*^9}, {3.690863531907579*^9, 
+   3.690863539538389*^9}, 3.6908641802207203`*^9, {3.690866305553699*^9, 
+   3.690866307920417*^9}}],
+
+Cell[TextData[{
+ "Hello and welcome. In this lesson, we are going to learn about the basics \
+of ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ", including some general ideas about what it is and how it works. Before \
+you start, you will need a copy of ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ". If you already have a copy of ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ", super, if not, we\[CloseCurlyQuote]ll tell you how to go about getting a \
+copy. The current version available is ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " 11. This is the version we will be using for the lessons. If you have an \
+older version of ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ", don\[CloseCurlyQuote]t fret; you should still be able to follow along \
+with the lessons. "
+}], "Text",
+ CellChangeTimes->{{3.69086407560907*^9, 3.690864084680825*^9}, 
+   3.690864220890119*^9}],
+
+Cell[TextData[{
+ "If you are a student, or an educator, first thing you should do is to check \
+with your educational institution to see if they provide site licenses for \
+your use. Most universities will have ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " available for students for free or at a discounted rate. If not, you will \
+have to buy a license at ",
+ StyleBox["www.wolfram.com/mathematica.",
+  FontWeight->"Bold"],
+ " "
+}], "Text",
+ CellChangeTimes->{
+  3.6908622676202173`*^9, {3.690862310351927*^9, 3.690862311850522*^9}, {
+   3.690862688277113*^9, 3.690862688389146*^9}, {3.690863147193933*^9, 
+   3.6908632116700487`*^9}, {3.6908632519206*^9, 3.690863315083403*^9}, {
+   3.690863372681713*^9, 3.690863498542234*^9}, {3.690863549390133*^9, 
+   3.690863575705502*^9}, {3.690863650881775*^9, 3.690863700503263*^9}, {
+   3.6908640197827187`*^9, 3.690864029495775*^9}, {3.6908640736335773`*^9, 
+   3.690864203514805*^9}, {3.690864244763411*^9, 3.690864245729711*^9}}],
+
+Cell[TextData[{
+ "Another option is to create a wolfram account at ",
+ StyleBox["www.wolframcloud.com",
+  FontWeight->"Bold"],
+ " and use the Wolfram Development Platform. Once you have created the \
+account: "
+}], "Text",
+ CellChangeTimes->{3.6908642473878393`*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Click on \[OpenCurlyDoubleQuote]WOLFRAM DEVELOPMENT PLATFORM\
+\[CloseCurlyDoubleQuote].", "Item",
+ CellChangeTimes->{{3.690863701841988*^9, 3.6908637294047937`*^9}, {
+  3.690863763063136*^9, 3.690863764457057*^9}, {3.690864232760295*^9, 
+  3.690864234031867*^9}}],
+
+Cell["Log in", "Item",
+ CellChangeTimes->{{3.690863701841988*^9, 3.690863786615386*^9}, 
+   3.6908642262096443`*^9}],
+
+Cell["Click \[OpenCurlyDoubleQuote]Create a New Notebook\
+\[CloseCurlyDoubleQuote].", "Item",
+ CellChangeTimes->{{3.690863701841988*^9, 3.690863805020376*^9}}]
+}, Open  ]],
+
+Cell["\<\
+You will be presented with this screen. This is your Notebook front end in a \
+browser. You will be able to follow along with all of our videos in this \
+environment. Keep in mind  there may be some small differences between the \
+desktop application and the cloud platform. \
+\>", "Text",
+ CellChangeTimes->{{3.690863819916131*^9, 3.6908639442738037`*^9}, {
+  3.690863997980937*^9, 3.690863998638617*^9}, {3.690864258338585*^9, 
+  3.6908643387750387`*^9}, {3.690864372303464*^9, 3.690864411548792*^9}, {
+  3.6908647293149643`*^9, 3.690864747627386*^9}}],
+
+Cell[TextData[{
+ "So now that you have access to some form of ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ", let\[CloseCurlyQuote]s dive in. ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " is an interactive programming environment. When you launch the ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " application, you are presented with the welcome splash screen. Click on \
+New Document. This is the Notebook front end. From this point on, all our \
+instructions pertain to both the cloud and the desktop application \
+environments. "
+}], "Text",
+ CellChangeTimes->{
+  3.690863684126917*^9, {3.6908644214537582`*^9, 3.690864449075276*^9}, {
+   3.6908644833148193`*^9, 3.690864504530541*^9}, {3.690864567831541*^9, 
+   3.690864664766693*^9}, {3.690864697981449*^9, 3.690864698580325*^9}, {
+   3.69086477802822*^9, 3.690864870355671*^9}}],
+
+Cell[TextData[{
+ "We start with an example \[Dash] let\[CloseCurlyQuote]s evaluate 1 + 1.\n\
+Type 1 + 1. In ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ", if you press enter, it will give you a new line. To evaluate the \
+expression, you have to hold the shift key down while pressing enter. There \
+we go, the answer is 2."
+}], "Text",
+ CellChangeTimes->{{3.690864872188109*^9, 3.690864885558655*^9}, {
+  3.690864967798808*^9, 3.690864979195786*^9}, {3.690865038338614*^9, 
+  3.690865108952721*^9}}],
+
+Cell["\<\
+This concludes our first lesson. Congratulations! You\[CloseCurlyQuote]ve \
+taken your first steps towards learning Mathematica, and doing great things \
+with it. See you at the next lecture.\
+\>", "Text",
+ CellChangeTimes->{{3.690865073212817*^9, 3.690865076857967*^9}, {
+  3.690865175971373*^9, 3.6908652114469833`*^9}}]
+}, Open  ]]
+},
+WindowSize->{1879, 1035},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+TaggingRules->{"$testsRun" -> False},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 295, 4, 80, "Section"],
+Cell[878, 28, 914, 24, 85, "Text"],
+Cell[1795, 54, 986, 19, 61, "Text"],
+Cell[2784, 75, 266, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[3075, 86, 269, 4, 37, "Item"],
+Cell[3347, 92, 116, 2, 37, "Item"],
+Cell[3466, 96, 159, 2, 37, "Item"]
+}, Open  ]],
+Cell[3640, 101, 564, 9, 61, "Text"],
+Cell[4207, 112, 859, 19, 61, "Text"],
+Cell[5069, 133, 509, 11, 61, "Text"],
+Cell[5581, 146, 332, 6, 37, "Text"]
+}, Open  ]]
+}
+]
+*)
+

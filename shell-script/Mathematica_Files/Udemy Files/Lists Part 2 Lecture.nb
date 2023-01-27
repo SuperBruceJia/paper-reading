@@ -1,0 +1,1650 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     61723,       1641]
+NotebookOptionsPosition[     52471,       1356]
+NotebookOutlinePosition[     54764,       1411]
+CellTagsIndexPosition[     54171,       1398]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Modifying Lists", "Section",
+ CellChangeTimes->{{3.666624095639426*^9, 3.666624096082314*^9}, {
+   3.668734576414548*^9, 3.668734581510592*^9}, {3.668734632113413*^9, 
+   3.668734633012986*^9}, {3.668734928495956*^9, 3.668734931307109*^9}, 
+   3.679944900560779*^9}],
+
+Cell["\<\
+In this lecture, we\[CloseCurlyQuote]ll look at functions that modify and \
+transform lists.\
+\>", "Text",
+ CellChangeTimes->{{3.668737297827469*^9, 3.668737375001178*^9}, {
+   3.668737405117346*^9, 3.668737405262197*^9}, 3.6799449092292*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Adding Elements", "Subsection",
+ CellChangeTimes->{{3.668734284105668*^9, 3.6687342880655947`*^9}, 
+   3.66873744154533*^9}],
+
+Cell["Let\[CloseCurlyQuote]s start by looking at how to add elements to \
+lists.", "Text",
+ CellChangeTimes->{{3.668737378207121*^9, 3.6687373830885897`*^9}, {
+  3.668737416692367*^9, 3.668737431598394*^9}}],
+
+Cell[TextData[{
+ "First, let\[CloseCurlyQuote]s create a list which we can use to demonstrate \
+the functions. We\[CloseCurlyQuote]ll use the ",
+ StyleBox["Alphabet", "Code"],
+ " function to create a list of all the characters in the alphabet:"
+}], "Text",
+ CellChangeTimes->{{3.679944929157411*^9, 3.679944981194336*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"alpha", "=", 
+  RowBox[{"Alphabet", "[", "]"}]}]], "Input",
+ CellChangeTimes->{{3.667601386245998*^9, 3.667601397610627*^9}, {
+  3.668734318280512*^9, 3.668734321275877*^9}, {3.6687374884136868`*^9, 
+  3.66873748970501*^9}, {3.668737594725609*^9, 3.66873759518512*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"a\"\>", ",", "\<\"b\"\>", ",", "\<\"c\"\>", ",", "\<\"d\"\>", 
+   ",", "\<\"e\"\>", ",", "\<\"f\"\>", ",", "\<\"g\"\>", ",", "\<\"h\"\>", 
+   ",", "\<\"i\"\>", ",", "\<\"j\"\>", ",", "\<\"k\"\>", ",", "\<\"l\"\>", 
+   ",", "\<\"m\"\>", ",", "\<\"n\"\>", ",", "\<\"o\"\>", ",", "\<\"p\"\>", 
+   ",", "\<\"q\"\>", ",", "\<\"r\"\>", ",", "\<\"s\"\>", ",", "\<\"t\"\>", 
+   ",", "\<\"u\"\>", ",", "\<\"v\"\>", ",", "\<\"w\"\>", ",", "\<\"x\"\>", 
+   ",", "\<\"y\"\>", ",", "\<\"z\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6676013978705063`*^9, 3.667602315578465*^9, {3.668737472400235*^9, 
+   3.668737491459453*^9}, 3.668737599447525*^9, 3.668737678064472*^9, 
+   3.668802283375862*^9}]
+}, Open  ]],
+
+Cell["To add an element to the end of a list:", "Text",
+ CellChangeTimes->{3.668734484844887*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Append", "[", 
+  RowBox[{"alpha", ",", "\"\<Last Element\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.668734488914133*^9, 3.668734488922885*^9}, 
+   3.668737597877275*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"a\"\>", ",", "\<\"b\"\>", ",", "\<\"c\"\>", ",", "\<\"d\"\>", 
+   ",", "\<\"e\"\>", ",", "\<\"f\"\>", ",", "\<\"g\"\>", ",", "\<\"h\"\>", 
+   ",", "\<\"i\"\>", ",", "\<\"j\"\>", ",", "\<\"k\"\>", ",", "\<\"l\"\>", 
+   ",", "\<\"m\"\>", ",", "\<\"n\"\>", ",", "\<\"o\"\>", ",", "\<\"p\"\>", 
+   ",", "\<\"q\"\>", ",", "\<\"r\"\>", ",", "\<\"s\"\>", ",", "\<\"t\"\>", 
+   ",", "\<\"u\"\>", ",", "\<\"v\"\>", ",", "\<\"w\"\>", ",", "\<\"x\"\>", 
+   ",", "\<\"y\"\>", ",", "\<\"z\"\>", ",", "\<\"Last Element\"\>"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.6687344899138308`*^9, 3.66873749460817*^9, 
+  3.668737600739991*^9, 3.668737679109*^9, 3.668802283587213*^9}]
+}, Open  ]],
+
+Cell["\<\
+Note that lists in Mathematica are immutable. When you append, you create a \
+new list. Notice that the original list is the same:\
+\>", "Text",
+ CellChangeTimes->{3.668734494495131*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["alpha"], "Input",
+ CellChangeTimes->{{3.668734499183536*^9, 3.6687344991927347`*^9}, 
+   3.668737602545868*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"a\"\>", ",", "\<\"b\"\>", ",", "\<\"c\"\>", ",", "\<\"d\"\>", 
+   ",", "\<\"e\"\>", ",", "\<\"f\"\>", ",", "\<\"g\"\>", ",", "\<\"h\"\>", 
+   ",", "\<\"i\"\>", ",", "\<\"j\"\>", ",", "\<\"k\"\>", ",", "\<\"l\"\>", 
+   ",", "\<\"m\"\>", ",", "\<\"n\"\>", ",", "\<\"o\"\>", ",", "\<\"p\"\>", 
+   ",", "\<\"q\"\>", ",", "\<\"r\"\>", ",", "\<\"s\"\>", ",", "\<\"t\"\>", 
+   ",", "\<\"u\"\>", ",", "\<\"v\"\>", ",", "\<\"w\"\>", ",", "\<\"x\"\>", 
+   ",", "\<\"y\"\>", ",", "\<\"z\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{3.668734499909521*^9, 3.6687375046424513`*^9, 
+  3.668737603199872*^9, 3.668737680109497*^9, 3.6688022836155643`*^9}]
+}, Open  ]],
+
+Cell["\<\
+If you wanted myList to contain \[OpenCurlyDoubleQuote]Last Element\
+\[CloseCurlyDoubleQuote], you should set myList to the result:\
+\>", "Text",
+ CellChangeTimes->{3.668734506612999*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"alpha", "=", 
+  RowBox[{"Append", "[", 
+   RowBox[{"alpha", ",", "\"\<Last Element\>\""}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.668734512192471*^9, 3.668734512201548*^9}, {
+  3.668737606213149*^9, 3.668737607169056*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"a\"\>", ",", "\<\"b\"\>", ",", "\<\"c\"\>", ",", "\<\"d\"\>", 
+   ",", "\<\"e\"\>", ",", "\<\"f\"\>", ",", "\<\"g\"\>", ",", "\<\"h\"\>", 
+   ",", "\<\"i\"\>", ",", "\<\"j\"\>", ",", "\<\"k\"\>", ",", "\<\"l\"\>", 
+   ",", "\<\"m\"\>", ",", "\<\"n\"\>", ",", "\<\"o\"\>", ",", "\<\"p\"\>", 
+   ",", "\<\"q\"\>", ",", "\<\"r\"\>", ",", "\<\"s\"\>", ",", "\<\"t\"\>", 
+   ",", "\<\"u\"\>", ",", "\<\"v\"\>", ",", "\<\"w\"\>", ",", "\<\"x\"\>", 
+   ",", "\<\"y\"\>", ",", "\<\"z\"\>", ",", "\<\"Last Element\"\>"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.668734516635557*^9, 3.6687375128780537`*^9, 
+  3.668737608017108*^9, 3.66873768117282*^9, 3.668802283677382*^9}]
+}, Open  ]],
+
+Cell["To add an element at the beginning of a list:", "Text",
+ CellChangeTimes->{3.668734522655661*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"alpha", "=", 
+  RowBox[{"Prepend", "[", 
+   RowBox[{"alpha", ",", "\"\<First Element\>\""}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6687345279063168`*^9, 3.668734527915059*^9}, {
+  3.66873761175985*^9, 3.668737612625341*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"First Element\"\>", ",", "\<\"a\"\>", ",", "\<\"b\"\>", 
+   ",", "\<\"c\"\>", ",", "\<\"d\"\>", ",", "\<\"e\"\>", ",", "\<\"f\"\>", 
+   ",", "\<\"g\"\>", ",", "\<\"h\"\>", ",", "\<\"i\"\>", ",", "\<\"j\"\>", 
+   ",", "\<\"k\"\>", ",", "\<\"l\"\>", ",", "\<\"m\"\>", ",", "\<\"n\"\>", 
+   ",", "\<\"o\"\>", ",", "\<\"p\"\>", ",", "\<\"q\"\>", ",", "\<\"r\"\>", 
+   ",", "\<\"s\"\>", ",", "\<\"t\"\>", ",", "\<\"u\"\>", ",", "\<\"v\"\>", 
+   ",", "\<\"w\"\>", ",", "\<\"x\"\>", ",", "\<\"y\"\>", ",", "\<\"z\"\>", 
+   ",", "\<\"Last Element\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{3.668734528714329*^9, 3.6687375193441153`*^9, 
+  3.668737613513905*^9, 3.668737682855159*^9, 3.668802283787511*^9}]
+}, Open  ]],
+
+Cell["To insert an element in a list:", "Text",
+ CellChangeTimes->{3.6687345348173513`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"alpha", "=", 
+  RowBox[{"Insert", "[", 
+   RowBox[{"alpha", ",", "\"\<4th Element\>\"", ",", "4"}], "]"}]}]], "Input",\
+
+ CellChangeTimes->{{3.6687345397507973`*^9, 3.668734539760264*^9}, {
+  3.668737618509428*^9, 3.668737620095729*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"First Element\"\>", ",", "\<\"a\"\>", ",", "\<\"b\"\>", 
+   ",", "\<\"4th Element\"\>", ",", "\<\"c\"\>", ",", "\<\"d\"\>", 
+   ",", "\<\"e\"\>", ",", "\<\"f\"\>", ",", "\<\"g\"\>", ",", "\<\"h\"\>", 
+   ",", "\<\"i\"\>", ",", "\<\"j\"\>", ",", "\<\"k\"\>", ",", "\<\"l\"\>", 
+   ",", "\<\"m\"\>", ",", "\<\"n\"\>", ",", "\<\"o\"\>", ",", "\<\"p\"\>", 
+   ",", "\<\"q\"\>", ",", "\<\"r\"\>", ",", "\<\"s\"\>", ",", "\<\"t\"\>", 
+   ",", "\<\"u\"\>", ",", "\<\"v\"\>", ",", "\<\"w\"\>", ",", "\<\"x\"\>", 
+   ",", "\<\"y\"\>", ",", "\<\"z\"\>", ",", "\<\"Last Element\"\>"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.6687345405709963`*^9, 3.668737522698251*^9, 
+  3.668737621793393*^9, 3.6687376845093117`*^9, 3.6688022838478537`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Removing Elements", "Subsection",
+ CellChangeTimes->{{3.668737934237734*^9, 3.6687379356777773`*^9}}],
+
+Cell[TextData[{
+ "To delete specific elements in a list, use ",
+ StyleBox["Delete", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.668737922426075*^9, 3.668737960123567*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Delete"}]], "Input",
+ CellChangeTimes->{{3.6666524072924757`*^9, 3.666652409085517*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Delete\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\
+\"TI\\\"]}], \\\"]\\\"}]\) deletes the element at position \
+\!\(\*StyleBox[\\\"n\\\", \\\"TI\\\"]\) in \!\(\*StyleBox[\\\"expr\\\", \
+\\\"TI\\\"]\). If \!\(\*StyleBox[\\\"n\\\", \\\"TI\\\"]\) is negative, the \
+position is counted from the end. \\n\!\(\*RowBox[{\\\"Delete\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{StyleBox[\\\"i\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"j\\\", \
+\\\"TI\\\"], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \
+\\\"}\\\"}]}], \\\"]\\\"}]\) deletes the part at position \!\(\*RowBox[{\\\"{\
+\\\", RowBox[{StyleBox[\\\"i\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"j\\\", \
+\\\"TI\\\"], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \
+\\\"}\\\"}]\). \\n\!\(\*RowBox[{\\\"Delete\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"i\\\", \
+\\\"TI\\\"], StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"j\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\
+\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"i\\\", \
+\\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"j\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\
+\"}], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\"}]}], \
+\\\"]\\\"}]\) deletes parts at several positions. \\n\!\(\*RowBox[{\\\"Delete\
+\\\", \\\"[\\\", StyleBox[\\\"pos\\\", \\\"TI\\\"], \\\"]\\\"}]\) represents \
+an operator form of Delete that can be applied to an expression.\"\>", "MSG"],
+   "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Delete"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.668802283907557*^9},
+ CellTags->"Info-5ad83f4d-85f5-4afa-8c48-a9ccbf532762"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Delete", "[", 
+  RowBox[{"alpha", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.666625456511622*^9, 3.666625461910719*^9}, {
+   3.6676014998327007`*^9, 3.667601532287815*^9}, {3.668737585725882*^9, 
+   3.668737587269848*^9}, 3.668737627194315*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"a\"\>", ",", "\<\"b\"\>", ",", "\<\"4th Element\"\>", 
+   ",", "\<\"c\"\>", ",", "\<\"d\"\>", ",", "\<\"e\"\>", ",", "\<\"f\"\>", 
+   ",", "\<\"g\"\>", ",", "\<\"h\"\>", ",", "\<\"i\"\>", ",", "\<\"j\"\>", 
+   ",", "\<\"k\"\>", ",", "\<\"l\"\>", ",", "\<\"m\"\>", ",", "\<\"n\"\>", 
+   ",", "\<\"o\"\>", ",", "\<\"p\"\>", ",", "\<\"q\"\>", ",", "\<\"r\"\>", 
+   ",", "\<\"s\"\>", ",", "\<\"t\"\>", ",", "\<\"u\"\>", ",", "\<\"v\"\>", 
+   ",", "\<\"w\"\>", ",", "\<\"x\"\>", ",", "\<\"y\"\>", ",", "\<\"z\"\>", 
+   ",", "\<\"Last Element\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.666625462146544*^9, 3.6666523904255657`*^9, 3.6675993271019506`*^9, 
+   3.667600303484293*^9, {3.6676015099619207`*^9, 3.667601532839056*^9}, 
+   3.667602316077286*^9, {3.668737582560329*^9, 3.668737587679285*^9}, {
+   3.6687376259549522`*^9, 3.66873762791039*^9}, 3.668737687570622*^9, 
+   3.668802283980528*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "To delete all the elements we just added, we use the 3rd form of ",
+ StyleBox["Delete", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.668737635821239*^9, 3.668737651344818*^9}, {
+  3.6687377517064323`*^9, 3.668737758017521*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"alpha", "=", 
+  RowBox[{"Delete", "[", 
+   RowBox[{"alpha", ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", "1", "}"}], ",", 
+      RowBox[{"{", "4", "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"-", "1"}], "}"}]}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.668737698616516*^9, 3.668737766646352*^9}, {
+  3.668737801803059*^9, 3.668737802466597*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"a\"\>", ",", "\<\"b\"\>", ",", "\<\"c\"\>", ",", "\<\"d\"\>", 
+   ",", "\<\"e\"\>", ",", "\<\"f\"\>", ",", "\<\"g\"\>", ",", "\<\"h\"\>", 
+   ",", "\<\"i\"\>", ",", "\<\"j\"\>", ",", "\<\"k\"\>", ",", "\<\"l\"\>", 
+   ",", "\<\"m\"\>", ",", "\<\"n\"\>", ",", "\<\"o\"\>", ",", "\<\"p\"\>", 
+   ",", "\<\"q\"\>", ",", "\<\"r\"\>", ",", "\<\"s\"\>", ",", "\<\"t\"\>", 
+   ",", "\<\"u\"\>", ",", "\<\"v\"\>", ",", "\<\"w\"\>", ",", "\<\"x\"\>", 
+   ",", "\<\"y\"\>", ",", "\<\"z\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{{3.668737722352261*^9, 3.6687377721698093`*^9}, 
+   3.6687378028237677`*^9, 3.668802284036646*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "To delete ranges of elements in a list, use ",
+ StyleBox["Drop", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.668737963957767*^9, 3.668737981679037*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Drop"}]], "Input",
+ CellChangeTimes->{{3.666652345015058*^9, 3.666652345719686*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Drop\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\
+\"TI\\\"]}], \\\"]\\\"}]\) gives \!\(\*StyleBox[\\\"list\\\", \\\"TI\\\"]\) \
+with its first \!\(\*StyleBox[\\\"n\\\", \\\"TI\\\"]\) elements dropped. \
+\\n\!\(\*RowBox[{\\\"Drop\\\", \\\"[\\\", RowBox[{StyleBox[\\\"list\\\", \
+\\\"TI\\\"], \\\",\\\", RowBox[{\\\"-\\\", StyleBox[\\\"n\\\", \
+\\\"TI\\\"]}]}], \\\"]\\\"}]\) gives \!\(\*StyleBox[\\\"list\\\", \\\"TI\\\"]\
+\) with its last \!\(\*StyleBox[\\\"n\\\", \\\"TI\\\"]\) elements dropped. \
+\\n\!\(\*RowBox[{\\\"Drop\\\", \\\"[\\\", RowBox[{StyleBox[\\\"list\\\", \
+\\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", StyleBox[\\\"n\\\", \\\"TI\\\"], \
+\\\"}\\\"}]}], \\\"]\\\"}]\) gives \!\(\*StyleBox[\\\"list\\\", \\\"TI\\\"]\) \
+with its \!\(\*StyleBox[\\\"n\\\", \\\"TI\\\"]\)\!\(\*SuperscriptBox[\\\"\
+\[Null]\\\", \\\"th\\\"]\) element dropped. \\n\!\(\*RowBox[{\\\"Drop\\\", \\\
+\"[\\\", RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\
+\\\", RowBox[{StyleBox[\\\"m\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \
+\\\"TI\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\) gives \
+\!\(\*StyleBox[\\\"list\\\", \\\"TI\\\"]\) with elements \!\(\*StyleBox[\\\"m\
+\\\", \\\"TI\\\"]\) through \!\(\*StyleBox[\\\"n\\\", \\\"TI\\\"]\) dropped. \
+\\n\!\(\*RowBox[{\\\"Drop\\\", \\\"[\\\", RowBox[{StyleBox[\\\"list\\\", \
+\\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{StyleBox[\\\"m\\\", \\\"TI\
+\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"s\\\", \\\"TI\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\) gives \
+\!\(\*StyleBox[\\\"list\\\", \\\"TI\\\"]\) with elements \!\(\*StyleBox[\\\"m\
+\\\", \\\"TI\\\"]\) through \!\(\*StyleBox[\\\"n\\\", \\\"TI\\\"]\) in steps \
+of \!\(\*StyleBox[\\\"s\\\", \\\"TI\\\"]\) dropped. \\n\!\(\*RowBox[{\\\"Drop\
+\\\", \\\"[\\\", RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"seq\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"seq\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"]\\\"}]\) gives a nested list in which elements specified by \
+\!\(\*SubscriptBox[StyleBox[\\\"seq\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \
+\\\"TI\\\"]]\) have been dropped at level \!\(\*StyleBox[\\\"i\\\", \
+\\\"TI\\\"]\) in \!\(\*StyleBox[\\\"list\\\", \\\"TI\\\"]\). \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Drop"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.668802284150131*^9},
+ CellTags->"Info-7b46b1a7-b266-484d-b49a-7492067f5f58"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"nums", "=", 
+  RowBox[{"Range", "[", "10", "]"}]}]], "Input",
+ CellChangeTimes->{{3.668738000755287*^9, 3.668738003717824*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", "8", 
+   ",", "9", ",", "10"}], "}"}]], "Output",
+ CellChangeTimes->{3.668738004342791*^9, 3.668802284201421*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Drop", "[", 
+  RowBox[{"nums", ",", "5"}], "]"}]], "Input",
+ CellChangeTimes->{{3.666625427943079*^9, 3.666625439408606*^9}, {
+  3.667601546792344*^9, 3.667601573766531*^9}, {3.6687379861817627`*^9, 
+  3.668738006646392*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"6", ",", "7", ",", "8", ",", "9", ",", "10"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6666254396338882`*^9, 3.666652358839677*^9, 3.666655570139634*^9, 
+   3.6675993260286217`*^9, 3.667600303825798*^9, 3.667601563327759*^9, 
+   3.667601619563272*^9, 3.667602316255291*^9, {3.668737987280286*^9, 
+   3.668738007383359*^9}, 3.668802284231969*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Drop", "[", 
+  RowBox[{"nums", ",", 
+   RowBox[{"-", "5"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.666625427943079*^9, 3.666625443031138*^9}, {
+  3.6676015815343122`*^9, 3.667601585853856*^9}, {3.6687379948564653`*^9, 
+  3.66873800835542*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "2", ",", "3", ",", "4", ",", "5"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.666625443243128*^9, 3.666652373623846*^9, 3.6666555718625727`*^9, 
+   3.667599326096899*^9, 3.667600303897724*^9, 3.667601586228695*^9, 
+   3.667601620663945*^9, 3.6676023163223753`*^9, {3.668737992017849*^9, 
+   3.668738009071663*^9}, 3.6688022842671413`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Drop", "[", 
+  RowBox[{"nums", ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "4"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.666625427943079*^9, 3.6666254507486553`*^9}, {
+  3.667601594229772*^9, 3.6676015945734653`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "5", ",", "6", ",", "7", ",", "8", ",", "9", ",", "10"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.66662545110456*^9, 3.666652374595305*^9, 3.666655573012261*^9, 
+   3.667599326158058*^9, 3.6676003039690113`*^9, {3.667601594805792*^9, 
+   3.6676016213821077`*^9}, 3.6676023163804283`*^9, 3.6687380120366783`*^9, 
+   3.6688022843174973`*^9}]
+}, Open  ]],
+
+Cell["Every other element:", "Text",
+ CellChangeTimes->{{3.666655653281131*^9, 3.666655655664383*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Drop", "[", 
+  RowBox[{"nums", ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", 
+     RowBox[{"Length", "[", "nums", "]"}], ",", "2"}], "}"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6666254856033163`*^9, 3.6666254890433073`*^9}, {
+  3.667601628565371*^9, 3.6676016298527737`*^9}, {3.667604682081208*^9, 
+  3.667604714206469*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2", ",", "4", ",", "6", ",", "8", ",", "10"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.66662548936381*^9, {3.6666523819300117`*^9, 3.66665239958819*^9}, 
+   3.66759932622468*^9, 3.667600304036121*^9, {3.667601624009798*^9, 
+   3.6676016305651484`*^9}, 3.667602316446547*^9, {3.667604683929275*^9, 
+   3.667604714700584*^9}, 3.668738019039216*^9, 3.668802284370772*^9}]
+}, Open  ]],
+
+Cell["We can also use -1 to represent the last element:", "Text",
+ CellChangeTimes->{{3.668738030279866*^9, 3.6687380469964857`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Drop", "[", 
+  RowBox[{"nums", ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", 
+     RowBox[{"-", "1"}], ",", "2"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6666254856033163`*^9, 3.6666254890433073`*^9}, {
+  3.667601628565371*^9, 3.6676016298527737`*^9}, {3.667604682081208*^9, 
+  3.667604719910473*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2", ",", "4", ",", "6", ",", "8", ",", "10"}], "}"}]], "Output",
+ CellChangeTimes->{3.667604720190874*^9, 3.668738050291443*^9, 
+  3.66880228442246*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Join, Gather and Tally", "Subsection",
+ CellChangeTimes->{{3.668743554504941*^9, 3.668743557755085*^9}, {
+  3.66874425704665*^9, 3.6687442634112988`*^9}}],
+
+Cell[TextData[{
+ "Let\[CloseCurlyQuote]s generate 3 ranges which we can use to demonstrate \
+the ",
+ StyleBox["Join", "Code"],
+ ", ",
+ StyleBox["Gather", "Code"],
+ " and ",
+ StyleBox["Tally", "Code"],
+ " functions:"
+}], "Text",
+ CellChangeTimes->{{3.67994504637636*^9, 3.679945064167781*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"range1", " ", "=", " ", 
+  RowBox[{"Range", "[", 
+   RowBox[{"1", ",", "10"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.667601988154866*^9, 3.667602022554912*^9}, {
+  3.667602123376882*^9, 3.667602125312159*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", "8", 
+   ",", "9", ",", "10"}], "}"}]], "Output",
+ CellChangeTimes->{3.667602125579948*^9, 3.6676023171482353`*^9, 
+  3.6687436058961277`*^9, 3.668802284508698*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"range2", "=", 
+  RowBox[{"Range", "[", 
+   RowBox[{"15", ",", "7", ",", 
+    RowBox[{"-", "1"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.667602107357753*^9, 3.667602119424391*^9}, {
+  3.6676021584563932`*^9, 3.667602164639052*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "15", ",", "14", ",", "13", ",", "12", ",", "11", ",", "10", ",", "9", ",", 
+   "8", ",", "7"}], "}"}]], "Output",
+ CellChangeTimes->{3.667602121641567*^9, 3.667602165097416*^9, 
+  3.667602317214615*^9, 3.668743606520547*^9, 3.668802284535727*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"range3", "=", 
+  RowBox[{"Range", "[", 
+   RowBox[{"4", ",", "12"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6676023999333973`*^9, 3.667602414137001*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "4", ",", "5", ",", "6", ",", "7", ",", "8", ",", "9", ",", "10", ",", "11",
+    ",", "12"}], "}"}]], "Output",
+ CellChangeTimes->{3.667602414969054*^9, 3.668743607343933*^9, 
+  3.668802284584564*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "We join the lists together with the ",
+ StyleBox["Join", "Code"],
+ " function:"
+}], "Text",
+ CellChangeTimes->{{3.668743428695882*^9, 3.6687434335436897`*^9}, {
+  3.6799450714096003`*^9, 3.679945080847028*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Join"}]], "Input",
+ CellChangeTimes->{{3.668743434538628*^9, 3.668743435429894*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Join\\\", \\\"[\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"list\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"list\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"]\\\"}]\) concatenates lists or other expressions that share \
+the same head.\\n\!\(\*RowBox[{\\\"Join\\\", \\\"[\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"list\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"list\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) joins \
+the objects at level \!\(\*StyleBox[\\\"n\\\", \\\"TI\\\"]\) in each of the \
+\!\(\*SubscriptBox[StyleBox[\\\"list\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \\\
+\"TI\\\"]]\).\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Join"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.6688022846466722`*^9},
+ CellTags->"Info-b6082320-264f-4086-b942-f50eb0d312fd"]
+}, Open  ]],
+
+Cell["Let's join the lists together :", "Text",
+ CellChangeTimes->{{3.679945072688933*^9, 3.6799450877666407`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"joined", " ", "=", " ", 
+  RowBox[{"Join", "[", 
+   RowBox[{"range1", ",", "range2", ",", "range3"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.666625611802109*^9, 3.666625615729329*^9}, {
+  3.666625665060541*^9, 3.666625667051856*^9}, {3.667601875614908*^9, 
+  3.667601912645693*^9}, {3.667602132208221*^9, 3.667602138991995*^9}, {
+  3.667602276461849*^9, 3.667602279676969*^9}, {3.667602425009033*^9, 
+  3.6676024276405487`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", "8", 
+   ",", "9", ",", "10", ",", "15", ",", "14", ",", "13", ",", "12", ",", "11",
+    ",", "10", ",", "9", ",", "8", ",", "7", ",", "4", ",", "5", ",", "6", 
+   ",", "7", ",", "8", ",", "9", ",", "10", ",", "11", ",", "12"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.6666256162018423`*^9, 3.666625667386312*^9}, 
+   3.666652445153702*^9, 3.6675993276450253`*^9, 3.667600304759797*^9, {
+   3.6676018802139893`*^9, 3.667601912885355*^9}, {3.667602140642973*^9, 
+   3.667602168173498*^9}, 3.6676022814774218`*^9, 3.6676023172848387`*^9, 
+   3.667602428134726*^9, 3.6687436103260736`*^9, 3.668802284702366*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "We can visualize this list with ",
+ StyleBox["ListPlot", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.679945111253809*^9, 3.679945117813675*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", 
+  RowBox[{"joined", ",", 
+   RowBox[{"Filling", "\[Rule]", "Axis"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.667602825630885*^9, 3.667602826726347*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, GraphicsComplexBox[CompressedData["
+1:eJzt08sKgkAUgOGhlUsXLly4MBERGcT7HfIZoicIWvfqPUJF5wTzv0HQgPx8
+oHNB5ni9n28HY8zl9bz7GY+TW7O79VAfDdAQjdAYTdAUzaSlNJdaaYFavKff
+6TwV5q+xfoP9tdh/J9Xz91I9/yDV84/4fsL8M9ZfsL8V+9+ker7vf9Oxu/Rg
+Hw7gEI7gGE7gFM7gHC5gC5dwBddwA7dwB/fwAI/wBM/wAq/wBv/vn7v+79y/
+J6sKPPs=
+    "], {{{}, {}, {}, {}, 
+      {RGBColor[0.368417, 0.506779, 0.709798], Opacity[0.3], LineBox[{29, 1}],
+        LineBox[{30, 2}], LineBox[{31, 3}], LineBox[{32, 4}], 
+       LineBox[{33, 5}], LineBox[{34, 6}], LineBox[{35, 7}], LineBox[{36, 8}],
+        LineBox[{37, 9}], LineBox[{38, 10}], LineBox[{39, 11}], 
+       LineBox[{40, 12}], LineBox[{41, 13}], LineBox[{42, 14}], 
+       LineBox[{43, 15}], LineBox[{44, 16}], LineBox[{45, 17}], 
+       LineBox[{46, 18}], LineBox[{47, 19}], LineBox[{48, 20}], 
+       LineBox[{49, 21}], LineBox[{50, 22}], LineBox[{51, 23}], 
+       LineBox[{52, 24}], LineBox[{53, 25}], LineBox[{54, 26}], 
+       LineBox[{55, 27}], LineBox[{56, 28}]}}, {{}, 
+      {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+       0.012833333333333334`], AbsoluteThickness[1.6], 
+       PointBox[{57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 
+        72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84}]}, {}}}], {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  Method->{},
+  PlotRange->{{0., 28.}, {0, 15.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.667602829211533*^9, 3.668743612456792*^9, 
+  3.668802284793994*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "We can remove duplicate entries from the list with ",
+ StyleBox["DeleteDuplicates", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.6799452739289494`*^9, 3.679945284519581*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DeleteDuplicates", "[", "joined", "]"}]], "Input",
+ CellChangeTimes->{{3.666625689945427*^9, 3.6666257027032633`*^9}, 
+   3.667602285567491*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", "8", 
+   ",", "9", ",", "10", ",", "15", ",", "14", ",", "13", ",", "12", ",", 
+   "11"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.666625703013359*^9, 3.6666524575131407`*^9, 3.6675993277133427`*^9, 
+   3.667600304825842*^9, {3.6676021476406307`*^9, 3.6676021867410307`*^9}, 
+   3.667602317349769*^9, 3.667602431661598*^9, 3.6687436142857523`*^9, 
+   3.668802284817112*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "If instead of deleting the duplicates we want to gather the duplicates \
+together, we use the ",
+ StyleBox["Gather", "Code"],
+ " function:"
+}], "Text",
+ CellChangeTimes->{{3.679945292455351*^9, 3.6799453228141336`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Gather"}]], "Input",
+ CellChangeTimes->{{3.6666524737627773`*^9, 3.666652475347208*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Gather\\\", \\\"[\\\", \
+StyleBox[\\\"list\\\", \\\"TI\\\"], \\\"]\\\"}]\) gathers the elements of \
+\!\(\*StyleBox[\\\"list\\\", \\\"TI\\\"]\) into sublists of identical \
+elements.\\n\!\(\*RowBox[{\\\"Gather\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"test\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\) applies \!\(\*StyleBox[\\\"test\\\", \\\"TI\\\"]\
+\) to pairs of elements to determine if they should be considered \
+identical.\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Gather"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.668802284870268*^9},
+ CellTags->"Info-d2eddccb-8d52-4cd7-aa49-7ce59b10ac10"]
+}, Open  ]],
+
+Cell[TextData[{
+ "We can apply ",
+ StyleBox["Gather", "Code"],
+ " to our joined list:"
+}], "Text",
+ CellChangeTimes->{{3.679945335589679*^9, 3.679945347093068*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Gather", "[", "joined", "]"}]], "Input",
+ CellChangeTimes->{{3.666625893410236*^9, 3.666625896438422*^9}, 
+   3.66760228752686*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"{", "2", "}"}], ",", 
+   RowBox[{"{", "3", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "4"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "5"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "6"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", "7", ",", "7"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "8", ",", "8"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", "9", ",", "9"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "10", ",", "10"}], "}"}], ",", 
+   RowBox[{"{", "15", "}"}], ",", 
+   RowBox[{"{", "14", "}"}], ",", 
+   RowBox[{"{", "13", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"12", ",", "12"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"11", ",", "11"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.666625896807392*^9, 3.666652470937236*^9, 
+  3.6675993278962727`*^9, 3.6676003050103817`*^9, 3.667602190594803*^9, 
+  3.66760231751541*^9, 3.667605260023999*^9, 3.6687436163213797`*^9, 
+  3.6688022849174137`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "We can count the number of times an element occurs with ",
+ StyleBox["Tally", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.679945354620819*^9, 3.679945381571784*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Tally"}]], "Input",
+ CellChangeTimes->{{3.6676053210004883`*^9, 3.667605323183105*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Tally\\\", \\\"[\\\", \
+StyleBox[\\\"list\\\", \\\"TI\\\"], \\\"]\\\"}]\) tallies the elements in \
+\!\(\*StyleBox[\\\"list\\\", \\\"TI\\\"]\), listing all distinct elements \
+together with their multiplicities.\\n\!\(\*RowBox[{\\\"Tally\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"test\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\) uses \!\(\*StyleBox[\\\"test\\\", \\\"TI\\\"]\) \
+to determine whether pairs of elements should be considered equivalent, and \
+gives a list of the first representatives of each equivalence class, together \
+with their multiplicities.\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Tally"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.6688022849702253`*^9},
+ CellTags->"Info-31845c21-dea1-4e48-a062-094067ffdca3"]
+}, Open  ]],
+
+Cell[TextData[{
+ "The ",
+ StyleBox["Tally", "Code"],
+ " of our list is:"
+}], "Text",
+ CellChangeTimes->{{3.6799453870355797`*^9, 3.6799453950191593`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"tallied", "=", 
+  RowBox[{"Tally", "[", "joined", "]"}]}]], "Input",
+ CellChangeTimes->{{3.6666257163178997`*^9, 3.666625717024261*^9}, 
+   3.66760228857487*^9, {3.668743600472486*^9, 3.668743601720064*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"14", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"13", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"12", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"11", ",", "2"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.666625717654464*^9, 3.6666525068994293`*^9, 3.667599327963409*^9, 
+   3.6676003050786467`*^9, 3.667602193753414*^9, 3.667602317574654*^9, 
+   3.667603137645007*^9, 3.667605263414175*^9, 3.667605346732806*^9, {
+   3.668743602351572*^9, 3.66874362122852*^9}, 3.668802285047043*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Other Useful Operations", "Subsection",
+ CellChangeTimes->{{3.668743682147489*^9, 3.668743686432158*^9}}],
+
+Cell["\<\
+In this section, we\[CloseCurlyQuote]ll look at some other useful functions \
+that operate on lists.\
+\>", "Text",
+ CellChangeTimes->{{3.679945445106522*^9, 3.679945490751841*^9}}],
+
+Cell[TextData[{
+ StyleBox["RotateLeft", "Code"],
+ " moves elements from the left of the list to the right:"
+}], "Text",
+ CellChangeTimes->{{3.679945500623559*^9, 3.6799455109913607`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "RotateLeft"}]], "Input",
+ CellChangeTimes->{{3.667605457482933*^9, 3.667605466427248*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"RotateLeft\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\
+\"TI\\\"]}], \\\"]\\\"}]\) cycles the elements in \
+\!\(\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\) \!\(\*StyleBox[\\\"n\\\", \\\"TI\\\
+\"]\) positions to the left. \\n\!\(\*RowBox[{\\\"RotateLeft\\\", \\\"[\\\", \
+StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\"]\\\"}]\) cycles one position to the \
+left. \\n\!\(\*RowBox[{\\\"RotateLeft\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\) cycles elements at successive \
+levels \!\(\*SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], \
+StyleBox[\\\"i\\\", \\\"TI\\\"]]\) positions to the left. \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/RotateLeft"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.6688022852832127`*^9},
+ CellTags->"Info-3afb0f2e-6322-469d-94fa-2ff8160eb60e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["range1"], "Input",
+ CellChangeTimes->{{3.6676032562421217`*^9, 3.667603264107174*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", "8", 
+   ",", "9", ",", "10"}], "}"}]], "Output",
+ CellChangeTimes->{{3.6676032588453913`*^9, 3.6676032645968857`*^9}, 
+   3.668802285335807*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"RotateLeft", "[", "range1", "]"}]], "Input",
+ CellChangeTimes->{{3.6666258563659*^9, 3.6666258817247057`*^9}, 
+   3.6676022940488033`*^9, {3.6676032664912777`*^9, 3.667603268811198*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", "8", ",", "9", 
+   ",", "10", ",", "1"}], "}"}]], "Output",
+ CellChangeTimes->{{3.666625862847567*^9, 3.666625882508729*^9}, 
+   3.666652602189404*^9, 3.6675993284006977`*^9, 3.667600305449827*^9, 
+   3.667602246293005*^9, 3.667602317874754*^9, {3.667603239748024*^9, 
+   3.667603269318227*^9}, 3.668802285361759*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"RotateLeft", "[", 
+  RowBox[{"range1", ",", "3"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6666258563659*^9, 3.6666258855151653`*^9}, 
+   3.6666526592112494`*^9, 3.667602295200107*^9, {3.6676032733474913`*^9, 
+   3.66760327409899*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "4", ",", "5", ",", "6", ",", "7", ",", "8", ",", "9", ",", "10", ",", "1", 
+   ",", "2", ",", "3"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.666625885893865*^9, 3.666652615757353*^9, 3.666652660329831*^9, 
+   3.667599328467869*^9, 3.667600305499251*^9, 3.667602254509555*^9, {
+   3.667602296172492*^9, 3.667602317930255*^9}, 3.667603243008542*^9, 
+   3.667603274841642*^9, 3.6688022854037313`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["RotateRight", "Code"],
+ " moves elements from the right of the list to the left:"
+}], "Text",
+ CellChangeTimes->{{3.6687438536760902`*^9, 3.668743874071402*^9}, {
+  3.679945521262515*^9, 3.67994553340618*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "RotateRight"}]], "Input",
+ CellChangeTimes->{{3.66874387562824*^9, 3.668743877738618*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"RotateRight\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\
+\"TI\\\"]}], \\\"]\\\"}]\) cycles the elements in \
+\!\(\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\) \!\(\*StyleBox[\\\"n\\\", \\\"TI\\\
+\"]\) positions to the right. \\n\!\(\*RowBox[{\\\"RotateRight\\\", \
+\\\"[\\\", StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\"]\\\"}]\) cycles one \
+position to the right. \\n\!\(\*RowBox[{\\\"RotateRight\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\) cycles elements at successive \
+levels \!\(\*SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], \
+StyleBox[\\\"i\\\", \\\"TI\\\"]]\) positions to the right. \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/RotateRight"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.6688022854595737`*^9},
+ CellTags->"Info-c63ebcc8-0cc0-4c59-a385-a3b42c40ccf7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"RotateRight", "[", 
+  RowBox[{"range1", ",", "3"}], "]"}]], "Input",
+ CellChangeTimes->{{3.66874387893618*^9, 3.668743888043618*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "8", ",", "9", ",", "10", ",", "1", ",", "2", ",", "3", ",", "4", ",", "5", 
+   ",", "6", ",", "7"}], "}"}]], "Output",
+ CellChangeTimes->{3.668743888323295*^9, 3.668802285731352*^9}]
+}, Open  ]],
+
+Cell["This is the same as rotating left by -3:", "Text",
+ CellChangeTimes->{{3.6687438909914293`*^9, 3.668743896773942*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"RotateLeft", "[", 
+  RowBox[{"range1", ",", 
+   RowBox[{"-", "3"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.668743897803022*^9, 3.668743901836257*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "8", ",", "9", ",", "10", ",", "1", ",", "2", ",", "3", ",", "4", ",", "5", 
+   ",", "6", ",", "7"}], "}"}]], "Output",
+ CellChangeTimes->{3.668743902058076*^9, 3.668802285770193*^9}]
+}, Open  ]],
+
+Cell["\<\
+Sometimes, you need two lists to be the same length. For instance, suppose \
+that you had u and v:\
+\>", "Text",
+ CellChangeTimes->{{3.666625400505918*^9, 3.6666254078635387`*^9}, {
+  3.6666523089699917`*^9, 3.666652309632678*^9}, {3.668743910690217*^9, 
+  3.6687439435961523`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"u", "=", 
+  RowBox[{"Range", "[", "10", "]"}]}]], "Input",
+ CellChangeTimes->{{3.668743944389009*^9, 3.668743948478869*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", "8", 
+   ",", "9", ",", "10"}], "}"}]], "Output",
+ CellChangeTimes->{3.6687439489707727`*^9, 3.668802285798086*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"v", "=", 
+  RowBox[{"Range", "[", "5", "]"}]}]], "Input",
+ CellChangeTimes->{{3.66874394948602*^9, 3.6687439516527452`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "2", ",", "3", ",", "4", ",", "5"}], "}"}]], "Output",
+ CellChangeTimes->{3.668743951997794*^9, 3.6688022858373833`*^9}]
+}, Open  ]],
+
+Cell["You can\[CloseCurlyQuote]t add u to v:", "Text",
+ CellChangeTimes->{{3.668743956983561*^9, 3.6687439606851473`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"u", "+", "v"}]], "Input",
+ CellChangeTimes->{{3.668743961692327*^9, 3.668743962091604*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Thread", "::", "tdlen"}], "MessageName"], ":", 
+  " ", "\<\"Objects of unequal length in \
+\[NoBreak]\\!\\(\\*RowBox[{RowBox[{\\\"{\\\", RowBox[{\\\"1\\\", \\\",\\\", \
+\\\"2\\\", \\\",\\\", \\\"3\\\", \\\",\\\", \\\"4\\\", \\\",\\\", \\\"5\\\", \
+\\\",\\\", \\\"6\\\", \\\",\\\", \\\"7\\\", \\\",\\\", \\\"8\\\", \\\",\\\", \
+\\\"9\\\", \\\",\\\", \\\"10\\\"}], \\\"}\\\"}], \\\"+\\\", \
+RowBox[{\\\"{\\\", RowBox[{\\\"1\\\", \\\",\\\", \\\"2\\\", \\\",\\\", \
+\\\"3\\\", \\\",\\\", \\\"4\\\", \\\",\\\", \\\"5\\\"}], \\\"}\\\"}]}]\\)\
+\[NoBreak] cannot be combined. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/Thread/tdlen\\\", ButtonNote -> \
+\\\"Thread::tdlen\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.668743962368146*^9, 3.6688022859653387`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{"1", ",", "2", ",", "3", ",", "4", ",", "5"}], "}"}], "+", 
+  RowBox[{"{", 
+   RowBox[{
+   "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", "8", 
+    ",", "9", ",", "10"}], "}"}]}]], "Output",
+ CellChangeTimes->{3.6687439623744717`*^9, 3.6688022859746113`*^9}]
+}, Open  ]],
+
+Cell["\<\
+If you knew you wanted to add u to the first 5 elements, then you could pad u \
+on the right with zeroes:\
+\>", "Text",
+ CellChangeTimes->{{3.6687439678626747`*^9, 3.6687439892712708`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "PadRight"}]], "Input",
+ CellChangeTimes->{{3.668743990617063*^9, 3.668743992647744*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"PadRight\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\
+\"TI\\\"]}], \\\"]\\\"}]\) makes a list of length \!\(\*StyleBox[\\\"n\\\", \
+\\\"TI\\\"]\) by padding \!\(\*StyleBox[\\\"list\\\", \\\"TI\\\"]\) with \
+zeros on the right. \\n\!\(\*RowBox[{\\\"PadRight\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\
+\"TI\\\"], \\\",\\\", StyleBox[\\\"x\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) pads \
+by repeating the element \!\(\*StyleBox[\\\"x\\\", \\\"TI\\\"]\). \
+\\n\!\(\*RowBox[{\\\"PadRight\\\", \\\"[\\\", RowBox[{StyleBox[\\\"list\\\", \
+\\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\"TI\\\"], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], \
+StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"x\\\", \
+\\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\
+\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\) pads by \
+cyclically repeating the elements \!\(\*SubscriptBox[StyleBox[\\\"x\\\", \
+\\\"TI\\\"], StyleBox[\\\"i\\\", \\\"TI\\\"]]\). \
+\\n\!\(\*RowBox[{\\\"PadRight\\\", \\\"[\\\", RowBox[{StyleBox[\\\"list\\\", \
+\\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\
+\\\"padding\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"m\\\", \\\"TI\\\"]}], \
+\\\"]\\\"}]\) leaves a margin of \!\(\*StyleBox[\\\"m\\\", \\\"TI\\\"]\) \
+elements of padding on the left. \\n\!\(\*RowBox[{\\\"PadRight\\\", \
+\\\"[\\\", RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], \
+StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"n\\\", \
+\\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\
+\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\) makes a nested \
+list with length \!\(\*SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], \
+StyleBox[\\\"i\\\", \\\"TI\\\"]]\) at level \!\(\*StyleBox[\\\"i\\\", \
+\\\"TI\\\"]\). \\n\!\(\*RowBox[{\\\"PadRight\\\", \\\"[\\\", \
+StyleBox[\\\"list\\\", \\\"TI\\\"], \\\"]\\\"}]\) pads a ragged array \
+\!\(\*StyleBox[\\\"list\\\", \\\"TI\\\"]\) with zeros to make it full. \"\>", 
+   "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/PadRight"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.668802286033684*^9},
+ CellTags->"Info-5a183f14-a5c8-432e-9d5b-2a09a8ea052c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PadRight", "[", 
+  RowBox[{"v", ",", 
+   RowBox[{"Length", "[", "u", "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.668743996331835*^9, 3.668744015956601*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "0", ",", "0", ",", "0", 
+   ",", "0", ",", "0"}], "}"}]], "Output",
+ CellChangeTimes->{3.6687440162372503`*^9, 3.6688022861171837`*^9}]
+}, Open  ]],
+
+Cell["Then add them together:", "Text",
+ CellChangeTimes->{{3.66874401898263*^9, 3.668744021919044*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"u", "+", 
+  RowBox[{"PadRight", "[", 
+   RowBox[{"v", ",", 
+    RowBox[{"Length", "[", "u", "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.668744023356865*^9, 3.668744024430225*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "2", ",", "4", ",", "6", ",", "8", ",", "10", ",", "6", ",", "7", ",", "8", 
+   ",", "9", ",", "10"}], "}"}]], "Output",
+ CellChangeTimes->{3.66874402522388*^9, 3.668802286175356*^9}]
+}, Open  ]],
+
+Cell["You can also use PadLeft:", "Text",
+ CellChangeTimes->{{3.668744119727776*^9, 3.668744126026702*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "PadLeft"}]], "Input",
+ CellChangeTimes->{{3.666652298045288*^9, 3.6666522997610207`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"PadLeft\\\", \\\"[\\\", RowBox[{StyleBox[\\\
+\"list\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\"TI\\\"]}], \
+\\\"]\\\"}]\) makes a list of length \!\(\*StyleBox[\\\"n\\\", \\\"TI\\\"]\) \
+by padding \!\(\*StyleBox[\\\"list\\\", \\\"TI\\\"]\) with zeros on the left. \
+\\n\!\(\*RowBox[{\\\"PadLeft\\\", \\\"[\\\", RowBox[{StyleBox[\\\"list\\\", \
+\\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\
+\\\"x\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) pads by repeating the element \
+\!\(\*StyleBox[\\\"x\\\", \\\"TI\\\"]\). \\n\!\(\*RowBox[{\\\"PadLeft\\\", \\\
+\"[\\\", RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"n\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\) pads by cyclically repeating the \
+elements \!\(\*SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], StyleBox[\\\"i\\\
+\", \\\"TI\\\"]]\). \\n\!\(\*RowBox[{\\\"PadLeft\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\
+\"TI\\\"], \\\",\\\", StyleBox[\\\"padding\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"m\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) leaves a margin of \
+\!\(\*StyleBox[\\\"m\\\", \\\"TI\\\"]\) elements of padding on the right. \\n\
+\!\(\*RowBox[{\\\"PadLeft\\\", \\\"[\\\", RowBox[{StyleBox[\\\"list\\\", \
+\\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\) makes a nested list with length \
+\!\(\*SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \
+\\\"TI\\\"]]\) at level \!\(\*StyleBox[\\\"i\\\", \\\"TI\\\"]\). \
+\\n\!\(\*RowBox[{\\\"PadLeft\\\", \\\"[\\\", StyleBox[\\\"list\\\", \
+\\\"TI\\\"], \\\"]\\\"}]\) pads a ragged array \!\(\*StyleBox[\\\"list\\\", \
+\\\"TI\\\"]\) with zeros to make it full. \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/PadLeft"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.668802286230332*^9},
+ CellTags->"Info-b49e0a6e-f30f-4266-aa34-790f6511f174"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PadLeft", "[", 
+  RowBox[{"v", ",", "10"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6687441310091743`*^9, 3.668744139639189*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "1", ",", "2", ",", "3", 
+   ",", "4", ",", "5"}], "}"}]], "Output",
+ CellChangeTimes->{3.668744139877192*^9, 3.668802286296154*^9}]
+}, Open  ]],
+
+Cell["\<\
+Note that this is the same as PadRight with a negative length:\
+\>", "Text",
+ CellChangeTimes->{{3.66874414281157*^9, 3.6687441602264347`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PadRight", "[", 
+  RowBox[{"v", ",", 
+   RowBox[{"-", "10"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.668744161655734*^9, 3.668744167325531*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "1", ",", "2", ",", "3", 
+   ",", "4", ",", "5"}], "}"}]], "Output",
+ CellChangeTimes->{3.668744167623474*^9, 3.668802286338163*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Summary", "Subsection",
+ CellChangeTimes->{{3.67994555774924*^9, 3.679945558453273*^9}}],
+
+Cell["\<\
+This lecture, focused primarily on functions that modify Lists. We looked at \
+inserting and removing elements from lists, joining lists and tallying their \
+elements as well some other useful functions. In the next lecture, we\
+\[CloseCurlyQuote]ll look at search and sorting lists, set operations on \
+lists and some basic combinatorics.\
+\>", "Text",
+ CellChangeTimes->{{3.668744171118527*^9, 3.668744414015624*^9}, {
+  3.668744477670643*^9, 3.668744496736938*^9}, {3.67994556319716*^9, 
+  3.679945569005183*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{999, 905},
+WindowMargins->{{313, Automatic}, {Automatic, 33}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"10.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (October 9, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info-b49e0a6e-f30f-4266-aa34-790f6511f174"->{
+  Cell[48189, 1258, 2576, 40, 146, "Print",
+   CellTags->"Info-b49e0a6e-f30f-4266-aa34-790f6511f174"]},
+ "Info-b6082320-264f-4086-b942-f50eb0d312fd"->{
+  Cell[23398, 599, 1226, 21, 70, "Print",
+   CellTags->"Info-b6082320-264f-4086-b942-f50eb0d312fd"]},
+ "Info-c63ebcc8-0cc0-4c59-a385-a3b42c40ccf7"->{
+  Cell[39061, 1025, 1314, 23, 89, "Print",
+   CellTags->"Info-c63ebcc8-0cc0-4c59-a385-a3b42c40ccf7"]},
+ "Info-d2eddccb-8d52-4cd7-aa49-7ce59b10ac10"->{
+  Cell[29643, 755, 813, 16, 70, "Print",
+   CellTags->"Info-d2eddccb-8d52-4cd7-aa49-7ce59b10ac10"]},
+ "Info-3afb0f2e-6322-469d-94fa-2ff8160eb60e"->{
+  Cell[35550, 933, 1307, 23, 89, "Print",
+   CellTags->"Info-3afb0f2e-6322-469d-94fa-2ff8160eb60e"]},
+ "Info-31845c21-dea1-4e48-a062-094067ffdca3"->{
+  Cell[32236, 834, 948, 17, 89, "Print",
+   CellTags->"Info-31845c21-dea1-4e48-a062-094067ffdca3"]},
+ "Info-5ad83f4d-85f5-4afa-8c48-a9ccbf532762"->{
+  Cell[8934, 230, 2199, 35, 108, "Print",
+   CellTags->"Info-5ad83f4d-85f5-4afa-8c48-a9ccbf532762"]},
+ "Info-5a183f14-a5c8-432e-9d5b-2a09a8ea052c"->{
+  Cell[44304, 1170, 2584, 40, 146, "Print",
+   CellTags->"Info-5a183f14-a5c8-432e-9d5b-2a09a8ea052c"]},
+ "Info-7b46b1a7-b266-484d-b49a-7492067f5f58"->{
+  Cell[14071, 344, 2768, 42, 153, "Print",
+   CellTags->"Info-7b46b1a7-b266-484d-b49a-7492067f5f58"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info-b49e0a6e-f30f-4266-aa34-790f6511f174", 52842, 1368},
+ {"Info-b6082320-264f-4086-b942-f50eb0d312fd", 52994, 1371},
+ {"Info-c63ebcc8-0cc0-4c59-a385-a3b42c40ccf7", 53144, 1374},
+ {"Info-d2eddccb-8d52-4cd7-aa49-7ce59b10ac10", 53295, 1377},
+ {"Info-3afb0f2e-6322-469d-94fa-2ff8160eb60e", 53444, 1380},
+ {"Info-31845c21-dea1-4e48-a062-094067ffdca3", 53594, 1383},
+ {"Info-5ad83f4d-85f5-4afa-8c48-a9ccbf532762", 53743, 1386},
+ {"Info-5a183f14-a5c8-432e-9d5b-2a09a8ea052c", 53893, 1389},
+ {"Info-7b46b1a7-b266-484d-b49a-7492067f5f58", 54045, 1392}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 272, 4, 80, "Section"],
+Cell[855, 28, 252, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[1132, 37, 130, 2, 54, "Subsection"],
+Cell[1265, 41, 207, 3, 37, "Text"],
+Cell[1475, 46, 322, 6, 61, "Text"],
+Cell[CellGroupData[{
+Cell[1822, 56, 293, 5, 36, "Input"],
+Cell[2118, 63, 734, 12, 36, "Output"]
+}, Open  ]],
+Cell[2867, 78, 97, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[2989, 83, 197, 4, 36, "Input"],
+Cell[3189, 89, 708, 11, 36, "Output"]
+}, Open  ]],
+Cell[3912, 103, 196, 4, 61, "Text"],
+Cell[CellGroupData[{
+Cell[4133, 111, 125, 2, 36, "Input"],
+Cell[4261, 115, 682, 10, 36, "Output"]
+}, Open  ]],
+Cell[4958, 128, 197, 4, 37, "Text"],
+Cell[CellGroupData[{
+Cell[5180, 136, 248, 5, 36, "Input"],
+Cell[5431, 143, 711, 11, 36, "Output"]
+}, Open  ]],
+Cell[6157, 157, 103, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[6285, 162, 251, 5, 36, "Input"],
+Cell[6539, 169, 743, 11, 57, "Output"]
+}, Open  ]],
+Cell[7297, 183, 91, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[7413, 188, 261, 6, 36, "Input"],
+Cell[7677, 196, 778, 12, 57, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8504, 214, 107, 1, 54, "Subsection"],
+Cell[8614, 217, 175, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[8814, 226, 117, 2, 35, "Input"],
+Cell[8934, 230, 2199, 35, 108, "Print",
+ CellTags->"Info-5ad83f4d-85f5-4afa-8c48-a9ccbf532762"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11170, 270, 276, 5, 36, "Input"],
+Cell[11449, 277, 944, 15, 57, "Output"]
+}, Open  ]],
+Cell[12408, 295, 248, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[12681, 305, 394, 11, 36, "Input"],
+Cell[13078, 318, 663, 10, 36, "Output"]
+}, Open  ]],
+Cell[13756, 331, 174, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[13955, 340, 113, 2, 36, "Input"],
+Cell[14071, 344, 2768, 42, 153, "Print",
+ CellTags->"Info-7b46b1a7-b266-484d-b49a-7492067f5f58"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16876, 391, 151, 3, 36, "Input"],
+Cell[17030, 396, 225, 5, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17292, 406, 249, 5, 36, "Input"],
+Cell[17544, 413, 387, 7, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17968, 425, 269, 6, 36, "Input"],
+Cell[18240, 433, 388, 7, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18665, 445, 251, 6, 36, "Input"],
+Cell[18919, 453, 393, 8, 35, "Output"]
+}, Open  ]],
+Cell[19327, 464, 102, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[19454, 469, 354, 9, 36, "Input"],
+Cell[19811, 480, 410, 7, 35, "Output"]
+}, Open  ]],
+Cell[20236, 490, 133, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[20394, 495, 333, 8, 36, "Input"],
+Cell[20730, 505, 192, 4, 35, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20971, 515, 160, 2, 54, "Subsection"],
+Cell[21134, 519, 292, 10, 37, "Text"],
+Cell[CellGroupData[{
+Cell[21451, 533, 236, 5, 36, "Input"],
+Cell[21690, 540, 276, 6, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22003, 551, 258, 6, 36, "Input"],
+Cell[22264, 559, 289, 6, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22590, 570, 179, 4, 36, "Input"],
+Cell[22772, 576, 242, 6, 35, "Output"]
+}, Open  ]],
+Cell[23029, 585, 228, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[23282, 595, 113, 2, 35, "Input"],
+Cell[23398, 599, 1226, 21, 70, "Print",
+ CellTags->"Info-b6082320-264f-4086-b942-f50eb0d312fd"]
+}, Open  ]],
+Cell[24639, 623, 115, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[24779, 628, 454, 8, 36, "Input"],
+Cell[25236, 638, 723, 12, 35, "Output"]
+}, Open  ]],
+Cell[25974, 653, 166, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[26165, 662, 194, 4, 36, "Input"],
+Cell[26362, 668, 1991, 43, 305, "Output"]
+}, Open  ]],
+Cell[28368, 714, 195, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[28588, 723, 168, 3, 36, "Input"],
+Cell[28759, 728, 487, 10, 35, "Output"]
+}, Open  ]],
+Cell[29261, 741, 237, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[29523, 751, 117, 2, 35, "Input"],
+Cell[29643, 755, 813, 16, 70, "Print",
+ CellTags->"Info-d2eddccb-8d52-4cd7-aa49-7ce59b10ac10"]
+}, Open  ]],
+Cell[30471, 774, 164, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[30660, 783, 155, 3, 36, "Input"],
+Cell[30818, 788, 1072, 30, 57, "Output"]
+}, Open  ]],
+Cell[31905, 821, 187, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[32117, 830, 116, 2, 36, "Input"],
+Cell[32236, 834, 948, 17, 89, "Print",
+ CellTags->"Info-31845c21-dea1-4e48-a062-094067ffdca3"]
+}, Open  ]],
+Cell[33199, 854, 154, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[33378, 863, 231, 4, 36, "Input"],
+Cell[33612, 869, 1248, 37, 57, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[34909, 912, 111, 1, 54, "Subsection"],
+Cell[35023, 915, 190, 4, 37, "Text"],
+Cell[35216, 921, 187, 4, 37, "Text"],
+Cell[CellGroupData[{
+Cell[35428, 929, 119, 2, 35, "Input"],
+Cell[35550, 933, 1307, 23, 89, "Print",
+ CellTags->"Info-3afb0f2e-6322-469d-94fa-2ff8160eb60e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36894, 961, 100, 1, 36, "Input"],
+Cell[36997, 964, 257, 6, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37291, 975, 210, 3, 36, "Input"],
+Cell[37504, 980, 419, 8, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37960, 993, 258, 5, 36, "Input"],
+Cell[38221, 1000, 442, 9, 35, "Output"]
+}, Open  ]],
+Cell[38678, 1012, 236, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[38939, 1021, 119, 2, 36, "Input"],
+Cell[39061, 1025, 1314, 23, 89, "Print",
+ CellTags->"Info-c63ebcc8-0cc0-4c59-a385-a3b42c40ccf7"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[40412, 1053, 157, 3, 36, "Input"],
+Cell[40572, 1058, 225, 5, 35, "Output"]
+}, Open  ]],
+Cell[40812, 1066, 124, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[40961, 1071, 176, 4, 36, "Input"],
+Cell[41140, 1077, 225, 5, 35, "Output"]
+}, Open  ]],
+Cell[41380, 1085, 292, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[41697, 1095, 148, 3, 36, "Input"],
+Cell[41848, 1100, 227, 5, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[42112, 1110, 148, 3, 36, "Input"],
+Cell[42263, 1115, 169, 3, 35, "Output"]
+}, Open  ]],
+Cell[42447, 1121, 122, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[42594, 1126, 115, 2, 35, "Input"],
+Cell[42712, 1130, 898, 15, 29, "Message"],
+Cell[43613, 1147, 332, 8, 35, "Output"]
+}, Open  ]],
+Cell[43960, 1158, 199, 4, 37, "Text"],
+Cell[CellGroupData[{
+Cell[44184, 1166, 117, 2, 36, "Input"],
+Cell[44304, 1170, 2584, 40, 146, "Print",
+ CellTags->"Info-5a183f14-a5c8-432e-9d5b-2a09a8ea052c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[46925, 1215, 184, 4, 36, "Input"],
+Cell[47112, 1221, 228, 5, 35, "Output"]
+}, Open  ]],
+Cell[47355, 1229, 104, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[47484, 1234, 209, 5, 36, "Input"],
+Cell[47696, 1241, 225, 5, 35, "Output"]
+}, Open  ]],
+Cell[47936, 1249, 107, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[48068, 1254, 118, 2, 35, "Input"],
+Cell[48189, 1258, 2576, 40, 146, "Print",
+ CellTags->"Info-b49e0a6e-f30f-4266-aa34-790f6511f174"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[50802, 1303, 152, 3, 35, "Input"],
+Cell[50957, 1308, 224, 5, 35, "Output"]
+}, Open  ]],
+Cell[51196, 1316, 153, 3, 37, "Text"],
+Cell[CellGroupData[{
+Cell[51374, 1323, 170, 4, 36, "Input"],
+Cell[51547, 1329, 224, 5, 35, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[51820, 1340, 94, 1, 54, "Subsection"],
+Cell[51917, 1343, 526, 9, 85, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

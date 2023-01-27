@@ -1,0 +1,1156 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     46797,       1148]
+NotebookOptionsPosition[     42384,       1002]
+NotebookOutlinePosition[     43571,       1041]
+CellTagsIndexPosition[     43307,       1032]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Cellular Automata Solution", "Section",
+ CellChangeTimes->{{3.6888615853410463`*^9, 3.688861589573636*^9}}],
+
+Cell["\<\
+Hello and welcome to our solution to the Cellular Automaton project. Let\
+\[CloseCurlyQuote]s get started.\
+\>", "Text",
+ CellChangeTimes->{{3.672446064168236*^9, 3.67244609766156*^9}}],
+
+Cell[TextData[{
+ "The first thing to do is to create the rules, which depend on the current \
+state of a cell and its two neighbors. So in order to do that, we first \
+enumerate all the possible neighborhoods. Consider a cell and its two \
+neighbors. Each triplet defines a possible neighborhood for a given state. \
+The next step is determined based on the state of this neighborhood. There \
+are ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["2", "3"], "=", "8"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " neighborhoods for a two-colored nearest neighbor Cellular Automaton. "
+}], "Text",
+ CellChangeTimes->{{3.6722554634477158`*^9, 3.672255477582973*^9}, {
+   3.6722555873237753`*^9, 3.672255654978549*^9}, {3.672255707788088*^9, 
+   3.672255713811638*^9}, {3.672255861715879*^9, 3.672255916009737*^9}, {
+   3.6724398707915077`*^9, 3.672440013704473*^9}, {3.672446117494281*^9, 
+   3.6724461928192997`*^9}, {3.6724462425209427`*^9, 3.672446258334916*^9}, 
+   3.672446339358582*^9, {3.6888616430191507`*^9, 3.688861661745467*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Tuples", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0"}], "}"}], ",", "3"}], "]"}]], "Input",
+ CellChangeTimes->{{3.672440031258157*^9, 3.6724400346872387`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "0"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6722555831945047`*^9, 3.672255680330811*^9, 3.672439501572814*^9, 
+   3.672439541769874*^9, 3.672440036292569*^9, 3.672441643026219*^9, 
+   3.672442722055604*^9, {3.688861814744553*^9, 3.688861825807351*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "As we said before, the update rule for the Cellular Automaton is determined \
+by the binary representation of the rule number (between 0 and 255).  We can \
+get the binary representation of a number using ",
+ StyleBox["IntegerDigits", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.6722556896447153`*^9, 3.672255703556149*^9}, {
+  3.672255757290203*^9, 3.672255832517729*^9}, {3.672255925680525*^9, 
+  3.672256067758588*^9}, {3.6722561666098757`*^9, 3.6722561832168427`*^9}, {
+  3.6722575590184107`*^9, 3.672257570599924*^9}, {3.67244007714589*^9, 
+  3.672440158575976*^9}, {3.688861670857095*^9, 3.688861688607182*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "IntegerDigits"}]], "Input",
+ CellChangeTimes->{{3.672440160227762*^9, 3.672440162704749*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"IntegerDigits\\\", \\\"[\\\", \
+StyleBox[\\\"n\\\", \\\"TI\\\"], \\\"]\\\"}]\) gives a list of the decimal \
+digits in the integer \!\(\*StyleBox[\\\"n\\\", \\\"TI\\\"]\). \
+\\n\!\(\*RowBox[{\\\"IntegerDigits\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"n\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"b\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\) gives a list of the base \
+\!\(\*StyleBox[\\\"b\\\", \\\"TI\\\"]\) digits in the integer \!\(\*StyleBox[\
+\\\"n\\\", \\\"TI\\\"]\). \\n\!\(\*RowBox[{\\\"IntegerDigits\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"n\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"b\\\", \
+\\\"TI\\\"], \\\",\\\", StyleBox[\\\"len\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) \
+pads the list on the left with zeros to give a list of length \!\(\*StyleBox[\
+\\\"len\\\", \\\"TI\\\"]\). \\n\!\(\*RowBox[{\\\"IntegerDigits\\\", \
+\\\"[\\\", RowBox[{StyleBox[\\\"n\\\", \\\"TI\\\"], \\\",\\\", \
+RowBox[{\\\"MixedRadix\\\", \\\"[\\\", StyleBox[\\\"blist\\\", \\\"TI\\\"], \
+\\\"]\\\"}]}], \\\"]\\\"}]\) uses the mixed radix with list of bases \
+\!\(\*StyleBox[\\\"blist\\\", \\\"TI\\\"]\).\"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/IntegerDigits"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.688861825976029*^9},
+ CellTags->"Info243688833025-2817976"]
+}, Open  ]],
+
+Cell["\<\
+Since we have 8 possible neighborhoods, we pad our binary list to length 8 \
+using the third form:\
+\>", "Text",
+ CellChangeTimes->{{3.672440182889051*^9, 3.672440225637245*^9}, {
+  3.688861696078677*^9, 3.688861697046454*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"IntegerDigits", "[", 
+  RowBox[{"90", ",", "2", ",", "8"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6722553560469227`*^9, 3.672255367041295*^9}, {
+  3.672442336052699*^9, 3.6724423360990467`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0", ",", "1", ",", "0", ",", "1", ",", "1", ",", "0", ",", "1", ",", "0"}],
+   "}"}]], "Output",
+ CellChangeTimes->{{3.6722553643339977`*^9, 3.672255367295136*^9}, 
+   3.6722560761843557`*^9, 3.672439501606785*^9, 3.6724395418220453`*^9, 
+   3.672441643218886*^9, 3.672442336340561*^9, 3.672442723735827*^9, {
+   3.6888618152004757`*^9, 3.688861826091795*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Now we create a list of rules, by threading ",
+ StyleBox["Rule", "Code"],
+ " over ",
+ StyleBox["Tuples", "Code"],
+ " and ",
+ StyleBox["IntegerDigits", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.6724402186873093`*^9, 3.672440252244276*^9}, {
+  3.6724403002109823`*^9, 3.672440316488508*^9}, {3.688861704358754*^9, 
+  3.6888617045746117`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Thread"}]], "Input",
+ CellChangeTimes->{{3.672440594201413*^9, 3.672440596025935*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Thread\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\"[\\\", StyleBox[\\\"args\\\", \\\
+\"TI\\\"], \\\"]\\\"}], \\\"]\\\"}]\) \\\"threads\\\" \
+\!\(\*StyleBox[\\\"f\\\", \\\"TI\\\"]\) over any lists that appear in \
+\!\(\*StyleBox[\\\"args\\\", \\\"TI\\\"]\). \\n\!\(\*RowBox[{\\\"Thread\\\", \
+\\\"[\\\", RowBox[{RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\"[\\\", \
+StyleBox[\\\"args\\\", \\\"TI\\\"], \\\"]\\\"}], \\\",\\\", \
+StyleBox[\\\"h\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) threads \!\(\*StyleBox[\\\"f\
+\\\", \\\"TI\\\"]\) over any objects with head \!\(\*StyleBox[\\\"h\\\", \
+\\\"TI\\\"]\) that appear in \!\(\*StyleBox[\\\"args\\\", \\\"TI\\\"]\). \
+\\n\!\(\*RowBox[{\\\"Thread\\\", \\\"[\\\", \
+RowBox[{RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\"[\\\", StyleBox[\\\"args\
+\\\", \\\"TI\\\"], \\\"]\\\"}], \\\",\\\", StyleBox[\\\"h\\\", \\\"TI\\\"], \
+\\\",\\\", StyleBox[\\\"n\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) threads \
+\!\(\*StyleBox[\\\"f\\\", \\\"TI\\\"]\) over objects with head \
+\!\(\*StyleBox[\\\"h\\\", \\\"TI\\\"]\) that appear in the first \
+\!\(\*StyleBox[\\\"n\\\", \\\"TI\\\"]\) \!\(\*StyleBox[\\\"args\\\", \\\"TI\\\
+\"]\). \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Thread"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.688861826225286*^9},
+ CellTags->"Info263688833026-2817976"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Thread", "[", 
+  RowBox[{"Rule", "[", 
+   RowBox[{
+    RowBox[{"Tuples", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1", ",", "0"}], "}"}], ",", "3"}], "]"}], ",", 
+    RowBox[{"IntegerDigits", "[", 
+     RowBox[{"90", ",", "2", ",", "8"}], "]"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.672255325759718*^9, 3.67225539859479*^9}, {
+  3.67225650101917*^9, 3.672256503009239*^9}, {3.67244140836211*^9, 
+  3.672441409116817*^9}, {3.672442339883922*^9, 3.672442339922676*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"1", ",", "1", ",", "1"}], "}"}], "\[Rule]", "0"}], ",", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"1", ",", "1", ",", "0"}], "}"}], "\[Rule]", "1"}], ",", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"1", ",", "0", ",", "1"}], "}"}], "\[Rule]", "0"}], ",", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"1", ",", "0", ",", "0"}], "}"}], "\[Rule]", "1"}], ",", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"0", ",", "1", ",", "1"}], "}"}], "\[Rule]", "1"}], ",", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"0", ",", "1", ",", "0"}], "}"}], "\[Rule]", "0"}], ",", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"0", ",", "0", ",", "1"}], "}"}], "\[Rule]", "1"}], ",", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"0", ",", "0", ",", "0"}], "}"}], "\[Rule]", "0"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.67225538497263*^9, 3.672255398847299*^9}, 
+   3.672256503666677*^9, 3.672439501656005*^9, 3.6724395418670692`*^9, 
+   3.6724416433413477`*^9, 3.672442340586644*^9, 3.672442723853332*^9, {
+   3.688861815433399*^9, 3.688861826341919*^9}}]
+}, Open  ]],
+
+Cell["\<\
+So this says the neighborhood {1,1,1} goes to 0 in the next state, as well as \
+the next two. Then, {1,0,0} goes to 1 , and so on. \
+\>", "Text",
+ CellChangeTimes->{{3.672440321304488*^9, 3.6724403992049294`*^9}}],
+
+Cell[TextData[{
+ "So now we have our rules defined. We need to apply this to a given row of \
+example cells ",
+ StyleBox["state",
+  FontSlant->"Italic"],
+ ". "
+}], "Text",
+ CellChangeTimes->{{3.672256141892754*^9, 3.672256153002035*^9}, {
+  3.6722561950724688`*^9, 3.67225621900628*^9}, {3.672257611073104*^9, 
+  3.6722576152855043`*^9}, {3.6724404161182327`*^9, 3.6724404352752132`*^9}, {
+  3.6724418195277967`*^9, 3.6724418211813583`*^9}, {3.672442068249956*^9, 
+  3.672442069065235*^9}, {3.672445297008069*^9, 3.6724452980869007`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"state", " ", "=", " ", 
+  RowBox[{"{", 
+   RowBox[{"1", ",", "0", ",", "1", ",", "0", ",", "0"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.672441828147292*^9, 3.672441875675281*^9}, {
+  3.672442059604307*^9, 3.672442065209628*^9}, {3.672444874964877*^9, 
+  3.6724448751002493`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "0", ",", "1", ",", "0", ",", "0"}], "}"}]], "Output",
+ CellChangeTimes->{{3.672441843866261*^9, 3.672441875985231*^9}, {
+   3.672442065888432*^9, 3.672442079444173*^9}, 3.6724427238837633`*^9, 
+   3.672444875859624*^9, {3.6888618154884863`*^9, 3.6888618264460382`*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "In order for rule list be able to match the entries in the ",
+ StyleBox["state ",
+  FontSlant->"Italic"],
+ "array, we need to partition state array into overlapping groups of three."
+}], "Text",
+ CellChangeTimes->{{3.6722562416249743`*^9, 3.67225626581568*^9}, {
+  3.6722563595982447`*^9, 3.6722563662388277`*^9}, {3.672440666968544*^9, 
+  3.672440703981621*^9}, {3.672440734382324*^9, 3.672440746907363*^9}, {
+  3.672441886920961*^9, 3.6724419022486353`*^9}, {3.67244207184167*^9, 
+  3.672442072241234*^9}, {3.6724466044802303`*^9, 3.672446606028425*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Partition"}]], "Input",
+ CellChangeTimes->{{3.672440658020384*^9, 3.67244065937574*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Partition\\\", \\\"[\\\", RowBox[{StyleBox[\
+\\\"list\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\"TI\\\"]}], \
+\\\"]\\\"}]\) partitions \!\(\*StyleBox[\\\"list\\\", \\\"TI\\\"]\) into \
+nonoverlapping sublists of length \!\(\*StyleBox[\\\"n\\\", \\\"TI\\\"]\). \
+\\n\!\(\*RowBox[{\\\"Partition\\\", \\\"[\\\", RowBox[{StyleBox[\\\"list\\\", \
+\\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\
+\\\"d\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) generates sublists with offset \
+\!\(\*StyleBox[\\\"d\\\", \\\"TI\\\"]\). \\n\!\(\*RowBox[{\\\"Partition\\\", \
+\\\"[\\\", RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], \
+StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"n\\\", \
+\\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\
+\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\) partitions a \
+nested list into blocks of size \!\(\*SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\
+\\\"], StyleBox[\\\"1\\\", \\\"TR\\\"]]\)\[Times]\!\(\*SubscriptBox[StyleBox[\
+\\\"n\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]]\)\[Times]\[Ellipsis].\\n\!\(\*RowBox[{\\\"Partition\\\", \\\"[\\\
+\", RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"d\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"d\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\) uses offset \
+\!\(\*SubscriptBox[StyleBox[\\\"d\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \
+\\\"TI\\\"]]\) at level \!\(\*StyleBox[\\\"i\\\", \\\"TI\\\"]\) in \
+\!\(\*StyleBox[\\\"list\\\", \\\"TI\\\"]\). \
+\\n\!\(\*RowBox[{\\\"Partition\\\", \\\"[\\\", RowBox[{StyleBox[\\\"list\\\", \
+\\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\
+\\\"d\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"k\\\", \\\"TI\\\"], StyleBox[\\\"L\\\", \
+\\\"TI\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"k\\\", \\\"TI\\\"], \
+StyleBox[\\\"R\\\", \\\"TI\\\"]]}], \\\"}\\\"}]}], \\\"]\\\"}]\) specifies \
+that the first element of \!\(\*StyleBox[\\\"list\\\", \\\"TI\\\"]\) should \
+appear at position \!\(\*SubscriptBox[StyleBox[\\\"k\\\", \\\"TI\\\"], \
+StyleBox[\\\"L\\\", \\\"TI\\\"]]\) in the first sublist, and the last element \
+of \!\(\*StyleBox[\\\"list\\\", \\\"TI\\\"]\) should appear at or after \
+position \!\(\*SubscriptBox[StyleBox[\\\"k\\\", \\\"TI\\\"], StyleBox[\\\"R\\\
+\", \\\"TI\\\"]]\) in the last sublist. If additional elements are needed, \
+Partition fills them in by treating \!\(\*StyleBox[\\\"list\\\", \
+\\\"TI\\\"]\) as cyclic. \\n\!\(\*RowBox[{\\\"Partition\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\
+\"TI\\\"], \\\",\\\", StyleBox[\\\"d\\\", \\\"TI\\\"], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"k\\\", \\\"TI\\\"], \
+StyleBox[\\\"L\\\", \\\"TI\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"k\\\", \
+\\\"TI\\\"], StyleBox[\\\"R\\\", \\\"TI\\\"]]}], \\\"}\\\"}], \\\",\\\", \
+StyleBox[\\\"x\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) pads if necessary by \
+repeating the element \!\(\*StyleBox[\\\"x\\\", \\\"TI\\\"]\). \
+\\n\!\(\*RowBox[{\\\"Partition\\\", \\\"[\\\", RowBox[{StyleBox[\\\"list\\\", \
+\\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\
+\\\"d\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"k\\\", \\\"TI\\\"], StyleBox[\\\"L\\\", \
+\\\"TI\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"k\\\", \\\"TI\\\"], \
+StyleBox[\\\"R\\\", \\\"TI\\\"]]}], \\\"}\\\"}], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], \
+StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"x\\\", \
+\\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\
+\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\) pads if \
+necessary by cyclically repeating the elements \!\(\*SubscriptBox[StyleBox[\\\
+\"x\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \\\"TI\\\"]]\). \\n\!\(\*RowBox[{\\\
+\"Partition\\\", \\\"[\\\", RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\
+\\\", StyleBox[\\\"n\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"d\\\", \
+\\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"k\\\", \\\"TI\\\"], StyleBox[\\\"L\\\", \
+\\\"TI\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"k\\\", \\\"TI\\\"], \
+StyleBox[\\\"R\\\", \\\"TI\\\"]]}], \\\"}\\\"}], \\\",\\\", \
+RowBox[{\\\"{\\\", \\\"}\\\"}]}], \\\"]\\\"}]\) uses no padding, and so can \
+yield sublists of different lengths. \\n\!\(\*RowBox[{\\\"Partition\\\", \
+\\\"[\\\", RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\
+\"nlist\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"dlist\\\", \\\"TI\\\"], \
+\\\",\\\", RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"klist\\\", \\\
+\"TI\\\"], StyleBox[\\\"L\\\", \\\"TI\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"klist\\\", \\\"TI\\\"], StyleBox[\\\"R\\\", \
+\\\"TI\\\"]]}], \\\"}\\\"}], \\\",\\\", StyleBox[\\\"padlist\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\) specifies alignments and padding in a nested \
+list. \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Partition"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.688861826583974*^9},
+ CellTags->"Info293688833026-2817976"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Partition", "[", 
+  RowBox[{"state", ",", " ", "3"}], "]"}]], "Input",
+ CellChangeTimes->{{3.672256267287797*^9, 3.672256287502561*^9}, {
+  3.6722563682258053`*^9, 3.6722563687669487`*^9}, {3.672257660504401*^9, 
+  3.672257661583943*^9}, {3.672440750556356*^9, 3.672440751915566*^9}, {
+  3.672440809888948*^9, 3.672440810192498*^9}, {3.6724419883022346`*^9, 
+  3.672441989397526*^9}, {3.6724420764895277`*^9, 3.672442076913184*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{"1", ",", "0", ",", "1"}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{{3.672256275463147*^9, 3.672256287755657*^9}, 
+   3.672256369089321*^9, {3.67225764887599*^9, 3.672257662252388*^9}, 
+   3.67243950171305*^9, 3.672439541966393*^9, 3.6724407524380493`*^9, 
+   3.672440810537325*^9, 3.672441583180258*^9, 3.672441643577264*^9, 
+   3.672441701820252*^9, 3.672441989736816*^9, 3.6724420812672977`*^9, 
+   3.672442723995798*^9, 3.672444881599642*^9, {3.6888618157007523`*^9, 
+   3.688861826722349*^9}}]
+}, Open  ]],
+
+Cell["\<\
+Not quite right. In order to get it to overlap, partitioning needs to be done \
+with an offset of 1 using the second form. \
+\>", "Text",
+ CellChangeTimes->{{3.672256370758198*^9, 3.6722563978614607`*^9}, {
+  3.6724407588580227`*^9, 3.672440779889758*^9}, {3.672445324313567*^9, 
+  3.672445328629819*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Partition", "[", 
+  RowBox[{"state", ",", " ", "3", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6722564059493723`*^9, 3.672256406022489*^9}, 
+   3.6722576798931513`*^9, {3.6724408128183537`*^9, 3.6724408131202106`*^9}, {
+   3.6724419952709312`*^9, 3.672441998805119*^9}, {3.672442083875823*^9, 
+   3.672442084265093*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.672256406377285*^9, {3.6722576743632317`*^9, 3.67225768648909*^9}, 
+   3.672439501751177*^9, 3.672439542002995*^9, 3.67244081354249*^9, 
+   3.672441643608761*^9, 3.6724417150028477`*^9, 3.672441999250062*^9, 
+   3.672442084720849*^9, 3.672442724029233*^9, 3.672444886561315*^9, {
+   3.688861815795108*^9, 3.688861826829989*^9}}]
+}, Open  ]],
+
+Cell["\<\
+Almost there. The next state must have five cells, but we only have three. \
+The problem is in the boundary conditions. They need to be defined \
+cyclically, i.e. the left most cell must consider the right most cell as its \
+left neighbor, and vice versa. We can accomplish that by doing:\
+\>", "Text",
+ CellChangeTimes->{{3.672440951825156*^9, 3.672440962000451*^9}, {
+  3.672442003726337*^9, 3.672442006021288*^9}, {3.6724421160141563`*^9, 
+  3.6724421665640783`*^9}, {3.672444580732932*^9, 3.672444660231161*^9}, {
+  3.6724446985654984`*^9, 3.672444748234372*^9}, {3.672445347068474*^9, 
+  3.672445400817696*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Partition", "[", 
+  RowBox[{"state", ",", " ", "3", ",", "1", ",", "2"}], "]"}]], "Input",
+ CellChangeTimes->{{3.67244094708954*^9, 3.672440947289699*^9}, {
+  3.672441118323018*^9, 3.6724411556387*^9}, {3.6724412276195993`*^9, 
+  3.67244122782728*^9}, {3.6724420279881277`*^9, 3.672442029043675*^9}, {
+  3.67244208778365*^9, 3.672442088232638*^9}, {3.672442550172*^9, 
+  3.672442556656355*^9}, {3.672444793005731*^9, 3.672444839158106*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.672441153003488*^9, 3.672441164427579*^9}, 
+   3.672441229050645*^9, 3.672441643706026*^9, 3.672442029382324*^9, 
+   3.672442088615262*^9, 3.672442585902707*^9, 3.6724427240619173`*^9, {
+   3.6724447956423798`*^9, 3.67244483955777*^9}, 3.6724448885457172`*^9, {
+   3.688861815935903*^9, 3.68886182695149*^9}}]
+}, Open  ]],
+
+Cell["Awesome!", "Text",
+ CellChangeTimes->{{3.6724420345004396`*^9, 3.672442035218791*^9}, {
+  3.68886176317448*^9, 3.688861773476942*^9}}],
+
+Cell["Now let\[CloseCurlyQuote]s apply our rule. ", "Text",
+ CellChangeTimes->{{3.672440854621767*^9, 3.6724408635348463`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Partition", "[", 
+   RowBox[{"state", ",", " ", "3", ",", "1", ",", "2"}], "]"}], "/.", 
+  RowBox[{"Thread", "[", 
+   RowBox[{"Rule", "[", 
+    RowBox[{
+     RowBox[{"Tuples", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0"}], "}"}], ",", "3"}], "]"}], ",", 
+     RowBox[{"IntegerDigits", "[", 
+      RowBox[{"90", ",", "2", ",", "8"}], "]"}]}], "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6722564960592823`*^9, 3.672256508618588*^9}, 
+   3.6722576835415707`*^9, {3.672440828842081*^9, 3.6724408411751833`*^9}, 
+   3.6724411984984837`*^9, {3.672441237107604*^9, 3.672441237195154*^9}, 
+   3.672441417742032*^9, {3.672442174988514*^9, 3.672442175500126*^9}, {
+   3.672442347693714*^9, 3.6724423477383757`*^9}, {3.6724425940082207`*^9, 
+   3.672442594142048*^9}, {3.672446764691288*^9, 3.672446775685494*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0", ",", "0", ",", "0", ",", "1", ",", "1"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.672256509145239*^9, 3.6722577189980297`*^9, 3.672439501853835*^9, 
+   3.672439542098415*^9, {3.67244082948567*^9, 3.672440841536978*^9}, {
+   3.672441189370146*^9, 3.672441198834175*^9}, 3.672441237540344*^9, 
+   3.6724414221389723`*^9, 3.672441643742976*^9, 3.672442179281659*^9, 
+   3.672442347981285*^9, 3.672442594430978*^9, {3.672442696613874*^9, 
+   3.672442724096813*^9}, 3.672444962738674*^9, {3.672446765825961*^9, 
+   3.672446776109108*^9}, {3.688861816025943*^9, 3.6888618270592127`*^9}}]
+}, Open  ]],
+
+Cell["Great. ", "Text",
+ CellChangeTimes->{{3.672441207646138*^9, 3.6724412084600563`*^9}}],
+
+Cell[TextData[{
+ "We can visualize this evolution step with ",
+ StyleBox["ArrayPlot", "Code"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.672440868669033*^9, 3.6724408820842237`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "ArrayPlot"}]], "Input",
+ CellChangeTimes->{{3.672440883712166*^9, 3.6724408859080963`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"ArrayPlot\\\", \\\"[\\\", \
+StyleBox[\\\"array\\\", \\\"TI\\\"], \\\"]\\\"}]\) generates a plot in which \
+the values in an array are shown in a discrete array of squares. \"\>", "MSG"],
+   "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/ArrayPlot"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.688861827392057*^9},
+ CellTags->"Info343688833027-2817976"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ArrayPlot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"state", ",", 
+     RowBox[{
+      RowBox[{"Partition", "[", 
+       RowBox[{"state", ",", " ", "3", ",", "1", ",", "2"}], "]"}], "/.", 
+      RowBox[{"Thread", "[", 
+       RowBox[{"Rule", "[", 
+        RowBox[{
+         RowBox[{"Tuples", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"1", ",", "0"}], "}"}], ",", "3"}], "]"}], ",", 
+         RowBox[{"IntegerDigits", "[", 
+          RowBox[{"90", ",", "2", ",", "8"}], "]"}]}], "]"}], "]"}]}]}], 
+    "}"}], ",", 
+   RowBox[{"ImageSize", "->", "Full"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.672257740914813*^9, 3.6722577920950823`*^9}, {
+   3.672440835226007*^9, 3.672440845303176*^9}, {3.672440889084897*^9, 
+   3.672440889348225*^9}, {3.672440935405139*^9, 3.6724409356494904`*^9}, {
+   3.6724412513616533`*^9, 3.67244125949811*^9}, 3.672441425686919*^9, {
+   3.6724422027001257`*^9, 3.672442216225235*^9}, {3.672442351972145*^9, 
+   3.672442352019455*^9}, {3.672444972609086*^9, 3.672444978729239*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[
+  RasterBox[{{1, 1, 1, 0, 0}, {0, 1, 0, 1, 1}}, {{0, 0}, {5, 2}}, {0, 1}],
+  Frame->Automatic,
+  FrameLabel->{None, None},
+  FrameTicks->{{None, None}, {None, None}},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImageSize->Full,
+  Method->{
+   "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+    Automatic}]], "Output",
+ CellChangeTimes->{{3.67225774745995*^9, 3.672257792813703*^9}, 
+   3.672439501890235*^9, 3.672439542151421*^9, {3.672440835872973*^9, 
+   3.672440847504293*^9}, 3.672440889610468*^9, 3.6724409360076237`*^9, 
+   3.672441259964551*^9, 3.672441426160315*^9, 3.672441643892438*^9, {
+   3.6724422035685577`*^9, 3.672442216522029*^9}, 3.672442352558754*^9, 
+   3.6724427242486486`*^9, {3.672444966372665*^9, 3.672444978964849*^9}, 
+   3.672445516011567*^9, {3.688861816250581*^9, 3.688861827514085*^9}}]
+}, Open  ]],
+
+Cell["\<\
+Now let\[CloseCurlyQuote]s make a function out of all of this, which takes \
+care of one step of the evolution. \
+\>", "Text",
+ CellChangeTimes->{{3.6724412649770393`*^9, 3.672441296463684*^9}, {
+  3.672445532603076*^9, 3.672445552401688*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"CAStep", "[", 
+   RowBox[{"rule_Integer", ",", "init_List"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"Partition", "[", 
+    RowBox[{"init", ",", " ", "3", ",", "1", ",", "2"}], "]"}], "/.", 
+   RowBox[{"Thread", "[", 
+    RowBox[{"Rule", "[", 
+     RowBox[{
+      RowBox[{"Tuples", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "0"}], "}"}], ",", "3"}], "]"}], ",", 
+      RowBox[{"IntegerDigits", "[", 
+       RowBox[{"rule", ",", "2", ",", "8"}], "]"}]}], "]"}], 
+    "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.672256542719453*^9, 3.672256598279179*^9}, {
+  3.672256640287901*^9, 3.672256640991136*^9}, {3.6724413588463306`*^9, 
+  3.672441368772751*^9}, {3.672442631142745*^9, 3.672442631263257*^9}, {
+  3.6724432582542963`*^9, 3.672443265084716*^9}, {3.672443347082273*^9, 
+  3.672443348193572*^9}, {3.672443473811677*^9, 3.672443473930746*^9}, {
+  3.672443525091176*^9, 3.6724435338639107`*^9}, {3.672443655744611*^9, 
+  3.6724436614011173`*^9}, {3.672443757101205*^9, 3.6724437745482283`*^9}, {
+  3.672443847304639*^9, 3.672443847767439*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CAStep", "[", 
+  RowBox[{"90", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "1", ",", "0", ",", "0"}], "}"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6722566060000477`*^9, 3.6722566101745853`*^9}, {
+  3.672442231755516*^9, 3.672442248528573*^9}, {3.672442321310987*^9, 
+  3.672442322220583*^9}, {3.672442370866193*^9, 3.672442373090464*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0", ",", "1", ",", "0", ",", "1", ",", "0"}], "}"}]], "Output",
+ CellChangeTimes->{{3.672256610875559*^9, 3.672256642054193*^9}, 
+   3.6722578138757544`*^9, 3.672439501924241*^9, 3.672439542181184*^9, 
+   3.672441372133601*^9, 3.672441431311636*^9, 3.672441472113798*^9, 
+   3.672441643936763*^9, {3.672442234362715*^9, 3.67244224889814*^9}, 
+   3.672442323533599*^9, 3.672442373561534*^9, 3.672442724319357*^9, 
+   3.6724437618658457`*^9, 3.6724449899549026`*^9, {3.688861816369348*^9, 
+   3.688861827617856*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Now we just need to keep applying the same rule on the new state. Let\
+\[CloseCurlyQuote]s use ",
+ StyleBox["NestList", "Code"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.672256733045702*^9, 3.67225675733934*^9}, {
+  3.672441440298127*^9, 3.6724414407057247`*^9}, {3.672445608339501*^9, 
+  3.672445628790627*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NestList", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"CAStep", "[", 
+     RowBox[{"90", ",", " ", "#"}], "]"}], "&"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "1", ",", "0", ",", "0"}], "}"}], ",", "3"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6724415058694773`*^9, 3.6724415152610073`*^9}, {
+  3.67244227102306*^9, 3.672442285414721*^9}, {3.672442325237352*^9, 
+  3.672442325548572*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "1", ",", "0", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1", ",", "0", ",", "1", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0", ",", "0", ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1", ",", "0", ",", "1", ",", "1"}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.672441506790844*^9, 3.672441515500683*^9}, 
+   3.672441643976329*^9, {3.672442274832135*^9, 3.672442285692987*^9}, 
+   3.672442325845188*^9, 3.672442724342106*^9, 3.672444992313757*^9, {
+   3.688861816444633*^9, 3.688861827692502*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"NestList", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"CAStep", "[", 
+      RowBox[{"90", ",", " ", "#"}], "]"}], "&"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "0", ",", "1", ",", "0", ",", "0"}], "}"}], ",", "3"}],
+    "]"}], "//", "ArrayPlot"}]], "Input",
+ CellChangeTimes->{{3.6724415058694773`*^9, 3.6724415264764147`*^9}, {
+  3.672442302964006*^9, 3.672442328052651*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[
+  RasterBox[{{0, 0, 1, 0, 0}, {0, 1, 1, 1, 0}, {1, 0, 1, 0, 1}, {1, 1, 0, 1, 
+   1}}, {{0, 0}, {5, 4}}, {0, 1}],
+  Frame->Automatic,
+  FrameLabel->{None, None},
+  FrameTicks->{{None, None}, {None, None}},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  Method->{
+   "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+    Automatic}]], "Output",
+ CellChangeTimes->{
+  3.6724415269737043`*^9, 3.672441644023438*^9, {3.67244228751598*^9, 
+   3.672442328293044*^9}, 3.672442724381497*^9, 3.6724456449128*^9, {
+   3.688861816511997*^9, 3.68886182777334*^9}}]
+}, Open  ]],
+
+Cell["We\[CloseCurlyQuote]ll write this as a function.", "Text",
+ CellChangeTimes->{{3.672445654364522*^9, 3.672445663468546*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"CAEvolve", "[", 
+   RowBox[{
+    RowBox[{"rule_Integer", "/;", 
+     RowBox[{"rule", "<", "256"}]}], ",", "init_List", ",", 
+    RowBox[{"t_Integer", "/;", 
+     RowBox[{"t", ">", "0"}]}]}], "]"}], ":=", 
+  RowBox[{"NestList", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"CAStep", "[", 
+      RowBox[{"rule", ",", " ", "#"}], "]"}], "&"}], ",", "init", ",", "t"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.6722567591131687`*^9, 3.672256859384798*^9}, {
+  3.672256912092902*^9, 3.672256935347703*^9}}],
+
+Cell[TextData[{
+ "We can ",
+ StyleBox["ArrayPlot", "Code"],
+ " it. "
+}], "Text",
+ CellChangeTimes->{{3.672441482854003*^9, 3.672441487549383*^9}, {
+  3.688861795198053*^9, 3.688861798540628*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ArrayPlot", "[", 
+  RowBox[{"CAEvolve", "[", 
+   RowBox[{"90", ",", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "0", ",", "1", ",", "0", ",", "0"}], "}"}], ",", "5"}],
+    "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.672256937269565*^9, 3.6722569573069363`*^9}, {
+  3.6724423850599194`*^9, 3.672442388155552*^9}, {3.672442743704753*^9, 
+  3.672442744214507*^9}, {3.6724456737807407`*^9, 3.672445674260214*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[
+  RasterBox[{{0, 1, 1, 1, 0}, {1, 0, 1, 0, 1}, {0, 0, 1, 0, 0}, {0, 1, 1, 1, 
+   0}, {1, 0, 1, 0, 1}, {1, 1, 0, 1, 1}}, {{0, 0}, {5, 6}}, {0, 1}],
+  Frame->Automatic,
+  FrameLabel->{None, None},
+  FrameTicks->{{None, None}, {None, None}},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  Method->{
+   "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+    Automatic}]], "Output",
+ CellChangeTimes->{{3.672256945243712*^9, 3.672256957487041*^9}, 
+   3.672257853437725*^9, 3.672439502059739*^9, 3.67243954236963*^9, {
+   3.6724414651749477`*^9, 3.6724414788848553`*^9}, 3.672441644086556*^9, {
+   3.672442381917748*^9, 3.672442389114744*^9}, {3.672442709504113*^9, 
+   3.672442744519431*^9}, 3.6724449992198677`*^9, 3.672445674562313*^9, {
+   3.68886181662285*^9, 3.688861827878867*^9}}]
+}, Open  ]],
+
+Cell["\<\
+As you can see the width of the simulation remains constant. We want this to \
+grow as we increase the number of steps. So we set the width of our initial \
+condition to depend on number of time steps. \
+\>", "Text",
+ CellChangeTimes->{{3.672442736737369*^9, 3.672442774668626*^9}, {
+  3.672445079699855*^9, 3.672445126387793*^9}, {3.672445711052451*^9, 
+  3.672445826868287*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "ArrayPad"}]], "Input",
+ CellChangeTimes->{{3.672445705884104*^9, 3.67244570734687*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"ArrayPad\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"array\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"m\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\) gives an array with \!\(\*StyleBox[\\\"m\\\", \\\
+\"TI\\\"]\) 0s of padding on every side. \\n\!\(\*RowBox[{\\\"ArrayPad\\\", \
+\\\"[\\\", RowBox[{StyleBox[\\\"array\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"m\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"padding\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\) uses the specified \
+padding.\\n\!\(\*RowBox[{\\\"ArrayPad\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"array\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{StyleBox[\\\"m\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \
+\\\"TI\\\"]}], \\\"}\\\"}], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\
+\"]}], \\\"]\\\"}]\) pads with \!\(\*StyleBox[\\\"m\\\", \\\"TI\\\"]\) \
+elements at the beginning and \!\(\*StyleBox[\\\"n\\\", \\\"TI\\\"]\) \
+elements at the end. \\n\!\(\*RowBox[{\\\"ArrayPad\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"array\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"m\\\", \
+\\\"TI\\\"], StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]]}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"m\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]]}], \\\"}\\\"}], \\\",\\\", StyleBox[\\\"\
+\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\"}], \\\",\\\", StyleBox[\\\"\
+\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"]\\\"}]\) pads with \
+\!\(\*SubscriptBox[StyleBox[\\\"m\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \
+\\\"TI\\\"]]\), \!\(\*SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], StyleBox[\
+\\\"i\\\", \\\"TI\\\"]]\) elements at level \!\(\*StyleBox[\\\"i\\\", \
+\\\"TI\\\"]\) in \!\(\*StyleBox[\\\"array\\\", \\\"TI\\\"]\). \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/ArrayPad"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.68886182801521*^9},
+ CellTags->"Info423688833027-2817976"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ArrayPlot", "[", 
+  RowBox[{"CAEvolve", "[", 
+   RowBox[{"90", ",", 
+    RowBox[{"ArrayPad", "[", 
+     RowBox[{
+      RowBox[{"{", "1", "}"}], ",", "10"}], "]"}], ",", "10"}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.672442800124568*^9, 3.6724428213240767`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[
+  RasterBox[{{0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 
+   0}, {1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1}, {1, 1,
+    0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1}, {1, 1, 1, 0, 1, 
+   0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1}, {1, 1, 1, 1, 0, 1, 1, 1, 
+   0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1}, {1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 
+   1, 1, 0, 1, 0, 1, 1, 1, 1, 1}, {1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 
+   0, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 
+   1, 1, 1, 1}, {1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 
+   1}, {1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}}, {{0, 0}, {21, 
+   11}}, {0, 1}],
+  Frame->Automatic,
+  FrameLabel->{None, None},
+  FrameTicks->{{None, None}, {None, None}},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  Method->{
+   "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+    Automatic}]], "Output",
+ CellChangeTimes->{{3.6724428119186583`*^9, 3.672442822429922*^9}, 
+   3.67244500176256*^9, 3.672445129962914*^9, 3.672445830604129*^9, {
+   3.688861816841927*^9, 3.688861828084902*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Let\[CloseCurlyQuote]s browse through the rule space, by putting this in ",
+ StyleBox["Manipulate", "Code"],
+ ". "
+}], "Text",
+ CellChangeTimes->{{3.672256978451582*^9, 3.672256985321238*^9}, {
+  3.672442831010357*^9, 3.6724428395144463`*^9}, {3.672445839126111*^9, 
+  3.672445839739352*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"ArrayPlot", "[", "\[IndentingNewLine]", 
+    RowBox[{"CAEvolve", "[", 
+     RowBox[{"r", ",", 
+      RowBox[{"ArrayPad", "[", 
+       RowBox[{
+        RowBox[{"{", "1", "}"}], ",", "t"}], "]"}], ",", "t"}], "]"}], "]"}], 
+   ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"r", ",", "90", ",", "\"\<Rule Number\>\""}], "}"}], ",", "0", 
+     ",", "255", ",", "1"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"t", ",", "30", ",", "\"\<Time Step\>\""}], "}"}], ",", "1", 
+     ",", "100", ",", "1"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.672256986276587*^9, 3.672257043500004*^9}, {
+  3.672257174037582*^9, 3.672257198259061*^9}, {3.672257269508421*^9, 
+  3.672257284628173*^9}, {3.672258323483368*^9, 3.672258388431139*^9}, {
+  3.672258942360968*^9, 3.672258944207995*^9}, {3.672259196267475*^9, 
+  3.672259196907556*^9}, {3.672439589139764*^9, 3.672439591538416*^9}, {
+  3.672441459024872*^9, 3.672441459792472*^9}, {3.672442430642164*^9, 
+  3.672442433807428*^9}, {3.672442856392003*^9, 3.672442916502357*^9}, {
+  3.672443136742885*^9, 3.672443154243783*^9}, {3.672443548961973*^9, 
+  3.672443593477601*^9}, {3.672443629989685*^9, 3.672443631515407*^9}, {
+  3.672445196950961*^9, 3.6724452170119247`*^9}, {3.6724471744690447`*^9, 
+  3.672447179679644*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`r$$ = 90, $CellContext`t$$ = 30, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`r$$], 90, "Rule Number"}, 0, 255, 1}, {{
+       Hold[$CellContext`t$$], 30, "Time Step"}, 1, 100, 1}}, 
+    Typeset`size$$ = {450., {116., 122.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = True, $CellContext`r$4491$$ =
+     0, $CellContext`t$4492$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`r$$ = 90, $CellContext`t$$ = 30}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`r$$, $CellContext`r$4491$$, 0], 
+        Hold[$CellContext`t$$, $CellContext`t$4492$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> ArrayPlot[
+        $CellContext`CAEvolve[$CellContext`r$$, 
+         ArrayPad[{1}, $CellContext`t$$], $CellContext`t$$]], 
+      "Specifications" :> {{{$CellContext`r$$, 90, "Rule Number"}, 0, 255, 
+         1}, {{$CellContext`t$$, 30, "Time Step"}, 1, 100, 1}}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{505., {183., 190.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.6724435815448027`*^9, {3.672443631908687*^9, 3.672443666721992*^9}, {
+   3.672443764563367*^9, 3.6724437775283337`*^9}, 3.672443851229834*^9, {
+   3.672445191214501*^9, 3.672445217485672*^9}, 3.672445847203478*^9, {
+   3.688861817412981*^9, 3.6888618282099333`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1399, 855},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info243688833025-2817976"->{
+  Cell[3824, 105, 1414, 25, 125, "Print",
+   CellTags->"Info243688833025-2817976"]},
+ "Info263688833026-2817976"->{
+  Cell[6662, 178, 1497, 26, 101, "Print",
+   CellTags->"Info263688833026-2817976"]},
+ "Info293688833026-2817976"->{
+  Cell[12004, 312, 5925, 86, 269, "Print",
+   CellTags->"Info293688833026-2817976"]},
+ "Info343688833027-2817976"->{
+  Cell[24414, 561, 509, 12, 52, "Print",
+   CellTags->"Info343688833027-2817976"]},
+ "Info423688833027-2817976"->{
+  Cell[34490, 834, 2264, 37, 125, "Print",
+   CellTags->"Info423688833027-2817976"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info243688833025-2817976", 42734, 1014},
+ {"Info263688833026-2817976", 42850, 1017},
+ {"Info293688833026-2817976", 42966, 1020},
+ {"Info343688833027-2817976", 43083, 1023},
+ {"Info423688833027-2817976", 43198, 1026}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 113, 1, 80, "Section"],
+Cell[696, 25, 195, 4, 37, "Text"],
+Cell[894, 31, 1061, 19, 87, "Text"],
+Cell[CellGroupData[{
+Cell[1980, 54, 199, 5, 39, "Input"],
+Cell[2182, 61, 838, 22, 39, "Output"]
+}, Open  ]],
+Cell[3035, 86, 639, 11, 61, "Text"],
+Cell[CellGroupData[{
+Cell[3699, 101, 122, 2, 39, "Input"],
+Cell[3824, 105, 1414, 25, 125, "Print",
+ CellTags->"Info243688833025-2817976"]
+}, Open  ]],
+Cell[5253, 133, 237, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[5515, 142, 219, 4, 39, "Input"],
+Cell[5737, 148, 403, 8, 39, "Output"]
+}, Open  ]],
+Cell[6155, 159, 364, 11, 37, "Text"],
+Cell[CellGroupData[{
+Cell[6544, 174, 115, 2, 39, "Input"],
+Cell[6662, 178, 1497, 26, 101, "Print",
+ CellTags->"Info263688833026-2817976"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8196, 209, 516, 12, 39, "Input"],
+Cell[8715, 223, 1123, 31, 39, "Output"]
+}, Open  ]],
+Cell[9853, 257, 223, 4, 37, "Text"],
+Cell[10079, 263, 538, 11, 37, "Text"],
+Cell[CellGroupData[{
+Cell[10642, 278, 306, 6, 39, "Input"],
+Cell[10951, 286, 319, 5, 39, "Output"]
+}, Open  ]],
+Cell[11285, 294, 574, 10, 37, "Text"],
+Cell[CellGroupData[{
+Cell[11884, 308, 117, 2, 39, "Input"],
+Cell[12004, 312, 5925, 86, 269, "Print",
+ CellTags->"Info293688833026-2817976"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17966, 403, 456, 7, 39, "Input"],
+Cell[18425, 412, 557, 10, 39, "Output"]
+}, Open  ]],
+Cell[18997, 425, 315, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[19337, 435, 352, 6, 39, "Input"],
+Cell[19692, 443, 613, 14, 39, "Output"]
+}, Open  ]],
+Cell[20320, 460, 626, 10, 61, "Text"],
+Cell[CellGroupData[{
+Cell[20971, 474, 464, 7, 39, "Input"],
+Cell[21438, 483, 730, 17, 39, "Output"]
+}, Open  ]],
+Cell[22183, 503, 140, 2, 37, "Text"],
+Cell[22326, 507, 127, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[22478, 512, 870, 18, 39, "Input"],
+Cell[23351, 532, 627, 10, 39, "Output"]
+}, Open  ]],
+Cell[23993, 545, 91, 1, 37, "Text"],
+Cell[24087, 548, 179, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[24291, 557, 120, 2, 39, "Input"],
+Cell[24414, 561, 509, 12, 52, "Print",
+ CellTags->"Info343688833027-2817976"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24960, 578, 1067, 24, 66, "Input"],
+Cell[26030, 604, 870, 18, 552, "Output"]
+}, Open  ]],
+Cell[26915, 625, 253, 5, 37, "Text"],
+Cell[27171, 632, 1104, 24, 39, "Input"],
+Cell[CellGroupData[{
+Cell[28300, 660, 379, 8, 39, "Input"],
+Cell[28682, 670, 554, 9, 39, "Output"]
+}, Open  ]],
+Cell[29251, 682, 328, 8, 37, "Text"],
+Cell[CellGroupData[{
+Cell[29604, 694, 429, 11, 39, "Input"],
+Cell[30036, 707, 670, 15, 39, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30743, 727, 420, 11, 39, "Input"],
+Cell[31166, 740, 599, 15, 381, "Output"]
+}, Open  ]],
+Cell[31780, 758, 130, 1, 37, "Text"],
+Cell[31913, 761, 539, 15, 39, "Input"],
+Cell[32455, 778, 195, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[32675, 788, 433, 9, 39, "Input"],
+Cell[33111, 799, 830, 17, 553, "Output"]
+}, Open  ]],
+Cell[33956, 819, 390, 7, 61, "Text"],
+Cell[CellGroupData[{
+Cell[34371, 830, 116, 2, 39, "Input"],
+Cell[34490, 834, 2264, 37, 125, "Print",
+ CellTags->"Info423688833027-2817976"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36791, 876, 295, 8, 39, "Input"],
+Cell[37089, 886, 1262, 23, 263, "Output"]
+}, Open  ]],
+Cell[38366, 912, 310, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[38701, 923, 1435, 30, 118, "Input"],
+Cell[40139, 955, 2217, 43, 393, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

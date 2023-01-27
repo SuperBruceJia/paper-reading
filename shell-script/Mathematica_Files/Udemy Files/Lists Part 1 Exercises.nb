@@ -1,0 +1,1027 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     29805,       1018]
+NotebookOptionsPosition[     23773,        812]
+NotebookOutlinePosition[     24701,        843]
+CellTagsIndexPosition[     24509,        836]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Lists Part 1", "Title",
+ CellChangeTimes->{{3.679347636506831*^9, 3.679347639321329*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Basic Exercises", "Section",
+ CellChangeTimes->{{3.67933910070142*^9, 3.679339105692511*^9}, {
+  3.679347656225293*^9, 3.679347658144876*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Generate a list from 1 to 10 using the ",
+ StyleBox["Range", "Code"],
+ " function."
+}], "Text",
+ CellChangeTimes->{{3.6793391274444647`*^9, 3.679339128957499*^9}, {
+  3.67933929802365*^9, 3.6793393318562317`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.679339336855101*^9, 3.6793393376230583`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Range", "[", "10", "]"}]], "Input",
+ CellChangeTimes->{{3.679339338824963*^9, 3.679339341319338*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell["Generate a list from 10 to 20.", "Text",
+ CellChangeTimes->{{3.679339435940825*^9, 3.6793394417245083`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.67933944395852*^9, 3.679339444716416*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Range", "[", 
+  RowBox[{"10", ",", "20"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6793394457350483`*^9, 3.679339448653014*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell["Generate a list from 100 down to 1.", "Text",
+ CellChangeTimes->{{3.67933935326537*^9, 3.679339367822329*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.679339384238879*^9, 3.67933938498985*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Range", "[", 
+  RowBox[{"100", ",", "1", ",", 
+   RowBox[{"-", "1"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.679339369544594*^9, 3.679339377462332*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell["Generate a list of all even numbers from 2 to 50.", "Text",
+ CellChangeTimes->{{3.679339684904249*^9, 3.679339694863179*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.6793396985028667`*^9, 3.679339699591135*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Range", "[", 
+  RowBox[{"2", ",", "50", ",", "2"}], "]"}]], "Input",
+ CellChangeTimes->{{3.679339700627468*^9, 3.679339703865707*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Use the ",
+ StyleBox["Length", "Code"],
+ " function to find the length of the following list:"
+}], "Text",
+ CellChangeTimes->{{3.679339527315833*^9, 3.679339542666543*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2", ",", "4", ",", "6", ",", "1", ",", "2", ",", "3"}], 
+  "}"}]], "Input",
+ CellChangeTimes->{{3.6793395462404003`*^9, 3.6793395505383663`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.679339585185379*^9, 3.679339585969541*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Length", "@", 
+  RowBox[{"{", 
+   RowBox[{"2", ",", "4", ",", "6", ",", "1", ",", "2", ",", "3"}], 
+   "}"}]}]], "Input",
+ CellChangeTimes->{{3.679339586874948*^9, 3.679339591870852*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Use the ",
+ StyleBox["Depth", "Code"],
+ " function to find the depth of:"
+}], "Text",
+ CellChangeTimes->{{3.6793398216644917`*^9, 3.679339858755571*^9}, {
+  3.6793398899019833`*^9, 3.679339890074884*^9}, {3.679339933610499*^9, 
+  3.679339936553849*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Range", "[", "10", "]"}]], "Input",
+ CellChangeTimes->{{3.679339927334765*^9, 3.679339928946107*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.679339866910678*^9, 3.6793398677556334`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Depth", "[", 
+  RowBox[{"Range", "[", "10", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6793398818800573`*^9, 3.679339893514902*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Use the ",
+ StyleBox["Depth", "Code"],
+ " function to find the depth of:"
+}], "Text",
+ CellChangeTimes->{{3.6793399169068747`*^9, 3.6793399252424383`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"i", ",", "j"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "5"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"j", ",", "4"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.679339957006459*^9, 3.67933997586509*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.67933998942603*^9, 3.679339990192872*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Depth", "[", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"i", ",", "j"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "5"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"j", ",", "4"}], "}"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6793399911319437`*^9, 3.6793399949858007`*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Use the ",
+ StyleBox["Table", "Code"],
+ " function to generate the values 1 through 10 (like ",
+ StyleBox["Range[10]", "Code"],
+ ")."
+}], "Text",
+ CellChangeTimes->{{3.6793437549731207`*^9, 3.679343778518297*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.679343791254147*^9, 3.679343791998041*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{"i", ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "10"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.679343794810671*^9, 3.679343804309761*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Use the ",
+ StyleBox["Flatten", "Code"],
+ " function to generate the values 1 through 10 twice, i.e. ",
+ StyleBox["{1, 2, ..., 10, 1, 2, ... 10}", "Code"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.679344211333302*^9, 3.679344257434566*^9}, {
+  3.679344309643899*^9, 3.679344310433282*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.679344271338361*^9, 3.679344272058304*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Flatten", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Range", "[", "10", "]"}], ",", 
+    RowBox[{"Range", "[", "10", "]"}]}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6793442729495277`*^9, 3.67934428125202*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Use the ",
+ StyleBox["Flatten", "Code"],
+ " and ",
+ StyleBox["Table", "Code"],
+ " functions to generate all pairs of values ",
+ StyleBox["{1, 1}", "Code"],
+ " to ",
+ StyleBox["{3, 3}", "Code"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.679343819334605*^9, 3.679343851636736*^9}, {
+  3.679344005808261*^9, 3.6793440125922832`*^9}, {3.679344183908387*^9, 
+  3.67934419106004*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.6793440252487173`*^9, 3.67934402607244*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Flatten", "[", 
+  RowBox[{
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"i", ",", "j"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "3"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "3"}], "}"}]}], "]"}], ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.679344028123549*^9, 3.6793440408479433`*^9}, {
+  3.6793441976217422`*^9, 3.679344200220415*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Use ",
+ StyleBox["Partition", "Code"],
+ " to group the values 1 through 100 in groups of 5."
+}], "Text",
+ CellChangeTimes->{{3.679344356145265*^9, 3.6793443592484703`*^9}, {
+  3.679344397039163*^9, 3.6793444308626747`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.6793444361347446`*^9, 3.679344436829873*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Partition", "[", 
+  RowBox[{
+   RowBox[{"Range", "[", "100", "]"}], ",", "5"}], "]"}]], "Input",
+ CellChangeTimes->{{3.679344437969583*^9, 3.6793444502781887`*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "The ",
+ StyleBox["Prime", "Code"],
+ " function generates the nth prime:"
+}], "Text",
+ CellChangeTimes->{{3.679344885691258*^9, 3.679344895683136*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Prime\\\", \\\"[\\\", \
+StyleBox[\\\"n\\\", \\\"TI\\\"], \\\"]\\\"}]\\) gives the \
+\\!\\(\\*StyleBox[\\\"n\\\", \\\"TI\\\"]\\)\\!\\(\\*RowBox[{SuperscriptBox[\\\
+\"\[Null]\\\", \\\"th\\\"], \\\" \\\"}]\\)prime number. \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Prime"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.6795112128406878`*^9},
+ CellTags->"Info-b4ad93dc-2879-4b52-b11c-aff0c14588f7"],
+
+Cell[TextData[{
+ "Use the ",
+ StyleBox["Table", "Code"],
+ " function to generate the first 50 prime numbers."
+}], "Text",
+ CellChangeTimes->{{3.679344474862461*^9, 3.679344476205372*^9}, {
+  3.679344788687028*^9, 3.679344829092452*^9}, {3.679344916666362*^9, 
+  3.679344948737369*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.6793449503855743`*^9, 3.679344951089738*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"Prime", "[", "i", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "50"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.679344952740452*^9, 3.679344960369027*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}},
+ CellTags->"setPrimes"],
+
+Cell["Given:", "Text",
+ CellChangeTimes->{{3.679344975129972*^9, 3.679344981296771*^9}}],
+
+Cell[BoxData[
+ RowBox[{"primes", "=", 
+  RowBox[{"Prime", "[", 
+   RowBox[{"Range", "[", "50", "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.679344982862132*^9, 3.6793450055683527`*^9}}],
+
+Cell[TextData[{
+ "Use the ",
+ StyleBox["Part", "Code"],
+ " function to get the 25th prime number."
+}], "Text",
+ CellChangeTimes->{{3.6793450220731707`*^9, 3.679345033455553*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.679345039000115*^9, 3.679345039759529*^9}}],
+
+Cell[BoxData[
+ RowBox[{"primes", "[", 
+  RowBox[{"[", "50", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.67934504224232*^9, 3.679345044743363*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Given the conditions from Question ",
+ 
+ CounterBox["Subsection", "setPrimes"],
+ " use ",
+ StyleBox["Part", "Code"],
+ " and ",
+ StyleBox["Span", "Code"],
+ " to get the 10th through 20th prime numbers."
+}], "Text",
+ CellChangeTimes->{{3.679344975129972*^9, 3.679344981296771*^9}, {
+   3.67934519046049*^9, 3.679345230370728*^9}, {3.679345305881665*^9, 
+   3.6793453098405523`*^9}, {3.6793453601312513`*^9, 3.679345398886589*^9}, 
+   3.67934576037781*^9, {3.6793458088204927`*^9, 3.679345822396126*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.679345142093205*^9, 3.679345142812687*^9}}],
+
+Cell[BoxData[
+ RowBox[{"primes", "[", 
+  RowBox[{"[", 
+   RowBox[{"10", ";;", "20"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.679345157613812*^9, 3.6793451620041103`*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Given the conditions from Question ",
+ 
+ CounterBox["Subsection", "setPrimes"],
+ " use ",
+ StyleBox["Take", "Code"],
+ " to get the 10th through 20th prime numbers."
+}], "Text",
+ CellChangeTimes->{{3.679344975129972*^9, 3.679344981296771*^9}, {
+   3.67934519046049*^9, 3.679345230370728*^9}, {3.679345305881665*^9, 
+   3.6793453098405523`*^9}, {3.6793453601312513`*^9, 3.679345398886589*^9}, 
+   3.67934576037781*^9, {3.6793458088204927`*^9, 3.679345849691229*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.679345852843486*^9, 3.679345853587401*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Take", "[", 
+  RowBox[{"primes", ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "20"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.679345855232546*^9, 3.679345861907284*^9}}]
+}, Closed]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Advanced Exercises", "Section",
+ CellChangeTimes->{{3.679346676393309*^9, 3.679346684583231*^9}}],
+
+Cell["\<\
+You will need the following variables defined in order to do the exercises in \
+this section. Please evaluate these cells before you continue.\
+\>", "Text",
+ CellChangeTimes->{{3.679346764565978*^9, 3.679346797772526*^9}}],
+
+Cell[BoxData[
+ RowBox[{"deck", "=", 
+  RowBox[{"Tuples", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", "8", ",", 
+       "9", ",", "10", ",", "J", ",", "Q", ",", "K", ",", "A"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "\[DiamondSuit]", ",", "\[ClubSuit]", ",", "\[HeartSuit]", ",", 
+       "\[SpadeSuit]"}], "}"}]}], "}"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.679346828386341*^9, 3.679346929674116*^9}, {
+  3.679347027699896*^9, 3.679347030160617*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Get the all ",
+ StyleBox["kings",
+  FontSlant->"Italic"],
+ " from the ",
+ StyleBox["deck", "Code"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.679346966824604*^9, 3.679346999088237*^9}, {
+  3.6793471436773148`*^9, 3.679347168772028*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Hint", "Subsubsection",
+ CellChangeTimes->{{3.6793470635906763`*^9, 3.679347063950857*^9}}],
+
+Cell["The King starts at position 45,", "Text",
+ CellChangeTimes->{{3.679347071150642*^9, 3.679347088046022*^9}}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.6793470084410877`*^9, 3.679347009183795*^9}}],
+
+Cell[BoxData[
+ RowBox[{"deck", "[", 
+  RowBox[{"[", 
+   RowBox[{"45", ";;", "48"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.679347010595529*^9, 3.679347048975281*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Get all the ",
+ StyleBox["hearts",
+  FontSlant->"Italic"],
+ " from the ",
+ StyleBox["deck", "Code"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.679347105967054*^9, 3.679347166860434*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Hint", "Subsubsection",
+ CellChangeTimes->{{3.67934724933195*^9, 3.6793472497143497`*^9}}],
+
+Cell["Use the 6th form of part:", "Text",
+ CellChangeTimes->{{3.67934725204195*^9, 3.679347307849497*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \
+\\\"[\\\", RowBox[{\\\"[\\\", StyleBox[\\\"i\\\", \\\"TI\\\"], \\\"]\\\"}], \
+\\\"]\\\"}]\\) or \\!\\(\\*RowBox[{\\\"Part\\\", \\\"[\\\", RowBox[{StyleBox[\
+\\\"expr\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"i\\\", \\\"TI\\\"]}], \
+\\\"]\\\"}]\\) gives the \\!\\(\\*StyleBox[\\\"i\\\", \
+\\\"TI\\\"]\\)\\!\\(\\*SuperscriptBox[\\\"\[Null]\\\", \\\"th\\\"]\\) part of \
+\\!\\(\\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\\). \\n\\!\\(\\*RowBox[{StyleBox[\
+\\\"expr\\\", \\\"TI\\\"], \\\"[\\\", RowBox[{\\\"[\\\", RowBox[{\\\"-\\\", \
+StyleBox[\\\"i\\\", \\\"TI\\\"]}], \\\"]\\\"}], \\\"]\\\"}]\\) counts from \
+the end. \\n\\!\\(\\*RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\"[\\\", \
+RowBox[{\\\"[\\\", RowBox[{StyleBox[\\\"i\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"j\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \
+\\\"TR\\\"]}], \\\"]\\\"}], \\\"]\\\"}]\\) or \\!\\(\\*RowBox[{\\\"Part\\\", \
+\\\"[\\\", RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\
+\"i\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"j\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"]\\\"}]\\) is equivalent to \
+\\!\\(\\*RowBox[{RowBox[{RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \
+\\\"[\\\", RowBox[{\\\"[\\\", StyleBox[\\\"i\\\", \\\"TI\\\"], \\\"]\\\"}], \
+\\\"]\\\"}], \\\"[\\\", RowBox[{\\\"[\\\", StyleBox[\\\"j\\\", \\\"TI\\\"], \
+\\\"]\\\"}], \\\"]\\\"}], StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}]\\). \\n\
+\\!\\(\\*RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\"[\\\", RowBox[{\\\"[\
+\\\", RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"i\\\", \
+\\\"TI\\\"], StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\
+\"}], \\\"]\\\"}], \\\"]\\\"}]\\) gives a list of the parts \
+\\!\\(\\*SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \\\
+\"TR\\\"]]\\), \\!\\(\\*SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]]\\), \[Ellipsis] of \
+\\!\\(\\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\\). \\n\\!\\(\\*RowBox[{StyleBox[\
+\\\"expr\\\", \\\"TI\\\"], \\\"[\\\", RowBox[{\\\"[\\\", \
+RowBox[{StyleBox[\\\"m\\\", \\\"TI\\\"], \\\";;\\\", StyleBox[\\\"n\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}], \\\"]\\\"}]\\) gives parts \
+\\!\\(\\*StyleBox[\\\"m\\\", \\\"TI\\\"]\\) through \\!\\(\\*StyleBox[\\\"n\\\
+\", \\\"TI\\\"]\\).\\n\\!\\(\\*RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\
+\"[\\\", RowBox[{\\\"[\\\", RowBox[{StyleBox[\\\"m\\\", \\\"TI\\\"], \\\";;\\\
+\", StyleBox[\\\"n\\\", \\\"TI\\\"], \\\";;\\\", StyleBox[\\\"s\\\", \\\"TI\\\
+\"]}], \\\"]\\\"}], \\\"]\\\"}]\\) gives parts \\!\\(\\*StyleBox[\\\"m\\\", \
+\\\"TI\\\"]\\) through \\!\\(\\*StyleBox[\\\"n\\\", \\\"TI\\\"]\\) in steps \
+of \\!\\(\\*StyleBox[\\\"s\\\", \
+\\\"TI\\\"]\\).\\n\\!\\(\\*RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \
+\\\"[\\\", RowBox[{\\\"[\\\", StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\
+\\\\\"key\\\\\\\",\\\\\\\"TI\\\\\\\"]\\\\)\\\\\\\"\\\", \
+ShowStringCharacters->True], \\\"]\\\"}], \\\"]\\\"}]\\) gives the value \
+associated with the key \\\"\\!\\(\\*\\nStyleBox[\\\"key\\\", \
+\\\"TI\\\"]\\)\\\" in an association \\!\\(\\*StyleBox[\\\"expr\\\", \\\"TI\\\
+\"]\\).\\n\\!\\(\\*RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\"[\\\", \
+RowBox[{\\\"[\\\", RowBox[{\\\"Key\\\", \\\"[\\\", StyleBox[\\\"k\\\", \\\"TI\
+\\\"], \\\"]\\\"}], \\\"]\\\"}], \\\"]\\\"}]\\) gives the value associated \
+with an arbitrary key \\!\\(\\*StyleBox[\\\"k\\\", \\\"TI\\\"]\\) in the \
+association \\!\\(\\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\\).\"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Part"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.679347186605891*^9},
+ CellTags->"Info-fc88dd49-52d2-4498-b202-1e602adcddf1"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.6793473131306047`*^9, 3.6793473138332567`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"deck", "[", 
+  RowBox[{"[", 
+   RowBox[{"3", ";;", 
+    RowBox[{"-", "1"}], ";;", "4"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6793471750620117`*^9, 3.679347176285136*^9}, {
+  3.679347232940618*^9, 3.679347237578411*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Get all the ",
+ StyleBox["diamonds",
+  FontSlant->"Italic"],
+ " and ",
+ StyleBox["hearts",
+  FontSlant->"Italic"],
+ " from the ",
+ StyleBox["deck", "Code"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.679347361473152*^9, 3.679347370535837*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Hint", "Subsubsection",
+ CellChangeTimes->{{3.679347389375465*^9, 3.679347389679138*^9}}],
+
+Cell[TextData[{
+ "Use ",
+ StyleBox["Flatten", "Code"],
+ " with two sets of ",
+ StyleBox["Part", "Code"],
+ " specifications."
+}], "Text",
+ CellChangeTimes->{{3.6793473913111753`*^9, 3.679347404014471*^9}, {
+  3.6793474966456347`*^9, 3.679347512940564*^9}}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.679347410959098*^9, 3.679347411678459*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Flatten", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"deck", "[", 
+      RowBox[{"[", 
+       RowBox[{"1", ";;", 
+        RowBox[{"-", "1"}], ";;", "4"}], "]"}], "]"}], ",", 
+     RowBox[{"deck", "[", 
+      RowBox[{"[", 
+       RowBox[{"3", ";;", 
+        RowBox[{"-", "1"}], ";;", "4"}], "]"}], "]"}]}], "}"}], ",", "1"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.679347413977996*^9, 3.679347439854744*^9}, {
+  3.6793475497978897`*^9, 3.679347580211484*^9}}]
+}, Closed]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1280, 878},
+WindowMargins->{{178, Automatic}, {Automatic, 63}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"10.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (October 9, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info-b4ad93dc-2879-4b52-b11c-aff0c14588f7"->{
+  Cell[10755, 417, 574, 13, 55, "Print",
+   CellTags->"Info-b4ad93dc-2879-4b52-b11c-aff0c14588f7"]},
+ "Info-fc88dd49-52d2-4498-b202-1e602adcddf1"->{
+  Cell[17775, 669, 4028, 60, 237, "Print",
+   CellTags->"Info-fc88dd49-52d2-4498-b202-1e602adcddf1"]},
+ "setPrimes"->{
+  Cell[12025, 458, 218, 7, 54, "Subsection",
+   CellTags->"setPrimes"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info-b4ad93dc-2879-4b52-b11c-aff0c14588f7", 24145, 824},
+ {"Info-fc88dd49-52d2-4498-b202-1e602adcddf1", 24294, 827},
+ {"setPrimes", 24413, 830}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 95, 1, 114, "Title"],
+Cell[CellGroupData[{
+Cell[700, 27, 148, 2, 80, "Section"],
+Cell[CellGroupData[{
+Cell[873, 33, 194, 6, 54, "Subsection"],
+Cell[1070, 41, 231, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[1326, 51, 101, 1, 43, "Subsubsection"],
+Cell[1430, 54, 125, 2, 36, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1604, 62, 194, 6, 54, "Subsection"],
+Cell[1801, 70, 114, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[1940, 75, 98, 1, 43, "Subsubsection"],
+Cell[2041, 78, 151, 3, 36, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2241, 87, 194, 6, 54, "Subsection"],
+Cell[2438, 95, 116, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[2579, 100, 98, 1, 43, "Subsubsection"],
+Cell[2680, 103, 178, 4, 45, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2907, 113, 194, 6, 54, "Subsection"],
+Cell[3104, 121, 131, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[3260, 126, 101, 1, 43, "Subsubsection"],
+Cell[3364, 129, 158, 3, 45, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3571, 138, 194, 6, 54, "Subsection"],
+Cell[3768, 146, 190, 5, 37, "Text"],
+Cell[3961, 153, 185, 4, 35, "Input"],
+Cell[CellGroupData[{
+Cell[4171, 161, 99, 1, 43, "Subsubsection"],
+Cell[4273, 164, 211, 5, 45, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4533, 175, 194, 6, 54, "Subsection"],
+Cell[4730, 183, 271, 7, 37, "Text"],
+Cell[5004, 192, 125, 2, 36, "Input"],
+Cell[CellGroupData[{
+Cell[5154, 198, 101, 1, 43, "Subsubsection"],
+Cell[5258, 201, 159, 3, 45, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5466, 210, 194, 6, 54, "Subsection"],
+Cell[5663, 218, 173, 5, 37, "Text"],
+Cell[5839, 225, 303, 9, 36, "Input"],
+Cell[CellGroupData[{
+Cell[6167, 238, 98, 1, 43, "Subsubsection"],
+Cell[6268, 241, 347, 10, 45, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6664, 257, 194, 6, 54, "Subsection"],
+Cell[6861, 265, 231, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[7117, 276, 99, 1, 43, "Subsubsection"],
+Cell[7219, 279, 197, 5, 43, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7465, 290, 194, 6, 54, "Subsection"],
+Cell[7662, 298, 305, 8, 37, "Text"],
+Cell[CellGroupData[{
+Cell[7992, 310, 99, 1, 43, "Subsubsection"],
+Cell[8094, 313, 244, 6, 45, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8387, 325, 194, 6, 54, "Subsection"],
+Cell[8584, 333, 393, 13, 37, "Text"],
+Cell[CellGroupData[{
+Cell[9002, 350, 100, 1, 43, "Subsubsection"],
+Cell[9105, 353, 429, 12, 45, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9583, 371, 194, 6, 54, "Subsection"],
+Cell[9780, 379, 241, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[10046, 389, 101, 1, 43, "Subsubsection"],
+Cell[10150, 392, 188, 4, 45, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10387, 402, 194, 6, 54, "Subsection"],
+Cell[10584, 410, 168, 5, 37, "Text"],
+Cell[10755, 417, 574, 13, 55, "Print",
+ CellTags->"Info-b4ad93dc-2879-4b52-b11c-aff0c14588f7"],
+Cell[11332, 432, 285, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[11642, 443, 101, 1, 43, "Subsubsection"],
+Cell[11746, 446, 230, 6, 43, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12025, 458, 218, 7, 54, "Subsection",
+ CellTags->"setPrimes"],
+Cell[12246, 467, 88, 1, 37, "Text"],
+Cell[12337, 470, 188, 4, 36, "Input"],
+Cell[12528, 476, 178, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[12731, 485, 99, 1, 43, "Subsubsection"],
+Cell[12833, 488, 148, 3, 36, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13030, 497, 194, 6, 54, "Subsection"],
+Cell[13227, 505, 519, 13, 37, "Text"],
+Cell[CellGroupData[{
+Cell[13771, 522, 99, 1, 43, "Subsubsection"],
+Cell[13873, 525, 177, 4, 45, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14099, 535, 194, 6, 54, "Subsection"],
+Cell[14296, 543, 482, 11, 37, "Text"],
+Cell[CellGroupData[{
+Cell[14803, 558, 99, 1, 43, "Subsubsection"],
+Cell[14905, 561, 202, 5, 45, "Input"]
+}, Closed]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15168, 573, 103, 1, 80, "Section"],
+Cell[15274, 576, 232, 4, 37, "Text"],
+Cell[15509, 582, 561, 14, 36, "Input"],
+Cell[CellGroupData[{
+Cell[16095, 600, 194, 6, 54, "Subsection"],
+Cell[16292, 608, 251, 9, 37, "Text"],
+Cell[CellGroupData[{
+Cell[16568, 621, 97, 1, 43, "Subsubsection"],
+Cell[16668, 624, 113, 1, 37, "Text"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[16818, 630, 101, 1, 34, "Subsubsection"],
+Cell[16922, 633, 173, 4, 43, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17144, 643, 194, 6, 54, "Subsection"],
+Cell[17341, 651, 201, 8, 37, "Text"],
+Cell[CellGroupData[{
+Cell[17567, 663, 96, 1, 43, "Subsubsection"],
+Cell[17666, 666, 106, 1, 46, "Text"],
+Cell[17775, 669, 4028, 60, 237, "Print",
+ CellTags->"Info-fc88dd49-52d2-4498-b202-1e602adcddf1"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[21840, 734, 103, 1, 34, "Subsubsection"],
+Cell[21946, 737, 253, 6, 43, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22248, 749, 194, 6, 54, "Subsection"],
+Cell[22445, 757, 257, 11, 37, "Text"],
+Cell[CellGroupData[{
+Cell[22727, 772, 95, 1, 43, "Subsubsection"],
+Cell[22825, 775, 255, 8, 46, "Text"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[23117, 788, 99, 1, 34, "Subsubsection"],
+Cell[23219, 791, 502, 15, 43, "Input"]
+}, Closed]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

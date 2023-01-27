@@ -1,0 +1,248 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11465,        240]
+NotebookOptionsPosition[     10736,        212]
+NotebookOutlinePosition[     11120,        229]
+CellTagsIndexPosition[     11077,        226]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Lecture", "Section",
+ CellChangeTimes->{{3.708048444514573*^9, 3.708048445441586*^9}}],
+
+Cell[TextData[{
+ "In his seminal book ",
+ StyleBox["The Origin of Species",
+  FontSlant->"Italic"],
+ ", Charles Darwin laid down the foundation of evolutionary biology. \
+Published in 1859, the book advanced the theory that populations ",
+ StyleBox["evolve",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ " over the course of generations. Based on his observations, it promoted the \
+idea that life, in all its diversity, originated from a common ancestor, and \
+through a branching process, gave rise to the multitude of species present in \
+our world. "
+}], "Text",
+ CellChangeTimes->{{3.69703224506458*^9, 3.6970323546189623`*^9}, {
+   3.697032400712015*^9, 3.697032416184496*^9}, {3.697032453241097*^9, 
+   3.6970324575269938`*^9}, {3.6970330847635813`*^9, 3.697033123410544*^9}, {
+   3.697033180778454*^9, 3.697033407194667*^9}, {3.697033575633223*^9, 
+   3.697033712778749*^9}, {3.697033774745161*^9, 3.697033774865149*^9}, {
+   3.697033817661695*^9, 3.6970338921892157`*^9}, {3.697034089889146*^9, 
+   3.697034091077128*^9}, {3.697034289961306*^9, 3.697034312280045*^9}, 
+   3.697034344555374*^9, {3.697034378517706*^9, 3.697034486851143*^9}, {
+   3.6970348127607727`*^9, 3.697035139990246*^9}, {3.697035213783579*^9, 
+   3.697035214005816*^9}, {3.6970352610328817`*^9, 3.697035577384107*^9}, {
+   3.6970361422586603`*^9, 3.6970361555851507`*^9}, {3.697036192515326*^9, 
+   3.697036220501995*^9}, {3.69703683562222*^9, 3.697036835878254*^9}, {
+   3.697037542505373*^9, 3.697037650836091*^9}, {3.697057668716761*^9, 
+   3.697057835790495*^9}, {3.6970579479987926`*^9, 3.697057966891656*^9}, {
+   3.6970579972761927`*^9, 3.697058009398007*^9}, {3.6970580486234694`*^9, 
+   3.6970581223256474`*^9}, {3.699825771131709*^9, 3.699825771489441*^9}, {
+   3.706209800593987*^9, 3.70620980202046*^9}, {3.706212139420156*^9, 
+   3.70621213965254*^9}, {3.706214726565715*^9, 3.706214761181291*^9}}],
+
+Cell[TextData[{
+ "Darwin showed that the underlying mechanism and the driving force of \
+evolution is a process which he called ",
+ StyleBox["Natural Selection",
+  FontSlant->"Italic"],
+ ". The idea of Natural Selection is very powerful, and yet simple and \
+elegant. Darwin thought of Natural Selection as analogous to how farmers \
+select crops or livestock for breeding, which he called ",
+ StyleBox["Artificial Selection",
+  FontSlant->"Italic"],
+ ". He conjectured that in much the same way, nature does the \
+\[OpenCurlyDoubleQuote]selecting\[CloseCurlyDoubleQuote]. "
+}], "Text",
+ CellChangeTimes->{{3.70621476344567*^9, 3.7062148700751457`*^9}, 
+   3.706214905082748*^9, {3.706214940119129*^9, 3.706215034627185*^9}}],
+
+Cell[TextData[{
+ "Under Natural Selection, a living organism has a better chance to survive \
+and reproduce if it is more ",
+ StyleBox["fit",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ ". Suppose a small random change occurs in the characteristics of the living \
+organism that enable it to ",
+ StyleBox["adapt",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ " to its environment better compared to other organisms, then that organism \
+is more likely to survive and pass on that particular characteristic. Through \
+the repetition of this process, these traits are more likely to get passed on \
+and be amplified. On the other hand, those characteristics that are \
+detrimental to survival will disappear over time. "
+}], "Text",
+ CellChangeTimes->{{3.7062150364590893`*^9, 3.706215109375226*^9}, {
+  3.7062328836232843`*^9, 3.70623288485375*^9}}],
+
+Cell["\<\
+In his own words, providing the example of wolves hunting deer, Darwin said, \
+\[OpenCurlyDoubleQuote]If any slight innate change of habit or of structure \
+benefited an individual wolf, it would have the best chance of surviving and \
+leaving progeny. Some of its young would probably inherit the same habits or \
+structure, and by the repetition of this process, a new variety might be \
+formed.\[CloseCurlyDoubleQuote]\
+\>", "Text",
+ CellChangeTimes->{{3.7062151123052673`*^9, 3.706215146045727*^9}}],
+
+Cell["\<\
+Among the many hurdles to overcome in developing his theory, there was one \
+that presented a serious limitation. Darwin was aware of this limitation, and \
+yet he managed to ignore it. In a very interesting and fun to read book, \
+called Brilliant Blunders, also the inspiration for this project, Mario Livio \
+explains this problem and calls it Darwin\[CloseCurlyQuote]s \
+\[OpenCurlyDoubleQuote]big blunder\[CloseCurlyDoubleQuote]. \
+\>", "Text",
+ CellChangeTimes->{3.706215751254053*^9}],
+
+Cell["\<\
+In order to explain the process of natural selection, there needs to be a \
+model or theory for explaining heredity and inheritance. That is, we need to \
+understand how the traits of parents are passed on to their offspring. At the \
+time when Darwin was developing his theory of evolution by natural selection, \
+the prevailing theory of inheritance was one of equal blending of the traits \
+of the two parents. Meaning, the offspring inherits a uniform mixing of \
+traits of its two parents, similar to mixing paint. Remember, this was before \
+we knew about genes and how heredity in general worked. Darwin knew that this \
+theory had limitations, and in his book he mentioned that the laws of \
+inheritance are \[OpenCurlyDoubleQuote]quite unknown\[CloseCurlyDoubleQuote]. \
+As Livio explains, Darwin even understood that if such a process were to be \
+the governing principle for inheritance, then after each generation, traits \
+of ancestors would become completely \[OpenCurlyDoubleQuote]diluted\
+\[CloseCurlyDoubleQuote], and yet in real life we constantly see evidence to \
+the contrary. Characteristics of ancestors can appear in further generations \
+down the line, which would never happen under the \
+\[OpenCurlyDoubleQuote]blending\[CloseCurlyDoubleQuote] theory. Despite this \
+fact, Darwin still expected Natural Selection to work. \
+\>", "Text",
+ CellChangeTimes->{{3.697036210938685*^9, 3.697036287243458*^9}, {
+   3.697036317705495*^9, 3.6970364517041683`*^9}, {3.697036523732872*^9, 
+   3.697036618065414*^9}, {3.697036654612483*^9, 3.697036798710413*^9}, {
+   3.69703686913477*^9, 3.697036955385078*^9}, {3.697037705968258*^9, 
+   3.6970377253335533`*^9}, 3.697037769886656*^9, {3.7062099313639174`*^9, 
+   3.706209931542101*^9}, {3.7062157026500597`*^9, 3.70621585338551*^9}, {
+   3.706222818413928*^9, 3.7062228231884947`*^9}, {3.706222958687468*^9, 
+   3.706222971446115*^9}, 3.7062257027391653`*^9, {3.706225746856243*^9, 
+   3.706225757855659*^9}}],
+
+Cell[TextData[{
+ "Of course we now know heredity occurs through a molecule called DNA \
+(deoxyribonucleic acid). DNA contains ",
+ StyleBox["genes",
+  FontSlant->"Italic"],
+ " which are basically packets of data that carry encoded information for \
+proteins. DNA is located in ",
+ StyleBox["chromosomes",
+  FontSlant->"Italic"],
+ ". Each living organism has two chromosomes, and during reproduction, each \
+parent passes one chromosome to the child. Consequently the child will have \
+two copies of all the genes. Since information from parents get passed down \
+in discrete packets, traits from one generation might show up in several \
+generations down the line. For a more thorough description watch the video \
+published by StatedClearly on YouTube:"
+}], "Text",
+ CellChangeTimes->{{3.697059574191749*^9, 3.697059580318083*^9}, {
+   3.697059682107411*^9, 3.6970598728163433`*^9}, {3.697060629658443*^9, 
+   3.697060673131281*^9}, {3.697060707967339*^9, 3.697060719559966*^9}, 
+   3.6998262196858683`*^9, {3.706210194537057*^9, 3.706210335232431*^9}, {
+   3.706210670421604*^9, 3.70621069878906*^9}, {3.706210916705989*^9, 
+   3.706211165457642*^9}, {3.706226553031708*^9, 3.7062265879554453`*^9}, {
+   3.7062266216980247`*^9, 3.706226667480062*^9}, 3.707959729973241*^9, {
+   3.708551760256929*^9, 3.708551760544956*^9}}],
+
+Cell["https://youtu.be/5MQdXjRPHmQ", "Text",
+ CellChangeTimes->{3.708551771618395*^9}],
+
+Cell["\<\
+The first person to show experimentally that traits of living organisms are \
+passed down through a mechanism other than blending was Mendel. He did this \
+using pea plants. Crossing a purple flower with a white flower produced a \
+purple flower, which could be explained using blending theory. However, he \
+then crossed the new purple flowers by themselves, and found that a white \
+flower showed up in a quarter of the offspring. This was a clear indication \
+that information from parents cannot simply be mixing and that somehow the \
+information about the white color had been passed on through generations \
+without changing. For a more detailed explanation of Mendelian genetics have \
+a look at this YouTube video:\
+\>", "Text",
+ CellChangeTimes->{{3.706226669209593*^9, 3.7062267141429377`*^9}, 
+   3.706226744926008*^9, {3.70622679226085*^9, 3.706226792523534*^9}, {
+   3.706227009626792*^9, 3.706227010418908*^9}, {3.706227063713275*^9, 
+   3.706227106439007*^9}, {3.7080511050518513`*^9, 3.708051112475803*^9}, 
+   3.708551756903495*^9}],
+
+Cell["https://youtu.be/NWqgZUnJdAY", "Text",
+ CellChangeTimes->{3.708551749564232*^9}],
+
+Cell[TextData[{
+ "Imagine if Darwin had a computer. Better yet, imagine he had ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ". He could have easily written a simulation and realized the flaw in his \
+logic. This is exactly what we would like to accomplish with this project. \
+Here is the final result of this project. We want you to create this \
+simulation environment. In the next lecture, we\[CloseCurlyQuote]ll describe \
+in detail what specifically we\[CloseCurlyQuote]d like you to simulate. See \
+you in the next lecture!"
+}], "Text",
+ CellChangeTimes->{{3.699826234941132*^9, 3.699826391993617*^9}, {
+   3.706211194025425*^9, 3.706211285753934*^9}, {3.706211375861065*^9, 
+   3.706211481402853*^9}, {3.706211799655909*^9, 3.706212003693159*^9}, {
+   3.706227112735114*^9, 3.7062271128791933`*^9}, {3.706227143933918*^9, 
+   3.7062271774199038`*^9}, 3.706232660240149*^9, {3.7080465206821117`*^9, 
+   3.708046550736601*^9}, {3.7080468838875437`*^9, 3.708046884438286*^9}}]
+}, Open  ]]
+},
+WindowSize->{1396, 855},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 92, 1, 80, "Section"],
+Cell[675, 25, 1894, 31, 85, "Text"],
+Cell[2572, 58, 725, 14, 85, "Text"],
+Cell[3300, 74, 853, 18, 109, "Text"],
+Cell[4156, 94, 513, 8, 85, "Text"],
+Cell[4672, 104, 501, 8, 85, "Text"],
+Cell[5176, 114, 1985, 28, 204, "Text"],
+Cell[7164, 144, 1324, 23, 109, "Text"],
+Cell[8491, 169, 86, 1, 37, "Text"],
+Cell[8580, 172, 1060, 16, 132, "Text"],
+Cell[9643, 190, 86, 1, 37, "Text"],
+Cell[9732, 193, 988, 16, 132, "Text"]
+}, Open  ]]
+}
+]
+*)
+

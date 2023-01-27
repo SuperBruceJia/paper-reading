@@ -1,0 +1,770 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     20986,        761]
+NotebookOptionsPosition[     16957,        617]
+NotebookOutlinePosition[     17346,        634]
+CellTagsIndexPosition[     17303,        631]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Lists Part 2", "Title",
+ CellChangeTimes->{{3.679347636506831*^9, 3.679347639321329*^9}, 
+   3.6799472491694393`*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Basic Exercises", "Section",
+ CellChangeTimes->{{3.67933910070142*^9, 3.679339105692511*^9}, {
+  3.679347656225293*^9, 3.679347658144876*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Append the value ",
+ StyleBox["4", "Code"],
+ " to ",
+ StyleBox["{1, 2, 3}", "Code"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.6793391274444647`*^9, 3.679339128957499*^9}, {
+  3.67933929802365*^9, 3.6793393318562317`*^9}, {3.6799476090501328`*^9, 
+  3.67994763252015*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.679339336855101*^9, 3.6793393376230583`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Append", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", "4"}], "]"}]], "Input",
+ CellChangeTimes->{{3.679339338824963*^9, 3.679339341319338*^9}, {
+  3.679947637104123*^9, 3.679947645255454*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Prepend the value ",
+ StyleBox["0", "Code"],
+ " to ",
+ StyleBox["{1, 2, 3}", "Code"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.679339435940825*^9, 3.6793394417245083`*^9}, {
+  3.679947651039379*^9, 3.6799476595829067`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.67933944395852*^9, 3.679339444716416*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Prepend", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", "0"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6793394457350483`*^9, 3.679339448653014*^9}, {
+  3.6799476721266603`*^9, 3.67994767695827*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Insert the value ",
+ StyleBox["3", "Code"],
+ " into the correct position in the list ",
+ StyleBox["{0, 1, 2, 4, 5}", "Code"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.67933935326537*^9, 3.679339367822329*^9}, {
+  3.67994771243685*^9, 3.679947758572448*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.679339384238879*^9, 3.67933938498985*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Insert", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1", ",", "2", ",", "4", ",", "5"}], "}"}], ",", "3", 
+   ",", "4"}], "]"}]], "Input",
+ CellChangeTimes->{{3.679339369544594*^9, 3.679339377462332*^9}, {
+  3.679947740445396*^9, 3.679947804819223*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Delete the first element in ",
+ StyleBox["Alphabet[]", "Code"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.679339684904249*^9, 3.679339694863179*^9}, {
+  3.679947855403676*^9, 3.679947866808449*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.6793396985028667`*^9, 3.679339699591135*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Delete", "[", 
+  RowBox[{
+   RowBox[{"Alphabet", "[", "]"}], ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.679339700627468*^9, 3.679339703865707*^9}, {
+  3.6799478719122677`*^9, 3.679947876176036*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Delete the vowels in ",
+ StyleBox["Alphabet[]", "Code"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.679339527315833*^9, 3.679339542666543*^9}, {
+  3.6799478881195107`*^9, 3.679947894903392*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.679339585185379*^9, 3.679339585969541*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Delete", "[", 
+  RowBox[{
+   RowBox[{"Alphabet", "[", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", "1", "}"}], ",", 
+     RowBox[{"{", "5", "}"}], ",", 
+     RowBox[{"{", "9", "}"}], ",", 
+     RowBox[{"{", "15", "}"}], ",", 
+     RowBox[{"{", "21", "}"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.679339586874948*^9, 3.679339591870852*^9}, {
+  3.6799479159265537`*^9, 3.679947945631774*^9}, {3.679947990461882*^9, 
+  3.679948051505571*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell["Drop all characters after f in the alphabet.", "Text",
+ CellChangeTimes->{{3.6793398216644917`*^9, 3.679339858755571*^9}, {
+  3.6793398899019833`*^9, 3.679339890074884*^9}, {3.679339933610499*^9, 
+  3.679339936553849*^9}, {3.6799480905120897`*^9, 3.6799481285664377`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.679339866910678*^9, 3.6793398677556334`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Drop", "[", 
+  RowBox[{
+   RowBox[{"Alphabet", "[", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", 
+     RowBox[{"-", "1"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6793398818800573`*^9, 3.679339893514902*^9}, {
+  3.6799481326386642`*^9, 3.679948165565257*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Generate a list of the hexadecimal digits i.e. ",
+ StyleBox["{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, a, b, c, d, e, f}", "Code"]
+}], "Text",
+ CellChangeTimes->{{3.6793399169068747`*^9, 3.6793399252424383`*^9}, 
+   3.6799482244669447`*^9, {3.679948266066773*^9, 3.6799483056158943`*^9}, {
+   3.6799489253637257`*^9, 3.67994894824818*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.67933998942603*^9, 3.679339990192872*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Join", "[", 
+  RowBox[{
+   RowBox[{"Range", "[", 
+    RowBox[{"0", ",", "9"}], "]"}], ",", 
+   RowBox[{"Drop", "[", 
+    RowBox[{
+     RowBox[{"Alphabet", "[", "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"7", ",", 
+       RowBox[{"-", "1"}]}], "}"}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6793399911319437`*^9, 3.6793399949858007`*^9}, {
+  3.679948325983118*^9, 3.6799483433102694`*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Use ",
+ StyleBox["PadRight", "Code"],
+ " to make a list of length 20 with the values ",
+ StyleBox["{1, 2, 3, 1, 2, 3, ...}", "Code"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.67995183998242*^9, 3.679951890947075*^9}, {
+  3.679951946489005*^9, 3.679951957800541*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.679951967704204*^9, 3.67995196839218*^9}}],
+
+Cell[BoxData[
+ RowBox[{"PadRight", "[", 
+  RowBox[{
+   RowBox[{"{", "}"}], ",", "20", ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.67995197004361*^9, 3.679951978712237*^9}}]
+}, Closed]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Advanced Exercise: Frequency Distribution of Roll of 3 Dice", "Section",
+ CellChangeTimes->{{3.679346676393309*^9, 3.679346684583231*^9}, {
+  3.679950245001122*^9, 3.679950259703846*^9}}],
+
+Cell[TextData[{
+ "The questions in this section are ",
+ StyleBox["not independent",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ ". You must correctly answer each question in sequence!"
+}], "Text",
+ CellChangeTimes->{{3.679949975979124*^9, 3.679950036472073*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell["\<\
+If you roll 3 ordinary dice, the sum of each possible roll are:\
+\>", "Text",
+ CellChangeTimes->{{3.6799493358589077`*^9, 3.6799493637765713`*^9}, {
+  3.679949443053701*^9, 3.679949510075183*^9}}],
+
+Cell[BoxData[
+ RowBox[{"sumOfRoles", "=", 
+  RowBox[{"Total", "/@", 
+   RowBox[{"Tuples", "[", 
+    RowBox[{
+     RowBox[{"Range", "[", "6", "]"}], ",", "3"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.679949460488358*^9, 3.6799494787006807`*^9}, {
+   3.679949513773484*^9, 3.67994962863918*^9}, {3.6799497655705442`*^9, 
+   3.679949779738216*^9}, {3.67994987435977*^9, 3.679949875097386*^9}, 
+   3.679950116026723*^9}],
+
+Cell[TextData[{
+ "Use ",
+ StyleBox["Tally", "Code"],
+ " to obtain the distribution of the ",
+ StyleBox["sumOfRoles", "Code"],
+ ". Set the result equal to ",
+ StyleBox["sumFreq", "Code"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.679949949036756*^9, 3.679949954570669*^9}, {
+  3.679950067030788*^9, 3.6799501133171587`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.6799501229578333`*^9, 3.679950123668618*^9}}],
+
+Cell[BoxData[
+ RowBox[{"sumFreq", "=", 
+  RowBox[{"Tally", "[", "sumOfRoles", "]"}]}]], "Input",
+ CellChangeTimes->{{3.679950127594145*^9, 3.679950133421464*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Use ",
+ StyleBox["ListPlot", "Code"],
+ " to plot the frequency distribution of ",
+ StyleBox["sumFreq", "Code"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.679346966824604*^9, 3.679346999088237*^9}, {
+  3.6793471436773148`*^9, 3.679347168772028*^9}, {3.679950145227974*^9, 
+  3.679950161755136*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.6793470084410877`*^9, 3.679347009183795*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", 
+  RowBox[{"sumFreq", ",", 
+   RowBox[{"Filling", "\[Rule]", "Axis"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.679347010595529*^9, 3.679347048975281*^9}, {
+  3.679950171875177*^9, 3.679950180196126*^9}}]
+}, Closed]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Advanced Exercise: Visualization of PDF of RandomInteger", "Section",
+ CellChangeTimes->{{3.6799505020785017`*^9, 3.67995052711793*^9}}],
+
+Cell[TextData[{
+ "The questions in this section are ",
+ StyleBox["not independent",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ ". You must correctly answer each question in sequence!"
+}], "Text",
+ CellChangeTimes->{{3.679949975979124*^9, 3.679950036472073*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "The function ",
+ StyleBox["RandomInteger", "Code"],
+ " generates random numbers:"
+}], "Text",
+ CellChangeTimes->{{3.679950441994231*^9, 3.679950442608658*^9}, {
+  3.679950489696762*^9, 3.679950497606591*^9}, {3.679950556748509*^9, 
+  3.679950563828281*^9}}],
+
+Cell[BoxData[
+ RowBox[{"?", "RandomInteger"}]], "Input",
+ CellChangeTimes->{{3.679950443902115*^9, 3.679950447434392*^9}}],
+
+Cell[TextData[{
+ "Use ",
+ StyleBox["RandomInteger", "Code"],
+ " to generate a list of 100,000 random integers from 0 to 100. Set it equal \
+to ",
+ StyleBox["randInts", "Code"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.679950566740162*^9, 3.679950634473748*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.679950646691306*^9, 3.679950649369286*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"randInts", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"RandomInteger", "[", "100", "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "100000"}], "}"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.679950652364641*^9, 3.6799506846239643`*^9}}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Find the frequency distribution of randInts and plot it with ",
+ StyleBox["ListPlot", "Code"],
+ ". Does the distribution look uniform?"
+}], "Text",
+ CellChangeTimes->{{3.679950716183827*^9, 3.679950726838339*^9}, {
+  3.679950779525415*^9, 3.679950792307877*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Hint", "Subsubsection",
+ CellChangeTimes->{{3.6799508566586103`*^9, 3.679950856977599*^9}}],
+
+Cell[TextData[{
+ "Use ",
+ StyleBox["PlotRange \[Rule] {Automatic, {0, Automatic}}", "Code"],
+ " in your ListPlot"
+}], "Text",
+ CellChangeTimes->{{3.679950862713125*^9, 3.6799508870083437`*^9}}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.679950730454187*^9, 3.679950732238022*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", 
+  RowBox[{
+   RowBox[{"Tally", "[", "randInts", "]"}], ",", 
+   RowBox[{"Filling", "\[Rule]", "Axis"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"Automatic", ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "Automatic"}], "}"}]}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6799507348810587`*^9, 3.6799507469111767`*^9}, {
+  3.6799507952214813`*^9, 3.679950843445133*^9}}]
+}, Closed]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Advanced Exercise: Make a Checkerboard", "Section",
+ CellChangeTimes->{{3.679951305634036*^9, 3.679951305721003*^9}, {
+  3.679951545801509*^9, 3.679951557943359*^9}}],
+
+Cell[TextData[{
+ StyleBox["PadLeft", "Code"],
+ " and ",
+ StyleBox["PadRight", "Code"],
+ " can do more than just pad with zeroes. It can also make cyclical patterns. \
+For example:"
+}], "Text",
+ CellChangeTimes->{{3.679951571854933*^9, 3.679951613109481*^9}}],
+
+Cell[BoxData[
+ RowBox[{"PadRight", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", "10", ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.679951614325604*^9, 3.679951662099975*^9}, {
+  3.679951696484489*^9, 3.679951696706787*^9}}],
+
+Cell["And it can even do it in more than 1 dimension:", "Text",
+ CellChangeTimes->{{3.679951669459384*^9, 3.67995167739496*^9}}],
+
+Cell[BoxData[
+ RowBox[{"PadRight", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a", ",", "b"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"c", ",", "d"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "6"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "4"}], "}"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.679951680797563*^9, 3.679951718801941*^9}}],
+
+Cell[TextData[{
+ "Use ",
+ StyleBox["ArrayPlot", "Code"],
+ " and ",
+ StyleBox["PadRight", "Code"],
+ " to make a checker board (chess board)."
+}], "Text",
+ CellChangeTimes->{{3.679951727673355*^9, 3.679951779223268*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.6799517958004303`*^9, 3.679951796486816*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ArrayPlot", "[", 
+  RowBox[{"PadRight", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"{", "}"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"8", ",", "8"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "0"}], "}"}]}], "}"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6799513626838207`*^9, 3.679951395190009*^9}, {
+  3.679951442133749*^9, 3.679951451956004*^9}}]
+}, Closed]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1280, 878},
+WindowMargins->{{175, Automatic}, {Automatic, 63}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"10.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (October 9, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 123, 2, 114, "Title"],
+Cell[CellGroupData[{
+Cell[728, 28, 148, 2, 80, "Section"],
+Cell[CellGroupData[{
+Cell[901, 34, 194, 6, 54, "Subsection"],
+Cell[1098, 42, 287, 9, 37, "Text"],
+Cell[CellGroupData[{
+Cell[1410, 55, 101, 1, 43, "Subsubsection"],
+Cell[1514, 58, 256, 6, 36, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1819, 70, 194, 6, 54, "Subsection"],
+Cell[2016, 78, 239, 8, 37, "Text"],
+Cell[CellGroupData[{
+Cell[2280, 90, 98, 1, 43, "Subsubsection"],
+Cell[2381, 93, 260, 6, 36, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2690, 105, 194, 6, 54, "Subsection"],
+Cell[2887, 113, 273, 8, 37, "Text"],
+Cell[CellGroupData[{
+Cell[3185, 125, 98, 1, 43, "Subsubsection"],
+Cell[3286, 128, 290, 7, 35, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3625, 141, 194, 6, 54, "Subsection"],
+Cell[3822, 149, 213, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[4060, 159, 101, 1, 43, "Subsubsection"],
+Cell[4164, 162, 230, 5, 36, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4443, 173, 194, 6, 54, "Subsection"],
+Cell[4640, 181, 208, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[4873, 191, 99, 1, 43, "Subsubsection"],
+Cell[4975, 194, 490, 13, 36, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5514, 213, 194, 6, 54, "Subsection"],
+Cell[5711, 221, 278, 3, 37, "Text"],
+Cell[CellGroupData[{
+Cell[6014, 228, 101, 1, 43, "Subsubsection"],
+Cell[6118, 231, 300, 8, 36, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6467, 245, 194, 6, 54, "Subsection"],
+Cell[6664, 253, 346, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[7035, 263, 98, 1, 43, "Subsubsection"],
+Cell[7136, 266, 425, 12, 36, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7610, 284, 194, 6, 54, "Subsection"],
+Cell[7807, 292, 282, 8, 37, "Text"],
+Cell[CellGroupData[{
+Cell[8114, 304, 98, 1, 43, "Subsubsection"],
+Cell[8215, 307, 238, 6, 36, "Input"]
+}, Closed]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8514, 320, 193, 2, 80, "Section"],
+Cell[8710, 324, 265, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[9000, 335, 194, 6, 54, "Subsection"],
+Cell[9197, 343, 206, 4, 37, "Text"],
+Cell[9406, 349, 420, 9, 36, "Input"],
+Cell[9829, 360, 320, 10, 37, "Text"],
+Cell[CellGroupData[{
+Cell[10174, 374, 101, 1, 43, "Subsubsection"],
+Cell[10278, 377, 162, 3, 36, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10489, 386, 194, 6, 54, "Subsection"],
+Cell[10686, 394, 312, 9, 37, "Text"],
+Cell[CellGroupData[{
+Cell[11023, 407, 101, 1, 43, "Subsubsection"],
+Cell[11127, 410, 244, 5, 36, "Input"]
+}, Closed]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11432, 422, 142, 1, 80, "Section"],
+Cell[11577, 425, 265, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[11867, 436, 194, 6, 54, "Subsection"],
+Cell[12064, 444, 275, 7, 37, "Text"],
+Cell[12342, 453, 122, 2, 36, "Input"],
+Cell[12467, 457, 259, 8, 37, "Text"],
+Cell[CellGroupData[{
+Cell[12751, 469, 99, 1, 43, "Subsubsection"],
+Cell[12853, 472, 303, 8, 36, "Input"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13205, 486, 194, 6, 54, "Subsection"],
+Cell[13402, 494, 280, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[13707, 504, 97, 1, 43, "Subsubsection"],
+Cell[13807, 507, 193, 5, 37, "Text"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[14037, 517, 99, 1, 34, "Subsubsection"],
+Cell[14139, 520, 454, 11, 36, "Input"]
+}, Closed]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14654, 538, 172, 2, 80, "Section"],
+Cell[14829, 542, 258, 7, 37, "Text"],
+Cell[15090, 551, 318, 8, 36, "Input"],
+Cell[15411, 561, 128, 1, 37, "Text"],
+Cell[15542, 564, 519, 17, 36, "Input"],
+Cell[16064, 583, 218, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[16307, 594, 101, 1, 43, "Subsubsection"],
+Cell[16411, 597, 506, 15, 36, "Input"]
+}, Closed]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

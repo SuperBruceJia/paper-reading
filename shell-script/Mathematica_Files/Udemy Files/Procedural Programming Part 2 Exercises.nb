@@ -1,0 +1,701 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     22986,        693]
+NotebookOptionsPosition[     19888,        582]
+NotebookOutlinePosition[     20432,        605]
+CellTagsIndexPosition[     20345,        600]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Procedural Programming Part 2", "Title",
+ CellChangeTimes->{{3.679347636506831*^9, 3.679347639321329*^9}, 
+   3.6799472491694393`*^9, {3.680412306236822*^9, 3.680412306328977*^9}, {
+   3.6868007549322357`*^9, 3.686800757913107*^9}, {3.70233430911423*^9, 
+   3.702334310770298*^9}, {3.707935631167241*^9, 3.707935633212365*^9}, {
+   3.709053325834556*^9, 3.709053337242448*^9}, 3.7090534268420343`*^9, {
+   3.709139039668128*^9, 3.709139044206313*^9}, {3.7110306216414127`*^9, 
+   3.711030624954067*^9}, {3.711035780489846*^9, 3.711035781637381*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Basic Exercises", "Section",
+ CellChangeTimes->{{3.67933910070142*^9, 3.679339105692511*^9}, {
+  3.679347656225293*^9, 3.679347658144876*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "In what follows, x is a list of values from 0 to 10 in increments of 0.1. y \
+is a list of zeros with the same length as x. You can think of y as a \
+placeholder list. Use a ",
+ StyleBox["For",
+  FontWeight->"Bold"],
+ " loop to update the placeholder y with the values of ",
+ StyleBox["Sin",
+  FontWeight->"Bold"],
+ "[x]. Plot it using ",
+ StyleBox["ListPlot.",
+  FontWeight->"Bold"]
+}], "Text",
+ CellChangeTimes->{{3.711030720668133*^9, 3.711030725732346*^9}, {
+  3.711030756085291*^9, 3.711030796562655*^9}, {3.7110325642753763`*^9, 
+  3.71103257949937*^9}, {3.71103388921905*^9, 3.7110338926969357`*^9}, {
+  3.7110360458727694`*^9, 3.711036136587473*^9}, {3.711677068977365*^9, 
+  3.7116770803338957`*^9}, {3.7116771326198187`*^9, 3.711677172050016*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"x", "=", 
+   RowBox[{"Range", "[", 
+    RowBox[{"0", ",", "10", ",", "0.1"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"y", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{"0", ",", 
+     RowBox[{"Length", "[", "x", "]"}]}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.7110358998345222`*^9, 3.711035934905678*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", 
+  RowBox[{
+   RowBox[{"Thread", "[", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", "y"}], "}"}], "]"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Small"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.711035988888894*^9, 3.711036016631791*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.009166666666666668], 
+     AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxd0klKQ0EARdFv7Pu+b2LUHcR5XINLEKJD16M7cQmCjhw5EwRBcKAooiii
+3wv1yH0QwiW/ToWQ1tHpYbdRVVX371W/e+dn9S46vX1Zer9d70af33Z6lTs9
+f1/65Ljeg84/lr6+qvck71nPv8h/1fk33fcu70Pep7wved/yfuRVB73Pp/H7
+SnO+UZr7+kuzAXlpvEF5Q/KG5Y3IS+ONyhuTNy5vQl4ab1LelLxpeTN6Po2f
+/j/entV9aTYnL42X5vvMy0uzBXlpvDTeorw0W5KXxkvjLctLsxV5abw03qq8
+NFuTl8ZL463LS7MNeWm8NN6mvDTbkpfGS+M15aXZdmn+X2n8NOfT3JdmLXlp
+vDReGi/NduSl8dJ4abw02y3N75PGS+Ol8dJsr/QvPzcitQ==
+      
+      "]]}, {}}, {}, {}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  ImageSize->Small,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0, 10.}, {-1., 1.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.7110359993471003`*^9, 3.711036016895872*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.680413280898682*^9, 3.6804132817067957`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "1"}], ",", 
+   RowBox[{"i", "\[LessEqual]", 
+    RowBox[{"Length", "[", "x", "]"}]}], ",", 
+   RowBox[{"i", "++"}], ",", 
+   RowBox[{
+    RowBox[{"y", "[", 
+     RowBox[{"[", "i", "]"}], "]"}], "=", 
+    RowBox[{"Sin", "[", 
+     RowBox[{"x", "[", 
+      RowBox[{"[", "i", "]"}], "]"}], "]"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.711035936339045*^9, 3.7110359718241177`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", 
+  RowBox[{
+   RowBox[{"Thread", "[", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", "y"}], "}"}], "]"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Small"}]}], "]"}]], "Input"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.009166666666666668], 
+     AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxd1HtMU3cUB3Dk4QqUteVVaHm26HBAKxQtw7HfAYHBMFMeA4IyNoUx53BE
+iCa4EDCbUwkubmw8jCsYzHCJiIPBKGBJN2C8BQaFCVIor0LphclDQiMb6+k/
+O8lNc3N/53Nucr+n7qc/i0kzNjIySvv32v39f5WV7lYj8e4u6K6+2Uj0952k
+eTCIv5PRSfxFuzVE/KXS73rVg/h8jJxL91IHakaJXlGSFbOo7IXqZ3heRZKC
+77ELWdMk/aPdmiONjuFnz9+ZwX416X0pkxetzZHent3SkOCq5BITlhq9FaKl
+m38dt7yI51dJwBmfY21faNB/Ttre49w9OrSM/WskyqVt69KwFudtEJOp0Mne
+axR6L0hBhvftnCUKvS3SFqLsyNdR6G2T+hKhoqGJQk9HVuxa8uUHKPRekoQA
+jis7QoueEYTXDSxuOBjmG8H2hSVyVrKE/h6gKX4aE02qsd8YeMJEn4HxeZxn
+AiUDv62n3plFzxRquvqtHu5XoWcKTV+WN+lyleiZAf1HDw/fpKfo7YXW2WT+
+hcxh9F6BoYMRI79K+tCjwcnh+owAphw9GgiYJVcY79xDzxz8fBbeEKseyPSe
+BRTTG7qMfX+X6T1LyD62w+xMeiLTe3RwPS3NPZI1ItN7dFgdWDkaHDMu03tW
+EMwVaD5ZU6L3KpS3anbii1ToMaCv1tVHYDyHHhOqXcYnGsULeJ4JLX9M58QK
+F9Fnwqj1k8m/VUuy/9pFLNh3Y0/gkehlnMcCyjPM92qWFj1ryIOOoOW3KfSs
+QapJtonuodCzhhiNmJGyQ+H72MBOEL2sSEmhZwOVS7yLkEmhZwuiUuV6/kMt
+erbQyBt1Ci9fRs8WFB7Sn0PCNOjZgdi6OY6qWETPDjLN/Io/ly6gZw8JNRbv
+dn47h5491K1/z44XzaBnD+UdOZFiyRR6bOiavNlh0TyBHhu4LZapJcsK9Byg
+9W7NjdWpAfQc4NS2SOEY3YGeAzj3Pn6aGPYLeo6QS7rl98W38Ps7gvfrh4Re
+Iy2YFw682d0OVte7MV8c+MZcLYxaGcL8cEB37VAlQz2GeeOCOWuxrFAyiR4X
+ZJxRbtGVafScgGaRIaftnUXPCQrOpE7Vx86j5wSMTtU+aZoaPWeIzHYebz9s
+2B9n2Dhgdlks16DnAgerdVcdTA377QKMF8wHflta9FwgMU6rs5YY9tkVhA15
+3qw1w767wv2UwOHYTcP/gRtc7vcsH6yiiD5fbpBeF3ky3tyw724gEKk3L3K0
+2O8Gxz/0ulT8TIPz3KB006d/MnEJPXfQjaWM+heq0XMHn0d1CYK8efTcYbNC
+QCzFs+i5w8RgV0hlwzR67pAn5s+coinR48EtIf3w/g/+Qo8H7DHJde6nf6LH
+g3O3h52rvupBjwcnvPsevzUuQ48H08GhVdL3S9HjQ85rlUWcoFrMAx88G+xo
+CSfaMT98yKp4VH01dQDzxgeT87XK1GwF5okPmfVuFaERE5g/D4g5/nz9h4+n
+ZP8A29XMpg==
+      "]]}, {}}, {}, {}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  ImageSize->Small,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0, 10.}, {-0.9999232575641008, 0.9995736030415051}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.711036039086383*^9}]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Let\[CloseCurlyQuote]s write a little game. You can use ",
+ StyleBox["Input[]",
+  FontWeight->"Bold"],
+ " to prompt the user to input a value. Let\[CloseCurlyQuote]s have the \
+computer pick a random integer between 0 and 10, and prompt the user to guess \
+it until the user finds the right value. "
+}], "Text",
+ CellChangeTimes->{{3.711036714907764*^9, 3.711036771267111*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Input"}]], "Input",
+ CellChangeTimes->{{3.71103678573205*^9, 3.711036787683371*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Input\\\", \\\"[\\\", \\\"]\\\"}]\\) \
+interactively reads in one \\!\\(\\*StyleBox[\\\"Wolfram Language\\\", \
+\\\"RebrandingTerm\\\"]\\) expression. \\n\\!\\(\\*RowBox[{\\\"Input\\\", \
+\\\"[\\\", StyleBox[\\\"prompt\\\", \\\"TI\\\"], \\\"]\\\"}]\\) requests \
+input, displaying \\!\\(\\*StyleBox[\\\"prompt\\\", \\\"TI\\\"]\\) as a \
+\\\"prompt\\\".\\n\\!\\(\\*RowBox[{\\\"Input\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"prompt\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"init\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) in a notebook front end \
+uses \\!\\(\\*StyleBox[\\\"init\\\", \\\"TI\\\"]\\) as the initial contents \
+of the input field.\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Input"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.711036788010378*^9},
+ CellTags->"Info173711018787-6732249"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Hint", "Subsubsection",
+ CellChangeTimes->{{3.711036911544796*^9, 3.711036913759211*^9}}],
+
+Cell["\<\
+If you accidentally get into an infinite loop, you can quit the kernel from \
+the Evaluation tab in the menu bar. \
+\>", "Text",
+ CellChangeTimes->{{3.7110369157005787`*^9, 3.711036948878039*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.70914343664712*^9, 3.709143437462674*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"x", "=", 
+   RowBox[{"RandomInteger", "[", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "10"}], "}"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"guess", "=", 
+   RowBox[{"Input", "[", "\"\<Enter your initial guess\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"While", "[", 
+  RowBox[{
+   RowBox[{"guess", "\[NotEqual]", "x"}], ",", 
+   RowBox[{"guess", "=", 
+    RowBox[{"Input", "[", "\"\<Nope, guess again.\>\"", "]"}]}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{
+  "\"\<Yay!!! The answer is \>\"", ",", "guess", ",", 
+   "\"\<!!! :) :) :)\>\""}], "]"}]}], "Input",
+ CellChangeTimes->{{3.7110362395984917`*^9, 3.711036243249851*^9}, {
+  3.711036415323456*^9, 3.711036522090211*^9}, {3.7110365921356792`*^9, 
+  3.711036593944413*^9}, {3.71103662872961*^9, 3.711036697341696*^9}, {
+  3.711037030265608*^9, 3.711037041540571*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Yay!!! The answer is \"\>", "\[InvisibleSpace]", "4", 
+   "\[InvisibleSpace]", "\<\"!!! :) :) :)\"\>"}],
+  SequenceForm["Yay!!! The answer is ", 4, "!!! :) :) :)"],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.711036835055355*^9, {3.711037047957019*^9, 3.71103708713195*^9}}]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Given 100 random integers between 0 and 100, loop over them with a ",
+ StyleBox["Do",
+  FontWeight->"Bold"],
+ " loop and print out the ones that are simultaneously divisible by 3 and 5. \
+"
+}], "Text",
+ CellChangeTimes->{{3.7110389326438293`*^9, 3.711038978800699*^9}, {
+  3.711039227546481*^9, 3.7110392309147778`*^9}, {3.711039292424417*^9, 
+  3.7110392949189253`*^9}, {3.7116772576615057`*^9, 3.7116772592222767`*^9}, {
+  3.7116772951729383`*^9, 3.7116773083418617`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"numbers", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"RandomInteger", "[", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "100"}], "}"}], "]"}], ",", "100"}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.711038981842305*^9, 3.711038999971843*^9}, 
+   3.711039099616487*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.7110392655699778`*^9, 3.711039266554463*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"Mod", "[", 
+        RowBox[{"n", ",", "5"}], "]"}], "\[Equal]", "0"}], " ", "&&", " ", 
+      RowBox[{
+       RowBox[{"Mod", "[", 
+        RowBox[{"n", ",", "3"}], "]"}], "\[Equal]", "0"}]}], ",", 
+     RowBox[{"Print", "[", "n", "]"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "numbers"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7110390034387693`*^9, 3.711039071009242*^9}, {
+  3.7110391222826223`*^9, 3.711039132357318*^9}, {3.711039183071224*^9, 
+  3.711039217874805*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["60"], "Print",
+ CellChangeTimes->{{3.711039104216042*^9, 3.7110391335801687`*^9}, {
+  3.711039197889387*^9, 3.711039302946403*^9}}],
+
+Cell[BoxData["0"], "Print",
+ CellChangeTimes->{{3.711039104216042*^9, 3.7110391335801687`*^9}, {
+  3.711039197889387*^9, 3.711039302959106*^9}}],
+
+Cell[BoxData["75"], "Print",
+ CellChangeTimes->{{3.711039104216042*^9, 3.7110391335801687`*^9}, {
+  3.711039197889387*^9, 3.711039302969925*^9}}],
+
+Cell[BoxData["45"], "Print",
+ CellChangeTimes->{{3.711039104216042*^9, 3.7110391335801687`*^9}, {
+  3.711039197889387*^9, 3.711039302981001*^9}}],
+
+Cell[BoxData["45"], "Print",
+ CellChangeTimes->{{3.711039104216042*^9, 3.7110391335801687`*^9}, {
+  3.711039197889387*^9, 3.7110393029950647`*^9}}],
+
+Cell[BoxData["45"], "Print",
+ CellChangeTimes->{{3.711039104216042*^9, 3.7110391335801687`*^9}, {
+  3.711039197889387*^9, 3.71103930300694*^9}}],
+
+Cell[BoxData["30"], "Print",
+ CellChangeTimes->{{3.711039104216042*^9, 3.7110391335801687`*^9}, {
+  3.711039197889387*^9, 3.711039303018053*^9}}],
+
+Cell[BoxData["30"], "Print",
+ CellChangeTimes->{{3.711039104216042*^9, 3.7110391335801687`*^9}, {
+  3.711039197889387*^9, 3.711039303029257*^9}}],
+
+Cell[BoxData["0"], "Print",
+ CellChangeTimes->{{3.711039104216042*^9, 3.7110391335801687`*^9}, {
+  3.711039197889387*^9, 3.711039303040962*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell["Or Alternatively:", "Text",
+ CellChangeTimes->{{3.711039270593143*^9, 3.711039277208591*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Mod", "[", 
+       RowBox[{"n", ",", "15"}], "]"}], "\[Equal]", "0", "\[Equal]", "0"}], 
+     ",", 
+     RowBox[{"Print", "[", "n", "]"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "numbers"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7110390034387693`*^9, 3.711039071009242*^9}, {
+  3.7110391222826223`*^9, 3.711039132357318*^9}, {3.711039183071224*^9, 
+  3.711039242481772*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["60"], "Print",
+ CellChangeTimes->{{3.7110392430973473`*^9, 3.711039304414873*^9}}],
+
+Cell[BoxData["0"], "Print",
+ CellChangeTimes->{{3.7110392430973473`*^9, 3.71103930442482*^9}}],
+
+Cell[BoxData["75"], "Print",
+ CellChangeTimes->{{3.7110392430973473`*^9, 3.711039304440159*^9}}],
+
+Cell[BoxData["45"], "Print",
+ CellChangeTimes->{{3.7110392430973473`*^9, 3.7110393044598417`*^9}}],
+
+Cell[BoxData["45"], "Print",
+ CellChangeTimes->{{3.7110392430973473`*^9, 3.711039304472583*^9}}],
+
+Cell[BoxData["45"], "Print",
+ CellChangeTimes->{{3.7110392430973473`*^9, 3.711039304483101*^9}}],
+
+Cell[BoxData["30"], "Print",
+ CellChangeTimes->{{3.7110392430973473`*^9, 3.711039304496449*^9}}],
+
+Cell[BoxData["30"], "Print",
+ CellChangeTimes->{{3.7110392430973473`*^9, 3.711039304507577*^9}}],
+
+Cell[BoxData["0"], "Print",
+ CellChangeTimes->{{3.7110392430973473`*^9, 3.7110393045269337`*^9}}]
+}, Open  ]]
+}, Open  ]]
+}, Closed]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Advanced Exercises", "Section",
+ CellChangeTimes->{{3.67933910070142*^9, 3.679339105692511*^9}, {
+  3.679347656225293*^9, 3.679347658144876*^9}, {3.7110387444564342`*^9, 
+  3.711038745693623*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Recall the Newton-Raphson method we showed in Lesson 15: Functional \
+Programming Part 2. Implement it using the ",
+ StyleBox["While",
+  FontWeight->"Bold"],
+ " loop instead of ",
+ StyleBox["FixedPoint",
+  FontWeight->"Bold"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.711036714907764*^9, 3.711036771267111*^9}, {
+  3.7110377167963333`*^9, 3.711037747417148*^9}, {3.7110386860589867`*^9, 
+  3.7110387282318077`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.70914343664712*^9, 3.709143437462674*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Newton", "[", 
+    RowBox[{"xn_", ",", "f_", ",", "fp_"}], "]"}], ":=", 
+   RowBox[{"xn", "-", 
+    RowBox[{
+     RowBox[{"f", "[", "xn", "]"}], "/", 
+     RowBox[{"fp", "[", "xn", "]"}]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"new", "=", 
+   RowBox[{"Input", "[", "\"\<Initial guess\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"prev", "=", "new"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"new", "=", 
+   RowBox[{"Newton", "[", 
+    RowBox[{"prev", ",", 
+     RowBox[{"Function", "[", 
+      RowBox[{"x", ",", 
+       RowBox[{
+        RowBox[{"x", "^", "2"}], "-", "1"}]}], "]"}], ",", 
+     RowBox[{"Function", "[", 
+      RowBox[{"x", ",", 
+       RowBox[{"2", "x"}]}], "]"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"While", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Abs", "[", 
+     RowBox[{"new", "-", "prev"}], "]"}], ">", "0.0001"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"prev", "=", "new"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"new", "=", 
+     RowBox[{"Newton", "[", 
+      RowBox[{"prev", ",", 
+       RowBox[{"Function", "[", 
+        RowBox[{"x", ",", 
+         RowBox[{
+          RowBox[{"x", "^", "2"}], "-", "1"}]}], "]"}], ",", 
+       RowBox[{"Function", "[", 
+        RowBox[{"x", ",", 
+         RowBox[{"2", "x"}]}], "]"}]}], "]"}]}], ";"}]}], 
+  "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ans", "=", "new"}]}], "Input",
+ CellChangeTimes->{{3.7110379625654697`*^9, 3.711037975555443*^9}, {
+  3.711038042727572*^9, 3.711038233325161*^9}, {3.7110382725486097`*^9, 
+  3.711038273187726*^9}, {3.711038405419343*^9, 3.711038408152546*^9}, {
+  3.711038519756489*^9, 3.711038532471197*^9}, {3.71103857829253*^9, 
+  3.711038596196197*^9}, {3.7110386315896883`*^9, 3.7110386719300547`*^9}}]
+}, Closed]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1397, 855},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info173711018787-6732249"->{
+  Cell[9397, 258, 968, 18, 101, "Print",
+   CellTags->"Info173711018787-6732249"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info173711018787-6732249", 20238, 594}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 555, 7, 114, "Title"],
+Cell[CellGroupData[{
+Cell[1160, 33, 148, 2, 80, "Section"],
+Cell[CellGroupData[{
+Cell[1333, 39, 194, 6, 54, "Subsection"],
+Cell[1530, 47, 775, 17, 61, "Text"],
+Cell[2308, 66, 373, 11, 66, "Input"],
+Cell[CellGroupData[{
+Cell[2706, 81, 277, 7, 39, "Input"],
+Cell[2986, 90, 1832, 43, 143, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4855, 138, 101, 1, 43, "Subsubsection"],
+Cell[4959, 141, 451, 13, 39, "Input"],
+Cell[CellGroupData[{
+Cell[5435, 158, 211, 6, 39, "Input"],
+Cell[5649, 166, 2954, 61, 143, "Output"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8664, 234, 194, 6, 54, "Subsection"],
+Cell[8861, 242, 395, 8, 61, "Text"],
+Cell[CellGroupData[{
+Cell[9281, 254, 113, 2, 39, "Input"],
+Cell[9397, 258, 968, 18, 101, "Print",
+ CellTags->"Info173711018787-6732249"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10402, 281, 95, 1, 43, "Subsubsection"],
+Cell[10500, 284, 206, 4, 37, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10743, 293, 98, 1, 43, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[10866, 298, 923, 23, 118, "Input"],
+Cell[11792, 323, 333, 7, 29, "Print"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12186, 337, 194, 6, 54, "Subsection"],
+Cell[12383, 345, 492, 10, 37, "Text"],
+Cell[12878, 357, 328, 10, 39, "Input"],
+Cell[CellGroupData[{
+Cell[13231, 371, 101, 1, 43, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[13357, 376, 624, 17, 39, "Input"],
+Cell[CellGroupData[{
+Cell[14006, 397, 145, 2, 29, "Print"],
+Cell[14154, 401, 144, 2, 29, "Print"],
+Cell[14301, 405, 145, 2, 29, "Print"],
+Cell[14449, 409, 145, 2, 29, "Print"],
+Cell[14597, 413, 147, 2, 29, "Print"],
+Cell[14747, 417, 144, 2, 29, "Print"],
+Cell[14894, 421, 145, 2, 29, "Print"],
+Cell[15042, 425, 145, 2, 29, "Print"],
+Cell[15190, 429, 144, 2, 29, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[15361, 435, 99, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[15485, 440, 510, 14, 39, "Input"],
+Cell[CellGroupData[{
+Cell[16020, 458, 96, 1, 29, "Print"],
+Cell[16119, 461, 94, 1, 29, "Print"],
+Cell[16216, 464, 96, 1, 29, "Print"],
+Cell[16315, 467, 98, 1, 29, "Print"],
+Cell[16416, 470, 96, 1, 29, "Print"],
+Cell[16515, 473, 96, 1, 29, "Print"],
+Cell[16614, 476, 96, 1, 29, "Print"],
+Cell[16713, 479, 96, 1, 29, "Print"],
+Cell[16812, 482, 97, 1, 29, "Print"]
+}, Open  ]]
+}, Open  ]]
+}, Closed]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16994, 492, 202, 3, 80, "Section"],
+Cell[CellGroupData[{
+Cell[17221, 499, 194, 6, 54, "Subsection"],
+Cell[17418, 507, 431, 12, 37, "Text"],
+Cell[CellGroupData[{
+Cell[17874, 523, 98, 1, 43, "Subsubsection"],
+Cell[17975, 526, 1861, 50, 248, "Input"]
+}, Closed]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

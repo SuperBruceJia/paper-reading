@@ -1,0 +1,1459 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     55709,       1451]
+NotebookOptionsPosition[     48674,       1246]
+NotebookOutlinePosition[     50953,       1301]
+CellTagsIndexPosition[     50360,       1288]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Functional Programming Part 2", "Section",
+ CellChangeTimes->{{3.670628715018641*^9, 3.670628719089387*^9}, {
+  3.688779705685198*^9, 3.688779709577566*^9}}],
+
+Cell["\<\
+Hello and welcome to our second lecture on functional programming.\
+\>", "Text",
+ CellChangeTimes->{{3.688779740924996*^9, 3.688779753114234*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Nest & NestList", "Subsection",
+ CellChangeTimes->{{3.670481959292042*^9, 3.6704819596619797`*^9}, {
+  3.670482031214015*^9, 3.670482033721861*^9}}],
+
+Cell[TextData[{
+ "Another set of very useful functions are the ",
+ StyleBox["Nest", "Code"],
+ " and ",
+ StyleBox["NestList", "Code"],
+ " functions: "
+}], "Text",
+ CellChangeTimes->{{3.670481967943515*^9, 3.67048213448188*^9}, {
+  3.671489569383533*^9, 3.6714895701818237`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Nest"}]], "Input",
+ CellChangeTimes->{{3.670482124229582*^9, 3.6704821249642*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Nest\\\", \\\"[\\\", RowBox[{StyleBox[\\\
+\"f\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"expr\\\", \\\"TI\\\"], \
+\\\",\\\", StyleBox[\\\"n\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) gives an \
+expression with \\!\\(\\*StyleBox[\\\"f\\\", \\\"TI\\\"]\\) applied \
+\\!\\(\\*StyleBox[\\\"n\\\", \\\"TI\\\"]\\) times to \
+\\!\\(\\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\\). \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Nest"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.670482125251932*^9},
+ CellTags->"Info-2e824461-06e7-4fd4-b1ed-9b6b030b863b"]
+}, Open  ]],
+
+Cell[TextData[{
+ "We\[CloseCurlyQuote]ve seen that the ",
+ StyleBox["Map", "Code"],
+ " function applies a function to every element in a list. It\
+\[CloseCurlyQuote]s like an iterator over a sequence that transforms each \
+element. ",
+ StyleBox["Nest", "Code"],
+ " repeatedly applies a function to a single element n times. For the \
+programmers, ",
+ StyleBox["Nest", "Code"],
+ " is a convenient function for performing tail recursion a set number of \
+times. For example, here we apply ",
+ StyleBox["f", "Code"],
+ " to ",
+ StyleBox["x", "Code"],
+ " ",
+ "10",
+ " times:"
+}], "Text",
+ CellChangeTimes->{{3.6704821289008102`*^9, 3.670482181346118*^9}, {
+   3.670485854071804*^9, 3.670485922786364*^9}, {3.670518446577784*^9, 
+   3.670518474556843*^9}, {3.6705186568209333`*^9, 3.670518658012857*^9}, {
+   3.67052164370497*^9, 3.6705217182568502`*^9}, {3.670521838433136*^9, 
+   3.670521847577346*^9}, {3.670521893815549*^9, 3.6705219021182203`*^9}, {
+   3.670521935126156*^9, 3.670521979474009*^9}, {3.6705222049608517`*^9, 
+   3.670522256373979*^9}, {3.670522289237523*^9, 3.670522289843439*^9}, 
+   3.670524307687744*^9, 3.67052442908849*^9, {3.670524476361198*^9, 
+   3.670524500436668*^9}, {3.670524535773452*^9, 3.6705245416122932`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Nest", "[", 
+  RowBox[{"f", ",", "x", ",", "10"}], "]"}]], "Input",
+ CellChangeTimes->{{3.670521954467346*^9, 3.670521961226556*^9}}],
+
+Cell[BoxData[
+ RowBox[{"f", "[", 
+  RowBox[{"f", "[", 
+   RowBox[{"f", "[", 
+    RowBox[{"f", "[", 
+     RowBox[{"f", "[", 
+      RowBox[{"f", "[", 
+       RowBox[{"f", "[", 
+        RowBox[{"f", "[", 
+         RowBox[{"f", "[", 
+          RowBox[{"f", "[", "x", "]"}], "]"}], "]"}], "]"}], "]"}], "]"}], 
+     "]"}], "]"}], "]"}], "]"}]], "Output",
+ CellChangeTimes->{3.6705219615490513`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "If ",
+ StyleBox["f", "Code"],
+ " were a function that doubles ",
+ StyleBox["x", "Code"],
+ " each time where ",
+ StyleBox["x", "Code"],
+ " started at 1, then we could use ",
+ StyleBox["Nest", "Code"],
+ " to compute the powers of two. Here\[CloseCurlyQuote]s the 10th power of 2 \
+using Nest:"
+}], "Text",
+ CellChangeTimes->{{3.670521982849066*^9, 3.6705220609250593`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Nest", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"2", "#"}], "&"}], ",", "1", ",", "10"}], "]"}]], "Input",
+ CellChangeTimes->{{3.670521849705227*^9, 3.670521872383853*^9}, {
+  3.670521945904149*^9, 3.670521946083859*^9}}],
+
+Cell[BoxData["1024"], "Output",
+ CellChangeTimes->{{3.670521865140539*^9, 3.670521872745921*^9}, 
+   3.670522072997284*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "If you wanted all the powers of two in a list, we would use ",
+ StyleBox["NestList", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.670521915752887*^9, 3.670521924438428*^9}, {
+  3.670522077531536*^9, 3.670522148372451*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "NestList"}]], "Input",
+ CellChangeTimes->{{3.670522149376418*^9, 3.670522151770262*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"NestList\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"expr\\\", \\\
+\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) gives \
+a list of the results of applying \\!\\(\\*StyleBox[\\\"f\\\", \\\"TI\\\"]\\) \
+to \\!\\(\\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\\) 0 through \
+\\!\\(\\*StyleBox[\\\"n\\\", \\\"TI\\\"]\\) times. \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/NestList"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.670522152067296*^9},
+ CellTags->"Info-e8dcf253-daaf-4836-afdf-fac3ec71bd6b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NestList", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"2", "#"}], "&"}], ",", "1", ",", "10"}], "]"}]], "Input",
+ CellChangeTimes->{{3.670522163247386*^9, 3.670522169455358*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "4", ",", "8", ",", "16", ",", "32", ",", "64", ",", 
+   "128", ",", "256", ",", "512", ",", "1024"}], "}"}]], "Output",
+ CellChangeTimes->{3.6705221697751627`*^9}]
+}, Open  ]],
+
+Cell["We will see this used in a project in the next lecture. ", "Text",
+ CellChangeTimes->{{3.6714901238084*^9, 3.671490135064227*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["NestWhile & NestWhileList", "Subsection",
+ CellChangeTimes->{{3.670524324135306*^9, 3.670524328973165*^9}}],
+
+Cell[TextData[{
+ "In most recursion, the recursion ends when a terminating condition has been \
+met. ",
+ StyleBox["NestWhile", "Code"],
+ " and ",
+ StyleBox["NestWhileList", "Code"],
+ " are variants of ",
+ StyleBox["Nest", "Code"],
+ " and ",
+ StyleBox["NestList", "Code"],
+ " that apply the recursion until a condition has been met. For the \
+programmers, ",
+ StyleBox["NestWhile", "Code"],
+ " is a convenient function for performing tail recursion. Let\
+\[CloseCurlyQuote]s look at ",
+ StyleBox["NestWhileList", "Code"],
+ " first:"
+}], "Text",
+ CellChangeTimes->{{3.670524217631274*^9, 3.670524222535372*^9}, {
+  3.6705243151465816`*^9, 3.6705244511497517`*^9}, {3.670524504531929*^9, 
+  3.6705245304070168`*^9}, {3.670524624278276*^9, 3.670524649242209*^9}, {
+  3.670524722886941*^9, 3.6705247238081083`*^9}, {3.670524766492877*^9, 
+  3.670524799038103*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "NestWhileList"}]], "Input",
+ CellChangeTimes->{{3.670524749745442*^9, 3.670524752316759*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"NestWhileList\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"expr\\\", \\\
+\"TI\\\"], \\\",\\\", StyleBox[\\\"test\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) \
+generates a list of the results of applying \\!\\(\\*StyleBox[\\\"f\\\", \
+\\\"TI\\\"]\\) repeatedly, starting with \\!\\(\\*StyleBox[\\\"expr\\\", \
+\\\"TI\\\"]\\), and continuing until applying \\!\\(\\*StyleBox[\\\"test\\\", \
+\\\"TI\\\"]\\) to the result no longer yields True. \
+\\n\\!\\(\\*RowBox[{\\\"NestWhileList\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"expr\\\", \\\
+\"TI\\\"], \\\",\\\", StyleBox[\\\"test\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"m\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) supplies the most recent \
+\\!\\(\\*StyleBox[\\\"m\\\", \\\"TI\\\"]\\) results as arguments for \
+\\!\\(\\*StyleBox[\\\"test\\\", \\\"TI\\\"]\\) at each step. \
+\\n\\!\\(\\*RowBox[{\\\"NestWhileList\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"expr\\\", \\\
+\"TI\\\"], \\\",\\\", StyleBox[\\\"test\\\", \\\"TI\\\"], \\\",\\\", \
+\\\"All\\\"}], \\\"]\\\"}]\\) supplies all results so far as arguments for \
+\\!\\(\\*StyleBox[\\\"test\\\", \\\"TI\\\"]\\) at each step. \
+\\n\\!\\(\\*RowBox[{\\\"NestWhileList\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"expr\\\", \\\
+\"TI\\\"], \\\",\\\", StyleBox[\\\"test\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"m\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"max\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\\) applies \\!\\(\\*StyleBox[\\\"f\\\", \
+\\\"TI\\\"]\\) at most \\!\\(\\*StyleBox[\\\"max\\\", \\\"TI\\\"]\\) times. \
+\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/NestWhileList"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.670524752719232*^9},
+ CellTags->"Info-dc9044a4-2699-4e0f-9c57-3548869d16f9"]
+}, Open  ]],
+
+Cell["\<\
+Let\[CloseCurlyQuote]s use it to compute all powers of two less than a \
+million:\
+\>", "Text",
+ CellChangeTimes->{{3.670524802098258*^9, 3.670524815429556*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NestWhileList", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"2", "#"}], "&"}], ",", "1", ",", 
+   RowBox[{
+    RowBox[{"#", "<", "1000000"}], "&"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.670524651421062*^9, 3.6705246737564793`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "4", ",", "8", ",", "16", ",", "32", ",", "64", ",", 
+   "128", ",", "256", ",", "512", ",", "1024", ",", "2048", ",", "4096", ",", 
+   "8192", ",", "16384", ",", "32768", ",", "65536", ",", "131072", ",", 
+   "262144", ",", "524288", ",", "1048576"}], "}"}]], "Output",
+ CellChangeTimes->{3.670524674093124*^9}]
+}, Open  ]],
+
+Cell["\<\
+Here, we pass our doubling pure function as the first argument, and a test \
+condition function as the last argument. When the test condition is no longer \
+satisfied, the recursion ends.\
+\>", "Text",
+ CellChangeTimes->{{3.670524678998958*^9, 3.6705247147519627`*^9}, {
+  3.670524821009631*^9, 3.670524833733267*^9}}],
+
+Cell[TextData[{
+ "A neat example of using ",
+ StyleBox["NestWhile", "Code"],
+ " is to compute the greatest common divisor, or GCD, of two numbers. The GCD \
+can be computed using Euclidean Algorithm, which states:"
+}], "Text",
+ CellChangeTimes->{{3.670524841439722*^9, 3.6705248710840597`*^9}, {
+  3.670524942590222*^9, 3.670524986791849*^9}}],
+
+Cell[TextData[Cell[BoxData[{
+ FormBox[
+  RowBox[{
+   RowBox[{"gcd", "(", 
+    RowBox[{Cell["a"], ",", Cell["0"]}], ")"}], "=", "a"}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{"gcd", "(", 
+    RowBox[{Cell["a"], ",", Cell["b"]}], ")"}], "=", 
+   RowBox[{"gcd", "(", 
+    RowBox[{Cell["b"], ",", 
+     RowBox[{"a", " ", "mod", " ", "b"}]}], ")"}]}], TraditionalForm]}],
+ FormatType->"TraditionalForm"]], "Text",
+ CellChangeTimes->{{3.688779876143526*^9, 3.68877994817413*^9}}],
+
+Cell["So, the GCD of 1071 and 462 is:", "Text",
+ CellChangeTimes->{{3.670525650201571*^9, 3.670525656850762*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NestWhile", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"#", "[", 
+       RowBox[{"[", "2", "]"}], "]"}], ",", 
+      RowBox[{"Mod", "[", 
+       RowBox[{
+        RowBox[{"#", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], ",", 
+        RowBox[{"#", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], "]"}]}], "}"}], "&"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1071", ",", "462"}], "}"}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"#", "[", 
+      RowBox[{"[", "2", "]"}], "]"}], "\[NotEqual]", "0"}], "&"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.670524888067782*^9, 3.670524889510846*^9}, {
+  3.6705251163388367`*^9, 3.670525116629871*^9}, {3.670525163116898*^9, 
+  3.670525291839764*^9}, {3.670525437518702*^9, 3.6705254609522533`*^9}, {
+  3.670525697915966*^9, 3.670525703179191*^9}, {3.670525868366643*^9, 
+  3.6705258803009663`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"21", ",", "0"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.670525250677247*^9, {3.670525281832521*^9, 3.670525292207137*^9}, 
+   3.670525461751635*^9, {3.670525699752314*^9, 3.670525703555039*^9}, 
+   3.670525880887601*^9}]
+}, Open  ]],
+
+Cell["And so, the gcd is 21.", "Text",
+ CellChangeTimes->{{3.670525647096633*^9, 3.6705256881487207`*^9}}],
+
+Cell["Of course, you could have defined a gcd function as follows:", "Text",
+ CellChangeTimes->{{3.670525747538062*^9, 3.67052575996961*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"gcd", "[", 
+   RowBox[{"a_Integer", ",", "0"}], "]"}], ":=", "a"}]], "Input",
+ CellChangeTimes->{{3.6705257606759453`*^9, 3.6705257677546453`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"gcd", "[", 
+   RowBox[{"a_Integer", ",", "b_Integer"}], "]"}], ":=", 
+  RowBox[{"gcd", "[", 
+   RowBox[{"b", ",", 
+    RowBox[{"Mod", "[", 
+     RowBox[{"a", ",", "b"}], "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.670525769801777*^9, 3.670525792268921*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"gcd", "[", 
+  RowBox[{"1071", ",", "462"}], "]"}]], "Input",
+ CellChangeTimes->{{3.67052579970376*^9, 3.6705258057913103`*^9}, {
+  3.670525875430489*^9, 3.670525875936139*^9}}],
+
+Cell[BoxData["21"], "Output",
+ CellChangeTimes->{3.6705258061080093`*^9, 3.670525876330971*^9, 
+  3.6714903266705437`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Using ",
+ StyleBox["NestWhile", "Code"],
+ " is simply an alternative to formally defining the function. It\
+\[CloseCurlyQuote]s up to you how you decide to implement your functions. One \
+nice thing about our ",
+ StyleBox["NestWhile", "Code"],
+ " implementation of the Euclidean Algorithm is, we can see the intermediate \
+values of our computation by simply changing ",
+ StyleBox["NestWhile", "Code"],
+ " to ",
+ StyleBox["NestWhileList", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.670525889222213*^9, 3.670525993162467*^9}, 
+   3.67149036351633*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NestWhileList", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"#", "[", 
+       RowBox[{"[", "2", "]"}], "]"}], ",", 
+      RowBox[{"Mod", "[", 
+       RowBox[{
+        RowBox[{"#", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], ",", 
+        RowBox[{"#", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], "]"}]}], "}"}], "&"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1071", ",", "462"}], "}"}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"#", "[", 
+      RowBox[{"[", "2", "]"}], "]"}], "\[NotEqual]", "0"}], "&"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.670525998980426*^9, 3.670525999316642*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1071", ",", "462"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"462", ",", "147"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"147", ",", "21"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"21", ",", "0"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.670525999760998*^9}]
+}, Open  ]],
+
+Cell["Neat, right? ", "Text",
+ CellChangeTimes->{{3.670526008452846*^9, 3.670526009835272*^9}, {
+  3.671490378842442*^9, 3.671490381489444*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["FixedPoint & FixedPointList", "Subsection",
+ CellChangeTimes->{{3.670969092147421*^9, 3.670969100072318*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "FixedPoint"}]], "Input",
+ CellChangeTimes->{{3.670969107446843*^9, 3.67096910929643*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"FixedPoint\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"expr\\\", \\\
+\"TI\\\"]}], \\\"]\\\"}]\\) starts with \\!\\(\\*StyleBox[\\\"expr\\\", \
+\\\"TI\\\"]\\), then applies \\!\\(\\*StyleBox[\\\"f\\\", \\\"TI\\\"]\\) \
+repeatedly until the result no longer changes. \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/FixedPoint"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.670969110557745*^9},
+ CellTags->"Info-dfa06134-6eb2-4051-b262-84dde87e42be"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "FixedPointList"}]], "Input",
+ CellChangeTimes->{{3.670969107446843*^9, 3.670969116661333*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"FixedPointList\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"expr\\\", \\\
+\"TI\\\"]}], \\\"]\\\"}]\\) generates a list giving the results of applying \
+\\!\\(\\*StyleBox[\\\"f\\\", \\\"TI\\\"]\\) repeatedly, starting with \
+\\!\\(\\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\\), until the results no longer \
+change. \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/FixedPointList"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.670969116977298*^9},
+ CellTags->"Info-dca9142c-74fa-4f1d-b596-347b6448b6dd"]
+}, Open  ]],
+
+Cell["\<\
+Newton\[CloseCurlyQuote]s method is an iterative procedure to find the roots \
+or zeros of a function. It\[CloseCurlyQuote]s defined as follows:\
+\>", "Text",
+ CellChangeTimes->{{3.6714953819959173`*^9, 3.6714954719144287`*^9}, {
+  3.688780053716352*^9, 3.688780058863188*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  SubscriptBox["x", 
+   RowBox[{"n", "+", "1"}]], "=", 
+  RowBox[{
+   SubscriptBox["x", "n"], "-", 
+   FractionBox[
+    RowBox[{"f", 
+     RowBox[{"(", 
+      SubscriptBox["x", "n"], ")"}]}], 
+    RowBox[{
+     RowBox[{"f", "'"}], 
+     RowBox[{"(", 
+      SubscriptBox["x", "n"], ")"}]}]]}]}]], "DisplayFormula",
+ CellChangeTimes->{{3.688780077774066*^9, 3.688780171006269*^9}, {
+  3.688780401015009*^9, 3.688780462319982*^9}}],
+
+Cell[TextData[{
+ "You start by giving it an initial guess ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    SubscriptBox["x", "n"], ")"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", and it iterates until it finds the root. "
+}], "Text",
+ CellChangeTimes->{
+  3.688780060407363*^9, {3.6887805042715282`*^9, 3.6887805070988398`*^9}}],
+
+Cell[TextData[{
+ "Let\[CloseCurlyQuote]s say our function was ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["x", "2"], "-", "1"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". This function has two roots, -1 and 1:"
+}], "Text",
+ CellChangeTimes->{{3.671495483387394*^9, 3.6714955070968227`*^9}, {
+  3.6887805368233557`*^9, 3.688780565818318*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"x", "^", "2"}], "-", "1"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", 
+     RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.670969137830986*^9, 3.670969175364403*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {}, 
+   {RGBColor[0.368417, 0.506779, 0.709798], AbsoluteThickness[1.6], Opacity[
+    1.], LineBox[CompressedData["
+1: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
+NfT//8//AKF3Reo=
+     "]]}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImageSize->Tiny,
+  Method->{
+   "DefaultBoundaryStyle" -> Automatic, "DefaultMeshStyle" -> 
+    AbsolutePointSize[6], "ScalingFunctions" -> None},
+  PlotRange->{{-2, 2}, {-1, 1}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{0, 0}, {0, 0}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.670969153444309*^9, 3.670969176132049*^9}, 
+   3.671227435354186*^9}]
+}, Open  ]],
+
+Cell["Now we define Newton\[CloseCurlyQuote]s method. ", "Text",
+ CellChangeTimes->{{3.671495529200733*^9, 3.67149554004874*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Newton", "[", 
+   RowBox[{"xn_", ",", "f_", ",", "fp_"}], "]"}], ":=", 
+  RowBox[{"xn", "-", 
+   RowBox[{
+    RowBox[{"f", "[", "xn", "]"}], "/", 
+    RowBox[{"fp", "[", "xn", "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.670968453239603*^9, 3.6709685041301527`*^9}, {
+  3.670968535562717*^9, 3.670968554233582*^9}}],
+
+Cell[TextData[{
+ StyleBox["f", "Code"],
+ " is the function, and ",
+ StyleBox["fp", "Code"],
+ " is the derivative of the function and ",
+ StyleBox["xn", "Code"],
+ " is our initial guess. "
+}], "Text",
+ CellChangeTimes->{{3.6714955445692177`*^9, 3.671495562352666*^9}, {
+  3.6887805880965033`*^9, 3.688780588432654*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FixedPointList", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Newton", "[", 
+     RowBox[{"#", ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"#", "^", "2"}], "-", "1"}], "&"}], ",", 
+      RowBox[{
+       RowBox[{"2", " ", "#"}], "&"}]}], "]"}], "&"}], ",", "1.2"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6709692384709*^9, 3.6709692386292677`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1.2`", ",", "1.0166666666666666`", ",", "1.000136612021858`", ",", 
+   "1.0000000093301475`", ",", "1.`", ",", "1.`"}], "}"}]], "Output",
+ CellChangeTimes->{{3.670969235537177*^9, 3.6709692391672573`*^9}, 
+   3.671227456362158*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Fold & FoldList", "Subsection",
+ CellChangeTimes->{{3.67052602402258*^9, 3.670526026429147*^9}}],
+
+Cell[TextData[{
+ "So, we\[CloseCurlyQuote]ve now seen how to iterate over list elements with ",
+ StyleBox["Map", "Code"],
+ " and how to perform tail recursion with ",
+ StyleBox["Nest", "Code"],
+ ". The last of the functional programming tools are ",
+ StyleBox["Fold", "Code"],
+ " and ",
+ StyleBox["FoldList", "Code"],
+ ". "
+}], "Text",
+ CellChangeTimes->{{3.670526030152973*^9, 3.67052603936691*^9}, {
+  3.670526275642645*^9, 3.670526360682683*^9}, {3.670526426823497*^9, 
+  3.670526455780014*^9}, {3.6705265226736097`*^9, 3.670526559202578*^9}, {
+  3.671490528849231*^9, 3.6714905407028437`*^9}, {3.671490578253853*^9, 
+  3.671490598837646*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Fold"}]], "Input",
+ CellChangeTimes->{{3.670526560493042*^9, 3.670526561114235*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Fold\\\", \\\"[\\\", RowBox[{StyleBox[\\\
+\"f\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"x\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"list\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) gives the last element \
+of \\!\\(\\*RowBox[{\\\"FoldList\\\", \\\"[\\\", RowBox[{StyleBox[\\\"f\\\", \
+\\\"TI\\\"], \\\",\\\", StyleBox[\\\"x\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\
+\\\"list\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\).\\n\\!\\(\\*RowBox[{\\\"Fold\\\", \
+\\\"[\\\", RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"list\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) is equivalent to \
+\\!\\(\\*RowBox[{\\\"Fold\\\", \\\"[\\\", RowBox[{StyleBox[\\\"f\\\", \
+\\\"TI\\\"], \\\",\\\", RowBox[{\\\"First\\\", \\\"[\\\", StyleBox[\\\"list\\\
+\", \\\"TI\\\"], \\\"]\\\"}], \\\",\\\", RowBox[{\\\"Rest\\\", \\\"[\\\", \
+StyleBox[\\\"list\\\", \\\"TI\\\"], \\\"]\\\"}]}], \\\"]\\\"}]\\).\"\>", 
+   "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Fold"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.670526561630381*^9},
+ CellTags->"Info-9590981d-9f11-46e3-8990-5731c9eb5231"]
+}, Open  ]],
+
+Cell[TextData[{
+ "The ",
+ StyleBox["Fold", "Code"],
+ " function applies a function ",
+ StyleBox["f", "Code"],
+ " to the first two elements of a list, then re-applies ",
+ StyleBox["f", "Code"],
+ " to the result, and the next element, and so on, recursively:"
+}], "Text",
+ CellChangeTimes->{
+  3.670526563649634*^9, {3.67149064387642*^9, 3.6714906776275673`*^9}, {
+   3.68878062695971*^9, 3.6887806286802797`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Fold", "[", 
+  RowBox[{"f", ",", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", "b", ",", "c", ",", "d"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.670526566602276*^9, 3.670526572894311*^9}}],
+
+Cell[BoxData[
+ RowBox[{"f", "[", 
+  RowBox[{
+   RowBox[{"f", "[", 
+    RowBox[{
+     RowBox[{"f", "[", 
+      RowBox[{"a", ",", "b"}], "]"}], ",", "c"}], "]"}], ",", "d"}], 
+  "]"}]], "Output",
+ CellChangeTimes->{3.6705265731632442`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "So in this case, we apply ",
+ StyleBox["f", "Code"],
+ " to ",
+ StyleBox["a", "Code"],
+ " and ",
+ StyleBox["b", "Code"],
+ ". ",
+ StyleBox["f", "Code"],
+ " is then applied to the result of the previous evaluation and ",
+ StyleBox["c", "Code"],
+ ", and so on. If we wanted to add up all the values in a list, we could fold \
+the Plus function over the list of values:"
+}], "Text",
+ CellChangeTimes->{{3.670526575200507*^9, 3.670526660937558*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Fold", "[", 
+  RowBox[{"Plus", ",", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", "b", ",", "c", ",", "d"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.670526643328741*^9, 3.670526649012723*^9}}],
+
+Cell[BoxData[
+ RowBox[{"a", "+", "b", "+", "c", "+", "d"}]], "Output",
+ CellChangeTimes->{3.6705266492347193`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["FoldList", "Code"],
+ " does what you might expect:"
+}], "Text",
+ CellChangeTimes->{{3.670526719113288*^9, 3.6705267529640083`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "FoldList"}]], "Input",
+ CellChangeTimes->{{3.670526753672648*^9, 3.67052675494436*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"FoldList\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"x\\\", \
+\\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{StyleBox[\\\"a\\\", \\\"TI\
+\\\"], \\\",\\\", StyleBox[\\\"b\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"\
+\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\\) gives \
+\\!\\(\\*RowBox[{\\\"{\\\", RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \
+\\\",\\\", RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\"[\\\", \
+RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"a\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}], \\\",\\\", RowBox[{StyleBox[\\\"f\\\", \
+\\\"TI\\\"], \\\"[\\\", RowBox[{RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \
+\\\"[\\\", RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"a\
+\\\", \\\"TI\\\"]}], \\\"]\\\"}], \\\",\\\", StyleBox[\\\"b\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\
+\"]}], \\\"}\\\"}]\\). \\n\\!\\(\\*RowBox[{\\\"FoldList\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{StyleBox[\\\"a\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"b\\\", \
+\\\"TI\\\"], \\\",\\\", StyleBox[\\\"c\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\
+\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\\) gives \
+\\!\\(\\*RowBox[{\\\"{\\\", RowBox[{StyleBox[\\\"a\\\", \\\"TI\\\"], \
+\\\",\\\", RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\"[\\\", \
+RowBox[{StyleBox[\\\"a\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"b\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}], \\\",\\\", RowBox[{StyleBox[\\\"f\\\", \
+\\\"TI\\\"], \\\"[\\\", RowBox[{RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \
+\\\"[\\\", RowBox[{StyleBox[\\\"a\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"b\
+\\\", \\\"TI\\\"]}], \\\"]\\\"}], \\\",\\\", StyleBox[\\\"c\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\
+\"]}], \\\"}\\\"}]\\).\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/FoldList"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.670526755314509*^9},
+ CellTags->"Info-03a1c569-e5cf-460b-ae5c-1a66bd6afb8d"]
+}, Open  ]],
+
+Cell[TextData[{
+ "The first element in the list is ",
+ StyleBox["a", "Code"],
+ ", the second is ",
+ StyleBox["f", "Code"],
+ " of a, b, and so on. It\[CloseCurlyQuote]s basically each of the \
+intermediate values that Fold computes before returning the final result:"
+}], "Text",
+ CellChangeTimes->{{3.670526758669092*^9, 3.6705268104410057`*^9}, {
+   3.671490768507822*^9, 3.671490771721187*^9}, 3.688780673152102*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FoldList", "[", 
+  RowBox[{"Plus", ",", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", "b", ",", "c", ",", "d"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.670526811305471*^9, 3.670526817900004*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"a", ",", 
+   RowBox[{"a", "+", "b"}], ",", 
+   RowBox[{"a", "+", "b", "+", "c"}], ",", 
+   RowBox[{"a", "+", "b", "+", "c", "+", "d"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.670526818106584*^9}]
+}, Open  ]],
+
+Cell["\<\
+Let\[CloseCurlyQuote]s use what we\[CloseCurlyQuote]ve learned to demonstrate \
+the Law of Large numbers. The Law of Large numbers states that if you perform \
+an experiment a large number of times, the average number obtained from \
+performing the experiment converges to the expected value. Let\
+\[CloseCurlyQuote]s say our experiment draws random numbers from a normal \
+distribution. \
+\>", "Text",
+ CellChangeTimes->{{3.67149229651049*^9, 3.671492393163167*^9}, {
+  3.671492633966416*^9, 3.671492770011161*^9}, {3.6714929780149*^9, 
+  3.6714930613888187`*^9}, {3.671493114300084*^9, 3.6714931156270237`*^9}, {
+  3.6887806865357113`*^9, 3.6887806921033897`*^9}}],
+
+Cell[TextData[{
+ "In ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ", we use the ",
+ StyleBox["NormalDistribution", "Code"],
+ " function to represent a normal distribution:"
+}], "Text",
+ CellChangeTimes->{{3.671493076908395*^9, 3.6714930954757023`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "NormalDistribution"}]], "Input",
+ CellChangeTimes->{{3.671491755105052*^9, 3.671491772647887*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"\[Mu]\\\", \\\"TR\\\"], \\\",\\\", StyleBox[\\\"\[Sigma]\
+\\\", \\\"TR\\\"]}], \\\"]\\\"}]\\) represents a normal (Gaussian) \
+distribution with mean \\!\\(\\*StyleBox[\\\"\[Mu]\\\", \\\"TR\\\"]\\) and \
+standard deviation \\!\\(\\*StyleBox[\\\"\[Sigma]\\\", \
+\\\"TR\\\"]\\).\\n\\!\\(\\*RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", \
+\\\"]\\\"}]\\) represents a normal distribution with zero mean and unit \
+standard deviation.\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/NormalDistribution"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.671491772838933*^9},
+ CellTags->"Info-3f2ac92f-56a1-49eb-8eae-2abf8a32b2b5"]
+}, Open  ]],
+
+Cell[TextData[{
+ "We can draw random numbers from a distribution using the ",
+ StyleBox["RandomVariate", "Code"],
+ " function:"
+}], "Text",
+ CellChangeTimes->{{3.671493098323811*^9, 3.67149311128336*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "RandomVariate"}]], "Input",
+ CellChangeTimes->{{3.6714922797586937`*^9, 3.67149228241363*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"RandomVariate\\\", \\\"[\\\", \
+StyleBox[\\\"dist\\\", \\\"TI\\\"], \\\"]\\\"}]\\) gives a pseudorandom \
+variate from the symbolic distribution \\!\\(\\*StyleBox[\\\"dist\\\", \\\"TI\
+\\\"]\\).\\n\\!\\(\\*RowBox[{\\\"RandomVariate\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"dist\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\
+\"TI\\\"]}], \\\"]\\\"}]\\) gives a list of \\!\\(\\*StyleBox[\\\"n\\\", \
+\\\"TI\\\"]\\) pseudorandom variates from the symbolic distribution \
+\\!\\(\\*StyleBox[\\\"dist\\\", \
+\\\"TI\\\"]\\).\\n\\!\\(\\*RowBox[{\\\"RandomVariate\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"dist\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\\) gives an \
+\\!\\(\\*RowBox[{StyleBox[SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], \
+StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\"TI\\\"], \\\"\[Times]\\\", \
+StyleBox[\\\" \\\", \\\"TI\\\"], StyleBox[SubscriptBox[StyleBox[\\\"n\\\", \\\
+\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\"TI\\\"], \\\"\[Times]\\\", \
+StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}]\\) array of pseudorandom variates \
+from the symbolic distribution \\!\\(\\*StyleBox[\\\"dist\\\", \
+\\\"TI\\\"]\\).\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/RandomVariate"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.671492282919197*^9},
+ CellTags->"Info-92ce689b-9969-4210-8231-daaba83b1979"]
+}, Open  ]],
+
+Cell["\<\
+Let\[CloseCurlyQuote]s generate some samples. Our normal distribution will \
+have a mean of 85 and standard deviation of 5 and we will repeat the \
+experiment 200 times:\
+\>", "Text",
+ CellChangeTimes->{{3.6714923988511667`*^9, 3.6714924028266153`*^9}, {
+  3.6714927783783693`*^9, 3.671492860385017*^9}, {3.671493129307645*^9, 
+  3.671493145978964*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"samples", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"RandomVariate", "[", 
+      RowBox[{"NormalDistribution", "[", 
+       RowBox[{"85", ",", "5"}], "]"}], "]"}], ",", 
+     RowBox[{"{", "200", "}"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.671491822967787*^9, 3.671491833495256*^9}, {
+  3.671491915514365*^9, 3.6714920166751823`*^9}, {3.6714921625957413`*^9, 
+  3.671492178440319*^9}, {3.671492428219961*^9, 3.67149248512335*^9}, {
+  3.6714928052913322`*^9, 3.671492819299223*^9}, {3.671493147955922*^9, 
+  3.671493148602528*^9}}],
+
+Cell["\<\
+Since the expected value of a normal distribution is just the mean, we expect \
+that the rolling average will converge to 85 as we consider more and more \
+samples: \
+\>", "Text",
+ CellChangeTimes->{{3.671492865672933*^9, 3.671492915095039*^9}, {
+  3.6714931602588463`*^9, 3.671493164732565*^9}, {3.688780735131826*^9, 
+  3.688780735299664*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{"samples", ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"FoldList", "[", 
+      RowBox[{"Plus", ",", "samples"}], "]"}], "/", 
+     RowBox[{"Range", "[", 
+      RowBox[{"Length", "[", "samples", "]"}], "]"}]}]}], 
+   "\[IndentingNewLine]", "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.671491262784347*^9, 3.671491291429244*^9}, {
+  3.671491603296823*^9, 3.671491652662271*^9}, {3.671491688435061*^9, 
+  3.671491716676209*^9}, {3.6714920367814074`*^9, 3.671492057378714*^9}, {
+  3.671492125769308*^9, 3.671492134361299*^9}, {3.6714921861052732`*^9, 
+  3.671492232502927*^9}, {3.6714931691951313`*^9, 3.6714931885115223`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.007333333333333334], 
+     AbsoluteThickness[1.6], PointBox[CompressedData["
+1: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
+/Acc84Jh
+      "]]}, 
+    {RGBColor[0.880722, 0.611041, 0.142051], PointSize[0.007333333333333334], 
+     AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxFlgtQ1NcZxVcWxPgARsmCqIhCeAiI8hIE9BAEVljey2PZBfa9C1ixhGpR
+hDUWHzRaJBnwgbpWjGJwUMAUpOhqylO0IEYSgwlErEGFUQaq8RFqp3y3O8Ps
+/Dj3fOe79/7/d+8yeU68yojD4XS8//vv9/8+z9cfntp1dmNhEqb/gfNDNqmC
+WuJZ2LDUt7X4auI0W6DSr2brshRiSzjP9fbk3xZOszXCSo2r5N3EizHpHDn7
+zRCxHY4Iy3MerCL/cuz9yso1LJbYAccfdh4NFRM7wrFXlDYaTuyMuks7/rhr
+I/EKNL8+Yu0aQeyGGVwrfruWeCXOlbltscomXoURE6VWJSNeDeHf35YNJBJ7
+wsb4kH+WktgLylrTcDHrzxvRCRe/2RVD7IMb2RPKXNaPL367Wd52yo94DXht
+oxWPvYn9UFIi+qB6PbE/bJbw9sUGEK/F2D0Xkyg34gDYPSydV+VDHIjtjUVP
+BWuJgyC1iDe2Y/51WGNpyS13JV4Phy+9yuZaEQMhvcYHMGeadcD+xh25XBPS
+g/HyzrnLh2eRHozIo+92J3BJ/xgzC1/Pdp9L+scI3ZeV1b2A9BBcF0UJool1
+Ich2uj8Ru4T0DXjSo2grsyB9A66tsr+6eDbpodCecHcQm5IeCiT3z7cl5oTh
+O6viEtN308+TLgx9eoe5zqy/cKx4Ntty2xTp4ei9l+iwhebD4WN+X01AygdU
+n482MxeXXuqHsxGDw37t581J34hlz78t2WNMegRiun7i7TIjPQKVeZlb3Vh/
+kTD35I3dZHokTllrvOvZ/ARoOpTjVc10AXh7ou1bWX4UHgyfyL5J+6WLQvM+
+M/sCG9KjwVH7FpTbkh6NsMlnWoE96TEwepnr0W5Negw6eg5WeDiRHguJsv5k
+CzFikfDWoyOIWBcLrfHoyHnnaTbE4pi0YM5CR/LHIfeEj8MeYsRhgUNtdgqx
+Lg5ws8qRUT+GOLja9vn6LyV/PJzub8/vWkj+eMzK7+9+QM+HLh6BvLi7zswf
+j4nIMd7/55eAAj7/FW8Z+RNQ6PPKIGT5CWj5Ne0LET3/hgQU5RsFr11NfiEa
+9+/07aHzB0J8/aNf6SS9bzohisUjRSEryC9E7UDYjTfu5E/EjPwYLwW9z0hE
+9gFh+HJP8ifi038t3WTtRf5ELMnoXWPtS/4kmF6+19y5hvxJsLjSmyUiXZcE
+//GhvaX0fhuS4DbneMFaGs9Jxjajyaa9/uRPhv67f099QueNLhm+A3+q+Jrq
+GZJR9Y+AgUh2HqVg65GRB3dZfgoiuC4hm5k/BXvrFKu4pBtSwHOvkzdTHkeE
+4c9Li/upPkSY2c5d3UrjdSKkBPYnVDK/CL8+NhtdwM6rVIjyTx8+SnlIhfm4
++Yz7LD8VIw6bW+uZPxVbgupHbdn+iVHvUt15ihhiZMtyvv9sJfnF0BTOKrby
+IL8YF25JX3vQ/nAkyC2oUC5lfgkcU512Soh1EtgGNYU00P4aJEj62+7RdLb+
+aeh8FPRhPlu/NBzvSQ1aQuezLg233Udm+7D+05D3y+bUenY+p+OTgWcuI8RI
+h43mVWMhrY8uHZxLn790Id2QjqynlpklbP8yEOwRYz7B8jNwL23LwQcsPwOL
+pnDhOLEhA1XXiqr/yvxSuLZ8Ov8a1beTwubaE+/iQKonRZ5AflhFv09SKS68
+LjS9so7qSyHJKUh/HDTNeim2x91+kk/jDVJ8ZB3QdTNkmgel8P7zyls1xBwZ
+fiy56mfYQPkynJsX2nAglPJlaJ4QWIhJl8rwhztfPRKSXyfDQfdfwn5H4/Uy
+7PunIK+L2CDD2F3XISnLl2Ekw83oEMuXo6JojDtBbCdHAv/FmWFiyNF0x4ur
+CKN8OWwv3srR8yn/Pb+7wR0nXS9H/clL636IpHw5GvKevpRFUb4cC8/F7PmZ
+mKOA/0Kz60Z0f7BT4IcX5pu4dL+AAllC+44kYqkCoYIPZcfiKF8B5bYXOj3d
+V/QKnC4f+i0jmfIVKD3bwD+TRPnv631m/VM4u98o8c2XJjszWb4SBaMGIyHL
+V2JqYtOVi/GUr8R+fn9jN7FOiYyjfgcUxHolekv7xlvIb1Dijv2Jq4HU76AS
+HJOoKQXLV6H+wrXkRdSfnQqLa6I8X4goX4X2g4cqd6RSvgorBG9zlWmUr8Kl
+Hdcd3Yn1KtQmHYtskVC+Cjs9GoY86f44qEKHafGbStI5ajwqmxGXSLqdGjP9
+H7q/ovWDGpt4+vHfs3w1Lrtmj0cQ69Tw9t/doSDWq+E00BOby9ZfjXzbgYmf
+iQfVuGFW/ZcSmh9Hg6Ztyy3ZfO004C/6fnEQy9dgzfCYSS2xVIPu3WllnSxf
+g5D7J41dqH+9BuvrVNES0g0atIgD3gbTfAc1aMvKP/OY3ae1aClRtnay+Wtx
+dru8b5TGQ4tamVibmUH5WvC/heQssU4L050VkwNSytdi8rl4tzqd8t/Xm7eh
+JpT0QS3quk6n2JLOycSbCT9O1Xv9P3lrQ/E=
+      "]]}, {}}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 77.08837712555987},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  Method->{},
+  PlotRange->{{0., 200.}, {77.84802508039238, 93.04098417704259}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.671491278891893*^9, 3.671491291582452*^9}, 
+   3.6714914124589663`*^9, 3.671491445526443*^9, {3.67149162930289*^9, 
+   3.671491702990035*^9}, {3.6714920407777443`*^9, 3.6714920577245197`*^9}, {
+   3.6714921346890583`*^9, 3.67149223285145*^9}, {3.671492429830021*^9, 
+   3.671492437032127*^9}, {3.6714924671419363`*^9, 3.671492487762072*^9}, {
+   3.67149317842299*^9, 3.6714931894179153`*^9}}]
+}, Open  ]],
+
+Cell["\<\
+Here, the blue dots are the samples, and the orange dots represent the \
+running average and we can see that they converge to 85. Voila! Just as we, \
+\[OpenCurlyDoubleQuote]expected\[CloseCurlyDoubleQuote]. ;)\
+\>", "Text",
+ CellChangeTimes->{{3.671492922344751*^9, 3.671492949711282*^9}, {
+  3.6714931989147873`*^9, 3.67149320103286*^9}, {3.672101377203718*^9, 
+  3.6721014162706738`*^9}, {3.6721014475125923`*^9, 3.672101548289484*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Summary", "Subsection",
+ CellChangeTimes->{{3.68878075748833*^9, 3.688780758336207*^9}}],
+
+Cell[TextData[{
+ "This concludes our lecture on functional programming. In this lecture, we \
+covered some of the basic building blocks that ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " provides for doing functional programming. In many cases, you won\
+\[CloseCurlyQuote]t need to use these functions because ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " provides other functions that are easier to reason about. That being said, \
+it is important to be aware of the fundamentals. Thanks and see you at the \
+next lecture!"
+}], "Text",
+ CellChangeTimes->{{3.670527331348634*^9, 3.6705274313144913`*^9}, 
+   3.6887807681094313`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1399, 855},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info-2e824461-06e7-4fd4-b1ed-9b6b030b863b"->{
+  Cell[1500, 53, 710, 15, 52, "Print",
+   CellTags->"Info-2e824461-06e7-4fd4-b1ed-9b6b030b863b"]},
+ "Info-e8dcf253-daaf-4836-afdf-fac3ec71bd6b"->{
+  Cell[5246, 165, 735, 15, 52, "Print",
+   CellTags->"Info-e8dcf253-daaf-4836-afdf-fac3ec71bd6b"]},
+ "Info-dc9044a4-2699-4e0f-9c57-3548869d16f9"->{
+  Cell[7760, 239, 2014, 33, 125, "Print",
+   CellTags->"Info-dc9044a4-2699-4e0f-9c57-3548869d16f9"]},
+ "Info-dfa06134-6eb2-4051-b262-84dde87e42be"->{
+  Cell[16297, 483, 662, 14, 52, "Print",
+   CellTags->"Info-dfa06134-6eb2-4051-b262-84dde87e42be"]},
+ "Info-dca9142c-74fa-4f1d-b596-347b6448b6dd"->{
+  Cell[17122, 506, 707, 14, 52, "Print",
+   CellTags->"Info-dca9142c-74fa-4f1d-b596-347b6448b6dd"]},
+ "Info-9590981d-9f11-46e3-8990-5731c9eb5231"->{
+  Cell[28136, 780, 1220, 21, 77, "Print",
+   CellTags->"Info-9590981d-9f11-46e3-8990-5731c9eb5231"]},
+ "Info-03a1c569-e5cf-460b-ae5c-1a66bd6afb8d"->{
+  Cell[31416, 879, 2234, 35, 77, "Print",
+   CellTags->"Info-03a1c569-e5cf-460b-ae5c-1a66bd6afb8d"]},
+ "Info-3f2ac92f-56a1-49eb-8eae-2abf8a32b2b5"->{
+  Cell[35679, 975, 851, 16, 77, "Print",
+   CellTags->"Info-3f2ac92f-56a1-49eb-8eae-2abf8a32b2b5"]},
+ "Info-92ce689b-9969-4210-8231-daaba83b1979"->{
+  Cell[36900, 1007, 1753, 29, 101, "Print",
+   CellTags->"Info-92ce689b-9969-4210-8231-daaba83b1979"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info-2e824461-06e7-4fd4-b1ed-9b6b030b863b", 49041, 1258},
+ {"Info-e8dcf253-daaf-4836-afdf-fac3ec71bd6b", 49188, 1261},
+ {"Info-dc9044a4-2699-4e0f-9c57-3548869d16f9", 49336, 1264},
+ {"Info-dfa06134-6eb2-4051-b262-84dde87e42be", 49486, 1267},
+ {"Info-dca9142c-74fa-4f1d-b596-347b6448b6dd", 49635, 1270},
+ {"Info-9590981d-9f11-46e3-8990-5731c9eb5231", 49784, 1273},
+ {"Info-03a1c569-e5cf-460b-ae5c-1a66bd6afb8d", 49934, 1276},
+ {"Info-3f2ac92f-56a1-49eb-8eae-2abf8a32b2b5", 50084, 1279},
+ {"Info-92ce689b-9969-4210-8231-daaba83b1979", 50233, 1282}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 163, 2, 80, "Section"],
+Cell[746, 26, 156, 3, 37, "Text"],
+Cell[CellGroupData[{
+Cell[927, 33, 154, 2, 54, "Subsection"],
+Cell[1084, 37, 277, 8, 37, "Text"],
+Cell[CellGroupData[{
+Cell[1386, 49, 111, 2, 39, "Input"],
+Cell[1500, 53, 710, 15, 52, "Print",
+ CellTags->"Info-2e824461-06e7-4fd4-b1ed-9b6b030b863b"]
+}, Open  ]],
+Cell[2225, 71, 1240, 27, 85, "Text"],
+Cell[CellGroupData[{
+Cell[3490, 102, 157, 3, 39, "Input"],
+Cell[3650, 107, 393, 12, 39, "Output"]
+}, Open  ]],
+Cell[4058, 122, 389, 12, 37, "Text"],
+Cell[CellGroupData[{
+Cell[4472, 138, 245, 6, 39, "Input"],
+Cell[4720, 146, 123, 2, 39, "Output"]
+}, Open  ]],
+Cell[4858, 151, 243, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[5126, 161, 117, 2, 39, "Input"],
+Cell[5246, 165, 735, 15, 52, "Print",
+ CellTags->"Info-e8dcf253-daaf-4836-afdf-fac3ec71bd6b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6018, 185, 200, 5, 39, "Input"],
+Cell[6221, 192, 226, 5, 39, "Output"]
+}, Open  ]],
+Cell[6462, 200, 136, 1, 37, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6635, 206, 113, 1, 54, "Subsection"],
+Cell[6751, 209, 859, 22, 61, "Text"],
+Cell[CellGroupData[{
+Cell[7635, 235, 122, 2, 39, "Input"],
+Cell[7760, 239, 2014, 33, 125, "Print",
+ CellTags->"Info-dc9044a4-2699-4e0f-9c57-3548869d16f9"]
+}, Open  ]],
+Cell[9789, 275, 171, 4, 37, "Text"],
+Cell[CellGroupData[{
+Cell[9985, 283, 256, 7, 39, "Input"],
+Cell[10244, 292, 374, 7, 39, "Output"]
+}, Open  ]],
+Cell[10633, 302, 328, 6, 61, "Text"],
+Cell[10964, 310, 343, 7, 61, "Text"],
+Cell[11310, 319, 510, 14, 70, "Text"],
+Cell[11823, 335, 113, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[11961, 340, 898, 25, 39, "Input"],
+Cell[12862, 367, 263, 6, 39, "Output"]
+}, Open  ]],
+Cell[13140, 376, 106, 1, 37, "Text"],
+Cell[13249, 379, 141, 1, 37, "Text"],
+Cell[13393, 382, 182, 4, 39, "Input"],
+Cell[13578, 388, 298, 8, 39, "Input"],
+Cell[CellGroupData[{
+Cell[13901, 400, 200, 4, 39, "Input"],
+Cell[14104, 406, 122, 2, 39, "Output"]
+}, Open  ]],
+Cell[14241, 411, 573, 15, 61, "Text"],
+Cell[CellGroupData[{
+Cell[14839, 430, 654, 21, 39, "Input"],
+Cell[15496, 453, 344, 11, 39, "Output"]
+}, Open  ]],
+Cell[15855, 467, 144, 2, 37, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16036, 474, 115, 1, 54, "Subsection"],
+Cell[CellGroupData[{
+Cell[16176, 479, 118, 2, 39, "Input"],
+Cell[16297, 483, 662, 14, 52, "Print",
+ CellTags->"Info-dfa06134-6eb2-4051-b262-84dde87e42be"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16996, 502, 123, 2, 39, "Input"],
+Cell[17122, 506, 707, 14, 52, "Print",
+ CellTags->"Info-dca9142c-74fa-4f1d-b596-347b6448b6dd"]
+}, Open  ]],
+Cell[17844, 523, 287, 5, 37, "Text"],
+Cell[18134, 530, 452, 15, 54, "DisplayFormula"],
+Cell[18589, 547, 345, 10, 39, "Text"],
+Cell[18937, 559, 372, 10, 39, "Text"],
+Cell[CellGroupData[{
+Cell[19334, 573, 583, 18, 39, "Input"],
+Cell[19920, 593, 5775, 105, 104, "Output"]
+}, Open  ]],
+Cell[25710, 701, 129, 1, 37, "Text"],
+Cell[25842, 704, 350, 9, 39, "Input"],
+Cell[26195, 715, 318, 9, 37, "Text"],
+Cell[CellGroupData[{
+Cell[26538, 728, 380, 12, 39, "Input"],
+Cell[26921, 742, 274, 6, 39, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27244, 754, 102, 1, 54, "Subsection"],
+Cell[27349, 757, 646, 15, 61, "Text"],
+Cell[CellGroupData[{
+Cell[28020, 776, 113, 2, 39, "Input"],
+Cell[28136, 780, 1220, 21, 77, "Print",
+ CellTags->"Info-9590981d-9f11-46e3-8990-5731c9eb5231"]
+}, Open  ]],
+Cell[29371, 804, 412, 11, 37, "Text"],
+Cell[CellGroupData[{
+Cell[29808, 819, 215, 5, 39, "Input"],
+Cell[30026, 826, 237, 8, 39, "Output"]
+}, Open  ]],
+Cell[30278, 837, 461, 14, 61, "Text"],
+Cell[CellGroupData[{
+Cell[30764, 855, 218, 5, 39, "Input"],
+Cell[30985, 862, 114, 2, 39, "Output"]
+}, Open  ]],
+Cell[31114, 867, 158, 4, 37, "Text"],
+Cell[CellGroupData[{
+Cell[31297, 875, 116, 2, 39, "Input"],
+Cell[31416, 879, 2234, 35, 77, "Print",
+ CellTags->"Info-03a1c569-e5cf-460b-ae5c-1a66bd6afb8d"]
+}, Open  ]],
+Cell[33665, 917, 418, 9, 37, "Text"],
+Cell[CellGroupData[{
+Cell[34108, 930, 222, 5, 39, "Input"],
+Cell[34333, 937, 237, 6, 39, "Output"]
+}, Open  ]],
+Cell[34585, 946, 676, 11, 85, "Text"],
+Cell[35264, 959, 260, 8, 37, "Text"],
+Cell[CellGroupData[{
+Cell[35549, 971, 127, 2, 39, "Input"],
+Cell[35679, 975, 851, 16, 77, "Print",
+ CellTags->"Info-3f2ac92f-56a1-49eb-8eae-2abf8a32b2b5"]
+}, Open  ]],
+Cell[36545, 994, 204, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[36774, 1003, 123, 2, 39, "Input"],
+Cell[36900, 1007, 1753, 29, 101, "Print",
+ CellTags->"Info-92ce689b-9969-4210-8231-daaba83b1979"]
+}, Open  ]],
+Cell[38668, 1039, 363, 7, 37, "Text"],
+Cell[39034, 1048, 593, 13, 39, "Input"],
+Cell[39630, 1063, 355, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[40010, 1074, 726, 14, 118, "Input"],
+Cell[40739, 1090, 6659, 120, 308, "Output"]
+}, Open  ]],
+Cell[47413, 1213, 449, 7, 37, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[47899, 1225, 94, 1, 54, "Subsection"],
+Cell[47996, 1228, 650, 14, 85, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

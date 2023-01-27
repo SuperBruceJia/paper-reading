@@ -1,0 +1,493 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     16501,        485]
+NotebookOptionsPosition[     13715,        387]
+NotebookOutlinePosition[     14257,        410]
+CellTagsIndexPosition[     14170,        405]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Documentation Center", "Section",
+ CellChangeTimes->{{3.690923218235577*^9, 3.690923221942383*^9}}],
+
+Cell[TextData[{
+ "Hello and welcome. Now that you have become familiar with the Notebook \
+environment, we will show you one more very important component of ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ", and that is the Documentation Center. "
+}], "Text",
+ CellChangeTimes->{{3.6909232243986187`*^9, 3.69092323273367*^9}, {
+   3.6909238146055307`*^9, 3.690923967071813*^9}, {3.690924137586055*^9, 
+   3.690924178162023*^9}, {3.690924236918185*^9, 3.690924275991341*^9}, {
+   3.6909272486005573`*^9, 3.69092726195492*^9}, 3.69099206280252*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Introduction", "Subsection",
+ CellChangeTimes->{{3.690992057826556*^9, 3.690992059368539*^9}}],
+
+Cell[TextData[{
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " has a very extensive and user friendly Documentation Center. Whether you \
+are a beginner or a seasoned ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " programmer, the Documentation Center is your number one friend when \
+working on a project. There are several ways you can gain access to \
+documentation in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ". Let\[CloseCurlyQuote]s consider the function ",
+ StyleBox["N",
+  FontWeight->"Bold"],
+ " that we encountered in the previous lecture. In order to find out \
+information about this function, we can simply ask for it by:"
+}], "Text",
+ CellChangeTimes->{{3.690992064730838*^9, 3.690992090273244*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "N"}]], "Input",
+ CellChangeTimes->{{3.6909242780162477`*^9, 3.690924279597563*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"N\\\", \\\"[\\\", StyleBox[\\\"expr\\\", \
+\\\"TI\\\"], \\\"]\\\"}]\\) gives the numerical value of \\!\\(\\*StyleBox[\\\
+\"expr\\\", \\\"TI\\\"]\\). \\n\\!\\(\\*RowBox[{\\\"N\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\
+\"TI\\\"]}], \\\"]\\\"}]\\) attempts to give a result with \\!\\(\\*StyleBox[\
+\\\"n\\\", \\\"TI\\\"]\\)\[Hyphen]digit precision. \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/N"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.690924280526538*^9},
+ CellTags->"Info373690902680-6563615"]
+}, Open  ]],
+
+Cell["\<\
+You can see that a description of the function appears, as well as different \
+forms of the function that exist. We will use this feature extensively \
+through out our course. \
+\>", "Text",
+ CellChangeTimes->{{3.690924284392359*^9, 3.6909243607547503`*^9}}],
+
+Cell[TextData[{
+ "If this brief overview of the function is not enough, and we want to find \
+out more information, we can click on the >> link. Let\[CloseCurlyQuote]s do \
+that. This new window opens up with all sorts of information on the function ",
+ StyleBox["N",
+  FontWeight->"Bold"],
+ ". This is the Documentation Center. Specifically this is known as a \
+Reference page. Besides Reference pages, there are also Tutorial and Guide \
+pages. We will look at the structure of Reference pages in more detail, as \
+they are the pages where you can find information about usage of specific \
+functions. "
+}], "Text",
+ CellChangeTimes->{{3.690924364042365*^9, 3.69092440960115*^9}, {
+  3.6909244638991747`*^9, 3.690924489526944*^9}, {3.69092456282056*^9, 
+  3.690924578123969*^9}, {3.69092530088892*^9, 3.690925309884763*^9}, {
+  3.690925369974801*^9, 3.690925446113015*^9}, {3.6909273143374166`*^9, 
+  3.690927330049967*^9}, {3.690992144872843*^9, 3.690992145015738*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Structure of Documentation Pages", "Subsection",
+ CellChangeTimes->{{3.69099251483541*^9, 3.690992522280466*^9}}],
+
+Cell["\<\
+The first thing to notice here is that this window is also a notebook \
+environment. This means when you are trying to learn about a function, you \
+can play around with various features it has right in the Documentation \
+Center; a very powerful feature indeed! \
+\>", "Text",
+ CellChangeTimes->{{3.690924495742157*^9, 3.690924556500328*^9}, {
+  3.690924597379331*^9, 3.69092460238663*^9}, {3.690992172123274*^9, 
+  3.6909921765475893`*^9}}],
+
+Cell["We see that the page is divided up into various sections: ", "Text",
+ CellChangeTimes->{{3.6909246149521523`*^9, 3.6909246270739603`*^9}, 
+   3.690992191442759*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Summary Header ", "Subitem",
+ CellChangeTimes->{{3.6909246400417757`*^9, 3.690924643366049*^9}, {
+  3.690924676576571*^9, 3.6909246803363667`*^9}}],
+
+Cell["Details", "Subitem",
+ CellChangeTimes->{{3.6909246400417757`*^9, 3.690924645943038*^9}}],
+
+Cell["Examples", "Subitem",
+ CellChangeTimes->{{3.6909246400417757`*^9, 3.690924649646249*^9}}],
+
+Cell["See Also", "Subitem",
+ CellChangeTimes->{{3.6909246400417757`*^9, 3.690924652127551*^9}}],
+
+Cell["Tutorials", "Subitem",
+ CellChangeTimes->{{3.6909246400417757`*^9, 3.690924657999168*^9}}],
+
+Cell["Related Guides", "Subitem",
+ CellChangeTimes->{{3.6909246400417757`*^9, 3.690924663712487*^9}}],
+
+Cell["Related Links", "Subitem",
+ CellChangeTimes->{{3.6909246400417757`*^9, 3.69092467088072*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Summary Header", "Subsubsection",
+ CellChangeTimes->{{3.690924704866907*^9, 3.690924708055327*^9}}],
+
+Cell["\<\
+This is a brief explanation of what the function does and is also what you \
+see when you ask for information with the question mark function.\
+\>", "Text",
+ CellChangeTimes->{{3.6909247103433323`*^9, 3.6909247266707*^9}, {
+  3.6909922226695623`*^9, 3.690992257526355*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "Subsubsection",
+ CellChangeTimes->{{3.690924730359256*^9, 3.690924731118389*^9}}],
+
+Cell["\<\
+This section describes, in great detail, what the various features of the \
+function are, as well as implementation details and other uncommon uses of \
+the function.\
+\>", "Text",
+ CellChangeTimes->{{3.690924733318453*^9, 3.6909247813973293`*^9}, {
+  3.690924877594551*^9, 3.690924903441073*^9}, {3.690992268489492*^9, 
+  3.690992291258189*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Examples", "Subsubsection",
+ CellChangeTimes->{{3.690924911972332*^9, 3.690924914688747*^9}}],
+
+Cell["\<\
+This is perhaps the most useful section of the page. You can generally find \
+numerous examples of the function used. As you can see this section is \
+divided into different categories. Every time you come across a new function, \
+it is a good idea to explore these sections. It will speed up your rate of \
+learning dramatically. \
+\>", "Text",
+ CellChangeTimes->{{3.690924916728808*^9, 3.690924961351646*^9}, {
+  3.690924993094365*^9, 3.690925083315843*^9}, {3.6909923354443293`*^9, 
+  3.6909923374682903`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "Subsubsection",
+ CellChangeTimes->{{3.6909250914625998`*^9, 3.690925093187806*^9}}],
+
+Cell["\<\
+This section is also very useful. Here you will discover other functions that \
+are related to your function. Often times this will come in very handy and \
+open up new avenues for discovering new functions when writing your program. \
+\
+\>", "Text",
+ CellChangeTimes->{{3.6909250945546227`*^9, 3.690925135521784*^9}, {
+  3.6909274064623623`*^9, 3.690927411663333*^9}, {3.690992376045822*^9, 
+  3.69099237650174*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Tutorial", "Subsubsection",
+ CellChangeTimes->{{3.690925140529724*^9, 3.6909251425052547`*^9}}],
+
+Cell[TextData[{
+ "By clicking any of the links here you will be taken to a Tutorial page, \
+where you will find articles about concepts that involve use of the function \
+in question as well as related functions. You will learn a great deal about \
+",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " and it\[CloseCurlyQuote]s capabilities by spending some time on the \
+tutorial pages. "
+}], "Text",
+ CellChangeTimes->{{3.6909251446729803`*^9, 3.690925194337975*^9}, {
+  3.690925469863163*^9, 3.690925605235054*^9}, {3.690927419575132*^9, 
+  3.690927434469967*^9}}],
+
+Cell["\<\
+You can click the back button at the top left to go back to where you were.\
+\>", "Text",
+ CellChangeTimes->{{3.690992828579692*^9, 3.6909928389310637`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Guides", "Subsubsection",
+ CellChangeTimes->{{3.690925617597616*^9, 3.690925652025206*^9}}],
+
+Cell[TextData[{
+ "These links will take you to Guide pages. Guide pages are where you will \
+find lists of available functions in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " organized by functionality and concept. "
+}], "Text",
+ CellChangeTimes->{{3.690925656601162*^9, 3.690925710671761*^9}, {
+  3.6909259480610027`*^9, 3.690925964022996*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related links", "Subsubsection",
+ CellChangeTimes->{{3.69092603432859*^9, 3.690926035996808*^9}}],
+
+Cell["\<\
+Here you will find useful links that will take you to various online \
+resources that pertain to the function and its related concepts. \
+\>", "Text",
+ CellChangeTimes->{{3.690926038556319*^9, 3.6909261116183643`*^9}, {
+  3.69099246956472*^9, 3.6909924701255493`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Navigation", "Subsection",
+ CellChangeTimes->{{3.690992533479958*^9, 3.690992539784411*^9}}],
+
+Cell[TextData[{
+ "Note that there is a search bar on the top of the page. Depending on what \
+kind of a page you are on (Reference, Tutorial, or Guide) the search term is \
+preceded by one of the keywords ",
+ StyleBox["ref",
+  FontWeight->"Bold"],
+ ", ",
+ StyleBox["tutorial",
+  FontWeight->"Bold"],
+ ", ",
+ StyleBox["guide",
+  FontWeight->"Bold"],
+ ". You can enter your search term, for example function names or concepts. "
+}], "Text",
+ CellChangeTimes->{{3.690926129845302*^9, 3.690926286669416*^9}, 
+   3.690992564776456*^9}],
+
+Cell[TextData[{
+ "We showed you one point of entry to the Documentation Center, and that is \
+directly through a reference page for a specific function name. \
+Alternatively, you can find the Documentation Center by clicking on ",
+ StyleBox["Help \[Rule] Wolfram Documentation",
+  FontWeight->"Bold"],
+ ", and you will be presented with the home page for Documentation Center. \
+From this point you can reach various Guide pages, Reference pages, as well \
+as Tutorial pages. "
+}], "Text",
+ CellChangeTimes->{{3.69092629290836*^9, 3.690926511582182*^9}, {
+  3.690927676782877*^9, 3.6909276793897963`*^9}, {3.6909925818350687`*^9, 
+  3.6909926164249897`*^9}}],
+
+Cell[TextData[{
+ "As mentioned before, ",
+ StyleBox["Mathematica\[CloseCurlyQuote]s",
+  FontSlant->"Italic"],
+ " Documentation Center is extremely well organized and very helpful. There \
+is a ton of information here. Get into the habit of using it early on, and \
+you will be rewarded handsomely. "
+}], "Text",
+ CellChangeTimes->{{3.690926520388892*^9, 3.690926557764289*^9}, {
+   3.6909267229911823`*^9, 3.6909267570220747`*^9}, {3.690927595593113*^9, 
+   3.690927599864276*^9}, 3.690992671760537*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Summary", "Subsection",
+ CellChangeTimes->{{3.6909267865602837`*^9, 3.690926787772737*^9}}],
+
+Cell["\<\
+The Documentation Center should become your best friend. We saw there are \
+three different kinds of pages you can find.\
+\>", "Text",
+ CellChangeTimes->{{3.6909268819017677`*^9, 3.690926894049013*^9}, {
+  3.690926953039744*^9, 3.690926981116314*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Reference", "Item",
+ CellChangeTimes->{{3.690926996572537*^9, 3.690926997983452*^9}}],
+
+Cell["Tutorial", "Item",
+ CellChangeTimes->{{3.690926996572537*^9, 3.690927005013146*^9}}],
+
+Cell["Guide", "Item",
+ CellChangeTimes->{{3.690926996572537*^9, 3.6909270072832947`*^9}}]
+}, Open  ]],
+
+Cell["\<\
+We looked at different sections of the Reference pages. These are pages that \
+give you detailed implementation information about specific functions.\
+\>", "Text",
+ CellChangeTimes->{{3.690927010519518*^9, 3.690927042018847*^9}}],
+
+Cell[TextData[{
+ "Tutorial pages are longer articles that focus on certain concepts and will \
+show you examples of using ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " functions related to those concepts. "
+}], "Text",
+ CellChangeTimes->{{3.690927046633224*^9, 3.6909271173363943`*^9}, {
+  3.690927633948483*^9, 3.690927634487414*^9}}],
+
+Cell[TextData[{
+ "Guide pages provide lists of available ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " functions tallied by conceptual categories. "
+}], "Text",
+ CellChangeTimes->{{3.690927119336381*^9, 3.690927165710009*^9}, {
+  3.690927650991116*^9, 3.690927654471311*^9}}],
+
+Cell[TextData[{
+ "Additionally there are also links provided to various online resources that \
+will help you discover and learn various ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " functionality. "
+}], "Text",
+ CellChangeTimes->{{3.690927168565837*^9, 3.690927194941072*^9}}],
+
+Cell["\<\
+We hope you had fun. In the next lecture we will get started with actually \
+writing code, plots and other cool things. \
+\>", "Text",
+ CellChangeTimes->{{3.690927196573175*^9, 3.690927232347424*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1399, 855},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info373690902680-6563615"->{
+  Cell[2245, 68, 735, 15, 77, "Print",
+   CellTags->"Info373690902680-6563615"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info373690902680-6563615", 14065, 399}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 105, 1, 80, "Section"],
+Cell[688, 25, 552, 10, 61, "Text"],
+Cell[CellGroupData[{
+Cell[1265, 39, 100, 1, 54, "Subsection"],
+Cell[1368, 42, 737, 18, 85, "Text"],
+Cell[CellGroupData[{
+Cell[2130, 64, 112, 2, 39, "Input"],
+Cell[2245, 68, 735, 15, 77, "Print",
+ CellTags->"Info373690902680-6563615"]
+}, Open  ]],
+Cell[2995, 86, 268, 5, 61, "Text"],
+Cell[3266, 93, 972, 16, 109, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4275, 114, 119, 1, 54, "Subsection"],
+Cell[4397, 117, 452, 8, 61, "Text"],
+Cell[4852, 127, 170, 2, 37, "Text"],
+Cell[CellGroupData[{
+Cell[5047, 133, 153, 2, 32, "Subitem"],
+Cell[5203, 137, 94, 1, 32, "Subitem"],
+Cell[5300, 140, 95, 1, 32, "Subitem"],
+Cell[5398, 143, 95, 1, 32, "Subitem"],
+Cell[5496, 146, 96, 1, 32, "Subitem"],
+Cell[5595, 149, 101, 1, 32, "Subitem"],
+Cell[5699, 152, 99, 1, 32, "Subitem"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5835, 158, 105, 1, 43, "Subsubsection"],
+Cell[5943, 161, 283, 5, 37, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6263, 171, 98, 1, 43, "Subsubsection"],
+Cell[6364, 174, 356, 7, 37, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6757, 186, 99, 1, 43, "Subsubsection"],
+Cell[6859, 189, 523, 9, 61, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7419, 203, 101, 1, 43, "Subsubsection"],
+Cell[7523, 206, 427, 8, 61, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7987, 219, 101, 1, 43, "Subsubsection"],
+Cell[8091, 222, 569, 12, 61, "Text"],
+Cell[8663, 236, 167, 3, 37, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8867, 244, 105, 1, 43, "Subsubsection"],
+Cell[8975, 247, 355, 8, 37, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9367, 260, 103, 1, 43, "Subsubsection"],
+Cell[9473, 263, 278, 5, 37, "Text"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9800, 274, 98, 1, 54, "Subsection"],
+Cell[9901, 277, 530, 15, 61, "Text"],
+Cell[10434, 294, 658, 12, 85, "Text"],
+Cell[11095, 308, 503, 10, 61, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11635, 323, 97, 1, 54, "Subsection"],
+Cell[11735, 326, 261, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[12021, 335, 91, 1, 37, "Item"],
+Cell[12115, 338, 90, 1, 37, "Item"],
+Cell[12208, 341, 89, 1, 37, "Item"]
+}, Open  ]],
+Cell[12312, 345, 239, 4, 37, "Text"],
+Cell[12554, 351, 344, 8, 37, "Text"],
+Cell[12901, 361, 284, 7, 37, "Text"],
+Cell[13188, 370, 286, 7, 37, "Text"],
+Cell[13477, 379, 210, 4, 37, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

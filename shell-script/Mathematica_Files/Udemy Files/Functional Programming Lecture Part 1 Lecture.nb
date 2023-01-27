@@ -1,0 +1,1246 @@
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[         0,          0]
+NotebookDataLength[     43823,       1245]
+NotebookOptionsPosition[     37663,       1039]
+NotebookOutlinePosition[     39172,       1086]
+CellTagsIndexPosition[     38820,       1075]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Functional Programming", "Section",
+ CellChangeTimes->{{3.688778815806514*^9, 3.6887788184938097`*^9}}],
+
+Cell[TextData[{
+ "Hello and welcome to our lecture on functional programming. So far, we\
+\[CloseCurlyQuote]ve seen how to define functions, and how to use functions \
+and how to apply functions to lists of expressions. There are many useful \
+functional programming tools available in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ". You don\[CloseCurlyQuote]t need to know all of them to be an effective \
+programmer, but it\[CloseCurlyQuote]s important for you to be aware of them. \
+In this lecture, we\[CloseCurlyQuote]re going to touch on a bunch of them, \
+but we won\[CloseCurlyQuote]t go in to too much detail. So, let\
+\[CloseCurlyQuote]s get started."
+}], "Text",
+ CellChangeTimes->{{3.6704773592630157`*^9, 3.670477562844713*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Select", "Subsection",
+ CellChangeTimes->{{3.670519078825629*^9, 3.670519079578209*^9}}],
+
+Cell[TextData[{
+ "In our lectures on rules and patterns, we looked at the ",
+ StyleBox["Cases", "Code"],
+ " function:"
+}], "Text",
+ CellChangeTimes->{{3.670519088330777*^9, 3.670519106004717*^9}, {
+  3.67051918878483*^9, 3.670519190729843*^9}, {3.6887788529824047`*^9, 
+  3.6887788816144*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Cases"}]], "Input",
+ CellChangeTimes->{{3.688778882387182*^9, 3.6887788833107557`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Cases\\\", \\\"[\\\", RowBox[{RowBox[{\\\"{\
+\\\", RowBox[{SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], \
+StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"e\\\", \
+\\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\
+\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\"}], \\\",\\\", \
+StyleBox[\\\"pattern\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) gives a list of the \!\
+\(\*SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \
+\\\"TI\\\"]]\) that match the pattern. \\n\!\(\*RowBox[{\\\"Cases\\\", \
+\\\"[\\\", RowBox[{RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\
+\"}], \\\",\\\", RowBox[{StyleBox[\\\"pattern\\\", \\\"TI\\\"], \\\"\[Rule]\\\
+\", StyleBox[\\\"rhs\\\", \\\"TI\\\"]}]}], \\\"]\\\"}]\) gives a list of the \
+values of \!\(\*StyleBox[\\\"rhs\\\", \\\"TI\\\"]\) corresponding to the \!\(\
+\*SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \
+\\\"TI\\\"]]\) that match the pattern. \\n\!\(\*RowBox[{\\\"Cases\\\", \
+\\\"[\\\", RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\
+\"pattern\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"levelspec\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\) gives a list of all parts of \
+\!\(\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\) on levels specified by \
+\!\(\*StyleBox[\\\"levelspec\\\", \\\"TI\\\"]\) that match the pattern. \\n\!\
+\(\*RowBox[{\\\"Cases\\\", \\\"[\\\", RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\
+\"], \\\",\\\", RowBox[{StyleBox[\\\"pattern\\\", \\\"TI\\\"], \
+\\\"\[Rule]\\\", StyleBox[\\\"rhs\\\", \\\"TI\\\"]}], \\\",\\\", \
+StyleBox[\\\"levelspec\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) gives the values of \
+\!\(\*StyleBox[\\\"rhs\\\", \\\"TI\\\"]\) that match the pattern. \
+\\n\!\(\*RowBox[{\\\"Cases\\\", \\\"[\\\", RowBox[{StyleBox[\\\"expr\\\", \
+\\\"TI\\\"], \\\",\\\", StyleBox[\\\"pattern\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"levelspec\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\) gives the first \!\(\*StyleBox[\\\"n\\\", \\\"TI\
+\\\"]\) parts in \!\(\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\) that match the \
+pattern. \\n\!\(\*RowBox[{\\\"Cases\\\", \\\"[\\\", StyleBox[\\\"pattern\\\", \
+\\\"TI\\\"], \\\"]\\\"}]\) represents an operator form of Cases that can be \
+applied to an expression.\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Cases"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.6887791690938463`*^9},
+ CellTags->"Info373688750369-3364626"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Now that we\[CloseCurlyQuote]ve seen pure functions, we can introduce a \
+related function called ",
+ StyleBox["Select", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{3.688778878581846*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Select"}]], "Input",
+ CellChangeTimes->{{3.670519231177128*^9, 3.6705192320964737`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Select\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"crit\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\) picks out all elements \
+\!\(\*SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \
+\\\"TI\\\"]]\) of \!\(\*StyleBox[\\\"list\\\", \\\"TI\\\"]\) for which \
+\!\(\*RowBox[{StyleBox[\\\"crit\\\", \\\"TI\\\"], \\\"[\\\", \
+SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \
+\\\"TI\\\"]], \\\"]\\\"}]\) is True. \\n\!\(\*RowBox[{\\\"Select\\\", \\\"[\\\
+\", RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"crit\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\) picks out the first \!\(\*StyleBox[\\\"n\\\", \\\
+\"TI\\\"]\) elements for which \!\(\*RowBox[{StyleBox[\\\"crit\\\", \
+\\\"TI\\\"], \\\"[\\\", SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], \
+StyleBox[\\\"i\\\", \\\"TI\\\"]], \\\"]\\\"}]\) is True. \
+\\n\!\(\*RowBox[{\\\"Select\\\", \\\"[\\\", StyleBox[\\\"crit\\\", \
+\\\"TI\\\"], \\\"]\\\"}]\) represents an operator form of Select that can be \
+applied to an expression. \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Select"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.688779169260601*^9},
+ CellTags->"Info383688750369-3364626"]
+}, Open  ]],
+
+Cell[TextData[{
+ "We can use ",
+ StyleBox["Select", "Code"],
+ " to find elements in a list that evaluate a function to ",
+ StyleBox["True", "Code"],
+ ". For instance, to find all the elements that are even:"
+}], "Text",
+ CellChangeTimes->{{3.670519239410099*^9, 3.6705192749258757`*^9}, {
+  3.670519373319669*^9, 3.670519429739047*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"elements", "=", 
+  RowBox[{"RandomInteger", "[", 
+   RowBox[{"100", ",", "20"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.670519387272615*^9, 3.6705193935249434`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "18", ",", "5", ",", "26", ",", "46", ",", "92", ",", "65", ",", "36", ",", 
+   "6", ",", "2", ",", "46", ",", "46", ",", "26", ",", "59", ",", "14", ",", 
+   "65", ",", "88", ",", "75", ",", "16", ",", "46", ",", "42"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.6705193937366858`*^9, 3.671485592283072*^9, 
+  3.68877916936205*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Select", "[", 
+  RowBox[{"elements", ",", "EvenQ"}], "]"}]], "Input",
+ CellChangeTimes->{{3.670519396611391*^9, 3.670519434251671*^9}, {
+  3.6714860232042294`*^9, 3.671486033381652*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "18", ",", "26", ",", "46", ",", "92", ",", "36", ",", "6", ",", "2", ",", 
+   "46", ",", "46", ",", "26", ",", "14", ",", "88", ",", "16", ",", "46", 
+   ",", "42"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.670519434624593*^9, 3.671485593542549*^9, {3.671486024293263*^9, 
+   3.671486034026031*^9}, 3.688779169437872*^9}]
+}, Open  ]],
+
+Cell["\<\
+To find all elements greater than 50, we would use a pure function:\
+\>", "Text",
+ CellChangeTimes->{{3.670519441957727*^9, 3.670519454331827*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Select", "[", 
+  RowBox[{"elements", ",", 
+   RowBox[{
+    RowBox[{"#", ">", "50"}], "&"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6705194612895937`*^9, 3.670519469193544*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"92", ",", "65", ",", "59", ",", "65", ",", "88", ",", "75"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.670519469518241*^9, 3.671485598957981*^9, 
+  3.688779169505619*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "We could have also solved this using ",
+ StyleBox["Cases", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.6705194753922853`*^9, 3.670519506194996*^9}, {
+  3.688778929922545*^9, 3.688778936497328*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Cases", "[", 
+  RowBox[{"elements", ",", 
+   RowBox[{"x_Integer", "/;", 
+    RowBox[{"x", ">", "50"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.670519508303116*^9, 3.670519525950519*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"92", ",", "65", ",", "59", ",", "65", ",", "88", ",", "75"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.670519526590487*^9, 3.671485605550599*^9, 
+  3.6887791695729733`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "You can use ",
+ StyleBox["Select", "Code"],
+ " or ",
+ StyleBox["Cases", "Code"],
+ " depending on your application. The difference is that ",
+ StyleBox["Cases", "Code"],
+ " allows you to use pattern matching, whereas ",
+ StyleBox["Select", "Code"],
+ " requires a function that returns ",
+ StyleBox["True", "Code"],
+ " or ",
+ StyleBox["False", "Code"],
+ " when applied to each element in the list. The third form of ",
+ StyleBox["Cases", "Code"],
+ " enables us to use level spec, which allows us to apply the pattern \
+recursively, in the same way that ",
+ StyleBox["ReplaceAll", "Code"],
+ " works. "
+}], "Text",
+ CellChangeTimes->{{3.671486050483885*^9, 3.671486148704691*^9}, {
+  3.671486188735558*^9, 3.6714861963429613`*^9}, {3.671486419468266*^9, 
+  3.671486424930139*^9}, {3.671486492890428*^9, 3.671486550293881*^9}, {
+  3.688778960546462*^9, 3.688778967309553*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["MapAt", "Subsection",
+ CellChangeTimes->{{3.670477568267371*^9, 3.670477570697152*^9}, {
+  3.670479246543535*^9, 3.670479247228221*^9}}],
+
+Cell[TextData[{
+ "In the last lecture, we saw the ",
+ StyleBox["Map", "Code"],
+ " function. The ",
+ StyleBox["Map", "Code"],
+ " function is actually a member of a group of map-type functions like ",
+ StyleBox["MapAt", "Code"],
+ ", ",
+ StyleBox["MapAll", "Code"],
+ ", ",
+ StyleBox["MapThread", "Code"],
+ " and ",
+ StyleBox["MapIndexed", "Code"],
+ ". Let\[CloseCurlyQuote]s take a look at ",
+ StyleBox["MapAt", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.670477574184741*^9, 3.670477649605629*^9}, {
+  3.6704792642271633`*^9, 3.670479266826*^9}, {3.67051964957802*^9, 
+  3.6705196550454283`*^9}, {3.688778990357017*^9, 3.6887789917496147`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "MapAt"}]], "Input",
+ CellChangeTimes->{{3.670477614649694*^9, 3.670477618521791*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"MapAt\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"expr\\\", \\\
+\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) \
+applies \!\(\*StyleBox[\\\"f\\\", \\\"TI\\\"]\) to the element at position \!\
+\(\*StyleBox[\\\"n\\\", \\\"TI\\\"]\) in \!\(\*StyleBox[\\\"expr\\\", \
+\\\"TI\\\"]\). If \!\(\*StyleBox[\\\"n\\\", \\\"TI\\\"]\) is negative, the \
+position is counted from the end. \\n\!\(\*RowBox[{\\\"MapAt\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"expr\\\", \\\
+\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{StyleBox[\\\"i\\\", \\\"TI\\\
+\"], \\\",\\\", StyleBox[\\\"j\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"\
+\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\) applies \
+\!\(\*StyleBox[\\\"f\\\", \\\"TI\\\"]\) to the part of \
+\!\(\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\) at position \
+\!\(\*RowBox[{\\\"{\\\", RowBox[{StyleBox[\\\"i\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"j\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \
+\\\"TR\\\"]}], \\\"}\\\"}]\). \\n\!\(\*RowBox[{\\\"MapAt\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"expr\\\", \\\
+\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"j\\\", \\\"TI\\\"], \
+StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"j\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"}\\\"}], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \
+\\\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\) applies \!\(\*StyleBox[\\\"f\\\", \
+\\\"TI\\\"]\) to parts of \!\(\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\) at \
+several positions. \\n\!\(\*RowBox[{\\\"MapAt\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"pos\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\) represents an operator form of MapAt that can be \
+applied to an expression.\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/MapAt"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.688779169667057*^9},
+ CellTags->"Info433688750369-4233843"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["MapAt", "Code"],
+ " is a function that enables us to apply a function to a specific part in an \
+expression. Let\[CloseCurlyQuote]s say we had the following list:"
+}], "Text",
+ CellChangeTimes->{{3.670477660722199*^9, 3.670477732384198*^9}, {
+  3.6704777729299803`*^9, 3.6704778006615543`*^9}, {3.6704778493184023`*^9, 
+  3.670477900225236*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"3", ",", "1"}], "}"}]], "Input",
+ CellChangeTimes->{{3.6704779009776363`*^9, 3.670477924255597*^9}, {
+  3.6704780363304367`*^9, 3.670478037275056*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"3", ",", "1"}], "}"}]], "Output",
+ CellChangeTimes->{3.670477981129301*^9, 3.6704780380175962`*^9, 
+  3.688779169754539*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Let\[CloseCurlyQuote]s use ",
+ StyleBox["MapAt", "Code"],
+ " to divide the second element by 216, which would have been useful in the \
+previous lecture when we needed to divide the second element by the size of \
+the sample space:"
+}], "Text",
+ CellChangeTimes->{{3.6704779879434757`*^9, 3.670478060854844*^9}, {
+  3.671486834809773*^9, 3.6714868519432487`*^9}, {3.6714868888464937`*^9, 
+  3.6714869142860947`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MapAt", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"#", "/", "216"}], "&"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "1"}], "}"}], ",", "2"}], "]"}]], "Input",
+ CellChangeTimes->{{3.670478065299348*^9, 3.6704780825565453`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"3", ",", 
+   FractionBox["1", "216"]}], "}"}]], "Output",
+ CellChangeTimes->{3.6704780829369507`*^9, 3.68877916982113*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Using ",
+ StyleBox["MapAt", "Code"],
+ ", you can target a computation to specific points of an expression."
+}], "Text",
+ CellChangeTimes->{{3.6704786249609127`*^9, 3.670478638730139*^9}, {
+  3.671486942719166*^9, 3.671486981875904*^9}, {3.688779069546062*^9, 
+  3.688779072640695*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["MapIndexed", "Subsection",
+ CellChangeTimes->{{3.670479251852054*^9, 3.6704792531906013`*^9}}],
+
+Cell[TextData[{
+ "Now let\[CloseCurlyQuote]s take a look at ",
+ StyleBox["MapIndexed", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.670478660770401*^9, 3.670478665944356*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "MapIndexed"}]], "Input",
+ CellChangeTimes->{{3.670478667926715*^9, 3.670478669365485*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"MapIndexed\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"expr\\\", \\\
+\"TI\\\"]}], \\\"]\\\"}]\) applies \!\(\*StyleBox[\\\"f\\\", \\\"TI\\\"]\) to \
+the elements of \!\(\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\), giving the part \
+specification of each element as a second argument to \
+\!\(\*StyleBox[\\\"f\\\", \\\"TI\\\"]\). \\n\!\(\*RowBox[{\\\"MapIndexed\\\", \
+\\\"[\\\", RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"levelspec\\\", \\\
+\"TI\\\"]}], \\\"]\\\"}]\) applies \!\(\*StyleBox[\\\"f\\\", \\\"TI\\\"]\) to \
+all parts of \!\(\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\) on levels specified \
+by \!\(\*StyleBox[\\\"levelspec\\\", \\\"TI\\\"]\). \
+\\n\!\(\*RowBox[{\\\"MapIndexed\\\", \\\"[\\\", StyleBox[\\\"f\\\", \
+\\\"TI\\\"], \\\"]\\\"}]\) represents an operator form of MapIndexed that can \
+be applied to an expression.\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/MapIndexed"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.688779169911601*^9},
+ CellTags->"Info463688750369-4233843"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["MapIndexed", "Code"],
+ " works just like ",
+ StyleBox["Map", "Code"],
+ ", but passes the current index as the second argument to ",
+ StyleBox["f", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.67047867342664*^9, 3.670478717188574*^9}, {
+  3.670479030405313*^9, 3.6704790402707376`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MapIndexed", "[", 
+  RowBox[{"f", ",", 
+   RowBox[{"{", 
+    RowBox[{"w", ",", "x", ",", "y", ",", "z"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.670478718338192*^9, 3.6704787454039907`*^9}, {
+  3.671493783969618*^9, 3.6714937913095407`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"f", "[", 
+    RowBox[{"w", ",", 
+     RowBox[{"{", "1", "}"}]}], "]"}], ",", 
+   RowBox[{"f", "[", 
+    RowBox[{"x", ",", 
+     RowBox[{"{", "2", "}"}]}], "]"}], ",", 
+   RowBox[{"f", "[", 
+    RowBox[{"y", ",", 
+     RowBox[{"{", "3", "}"}]}], "]"}], ",", 
+   RowBox[{"f", "[", 
+    RowBox[{"z", ",", 
+     RowBox[{"{", "4", "}"}]}], "]"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.670478745665959*^9, 3.670629239733015*^9, 
+  3.6714937916302547`*^9, 3.688779169988551*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Recall that when using ",
+ StyleBox["Map", "Code"],
+ " or ",
+ StyleBox["MapAt", "Code"],
+ ", only one argument is passed to the function. In the case of ",
+ StyleBox["MapIndexed", "Code"],
+ " however, two arguments are passed to the function, the first being the \
+element in the list, and the second, its index. When using pure functions:"
+}], "Text",
+ CellChangeTimes->{{3.671487172945401*^9, 3.671487374434372*^9}, {
+  3.6714874730589848`*^9, 3.671487500587413*^9}, {3.688779093598535*^9, 
+  3.688779094390649*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Function"}]], "Input",
+ CellChangeTimes->{{3.671487380173603*^9, 3.671487381909268*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Function\\\", \\\"[\\\", \
+StyleBox[\\\"body\\\", \\\"TI\\\"], \\\"]\\\"}]\) or \
+\!\(\*RowBox[{StyleBox[\\\"body\\\", \\\"TI\\\"], \\\"&\\\"}]\) is a pure \
+function. The formal parameters are # (or #1), #2, etc. \
+\\n\!\(\*RowBox[{\\\"Function\\\", \\\"[\\\", RowBox[{StyleBox[\\\"x\\\", \
+\\\"TI\\\"], \\\",\\\", StyleBox[\\\"body\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) \
+is a pure function with a single formal parameter \!\(\*StyleBox[\\\"x\\\", \
+\\\"TI\\\"]\). \\n\!\(\*RowBox[{\\\"Function\\\", \\\"[\\\", RowBox[{RowBox[{\
+\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], \
+StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"x\\\", \
+\\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\
+\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\"}], \\\",\\\", \
+StyleBox[\\\"body\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) is a pure function with a \
+list of formal parameters. \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Function"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.6887791700837393`*^9},
+ CellTags->"Info483688750370-4233843"]
+}, Open  ]],
+
+Cell[TextData[{
+ "We can refer to these arguments as ",
+ StyleBox["#1", "Code"],
+ " and ",
+ StyleBox["#2", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.671487504152001*^9, 3.671487531646851*^9}, {
+  3.688779123384848*^9, 3.688779131961162*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"#", "&"}], "[", "x", "]"}]], "Input",
+ CellChangeTimes->{{3.6714873881243563`*^9, 3.671487391546224*^9}}],
+
+Cell[BoxData["x"], "Output",
+ CellChangeTimes->{3.6714873918806877`*^9, 3.688779170210292*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"#1", ",", "#2"}], "}"}], "&"}], "[", 
+  RowBox[{"x", ",", "y"}], "]"}]], "Input",
+ CellChangeTimes->{{3.671487394265555*^9, 3.671487402666358*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"x", ",", "y"}], "}"}]], "Output",
+ CellChangeTimes->{3.671487402970001*^9, 3.688779170314766*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"#1", ",", "#1"}], "}"}], "&"}], "[", 
+  RowBox[{"x", ",", "y"}], "]"}]], "Input",
+ CellChangeTimes->{{3.671487394265555*^9, 3.671487402666358*^9}, {
+  3.6714875399273787`*^9, 3.671487541556446*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"x", ",", "x"}], "}"}]], "Output",
+ CellChangeTimes->{3.671487541897415*^9, 3.6887791703933372`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"#2", ",", "#1"}], "}"}], "&"}], "[", 
+  RowBox[{"x", ",", "y"}], "]"}]], "Input",
+ CellChangeTimes->{{3.671487394265555*^9, 3.671487402666358*^9}, {
+  3.6714875399273787`*^9, 3.671487547886413*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"y", ",", "x"}], "}"}]], "Output",
+ CellChangeTimes->{3.671487551081872*^9, 3.68877917046148*^9}]
+}, Open  ]],
+
+Cell["If you had the first 12 Fibonacci values:", "Text",
+ CellChangeTimes->{{3.670479047921509*^9, 3.670479073919549*^9}, {
+   3.6714875748433313`*^9, 3.671487592949016*^9}, 3.688779148640499*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"fib", "=", 
+  RowBox[{"Fibonacci", "[", 
+   RowBox[{"Range", "[", "12", "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.670479076068316*^9, 3.670479084641032*^9}, 
+   3.67096574378916*^9, {3.688779153465949*^9, 3.688779154104809*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "1", ",", "2", ",", "3", ",", "5", ",", "8", ",", "13", ",", "21",
+    ",", "34", ",", "55", ",", "89", ",", "144"}], "}"}]], "Output",
+ CellChangeTimes->{3.6704790851833344`*^9, 3.670965646812879*^9, 
+  3.670965744295652*^9, 3.671487611399523*^9, 3.688779170541617*^9}]
+}, Open  ]],
+
+Cell["\<\
+And you wanted to index each one from the beginning, you could do it as \
+follows:\
+\>", "Text",
+ CellChangeTimes->{{3.670479087600885*^9, 3.67047910631984*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MapIndexed", "[", 
+  RowBox[{"f", ",", "fib"}], "]"}]], "Input",
+ CellChangeTimes->{{3.671487691579156*^9, 3.6714876990849247`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"f", "[", 
+    RowBox[{"1", ",", 
+     RowBox[{"{", "1", "}"}]}], "]"}], ",", 
+   RowBox[{"f", "[", 
+    RowBox[{"1", ",", 
+     RowBox[{"{", "2", "}"}]}], "]"}], ",", 
+   RowBox[{"f", "[", 
+    RowBox[{"2", ",", 
+     RowBox[{"{", "3", "}"}]}], "]"}], ",", 
+   RowBox[{"f", "[", 
+    RowBox[{"3", ",", 
+     RowBox[{"{", "4", "}"}]}], "]"}], ",", 
+   RowBox[{"f", "[", 
+    RowBox[{"5", ",", 
+     RowBox[{"{", "5", "}"}]}], "]"}], ",", 
+   RowBox[{"f", "[", 
+    RowBox[{"8", ",", 
+     RowBox[{"{", "6", "}"}]}], "]"}], ",", 
+   RowBox[{"f", "[", 
+    RowBox[{"13", ",", 
+     RowBox[{"{", "7", "}"}]}], "]"}], ",", 
+   RowBox[{"f", "[", 
+    RowBox[{"21", ",", 
+     RowBox[{"{", "8", "}"}]}], "]"}], ",", 
+   RowBox[{"f", "[", 
+    RowBox[{"34", ",", 
+     RowBox[{"{", "9", "}"}]}], "]"}], ",", 
+   RowBox[{"f", "[", 
+    RowBox[{"55", ",", 
+     RowBox[{"{", "10", "}"}]}], "]"}], ",", 
+   RowBox[{"f", "[", 
+    RowBox[{"89", ",", 
+     RowBox[{"{", "11", "}"}]}], "]"}], ",", 
+   RowBox[{"f", "[", 
+    RowBox[{"144", ",", 
+     RowBox[{"{", "12", "}"}]}], "]"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.671487654687892*^9, {3.67148769942625*^9, 3.671487707785913*^9}, 
+   3.6887791706122627`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Grid", "[", 
+  RowBox[{
+   RowBox[{"Prepend", "[", 
+    RowBox[{
+     RowBox[{"MapIndexed", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"#2", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], ",", "#1"}], "}"}], "&"}], ",", 
+       "fib"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<Index\>\"", ",", "\"\<Fib Number\>\""}], "}"}]}], "]"}], 
+   ",", 
+   RowBox[{"Frame", "\[Rule]", "All"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6704791075477457`*^9, 3.670479156981286*^9}, {
+   3.670965634086219*^9, 3.6709656834418287`*^9}, 3.671487604575386*^9}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"Index\"\>", "\<\"Fib Number\"\>"},
+    {"1", "1"},
+    {"2", "1"},
+    {"3", "2"},
+    {"4", "3"},
+    {"5", "5"},
+    {"6", "8"},
+    {"7", "13"},
+    {"8", "21"},
+    {"9", "34"},
+    {"10", "55"},
+    {"11", "89"},
+    {"12", "144"}
+   },
+   AutoDelete->False,
+   GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{{3.670479139375371*^9, 3.670479157964231*^9}, {
+   3.670965660458765*^9, 3.6709656836827374`*^9}, 3.6709657466233387`*^9, 
+   3.688779170689262*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Basically, whenever you need to loop over the elements in a map and the \
+function needs to know the index of the element, then ",
+ StyleBox["MapIndexed", "Code"],
+ " is your friend."
+}], "Text",
+ CellChangeTimes->{{3.670479172167158*^9, 3.670479221712945*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Thread", "Subsection",
+ CellChangeTimes->{{3.670480266121722*^9, 3.670480266682942*^9}}],
+
+Cell[TextData[{
+ "A function that you\[CloseCurlyQuote]ll probably hear a lot about as you \
+dive into ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " is the ",
+ StyleBox["Thread", "Code"],
+ " function:"
+}], "Text",
+ CellChangeTimes->{{3.670480274783165*^9, 3.6704802943582373`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Thread"}]], "Input",
+ CellChangeTimes->{{3.6704802951018257`*^9, 3.670480296372797*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Thread\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\"[\\\", StyleBox[\\\"args\\\", \\\
+\"TI\\\"], \\\"]\\\"}], \\\"]\\\"}]\) \\\"threads\\\" \
+\!\(\*StyleBox[\\\"f\\\", \\\"TI\\\"]\) over any lists that appear in \
+\!\(\*StyleBox[\\\"args\\\", \\\"TI\\\"]\). \\n\!\(\*RowBox[{\\\"Thread\\\", \
+\\\"[\\\", RowBox[{RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\"[\\\", \
+StyleBox[\\\"args\\\", \\\"TI\\\"], \\\"]\\\"}], \\\",\\\", \
+StyleBox[\\\"h\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) threads \!\(\*StyleBox[\\\"f\
+\\\", \\\"TI\\\"]\) over any objects with head \!\(\*StyleBox[\\\"h\\\", \
+\\\"TI\\\"]\) that appear in \!\(\*StyleBox[\\\"args\\\", \\\"TI\\\"]\). \
+\\n\!\(\*RowBox[{\\\"Thread\\\", \\\"[\\\", \
+RowBox[{RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\"[\\\", StyleBox[\\\"args\
+\\\", \\\"TI\\\"], \\\"]\\\"}], \\\",\\\", StyleBox[\\\"h\\\", \\\"TI\\\"], \
+\\\",\\\", StyleBox[\\\"n\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) threads \
+\!\(\*StyleBox[\\\"f\\\", \\\"TI\\\"]\) over objects with head \
+\!\(\*StyleBox[\\\"h\\\", \\\"TI\\\"]\) that appear in the first \
+\!\(\*StyleBox[\\\"n\\\", \\\"TI\\\"]\) \!\(\*StyleBox[\\\"args\\\", \\\"TI\\\
+\"]\). \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Thread"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.688779170789854*^9},
+ CellTags->"Info563688750370-4233843"]
+}, Open  ]],
+
+Cell[TextData[{
+ "If you had a function ",
+ StyleBox["f", "Code"],
+ ", that took a number, a symbol and a greek letter, you could apply ",
+ StyleBox["f", "Code"],
+ " to each of 1, a, alpha, 2, b, beta and 3, c, gamma as follows:"
+}], "Text",
+ CellChangeTimes->{{3.6704813214748087`*^9, 3.67048133111605*^9}, {
+  3.670481376792017*^9, 3.6704813847568398`*^9}, {3.6704814298360987`*^9, 
+  3.670481469301691*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Thread", "[", 
+  RowBox[{"f", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\[Alpha]", ",", "\[Beta]", ",", "\[Gamma]"}], "}"}]}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.670481335358883*^9, 3.670481336527652*^9}, {
+  3.670481388755025*^9, 3.670481396738824*^9}, {3.670629033940769*^9, 
+  3.670629037180496*^9}, {3.6706291449399443`*^9, 3.670629147035564*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"f", "[", 
+    RowBox[{"1", ",", "a", ",", "\[Alpha]"}], "]"}], ",", 
+   RowBox[{"f", "[", 
+    RowBox[{"2", ",", "b", ",", "\[Beta]"}], "]"}], ",", 
+   RowBox[{"f", "[", 
+    RowBox[{"3", ",", "c", ",", "\[Gamma]"}], "]"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.670481397383355*^9, 3.670481473270831*^9, 
+  3.670629037386404*^9, 3.6706291477108088`*^9, 3.688779170896819*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "You can also use ",
+ StyleBox["Thread", "Code"],
+ " to zip lists together by making ",
+ StyleBox["f", "Code"],
+ " the ",
+ StyleBox["List", "Code"],
+ " function:"
+}], "Text",
+ CellChangeTimes->{{3.670481064128797*^9, 3.6704810708889437`*^9}, 
+   3.6704812084674263`*^9, {3.671487983338667*^9, 3.671487998962484*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Thread", "[", 
+  RowBox[{"List", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\[Alpha]", ",", "\[Beta]", ",", "\[Gamma]"}], "}"}]}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.670481335358883*^9, 3.670481336527652*^9}, {
+  3.670481388755025*^9, 3.670481396738824*^9}, {3.670629033940769*^9, 
+  3.670629037180496*^9}, {3.6706291449399443`*^9, 3.670629147035564*^9}, {
+  3.671487935462397*^9, 3.671487956877164*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "a", ",", "\[Alpha]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "b", ",", "\[Beta]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "c", ",", "\[Gamma]"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.6714879403580427`*^9, 3.6714879571816893`*^9}, 
+   3.688779170972089*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "If you have a list of lists and you want to apply the function to \
+corresponding elements from the sublists, you would use ",
+ StyleBox["MapThread", "Code"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.671488199975979*^9, 3.671488236469318*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "MapThread"}]], "Input",
+ CellChangeTimes->{{3.67048166582347*^9, 3.6704816677318783`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"MapThread\\\", \\\"[\\\", RowBox[{StyleBox[\
+\\\"f\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"{\\\
+\", RowBox[{SubscriptBox[StyleBox[\\\"a\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"a\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"b\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"b\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"}\\\"}], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \
+\\\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\) gives \!\(\*RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\"[\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"a\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"b\\\", \\\"TI\\\"], \
+StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"]\\\"}], \\\",\\\", RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \
+\\\"[\\\", RowBox[{SubscriptBox[StyleBox[\\\"a\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"b\\\", \
+\\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\
+\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"]\\\"}], \\\",\\\", StyleBox[\\\"\
+\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\"}]\). \\n\!\(\*RowBox[{\\\"MapThread\
+\\\", \\\"[\\\", RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\
+\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"expr\\\", \\\"TI\\\"], StyleBox[\
+\\\"1\\\", \\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"expr\\\", \
+\\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\
+\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\"}], \\\",\\\", StyleBox[\\\"n\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\) applies \!\(\*StyleBox[\\\"f\\\", \\\"TI\\\"]\) \
+to the parts of the \!\(\*SubscriptBox[StyleBox[\\\"expr\\\", \\\"TI\\\"], \
+StyleBox[\\\"i\\\", \\\"TI\\\"]]\) at level \!\(\*StyleBox[\\\"n\\\", \
+\\\"TI\\\"]\). \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/MapThread"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.6887791710742292`*^9},
+ CellTags->"Info593688750371-4233843"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MapThread", "[", 
+  RowBox[{"f", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\[Alpha]", ",", "\[Beta]", ",", "\[Gamma]"}], "}"}]}], "}"}]}],
+   "]"}]], "Input",
+ CellChangeTimes->{{3.670481754498137*^9, 3.670481766080656*^9}, {
+   3.670629092667161*^9, 3.670629110803323*^9}, 3.670629190779497*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"f", "[", 
+    RowBox[{"1", ",", "a", ",", "\[Alpha]"}], "]"}], ",", 
+   RowBox[{"f", "[", 
+    RowBox[{"2", ",", "b", ",", "\[Beta]"}], "]"}], ",", 
+   RowBox[{"f", "[", 
+    RowBox[{"3", ",", "c", ",", "\[Gamma]"}], "]"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.670481766834259*^9, {3.67062909916197*^9, 3.670629111315016*^9}, 
+   3.67062919103697*^9, 3.6887791711803627`*^9}]
+}, Open  ]],
+
+Cell["\<\
+So for instance, if you wanted to divide elements of a list by the \
+corresponding elements of a second list, you could do:\
+\>", "Text",
+ CellChangeTimes->{{3.671489068073607*^9, 3.6714890971689796`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MapThread", "[", 
+  RowBox[{"Divide", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", "3", ",", "4"}], "}"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.671488863532233*^9, 3.671488941165259*^9}, {
+  3.671488973764505*^9, 3.6714890085315113`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox["1", "2"], ",", 
+   FractionBox["2", "3"], ",", 
+   FractionBox["3", "4"]}], "}"}]], "Output",
+ CellChangeTimes->{{3.671488975686707*^9, 3.671489009275569*^9}, 
+   3.688779171256566*^9}]
+}, Open  ]],
+
+Cell["Of course you could have done this as follows:", "Text",
+ CellChangeTimes->{{3.671489107776845*^9, 3.6714891264802847`*^9}, {
+  3.6887792821863203`*^9, 3.688779290866343*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{"1", ",", "2", ",", "3"}], "}"}], "/", 
+  RowBox[{"{", 
+   RowBox[{"2", ",", "3", ",", "4"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.6714890994629593`*^9, 3.67148910461607*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox["1", "2"], ",", 
+   FractionBox["2", "3"], ",", 
+   FractionBox["3", "4"]}], "}"}]], "Output",
+ CellChangeTimes->{3.671489105054714*^9, 3.688779171364551*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Divide happens to have been defined this way in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ". But often we need to use an operator that isn\[CloseCurlyQuote]t \
+vectorized this way. That\[CloseCurlyQuote]s when ",
+ StyleBox["MapThread", "Code"],
+ " comes to the rescue. "
+}], "Text",
+ CellChangeTimes->{{3.671489129952187*^9, 3.6714892359569817`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Summary", "Subsection",
+ CellChangeTimes->{{3.6887793142257223`*^9, 3.688779315161771*^9}}],
+
+Cell[TextData[{
+ "In this lecture we covered variants of the ",
+ StyleBox["Map", "Code"],
+ " and ",
+ StyleBox["Thread", "Code"],
+ " functions. We\[CloseCurlyQuote]ll dive deeper into more functional \
+programming tools in the next lecture. See you at the next lecture!"
+}], "Text",
+ CellChangeTimes->{{3.671489290606097*^9, 3.671489343186902*^9}, {
+  3.671489389961582*^9, 3.671489436488755*^9}, {3.6714894832903*^9, 
+  3.671489554380971*^9}, {3.68877932540979*^9, 3.6887793315855513`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1399, 855},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info373688750369-3364626"->{
+  Cell[1842, 53, 2727, 42, 173, "Print",
+   CellTags->"Info373688750369-3364626"]},
+ "Info383688750369-3364626"->{
+  Cell[4935, 112, 1431, 25, 101, "Print",
+   CellTags->"Info383688750369-3364626"]},
+ "Info433688750369-4233843"->{
+  Cell[11101, 294, 2592, 40, 125, "Print",
+   CellTags->"Info433688750369-4233843"]},
+ "Info463688750369-4233843"->{
+  Cell[16139, 418, 1271, 22, 101, "Print",
+   CellTags->"Info463688750369-4233843"]},
+ "Info483688750370-4233843"->{
+  Cell[19264, 503, 1247, 22, 101, "Print",
+   CellTags->"Info483688750370-4233843"]},
+ "Info563688750370-4233843"->{
+  Cell[26925, 756, 1497, 26, 101, "Print",
+   CellTags->"Info563688750370-4233843"]},
+ "Info593688750371-4233843"->{
+  Cell[31608, 883, 2490, 38, 77, "Print",
+   CellTags->"Info593688750371-4233843"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info373688750369-3364626", 38013, 1051},
+ {"Info383688750369-3364626", 38128, 1054},
+ {"Info433688750369-4233843", 38244, 1057},
+ {"Info463688750369-4233843", 38361, 1060},
+ {"Info483688750370-4233843", 38478, 1063},
+ {"Info563688750370-4233843", 38595, 1066},
+ {"Info593688750371-4233843", 38712, 1069}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[422, 15, 109, 1, 80, "Section"],
+Cell[534, 18, 749, 13, 109, "Text"],
+Cell[CellGroupData[{
+Cell[1308, 35, 94, 1, 54, "Subsection"],
+Cell[1405, 38, 293, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[1723, 49, 116, 2, 39, "Input"],
+Cell[1842, 53, 2727, 42, 173, "Print",
+ CellTags->"Info373688750369-3364626"]
+}, Open  ]],
+Cell[4584, 98, 206, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[4815, 108, 117, 2, 39, "Input"],
+Cell[4935, 112, 1431, 25, 101, "Print",
+ CellTags->"Info383688750369-3364626"]
+}, Open  ]],
+Cell[6381, 140, 336, 8, 37, "Text"],
+Cell[CellGroupData[{
+Cell[6742, 152, 191, 4, 39, "Input"],
+Cell[6936, 158, 374, 8, 39, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7347, 171, 210, 4, 39, "Input"],
+Cell[7560, 177, 366, 8, 39, "Output"]
+}, Open  ]],
+Cell[7941, 188, 157, 3, 37, "Text"],
+Cell[CellGroupData[{
+Cell[8123, 195, 202, 5, 39, "Input"],
+Cell[8328, 202, 211, 5, 39, "Output"]
+}, Open  ]],
+Cell[8554, 210, 219, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[8798, 220, 213, 5, 39, "Input"],
+Cell[9014, 227, 213, 5, 39, "Output"]
+}, Open  ]],
+Cell[9242, 235, 889, 23, 85, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10168, 263, 142, 2, 54, "Subsection"],
+Cell[10313, 267, 646, 19, 61, "Text"],
+Cell[CellGroupData[{
+Cell[10984, 290, 114, 2, 39, "Input"],
+Cell[11101, 294, 2592, 40, 125, "Print",
+ CellTags->"Info433688750369-4233843"]
+}, Open  ]],
+Cell[13708, 337, 372, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[14105, 348, 191, 4, 39, "Input"],
+Cell[14299, 354, 164, 4, 39, "Output"]
+}, Open  ]],
+Cell[14478, 361, 434, 9, 61, "Text"],
+Cell[CellGroupData[{
+Cell[14937, 374, 254, 7, 39, "Input"],
+Cell[15194, 383, 162, 4, 57, "Output"]
+}, Open  ]],
+Cell[15371, 390, 303, 7, 37, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15711, 402, 100, 1, 54, "Subsection"],
+Cell[15814, 405, 178, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[16017, 414, 119, 2, 39, "Input"],
+Cell[16139, 418, 1271, 22, 101, "Print",
+ CellTags->"Info463688750369-4233843"]
+}, Open  ]],
+Cell[17425, 443, 315, 9, 37, "Text"],
+Cell[CellGroupData[{
+Cell[17765, 456, 274, 6, 39, "Input"],
+Cell[18042, 464, 526, 16, 39, "Output"]
+}, Open  ]],
+Cell[18583, 483, 536, 12, 61, "Text"],
+Cell[CellGroupData[{
+Cell[19144, 499, 117, 2, 39, "Input"],
+Cell[19264, 503, 1247, 22, 101, "Print",
+ CellTags->"Info483688750370-4233843"]
+}, Open  ]],
+Cell[20526, 528, 247, 8, 37, "Text"],
+Cell[CellGroupData[{
+Cell[20798, 540, 140, 3, 39, "Input"],
+Cell[20941, 545, 94, 1, 39, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21072, 551, 212, 6, 39, "Input"],
+Cell[21287, 559, 137, 3, 39, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21461, 567, 263, 7, 39, "Input"],
+Cell[21727, 576, 139, 3, 39, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21903, 584, 263, 7, 39, "Input"],
+Cell[22169, 593, 136, 3, 39, "Output"]
+}, Open  ]],
+Cell[22320, 599, 197, 2, 37, "Text"],
+Cell[CellGroupData[{
+Cell[22542, 605, 258, 5, 39, "Input"],
+Cell[22803, 612, 322, 6, 39, "Output"]
+}, Open  ]],
+Cell[23140, 621, 171, 4, 37, "Text"],
+Cell[CellGroupData[{
+Cell[23336, 629, 156, 3, 39, "Input"],
+Cell[23495, 634, 1261, 41, 66, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24793, 680, 633, 18, 39, "Input"],
+Cell[25429, 700, 633, 22, 322, "Output"]
+}, Open  ]],
+Cell[26077, 725, 279, 6, 37, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26393, 736, 94, 1, 54, "Subsection"],
+Cell[26490, 739, 290, 9, 37, "Text"],
+Cell[CellGroupData[{
+Cell[26805, 752, 117, 2, 39, "Input"],
+Cell[26925, 756, 1497, 26, 101, "Print",
+ CellTags->"Info563688750370-4233843"]
+}, Open  ]],
+Cell[28437, 785, 410, 9, 37, "Text"],
+Cell[CellGroupData[{
+Cell[28872, 798, 539, 13, 39, "Input"],
+Cell[29414, 813, 430, 10, 39, "Output"]
+}, Open  ]],
+Cell[29859, 826, 333, 10, 37, "Text"],
+Cell[CellGroupData[{
+Cell[30217, 840, 591, 14, 39, "Input"],
+Cell[30811, 856, 376, 10, 39, "Output"]
+}, Open  ]],
+Cell[31202, 869, 259, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[31486, 879, 119, 2, 39, "Input"],
+Cell[31608, 883, 2490, 38, 77, "Print",
+ CellTags->"Info593688750371-4233843"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[34135, 926, 494, 13, 39, "Input"],
+Cell[34632, 941, 434, 11, 39, "Output"]
+}, Open  ]],
+Cell[35081, 955, 215, 4, 37, "Text"],
+Cell[CellGroupData[{
+Cell[35321, 963, 382, 10, 39, "Input"],
+Cell[35706, 975, 241, 7, 57, "Output"]
+}, Open  ]],
+Cell[35962, 985, 181, 2, 37, "Text"],
+Cell[CellGroupData[{
+Cell[36168, 991, 230, 6, 39, "Input"],
+Cell[36401, 999, 213, 6, 57, "Output"]
+}, Open  ]],
+Cell[36629, 1008, 379, 9, 61, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37045, 1022, 97, 1, 54, "Subsection"],
+Cell[37145, 1025, 490, 10, 61, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

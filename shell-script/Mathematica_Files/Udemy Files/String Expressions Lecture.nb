@@ -1,0 +1,1372 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     47827,       1364]
+NotebookOptionsPosition[     41648,       1169]
+NotebookOutlinePosition[     43211,       1213]
+CellTagsIndexPosition[     42837,       1203]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["String Expressions", "Section",
+ CellChangeTimes->{{3.67345789167833*^9, 3.673457894380693*^9}, {
+  3.674174410060862*^9, 3.674174411076706*^9}}],
+
+Cell["\<\
+Hello and welcome to our lecture on string expressions. A super important \
+feature of strings is the ability to match on patterns. In this lecture, we\
+\[CloseCurlyQuote]ll give a brief overview of string expressions and regular \
+expressions. Regular expressions are complicated beasts and we could spend an \
+entire course on them; a full tutorial on regular expressions is beyond the \
+scope of this course. Instead, the goal for this lecture is to enable you to \
+build and use simple string expressions. We will also point you to the \
+relevant documentation for building more complex string expressions.\
+\>", "Text",
+ CellChangeTimes->{{3.674174396926283*^9, 3.6741747320108643`*^9}, 
+   3.67501437298517*^9, 3.675117496435914*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Introduction", "Subsection",
+ CellChangeTimes->{{3.67345789167833*^9, 3.673457894380693*^9}, {
+  3.674174410060862*^9, 3.674174411076706*^9}, {3.689035523459711*^9, 
+  3.68903552521128*^9}}],
+
+Cell[TextData[{
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " provides two ways to represent string patterns; you can use ",
+ StyleBox["StringExpression", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.67345790030844*^9, 3.673457900428421*^9}, {
+   3.673458092829398*^9, 3.6734581092763243`*^9}, {3.6734581570602217`*^9, 
+   3.673458164220416*^9}, {3.673458207930871*^9, 3.67345820966527*^9}, 
+   3.6734584447865877`*^9, {3.673458490876495*^9, 3.673458523858328*^9}, {
+   3.6734729398678703`*^9, 3.673472952345892*^9}, {3.6741735060338497`*^9, 
+   3.674173577807601*^9}, 3.674174623360067*^9, {3.6741747426900883`*^9, 
+   3.6741747453939657`*^9}, {3.689035564672717*^9, 3.689035566432867*^9}, 
+   3.68903560317481*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "StringExpression"}]], "Input",
+ CellChangeTimes->{{3.673458321275035*^9, 3.673458326428191*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{SubscriptBox[StyleBox[\\\"s\\\", \\\"TI\\\"], \
+StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\"~~\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"s\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]], \\\"~~\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}]}]\) or \
+\!\(\*RowBox[{\\\"StringExpression\\\", \\\"[\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"s\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"s\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"]\\\"}]\) represents a sequence of strings and symbolic \
+string objects \!\(\*SubscriptBox[StyleBox[\\\"s\\\", \\\"TI\\\"], \
+StyleBox[\\\"i\\\", \\\"TI\\\"]]\). \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/StringExpression"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.67345857515853*^9},
+ CellTags->"Info-05ed5a32-139b-4706-b8ed-e0e2b7dd24bc"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Or you can use ",
+ StyleBox["RegularExpression", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.674173580927246*^9, 3.674173587422882*^9}, {
+  3.674173837016555*^9, 3.6741738419269257`*^9}, {3.6890355754972267`*^9, 
+  3.689035600985279*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "RegularExpression"}]], "Input",
+ CellChangeTimes->{{3.674173593890501*^9, 3.6741735956202507`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"RegularExpression\\\", \\\"[\\\", \
+StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"regex\\\\\\\",\\\\\\\"TI\
+\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\"]\\\"}]\\) \
+represents the generalized regular expression specified by the string \\\"\\!\
+\\(\\*\\nStyleBox[\\\"regex\\\", \\\"TI\\\"]\\)\\\". \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/RegularExpression"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.6741735976914186`*^9},
+ CellTags->"Info-1513593c-d67f-4ff7-90ad-73b36b99976e"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Technically, regular expressions in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " are actually a type of ",
+ StyleBox["StringExpression", "Code"],
+ ". If you\[CloseCurlyQuote]ve ever programmed in another language, you may \
+have already been exposed to regular expressions."
+}], "Text",
+ CellChangeTimes->{{3.674174178996138*^9, 3.6741742015323687`*^9}, {
+  3.674175119798046*^9, 3.67417512023783*^9}, {3.689035586943693*^9, 
+  3.689035587881372*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Phone Number Example", "Subsection",
+ CellChangeTimes->{{3.674177880340974*^9, 3.674177883356835*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Method 1: StringExpression", "Subsubsection",
+ CellChangeTimes->{{3.689037483429606*^9, 3.6890374884518547`*^9}}],
+
+Cell[TextData[{
+ "Let\[CloseCurlyQuote]s look at an example of using ",
+ StyleBox["StringExpression", "Code"],
+ ". Suppose we have a list of names and phone numbers:"
+}], "Text",
+ CellChangeTimes->{{3.673458582069984*^9, 3.673458595276009*^9}, {
+  3.673459944877211*^9, 3.6734599503569717`*^9}, {3.674173957931376*^9, 
+  3.674173990770361*^9}, {3.6890356118643713`*^9, 3.689035614167274*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "directory", "=", "\[IndentingNewLine]", 
+   "\"\<Shad: (217) 555-1234\nSahand: (217) 555-2345\nJoe: (217) \
+555-3456\>\""}], ";"}]], "Input",
+ CellChangeTimes->{{3.6734585968303967`*^9, 3.673458676341008*^9}}],
+
+Cell[TextData[{
+ "First, let\[CloseCurlyQuote]s build a ",
+ StyleBox["StringExpression", "Code"],
+ " that matches a pattern. To test our ",
+ StyleBox["StringExpression", "Code"],
+ ", we\[CloseCurlyQuote]ll use ",
+ StyleBox["StringMatchQ", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.674175718315461*^9, 3.6741757423778687`*^9}, {
+  3.6890356204093637`*^9, 3.689035627206003*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "StringMatchQ"}]], "Input",
+ CellChangeTimes->{{3.674175743134758*^9, 3.674175744544201*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"StringMatchQ\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\
+\\\\\"TI\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\",\\\", \
+StyleBox[\\\"patt\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) tests whether \\\"\\!\\(\
+\\*\\nStyleBox[\\\"string\\\", \\\"TI\\\"]\\)\\\" matches the string pattern \
+\\!\\(\\*StyleBox[\\\"patt\\\", \\\"TI\\\"]\\). \
+\\n\\!\\(\\*RowBox[{\\\"StringMatchQ\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\
+\\\\\"TI\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\",\\\", \
+RowBox[{\\\"RegularExpression\\\", \\\"[\\\", StyleBox[\\\"\\\\\\\"\\\\!\\\\(\
+\\\\*StyleBox[\\\\\\\"regex\\\\\\\",\\\\\\\"TI\\\\\\\"]\\\\)\\\\\\\"\\\", \
+ShowStringCharacters->True], \\\"]\\\"}]}], \\\"]\\\"}]\\) tests whether \\\"\
+\\!\\(\\*\\nStyleBox[\\\"string\\\", \\\"TI\\\"]\\)\\\" matches the specified \
+regular expression. \\n\\!\\(\\*RowBox[{\\\"StringMatchQ\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"s\\\", \
+\\\"TI\\\"], StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"s\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\
+\"}], \\\",\\\", StyleBox[\\\"p\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) gives the \
+list of results for each of the \\!\\(\\*SubscriptBox[StyleBox[\\\"s\\\", \
+\\\"TI\\\"], StyleBox[\\\"i\\\", \\\"TI\\\"]]\\). \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/StringMatchQ"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.674175744868685*^9},
+ CellTags->"Info-def6a27c-e844-46eb-a5e5-b9108f27ad30"]
+}, Open  ]],
+
+Cell["\<\
+Let\[CloseCurlyQuote]s say that we want to extract the phone numbers from \
+this string. In order to do that, we have to construct a StringExpression \
+that matches the pattern: \
+\>", "Text",
+ CellChangeTimes->{{3.6734599587402697`*^9, 3.673460035175769*^9}, 
+   3.6741740014981337`*^9, {3.6890356448454247`*^9, 3.689035677326495*^9}, {
+   3.689035725282826*^9, 3.689035726198957*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["open parentheses", "Item",
+ CellChangeTimes->{{3.6890356895847*^9, 3.689035692737084*^9}}],
+
+Cell["3 numbers", "Item",
+ CellChangeTimes->{{3.6890356895847*^9, 3.689035699954673*^9}}],
+
+Cell["close parentheses", "Item",
+ CellChangeTimes->{{3.6890356895847*^9, 3.6890357031429567`*^9}}],
+
+Cell["space", "Item",
+ CellChangeTimes->{{3.6890356895847*^9, 3.689035710421859*^9}}],
+
+Cell["3 numbers", "Item",
+ CellChangeTimes->{{3.6890356895847*^9, 3.689035714144322*^9}}],
+
+Cell["dash", "Item",
+ CellChangeTimes->{{3.6890356895847*^9, 3.689035718714024*^9}}],
+
+Cell["4 numbers", "Item",
+ CellChangeTimes->{{3.6890356895847*^9, 3.689035719828129*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Let's open the documentation center for ",
+ ButtonBox["General String Patterns",
+  BaseStyle->"Link",
+  ButtonData->"paclet:tutorial/WorkingWithStringPatterns#316252289"],
+ ". Here are the general string patterns that ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " provides: "
+}], "Text",
+ CellChangeTimes->{{3.689035935411923*^9, 3.689035951947126*^9}, {
+   3.689036009570776*^9, 3.6890360152583323`*^9}, 3.68903609816768*^9, {
+   3.689036198132277*^9, 3.689036198136094*^9}}],
+
+Cell[BoxData[GridBox[{
+   {"\"\<\!\(\*
+StyleBox[\"string\", \"TI\"]\)\>\"", Cell[
+    "a literal string of characters ", "TableText"]},
+   {"_", Cell["any single character ", "TableText"]},
+   {"__", Cell["any substring of one or more characters ", "TableText"]},
+   {"___", Cell["any substring of zero or more characters ", "TableText"]},
+   {
+    RowBox[{
+     StyleBox[
+      RowBox[{
+       StyleBox["x", "TI"], "_"}]], Cell[",", "TableText"], 
+     StyleBox[
+      RowBox[{
+       StyleBox["x", "TI"], "__"}]], Cell[",", "TableText"], 
+     StyleBox[
+      RowBox[{
+       StyleBox["x", "TI"], "___"}]]}], Cell[TextData[{
+     "substrings given the name ",
+     Cell[BoxData[
+      StyleBox["x", "TI"]], "InlineFormula"]
+    }], "TableText"]},
+   {
+    RowBox[{
+     StyleBox["x", "TI"], ":", 
+     StyleBox["pattern", "TI"]}], Cell[TextData[{
+     "pattern given the name ",
+     Cell[BoxData[
+      StyleBox["x", "TI"]], "InlineFormula"]
+    }], "TableText"]},
+   {
+    RowBox[{
+     StyleBox["pattern", "TI"], ".."}], Cell[
+    "pattern repeated one or more times ", "TableText"]},
+   {
+    RowBox[{
+     StyleBox["pattern", "TI"], "..."}], Cell[
+    "pattern repeated zero or more times ", "TableText"]},
+   {
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        SubscriptBox[
+         StyleBox["patt", "TI"], 
+         StyleBox["1", "TR"]], ",", 
+        SubscriptBox[
+         StyleBox["patt", "TI"], 
+         StyleBox["2", "TR"]], ",", 
+        StyleBox["\[Ellipsis]", "TR"]}], "}"}], Cell[" or ", "TableText"], 
+      SubscriptBox[
+       StyleBox["patt", "TI"], 
+       StyleBox["1", "TR"]]}], "|", 
+     SubscriptBox[
+      StyleBox["patt", "TI"], 
+      StyleBox["2", "TR"]], "|", 
+     StyleBox["\[Ellipsis]", "TR"]}], Cell[TextData[{
+     "a pattern matching at least one of the ",
+     Cell[BoxData[
+      SubscriptBox[
+       StyleBox["patt", "TI"], 
+       StyleBox["i", "TI"]]], "InlineFormula"]
+    }], "TableText"]},
+   {
+    RowBox[{
+     StyleBox["patt", "TI"], "/;", 
+     StyleBox["cond", "TI"]}], Cell[TextData[{
+     "a pattern for which ",
+     Cell[BoxData[
+      StyleBox["cond", "TI"]], "InlineFormula"],
+     " evaluates to ",
+     Cell[BoxData["True"], "InlineFormula"]
+    }], "TableText"]},
+   {
+    RowBox[{
+     StyleBox["pattern", "TI"], "?", 
+     StyleBox["test", "TI"]}], Cell[TextData[{
+     "a pattern for which ",
+     Cell[BoxData[
+      StyleBox["test", "TI"]], "InlineFormula"],
+     " yields ",
+     Cell[BoxData["True"], "InlineFormula"],
+     " for each character "
+    }], "TableText"]},
+   {
+    ButtonBox["Whitespace",
+     BaseStyle->"Link",
+     ButtonData->"paclet:ref/Whitespace"], Cell[
+    "a sequence of whitespace characters ", "TableText"]},
+   {
+    ButtonBox["NumberString",
+     BaseStyle->"Link",
+     ButtonData->"paclet:ref/NumberString"], Cell[
+    "the characters of a number ", "TableText"]},
+   {
+    RowBox[{
+     ButtonBox["DatePattern",
+      BaseStyle->"Link",
+      ButtonData->"paclet:ref/DatePattern"], "[", 
+     StyleBox["spec", "TI"], "]"}], Cell[
+    "the characters of a date", "TableText"]},
+   {
+    StyleBox["charobj", "TI"], Cell[
+    "an object representing a character class (see below) ", "TableText"]},
+   {
+    RowBox[{
+     ButtonBox["RegularExpression",
+      BaseStyle->"Link",
+      ButtonData->"paclet:ref/RegularExpression"], "[", "\"\<\!\(\*
+StyleBox[\"regexp\", \"TI\"]\)\>\"", "]"}], Cell[
+    "substring matching a regular expression ", "TableText"]},
+   {
+    RowBox[{
+     ButtonBox["StringExpression",
+      BaseStyle->"Link",
+      ButtonData->"paclet:ref/StringExpression"], "[", 
+     StyleBox["\[Ellipsis]", "TR"], "]"}], Cell[
+    "an arbitrary string expression ", "TableText"]}
+  },
+  GridBoxAlignment->{
+   "Columns" -> {Left, {Left}}, "ColumnsIndexed" -> {}, 
+    "Rows" -> {{Baseline}}, "RowsIndexed" -> {}}]], "Text",
+ CellChangeTimes->{{3.689036042560408*^9, 3.689036063195487*^9}},
+ CellID->31675],
+
+Cell["\<\
+As you can see, there is a string pattern object, NumberString which we can \
+use:\
+\>", "Text",
+ CellChangeTimes->{3.689036018477356*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "NumberString"}]], "Input",
+ CellChangeTimes->{{3.67417584475662*^9, 3.674175846639608*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"NumberString represents the characters of a number in \
+StringExpression.\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/NumberString"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.674175846853441*^9},
+ CellTags->"Info-6c39a5a1-6d21-4e02-93c1-1a54150ccad0"]
+}, Open  ]],
+
+Cell["\<\
+Let\[CloseCurlyQuote]s start by matching the first three numbers in \
+parentheses:\
+\>", "Text",
+ CellChangeTimes->{{3.674175854335581*^9, 3.674175875685566*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringMatchQ", "[", 
+  RowBox[{"\"\<(217)\>\"", ",", 
+   RowBox[{"\"\<(\>\"", "~~", "NumberString", "~~", "\"\<)\>\""}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.674175878530002*^9, 3.674175911028303*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{3.674175912796501*^9, 3.675014649652062*^9}]
+}, Open  ]],
+
+Cell["\<\
+Great. Just one problem; we haven\[CloseCurlyQuote]t specified that the area \
+code must be exactly 3 digits. Hence, this works:\
+\>", "Text",
+ CellChangeTimes->{{3.674175914980361*^9, 3.6741759526907673`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringMatchQ", "[", 
+  RowBox[{"\"\<(2171)\>\"", ",", 
+   RowBox[{"\"\<(\>\"", "~~", "NumberString", "~~", "\"\<)\>\""}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.674175878530002*^9, 3.674175911028303*^9}, {
+  3.6741759548529873`*^9, 3.674175958116432*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{3.67417595881847*^9, 3.675014651801263*^9}]
+}, Open  ]],
+
+Cell["\<\
+To restrict the pattern such that it only matches 3 digits, we\
+\[CloseCurlyQuote]ll name our number string pattern, and use a condition: \
+\>", "Text",
+ CellChangeTimes->{{3.674175962675509*^9, 3.674176011928887*^9}, {
+   3.674176060503593*^9, 3.6741760606713963`*^9}, 3.674176099006497*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringMatchQ", "[", 
+  RowBox[{"\"\<(217)\>\"", ",", 
+   RowBox[{"\"\<(\>\"", "~~", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"n", ":", "NumberString"}], "/;", 
+      RowBox[{
+       RowBox[{"StringLength", "[", "n", "]"}], "\[Equal]", "3"}]}], ")"}], 
+    "~~", "\"\<)\>\""}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.674175878530002*^9, 3.674175911028303*^9}, {
+  3.6741759548529873`*^9, 3.674175958116432*^9}, {3.674176101855674*^9, 
+  3.674176128045938*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{{3.6741761200319967`*^9, 3.674176128718521*^9}, 
+   3.6750146537348347`*^9}]
+}, Open  ]],
+
+Cell["Great! Now let\[CloseCurlyQuote]s match a whole phone number:", "Text",
+ CellChangeTimes->{{3.674176143324916*^9, 3.674176165276005*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringMatchQ", "[", "\[IndentingNewLine]", 
+  RowBox[{"\"\<(217) 555-1234\>\"", ",", "\[IndentingNewLine]", 
+   RowBox[{"\"\<(\>\"", "~~", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"n1", ":", "NumberString"}], "/;", 
+      RowBox[{
+       RowBox[{"StringLength", "[", "n1", "]"}], "\[Equal]", "3"}]}], ")"}], 
+    "~~", "\"\<) \>\"", "~~", "\[IndentingNewLine]", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"n2", ":", "NumberString"}], "/;", 
+      RowBox[{
+       RowBox[{"StringLength", "[", "n2", "]"}], "\[Equal]", "3"}]}], ")"}], 
+    "~~", "\"\<-\>\"", "~~", "\[IndentingNewLine]", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"n3", ":", "NumberString"}], "/;", 
+      RowBox[{
+       RowBox[{"StringLength", "[", "n3", "]"}], "\[Equal]", "4"}]}], 
+     ")"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.674175878530002*^9, 3.674175911028303*^9}, {
+  3.6741759548529873`*^9, 3.674175958116432*^9}, {3.674176101855674*^9, 
+  3.674176128045938*^9}, {3.6741761691248302`*^9, 3.6741762394178267`*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{{3.6741762165345907`*^9, 3.6741762399984627`*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "As you can see, ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ "\[CloseCurlyQuote]s string expression system uses the same rules as the \
+pattern matching system that we already learned from previous lectures. Let\
+\[CloseCurlyQuote]s use our shiny new phone number pattern to extract the \
+phone numbers from the directory variable:"
+}], "Text",
+ CellChangeTimes->{{3.674176259906135*^9, 3.674176352718231*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["directory"], "Input",
+ CellChangeTimes->{{3.674176353338785*^9, 3.674176354054749*^9}}],
+
+Cell[BoxData["\<\"Shad: (217) 555-1234\\nSahand: (217) 555-2345\\nJoe: (217) \
+555-3456\"\>"], "Output",
+ CellChangeTimes->{3.6741763543108397`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "We\[CloseCurlyQuote]ll use the ",
+ StyleBox["StringCases", "Code"],
+ " function:"
+}], "Text",
+ CellChangeTimes->{{3.6741763581431017`*^9, 3.674176369677496*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "StringCases"}]], "Input",
+ CellChangeTimes->{{3.674176371433799*^9, 3.6741763728761797`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"StringCases\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\
+\\\\\"TI\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\",\\\", \
+StyleBox[\\\"patt\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) gives a list of the \
+substrings in \\\"\\!\\(\\*\\nStyleBox[\\\"string\\\", \\\"TI\\\"]\\)\\\" \
+that match the string expression \\!\\(\\*StyleBox[\\\"patt\\\", \
+\\\"TI\\\"]\\). \\n\\!\\(\\*RowBox[{\\\"StringCases\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\
+\\\\\"TI\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\",\\\", \
+RowBox[{StyleBox[\\\"lhs\\\", \\\"TI\\\"], \\\"\[Rule]\\\", \
+StyleBox[\\\"rhs\\\", \\\"TI\\\"]}]}], \\\"]\\\"}]\\) gives a list of the \
+values of \\!\\(\\*StyleBox[\\\"rhs\\\", \\\"TI\\\"]\\) corresponding to the \
+substrings that match the string expression \\!\\(\\*StyleBox[\\\"lhs\\\", \\\
+\"TI\\\"]\\). \\n\\!\\(\\*RowBox[{\\\"StringCases\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\
+\\\\\"TI\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\",\\\", \
+StyleBox[\\\"p\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\\) includes only the first \\!\\(\\*StyleBox[\\\"n\
+\\\", \\\"TI\\\"]\\) substrings that match. \
+\\n\\!\\(\\*RowBox[{\\\"StringCases\\\", \\\"[\\\", RowBox[{StyleBox[\\\"\\\\\
+\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\\\\\"TI\\\\\\\"]\\\\)\\\
+\\\\\"\\\", ShowStringCharacters->True], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\\) gives substrings that match any of \
+the \\!\\(\\*SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], \
+StyleBox[\\\"i\\\", \\\"TI\\\"]]\\). \\n\\!\\(\\*RowBox[{\\\"StringCases\\\", \
+\\\"[\\\", RowBox[{RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"s\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"s\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"}\\\"}], \\\",\\\", StyleBox[\\\"p\\\", \\\"TI\\\"]}], \\\"]\
+\\\"}]\\) gives the list of results for each of the \
+\\!\\(\\*SubscriptBox[StyleBox[\\\"s\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \\\
+\"TI\\\"]]\\). \\n\\!\\(\\*RowBox[{\\\"StringCases\\\", \\\"[\\\", \
+StyleBox[\\\"patt\\\", \\\"TI\\\"], \\\"]\\\"}]\\) represents an operator \
+form of StringCases that can be applied to an expression.\"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/StringCases"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.6741763731326513`*^9},
+ CellTags->"Info-2045dcc7-fa40-4e4d-bccd-19f941ed32b2"]
+}, Open  ]],
+
+Cell["\<\
+So we\[CloseCurlyQuote]ll say (and note that each named pattern must be \
+unique):\
+\>", "Text",
+ CellChangeTimes->{{3.67417637950219*^9, 3.674176383540687*^9}, {
+  3.6741780459038877`*^9, 3.6741780608711*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringCases", "[", 
+  RowBox[{"directory", ",", 
+   RowBox[{"\"\<(\>\"", "~~", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"n1", ":", "NumberString"}], "/;", 
+      RowBox[{
+       RowBox[{"StringLength", "[", "n1", "]"}], "\[Equal]", "3"}]}], ")"}], 
+    "~~", "\"\<) \>\"", "~~", "\[IndentingNewLine]", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"n2", ":", "NumberString"}], "/;", 
+      RowBox[{
+       RowBox[{"StringLength", "[", "n2", "]"}], "\[Equal]", "3"}]}], ")"}], 
+    "~~", "\"\<-\>\"", "~~", "\[IndentingNewLine]", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"n3", ":", "NumberString"}], "/;", 
+      RowBox[{
+       RowBox[{"StringLength", "[", "n3", "]"}], "\[Equal]", "4"}]}], 
+     ")"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.674176385154002*^9, 3.674176396213578*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"(217) 555-1234\"\>", ",", "\<\"(217) 555-2345\"\>", 
+   ",", "\<\"(217) 555-3456\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{3.674176397382574*^9, 3.675014753367839*^9}]
+}, Open  ]],
+
+Cell["Awesome!", "Text",
+ CellChangeTimes->{{3.689037522457335*^9, 3.689037523308288*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Method 2: RegularExpression", "Subsubsection",
+ CellChangeTimes->{{3.689037499827703*^9, 3.689037510779088*^9}}],
+
+Cell[TextData[{
+ "Let\[CloseCurlyQuote]s do the same thing using a regular expression \
+instead. ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " provides a ",
+ ButtonBox["nice guide that shows how to translate a string expression into a \
+regular expression",
+  BaseStyle->"Link",
+  ButtonData->"paclet:tutorial/WorkingWithStringPatterns#182364929"],
+ ". This table shows us some common string expressions and their regular \
+expression equivalent:"
+}], "Text",
+ CellChangeTimes->{{3.674176400005866*^9, 3.674176455850727*^9}, {
+   3.674177008442326*^9, 3.674177149860959*^9}, 3.689037520702495*^9, {
+   3.6890376569428596`*^9, 3.6890376725821533`*^9}}],
+
+Cell[BoxData[GridBox[{
+   {Cell["regular expression", "TableHeader"], Cell[
+    "general string pattern", "TableHeader"], Cell[
+    "explanation", "TableHeader"]},
+   {"\"\<abc\>\"", "\"\<abc\>\"", Cell[TextData[{
+     "the literal string ",
+     Cell[BoxData["\"\<abc\>\""], "InlineFormula"],
+     StyleBox[" ", "TR"]
+    }], "TableText"]},
+   {"\"\<.\>\"", 
+    RowBox[{
+     ButtonBox["Except",
+      BaseStyle->"Link",
+      ButtonData->"paclet:ref/Except"], "[", "\"\<\\n\>\"", "]"}], Cell[
+    TextData[{
+     "any character except newline",
+     StyleBox[" ", "TR"]
+    }], "TableText"]},
+   {"\"\<(?s).\>\"", "_", Cell["any character ", "TableText"]},
+   {"\"\<(?s).+\>\"", "__", Cell[
+    "one or more characters (greedy) ", "TableText"]},
+   {"\"\<(?s).+?\>\"", 
+    RowBox[{
+     ButtonBox["Shortest",
+      BaseStyle->"Link",
+      ButtonData->"paclet:ref/Shortest"], "[", "__", "]"}], Cell[
+    "one or more characters (nongreedy) ", "TableText"]},
+   {"\"\<(?s).*\>\"", "___", Cell["zero or more characters ", "TableText"]},
+   {"\"\<.*\>\"", 
+    RowBox[{
+     RowBox[{
+      ButtonBox["Except",
+       BaseStyle->"Link",
+       ButtonData->"paclet:ref/Except"], "[", "\"\<\\n\>\"", "]"}], "..."}], 
+    Cell["zero or more characters (except newlines)", "TableText"]},
+   {"\"\<a?b\>\"", 
+    RowBox[{
+     RowBox[{"\"\<a\>\"", "|", "\"\<\>\""}], "~~", "\"\<b\>\""}], Cell[
+    TextData[{
+     "zero or one ",
+     Cell[BoxData["\"\<a\>\""], "InlineFormula"],
+     " followed by a ",
+     Cell[BoxData["\"\<b\>\""], "InlineFormula"],
+     " (that is, ",
+     Cell[BoxData["\"\<b\>\""], "InlineFormula"],
+     " or ",
+     Cell[BoxData["\"\<ab\>\""], "InlineFormula"],
+     ")"
+    }], "TableText"]},
+   {"\"\<[abef]\>\"", 
+    RowBox[{
+     ButtonBox["Characters",
+      BaseStyle->"Link",
+      ButtonData->"paclet:ref/Characters"], "[", "\"\<abef\>\"", "]"}], Cell[
+    TextData[{
+     "any of the characters ",
+     Cell[BoxData["\"\<a\>\""], "InlineFormula"],
+     ", ",
+     Cell[BoxData["\"\<b\>\""], "InlineFormula"],
+     ", ",
+     Cell[BoxData["\"\<e\>\""], "InlineFormula"],
+     ", or ",
+     Cell[BoxData["\"\<f\>\""], "InlineFormula"],
+     " "
+    }], "TableText"]},
+   {"\"\<[abef]+\>\"", 
+    RowBox[{
+     RowBox[{
+      ButtonBox["Characters",
+       BaseStyle->"Link",
+       ButtonData->"paclet:ref/Characters"], "[", "\"\<abef\>\"", "]"}], 
+     ".."}], Cell[TextData[{
+     "one or more of the characters ",
+     Cell[BoxData["\"\<a\>\""], "InlineFormula"],
+     ", ",
+     Cell[BoxData["\"\<b\>\""], "InlineFormula"],
+     ", ",
+     Cell[BoxData["\"\<e\>\""], "InlineFormula"],
+     ", or ",
+     Cell[BoxData["\"\<f\>\""], "InlineFormula"],
+     " "
+    }], "TableText"]},
+   {"\"\<[a-f]\>\"", 
+    RowBox[{
+     ButtonBox["CharacterRange",
+      BaseStyle->"Link",
+      ButtonData->"paclet:ref/CharacterRange"], "[", 
+     RowBox[{"\"\<a\>\"", ",", "\"\<f\>\""}], "]"}], Cell[TextData[{
+     "any character in the range between ",
+     Cell[BoxData["\"\<a\>\""], "InlineFormula"],
+     " and ",
+     Cell[BoxData["\"\<f\>\""], "InlineFormula"]
+    }], "TableText"]},
+   {"\"\<[^abef]\>\"", 
+    RowBox[{
+     ButtonBox["Except",
+      BaseStyle->"Link",
+      ButtonData->"paclet:ref/Except"], "[", 
+     RowBox[{
+      ButtonBox["Characters",
+       BaseStyle->"Link",
+       ButtonData->"paclet:ref/Characters"], "[", "\"\<abef\>\"", "]"}], 
+     "]"}], Cell[TextData[{
+     "any character except the characters ",
+     Cell[BoxData["\"\<a\>\""], "InlineFormula"],
+     ", ",
+     Cell[BoxData["\"\<b\>\""], "InlineFormula"],
+     ", ",
+     Cell[BoxData["\"\<e\>\""], "InlineFormula"],
+     ", or ",
+     Cell[BoxData["\"\<f\>\""], "InlineFormula"],
+     " "
+    }], "TableText"]},
+   {"\"\<ab|efg\>\"", 
+    RowBox[{"\"\<ab\>\"", "|", "\"\<efg\>\""}], Cell[TextData[{
+     "match the strings ",
+     Cell[BoxData["\"\<ab\>\""], "InlineFormula"],
+     " or ",
+     Cell[BoxData["\"\<efg\>\""], "InlineFormula"]
+    }], "TableText"]},
+   {
+    RowBox[{
+    "\"\<(ab|ef)gh\>\"", Cell["or", "TableText"], "\"\<(?:ab|ef)gh\>\""}], 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"\"\<ab\>\"", "|", "\"\<ef\>\""}], ")"}], "~~", "\"\<gh\>\""}], 
+    Cell[TextData[{
+     Cell[BoxData["\"\<ab\>\""], "InlineFormula"],
+     " or ",
+     Cell[BoxData["\"\<ef\>\""], "InlineFormula"],
+     " followed by ",
+     Cell[BoxData["\"\<gh\>\""], "InlineFormula"],
+     " (that is, ",
+     Cell[BoxData["\"\<abgh\>\""], "InlineFormula"],
+     " or ",
+     Cell[BoxData["\"\<efgh\>\""], "InlineFormula"],
+     ")"
+    }], "TableText"]},
+   {"\"\<\\\\s\>\"", 
+    ButtonBox["WhitespaceCharacter",
+     BaseStyle->"Link",
+     ButtonData->"paclet:ref/WhitespaceCharacter"], Cell[
+    "any whitespace character", "TableText"]},
+   {"\"\<\\\\s+\>\"", 
+    ButtonBox["Whitespace",
+     BaseStyle->"Link",
+     ButtonData->"paclet:ref/Whitespace"], Cell[
+    "one or more characters of whitespace ", "TableText"]},
+   {"\"\<(a|b)\\\\1\>\"", 
+    RowBox[{
+     RowBox[{"x", ":", 
+      RowBox[{"\"\<a\>\"", "|", "\"\<b\>\""}]}], "~~", "x_"}], Cell[
+    TextData[{
+     "this will match either ",
+     Cell[BoxData["\"\<aa\>\""], "InlineFormula"],
+     " or ",
+     Cell[BoxData["\"\<bb\>\""], "InlineFormula"],
+     " "
+    }], "TableText"]},
+   {"\"\<\\\\d\>\"", 
+    ButtonBox["DigitCharacter",
+     BaseStyle->"Link",
+     ButtonData->"paclet:ref/DigitCharacter"], Cell[
+    "any digit character", "TableText"]},
+   {"\"\<\\\\D\>\"", 
+    RowBox[{
+     ButtonBox["Except",
+      BaseStyle->"Link",
+      ButtonData->"paclet:ref/Except"], "[", 
+     ButtonBox["DigitCharacter",
+      BaseStyle->"Link",
+      ButtonData->"paclet:ref/DigitCharacter"], "]"}], Cell[
+    "any nondigit character", "TableText"]},
+   {"\"\<\\\\d+\>\"", 
+    RowBox[{
+     ButtonBox["DigitCharacter",
+      BaseStyle->"Link",
+      ButtonData->"paclet:ref/DigitCharacter"], ".."}], Cell[
+    "one or more digit characters ", "TableText"]},
+   {"\"\<\\\\w\>\"", 
+    RowBox[{
+     ButtonBox["WordCharacter",
+      BaseStyle->"Link",
+      ButtonData->"paclet:ref/WordCharacter"], "|", "\"\<_\>\""}], Cell[
+    TextData[{
+     "any digit, letter, or ",
+     Cell[BoxData["\"\<_\>\""], "InlineFormula"],
+     " character "
+    }], "TableText"]},
+   {"\"\<[[:alpha:]]\>\"", 
+    ButtonBox["LetterCharacter",
+     BaseStyle->"Link",
+     ButtonData->"paclet:ref/LetterCharacter"], Cell[
+    "any letter character", "TableText"]},
+   {"\"\<[^[:alpha:]]\>\"", 
+    RowBox[{
+     ButtonBox["Except",
+      BaseStyle->"Link",
+      ButtonData->"paclet:ref/Except"], "[", 
+     ButtonBox["LetterCharacter",
+      BaseStyle->"Link",
+      ButtonData->"paclet:ref/LetterCharacter"], "]"}], Cell[
+    "any nonletter character", "TableText"]},
+   {
+    RowBox[{"\"\<^abf\>\"", Cell["or", "TableText"], "\"\<\\\\Aabc\>\""}], 
+    RowBox[{
+     ButtonBox["StartOfString",
+      BaseStyle->"Link",
+      ButtonData->"paclet:ref/StartOfString"], "~~", "\"\<abf\>\""}], Cell[
+    TextData[{
+     "the string ",
+     Cell[BoxData["\"\<abf\>\""], "InlineFormula"],
+     " at the start of the string "
+    }], "TableText"]},
+   {"\"\<(?m)^abf\>\"", 
+    RowBox[{
+     ButtonBox["StartOfLine",
+      BaseStyle->"Link",
+      ButtonData->"paclet:ref/StartOfLine"], "~~", "\"\<abf\>\""}], Cell[
+    TextData[{
+     "the string ",
+     Cell[BoxData["\"\<abf\>\""], "InlineFormula"],
+     " at the start of a line"
+    }], "TableText"]},
+   {
+    RowBox[{"\"\<wxz$\>\"", Cell["or", "TableText"], "\"\<wxz\\\\z\>\""}], 
+    RowBox[{"\"\<wxz\>\"", "~~", 
+     ButtonBox["EndOfString",
+      BaseStyle->"Link",
+      ButtonData->"paclet:ref/EndOfString"]}], Cell[TextData[{
+     "the string ",
+     Cell[BoxData["\"\<wxz\>\""], "InlineFormula"],
+     " at the end of the string"
+    }], "TableText"]},
+   {"\"\<wxz\\\\Z\>\"", 
+    RowBox[{"\"\<wxz\>\"", "~~", 
+     RowBox[{"\"\<\\n\>\"", "|", "\"\<\>\""}], "~~", 
+     ButtonBox["EndOfString",
+      BaseStyle->"Link",
+      ButtonData->"paclet:ref/EndOfString"]}], Cell[TextData[{
+     "the string ",
+     Cell[BoxData["\"\<wxz\>\""], "InlineFormula"],
+     " at the end of the string or before newline at the end of the string "
+    }], "TableText"]}
+  },
+  GridBoxAlignment->{
+   "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+    "RowsIndexed" -> {}}]], "Text",
+ CellChangeTimes->{3.689037687114642*^9},
+ GridBoxOptions->{
+ GridBoxDividers->{
+  "Columns" -> {{False}}, "ColumnsIndexed" -> {}, 
+   "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}}},
+ CellTags->"b:0.3",
+ CellID->195821352],
+
+Cell["Let\[CloseCurlyQuote]s start with the area code again:", "Text",
+ CellChangeTimes->{3.689037670384528*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringMatchQ", "[", 
+  RowBox[{"\"\<(217)\>\"", ",", 
+   RowBox[{"RegularExpression", "[", "\"\<\\\\([\\\\d]{3}\\\\)\>\"", "]"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.674177151785685*^9, 3.674177206939262*^9}, {
+  3.674177520841324*^9, 3.674177529304542*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{{3.674177174362672*^9, 3.674177207283354*^9}, {
+  3.674177525610342*^9, 3.674177529605266*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "A digit in a regular expression is represented by ",
+ StyleBox["\\d", "Code"],
+ ", and we have to double up the backslash because in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ", a single backslash is a string escape, and we need a literal backslash in \
+our regular expression. Parentheses in regular expressions are used to \
+represent groups of characters, but for our area code, we want literal \
+parentheses, so we have to escape them with backslashes as well. The 3 in \
+curly braces indicate that we want to match exactly 3 digits."
+}], "Text",
+ CellChangeTimes->{{3.6741772147943687`*^9, 3.674177428931756*^9}, {
+  3.674177554344822*^9, 3.6741775548480663`*^9}, {3.674177596472065*^9, 
+  3.674177726362521*^9}, {3.689037702244274*^9, 3.689037702445078*^9}}],
+
+Cell["\<\
+Great. Let\[CloseCurlyQuote]s expand our regular expression to match the \
+whole phone number:\
+\>", "Text",
+ CellChangeTimes->{{3.6741777684339743`*^9, 3.67417778364841*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringMatchQ", "[", 
+  RowBox[{"\"\<(217) 555-1234\>\"", ",", 
+   RowBox[{
+   "RegularExpression", "[", 
+    "\"\<\\\\([\\\\d]{3}\\\\) [\\\\d]{3}-[\\\\d]{4}\>\"", "]"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.674177151785685*^9, 3.674177206939262*^9}, {
+  3.674177520841324*^9, 3.674177529304542*^9}, {3.674177784712842*^9, 
+  3.6741778040156507`*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{3.674177804655253*^9}]
+}, Open  ]],
+
+Cell["Nice. Let\[CloseCurlyQuote]s use our expression to extract the phone \
+numbers:", "Text",
+ CellChangeTimes->{{3.674177738378525*^9, 3.674177752729321*^9}, {
+  3.674177809375677*^9, 3.674177821438911*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringCases", "[", 
+  RowBox[{"directory", ",", 
+   RowBox[{
+   "RegularExpression", "[", 
+    "\"\<\\\\([\\\\d]{3}\\\\) [\\\\d]{3}-[\\\\d]{4}\>\"", "]"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.674177754033511*^9, 3.674177761707386*^9}, {
+  3.674177825785406*^9, 3.6741778268402023`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"(217) 555-1234\"\>", ",", "\<\"(217) 555-2345\"\>", 
+   ",", "\<\"(217) 555-3456\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{3.674177827564115*^9}]
+}, Open  ]],
+
+Cell["\<\
+Awesome! As you can see, the regular expression is quite a bit more compact \
+than the string expression. However, you might have also noted that the \
+string expression could potentially be a lot more powerful than a regular \
+expression, because the string expression enables us to apply arbitrary \
+conditions against a named pattern.\
+\>", "Text",
+ CellChangeTimes->{{3.6741778323597193`*^9, 3.6741778356543093`*^9}, {
+  3.674177893413341*^9, 3.67417800548097*^9}, {3.675014901783033*^9, 
+  3.675014922323093*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Left Hand Word", "Subsection",
+ CellChangeTimes->{{3.674178085175838*^9, 3.674178087637944*^9}, {
+  3.675014927610468*^9, 3.675014934226301*^9}, {3.6750149869531193`*^9, 
+  3.6750150184881783`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Method 1: RegularExpression", "Subsubsection",
+ CellChangeTimes->{{3.689037851624075*^9, 3.689037856143791*^9}}],
+
+Cell["\<\
+Let\[CloseCurlyQuote]s do another example. In this example, let\
+\[CloseCurlyQuote]s make a pattern that returns true if a given word can be \
+typed with just your left hand. For instance, the word \
+\[OpenCurlyDoubleQuote]dad\[CloseCurlyDoubleQuote] can be typed with just the \
+left hand.\
+\>", "Text",
+ CellChangeTimes->{{3.674178089998329*^9, 3.674178146340487*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringMatchQ", "[", 
+  RowBox[{"\"\<dad\>\"", ",", 
+   RowBox[{"RegularExpression", "[", "\"\<[qwertasdfgzxcvb]+\>\"", "]"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.674178154170868*^9, 3.674178188075424*^9}, {
+  3.67501504982537*^9, 3.675015053850604*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{
+  3.674178188552659*^9, {3.67501504746915*^9, 3.675015054456455*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Also, we should make sure that the ",
+ StyleBox["StringMatchQ", "Code"],
+ " is ",
+ StyleBox["case insensitive",
+  FontSlant->"Italic"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.674178260936849*^9, 3.674178273800371*^9}, {
+   3.6890378023854723`*^9, 3.689037804401491*^9}, 3.689037991068659*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringMatchQ", "[", 
+  RowBox[{"\"\<Dad\>\"", ",", 
+   RowBox[{"RegularExpression", "[", "\"\<[qwertasdfgzxcvb]+\>\"", "]"}], ",", 
+   RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.674178154170868*^9, 3.674178188075424*^9}, {
+  3.674178248184866*^9, 3.674178300729995*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{{3.6741782776162443`*^9, 3.6741783013818607`*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Nice and easy. Let\[CloseCurlyQuote]s also verify that it returns ",
+ StyleBox["False", "Code"],
+ " on a word that contains a right hand character:"
+}], "Text",
+ CellChangeTimes->{{3.674178191306834*^9, 3.674178195538836*^9}, {
+  3.674178235313397*^9, 3.674178246944975*^9}, {3.689037819473044*^9, 
+  3.689037829656617*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringMatchQ", "[", 
+  RowBox[{"\"\<lip\>\"", ",", 
+   RowBox[{"RegularExpression", "[", "\"\<[qwertasdfgzxcvb]+\>\"", "]"}], ",", 
+   RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.674178154170868*^9, 3.674178188075424*^9}, {
+  3.674178248184866*^9, 3.674178255232952*^9}, {3.674178452700444*^9, 
+  3.674178452891151*^9}}],
+
+Cell[BoxData["False"], "Output",
+ CellChangeTimes->{3.6741782560191097`*^9, 3.674178453433661*^9}]
+}, Open  ]],
+
+Cell["Awesome.", "Text",
+ CellChangeTimes->{{3.67417831778399*^9, 3.67417834121419*^9}, {
+  3.689037859554152*^9, 3.689037860161146*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Method 2: StringExpression", "Subsubsection",
+ CellChangeTimes->{{3.6890378626236267`*^9, 3.689037867921669*^9}}],
+
+Cell["Let\[CloseCurlyQuote]s do the same with a string expression:", "Text",
+ CellChangeTimes->{3.6890378698954906`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringMatchQ", "[", 
+  RowBox[{"\"\<dad\>\"", ",", 
+   RowBox[{
+    RowBox[{"Characters", "[", "\"\<qwertasdfgzxcvb\>\"", "]"}], ".."}], ",", 
+   
+   RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.674178343649304*^9, 3.674178348381925*^9}, {
+  3.674178394029727*^9, 3.674178438637589*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{{3.6741784052916317`*^9, 3.674178438945445*^9}}]
+}, Open  ]],
+
+Cell["Let\[CloseCurlyQuote]s do the same verification again:", "Text",
+ CellChangeTimes->{{3.674178464522943*^9, 3.6741784734739933`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringMatchQ", "[", 
+  RowBox[{"\"\<lip\>\"", ",", 
+   RowBox[{
+    RowBox[{"Characters", "[", "\"\<qwertasdfgzxcvb\>\"", "]"}], ".."}], ",", 
+   
+   RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.674178343649304*^9, 3.674178348381925*^9}, {
+  3.674178394029727*^9, 3.674178438637589*^9}, {3.674178474681533*^9, 
+  3.6741784768094807`*^9}}],
+
+Cell[BoxData["False"], "Output",
+ CellChangeTimes->{3.674178477144949*^9}]
+}, Open  ]],
+
+Cell["Perfect!", "Text",
+ CellChangeTimes->{{3.674178478866431*^9, 3.6741784799854937`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Summary", "Subsection",
+ CellChangeTimes->{{3.689037880960421*^9, 3.689037881718766*^9}}],
+
+Cell[TextData[{
+ "In this lecture, we learned about ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ "\[CloseCurlyQuote]s string expression and regular expression system. We \
+hope you had fun! See you at the next lecture."
+}], "Text",
+ CellChangeTimes->{{3.674178618836812*^9, 3.674178623741078*^9}, {
+  3.674178667532745*^9, 3.674178708242062*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1398, 855},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info-05ed5a32-139b-4706-b8ed-e0e2b7dd24bc"->{
+  Cell[2585, 68, 1065, 19, 52, "Print",
+   CellTags->"Info-05ed5a32-139b-4706-b8ed-e0e2b7dd24bc"]},
+ "Info-1513593c-d67f-4ff7-90ad-73b36b99976e"->{
+  Cell[4081, 105, 688, 14, 52, "Print",
+   CellTags->"Info-1513593c-d67f-4ff7-90ad-73b36b99976e"]},
+ "Info-def6a27c-e844-46eb-a5e5-b9108f27ad30"->{
+  Cell[6732, 181, 1841, 30, 101, "Print",
+   CellTags->"Info-def6a27c-e844-46eb-a5e5-b9108f27ad30"]},
+ "Info-6c39a5a1-6d21-4e02-93c1-1a54150ccad0"->{
+  Cell[14416, 398, 409, 10, 52, "Print",
+   CellTags->"Info-6c39a5a1-6d21-4e02-93c1-1a54150ccad0"]},
+ "Info-2045dcc7-fa40-4e4d-bccd-19f941ed32b2"->{
+  Cell[19367, 547, 3070, 47, 173, "Print",
+   CellTags->"Info-2045dcc7-fa40-4e4d-bccd-19f941ed32b2"]},
+ "b:0.3"->{
+  Cell[24667, 663, 8549, 254, 901, "Text",
+   CellTags->"b:0.3",
+   CellID->195821352]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info-05ed5a32-139b-4706-b8ed-e0e2b7dd24bc", 42015, 1181},
+ {"Info-1513593c-d67f-4ff7-90ad-73b36b99976e", 42163, 1184},
+ {"Info-def6a27c-e844-46eb-a5e5-b9108f27ad30", 42311, 1187},
+ {"Info-6c39a5a1-6d21-4e02-93c1-1a54150ccad0", 42461, 1190},
+ {"Info-2045dcc7-fa40-4e4d-bccd-19f941ed32b2", 42610, 1193},
+ {"b:0.3", 42725, 1196}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 151, 2, 80, "Section"],
+Cell[734, 26, 749, 11, 109, "Text"],
+Cell[CellGroupData[{
+Cell[1508, 41, 196, 3, 54, "Subsection"],
+Cell[1707, 46, 725, 14, 37, "Text"],
+Cell[CellGroupData[{
+Cell[2457, 64, 125, 2, 39, "Input"],
+Cell[2585, 68, 1065, 19, 52, "Print",
+ CellTags->"Info-05ed5a32-139b-4706-b8ed-e0e2b7dd24bc"]
+}, Open  ]],
+Cell[3665, 90, 260, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[3950, 101, 128, 2, 39, "Input"],
+Cell[4081, 105, 688, 14, 52, "Print",
+ CellTags->"Info-1513593c-d67f-4ff7-90ad-73b36b99976e"]
+}, Open  ]],
+Cell[4784, 122, 479, 11, 61, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5300, 138, 108, 1, 54, "Subsection"],
+Cell[CellGroupData[{
+Cell[5433, 143, 119, 1, 43, "Subsubsection"],
+Cell[5555, 146, 392, 7, 37, "Text"],
+Cell[5950, 155, 247, 6, 118, "Input"],
+Cell[6200, 163, 383, 10, 37, "Text"],
+Cell[CellGroupData[{
+Cell[6608, 177, 121, 2, 39, "Input"],
+Cell[6732, 181, 1841, 30, 101, "Print",
+ CellTags->"Info-def6a27c-e844-46eb-a5e5-b9108f27ad30"]
+}, Open  ]],
+Cell[8588, 214, 396, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[9009, 225, 96, 1, 37, "Item"],
+Cell[9108, 228, 89, 1, 37, "Item"],
+Cell[9200, 231, 99, 1, 37, "Item"],
+Cell[9302, 234, 85, 1, 37, "Item"],
+Cell[9390, 237, 89, 1, 37, "Item"],
+Cell[9482, 240, 84, 1, 37, "Item"],
+Cell[9569, 243, 89, 1, 37, "Item"]
+}, Open  ]],
+Cell[9673, 247, 503, 12, 37, "Text"],
+Cell[10179, 261, 3938, 123, 539, "Text",
+ CellID->31675],
+Cell[14120, 386, 148, 4, 37, "Text"],
+Cell[CellGroupData[{
+Cell[14293, 394, 120, 2, 39, "Input"],
+Cell[14416, 398, 409, 10, 52, "Print",
+ CellTags->"Info-6c39a5a1-6d21-4e02-93c1-1a54150ccad0"]
+}, Open  ]],
+Cell[14840, 411, 172, 4, 37, "Text"],
+Cell[CellGroupData[{
+Cell[15037, 419, 232, 5, 39, "Input"],
+Cell[15272, 426, 95, 1, 39, "Output"]
+}, Open  ]],
+Cell[15382, 430, 220, 4, 37, "Text"],
+Cell[CellGroupData[{
+Cell[15627, 438, 284, 6, 39, "Input"],
+Cell[15914, 446, 94, 1, 39, "Output"]
+}, Open  ]],
+Cell[16023, 450, 302, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[16350, 459, 491, 12, 39, "Input"],
+Cell[16844, 473, 127, 2, 39, "Output"]
+}, Open  ]],
+Cell[16986, 478, 143, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[17154, 483, 1037, 24, 144, "Input"],
+Cell[18194, 509, 101, 1, 39, "Output"]
+}, Open  ]],
+Cell[18310, 513, 436, 9, 61, "Text"],
+Cell[CellGroupData[{
+Cell[18771, 526, 101, 1, 39, "Input"],
+Cell[18875, 529, 148, 2, 92, "Output"]
+}, Open  ]],
+Cell[19038, 534, 179, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[19242, 543, 122, 2, 39, "Input"],
+Cell[19367, 547, 3070, 47, 173, "Print",
+ CellTags->"Info-2045dcc7-fa40-4e4d-bccd-19f941ed32b2"]
+}, Open  ]],
+Cell[22452, 597, 220, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[22697, 606, 827, 22, 92, "Input"],
+Cell[23527, 630, 214, 4, 39, "Output"]
+}, Open  ]],
+Cell[23756, 637, 90, 1, 37, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23883, 643, 118, 1, 43, "Subsubsection"],
+Cell[24004, 646, 660, 15, 61, "Text"],
+Cell[24667, 663, 8549, 254, 901, "Text",
+ CellTags->"b:0.3",
+ CellID->195821352],
+Cell[33219, 919, 112, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[33356, 924, 290, 6, 39, "Input"],
+Cell[33649, 932, 146, 2, 39, "Output"]
+}, Open  ]],
+Cell[33810, 937, 793, 14, 85, "Text"],
+Cell[34606, 953, 185, 4, 37, "Text"],
+Cell[CellGroupData[{
+Cell[34816, 961, 381, 9, 39, "Input"],
+Cell[35200, 972, 73, 1, 39, "Output"]
+}, Open  ]],
+Cell[35288, 976, 210, 3, 37, "Text"],
+Cell[CellGroupData[{
+Cell[35523, 983, 318, 8, 39, "Input"],
+Cell[35844, 993, 192, 4, 39, "Output"]
+}, Open  ]],
+Cell[36051, 1000, 528, 9, 85, "Text"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36628, 1015, 204, 3, 54, "Subsection"],
+Cell[CellGroupData[{
+Cell[36857, 1022, 118, 1, 43, "Subsubsection"],
+Cell[36978, 1025, 380, 7, 61, "Text"],
+Cell[CellGroupData[{
+Cell[37383, 1036, 285, 6, 39, "Input"],
+Cell[37671, 1044, 121, 2, 39, "Output"]
+}, Open  ]],
+Cell[37807, 1049, 310, 9, 37, "Text"],
+Cell[CellGroupData[{
+Cell[38142, 1062, 335, 6, 39, "Input"],
+Cell[38480, 1070, 101, 1, 39, "Output"]
+}, Open  ]],
+Cell[38596, 1074, 342, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[38963, 1085, 384, 7, 39, "Input"],
+Cell[39350, 1094, 98, 1, 39, "Output"]
+}, Open  ]],
+Cell[39463, 1098, 137, 2, 37, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[39637, 1105, 119, 1, 43, "Subsubsection"],
+Cell[39759, 1108, 120, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[39904, 1113, 350, 8, 39, "Input"],
+Cell[40257, 1123, 99, 1, 39, "Output"]
+}, Open  ]],
+Cell[40371, 1127, 138, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[40534, 1132, 401, 9, 39, "Input"],
+Cell[40938, 1143, 74, 1, 39, "Output"]
+}, Open  ]],
+Cell[41027, 1147, 92, 1, 37, "Text"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[41168, 1154, 95, 1, 54, "Subsection"],
+Cell[41266, 1157, 354, 8, 37, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

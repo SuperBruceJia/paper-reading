@@ -1,0 +1,1613 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     57333,       1605]
+NotebookOptionsPosition[     50182,       1399]
+NotebookOutlinePosition[     52676,       1458]
+CellTagsIndexPosition[     52022,       1444]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Creating figures", "Section",
+ CellChangeTimes->{{3.663680711550248*^9, 3.663680714636868*^9}}],
+
+Cell["\<\
+Hello and welcome. In this lecture we will look at how to create figures. \
+\>", "Text",
+ CellChangeTimes->{{3.684695992484702*^9, 3.684696126804278*^9}, 
+   3.69411904984163*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Introduction", "Subsection",
+ CellChangeTimes->{{3.694119053582674*^9, 3.694119055372861*^9}}],
+
+Cell["In a previous lecture we saw how we can model a pendulum. ", "Text",
+ CellChangeTimes->{{3.694119056462782*^9, 3.694119069293037*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   {Thickness[Large], LineBox[{{-0.2, 0}, {0.2, 0}}]}, 
+   {Thickness[Large], 
+    LineBox[NCache[{{0, 0}, {
+       Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}}, {{0, 0}, {
+       0.5, -0.8660254037844386}}]]}, 
+   {Dashing[{Small, Small}], LineBox[{{0, 0}, {0, -1}}]}, 
+   {GrayLevel[0.5], 
+    CircleBox[{0, 0}, 0.2, 
+     NCache[{Rational[-1, 2] Pi, Rational[-1, 3] 
+       Pi}, {-1.5707963267948966`, -1.0471975511965976`}]]}, 
+   {GrayLevel[0.5], 
+    CircleBox[{0, 0}, 1, 
+     NCache[{Rational[-3, 4] Pi, Rational[-1, 4] 
+       Pi}, {-2.356194490192345, -0.7853981633974483}]]}, 
+   DiskBox[NCache[{Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+     0.5, -0.8660254037844386}], 0.05], InsetBox[
+    StyleBox["\<\"\[Theta]\"\>",
+     StripOnInput->False,
+     FontSize->Large], {0.075, -0.25980762113533157}]}]], "Input"],
+
+Cell["\<\
+In this lecture, we\[CloseCurlyQuote]ll see how we can draw that figure. So \
+this lecture will cover a lot of graphics stuff.\
+\>", "Text",
+ CellChangeTimes->{3.694119070703817*^9}],
+
+Cell[TextData[{
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " has a very powerful graphics engine, and it has many different primitive \
+graphics types. These graphics types allow us to draw things. One of the \
+primitives that we can take a look at is ",
+ StyleBox["Line",
+  FontWeight->"Bold"],
+ ". ",
+ StyleBox["Line",
+  FontWeight->"Bold"],
+ " of course allows us to draw a line.  "
+}], "Text",
+ CellChangeTimes->{{3.684696118907174*^9, 3.684696181374107*^9}, 
+   3.694119081710154*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Line"}]], "Input",
+ CellChangeTimes->{{3.663982783856378*^9, 3.66398278484239*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Line\\\", \\\"[\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"}\\\"}], \\\"]\\\"}]\\) represents the line segments joining \
+a sequence for points \\!\\(\\*SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], \
+StyleBox[\\\"i\\\", \\\"TI\\\"]]\\).\\n\\!\\(\\*RowBox[{\\\"Line\\\", \\\"[\\\
+\", RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], StyleBox[\\\"11\\\", \\\
+\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], \
+StyleBox[\\\"12\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \
+\\\"TR\\\"]}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], StyleBox[\\\"21\\\", \\\
+\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \
+\\\"}\\\"}], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \
+\\\"}\\\"}], \\\"]\\\"}]\\) represents a collection of lines. \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Line"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.66398278586954*^9},
+ CellTags->"Info-51e9fd8c-2ff6-4f20-a962-f8afb4df16b2"]
+}, Open  ]],
+
+Cell[TextData[{
+ "We also have ",
+ StyleBox["Circle",
+  FontWeight->"Bold"],
+ ", which enables us to draw a circle. "
+}], "Text",
+ CellChangeTimes->{{3.684696185572708*^9, 3.684696216124222*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Circle"}]], "Input",
+ CellChangeTimes->{{3.663982789721428*^9, 3.663982790859777*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Circle\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \
+\\\",\\\", StyleBox[\\\"y\\\", \\\"TI\\\"]}], \\\"}\\\"}], \\\",\\\", \
+StyleBox[\\\"r\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) represents a circle of \
+radius \\!\\(\\*StyleBox[\\\"r\\\", \\\"TI\\\"]\\) centered at \
+\\!\\(\\*RowBox[{\\\"{\\\", RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \
+\\\",\\\", StyleBox[\\\"y\\\", \\\"TI\\\"]}], \
+\\\"}\\\"}]\\).\\n\\!\\(\\*RowBox[{\\\"Circle\\\", \\\"[\\\", RowBox[{\\\"{\\\
+\", RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"y\\\", \
+\\\"TI\\\"]}], \\\"}\\\"}], \\\"]\\\"}]\\) gives a circle of radius 1. \\n\\!\
+\\(\\*RowBox[{\\\"Circle\\\", \\\"[\\\", RowBox[{RowBox[{\\\"{\\\", \
+RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"y\\\", \
+\\\"TI\\\"]}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"r\\\", \\\"TI\\\"], StyleBox[\\\"x\\\", \
+\\\"TI\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"r\\\", \\\"TI\\\"], \
+StyleBox[\\\"y\\\", \\\"TI\\\"]]}], \\\"}\\\"}]}], \\\"]\\\"}]\\) gives an \
+axis-aligned ellipse with semi-axes lengths \\!\\(\\*SubscriptBox[StyleBox[\\\
+\"r\\\", \\\"TI\\\"], StyleBox[\\\"x\\\", \\\"TI\\\"]]\\) and \
+\\!\\(\\*SubscriptBox[StyleBox[\\\"r\\\", \\\"TI\\\"], StyleBox[\\\"y\\\", \\\
+\"TI\\\"]]\\).\\n\\!\\(\\*RowBox[{\\\"Circle\\\", \\\"[\\\", RowBox[{RowBox[{\
+\\\"{\\\", RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"y\
+\\\", \\\"TI\\\"]}], \\\"}\\\"}], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"\
+\[Theta]\\\", \\\"TR\\\"], StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"\[Theta]\\\", \\\"TR\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]]}], \\\"}\\\"}]}], \\\"]\\\"}]\\) gives a circular or ellipse arc \
+from angle \\!\\(\\*SubscriptBox[StyleBox[\\\"\[Theta]\\\", \\\"TR\\\"], \
+StyleBox[\\\"1\\\", \\\"TR\\\"]]\\) to \\!\\(\\*SubscriptBox[StyleBox[\\\"\
+\[Theta]\\\", \\\"TR\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]]\\).\"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Circle"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.663982791328764*^9},
+ CellTags->"Info-6e8be4c2-e9fb-4d7d-869c-31c043c09b15"]
+}, Open  ]],
+
+Cell[TextData[{
+ "We also have ",
+ StyleBox["Disk",
+  FontWeight->"Bold"],
+ ". "
+}], "Text",
+ CellChangeTimes->{{3.684696220411832*^9, 3.684696225507872*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Disk"}]], "Input",
+ CellChangeTimes->{{3.663982793626169*^9, 3.663982794620631*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Disk\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \
+\\\",\\\", StyleBox[\\\"y\\\", \\\"TI\\\"]}], \\\"}\\\"}], \\\",\\\", \
+StyleBox[\\\"r\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) represents a disk of radius \
+\\!\\(\\*StyleBox[\\\"r\\\", \\\"TI\\\"]\\) centered at \
+\\!\\(\\*RowBox[{\\\"{\\\", RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \
+\\\",\\\", StyleBox[\\\"y\\\", \\\"TI\\\"]}], \
+\\\"}\\\"}]\\).\\n\\!\\(\\*RowBox[{\\\"Disk\\\", \\\"[\\\", \
+RowBox[{\\\"{\\\", RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"y\\\", \\\"TI\\\"]}], \\\"}\\\"}], \\\"]\\\"}]\\) gives a disk \
+of radius 1. \\n\\!\\(\\*RowBox[{\\\"Disk\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \
+\\\",\\\", StyleBox[\\\"y\\\", \\\"TI\\\"]}], \\\"}\\\"}], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"r\\\", \\\"TI\\\"], \
+StyleBox[\\\"x\\\", \\\"TI\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"r\\\", \
+\\\"TI\\\"], StyleBox[\\\"y\\\", \\\"TI\\\"]]}], \\\"}\\\"}]}], \
+\\\"]\\\"}]\\) gives an axis-aligned elliptical disk with semiaxes lengths \
+\\!\\(\\*SubscriptBox[StyleBox[\\\"r\\\", \\\"TI\\\"], StyleBox[\\\"x\\\", \\\
+\"TI\\\"]]\\) and \\!\\(\\*SubscriptBox[StyleBox[\\\"r\\\", \\\"TI\\\"], \
+StyleBox[\\\"y\\\", \\\"TI\\\"]]\\).\\n\\!\\(\\*RowBox[{\\\"Disk\\\", \\\"[\\\
+\", RowBox[{RowBox[{\\\"{\\\", RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \\\",\
+\\\", StyleBox[\\\"y\\\", \\\"TI\\\"]}], \\\"}\\\"}], \\\",\\\", \
+StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"\[Theta]\\\", \\\"TR\\\"], StyleBox[\\\"1\\\
+\", \\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"\[Theta]\\\", \\\"TR\\\
+\"], StyleBox[\\\"2\\\", \\\"TR\\\"]]}], \\\"}\\\"}]}], \\\"]\\\"}]\\) gives \
+a sector of a disk from angle \
+\\!\\(\\*SubscriptBox[StyleBox[\\\"\[Theta]\\\", \\\"TR\\\"], \
+StyleBox[\\\"1\\\", \\\"TR\\\"]]\\) to \\!\\(\\*SubscriptBox[StyleBox[\\\"\
+\[Theta]\\\", \\\"TR\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]]\\).\"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Disk"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.663982795252327*^9},
+ CellTags->"Info-13adcbd3-8700-4f5b-85b9-9773cff45836"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Drawing the Pendulum", "Subsection",
+ CellChangeTimes->{{3.694119202697138*^9, 3.694119206039752*^9}}],
+
+Cell[TextData[{
+ "We are going to be using these to draw our pendulum figure. In order to \
+draw a line, or a circle, or a disk, we need to pass these objects to a \
+function called ",
+ StyleBox["Graphics",
+  FontWeight->"Bold"],
+ ". ",
+ StyleBox["Graphics",
+  FontWeight->"Bold"],
+ " takes a set of graphic primitives and displays them. "
+}], "Text",
+ CellChangeTimes->{{3.684696243415592*^9, 3.6846963388257313`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Graphics"}]], "Input",
+ CellChangeTimes->{{3.663982812651133*^9, 3.663982813983563*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Graphics\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"primitives\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"options\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) represents a \
+two-dimensional graphical image. \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Graphics"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.663982814257983*^9},
+ CellTags->"Info-8fa4371a-755b-43f5-a113-6e2dcca542ad"]
+}, Open  ]],
+
+Cell["So let\[CloseCurlyQuote]s draw a line. ", "Text",
+ CellChangeTimes->{{3.6846963496355467`*^9, 3.6846963544813147`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{
+   RowBox[{"Line", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Cos", "[", 
+         RowBox[{"Pi", "/", "3"}], "]"}], ",", 
+        RowBox[{"-", 
+         RowBox[{"Sin", "[", 
+          RowBox[{"Pi", "/", "3"}], "]"}]}]}], "}"}]}], "}"}], "]"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.663982824904401*^9, 3.663982889684771*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[
+  LineBox[NCache[{{0, 0}, {
+     Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}}, {{0, 0}, {
+     0.5, -0.8660254037844386}}]],
+  ImageSize->Tiny]], "Output",
+ CellChangeTimes->{{3.663982881926672*^9, 3.663982890288967*^9}}]
+}, Open  ]],
+
+Cell["\<\
+Let\[CloseCurlyQuote]s make it a bit smaller. And let\[CloseCurlyQuote]s draw \
+the horizontal line now. Let\[CloseCurlyQuote]s put our graphic primitives \
+into a list. And we are going to put each of our graphic primitives on a line \
+to make it easier to read. \
+\>", "Text",
+ CellChangeTimes->{{3.684696399912703*^9, 3.684696521138277*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Cos", "[", 
+           RowBox[{"Pi", "/", "3"}], "]"}], ",", 
+          RowBox[{"-", 
+           RowBox[{"Sin", "[", 
+            RowBox[{"Pi", "/", "3"}], "]"}]}]}], "}"}]}], "}"}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "0.1"}], ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0.1", ",", "0"}], "}"}]}], "}"}], "]"}]}], 
+    "\[IndentingNewLine]", "}"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.663982824904401*^9, 3.663982958406374*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   LineBox[NCache[{{0, 0}, {
+      Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}}, {{0, 0}, {
+      0.5, -0.8660254037844386}}]], LineBox[{{-0.1, 0}, {0.1, 0}}]},
+  ImageSize->Tiny]], "Output",
+ CellChangeTimes->{3.6639829598645678`*^9}]
+}, Open  ]],
+
+Cell["\<\
+So now we have the point where the pendulum attaches. Next let\
+\[CloseCurlyQuote]s draw the disk here. The disk needs to be centered at the \
+end point of the line. \
+\>", "Text",
+ CellChangeTimes->{{3.68469653951836*^9, 3.6846965788437033`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Cos", "[", 
+           RowBox[{"Pi", "/", "3"}], "]"}], ",", 
+          RowBox[{"-", 
+           RowBox[{"Sin", "[", 
+            RowBox[{"Pi", "/", "3"}], "]"}]}]}], "}"}]}], "}"}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "0.1"}], ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0.1", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Disk", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Cos", "[", 
+          RowBox[{"Pi", "/", "3"}], "]"}], ",", 
+         RowBox[{"-", 
+          RowBox[{"Sin", "[", 
+           RowBox[{"Pi", "/", "3"}], "]"}]}]}], "}"}], ",", "0.05"}], "]"}]}],
+     "\[IndentingNewLine]", "}"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.663982824904401*^9, 3.6639830182284*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   LineBox[NCache[{{0, 0}, {
+      Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}}, {{0, 0}, {
+      0.5, -0.8660254037844386}}]], LineBox[{{-0.1, 0}, {0.1, 0}}], 
+   DiskBox[NCache[{Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+     0.5, -0.8660254037844386}], 0.05]},
+  ImageSize->Tiny]], "Output",
+ CellChangeTimes->{{3.663983009118095*^9, 3.663983018969811*^9}}]
+}, Open  ]],
+
+Cell["\<\
+Let\[CloseCurlyQuote]s take a look at where we are. We only have a few more \
+things to do. Let\[CloseCurlyQuote]s start with the y-axis. \
+\>", "Text",
+ CellChangeTimes->{{3.68469662390968*^9, 3.684696661378821*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Cos", "[", 
+           RowBox[{"Pi", "/", "3"}], "]"}], ",", 
+          RowBox[{"-", 
+           RowBox[{"Sin", "[", 
+            RowBox[{"Pi", "/", "3"}], "]"}]}]}], "}"}]}], "}"}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "0.1"}], ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0.1", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Disk", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Cos", "[", 
+          RowBox[{"Pi", "/", "3"}], "]"}], ",", 
+         RowBox[{"-", 
+          RowBox[{"Sin", "[", 
+           RowBox[{"Pi", "/", "3"}], "]"}]}]}], "}"}], ",", "0.05"}], "]"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"Dashed", ",", "Gray", ",", 
+       RowBox[{"Line", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", "0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", 
+            RowBox[{"-", "1"}]}], "}"}]}], "}"}], "]"}]}], "}"}]}], 
+    "\[IndentingNewLine]", "}"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.663982824904401*^9, 3.6639830182284*^9}, {
+  3.663983048265707*^9, 3.663983115721586*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   LineBox[NCache[{{0, 0}, {
+      Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}}, {{0, 0}, {
+      0.5, -0.8660254037844386}}]], LineBox[{{-0.1, 0}, {0.1, 0}}], 
+   DiskBox[NCache[{Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+     0.5, -0.8660254037844386}], 0.05], 
+   {GrayLevel[0.5], Dashing[{Small, Small}], LineBox[{{0, 0}, {0, -1}}]}},
+  ImageSize->Tiny]], "Output",
+ CellChangeTimes->{{3.663983092253212*^9, 3.6639831171988907`*^9}, 
+   3.68469668660203*^9}]
+}, Open  ]],
+
+Cell["\<\
+Next we have to do the arc. This will be a circle, but we will only draw a \
+portion of it. It will be centered at the point (0,0). As we saw with the \
+disk, it took up the entire picture. So if we want this circle to work \
+correctly, we want it to have a radius of 1. \
+\>", "Text",
+ CellChangeTimes->{{3.684696729826261*^9, 3.684696759312254*^9}, {
+  3.684696824145987*^9, 3.6846968792293987`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Cos", "[", 
+           RowBox[{"Pi", "/", "3"}], "]"}], ",", 
+          RowBox[{"-", 
+           RowBox[{"Sin", "[", 
+            RowBox[{"Pi", "/", "3"}], "]"}]}]}], "}"}]}], "}"}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "0.1"}], ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0.1", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Disk", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Cos", "[", 
+          RowBox[{"Pi", "/", "3"}], "]"}], ",", 
+         RowBox[{"-", 
+          RowBox[{"Sin", "[", 
+           RowBox[{"Pi", "/", "3"}], "]"}]}]}], "}"}], ",", "0.05"}], "]"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"Dashed", ",", "Gray", ",", 
+       RowBox[{"Line", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", "0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", 
+            RowBox[{"-", "1"}]}], "}"}]}], "}"}], "]"}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"Gray", ",", 
+       RowBox[{"Circle", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}], ",", "1", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"-", "3"}], 
+            RowBox[{"Pi", "/", "4"}]}], ",", 
+           RowBox[{
+            RowBox[{"-", "Pi"}], "/", "4"}]}], "}"}]}], "]"}]}], "}"}]}], 
+    "\[IndentingNewLine]", "}"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.663982824904401*^9, 3.6639830182284*^9}, {
+  3.663983048265707*^9, 3.663983115721586*^9}, {3.663983147256761*^9, 
+  3.663983163022778*^9}, {3.663983202589698*^9, 3.6639832288779593`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   LineBox[NCache[{{0, 0}, {
+      Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}}, {{0, 0}, {
+      0.5, -0.8660254037844386}}]], LineBox[{{-0.1, 0}, {0.1, 0}}], 
+   DiskBox[NCache[{Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+     0.5, -0.8660254037844386}], 0.05], 
+   {GrayLevel[0.5], Dashing[{Small, Small}], LineBox[{{0, 0}, {0, -1}}]}, 
+   {GrayLevel[0.5], 
+    CircleBox[{0, 0}, 1, 
+     NCache[{Rational[-3, 4] Pi, Rational[-1, 4] 
+       Pi}, {-2.356194490192345, -0.7853981633974483}]]}},
+  ImageSize->Tiny]], "Output",
+ CellChangeTimes->{
+  3.66398316679687*^9, {3.6639832126176243`*^9, 3.663983230060238*^9}}]
+}, Open  ]],
+
+Cell["\<\
+The next thing is the tiny arc that represent our \[Theta] variable. \
+\>", "Text",
+ CellChangeTimes->{{3.684696965286518*^9, 3.6846970078343477`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Cos", "[", 
+           RowBox[{"Pi", "/", "3"}], "]"}], ",", 
+          RowBox[{"-", 
+           RowBox[{"Sin", "[", 
+            RowBox[{"Pi", "/", "3"}], "]"}]}]}], "}"}]}], "}"}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "0.1"}], ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0.1", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Disk", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Cos", "[", 
+          RowBox[{"Pi", "/", "3"}], "]"}], ",", 
+         RowBox[{"-", 
+          RowBox[{"Sin", "[", 
+           RowBox[{"Pi", "/", "3"}], "]"}]}]}], "}"}], ",", "0.05"}], "]"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"Dashed", ",", "Gray", ",", 
+       RowBox[{"Line", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", "0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", 
+            RowBox[{"-", "1"}]}], "}"}]}], "}"}], "]"}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"Gray", ",", 
+       RowBox[{"Circle", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}], ",", "1", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"-", "3"}], 
+            RowBox[{"Pi", "/", "4"}]}], ",", 
+           RowBox[{
+            RowBox[{"-", "Pi"}], "/", "4"}]}], "}"}]}], "]"}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Circle", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}], ",", ".2", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", "Pi"}], "/", "2"}], ",", 
+         RowBox[{
+          RowBox[{"-", "Pi"}], "/", "3"}]}], "}"}]}], "]"}]}], 
+    "\[IndentingNewLine]", "}"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.663982824904401*^9, 3.6639830182284*^9}, {
+  3.663983048265707*^9, 3.663983115721586*^9}, {3.663983147256761*^9, 
+  3.663983163022778*^9}, {3.663983202589698*^9, 3.663983292627502*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   LineBox[NCache[{{0, 0}, {
+      Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}}, {{0, 0}, {
+      0.5, -0.8660254037844386}}]], LineBox[{{-0.1, 0}, {0.1, 0}}], 
+   DiskBox[NCache[{Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+     0.5, -0.8660254037844386}], 0.05], 
+   {GrayLevel[0.5], Dashing[{Small, Small}], LineBox[{{0, 0}, {0, -1}}]}, 
+   {GrayLevel[0.5], 
+    CircleBox[{0, 0}, 1, 
+     NCache[{Rational[-3, 4] Pi, Rational[-1, 4] 
+       Pi}, {-2.356194490192345, -0.7853981633974483}]]}, 
+   CircleBox[{0, 0}, 0.2, 
+    NCache[{Rational[-1, 2] Pi, Rational[-1, 3] 
+      Pi}, {-1.5707963267948966`, -1.0471975511965976`}]]},
+  ImageSize->Tiny]], "Output",
+ CellChangeTimes->{{3.663983264724781*^9, 3.663983293258967*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "The last thing to do is to put the symbol \[Theta] there. Text in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " is just a string. We need to take that text and convert it into a graphics \
+object. So the ",
+ StyleBox["Text",
+  FontWeight->"Bold"],
+ " object is a primitive graphic type that will help us do that. "
+}], "Text",
+ CellChangeTimes->{{3.684697052763307*^9, 3.684697114041251*^9}, {
+  3.684697152025573*^9, 3.684697159688373*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Text"}]], "Input",
+ CellChangeTimes->{{3.663983306556232*^9, 3.663983307449418*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Text\\\", \\\"[\\\", StyleBox[\\\"expr\\\
+\", \\\"TI\\\"], \\\"]\\\"}]\\) displays with \\!\\(\\*StyleBox[\\\"expr\\\", \
+\\\"TI\\\"]\\) in plain text format. \\n\\!\\(\\*RowBox[{\\\"Text\\\", \
+\\\"[\\\", RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\
+\"coords\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) is a graphics primitive that \
+displays the textual form of \\!\\(\\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\\) \
+centered at the point specified by \\!\\(\\*StyleBox[\\\"coords\\\", \\\"TI\\\
+\"]\\). \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Text"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.6639833078344517`*^9},
+ CellTags->"Info-ccbae3e7-2490-42bd-ba4b-c069e89adaf7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Cos", "[", 
+           RowBox[{"Pi", "/", "3"}], "]"}], ",", 
+          RowBox[{"-", 
+           RowBox[{"Sin", "[", 
+            RowBox[{"Pi", "/", "3"}], "]"}]}]}], "}"}]}], "}"}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "0.1"}], ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0.1", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"Dashed", ",", "Gray", ",", 
+       RowBox[{"Line", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", "0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", 
+            RowBox[{"-", "1"}]}], "}"}]}], "}"}], "]"}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"Gray", ",", 
+       RowBox[{"Circle", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}], ",", "1", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"-", "3"}], 
+            RowBox[{"Pi", "/", "4"}]}], ",", 
+           RowBox[{
+            RowBox[{"-", "Pi"}], "/", "4"}]}], "}"}]}], "]"}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Circle", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}], ",", ".2", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", "Pi"}], "/", "2"}], ",", 
+         RowBox[{
+          RowBox[{"-", "Pi"}], "/", "3"}]}], "}"}]}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"FontSize", "\[Rule]", "18"}], ",", 
+       RowBox[{"Text", "[", 
+        RowBox[{"\"\<\[Theta]\>\"", ",", 
+         RowBox[{"{", 
+          RowBox[{"0.08", ",", 
+           RowBox[{"-", "0.3"}]}], "}"}]}], "]"}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Disk", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Cos", "[", 
+          RowBox[{"Pi", "/", "3"}], "]"}], ",", 
+         RowBox[{"-", 
+          RowBox[{"Sin", "[", 
+           RowBox[{"Pi", "/", "3"}], "]"}]}]}], "}"}], ",", "0.05"}], "]"}]}],
+     "\[IndentingNewLine]", "}"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Medium"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.663983320611803*^9, 3.663983413056278*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   LineBox[NCache[{{0, 0}, {
+      Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}}, {{0, 0}, {
+      0.5, -0.8660254037844386}}]], LineBox[{{-0.1, 0}, {0.1, 0}}], 
+   {GrayLevel[0.5], Dashing[{Small, Small}], LineBox[{{0, 0}, {0, -1}}]}, 
+   {GrayLevel[0.5], 
+    CircleBox[{0, 0}, 1, 
+     NCache[{Rational[-3, 4] Pi, Rational[-1, 4] 
+       Pi}, {-2.356194490192345, -0.7853981633974483}]]}, 
+   CircleBox[{0, 0}, 0.2, 
+    NCache[{Rational[-1, 2] Pi, Rational[-1, 3] 
+      Pi}, {-1.5707963267948966`, -1.0471975511965976`}]], 
+   StyleBox[InsetBox["\<\"\[Theta]\"\>", {0.08, -0.3}],
+    FontSize->18], 
+   DiskBox[NCache[{Rational[1, 2], Rational[-1, 2] 3^Rational[1, 2]}, {
+     0.5, -0.8660254037844386}], 0.05]},
+  ImageSize->Medium]], "Output",
+ CellChangeTimes->{{3.663983350095553*^9, 3.663983413648131*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Other Graphics Primitives", "Subsection",
+ CellChangeTimes->{{3.6941192158554487`*^9, 3.6941192226151457`*^9}}],
+
+Cell[TextData[{
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " also provides many other graphic primitives beyond the ones I\
+\[CloseCurlyQuote]ve shown you just now, including ",
+ StyleBox["Polygon",
+  FontWeight->"Bold"],
+ ". "
+}], "Text",
+ CellChangeTimes->{{3.6846972737431107`*^9, 3.684697374764655*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Polygon"}]], "Input",
+ CellChangeTimes->{{3.663983424666527*^9, 3.663983426306223*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Polygon\\\", \\\"[\\\", \
+RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], \
+StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"], \\\",\\\", SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], StyleBox[\
+\\\"n\\\", \\\"TI\\\"]]}], \\\"}\\\"}], \\\"]\\\"}]\\) represents a filled \
+polygon with points \\!\\(\\*SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], \
+StyleBox[\\\"i\\\", \\\"TI\\\"]]\\).\\n\\!\\(\\*RowBox[{\\\"Polygon\\\", \
+\\\"[\\\", RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], StyleBox[\\\"11\\\", \\\
+\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \
+\\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], StyleBox[\\\"21\\\", \\\
+\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \
+\\\"}\\\"}], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \
+\\\"}\\\"}], \\\"]\\\"}]\\) represents a collection of polygons. \"\>", "MSG"],
+   "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Polygon"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.663983426762145*^9},
+ CellTags->"Info-723acaf1-b444-45e7-9f21-d4a912479634"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["Polygon",
+  FontWeight->"Bold"],
+ " allows us to draw a sequence of points and then fill it. "
+}], "Text",
+ CellChangeTimes->{3.68469737713151*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{
+   RowBox[{"Polygon", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0.7", ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1"}], "}"}]}], "}"}], "]"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6639834388696632`*^9, 3.663983469275545*^9}, {
+  3.684697397559875*^9, 3.6846974140595217`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[PolygonBox[{{0, 0}, {0.7, 0}, {1, 1}, {0, 1}}],
+  ImageSize->Tiny]], "Output",
+ CellChangeTimes->{{3.68469739978013*^9, 3.6846974147250032`*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Other simple things include the ",
+ StyleBox["Rectangle",
+  FontWeight->"Bold"],
+ ". This graphics primitive allows us to draw rectangles. \\\\"
+}], "Text",
+ CellChangeTimes->{{3.684697476954503*^9, 3.6846975277600117`*^9}, {
+  3.684697581729546*^9, 3.684697588226337*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Rectangle"}]], "Input",
+ CellChangeTimes->{{3.663983481169629*^9, 3.663983483826828*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Rectangle\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"x\\\", \
+\\\"TI\\\"], StyleBox[\\\"min\\\", \\\"TI\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"y\\\", \\\"TI\\\"], StyleBox[\\\"min\\\", \
+\\\"TI\\\"]]}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], StyleBox[\\\"max\\\", \
+\\\"TI\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"y\\\", \\\"TI\\\"], \
+StyleBox[\\\"max\\\", \\\"TI\\\"]]}], \\\"}\\\"}]}], \\\"]\\\"}]\\) \
+represents an axis-aligned filled rectangle from \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], StyleBox[\\\"min\\\", \
+\\\"TI\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"y\\\", \\\"TI\\\"], \
+StyleBox[\\\"min\\\", \\\"TI\\\"]]}], \\\"}\\\"}]\\) to \
+\\!\\(\\*RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\
+\"], StyleBox[\\\"max\\\", \\\"TI\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"y\\\", \\\"TI\\\"], StyleBox[\\\"max\\\", \
+\\\"TI\\\"]]}], \\\"}\\\"}]\\).\\n\\!\\(\\*RowBox[{\\\"Rectangle\\\", \\\"[\\\
+\", RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], \
+StyleBox[\\\"min\\\", \\\"TI\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"y\\\", \\\"TI\\\"], StyleBox[\\\"min\\\", \
+\\\"TI\\\"]]}], \\\"}\\\"}], \\\"]\\\"}]\\) corresponds to a unit square with \
+its bottom-left corner at \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], StyleBox[\\\"min\\\", \
+\\\"TI\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"y\\\", \\\"TI\\\"], \
+StyleBox[\\\"min\\\", \\\"TI\\\"]]}], \\\"}\\\"}]\\).\"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Rectangle"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.663983484450745*^9},
+ CellTags->"Info-702accdd-0f30-437c-abdf-ceb8daf32460"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{
+   RowBox[{"Rectangle", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", "1"}], "}"}]}], "]"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.66398348862471*^9, 3.663983510450643*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[RectangleBox[{0, 0}, {2, 1}],
+  ImageSize->Tiny]], "Output",
+ CellChangeTimes->{3.663983510749281*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " also provides triangles, many different types of triangles in fact. We\
+\[CloseCurlyQuote]ll just take a look at one of them. "
+}], "Text",
+ CellChangeTimes->{{3.684697600165907*^9, 3.684697636766*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Triangle"}]], "Input",
+ CellChangeTimes->{{3.663983521309037*^9, 3.663983524968349*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Triangle\\\", \\\"[\\\", RowBox[{\\\"{\\\
+\", RowBox[{SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"p\\\", \
+\\\"TI\\\"], StyleBox[\\\"3\\\", \\\"TR\\\"]]}], \\\"}\\\"}], \\\"]\\\"}]\\) \
+represents a filled triangle with corner points \
+\\!\\(\\*SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \\\
+\"TR\\\"]]\\), \\!\\(\\*SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]]\\), and \\!\\(\\*SubscriptBox[StyleBox[\\\"p\
+\\\", \\\"TI\\\"], StyleBox[\\\"3\\\", \\\"TR\\\"]]\\).\\n\\!\\(\\*RowBox[{\\\
+\"Triangle\\\", \\\"[\\\", RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], StyleBox[\\\"11\\\", \\\
+\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], \
+StyleBox[\\\"12\\\", \\\"TR\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], StyleBox[\\\"13\\\", \
+\\\"TR\\\"]]}], \\\"}\\\"}], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \
+\\\"TR\\\"]}], \\\"}\\\"}], \\\"]\\\"}]\\) represents a collection of \
+triangles. \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Triangle"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.6639835261000566`*^9},
+ CellTags->"Info-2fa19019-79fc-40db-b87e-0e058828a238"]
+}, Open  ]],
+
+Cell["So here we just give it the three points of the triangle. ", "Text",
+ CellChangeTimes->{{3.684697649902893*^9, 3.684697659613126*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{
+   RowBox[{"Triangle", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0.5", ",", 
+        RowBox[{
+         RowBox[{"Sqrt", "[", "3", "]"}], "/", "2"}]}], "}"}]}], "}"}], "]"}],
+    ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.66398353543321*^9, 3.663983565273054*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[
+  TagBox[PolygonBox[
+    NCache[{{0, 0}, {1, 0}, {0.5, Rational[1, 2] 3^Rational[1, 2]}}, {{0, 
+      0}, {1, 0}, {0.5, 0.8660254037844386}}]],
+   "Triangle"],
+  ImageSize->Tiny]], "Output",
+ CellChangeTimes->{3.6639835660079317`*^9}]
+}, Open  ]],
+
+Cell["\<\
+So far we\[CloseCurlyQuote]ve seen only these black objects. Maybe we could \
+style these a little bit. Let\[CloseCurlyQuote]s take our triangle and add \
+color to it. \
+\>", "Text",
+ CellChangeTimes->{{3.684697698085021*^9, 3.684697727908003*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RGBColor", "[", 
+      RowBox[{"0.2", ",", "0", ",", "4"}], "]"}], ",", 
+     RowBox[{"Triangle", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0.5", ",", 
+          RowBox[{
+           RowBox[{"Sqrt", "[", "3", "]"}], "/", "2"}]}], "}"}]}], "}"}], 
+      "]"}]}], "}"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.66398353543321*^9, 3.6639836023113403`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[
+  {RGBColor[0.2, 0, 4], 
+   TagBox[
+    PolygonBox[
+     NCache[{{0, 0}, {1, 0}, {0.5, Rational[1, 2] 3^Rational[1, 2]}}, {{0, 
+       0}, {1, 0}, {0.5, 0.8660254037844386}}]],
+    "Triangle"]},
+  ImageSize->Tiny]], "Output",
+ CellChangeTimes->{3.663983604554863*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "This is the first time we\[CloseCurlyQuote]ve seen ",
+ StyleBox["RGBColor",
+  FontWeight->"Bold"],
+ " used. So far we\[CloseCurlyQuote]ve only ever used named colors. "
+}], "Text",
+ CellChangeTimes->{{3.6846977584291363`*^9, 3.684697791481791*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "RGBColor"}]], "Input",
+ CellChangeTimes->{{3.663983622364066*^9, 3.6639836236734447`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"RGBColor\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"red\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"green\\\", \
+\\\"TI\\\"], \\\",\\\", StyleBox[\\\"blue\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) \
+is a graphics directive specifying that objects that follow are to be \
+displayed in the color given. \\n\\!\\(\\*RowBox[{\\\"RGBColor\\\", \
+\\\"[\\\", RowBox[{StyleBox[\\\"r\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"g\
+\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"b\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"a\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) specifies opacity \
+\\!\\(\\*StyleBox[\\\"a\\\", \\\"TI\\\"]\\). \\n\\!\\(\\*RowBox[{\\\"RGBColor\
+\\\", \\\"[\\\", \
+StyleBox[\\\"\\\\\\\"string\\\\\\\"\\\",\\\"TI\\\",ShowStringCharacters->True]\
+, \\\"]\\\"}]\\) evaluates to a normal RGBColor object.\"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/RGBColor"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.663983624702434*^9},
+ CellTags->"Info-e74ba01e-dae9-4b85-8ad6-ee55c16efdde"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Let\[CloseCurlyQuote]s take a look at tracing the object, giving it a \
+border. We will use the function called ",
+ StyleBox["EdgeForm",
+  FontWeight->"Bold"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.684697805882311*^9, 3.6846978372728243`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "EdgeForm"}]], "Input",
+ CellChangeTimes->{{3.663983663692939*^9, 3.66398366504169*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"EdgeForm\\\", \\\"[\\\", \
+StyleBox[\\\"g\\\", \\\"TI\\\"], \\\"]\\\"}]\\) is a graphics directive which \
+specifies that edges of polygons and other filled graphics objects are to be \
+drawn using the graphics directive or list of directives \\!\\(\\*StyleBox[\\\
+\"g\\\", \\\"TI\\\"]\\). \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/EdgeForm"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.66398366552505*^9},
+ CellTags->"Info-4dcf43e7-918c-4937-b1b4-a3708f99c61f"]
+}, Open  ]],
+
+Cell[TextData[{
+ "We put the ",
+ StyleBox["EdgeForm",
+  FontWeight->"Bold"],
+ " in the same way that we have ",
+ StyleBox["RGBColor",
+  FontWeight->"Bold"],
+ " into the graphics primitive, and it will use that as the style of the \
+edge. "
+}], "Text",
+ CellChangeTimes->{{3.684697852075103*^9, 3.684697908536201*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"EdgeForm", "[", 
+      RowBox[{"{", 
+       RowBox[{"Red", ",", "Dashed", ",", "Thick"}], "}"}], "]"}], ",", 
+     RowBox[{"RGBColor", "[", 
+      RowBox[{"0.2", ",", "0", ",", "4"}], "]"}], ",", 
+     RowBox[{"Triangle", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0.5", ",", 
+          RowBox[{
+           RowBox[{"Sqrt", "[", "3", "]"}], "/", "2"}]}], "}"}]}], "}"}], 
+      "]"}]}], "}"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6639836782364063`*^9, 3.6639836887834387`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[
+  {RGBColor[0.2, 0, 4], EdgeForm[{RGBColor[1, 0, 0], Thickness[Large], 
+   Dashing[{Small, Small}]}], 
+   TagBox[
+    PolygonBox[
+     NCache[{{0, 0}, {1, 0}, {0.5, Rational[1, 2] 3^Rational[1, 2]}}, {{0, 
+       0}, {1, 0}, {0.5, 0.8660254037844386}}]],
+    "Triangle"]},
+  ImageSize->Tiny]], "Output",
+ CellChangeTimes->{3.663983690267521*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Let\[CloseCurlyQuote]s go back and take a look at ",
+ StyleBox["Opacity",
+  FontWeight->"Bold"],
+ ". In order to do that, we\[CloseCurlyQuote]ll need two objects in our \
+graphcis view. "
+}], "Text",
+ CellChangeTimes->{{3.684697925921712*^9, 3.684697959414962*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Disk", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}], ",", "0.5"}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"EdgeForm", "[", 
+        RowBox[{"{", 
+         RowBox[{"Red", ",", "Dashed", ",", "Thick"}], "}"}], "]"}], ",", 
+       RowBox[{"RGBColor", "[", 
+        RowBox[{"0.2", ",", "0", ",", "4"}], "]"}], ",", 
+       RowBox[{"Triangle", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", "0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"1", ",", "0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0.5", ",", 
+            RowBox[{
+             RowBox[{"Sqrt", "[", "3", "]"}], "/", "2"}]}], "}"}]}], "}"}], 
+        "]"}]}], "}"}]}], "\[IndentingNewLine]", "}"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6639836782364063`*^9, 3.6639836887834387`*^9}, {
+  3.66398380386163*^9, 3.6639838324463663`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{DiskBox[{0, 0}, 0.5], 
+   {RGBColor[0.2, 0, 4], EdgeForm[{RGBColor[1, 0, 0], Thickness[Large], 
+    Dashing[{Small, Small}]}], 
+    TagBox[
+     PolygonBox[
+      NCache[{{0, 0}, {1, 0}, {0.5, Rational[1, 2] 3^Rational[1, 2]}}, {{0, 
+        0}, {1, 0}, {0.5, 0.8660254037844386}}]],
+     "Triangle"]}},
+  ImageSize->Tiny]], "Output",
+ CellChangeTimes->{3.6639838341429853`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "How can we make our triangle semitransparent? We do this using ",
+ StyleBox["Opacity",
+  FontWeight->"Bold"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.6846979977273607`*^9, 3.684698014205151*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Disk", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}], ",", "0.5"}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Opacity", "[", "0.8", "]"}], ",", 
+       RowBox[{"EdgeForm", "[", 
+        RowBox[{"{", 
+         RowBox[{"Red", ",", "Dashed", ",", "Thick"}], "}"}], "]"}], ",", 
+       RowBox[{"RGBColor", "[", 
+        RowBox[{"0.2", ",", "0", ",", "4"}], "]"}], ",", 
+       RowBox[{"Triangle", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", "0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"1", ",", "0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0.5", ",", 
+            RowBox[{
+             RowBox[{"Sqrt", "[", "3", "]"}], "/", "2"}]}], "}"}]}], "}"}], 
+        "]"}]}], "}"}]}], "\[IndentingNewLine]", "}"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6639836782364063`*^9, 3.6639836887834387`*^9}, {
+  3.66398380386163*^9, 3.663983871764484*^9}, {3.684698055336547*^9, 
+  3.684698067181754*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{DiskBox[{0, 0}, 0.5], 
+   {RGBColor[0.2, 0, 4], Opacity[0.8], EdgeForm[{RGBColor[1, 0, 0], Thickness[
+    Large], Dashing[{Small, Small}]}], 
+    TagBox[
+     PolygonBox[
+      NCache[{{0, 0}, {1, 0}, {0.5, Rational[1, 2] 3^Rational[1, 2]}}, {{0, 
+        0}, {1, 0}, {0.5, 0.8660254037844386}}]],
+     "Triangle"]}},
+  ImageSize->Tiny]], "Output",
+ CellChangeTimes->{{3.663983856350791*^9, 3.6639838732820272`*^9}, {
+  3.6846980576317377`*^9, 3.684698067475009*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Now you can see the disk is visible through the triangle. Another way of \
+doing the ",
+ StyleBox["Opacity",
+  FontWeight->"Bold"],
+ " is by putting it in the ",
+ StyleBox["RGBColor",
+  FontWeight->"Bold"],
+ ". "
+}], "Text",
+ CellChangeTimes->{{3.684698017661544*^9, 3.684698039804865*^9}, {
+  3.684698072998361*^9, 3.6846980935800743`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Disk", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}], ",", "0.5"}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"EdgeForm", "[", 
+        RowBox[{"{", 
+         RowBox[{"Red", ",", "Dashed", ",", "Thick"}], "}"}], "]"}], ",", 
+       RowBox[{"RGBColor", "[", 
+        RowBox[{"0.2", ",", "0", ",", "4", ",", "0.8"}], "]"}], ",", 
+       RowBox[{"Triangle", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", "0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"1", ",", "0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0.5", ",", 
+            RowBox[{
+             RowBox[{"Sqrt", "[", "3", "]"}], "/", "2"}]}], "}"}]}], "}"}], 
+        "]"}]}], "}"}]}], "\[IndentingNewLine]", "}"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "]"}]], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Summary", "Subsection",
+ CellChangeTimes->{{3.694119276078813*^9, 3.6941192779250717`*^9}}],
+
+Cell[TextData[{
+ "This covers our little tutorials on graphics in ",
+ StyleBox["Mathematica. ",
+  FontSlant->"Italic"],
+ "You can use it to make all kinds of graphics, and later \
+we\[CloseCurlyQuote]ll use what we\[CloseCurlyQuote]ve learned here to do \
+animations. I hope you had fun. I\[CloseCurlyQuote]ll see you next time. "
+}], "Text",
+ CellChangeTimes->{{3.684698101789332*^9, 3.6846981616751003`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1399, 855},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info-51e9fd8c-2ff6-4f20-a962-f8afb4df16b2"->{
+  Cell[2848, 89, 1481, 25, 77, "Print",
+   CellTags->"Info-51e9fd8c-2ff6-4f20-a962-f8afb4df16b2"]},
+ "Info-6e8be4c2-e9fb-4d7d-869c-31c043c09b15"->{
+  Cell[4682, 131, 2425, 38, 127, "Print",
+   CellTags->"Info-6e8be4c2-e9fb-4d7d-869c-31c043c09b15"]},
+ "Info-13adcbd3-8700-4f5b-85b9-9773cff45836"->{
+  Cell[7421, 186, 2413, 39, 127, "Print",
+   CellTags->"Info-13adcbd3-8700-4f5b-85b9-9773cff45836"]},
+ "Info-8fa4371a-755b-43f5-a113-6e2dcca542ad"->{
+  Cell[10558, 253, 547, 12, 52, "Print",
+   CellTags->"Info-8fa4371a-755b-43f5-a113-6e2dcca542ad"]},
+ "Info-ccbae3e7-2490-42bd-ba4b-c069e89adaf7"->{
+  Cell[25545, 700, 865, 16, 77, "Print",
+   CellTags->"Info-ccbae3e7-2490-42bd-ba4b-c069e89adaf7"]},
+ "Info-723acaf1-b444-45e7-9f21-d4a912479634"->{
+  Cell[30639, 850, 1381, 24, 77, "Print",
+   CellTags->"Info-723acaf1-b444-45e7-9f21-d4a912479634"]},
+ "Info-702accdd-0f30-437c-abdf-ceb8daf32460"->{
+  Cell[33433, 925, 1977, 33, 77, "Print",
+   CellTags->"Info-702accdd-0f30-437c-abdf-ceb8daf32460"]},
+ "Info-2fa19019-79fc-40db-b87e-0e058828a238"->{
+  Cell[36367, 995, 1565, 26, 77, "Print",
+   CellTags->"Info-2fa19019-79fc-40db-b87e-0e058828a238"]},
+ "Info-e74ba01e-dae9-4b85-8ad6-ee55c16efdde"->{
+  Cell[40604, 1114, 1142, 21, 101, "Print",
+   CellTags->"Info-e74ba01e-dae9-4b85-8ad6-ee55c16efdde"]},
+ "Info-4dcf43e7-918c-4937-b1b4-a3708f99c61f"->{
+  Cell[42167, 1153, 642, 13, 52, "Print",
+   CellTags->"Info-4dcf43e7-918c-4937-b1b4-a3708f99c61f"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info-51e9fd8c-2ff6-4f20-a962-f8afb4df16b2", 50549, 1411},
+ {"Info-6e8be4c2-e9fb-4d7d-869c-31c043c09b15", 50697, 1414},
+ {"Info-13adcbd3-8700-4f5b-85b9-9773cff45836", 50847, 1417},
+ {"Info-8fa4371a-755b-43f5-a113-6e2dcca542ad", 50997, 1420},
+ {"Info-ccbae3e7-2490-42bd-ba4b-c069e89adaf7", 51146, 1423},
+ {"Info-723acaf1-b444-45e7-9f21-d4a912479634", 51295, 1426},
+ {"Info-702accdd-0f30-437c-abdf-ceb8daf32460", 51445, 1429},
+ {"Info-2fa19019-79fc-40db-b87e-0e058828a238", 51595, 1432},
+ {"Info-e74ba01e-dae9-4b85-8ad6-ee55c16efdde", 51745, 1435},
+ {"Info-4dcf43e7-918c-4937-b1b4-a3708f99c61f", 51897, 1438}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 101, 1, 80, "Section"],
+Cell[684, 25, 189, 4, 37, "Text"],
+Cell[CellGroupData[{
+Cell[898, 33, 100, 1, 54, "Subsection"],
+Cell[1001, 36, 140, 1, 37, "Text"],
+Cell[1144, 39, 870, 20, 341, "Input"],
+Cell[2017, 61, 192, 4, 37, "Text"],
+Cell[2212, 67, 496, 14, 61, "Text"],
+Cell[CellGroupData[{
+Cell[2733, 85, 112, 2, 39, "Input"],
+Cell[2848, 89, 1481, 25, 77, "Print",
+ CellTags->"Info-51e9fd8c-2ff6-4f20-a962-f8afb4df16b2"]
+}, Open  ]],
+Cell[4344, 117, 195, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[4564, 127, 115, 2, 39, "Input"],
+Cell[4682, 131, 2425, 38, 127, "Print",
+ CellTags->"Info-6e8be4c2-e9fb-4d7d-869c-31c043c09b15"]
+}, Open  ]],
+Cell[7122, 172, 158, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[7305, 182, 113, 2, 39, "Input"],
+Cell[7421, 186, 2413, 39, 127, "Print",
+ CellTags->"Info-13adcbd3-8700-4f5b-85b9-9773cff45836"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9883, 231, 108, 1, 54, "Subsection"],
+Cell[9994, 234, 419, 11, 61, "Text"],
+Cell[CellGroupData[{
+Cell[10438, 249, 117, 2, 39, "Input"],
+Cell[10558, 253, 547, 12, 52, "Print",
+ CellTags->"Info-8fa4371a-755b-43f5-a113-6e2dcca542ad"]
+}, Open  ]],
+Cell[11120, 268, 125, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[11270, 273, 544, 16, 39, "Input"],
+Cell[11817, 291, 255, 6, 143, "Output"]
+}, Open  ]],
+Cell[12087, 300, 354, 6, 61, "Text"],
+Cell[CellGroupData[{
+Cell[12466, 310, 934, 28, 118, "Input"],
+Cell[13403, 340, 270, 6, 143, "Output"]
+}, Open  ]],
+Cell[13688, 349, 257, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[13970, 358, 1257, 38, 144, "Input"],
+Cell[15230, 398, 405, 8, 143, "Output"]
+}, Open  ]],
+Cell[15650, 409, 227, 4, 37, "Text"],
+Cell[CellGroupData[{
+Cell[15902, 417, 1665, 50, 170, "Input"],
+Cell[17570, 469, 507, 10, 143, "Output"]
+}, Open  ]],
+Cell[18092, 482, 412, 7, 61, "Text"],
+Cell[CellGroupData[{
+Cell[18529, 493, 2206, 65, 196, "Input"],
+Cell[20738, 560, 662, 14, 108, "Output"]
+}, Open  ]],
+Cell[21415, 577, 161, 3, 37, "Text"],
+Cell[CellGroupData[{
+Cell[21601, 584, 2545, 76, 222, "Input"],
+Cell[24149, 662, 772, 16, 108, "Output"]
+}, Open  ]],
+Cell[24936, 681, 468, 11, 61, "Text"],
+Cell[CellGroupData[{
+Cell[25429, 696, 113, 2, 39, "Input"],
+Cell[25545, 700, 865, 16, 77, "Print",
+ CellTags->"Info-ccbae3e7-2490-42bd-ba4b-c069e89adaf7"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26447, 721, 2712, 83, 248, "Input"],
+Cell[29162, 806, 850, 18, 341, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30061, 830, 117, 1, 54, "Subsection"],
+Cell[30181, 833, 314, 9, 37, "Text"],
+Cell[CellGroupData[{
+Cell[30520, 846, 116, 2, 39, "Input"],
+Cell[30639, 850, 1381, 24, 77, "Print",
+ CellTags->"Info-723acaf1-b444-45e7-9f21-d4a912479634"]
+}, Open  ]],
+Cell[32035, 877, 174, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[32234, 886, 572, 16, 39, "Input"],
+Cell[32809, 904, 172, 3, 143, "Output"]
+}, Open  ]],
+Cell[32996, 910, 291, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[33312, 921, 118, 2, 39, "Input"],
+Cell[33433, 925, 1977, 33, 77, "Print",
+ CellTags->"Info-702accdd-0f30-437c-abdf-ceb8daf32460"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[35447, 963, 358, 10, 39, "Input"],
+Cell[35808, 975, 129, 3, 83, "Output"]
+}, Open  ]],
+Cell[35952, 981, 270, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[36247, 991, 117, 2, 39, "Input"],
+Cell[36367, 995, 1565, 26, 77, "Print",
+ CellTags->"Info-2fa19019-79fc-40db-b87e-0e058828a238"]
+}, Open  ]],
+Cell[37947, 1024, 140, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[38112, 1029, 525, 16, 39, "Input"],
+Cell[38640, 1047, 262, 7, 127, "Output"]
+}, Open  ]],
+Cell[38917, 1057, 258, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[39200, 1066, 678, 20, 39, "Input"],
+Cell[39881, 1088, 295, 9, 127, "Output"]
+}, Open  ]],
+Cell[40191, 1100, 266, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[40482, 1110, 119, 2, 39, "Input"],
+Cell[40604, 1114, 1142, 21, 101, "Print",
+ CellTags->"Info-e74ba01e-dae9-4b85-8ad6-ee55c16efdde"]
+}, Open  ]],
+Cell[41761, 1138, 262, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[42048, 1149, 116, 2, 39, "Input"],
+Cell[42167, 1153, 642, 13, 52, "Print",
+ CellTags->"Info-4dcf43e7-918c-4937-b1b4-a3708f99c61f"]
+}, Open  ]],
+Cell[42824, 1169, 317, 10, 37, "Text"],
+Cell[CellGroupData[{
+Cell[43166, 1183, 805, 23, 66, "Input"],
+Cell[43974, 1208, 373, 10, 127, "Output"]
+}, Open  ]],
+Cell[44362, 1221, 283, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[44670, 1232, 1137, 31, 118, "Input"],
+Cell[45810, 1265, 406, 10, 132, "Output"]
+}, Open  ]],
+Cell[46231, 1278, 212, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[46468, 1288, 1235, 33, 118, "Input"],
+Cell[47706, 1323, 495, 11, 132, "Output"]
+}, Open  ]],
+Cell[48216, 1337, 359, 11, 37, "Text"],
+Cell[48578, 1350, 1029, 29, 118, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[49644, 1384, 97, 1, 54, "Subsection"],
+Cell[49744, 1387, 410, 8, 61, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

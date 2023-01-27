@@ -1,0 +1,1526 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     48556,       1518]
+NotebookOptionsPosition[     39876,       1238]
+NotebookOutlinePosition[     41459,       1287]
+CellTagsIndexPosition[     41151,       1277]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Variable Scoping", "Section",
+ CellChangeTimes->{{3.688865264004318*^9, 3.688865265727069*^9}}],
+
+Cell[TextData[{
+ "Hello and welcome to our lecture on variable scoping. In this lecture, we \
+will learn about the ",
+ StyleBox["With", "Code"],
+ ", ",
+ StyleBox["Module", "Code"],
+ " and ",
+ StyleBox["Block", "Code"],
+ " functions."
+}], "Text",
+ CellChangeTimes->{{3.670191678799315*^9, 3.670191767108683*^9}, {
+  3.672365094339692*^9, 3.6723651299293003`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Introduction", "Subsection",
+ CellChangeTimes->{{3.670191778420313*^9, 3.6701917804282227`*^9}, {
+  3.688865267915399*^9, 3.6888652697401752`*^9}}],
+
+Cell[TextData[{
+ "In simple terms, the scope of a variable is the portion of code where a \
+variable is defined. What does this mean? Well, when you set ",
+ StyleBox["x", "Code"],
+ " to something, for example:"
+}], "Text",
+ CellChangeTimes->{{3.6701917848518887`*^9, 3.670191838762451*^9}, {
+   3.670191917912857*^9, 3.670191927633813*^9}, {3.6701919598716497`*^9, 
+   3.670192033270376*^9}, {3.670192064293929*^9, 3.670192066165936*^9}, 
+   3.6723651348409452`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"x", "=", "3"}]], "Input",
+ CellChangeTimes->{{3.670192036406179*^9, 3.67019203711028*^9}}],
+
+Cell[BoxData["3"], "Output",
+ CellChangeTimes->{3.670192037613982*^9, 3.673300223369709*^9, 
+  3.673305789433753*^9, 3.675734029781723*^9, 3.688865771149295*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "The variable is now defined in what we call the ",
+ StyleBox["Global", "Code"],
+ " scope:"
+}], "Text",
+ CellChangeTimes->{{3.670192042519226*^9, 3.670192086517276*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "x"}]], "Input",
+ CellChangeTimes->{{3.67019208779641*^9, 3.670192088381501*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Global`x", "Print", "PrintUsage",
+ CellChangeTimes->{3.688865771264798*^9},
+ CellTags->"Info473688836971-2817976"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {GridBox[{
+       {
+        RowBox[{"x", "=", "3"}]}
+      },
+      BaselinePosition->{Baseline, {1, 1}},
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{"Columns" -> {{
+           Scaled[0.999]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}}]}
+   },
+   BaselinePosition->{Baseline, {1, 1}},
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}}],
+  Definition[$CellContext`x],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.688865771331916*^9},
+ CellTags->"Info473688836971-2817976"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[TextData[{
+ "Almost everything we\[CloseCurlyQuote]ve done in our lectures so far have \
+been done in the ",
+ StyleBox["Global", "Code"],
+ " scope, with the exception of our functions. Let\[CloseCurlyQuote]s take a \
+look at our ",
+ StyleBox["square", "Code"],
+ " function:"
+}], "Text",
+ CellChangeTimes->{{3.670192108277615*^9, 3.670192169083605*^9}, {
+   3.672365163984177*^9, 3.672365168807953*^9}, 3.672365199367178*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"square", "[", "x_", "]"}], ":=", 
+  RowBox[{"x", "^", "2"}]}]], "Input",
+ CellChangeTimes->{{3.670192169954905*^9, 3.670192176923592*^9}}],
+
+Cell[TextData[{
+ "Notice how the x in the definition of the function is green? This ",
+ StyleBox["x", "Code"],
+ " is not the same ",
+ StyleBox["x", "Code"],
+ " as the ",
+ StyleBox["x", "Code"],
+ " we defined in the ",
+ StyleBox["Global", "Code"],
+ " scope:"
+}], "Text",
+ CellChangeTimes->{{3.6701921820830297`*^9, 3.670192234961911*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"square", "[", "5", "]"}]], "Input",
+ CellChangeTimes->{{3.670192237563643*^9, 3.670192239947093*^9}}],
+
+Cell[BoxData["25"], "Output",
+ CellChangeTimes->{3.670192240363233*^9, 3.6733002250287952`*^9, 
+  3.6733057910713587`*^9, 3.67573403200208*^9, 3.688865771432541*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "x"}]], "Input",
+ CellChangeTimes->{3.670192241651512*^9, 3.670192275585848*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Global`x", "Print", "PrintUsage",
+ CellChangeTimes->{3.688865771499145*^9},
+ CellTags->"Info503688836971-2817976"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {GridBox[{
+       {
+        RowBox[{"x", "=", "3"}]}
+      },
+      BaselinePosition->{Baseline, {1, 1}},
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{"Columns" -> {{
+           Scaled[0.999]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}}]}
+   },
+   BaselinePosition->{Baseline, {1, 1}},
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}}],
+  Definition[$CellContext`x],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.688865771565592*^9},
+ CellTags->"Info503688836971-2817976"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[TextData[{
+ "As you can see, our x in the Global scope still has a value of 3, even \
+though ",
+ StyleBox["x", "Code"],
+ " had the value of 5 within the ",
+ StyleBox["square", "Code"],
+ " function. In other words, within our function ",
+ StyleBox["x", "Code"],
+ " is scoped to the function. This doesn\[CloseCurlyQuote]t necessarily have \
+to be the case:"
+}], "Text",
+ CellChangeTimes->{{3.670192247497437*^9, 3.670192359751219*^9}, {
+  3.6701926214030848`*^9, 3.670192751374791*^9}, {3.673302812203286*^9, 
+  3.673302855841667*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"sumXY", "[", "y_", "]"}], ":=", 
+  RowBox[{"x", "+", "y"}]}]], "Input",
+ CellChangeTimes->{{3.670192757399375*^9, 3.670192771942032*^9}, {
+  3.6701928125733967`*^9, 3.670192814142557*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sumXY", "[", "5", "]"}]], "Input",
+ CellChangeTimes->{{3.670192779558909*^9, 3.670192782535345*^9}, 
+   3.670192816712714*^9}],
+
+Cell[BoxData["8"], "Output",
+ CellChangeTimes->{3.670192783040835*^9, 3.670192818310738*^9, 
+  3.673300225185297*^9, 3.673305791248395*^9, 3.6757340321890793`*^9, 
+  3.6888657716660233`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "The result is 8 because ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"x", "=", "3"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " and we passed ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"y", "=", "5"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". In this example, ",
+ StyleBox["y", "Code"],
+ " is locally scoped to the function ",
+ StyleBox["sumXY", "Code"],
+ ", while ",
+ StyleBox["x", "Code"],
+ " is globally scoped. If we ",
+ StyleBox["Clear", "Code"],
+ " ",
+ StyleBox["x", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.670192796485261*^9, 3.67019289060354*^9}, {
+  3.673302846818565*^9, 3.6733028475722837`*^9}, {3.688865350601918*^9, 
+  3.688865398219022*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", "x", "]"}]], "Input",
+ CellChangeTimes->{{3.670192788310732*^9, 3.670192789582487*^9}}],
+
+Cell["And evaluate the function again:", "Text",
+ CellChangeTimes->{{3.670192893539012*^9, 3.670192898426957*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sumXY", "[", "5", "]"}]], "Input",
+ CellChangeTimes->{{3.670192791775878*^9, 3.670192794590479*^9}, {
+  3.67019290073899*^9, 3.670192903324185*^9}}],
+
+Cell[BoxData[
+ RowBox[{"5", "+", "x"}]], "Output",
+ CellChangeTimes->{3.670192903703822*^9, 3.673300225238804*^9, 
+  3.6733057913249083`*^9, 3.675734032233358*^9, 3.688865771757126*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "The result is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"5", "+", "x"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.670192906418792*^9, 3.670192914426497*^9}, {
+  3.688865408373631*^9, 3.688865411546165*^9}}],
+
+Cell[TextData[{
+ "The rule is: arguments to a function are locally scoped to the function, \
+and any other variables are globally scoped. We call these locally scoped \
+variables local variables. In general, you should avoid accessing global \
+variables from inside your functions because it makes your functions \
+non-deterministic. In this case, ",
+ StyleBox["sumXY", "Code"],
+ " is non-deterministic because it will return different results depending on \
+the global value of ",
+ StyleBox["x", "Code"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.670192940626354*^9, 3.670192971529641*^9}, {
+  3.670193014600668*^9, 3.67019313668561*^9}, {3.670193232899878*^9, 
+  3.670193261091155*^9}, {3.670193475783757*^9, 3.6701935618521633`*^9}, {
+  3.6733028704553337`*^9, 3.673302914384347*^9}, {3.688865440309661*^9, 
+  3.688865443933423*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["With", "Subsection",
+ CellChangeTimes->{{3.672699133951985*^9, 3.672699134230556*^9}}],
+
+Cell[TextData[{
+ "One way to scope a variable is by making it an argument to a function. \
+Sometimes, we need to scope a variable within a function, but the variable is \
+not an argument. A good example of this is when you have a particular \
+expression that gets used several times in a larger expression. In these \
+cases, we can use the ",
+ StyleBox["With", "Code"],
+ " function:"
+}], "Text",
+ CellChangeTimes->{{3.672699156805431*^9, 3.6726991773884172`*^9}, {
+   3.672699355721526*^9, 3.672699422909533*^9}, {3.672699505472383*^9, 
+   3.672699505656274*^9}, 3.6888654719199677`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "With"}]], "Input",
+ CellChangeTimes->{{3.672699423764686*^9, 3.672699433444931*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"With\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \
+\\\"=\\\", SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], StyleBox[\\\"0\\\", \
+\\\"TR\\\"]]}], \\\",\\\", RowBox[{StyleBox[\\\"y\\\", \\\"TI\\\"], \
+\\\"=\\\", SubscriptBox[StyleBox[\\\"y\\\", \\\"TI\\\"], StyleBox[\\\"0\\\", \
+\\\"TR\\\"]]}], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\
+\\\"}], \\\",\\\", StyleBox[\\\"expr\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) \
+specifies that all occurrences of the symbols \!\(\*StyleBox[\\\"x\\\", \
+\\\"TI\\\"]\), \!\(\*StyleBox[\\\"y\\\", \\\"TI\\\"]\), \[Ellipsis] in \
+\!\(\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\) should be replaced by \
+\!\(\*SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], StyleBox[\\\"0\\\", \
+\\\"TR\\\"]]\), \!\(\*SubscriptBox[StyleBox[\\\"y\\\", \\\"TI\\\"], StyleBox[\
+\\\"0\\\", \\\"TR\\\"]]\), \[Ellipsis]. \"\>", "MSG"], "\[NonBreakingSpace]", 
+  
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/With"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.688865771853574*^9},
+ CellTags->"Info553688836971-2817976"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Imagine you want to evaluate ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{"x", "+", "1"}], "x"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", where ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"x", "=", "3"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". One way to do it is to define ",
+ StyleBox["x", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.67330037267172*^9, 3.6733004055760183`*^9}, {
+  3.688865493388072*^9, 3.6888655161720963`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"x", "=", "3"}]], "Input",
+ CellChangeTimes->{{3.673300406345357*^9, 3.673300407770069*^9}}],
+
+Cell[BoxData["3"], "Output",
+ CellChangeTimes->{3.673300410079221*^9, 3.673301230670744*^9, 
+  3.673305791507813*^9, 3.67573403238337*^9, 3.6888657719462214`*^9}]
+}, Open  ]],
+
+Cell["Then evaluate:", "Text",
+ CellChangeTimes->{{3.673300412280962*^9, 3.673300413990816*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"x", "+", "1"}], ")"}], "/", "x"}]], "Input",
+ CellChangeTimes->{{3.673300324519361*^9, 3.673300327862974*^9}}],
+
+Cell[BoxData[
+ FractionBox["4", "3"]], "Output",
+ CellChangeTimes->{3.673300415212731*^9, 3.6733012318789883`*^9, 
+  3.67330579156151*^9, 3.675734032454166*^9, 3.688865772012145*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "But now, ",
+ StyleBox["x", "Code"],
+ " has a value in the global scope:"
+}], "Text",
+ CellChangeTimes->{{3.673300417320641*^9, 3.673300426781838*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "x"}]], "Input",
+ CellChangeTimes->{{3.673300428063615*^9, 3.673300428199073*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Global`x", "Print", "PrintUsage",
+ CellChangeTimes->{3.688865772077013*^9},
+ CellTags->"Info583688836972-2817976"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {GridBox[{
+       {
+        RowBox[{"x", "=", "3"}]}
+      },
+      BaselinePosition->{Baseline, {1, 1}},
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{"Columns" -> {{
+           Scaled[0.999]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}}]}
+   },
+   BaselinePosition->{Baseline, {1, 1}},
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}}],
+  Definition[$CellContext`x],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.688865772133649*^9},
+ CellTags->"Info583688836972-2817976"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Clear", "@", "x"}]], "Input",
+ CellChangeTimes->{{3.673301265394821*^9, 3.673301266551148*^9}}],
+
+Cell[TextData[{
+ "If we want to scope ",
+ StyleBox["x", "Code"],
+ " to just the expression, we could use ",
+ StyleBox["With", "Code"],
+ " as follows:"
+}], "Text",
+ CellChangeTimes->{{3.673300438492927*^9, 3.673300460080892*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"x", "=", "3"}], "}"}], ",", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"x", "+", "1"}], ")"}], "/", "x"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.673300461817573*^9, 3.6733004694522743`*^9}}],
+
+Cell[BoxData[
+ FractionBox["4", "3"]], "Output",
+ CellChangeTimes->{
+  3.673300470010667*^9, {3.673301240700355*^9, 3.6733012682523403`*^9}, 
+   3.673305791749658*^9, 3.675734032722066*^9, 3.688865772268585*^9}]
+}, Open  ]],
+
+Cell["Now, x does not have a value in the global scope:", "Text",
+ CellChangeTimes->{{3.673301250102766*^9, 3.6733012585624733`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["x"], "Input",
+ CellChangeTimes->{3.673301270536859*^9}],
+
+Cell[BoxData["x"], "Output",
+ CellChangeTimes->{3.673301270832159*^9, 3.673305791796968*^9, 
+  3.6757340327613363`*^9, 3.688865772309936*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "What if ",
+ StyleBox["x", "Code"],
+ " already had a value in the global scope?"
+}], "Text",
+ CellChangeTimes->{{3.673301280499506*^9, 3.673301288824041*^9}, {
+  3.6888655955322323`*^9, 3.688865596449793*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"x", "=", "1"}]], "Input",
+ CellChangeTimes->{{3.673301292002404*^9, 3.6733012955853033`*^9}}],
+
+Cell[BoxData["1"], "Output",
+ CellChangeTimes->{{3.67330129279177*^9, 3.67330129615279*^9}, 
+   3.673305791875457*^9, 3.6757340328044243`*^9, 3.6888657723785133`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"x", "=", "3"}], "}"}], ",", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"x", "+", "1"}], ")"}], "/", "x"}]}], "]"}]], "Input"],
+
+Cell[BoxData[
+ FractionBox["4", "3"]], "Output",
+ CellChangeTimes->{3.673301300839541*^9, 3.673305791929687*^9, 
+  3.6757340328453627`*^9, 3.688865772445396*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["x", "Code"],
+ " was replaced by 3, just as before. What about the current value of x?"
+}], "Text",
+ CellChangeTimes->{{3.673301304608403*^9, 3.673301335746455*^9}, {
+  3.6733026013175898`*^9, 3.673302610259261*^9}, {3.688865603868734*^9, 
+  3.6888656107333717`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["x"], "Input",
+ CellChangeTimes->{3.6733013109560413`*^9}],
+
+Cell[BoxData["1"], "Output",
+ CellChangeTimes->{3.673301311218315*^9, 3.6733057919804907`*^9, 
+  3.675734032886957*^9, 3.688865772514084*^9}]
+}, Open  ]],
+
+Cell["In the global scope, x is still equal to 1.", "Text",
+ CellChangeTimes->{{3.673301349572441*^9, 3.6733013584933043`*^9}}],
+
+Cell[TextData[{
+ "Technical Note: The way ",
+ StyleBox["With", "Code"],
+ " works is, it rewrites the instances of ",
+ StyleBox["x", "Code"],
+ " (in this case), with the value 3, and then evaluates the expression."
+}], "Text",
+ CellChangeTimes->{{3.673300487137518*^9, 3.6733005310216417`*^9}, {
+   3.673300771294051*^9, 3.673300807437871*^9}, {3.673300838689777*^9, 
+   3.673300838858573*^9}, {3.673301374726939*^9, 3.673301387371543*^9}, {
+   3.6733014256677723`*^9, 3.673301444002339*^9}, 3.673301572058029*^9, {
+   3.673302613634742*^9, 3.673302614287113*^9}, {3.688865625873514*^9, 
+   3.6888656560079813`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Module", "Subsection",
+ CellChangeTimes->{{3.673301390420269*^9, 3.6733013908588533`*^9}}],
+
+Cell[TextData[{
+ "Now let\[CloseCurlyQuote]s look at ",
+ StyleBox["Module", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{3.673301427693145*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Module"}]], "Input",
+ CellChangeTimes->{{3.6733013883821993`*^9, 3.673301396393695*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Module\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \
+\\\",\\\", StyleBox[\\\"y\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"\
+\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\"}], \\\",\\\", \
+StyleBox[\\\"expr\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) specifies that \
+occurrences of the symbols \!\(\*StyleBox[\\\"x\\\", \\\"TI\\\"]\), \
+\!\(\*StyleBox[\\\"y\\\", \\\"TI\\\"]\), \[Ellipsis] in \
+\!\(\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\) should be treated as local. \
+\\n\!\(\*RowBox[{\\\"Module\\\", \\\"[\\\", RowBox[{RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \\\"=\\\", \
+SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], StyleBox[\\\"0\\\", \
+\\\"TR\\\"]]}], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\
+\\\"}], \\\",\\\", StyleBox[\\\"expr\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) \
+defines initial values for \!\(\*StyleBox[\\\"x\\\", \\\"TI\\\"]\), \
+\[Ellipsis]. \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Module"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.688865772599743*^9},
+ CellTags->"Info653688836972-2817976"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["Module", "Code"],
+ " is similar to ",
+ StyleBox["With", "Code"],
+ ", except it allows you to create local variables that can be assigned in \
+the expression:"
+}], "Text",
+ CellChangeTimes->{{3.673301581789898*^9, 3.673301599507022*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Module", "[", 
+  RowBox[{
+   RowBox[{"{", "x", "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"x", "=", "3"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"x", "+", "5"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.673301601625773*^9, 3.673301614053405*^9}}],
+
+Cell[BoxData["8"], "Output",
+ CellChangeTimes->{3.67330161458811*^9, 3.673305792096717*^9, 
+  3.6757340330789824`*^9, 3.688865772684901*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["Module", "Code"],
+ " also let\[CloseCurlyQuote]s you give your symbols a default value:"
+}], "Text",
+ CellChangeTimes->{{3.673301901735098*^9, 3.6733019416557093`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Module", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"x", "=", "3"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"x", "+", "5"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.673301949104677*^9, 3.6733019506895227`*^9}}],
+
+Cell[BoxData["8"], "Output",
+ CellChangeTimes->{3.6733019512774887`*^9, 3.673305792146779*^9, 
+  3.6757340331283484`*^9, 3.688865772748993*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Comparing With and Module", "Subsection",
+ CellChangeTimes->{{3.673302201884863*^9, 3.673302224496005*^9}, {
+  3.6733043128819733`*^9, 3.673304316356488*^9}}],
+
+Cell[TextData[{
+ StyleBox["With", "Code"],
+ " and ",
+ StyleBox["Module", "Code"],
+ " are very similar to each other. Let\[CloseCurlyQuote]s understand how they \
+differ. ",
+ StyleBox["With", "Code"],
+ " rewrites instances of the scoped variables in your expression with \
+whatever you assign to it inside the curly braces. For example, this \
+expression is illegal:"
+}], "Text",
+ CellChangeTimes->{{3.673302208290517*^9, 3.673302283950946*^9}, {
+  3.673302506267397*^9, 3.6733025657107553`*^9}, {3.673302643851577*^9, 
+  3.673302657677401*^9}, {3.673303020773079*^9, 3.6733030255085697`*^9}, {
+  3.67330432558141*^9, 3.673304329237145*^9}, {3.6888657115512342`*^9, 
+  3.688865718374921*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"x", "=", "3"}], "}"}], ",", 
+   RowBox[{"x", "=", "5"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.673302273490983*^9, 3.673302288822048*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Set","setraw",
+   "\"Cannot assign to raw object \\!\\(\\*RowBox[{\\\"3\\\"}]\\).\"",2,68,3,
+   20688698568684903729,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.6733022904331512`*^9, 3.6733057921948757`*^9, 
+  3.675734033180813*^9, 3.688865772814353*^9}],
+
+Cell[BoxData["5"], "Output",
+ CellChangeTimes->{3.673302290435052*^9, 3.6733057922012367`*^9, 
+  3.67573403318858*^9, 3.6888657728390007`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "The reason this doesn\[CloseCurlyQuote]t work, is that ",
+ StyleBox["With", "Code"],
+ " rewrites ",
+ StyleBox["x", "Code"],
+ " with 3 before evaluating the expression, and you\[CloseCurlyQuote]re not \
+allowed to set 3 equal to 5. It\[CloseCurlyQuote]s equivalent to writing the \
+following expression:"
+}], "Text",
+ CellChangeTimes->{{3.6733022926577168`*^9, 3.67330237073102*^9}, {
+  3.6733024507950907`*^9, 3.673302454586199*^9}, {3.673302573383119*^9, 
+  3.673302574024249*^9}, {3.67330269646589*^9, 3.6733027021470633`*^9}, {
+  3.673302763189785*^9, 3.67330277154628*^9}, {3.688865736566164*^9, 
+  3.688865759813854*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"3", "=", "5"}]], "Input",
+ CellChangeTimes->{{3.688865761093272*^9, 3.6888657622537117`*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Set","setraw",
+   "\"Cannot assign to raw object \\!\\(\\*RowBox[{\\\"3\\\"}]\\).\"",2,69,4,
+   20688698568684903729,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{{3.6888657680153437`*^9, 3.688865772916317*^9}}],
+
+Cell[BoxData["5"], "Output",
+ CellChangeTimes->{{3.688865768025416*^9, 3.688865772936854*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["With", "Code"],
+ " also requires you to assign a value to the scoped variable, even if they \
+are globally defined. For example, this won\[CloseCurlyQuote]t work:"
+}], "Text",
+ CellChangeTimes->{3.688865743471552*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", "x", "}"}], ",", 
+   RowBox[{"x", "=", "4"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.673302389094523*^9, 3.673302393073223*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "With","lvws",
+   "\"Variable \\!\\(\\*RowBox[{\\\"x\\\"}]\\) in local variable \
+specification \\!\\(\\*RowBox[{\\\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) requires \
+a value.\"",2,70,5,20688698568684903729,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.673302394820101*^9, 3.673305792244487*^9, 
+  3.6757340332332067`*^9, 3.68886577300069*^9}],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", "x", "}"}], ",", 
+   RowBox[{"x", "=", "4"}]}], "]"}]], "Output",
+ CellChangeTimes->{3.673302394822075*^9, 3.6733057922505608`*^9, 
+  3.675734033239403*^9, 3.688865773021162*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "This doesn\[CloseCurlyQuote]t work because we didn\[CloseCurlyQuote]t tell ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " how to rewrite x. This makes sense if you think of ",
+ StyleBox["With", "Code"],
+ " as a tool for rewriting your expressions where you replace the local \
+variable with another expression."
+}], "Text",
+ CellChangeTimes->{{3.673302399710182*^9, 3.6733024304329777`*^9}, {
+  3.673302462393619*^9, 3.673302468648428*^9}, {3.673303301960661*^9, 
+  3.673303309878766*^9}, {3.688865797454039*^9, 3.6888658143325*^9}}],
+
+Cell[TextData[{
+ StyleBox["Module", "Code"],
+ " on the other hand does not suffer from either of these issues since you \
+can assign a value to the local variable. "
+}], "Text",
+ CellChangeTimes->{{3.6733033753355837`*^9, 3.673303417977367*^9}, {
+  3.673303520237184*^9, 3.673303619538993*^9}, {3.673303845893482*^9, 
+  3.673303885211411*^9}, {3.688865841083714*^9, 3.688865842387594*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Module", "[", 
+  RowBox[{
+   RowBox[{"{", "x", "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"x", "=", "3"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"x", "+", "5"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.673303419844611*^9, 3.673303433254735*^9}, {
+  3.673303601640839*^9, 3.6733036018653603`*^9}, {3.6733037321483994`*^9, 
+  3.6733037369741373`*^9}, {3.673303785832065*^9, 3.6733037860341673`*^9}, {
+  3.673303873873412*^9, 3.673303874625306*^9}}],
+
+Cell[BoxData["8"], "Output",
+ CellChangeTimes->{3.673303433755947*^9, 3.6733036036060123`*^9, 
+  3.6733037372546062`*^9, 3.6733057923254633`*^9, 3.67573403327602*^9, 
+  3.688865773099025*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "This is in contrast to ",
+ StyleBox["With", "Code"],
+ ", in that ",
+ StyleBox["x", "Code"],
+ " is still a variable that can be assigned to. Note that the local variable \
+only holds the locally assigned value for the duration of ",
+ StyleBox["Module", "Code"],
+ ". Once outside the ",
+ StyleBox["Module", "Code"],
+ ", the global definition of the variable still holds (remember that we set \
+",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"x", "=", "1"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " earlier on):"
+}], "Text",
+ CellChangeTimes->{{3.673303436584208*^9, 3.6733034903692303`*^9}, {
+  3.673303774120476*^9, 3.673303797609975*^9}, {3.6733039018270884`*^9, 
+  3.673303909499364*^9}, {3.6733039791689053`*^9, 3.673303986301141*^9}, {
+  3.673304204838171*^9, 3.673304205276911*^9}, {3.688865878462059*^9, 
+  3.688865918706101*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["x"], "Input",
+ CellChangeTimes->{3.673303492147791*^9}],
+
+Cell[BoxData["1"], "Output",
+ CellChangeTimes->{3.673303492446211*^9, 3.673305792380472*^9, 
+  3.675734033319126*^9, 3.6888657731651287`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Block", "Subsection",
+ CellChangeTimes->{{3.6733019615340357`*^9, 3.673301961928009*^9}}],
+
+Cell[TextData[{
+ "The last scoping function we\[CloseCurlyQuote]ll look at is ",
+ StyleBox["Block", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.673301963390162*^9, 3.673301973739827*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Block"}]], "Input",
+ CellChangeTimes->{{3.673301975119342*^9, 3.6733019771146097`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Block\\\", \\\"[\\\", RowBox[{RowBox[{\\\"{\
+\\\", RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"y\\\", \
+\\\"TI\\\"], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \
+\\\"}\\\"}], \\\",\\\", StyleBox[\\\"expr\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) \
+specifies that \!\(\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\) is to be evaluated \
+with local values for the symbols \!\(\*StyleBox[\\\"x\\\", \\\"TI\\\"]\), \!\
+\(\*StyleBox[\\\"y\\\", \\\"TI\\\"]\), \[Ellipsis]. \
+\\n\!\(\*RowBox[{\\\"Block\\\", \\\"[\\\", RowBox[{RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \\\"=\\\", \
+SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], StyleBox[\\\"0\\\", \
+\\\"TR\\\"]]}], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\
+\\\"}], \\\",\\\", StyleBox[\\\"expr\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) \
+defines initial local values for \!\(\*StyleBox[\\\"x\\\", \\\"TI\\\"]\), \
+\[Ellipsis]. \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Block"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.688865773284976*^9},
+ CellTags->"Info733688836973-2817976"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["Block", "Code"],
+ " works just like ",
+ StyleBox["Module", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.6733054678327723`*^9, 3.673305470958816*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Block", "[", 
+  RowBox[{
+   RowBox[{"{", "x", "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"x", "=", "3"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"x", "+", "5"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.673303419844611*^9, 3.673303433254735*^9}, {
+  3.673303601640839*^9, 3.6733036018653603`*^9}, {3.6733037321483994`*^9, 
+  3.6733037369741373`*^9}, {3.673303785832065*^9, 3.6733037860341673`*^9}, {
+  3.673303873873412*^9, 3.673303874625306*^9}, {3.673305482401472*^9, 
+  3.673305482894867*^9}}],
+
+Cell[BoxData["8"], "Output",
+ CellChangeTimes->{3.673303433755947*^9, 3.6733036036060123`*^9, 
+  3.6733037372546062`*^9, 3.673305485479891*^9, 3.6733057924987297`*^9, 
+  3.675734033449873*^9, 3.6888657734108267`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Difference between Module and Block", "Subsection",
+ CellChangeTimes->{{3.673304589814509*^9, 3.6733045935042477`*^9}}],
+
+Cell[TextData[{
+ "When you use ",
+ StyleBox["Module", "Code"],
+ ", ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " replaces the scoped variable with a temporary variable: "
+}], "Text",
+ CellChangeTimes->{{3.673303622697791*^9, 3.67330362536699*^9}, {
+   3.673303708962224*^9, 3.6733037279177303`*^9}, {3.673304634149596*^9, 
+   3.673304767638421*^9}, {3.673304954171741*^9, 3.673304982699293*^9}, {
+   3.6733050331207533`*^9, 3.6733050387004013`*^9}, {3.673305097648962*^9, 
+   3.673305121545504*^9}, 3.6733073059570303`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Module", "[", 
+  RowBox[{
+   RowBox[{"{", "x", "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"x", "+", "2"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.673303751072651*^9, 3.67330376031736*^9}, 
+   3.673305076557547*^9}],
+
+Cell[BoxData[
+ RowBox[{"2", "+", "x$5600"}]], "Output",
+ CellChangeTimes->{3.673303761218409*^9, 3.673304769263131*^9, 
+  3.67330507708393*^9, 3.673305792548905*^9, 3.6757340334876757`*^9, 
+  3.688865773482177*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "If you don\[CloseCurlyQuote]t assign a value locally to your scoped \
+variable, as we did here, ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " will not assign anything to it. As a result, it will carry on its \
+computation using the simplest symbolic form of the expression, which in this \
+case is the temporary variable (",
+ StyleBox["x$5600", "Code"],
+ "), as you can see here."
+}], "Text",
+ CellChangeTimes->{{3.6733051241894712`*^9, 3.673305131488048*^9}, {
+  3.673305574030099*^9, 3.67330557579527*^9}, {3.673305681587274*^9, 
+  3.673305728060027*^9}, {3.688865962736724*^9, 3.6888659764885902`*^9}}],
+
+Cell[TextData[{
+ "Block on the other hand takes the variables appearing in its first argument \
+and puts them aside. It then evaluates the expression as though the variables \
+had no value (as if we had ",
+ StyleBox["Clear", "Code"],
+ "ed them). It then returns the resulting expression, at which point the \
+variables that were put aside get their original values back in the global \
+scope. If the expression can then be simplified, it is.  "
+}], "Text",
+ CellChangeTimes->{{3.67330737290222*^9, 3.673307419093504*^9}, {
+   3.673307503455379*^9, 3.67330759341914*^9}, 3.675734118892974*^9, {
+   3.6757341503226433`*^9, 3.675734254687635*^9}, {3.675734392596285*^9, 
+   3.6757344382664843`*^9}, {3.688865994384097*^9, 3.688866054608121*^9}}],
+
+Cell["Let\[CloseCurlyQuote]s take a really simple example:", "Text",
+ CellChangeTimes->{{3.688866075189872*^9, 3.68886608174999*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Block", "[", 
+  RowBox[{
+   RowBox[{"{", "x", "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"x", "+", "2"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.673302026628436*^9, 3.6733020707465887`*^9}, {
+  3.6733059796614227`*^9, 3.673305989255804*^9}, {3.673306162334652*^9, 
+  3.6733061623775463`*^9}, {3.6733062806928177`*^9, 3.673306287069578*^9}}],
+
+Cell[BoxData["3"], "Output",
+ CellChangeTimes->{
+  3.673302043347855*^9, 3.67330209514475*^9, 3.673302148065546*^9, 
+   3.673305792648941*^9, 3.673305991129673*^9, 3.6733061629843884`*^9, 
+   3.673306287490368*^9, 3.6757340335280037`*^9, {3.675734265613473*^9, 
+   3.675734274727092*^9}, 3.688865773566815*^9}]
+}, Open  ]],
+
+Cell["\<\
+Pay close attention, because more is happening here than you realize. Let\
+\[CloseCurlyQuote]s go!\
+\>", "Text",
+ CellChangeTimes->{{3.6888660910947037`*^9, 3.688866115652787*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["So here, Block localized the variable x. ", "ItemNumbered",
+ CellChangeTimes->{{3.688866225069727*^9, 3.6888662261214533`*^9}}],
+
+Cell[TextData[{
+ "Then it evaluates the expression, which returns ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"x", "+", "2"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". "
+}], "ItemNumbered",
+ CellChangeTimes->{{3.688866225069727*^9, 3.6888662305691423`*^9}}],
+
+Cell[TextData[{
+ "When we exit the scope of Block, x gets it\[CloseCurlyQuote]s original \
+value in the global scope (remember that originally ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"x", "=", "1"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ")."
+}], "ItemNumbered",
+ CellChangeTimes->{{3.688866225069727*^9, 3.688866235624855*^9}}],
+
+Cell[TextData[{
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " then simplifies the expression, and you get 3."
+}], "ItemNumbered",
+ CellChangeTimes->{{3.688866225069727*^9, 3.688866238749097*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Using a ",
+ StyleBox["Print", "Code"],
+ " statement, you can see the localization in action:"
+}], "Text",
+ CellChangeTimes->{3.6888661937817698`*^9, 3.688866245249866*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Print", "[", 
+  RowBox[{"x", "+", "5"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6733081145732937`*^9, 3.673308117464007*^9}}],
+
+Cell[BoxData["6"], "Print",
+ CellChangeTimes->{3.6733081178381357`*^9, 3.675734033570826*^9, 
+  3.6888657736369343`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Using ",
+ StyleBox["Block", "Code"],
+ ", you can see that ",
+ StyleBox["x", "Code"],
+ " has no value in the ",
+ StyleBox["Block", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.6733081358923273`*^9, 3.673308148445854*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Block", "[", 
+  RowBox[{
+   RowBox[{"{", "x", "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"x", "+", "5"}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6733081194220533`*^9, 3.6733081251927147`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"5", "+", "x"}]], "Print",
+ CellChangeTimes->{3.67330812548031*^9, 3.675734033610669*^9, 
+  3.6888657737175903`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Summary", "Subsection",
+ CellChangeTimes->{{3.67330816597304*^9, 3.673308166749097*^9}}],
+
+Cell[TextData[{
+ "Here\[CloseCurlyQuote]s a summary of the difference between ",
+ StyleBox["Module", "Code"],
+ " and ",
+ StyleBox["Block", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.673308168864142*^9, 3.6733081777398*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Module", "Subsubsection",
+ CellChangeTimes->{{3.688866406575714*^9, 3.688866407133698*^9}}],
+
+Cell[TextData[{
+ "Conceptually, when you use a local variable ",
+ StyleBox["x", "Code"],
+ " with ",
+ StyleBox["Module", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.6733081792477293`*^9, 3.6733084708965387`*^9}, {
+  3.688866284217669*^9, 3.688866334393291*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ StyleBox["Module", "Code"],
+ " creates a temporary variable ",
+ StyleBox["x$2131231", "Code"],
+ " represented by ",
+ StyleBox["x", "Code"],
+ StyleBox[".", "Text"]
+}], "ItemNumbered",
+ CellChangeTimes->{{3.688866285100307*^9, 3.68886631504967*^9}}],
+
+Cell[TextData[{
+ "It then rewrites your expression by replacing all instances of ",
+ StyleBox["x", "Code"],
+ " with the temporary variable ",
+ StyleBox["x$2131231", "Code"],
+ ". That means that anything you do with ",
+ StyleBox["x", "Code"],
+ ", will actually be performed on the temporary variable."
+}], "ItemNumbered",
+ CellChangeTimes->{{3.688866285100307*^9, 3.688866319057406*^9}}],
+
+Cell["It evaluates the expression and returns.", "ItemNumbered",
+ CellChangeTimes->{{3.688866285100307*^9, 3.6888663253297167`*^9}}],
+
+Cell["It then deletes the temporary variable.", "ItemNumbered",
+ CellChangeTimes->{{3.688866285100307*^9, 3.68886632746588*^9}}],
+
+Cell["\<\
+If there happened to be a global variable named x, it will not have been \
+touched.\
+\>", "ItemNumbered",
+ CellChangeTimes->{{3.688866285100307*^9, 3.688866331578401*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Block", "Subsubsection",
+ CellChangeTimes->{{3.68886641302975*^9, 3.68886641346136*^9}}],
+
+Cell[TextData[{
+ "And conceptually, when you localize a variable ",
+ StyleBox["x", "Code"],
+ " in ",
+ StyleBox["Block", "Code"],
+ ", the follow sequence of events occur:"
+}], "Text",
+ CellChangeTimes->{{3.67330765918482*^9, 3.6733078412839613`*^9}, {
+  3.673308480886364*^9, 3.67330848833362*^9}, {3.68886635496717*^9, 
+  3.688866361103489*^9}, {3.688866417736961*^9, 3.688866462532384*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ StyleBox["Block", "Code"],
+ " holds the value of the global variable ",
+ StyleBox["x", "Code"],
+ "."
+}], "ItemNumbered",
+ CellChangeTimes->{{3.6888664156235523`*^9, 3.688866419071948*^9}}],
+
+Cell[TextData[{
+ "It then clears ",
+ StyleBox["x", "Code"],
+ "."
+}], "ItemNumbered",
+ CellChangeTimes->{{3.6888664156235523`*^9, 3.688866431998159*^9}}],
+
+Cell[TextData[{
+ "It then evaluates the expression in the body using the symbol ",
+ StyleBox["x", "Code"],
+ " and returns the evaluated expression."
+}], "ItemNumbered",
+ CellChangeTimes->{{3.6888664156235523`*^9, 3.688866442206585*^9}}],
+
+Cell[TextData[{
+ "It reassigns the held (original value) to ",
+ StyleBox["x", "Code"],
+ " in the global scope."
+}], "ItemNumbered",
+ CellChangeTimes->{{3.6888664156235523`*^9, 3.688866451831163*^9}}],
+
+Cell[TextData[{
+ "It simplifies the returned expression using the value of ",
+ StyleBox["x", "Code"],
+ "."
+}], "ItemNumbered",
+ CellChangeTimes->{{3.6888664156235523`*^9, 3.688866457830082*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "When programming in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ", use ",
+ StyleBox["With", "Code"],
+ " whenever you know what the value of your localized variables will be. \
+Otherwise, use ",
+ StyleBox["Module", "Code"],
+ ", especially when writing procedural code. ",
+ StyleBox["Block", "Code"],
+ " is a sophisticated beast. Don\[CloseCurlyQuote]t poke it unless you\
+\[CloseCurlyQuote]re sure you need it."
+}], "Text",
+ CellChangeTimes->{{3.673308552873023*^9, 3.67330869396702*^9}}],
+
+Cell[TextData[{
+ "We\[CloseCurlyQuote]ll be using ",
+ StyleBox["With", "Code"],
+ " and ",
+ StyleBox["Module", "Code"],
+ " a lot in our future lectures. We hope you had fun! See you at the next \
+lecture."
+}], "Text",
+ CellChangeTimes->{{3.6733087168822403`*^9, 3.67330873976457*^9}}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1399, 855},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info473688836971-2817976"->{
+  Cell[2356, 81, 120, 2, 53, "Print",
+   CellTags->"Info473688836971-2817976"],
+  Cell[2479, 85, 744, 21, 29, "Print",
+   CellTags->"Info473688836971-2817976"]},
+ "Info503688836971-2817976"->{
+  Cell[4683, 160, 120, 2, 53, "Print",
+   CellTags->"Info503688836971-2817976"],
+  Cell[4806, 164, 744, 21, 29, "Print",
+   CellTags->"Info503688836971-2817976"]},
+ "Info553688836971-2817976"->{
+  Cell[10041, 325, 1220, 22, 52, "Print",
+   CellTags->"Info553688836971-2817976"]},
+ "Info583688836972-2817976"->{
+  Cell[12902, 412, 120, 2, 53, "Print",
+   CellTags->"Info583688836972-2817976"],
+  Cell[13025, 416, 744, 21, 29, "Print",
+   CellTags->"Info583688836972-2817976"]},
+ "Info653688836972-2817976"->{
+  Cell[17732, 576, 1262, 23, 77, "Print",
+   CellTags->"Info653688836972-2817976"]},
+ "Info733688836973-2817976"->{
+  Cell[27535, 859, 1259, 22, 77, "Print",
+   CellTags->"Info733688836973-2817976"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info473688836971-2817976", 40226, 1250},
+ {"Info503688836971-2817976", 40419, 1255},
+ {"Info553688836971-2817976", 40614, 1260},
+ {"Info583688836972-2817976", 40730, 1263},
+ {"Info653688836972-2817976", 40927, 1268},
+ {"Info733688836973-2817976", 41043, 1271}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 101, 1, 80, "Section"],
+Cell[684, 25, 362, 11, 37, "Text"],
+Cell[CellGroupData[{
+Cell[1071, 40, 153, 2, 54, "Subsection"],
+Cell[1227, 44, 466, 9, 37, "Text"],
+Cell[CellGroupData[{
+Cell[1718, 57, 114, 2, 39, "Input"],
+Cell[1835, 61, 161, 2, 39, "Output"]
+}, Open  ]],
+Cell[2011, 66, 186, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[2222, 75, 109, 2, 39, "Input"],
+Cell[CellGroupData[{
+Cell[2356, 81, 120, 2, 53, "Print",
+ CellTags->"Info473688836971-2817976"],
+Cell[2479, 85, 744, 21, 29, "Print",
+ CellTags->"Info473688836971-2817976"]
+}, Open  ]]
+}, Open  ]],
+Cell[3250, 110, 429, 10, 61, "Text"],
+Cell[3682, 122, 173, 4, 39, "Input"],
+Cell[3858, 128, 337, 11, 37, "Text"],
+Cell[CellGroupData[{
+Cell[4220, 143, 125, 2, 39, "Input"],
+Cell[4348, 147, 165, 2, 39, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4550, 154, 108, 2, 39, "Input"],
+Cell[CellGroupData[{
+Cell[4683, 160, 120, 2, 53, "Print",
+ CellTags->"Info503688836971-2817976"],
+Cell[4806, 164, 744, 21, 29, "Print",
+ CellTags->"Info503688836971-2817976"]
+}, Open  ]]
+}, Open  ]],
+Cell[5577, 189, 539, 13, 61, "Text"],
+Cell[6119, 204, 223, 5, 39, "Input"],
+Cell[CellGroupData[{
+Cell[6367, 213, 150, 3, 39, "Input"],
+Cell[6520, 218, 190, 3, 39, "Output"]
+}, Open  ]],
+Cell[6725, 224, 703, 25, 39, "Text"],
+Cell[7431, 251, 124, 2, 39, "Input"],
+Cell[7558, 255, 114, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[7697, 260, 172, 3, 39, "Input"],
+Cell[7872, 265, 185, 3, 39, "Output"]
+}, Open  ]],
+Cell[8072, 271, 273, 9, 37, "Text"],
+Cell[8348, 282, 833, 16, 85, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9218, 303, 92, 1, 54, "Subsection"],
+Cell[9313, 306, 587, 11, 85, "Text"],
+Cell[CellGroupData[{
+Cell[9925, 321, 113, 2, 39, "Input"],
+Cell[10041, 325, 1220, 22, 52, "Print",
+ CellTags->"Info553688836971-2817976"]
+}, Open  ]],
+Cell[11276, 350, 495, 17, 47, "Text"],
+Cell[CellGroupData[{
+Cell[11796, 371, 115, 2, 39, "Input"],
+Cell[11914, 375, 162, 2, 39, "Output"]
+}, Open  ]],
+Cell[12091, 380, 96, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[12212, 385, 162, 4, 39, "Input"],
+Cell[12377, 391, 182, 3, 57, "Output"]
+}, Open  ]],
+Cell[12574, 397, 168, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[12767, 406, 110, 2, 39, "Input"],
+Cell[CellGroupData[{
+Cell[12902, 412, 120, 2, 53, "Print",
+ CellTags->"Info583688836972-2817976"],
+Cell[13025, 416, 744, 21, 29, "Print",
+ CellTags->"Info583688836972-2817976"]
+}, Open  ]]
+}, Open  ]],
+Cell[13796, 441, 119, 2, 39, "Input"],
+Cell[13918, 445, 228, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[14171, 456, 272, 8, 39, "Input"],
+Cell[14446, 466, 211, 4, 57, "Output"]
+}, Open  ]],
+Cell[14672, 473, 133, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[14830, 478, 69, 1, 39, "Input"],
+Cell[14902, 481, 141, 2, 39, "Output"]
+}, Open  ]],
+Cell[15058, 486, 226, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[15309, 496, 117, 2, 39, "Input"],
+Cell[15429, 500, 166, 2, 39, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15632, 507, 204, 7, 39, "Input"],
+Cell[15839, 516, 161, 3, 57, "Output"]
+}, Open  ]],
+Cell[16015, 522, 293, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[16333, 532, 71, 1, 39, "Input"],
+Cell[16407, 535, 141, 2, 39, "Output"]
+}, Open  ]],
+Cell[16563, 540, 127, 1, 37, "Text"],
+Cell[16693, 543, 615, 12, 37, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17345, 560, 96, 1, 54, "Subsection"],
+Cell[17444, 563, 143, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[17612, 572, 117, 2, 39, "Input"],
+Cell[17732, 576, 1262, 23, 77, "Print",
+ CellTags->"Info653688836972-2817976"]
+}, Open  ]],
+Cell[19009, 602, 263, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[19297, 613, 292, 7, 92, "Input"],
+Cell[19592, 622, 140, 2, 39, "Output"]
+}, Open  ]],
+Cell[19747, 627, 195, 4, 37, "Text"],
+Cell[CellGroupData[{
+Cell[19967, 635, 246, 6, 66, "Input"],
+Cell[20216, 643, 143, 2, 39, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20408, 651, 164, 2, 54, "Subsection"],
+Cell[20575, 655, 691, 15, 61, "Text"],
+Cell[CellGroupData[{
+Cell[21291, 674, 219, 6, 39, "Input"],
+Cell[21513, 682, 314, 7, 29, "Message"],
+Cell[21830, 691, 142, 2, 39, "Output"]
+}, Open  ]],
+Cell[21987, 696, 644, 13, 61, "Text"],
+Cell[CellGroupData[{
+Cell[22656, 713, 117, 2, 39, "Input"],
+Cell[22776, 717, 267, 6, 29, "Message"],
+Cell[23046, 725, 94, 1, 39, "Output"]
+}, Open  ]],
+Cell[23155, 729, 244, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[23424, 738, 194, 5, 39, "Input"],
+Cell[23621, 745, 394, 8, 29, "Message"],
+Cell[24018, 755, 242, 6, 39, "Output"]
+}, Open  ]],
+Cell[24275, 764, 559, 11, 61, "Text"],
+Cell[24837, 777, 389, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[25251, 788, 493, 10, 92, "Input"],
+Cell[25747, 800, 191, 3, 39, "Output"]
+}, Open  ]],
+Cell[25953, 806, 862, 22, 61, "Text"],
+Cell[CellGroupData[{
+Cell[26840, 832, 69, 1, 39, "Input"],
+Cell[26912, 835, 141, 2, 39, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27102, 843, 95, 1, 54, "Subsection"],
+Cell[27200, 846, 191, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[27416, 855, 116, 2, 39, "Input"],
+Cell[27535, 859, 1259, 22, 77, "Print",
+ CellTags->"Info733688836973-2817976"]
+}, Open  ]],
+Cell[28809, 884, 179, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[29013, 894, 541, 11, 92, "Input"],
+Cell[29557, 907, 216, 3, 39, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29822, 916, 125, 1, 54, "Subsection"],
+Cell[29950, 919, 532, 12, 37, "Text"],
+Cell[CellGroupData[{
+Cell[30507, 935, 244, 6, 66, "Input"],
+Cell[30754, 943, 214, 4, 39, "Output"]
+}, Open  ]],
+Cell[30983, 950, 632, 13, 61, "Text"],
+Cell[31618, 965, 742, 12, 85, "Text"],
+Cell[32363, 979, 133, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[32521, 984, 370, 7, 66, "Input"],
+Cell[32894, 993, 310, 5, 39, "Output"]
+}, Open  ]],
+Cell[33219, 1001, 190, 4, 37, "Text"],
+Cell[CellGroupData[{
+Cell[33434, 1009, 133, 1, 36, "ItemNumbered"],
+Cell[33570, 1012, 269, 8, 36, "ItemNumbered"],
+Cell[33842, 1022, 344, 9, 36, "ItemNumbered"],
+Cell[34189, 1033, 201, 5, 36, "ItemNumbered"]
+}, Open  ]],
+Cell[34405, 1041, 189, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[34619, 1050, 149, 3, 39, "Input"],
+Cell[34771, 1055, 120, 2, 29, "Print"]
+}, Open  ]],
+Cell[34906, 1060, 241, 9, 37, "Text"],
+Cell[CellGroupData[{
+Cell[35172, 1073, 256, 6, 66, "Input"],
+Cell[35431, 1081, 139, 3, 29, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[35619, 1090, 94, 1, 54, "Subsection"],
+Cell[35716, 1093, 228, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[35969, 1104, 97, 1, 43, "Subsubsection"],
+Cell[36069, 1107, 264, 8, 37, "Text"],
+Cell[CellGroupData[{
+Cell[36358, 1119, 264, 8, 36, "ItemNumbered"],
+Cell[36625, 1129, 386, 9, 59, "ItemNumbered"],
+Cell[37014, 1140, 132, 1, 36, "ItemNumbered"],
+Cell[37149, 1143, 128, 1, 36, "ItemNumbered"],
+Cell[37280, 1146, 181, 4, 36, "ItemNumbered"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37510, 1156, 94, 1, 43, "Subsubsection"],
+Cell[37607, 1159, 391, 9, 37, "Text"],
+Cell[CellGroupData[{
+Cell[38023, 1172, 205, 6, 36, "ItemNumbered"],
+Cell[38231, 1180, 152, 5, 36, "ItemNumbered"],
+Cell[38386, 1187, 236, 5, 36, "ItemNumbered"],
+Cell[38625, 1194, 199, 5, 36, "ItemNumbered"],
+Cell[38827, 1201, 194, 5, 36, "ItemNumbered"]
+}, Open  ]],
+Cell[39036, 1209, 514, 14, 61, "Text"],
+Cell[39553, 1225, 283, 8, 37, "Text"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

@@ -1,0 +1,680 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     24737,        672]
+NotebookOptionsPosition[     20688,        548]
+NotebookOutlinePosition[     22221,        589]
+CellTagsIndexPosition[     21877,        580]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Procedural Programming Part 2", "Section",
+ CellChangeTimes->{{3.6888648709451113`*^9, 3.688864875776596*^9}}],
+
+Cell["\<\
+Hello and welcome to our second lecture on procedural programming. In this \
+lecture, we\[CloseCurlyQuote]ll be talking about loops.\
+\>", "Text",
+ CellChangeTimes->{{3.6710210901167707`*^9, 3.6710211787444077`*^9}, {
+  3.671021352956078*^9, 3.6710213985048933`*^9}, {3.671021748643602*^9, 
+  3.671021757386372*^9}, {3.672277856582271*^9, 3.6722779124602337`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Loops", "Subsection",
+ CellChangeTimes->{{3.671027558378327*^9, 3.671027559041532*^9}}],
+
+Cell[TextData[{
+ "The first loop we\[CloseCurlyQuote]ll take a look at is the ",
+ StyleBox["Do", "Code"],
+ " loop:"
+}], "Text",
+ CellChangeTimes->{{3.671027574949891*^9, 3.6710275872211113`*^9}, {
+  3.6710287549747267`*^9, 3.671028759131805*^9}, {3.671029036776873*^9, 
+  3.6710290495053873`*^9}, {3.672277938756735*^9, 3.672277956882621*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Do", "Subsubsection",
+ CellChangeTimes->{{3.6710290521845922`*^9, 3.6710290523695393`*^9}}],
+
+Cell[TextData[{
+ "The ",
+ StyleBox["Do", "Code"],
+ " loop is a very powerful loop in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.671029054416575*^9, 3.6710290579599743`*^9}, {
+  3.671029088988371*^9, 3.671029097147212*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Do"}]], "Input",
+ CellChangeTimes->{{3.671029100312772*^9, 3.6710291014748793`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Do\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\
+\"TI\\\"]}], \\\"]\\\"}]\\) evaluates \\!\\(\\*StyleBox[\\\"expr\\\", \
+\\\"TI\\\"]\\) \\!\\(\\*StyleBox[\\\"n\\\", \\\"TI\\\"]\\) times. \
+\\n\\!\\(\\*RowBox[{\\\"Do\\\", \\\"[\\\", RowBox[{StyleBox[\\\"expr\\\", \
+\\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{StyleBox[\\\"i\\\", \\\"TI\
+\\\"], \\\",\\\", SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], \
+StyleBox[\\\"max\\\", \\\"TI\\\"]]}], \\\"}\\\"}]}], \\\"]\\\"}]\\) evaluates \
+\\!\\(\\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\\) with the variable \
+\\!\\(\\*StyleBox[\\\"i\\\", \\\"TI\\\"]\\) successively taking on the values \
+1 through \\!\\(\\*SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], \
+StyleBox[\\\"max\\\", \\\"TI\\\"]]\\) (in steps of 1). \\n\\!\\(\\*RowBox[{\\\
+\"Do\\\", \\\"[\\\", RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{StyleBox[\\\"i\\\", \\\"TI\\\"], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], StyleBox[\\\"min\\\", \
+\\\"TI\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], \
+StyleBox[\\\"max\\\", \\\"TI\\\"]]}], \\\"}\\\"}]}], \\\"]\\\"}]\\) starts \
+with \\!\\(\\*RowBox[{StyleBox[\\\"i\\\", \\\"TI\\\"], \\\"=\\\", \
+SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], StyleBox[\\\"min\\\", \
+\\\"TI\\\"]]}]\\). \\n\\!\\(\\*RowBox[{\\\"Do\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{StyleBox[\\\"i\\\", \\\"TI\\\"], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], StyleBox[\\\"min\\\", \
+\\\"TI\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], \
+StyleBox[\\\"max\\\", \\\"TI\\\"]], \\\",\\\", StyleBox[\\\"di\\\", \
+\\\"TI\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\\) uses steps \
+\\!\\(\\*StyleBox[\\\"di\\\", \\\"TI\\\"]\\). \\n\\!\\(\\*RowBox[{\\\"Do\\\", \
+\\\"[\\\", RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{StyleBox[\\\"i\\\", \\\"TI\\\"], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], \
+StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"i\\\", \
+\\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\
+\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\"}]}], \\\"}\\\"}]}], \\\"]\\\"}]\\) \
+uses the successive values \\!\\(\\*SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\
+\"], StyleBox[\\\"1\\\", \\\"TR\\\"]]\\), \
+\\!\\(\\*SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \\\
+\"TR\\\"]]\\), \[Ellipsis].\\n\\!\\(\\*RowBox[{\\\"Do\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{StyleBox[\\\"i\\\", \\\"TI\\\"], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], StyleBox[\\\"min\\\", \
+\\\"TI\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], \
+StyleBox[\\\"max\\\", \\\"TI\\\"]]}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\
+\", RowBox[{StyleBox[\\\"j\\\", \\\"TI\\\"], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"j\\\", \\\"TI\\\"], StyleBox[\\\"min\\\", \
+\\\"TI\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"j\\\", \\\"TI\\\"], \
+StyleBox[\\\"max\\\", \\\"TI\\\"]]}], \\\"}\\\"}], \\\",\\\", StyleBox[\\\"\
+\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"]\\\"}]\\) evaluates \\!\\(\\*StyleBox[\\\
+\"expr\\\", \\\"TI\\\"]\\) looping over different values of \
+\\!\\(\\*StyleBox[\\\"j\\\", \\\"TI\\\"]\\) etc. for each \
+\\!\\(\\*StyleBox[\\\"i\\\", \\\"TI\\\"]\\). \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Do"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.671029102720737*^9},
+ CellTags->"Info-766c373c-96cd-477f-9197-b44030713370"]
+}, Open  ]],
+
+Cell[TextData[{
+ "It\[CloseCurlyQuote]s syntax is very similar to the ",
+ StyleBox["Table", "Code"],
+ " function:"
+}], "Text",
+ CellChangeTimes->{{3.671029104523518*^9, 3.671029118473803*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Table"}]], "Input",
+ CellChangeTimes->{{3.6710291196424513`*^9, 3.671029120515616*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Table\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\
+\"TI\\\"]}], \\\"]\\\"}]\\) generates a list of \\!\\(\\*StyleBox[\\\"n\\\", \
+\\\"TI\\\"]\\) copies of \\!\\(\\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\\). \
+\\n\\!\\(\\*RowBox[{\\\"Table\\\", \\\"[\\\", RowBox[{StyleBox[\\\"expr\\\", \
+\\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{StyleBox[\\\"i\\\", \\\"TI\
+\\\"], \\\",\\\", SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], \
+StyleBox[\\\"max\\\", \\\"TI\\\"]]}], \\\"}\\\"}]}], \\\"]\\\"}]\\) generates \
+a list of the values of \\!\\(\\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\\) when \
+\\!\\(\\*StyleBox[\\\"i\\\", \\\"TI\\\"]\\) runs from 1 to \
+\\!\\(\\*SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], StyleBox[\\\"max\\\", \
+\\\"TI\\\"]]\\). \\n\\!\\(\\*RowBox[{\\\"Table\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{StyleBox[\\\"i\\\", \\\"TI\\\"], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], StyleBox[\\\"min\\\", \
+\\\"TI\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], \
+StyleBox[\\\"max\\\", \\\"TI\\\"]]}], \\\"}\\\"}]}], \\\"]\\\"}]\\) starts \
+with \\!\\(\\*RowBox[{StyleBox[\\\"i\\\", \\\"TI\\\"], \\\"=\\\", \
+SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], StyleBox[\\\"min\\\", \
+\\\"TI\\\"]]}]\\). \\n\\!\\(\\*RowBox[{\\\"Table\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{StyleBox[\\\"i\\\", \\\"TI\\\"], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], StyleBox[\\\"min\\\", \
+\\\"TI\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], \
+StyleBox[\\\"max\\\", \\\"TI\\\"]], \\\",\\\", StyleBox[\\\"di\\\", \
+\\\"TI\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\\) uses steps \
+\\!\\(\\*StyleBox[\\\"di\\\", \\\"TI\\\"]\\). \\n\\!\\(\\*RowBox[{\\\"Table\\\
+\", \\\"[\\\", RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{StyleBox[\\\"i\\\", \\\"TI\\\"], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], \
+StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"i\\\", \
+\\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\
+\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\"}]}], \\\"}\\\"}]}], \\\"]\\\"}]\\) \
+uses the successive values \\!\\(\\*SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\
+\"], StyleBox[\\\"1\\\", \\\"TR\\\"]]\\), \
+\\!\\(\\*SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \\\
+\"TR\\\"]]\\), \[Ellipsis].\\n\\!\\(\\*RowBox[{\\\"Table\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{StyleBox[\\\"i\\\", \\\"TI\\\"], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], StyleBox[\\\"min\\\", \
+\\\"TI\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], \
+StyleBox[\\\"max\\\", \\\"TI\\\"]]}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\
+\", RowBox[{StyleBox[\\\"j\\\", \\\"TI\\\"], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"j\\\", \\\"TI\\\"], StyleBox[\\\"min\\\", \
+\\\"TI\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"j\\\", \\\"TI\\\"], \
+StyleBox[\\\"max\\\", \\\"TI\\\"]]}], \\\"}\\\"}], \\\",\\\", StyleBox[\\\"\
+\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"]\\\"}]\\) gives a nested list. The list \
+associated with \\!\\(\\*StyleBox[\\\"i\\\", \\\"TI\\\"]\\) is \
+outermost.\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Table"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.67102912137945*^9},
+ CellTags->"Info-f4716dd0-2284-4092-b47a-f1efe14facfe"]
+}, Open  ]],
+
+Cell[TextData[{
+ "The difference is that ",
+ StyleBox["Table", "Code"],
+ " creates an element in a list for each iteration, whereas ",
+ StyleBox["Do", "Code"],
+ " simply evaluates the expression. Let\[CloseCurlyQuote]s use ",
+ StyleBox["Do", "Code"],
+ " to print out the values of ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["n", "2"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.6710291294001503`*^9, 3.671029224957179*^9}, {
+  3.671029283182249*^9, 3.671029293148432*^9}, {3.671029325020479*^9, 
+  3.6710293330991087`*^9}, {3.6888648970151453`*^9, 3.6888648992618723`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"Print", "[", 
+    RowBox[{"n", "^", "2"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "1", ",", "5"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.671029335675948*^9, 3.671029353225966*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["1"], "Print",
+ CellChangeTimes->{3.67102935417533*^9}],
+
+Cell[BoxData["4"], "Print",
+ CellChangeTimes->{3.671029354179501*^9}],
+
+Cell[BoxData["9"], "Print",
+ CellChangeTimes->{3.67102935418505*^9}],
+
+Cell[BoxData["16"], "Print",
+ CellChangeTimes->{3.67102935418788*^9}],
+
+Cell[BoxData["25"], "Print",
+ CellChangeTimes->{3.671029354190703*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[TextData[{
+ "Let\[CloseCurlyQuote]s try something a little more interesting. Let\
+\[CloseCurlyQuote]s use ",
+ StyleBox["Do", "Code"],
+ " to compute the 10th Fibonacci number:"
+}], "Text",
+ CellChangeTimes->{{3.6710293581229963`*^9, 3.671029381770059*^9}, {
+  3.6888649057835293`*^9, 3.688864905951783*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"fib", "[", "1", "]"}], "=", "1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"fib", "[", "2", "]"}], "=", "1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Do", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"fib", "[", "n", "]"}], "=", 
+     RowBox[{
+      RowBox[{"fib", "[", 
+       RowBox[{"n", "-", "1"}], "]"}], "+", 
+      RowBox[{"fib", "[", 
+       RowBox[{"n", "-", "2"}], "]"}]}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"n", ",", "3", ",", "10"}], "}"}]}], "\[IndentingNewLine]", 
+   "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"fib", "[", "10", "]"}]}], "Input",
+ CellChangeTimes->{{3.671029389570396*^9, 3.6710294955966187`*^9}}],
+
+Cell[BoxData["55"], "Output",
+ CellChangeTimes->{3.6710294563332663`*^9, 3.671029496145609*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Let\[CloseCurlyQuote]s look at the definition of ",
+ StyleBox["fib", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.671029476342093*^9, 3.67102948260457*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "fib"}]], "Input",
+ CellChangeTimes->{{3.6710294981841183`*^9, 3.671029498733335*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Global`fib", "Print", "PrintUsage",
+ CellChangeTimes->{3.671029499025011*^9},
+ CellTags->"Info-1f6bcd2b-4b29-478d-8589-63d72edba558"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {GridBox[{
+       {
+        RowBox[{
+         RowBox[{"fib", "[", "1", "]"}], "=", "1"}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{"fib", "[", "2", "]"}], "=", "1"}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{"fib", "[", "3", "]"}], "=", "2"}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{"fib", "[", "4", "]"}], "=", "3"}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{"fib", "[", "5", "]"}], "=", "5"}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{"fib", "[", "6", "]"}], "=", "8"}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{"fib", "[", "7", "]"}], "=", "13"}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{"fib", "[", "8", "]"}], "=", "21"}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{"fib", "[", "9", "]"}], "=", "34"}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{"fib", "[", "10", "]"}], "=", "55"}]}
+      },
+      BaselinePosition->{Baseline, {1, 1}},
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{"Columns" -> {{
+           Scaled[0.999]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}}]}
+   },
+   BaselinePosition->{Baseline, {1, 1}},
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}}],
+  Definition[$CellContext`fib],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.671029499064829*^9},
+ CellTags->"Info-1f6bcd2b-4b29-478d-8589-63d72edba558"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["While", "Subsubsection",
+ CellChangeTimes->{{3.67102956798319*^9, 3.6710295702230577`*^9}}],
+
+Cell[TextData[{
+ "The next loop we\[CloseCurlyQuote]ll look at is the ",
+ StyleBox["While", "Code"],
+ " loop:"
+}], "Text",
+ CellChangeTimes->{{3.671029576645241*^9, 3.671029594724786*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "While"}]], "Input",
+ CellChangeTimes->{{3.671029595965927*^9, 3.67102959676335*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"While\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"test\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"body\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\\) evaluates \\!\\(\\*StyleBox[\\\"test\\\", \
+\\\"TI\\\"]\\), then \\!\\(\\*StyleBox[\\\"body\\\", \\\"TI\\\"]\\), \
+repetitively, until \\!\\(\\*StyleBox[\\\"test\\\", \\\"TI\\\"]\\) first \
+fails to give True. \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/While"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.671029596971084*^9},
+ CellTags->"Info-b6bdf4be-f75d-4884-ad51-80b29ebc9245"]
+}, Open  ]],
+
+Cell[TextData[{
+ "The ",
+ StyleBox["While", "Code"],
+ " loop will seem very familiar if you\[CloseCurlyQuote]ve used ",
+ StyleBox["While", "Code"],
+ " in other programming languages before. Let\[CloseCurlyQuote]s use the ",
+ StyleBox["While", "Code"],
+ " loop to find the largest prime number less than a thousand:"
+}], "Text",
+ CellChangeTimes->{{3.6710296019389057`*^9, 3.671029625288767*^9}, {
+  3.671029655994897*^9, 3.671029677186315*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"prime", "=", "1000"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"While", "[", 
+   RowBox[{
+    RowBox[{"!", 
+     RowBox[{"PrimeQ", "[", "prime", "]"}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{"prime", "=", 
+     RowBox[{"prime", "-", "1"}]}]}], "\[IndentingNewLine]", "]"}], 
+  ";"}], "\[IndentingNewLine]", "prime"}], "Input",
+ CellChangeTimes->{{3.671029717974423*^9, 3.67102976426158*^9}}],
+
+Cell[BoxData["997"], "Output",
+ CellChangeTimes->{3.671029765012425*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["For", "Subsubsection",
+ CellChangeTimes->{{3.671029844610836*^9, 3.6710298448817883`*^9}}],
+
+Cell[TextData[{
+ "The last loop we\[CloseCurlyQuote]ll look at is the ",
+ StyleBox["For", "Code"],
+ " loop:"
+}], "Text",
+ CellChangeTimes->{{3.6710298511869593`*^9, 3.671029886560109*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "For"}]], "Input",
+ CellChangeTimes->{{3.671029888009596*^9, 3.671029888545211*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"For\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"start\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"test\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"incr\\\", \
+\\\"TI\\\"], \\\",\\\", StyleBox[\\\"body\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) \
+executes \\!\\(\\*StyleBox[\\\"start\\\", \\\"TI\\\"]\\), then repeatedly \
+evaluates \\!\\(\\*StyleBox[\\\"body\\\", \\\"TI\\\"]\\) and \
+\\!\\(\\*StyleBox[\\\"incr\\\", \\\"TI\\\"]\\) until \
+\\!\\(\\*StyleBox[\\\"test\\\", \\\"TI\\\"]\\) fails to give True. \"\>", 
+   "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/For"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.671029888798271*^9},
+ CellTags->"Info-10f1dc11-5793-4c4c-8344-5f1931ba90bd"]
+}, Open  ]],
+
+Cell[TextData[{
+ "The ",
+ StyleBox["For", "Code"],
+ " loop enables us to have some initial conditions, a test, an increment and \
+a body to execute on each iteration. Let\[CloseCurlyQuote]s use the ",
+ StyleBox["For", "Code"],
+ " loop to also find the largest prime number less than a thousand, and at \
+each iteration, we\[CloseCurlyQuote]ll ",
+ StyleBox["Print", "Code"],
+ " out the value of ",
+ StyleBox["prime", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.6710298962217417`*^9, 3.671029978558708*^9}, {
+  3.671030043427486*^9, 3.671030049091072*^9}, {3.671030291432931*^9, 
+  3.671030301656644*^9}, {3.671030418589114*^9, 3.671030437140785*^9}, {
+  3.688864942701994*^9, 3.688864942790717*^9}, {3.688864990389765*^9, 
+  3.6888649908761787`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"For", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"prime", "=", "1000"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"!", 
+    RowBox[{"PrimeQ", "[", "prime", "]"}]}], ",", "\[IndentingNewLine]", 
+   RowBox[{"prime", "=", 
+    RowBox[{"prime", "-", "1"}]}], ",", "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", "prime", "]"}]}], "\[IndentingNewLine]", 
+  "]"}], "\[IndentingNewLine]", "prime"}], "Input",
+ CellChangeTimes->{{3.6710303551871567`*^9, 3.671030404879562*^9}, {
+  3.671030440228745*^9, 3.671030452711665*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["1000"], "Print",
+ CellChangeTimes->{{3.671030443172295*^9, 3.671030453161817*^9}}],
+
+Cell[BoxData["999"], "Print",
+ CellChangeTimes->{{3.671030443172295*^9, 3.671030453171946*^9}}],
+
+Cell[BoxData["998"], "Print",
+ CellChangeTimes->{{3.671030443172295*^9, 3.671030453182035*^9}}]
+}, Open  ]],
+
+Cell[BoxData["997"], "Output",
+ CellChangeTimes->{3.6710304531919622`*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Summary", "Subsection",
+ CellChangeTimes->{{3.688865002731963*^9, 3.688865003899867*^9}}],
+
+Cell[TextData[{
+ "Cool. That covers the basics of procedural programming in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ". In general, you should try to write your code in a functional way, but in \
+many cases, implementing a function procedurally is easier to reason about. \
+In some cases, it is also more efficient. See you at the next lecture!"
+}], "Text",
+ CellChangeTimes->{{3.6710304923039923`*^9, 3.671030618675332*^9}, {
+   3.671030657219358*^9, 3.671030750546976*^9}, {3.672277989321597*^9, 
+   3.672277991201839*^9}, 3.6888650163173113`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1399, 855},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info-766c373c-96cd-477f-9197-b44030713370"->{
+  Cell[2073, 69, 3836, 59, 173, "Print",
+   CellTags->"Info-766c373c-96cd-477f-9197-b44030713370"]},
+ "Info-f4716dd0-2284-4092-b47a-f1efe14facfe"->{
+  Cell[6260, 144, 3741, 57, 173, "Print",
+   CellTags->"Info-f4716dd0-2284-4092-b47a-f1efe14facfe"]},
+ "Info-1f6bcd2b-4b29-478d-8589-63d72edba558"->{
+  Cell[12892, 305, 139, 2, 53, "Print",
+   CellTags->"Info-1f6bcd2b-4b29-478d-8589-63d72edba558"],
+  Cell[13034, 309, 1651, 58, 400, "Print",
+   CellTags->"Info-1f6bcd2b-4b29-478d-8589-63d72edba558"]},
+ "Info-b6bdf4be-f75d-4884-ad51-80b29ebc9245"->{
+  Cell[15175, 390, 694, 14, 52, "Print",
+   CellTags->"Info-b6bdf4be-f75d-4884-ad51-80b29ebc9245"]},
+ "Info-10f1dc11-5793-4c4c-8344-5f1931ba90bd"->{
+  Cell[17346, 457, 844, 17, 52, "Print",
+   CellTags->"Info-10f1dc11-5793-4c4c-8344-5f1931ba90bd"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info-766c373c-96cd-477f-9197-b44030713370", 21055, 560},
+ {"Info-f4716dd0-2284-4092-b47a-f1efe14facfe", 21204, 563},
+ {"Info-1f6bcd2b-4b29-478d-8589-63d72edba558", 21354, 566},
+ {"Info-b6bdf4be-f75d-4884-ad51-80b29ebc9245", 21604, 571},
+ {"Info-10f1dc11-5793-4c4c-8344-5f1931ba90bd", 21753, 574}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 116, 1, 80, "Section"],
+Cell[699, 25, 374, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[1098, 35, 93, 1, 54, "Subsection"],
+Cell[1194, 38, 343, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[1562, 49, 97, 1, 43, "Subsubsection"],
+Cell[1662, 52, 270, 9, 37, "Text"],
+Cell[CellGroupData[{
+Cell[1957, 65, 113, 2, 39, "Input"],
+Cell[2073, 69, 3836, 59, 173, "Print",
+ CellTags->"Info-766c373c-96cd-477f-9197-b44030713370"]
+}, Open  ]],
+Cell[5924, 131, 192, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[6141, 140, 116, 2, 39, "Input"],
+Cell[6260, 144, 3741, 57, 173, "Print",
+ CellTags->"Info-f4716dd0-2284-4092-b47a-f1efe14facfe"]
+}, Open  ]],
+Cell[10016, 204, 626, 16, 39, "Text"],
+Cell[CellGroupData[{
+Cell[10667, 224, 261, 7, 39, "Input"],
+Cell[CellGroupData[{
+Cell[10953, 235, 68, 1, 29, "Print"],
+Cell[11024, 238, 69, 1, 29, "Print"],
+Cell[11096, 241, 68, 1, 29, "Print"],
+Cell[11167, 244, 69, 1, 29, "Print"],
+Cell[11239, 247, 70, 1, 29, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[11336, 252, 311, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[11672, 263, 766, 21, 196, "Input"],
+Cell[12441, 286, 95, 1, 39, "Output"]
+}, Open  ]],
+Cell[12551, 290, 177, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[12753, 299, 114, 2, 39, "Input"],
+Cell[CellGroupData[{
+Cell[12892, 305, 139, 2, 53, "Print",
+ CellTags->"Info-1f6bcd2b-4b29-478d-8589-63d72edba558"],
+Cell[13034, 309, 1651, 58, 400, "Print",
+ CellTags->"Info-1f6bcd2b-4b29-478d-8589-63d72edba558"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14746, 374, 97, 1, 43, "Subsubsection"],
+Cell[14846, 377, 188, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[15059, 386, 113, 2, 39, "Input"],
+Cell[15175, 390, 694, 14, 52, "Print",
+ CellTags->"Info-b6bdf4be-f75d-4884-ad51-80b29ebc9245"]
+}, Open  ]],
+Cell[15884, 407, 444, 10, 61, "Text"],
+Cell[CellGroupData[{
+Cell[16353, 421, 442, 11, 144, "Input"],
+Cell[16798, 434, 72, 1, 39, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16919, 441, 96, 1, 43, "Subsubsection"],
+Cell[17018, 444, 188, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[17231, 453, 112, 2, 39, "Input"],
+Cell[17346, 457, 844, 17, 52, "Print",
+ CellTags->"Info-10f1dc11-5793-4c4c-8344-5f1931ba90bd"]
+}, Open  ]],
+Cell[18205, 477, 753, 17, 61, "Text"],
+Cell[CellGroupData[{
+Cell[18983, 498, 551, 11, 196, "Input"],
+Cell[CellGroupData[{
+Cell[19559, 513, 96, 1, 29, "Print"],
+Cell[19658, 516, 95, 1, 29, "Print"],
+Cell[19756, 519, 95, 1, 29, "Print"]
+}, Open  ]],
+Cell[19866, 523, 74, 1, 39, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20001, 531, 95, 1, 54, "Subsection"],
+Cell[20099, 534, 561, 10, 61, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

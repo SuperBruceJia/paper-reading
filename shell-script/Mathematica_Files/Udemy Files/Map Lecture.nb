@@ -1,0 +1,808 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     26031,        800]
+NotebookOptionsPosition[     21689,        662]
+NotebookOutlinePosition[     22904,        697]
+CellTagsIndexPosition[     22680,        690]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Map", "Section",
+ CellChangeTimes->{{3.688776867064604*^9, 3.688776867271449*^9}}],
+
+Cell[TextData[{
+ "Hello and welcome. In this lecture, we\[CloseCurlyQuote]re going to learn \
+about the ",
+ StyleBox["Map", "Code"],
+ " function and we\[CloseCurlyQuote]ll use it to vectorize our Fibonacci \
+function."
+}], "Text",
+ CellChangeTimes->{{3.6702807979843884`*^9, 3.6702808689827337`*^9}, {
+  3.670281830892371*^9, 3.670281851468788*^9}, {3.670281943202408*^9, 
+  3.670281999160576*^9}, {3.670282067775866*^9, 3.670282148348956*^9}, {
+  3.6702956900691338`*^9, 3.6702956919339314`*^9}, {3.670623845084774*^9, 
+  3.6706239287070713`*^9}, {3.670623976364101*^9, 3.670623986132152*^9}, {
+  3.688776880607314*^9, 3.688776880735414*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Introduction", "Subsection",
+ CellChangeTimes->{{3.6702830346923227`*^9, 3.670283037503475*^9}, {
+  3.688776870481064*^9, 3.6887768718681183`*^9}}],
+
+Cell[TextData[{
+ "Let\[CloseCurlyQuote]s get started by looking at the ",
+ StyleBox["Map", "Code"],
+ " function:"
+}], "Text",
+ CellChangeTimes->{{3.6702830572701883`*^9, 3.670283069220078*^9}, {
+  3.6702956954213676`*^9, 3.670295701080048*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Map"}]], "Input",
+ CellChangeTimes->{{3.670283053895179*^9, 3.6702830544814863`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Map\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"expr\\\", \\\
+\"TI\\\"]}], \\\"]\\\"}]\) or \!\(\*RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \
+\\\"/@\\\", StyleBox[\\\"expr\\\", \\\"TI\\\"]}]\) applies \
+\!\(\*StyleBox[\\\"f\\\", \\\"TI\\\"]\) to each element on the first level in \
+\!\(\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\). \\n\!\(\*RowBox[{\\\"Map\\\", \
+\\\"[\\\", RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"levelspec\\\", \\\
+\"TI\\\"]}], \\\"]\\\"}]\) applies \!\(\*StyleBox[\\\"f\\\", \\\"TI\\\"]\) to \
+parts of \!\(\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\) specified by \
+\!\(\*StyleBox[\\\"levelspec\\\", \\\"TI\\\"]\). \
+\\n\!\(\*RowBox[{\\\"Map\\\", \\\"[\\\", StyleBox[\\\"f\\\", \\\"TI\\\"], \
+\\\"]\\\"}]\) represents an operator form of Map that can be applied to an \
+expression.\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Map"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.670623392008832*^9},
+ CellTags->"Info-469da3b6-f40b-40b6-99cc-8fd631a1b562"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["Map", "Code"],
+ " enables us to apply a function to every element in an expression. Let\
+\[CloseCurlyQuote]s see it in action with an example. Let\[CloseCurlyQuote]s ",
+ StyleBox["Map", "Code"],
+ " the function ",
+ StyleBox["f", "Code"],
+ " over a list of integers:"
+}], "Text",
+ CellChangeTimes->{{3.670295705152766*^9, 3.67029571733629*^9}, {
+   3.670295766837545*^9, 3.670295769998445*^9}, {3.6702958396484013`*^9, 
+   3.6702958631610193`*^9}, {3.670295916150893*^9, 3.670295964243698*^9}, 
+   3.670440592764765*^9, {3.670447850057625*^9, 3.6704478591675997`*^9}, {
+   3.670467232178061*^9, 3.670467251033599*^9}, {3.670467283794043*^9, 
+   3.6704673171675243`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Map", "[", 
+  RowBox[{"f", ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3", ",", "4", ",", "5"}], "}"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.670296006410038*^9, 3.670296012338379*^9}, {
+  3.6702962129078283`*^9, 3.6702962136484127`*^9}, {3.670296778238721*^9, 
+  3.670296801581156*^9}, {3.6702968811660347`*^9, 3.670296888499714*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"f", "[", "1", "]"}], ",", 
+   RowBox[{"f", "[", "2", "]"}], ",", 
+   RowBox[{"f", "[", "3", "]"}], ",", 
+   RowBox[{"f", "[", "4", "]"}], ",", 
+   RowBox[{"f", "[", "5", "]"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6702960125815268`*^9, 3.670296213929605*^9, {3.670296779837411*^9, 
+   3.670296801996326*^9}, 3.670296888868778*^9, 3.670441627458087*^9, 
+   3.6704679441101418`*^9, 3.670621481864737*^9, {3.670623372189374*^9, 
+   3.6706233924367456`*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "We can also use the shorthand for ",
+ StyleBox["Map", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.670444395654958*^9, 3.670444402775014*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"f", "/@", 
+  RowBox[{"{", 
+   RowBox[{"1", ",", "2", ",", "3", ",", "4", ",", "5"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.670444405085083*^9, 3.670444410065723*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"f", "[", "1", "]"}], ",", 
+   RowBox[{"f", "[", "2", "]"}], ",", 
+   RowBox[{"f", "[", "3", "]"}], ",", 
+   RowBox[{"f", "[", "4", "]"}], ",", 
+   RowBox[{"f", "[", "5", "]"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.670444410530034*^9, 3.670467944643725*^9, 3.6706214819130583`*^9, {
+   3.670623372310006*^9, 3.670623392491231*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Here, you can see that our function ",
+ StyleBox["f", "Code"],
+ " was applied to each integer. In our first lecture on functions, we defined \
+our Fibonacci function ",
+ StyleBox["fib", "Code"],
+ " as follows:"
+}], "Text",
+ CellChangeTimes->{{3.6702960212367973`*^9, 3.670296040069366*^9}, 
+   3.670296228824604*^9, {3.670296275512782*^9, 3.670296278842865*^9}, {
+   3.6702963807240067`*^9, 3.670296399466679*^9}, 3.670440610051619*^9, {
+   3.6704415892560177`*^9, 3.670441610640472*^9}, {3.670467366190076*^9, 
+   3.670467369305949*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fib", "[", "1", "]"}], ":=", "1"}]], "Input",
+ CellChangeTimes->{{3.67044161116061*^9, 3.67044163604333*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fib", "[", "2", "]"}], ":=", "1"}]], "Input",
+ CellChangeTimes->{{3.670441637002219*^9, 3.670441638619319*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fib", "[", 
+   RowBox[{"n_Integer", "/;", 
+    RowBox[{"n", ">", "2"}]}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"fib", "[", 
+    RowBox[{"n", "-", "1"}], "]"}], "+", 
+   RowBox[{"fib", "[", 
+    RowBox[{"n", "-", "2"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.670441639421073*^9, 3.670441650263595*^9}}],
+
+Cell[TextData[{
+ "And in that lecture, we used the ",
+ StyleBox["Table", "Code"],
+ " function to compute the first 12 Fibonacci values:"
+}], "Text",
+ CellChangeTimes->{{3.6704416869396753`*^9, 3.67044171131769*^9}, {
+   3.670467376236355*^9, 3.6704673905465813`*^9}, 3.688776920910768*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"fib", "[", "i", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "1", ",", "12"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.670441712531096*^9, 3.670441718506838*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "1", ",", "2", ",", "3", ",", "5", ",", "8", ",", "13", ",", "21",
+    ",", "34", ",", "55", ",", "89", ",", "144"}], "}"}]], "Output",
+ CellChangeTimes->{3.670441718943791*^9, 3.6704679491291237`*^9, 
+  3.670621482018614*^9, 3.670623392579226*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Another way that we could accomplish this is to use the ",
+ StyleBox["Map", "Code"],
+ " function to map our ",
+ StyleBox["fib", "Code"],
+ " function over a list of values:"
+}], "Text",
+ CellChangeTimes->{{3.6704417386328707`*^9, 3.6704417402977123`*^9}, {
+  3.6704442059101477`*^9, 3.6704442304564323`*^9}, {3.6704674843505373`*^9, 
+  3.67046749508294*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"range", "=", 
+  RowBox[{"Range", "[", "12", "]"}]}]], "Input",
+ CellChangeTimes->{{3.6704674969245872`*^9, 3.670467513859231*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", "8", 
+   ",", "9", ",", "10", ",", "11", ",", "12"}], "}"}]], "Output",
+ CellChangeTimes->{3.670467514566779*^9, 3.670467950837631*^9, 
+  3.670621482076273*^9, 3.670623392632*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Map", "[", 
+  RowBox[{"fib", ",", "range"}], "]"}]], "Input",
+ CellChangeTimes->{{3.670444231942738*^9, 3.670444237307908*^9}, 
+   3.6704675187909937`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "1", ",", "2", ",", "3", ",", "5", ",", "8", ",", "13", ",", "21",
+    ",", "34", ",", "55", ",", "89", ",", "144"}], "}"}]], "Output",
+ CellChangeTimes->{3.670444238259687*^9, 3.670467519684697*^9, 
+  3.670467953254739*^9, 3.670621482128481*^9, 3.67062339268328*^9}]
+}, Open  ]],
+
+Cell["And using the shorthand, it would look like this:", "Text",
+ CellChangeTimes->{{3.670467427638022*^9, 3.670467438753172*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"fib", "/@", "range"}]], "Input",
+ CellChangeTimes->{{3.670467441306245*^9, 3.6704674453010187`*^9}, 
+   3.670467524730061*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "1", ",", "2", ",", "3", ",", "5", ",", "8", ",", "13", ",", "21",
+    ",", "34", ",", "55", ",", "89", ",", "144"}], "}"}]], "Output",
+ CellChangeTimes->{3.67046744570924*^9, 3.670467525626061*^9, 
+  3.670467954356206*^9, 3.670621482173161*^9, 3.670623392733029*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Vectorized Functions", "Subsection",
+ CellChangeTimes->{{3.669261481655884*^9, 3.669261483943081*^9}}],
+
+Cell[TextData[{
+ "Notice that our ",
+ StyleBox["Map", "Code"],
+ " function enabled us to apply a function to each element in a list, which \
+is very similar to how vectorized functions work. Recall that a vectorized \
+function is one that can be applied to both scalars and lists. The square \
+root function is vectorized because we can apply it to scalars:"
+}], "Text",
+ CellChangeTimes->{{3.669261606845141*^9, 3.669261681762896*^9}, {
+   3.6704444653275023`*^9, 3.670444500854072*^9}, {3.670467682994074*^9, 
+   3.670467724327793*^9}, {3.670467826954219*^9, 3.670467898333172*^9}, {
+   3.6706237460815773`*^9, 3.670623758081957*^9}, 3.688776953678233*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Sqrt", "[", "4", "]"}]], "Input",
+ CellChangeTimes->{{3.6704445026259003`*^9, 3.670444506806847*^9}}],
+
+Cell[BoxData["2"], "Output",
+ CellChangeTimes->{3.670444507209029*^9, 3.670467957407114*^9, 
+  3.670621482226488*^9}]
+}, Open  ]],
+
+Cell["And we can apply it to lists:", "Text",
+ CellChangeTimes->{{3.670444510574046*^9, 3.670444513982477*^9}, {
+  3.6704679735087337`*^9, 3.670467974271611*^9}, {3.688776962917911*^9, 
+  3.688776963965773*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Sqrt", "[", "range", "]"}]], "Input",
+ CellChangeTimes->{{3.670444515665133*^9, 3.6704445231744337`*^9}, {
+  3.670467963888564*^9, 3.6704679642707987`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", 
+   SqrtBox["2"], ",", 
+   SqrtBox["3"], ",", "2", ",", 
+   SqrtBox["5"], ",", 
+   SqrtBox["6"], ",", 
+   SqrtBox["7"], ",", 
+   RowBox[{"2", " ", 
+    SqrtBox["2"]}], ",", "3", ",", 
+   SqrtBox["10"], ",", 
+   SqrtBox["11"], ",", 
+   RowBox[{"2", " ", 
+    SqrtBox["3"]}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.670444523701157*^9, {3.670467958917252*^9, 3.670467964570516*^9}, 
+   3.67062148227675*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Let\[CloseCurlyQuote]s use the ",
+ StyleBox["Map", "Code"],
+ " function to vectorize our ",
+ StyleBox["fib", "Code"],
+ " function. Here\[CloseCurlyQuote]s our existing definition of ",
+ StyleBox["fib", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.6692617665852537`*^9, 3.66926177403297*^9}, {
+  3.6704445566670723`*^9, 3.670444559399921*^9}, {3.670467905140688*^9, 
+  3.6704679251085873`*^9}, {3.670467986365637*^9, 3.670467986793165*^9}, {
+  3.6704680266300097`*^9, 3.670468035202689*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "fib"}]], "Input",
+ CellChangeTimes->{{3.6704680364695387`*^9, 3.670468037386532*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Global`fib", "Print", "PrintUsage",
+ CellChangeTimes->{3.67062148232864*^9},
+ CellTags->"Info-9ea42583-6436-4a70-95af-7f5fdae3bbb5"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {GridBox[{
+       {
+        RowBox[{
+         RowBox[{"fib", "[", "1", "]"}], ":=", "1"}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{"fib", "[", "2", "]"}], ":=", "1"}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{"fib", "[", 
+          RowBox[{"n_Integer", "/;", 
+           RowBox[{"n", ">", "2"}]}], "]"}], ":=", 
+         RowBox[{
+          RowBox[{"fib", "[", 
+           RowBox[{"n", "-", "1"}], "]"}], "+", 
+          RowBox[{"fib", "[", 
+           RowBox[{"n", "-", "2"}], "]"}]}]}]}
+      },
+      BaselinePosition->{Baseline, {1, 1}},
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{"Columns" -> {{
+           Scaled[0.999]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}}]}
+   },
+   BaselinePosition->{Baseline, {1, 1}},
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}}],
+  Definition[$CellContext`fib],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6706214823768377`*^9},
+ CellTags->"Info-9ea42583-6436-4a70-95af-7f5fdae3bbb5"]
+}, Open  ]]
+}, Open  ]],
+
+Cell["If we apply fib to our range list:", "Text",
+ CellChangeTimes->{{3.670468044486146*^9, 3.670468046700199*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"fib", "[", "range", "]"}]], "Input",
+ CellChangeTimes->{{3.6692617747656527`*^9, 3.669261783873801*^9}, {
+  3.670444579325199*^9, 3.670444581461495*^9}, {3.670467927854349*^9, 
+  3.670467928202613*^9}}],
+
+Cell[BoxData[
+ RowBox[{"fib", "[", 
+  RowBox[{"{", 
+   RowBox[{
+   "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", "8", 
+    ",", "9", ",", "10", ",", "11", ",", "12"}], "}"}], "]"}]], "Output",
+ CellChangeTimes->{{3.669261777618421*^9, 3.6692617842844763`*^9}, 
+   3.67028122651029*^9, 3.670444582058951*^9, 3.670467928456984*^9, 
+   3.6704679878666983`*^9, 3.670621482469995*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Since range is not an integer, it doesn\[CloseCurlyQuote]t match any of the \
+patterns that ",
+ StyleBox["fib", "Code"],
+ " defines, and so ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " returns the expression unevaluated. To vectorize ",
+ StyleBox["fib", "Code"],
+ ", we just need to add one additional definition that handles the case when \
+the argument to ",
+ StyleBox["fib", "Code"],
+ " is a ",
+ StyleBox["List", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.6704679945445557`*^9, 3.670468009473333*^9}, {
+  3.670468057804182*^9, 3.6704680964718647`*^9}, {3.6887769973178997`*^9, 
+  3.688776997693429*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fib", "[", "l_List", "]"}], ":=", 
+  RowBox[{"fib", "/@", "l"}]}]], "Input",
+ CellChangeTimes->{{3.669262052212718*^9, 3.669262066210907*^9}, {
+  3.669262193784124*^9, 3.6692621971360903`*^9}, {3.669262239648181*^9, 
+  3.6692622465511627`*^9}}],
+
+Cell[TextData[{
+ "What this says is, if the argument to ",
+ StyleBox["fib", "Code"],
+ " is a ",
+ StyleBox["List", "Code"],
+ ", then we ",
+ StyleBox["Map", "Code"],
+ " the ",
+ StyleBox["fib", "Code"],
+ " function over the elements in the ",
+ StyleBox["List", "Code"],
+ " ",
+ StyleBox["l", "Code"],
+ ". Now if we evaluate:"
+}], "Text",
+ CellChangeTimes->{{3.669262075085355*^9, 3.6692620764024477`*^9}, {
+  3.6692622070077953`*^9, 3.669262250870824*^9}, {3.670444720672134*^9, 
+  3.670444726869286*^9}, {3.670468129412627*^9, 3.670468181094295*^9}, {
+  3.688777006629611*^9, 3.688777036709283*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"fib", "[", "range", "]"}]], "Input",
+ CellChangeTimes->{{3.669262264486467*^9, 3.669262265694808*^9}, {
+  3.670444750068667*^9, 3.670444751586135*^9}, {3.670468166572798*^9, 
+  3.6704681670544157`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "1", ",", "2", ",", "3", ",", "5", ",", "8", ",", "13", ",", "21",
+    ",", "34", ",", "55", ",", "89", ",", "144"}], "}"}]], "Output",
+ CellChangeTimes->{{3.6692622663308687`*^9, 3.669262293875062*^9}, 
+   3.670444752338017*^9, {3.670468167320417*^9, 3.67046817172218*^9}, 
+   3.670621482553632*^9}]
+}, Open  ]],
+
+Cell["It works! How about nested lists?", "Text",
+ CellChangeTimes->{{3.6704447628147497`*^9, 3.670444767898823*^9}, {
+  3.670468185279602*^9, 3.670468191050647*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"nestedRange", "=", 
+  RowBox[{"Partition", "[", 
+   RowBox[{"range", ",", "4"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6704447701393347`*^9, 3.670444852668865*^9}, {
+  3.670468193818954*^9, 3.6704682021663446`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3", ",", "4"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "6", ",", "7", ",", "8"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", "10", ",", "11", ",", "12"}], "}"}]}], "}"}]], "Output",\
+
+ CellChangeTimes->{
+  3.670444787844056*^9, {3.6704448321762753`*^9, 3.670444853474696*^9}, 
+   3.670468202993923*^9, 3.670621482593143*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"fib", "[", "nestedRange", "]"}]], "Input",
+ CellChangeTimes->{{3.670444791461688*^9, 3.670444794055582*^9}, 
+   3.670468209976717*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1", ",", "2", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "8", ",", "13", ",", "21"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"34", ",", "55", ",", "89", ",", "144"}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.67044479467063*^9, {3.6704448332714443`*^9, 3.670444854441218*^9}, 
+   3.670468210828796*^9, 3.670621482644438*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Isn\[CloseCurlyQuote]t that amazing! It also applied ",
+ StyleBox["fib", "Code"],
+ " to the sublists. Can you guess why?"
+}], "Text",
+ CellChangeTimes->{{3.669262300854801*^9, 3.669262327733382*^9}, {
+   3.6704682192451773`*^9, 3.6704682245649977`*^9}, 3.688777052748629*^9}],
+
+Cell[TextData[{
+ "Did you figure it out? ",
+ StyleBox["fib", "Code"],
+ " was automatically applied to the sublists because when we mapped over the \
+top level list, ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " had to evaluate the expression ",
+ StyleBox["fib[{1,1,2,3}]", "Code"],
+ ", ",
+ StyleBox["fib[{5,8,13,21}]", "Code"],
+ " and ",
+ StyleBox["fib[{34,55,89,144}]", "Code"],
+ " which matched the ",
+ StyleBox["fib[l_List]", "Code"],
+ " definition, which recursively called ",
+ StyleBox["fib", "Code"],
+ " until it was dealing with integers. Neat, right? Let\[CloseCurlyQuote]s \
+take a look at our final ",
+ StyleBox["fib", "Code"],
+ " function:"
+}], "Text",
+ CellChangeTimes->{{3.669262329085307*^9, 3.669262469050536*^9}, {
+  3.6704448789718533`*^9, 3.670444916884712*^9}, {3.670468233801278*^9, 
+  3.670468258022922*^9}, {3.688777072068693*^9, 3.688777165409231*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "fib"}]], "Input",
+ CellChangeTimes->{{3.669262470315176*^9, 3.6692624707791758`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Global`fib", "Print", "PrintUsage",
+ CellChangeTimes->{3.6706214827695713`*^9},
+ CellTags->"Info-eeb27ed0-23a1-4a5d-b645-f7fceb9e25e9"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {GridBox[{
+       {
+        RowBox[{
+         RowBox[{"fib", "[", "1", "]"}], ":=", "1"}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{"fib", "[", "2", "]"}], ":=", "1"}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{"fib", "[", 
+          RowBox[{"n_Integer", "/;", 
+           RowBox[{"n", ">", "2"}]}], "]"}], ":=", 
+         RowBox[{
+          RowBox[{"fib", "[", 
+           RowBox[{"n", "-", "1"}], "]"}], "+", 
+          RowBox[{"fib", "[", 
+           RowBox[{"n", "-", "2"}], "]"}]}]}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{"fib", "[", "l_List", "]"}], ":=", 
+         RowBox[{"fib", "/@", "l"}]}]}
+      },
+      BaselinePosition->{Baseline, {1, 1}},
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{"Columns" -> {{
+           Scaled[0.999]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}}]}
+   },
+   BaselinePosition->{Baseline, {1, 1}},
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}}],
+  Definition[$CellContext`fib],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.670621482811385*^9},
+ CellTags->"Info-eeb27ed0-23a1-4a5d-b645-f7fceb9e25e9"]
+}, Open  ]]
+}, Open  ]],
+
+Cell["\<\
+Just four lines of beautiful code for a vectorized implementation of \
+Fibonacci function.\
+\>", "Text",
+ CellChangeTimes->{{3.669262479794921*^9, 3.669262659454262*^9}, {
+  3.670445245141349*^9, 3.6704452611162663`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Summary", "Subsection",
+ CellChangeTimes->{{3.688777187976903*^9, 3.688777188832509*^9}}],
+
+Cell[TextData[{
+ "The ",
+ StyleBox["Map", "Code"],
+ " function is extremely useful. We\[CloseCurlyQuote]ll be using it a lot in \
+subsequent lectures. "
+}], "Text",
+ CellChangeTimes->{{3.670623793521193*^9, 3.670623811154566*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1399, 855},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info-469da3b6-f40b-40b6-99cc-8fd631a1b562"->{
+  Cell[1881, 59, 1248, 22, 102, "Print",
+   CellTags->"Info-469da3b6-f40b-40b6-99cc-8fd631a1b562"]},
+ "Info-9ea42583-6436-4a70-95af-7f5fdae3bbb5"->{
+  Cell[12327, 364, 138, 2, 52, "Print",
+   CellTags->"Info-9ea42583-6436-4a70-95af-7f5fdae3bbb5"],
+  Cell[12468, 368, 1235, 37, 110, "Print",
+   CellTags->"Info-9ea42583-6436-4a70-95af-7f5fdae3bbb5"]},
+ "Info-eeb27ed0-23a1-4a5d-b645-f7fceb9e25e9"->{
+  Cell[19528, 589, 141, 2, 52, "Print",
+   CellTags->"Info-eeb27ed0-23a1-4a5d-b645-f7fceb9e25e9"],
+  Cell[19672, 593, 1366, 42, 150, "Print",
+   CellTags->"Info-eeb27ed0-23a1-4a5d-b645-f7fceb9e25e9"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info-469da3b6-f40b-40b6-99cc-8fd631a1b562", 22056, 674},
+ {"Info-9ea42583-6436-4a70-95af-7f5fdae3bbb5", 22205, 677},
+ {"Info-eeb27ed0-23a1-4a5d-b645-f7fceb9e25e9", 22455, 682}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 88, 1, 80, "Section"],
+Cell[671, 25, 643, 12, 37, "Text"],
+Cell[CellGroupData[{
+Cell[1339, 41, 153, 2, 54, "Subsection"],
+Cell[1495, 45, 244, 6, 38, "Text"],
+Cell[CellGroupData[{
+Cell[1764, 55, 114, 2, 40, "Input"],
+Cell[1881, 59, 1248, 22, 102, "Print",
+ CellTags->"Info-469da3b6-f40b-40b6-99cc-8fd631a1b562"]
+}, Open  ]],
+Cell[3144, 84, 696, 14, 63, "Text"],
+Cell[CellGroupData[{
+Cell[3865, 102, 377, 8, 40, "Input"],
+Cell[4245, 112, 513, 12, 40, "Output"]
+}, Open  ]],
+Cell[4773, 127, 163, 5, 38, "Text"],
+Cell[CellGroupData[{
+Cell[4961, 136, 193, 4, 40, "Input"],
+Cell[5157, 142, 389, 10, 40, "Output"]
+}, Open  ]],
+Cell[5561, 155, 556, 12, 63, "Text"],
+Cell[6120, 169, 144, 3, 40, "Input"],
+Cell[6267, 174, 146, 3, 40, "Input"],
+Cell[6416, 179, 339, 10, 40, "Input"],
+Cell[6758, 191, 289, 6, 38, "Text"],
+Cell[CellGroupData[{
+Cell[7072, 201, 238, 6, 40, "Input"],
+Cell[7313, 209, 300, 6, 40, "Output"]
+}, Open  ]],
+Cell[7628, 218, 375, 9, 38, "Text"],
+Cell[CellGroupData[{
+Cell[8028, 231, 154, 3, 40, "Input"],
+Cell[8185, 236, 291, 6, 40, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8513, 247, 179, 4, 40, "Input"],
+Cell[8695, 253, 319, 6, 40, "Output"]
+}, Open  ]],
+Cell[9029, 262, 131, 1, 38, "Text"],
+Cell[CellGroupData[{
+Cell[9185, 267, 150, 3, 40, "Input"],
+Cell[9338, 272, 319, 6, 40, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9706, 284, 108, 1, 54, "Subsection"],
+Cell[9817, 287, 658, 11, 87, "Text"],
+Cell[CellGroupData[{
+Cell[10500, 302, 125, 2, 40, "Input"],
+Cell[10628, 306, 117, 2, 40, "Output"]
+}, Open  ]],
+Cell[10760, 311, 211, 3, 38, "Text"],
+Cell[CellGroupData[{
+Cell[10996, 318, 180, 3, 40, "Input"],
+Cell[11179, 323, 458, 16, 42, "Output"]
+}, Open  ]],
+Cell[11652, 342, 511, 12, 38, "Text"],
+Cell[CellGroupData[{
+Cell[12188, 358, 114, 2, 40, "Input"],
+Cell[CellGroupData[{
+Cell[12327, 364, 138, 2, 52, "Print",
+ CellTags->"Info-9ea42583-6436-4a70-95af-7f5fdae3bbb5"],
+Cell[12468, 368, 1235, 37, 110, "Print",
+ CellTags->"Info-9ea42583-6436-4a70-95af-7f5fdae3bbb5"]
+}, Open  ]]
+}, Open  ]],
+Cell[13730, 409, 116, 1, 38, "Text"],
+Cell[CellGroupData[{
+Cell[13871, 414, 226, 4, 40, "Input"],
+Cell[14100, 420, 403, 8, 40, "Output"]
+}, Open  ]],
+Cell[14518, 431, 639, 18, 87, "Text"],
+Cell[15160, 451, 279, 6, 40, "Input"],
+Cell[15442, 459, 596, 18, 63, "Text"],
+Cell[CellGroupData[{
+Cell[16063, 481, 226, 4, 40, "Input"],
+Cell[16292, 487, 352, 7, 40, "Output"]
+}, Open  ]],
+Cell[16659, 497, 166, 2, 38, "Text"],
+Cell[CellGroupData[{
+Cell[16850, 503, 242, 5, 40, "Input"],
+Cell[17095, 510, 436, 12, 40, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17568, 527, 158, 3, 40, "Input"],
+Cell[17729, 532, 440, 12, 40, "Output"]
+}, Open  ]],
+Cell[18184, 547, 293, 6, 38, "Text"],
+Cell[18480, 555, 884, 24, 112, "Text"],
+Cell[CellGroupData[{
+Cell[19389, 583, 114, 2, 40, "Input"],
+Cell[CellGroupData[{
+Cell[19528, 589, 141, 2, 52, "Print",
+ CellTags->"Info-eeb27ed0-23a1-4a5d-b645-f7fceb9e25e9"],
+Cell[19672, 593, 1366, 42, 150, "Print",
+ CellTags->"Info-eeb27ed0-23a1-4a5d-b645-f7fceb9e25e9"]
+}, Open  ]]
+}, Open  ]],
+Cell[21065, 639, 231, 5, 37, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21333, 649, 95, 1, 54, "Subsection"],
+Cell[21431, 652, 230, 6, 37, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

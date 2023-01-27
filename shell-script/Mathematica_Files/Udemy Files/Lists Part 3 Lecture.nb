@@ -1,0 +1,2159 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     78666,       2150]
+NotebookOptionsPosition[     68286,       1849]
+NotebookOutlinePosition[     71636,       1924]
+CellTagsIndexPosition[     70738,       1906]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Lists as Sets and Combinatorics", "Section",
+ CellChangeTimes->{{3.668734938518358*^9, 3.668734950871098*^9}, 
+   3.680122564090014*^9}],
+
+Cell["\<\
+In this lecture we\[CloseCurlyQuote]ll look at how you can find elements in a \
+list, sort lists, how to treat lists as sets and some basic list \
+combinatorics.\
+\>", "Text",
+ CellChangeTimes->{{3.668741059939761*^9, 3.668741097806404*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Searching", "Subsection",
+ CellChangeTimes->{{3.668734607387*^9, 3.6687346091071978`*^9}, {
+  3.66873473204951*^9, 3.6687347329584513`*^9}}],
+
+Cell["\<\
+Let\[CloseCurlyQuote]s start by creating our deck of cards which we\
+\[CloseCurlyQuote]ll use to demonstrate the functions in this section.\
+\>", "Text",
+ CellChangeTimes->{{3.680122609785407*^9, 3.6801226470312843`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"values", "=", 
+  RowBox[{"{", 
+   RowBox[{
+   "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", "8", ",", "9", 
+    ",", "10", ",", "J", ",", "Q", ",", "K", ",", "A"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.668740955576685*^9, 3.668740965337802*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", "8", ",", "9", 
+   ",", "10", ",", "J", ",", "Q", ",", "K", ",", "A"}], "}"}]], "Output",
+ CellChangeTimes->{3.668740971132441*^9, 3.6688022863877573`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Reminder: to type the suit characters, type: ",
+ StyleBox["\\[DiamondSuit]", "Code"]
+}], "Text",
+ CellChangeTimes->{{3.6801226669742928`*^9, 3.68012270474105*^9}, {
+  3.680122840025889*^9, 3.6801228574237127`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"suits", "=", 
+  RowBox[{"{", 
+   RowBox[{
+   "\[DiamondSuit]", ",", "\[ClubSuit]", ",", "\[HeartSuit]", ",", 
+    "\[SpadeSuit]"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.66874097241881*^9, 3.6687409992576838`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "\[DiamondSuit]", ",", "\[ClubSuit]", ",", "\[HeartSuit]", ",", 
+   "\[SpadeSuit]"}], "}"}]], "Output",
+ CellChangeTimes->{3.668740999616637*^9, 3.668802286438778*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"deck", "=", 
+  RowBox[{"Flatten", "[", 
+   RowBox[{
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"values", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], ",", 
+        RowBox[{"suits", "[", 
+         RowBox[{"[", "j", "]"}], "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", 
+        RowBox[{"Length", "[", "values", "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"j", ",", "1", ",", 
+        RowBox[{"Length", "[", "suits", "]"}]}], "}"}]}], "]"}], ",", "1"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.6687411291879396`*^9, 3.6687411662628317`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"2", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"J", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"J", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"J", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"J", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Q", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Q", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Q", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Q", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"K", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"K", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"K", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"K", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"A", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"A", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"A", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"A", ",", "\[SpadeSuit]"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.668741166673975*^9, 3.6688022864881973`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "To find an element in a list, we use the ",
+ StyleBox["Position", "Code"],
+ " function:"
+}], "Text",
+ CellChangeTimes->{
+  3.6687342436782217`*^9, {3.680122720044424*^9, 3.6801227253083477`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Position"}]], "Input",
+ CellChangeTimes->{{3.668734246712571*^9, 3.668734246720798*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Position\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"pattern\\\
+\", \\\"TI\\\"]}], \\\"]\\\"}]\) gives a list of the positions at which \
+objects matching \!\(\*StyleBox[\\\"pattern\\\", \\\"TI\\\"]\) appear in \!\(\
+\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\). \\n\!\(\*RowBox[{\\\"Position\\\", \\\
+\"[\\\", RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"pattern\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"levelspec\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\) finds only objects that appear on levels \
+specified by \!\(\*StyleBox[\\\"levelspec\\\", \\\"TI\\\"]\). \
+\\n\!\(\*RowBox[{\\\"Position\\\", \\\"[\\\", RowBox[{StyleBox[\\\"expr\\\", \
+\\\"TI\\\"], \\\",\\\", StyleBox[\\\"pattern\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"levelspec\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\) gives the positions of the first \!\(\*StyleBox[\
+\\\"n\\\", \\\"TI\\\"]\) objects found. \\n\!\(\*RowBox[{\\\"Position\\\", \\\
+\"[\\\", StyleBox[\\\"pattern\\\", \\\"TI\\\"], \\\"]\\\"}]\) represents an \
+operator form of Position that can be applied to an expression.\"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Position"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.668802286571774*^9},
+ CellTags->"Info-0e12bf18-b55f-4800-b3ba-1ed0ec3af4cd"]
+}, Open  ]],
+
+Cell["To find the position of the Ace of Spades:", "Text",
+ CellChangeTimes->{{3.668734252925942*^9, 3.668734254317123*^9}, {
+  3.668741178705144*^9, 3.6687411842964287`*^9}, {3.680122656743092*^9, 
+  3.680122657438559*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{"deck", ",", 
+   RowBox[{"{", 
+    RowBox[{"A", ",", "\[SpadeSuit]"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.668734257128358*^9, 3.668734257136695*^9}, {
+  3.6687411164815817`*^9, 3.668741117730544*^9}, {3.6687411886734343`*^9, 
+  3.6687411969203672`*^9}, {3.6687412991160183`*^9, 3.6687413290877857`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", "52", "}"}], "}"}]], "Output",
+ CellChangeTimes->{3.668734257846694*^9, 3.668741198413225*^9, 
+  3.668741331101334*^9, 3.6688022866507683`*^9}]
+}, Open  ]],
+
+Cell["\<\
+The position of an element that doesn\[CloseCurlyQuote]t exist, for example, \
+the FivePointedStar, is an empty list:\
+\>", "Text",
+ CellChangeTimes->{
+  3.668734261812908*^9, {3.6687413598412247`*^9, 3.668741385997733*^9}, {
+   3.680122741619658*^9, 3.6801227614829407`*^9}, 3.680122929286125*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{"deck", ",", 
+   RowBox[{"{", 
+    RowBox[{"A", ",", "\[FivePointedStar]"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.668734265118206*^9, 3.668734265126565*^9}, {
+  3.6687412078091097`*^9, 3.668741230085559*^9}, {3.668741333877047*^9, 
+  3.668741352148285*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6687342664567747`*^9, 3.668741230916086*^9, 
+  3.6687413532394047`*^9, 3.668802286689742*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "The ",
+ StyleBox["Position", "Code"],
+ " function can also be used to find the position of elements that match a \
+pattern, so we will revisit the ",
+ StyleBox["Position", "Code"],
+ " function in our lecture on rules and patterns."
+}], "Text",
+ CellChangeTimes->{
+  3.66873427388465*^9, 3.6687427512098637`*^9, {3.668742796343494*^9, 
+   3.66874290236336*^9}, {3.6687429499397306`*^9, 3.668742950445969*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Randomizing and Sorting", "Subsection",
+ CellChangeTimes->{{3.668734728920767*^9, 3.668734729583397*^9}, {
+  3.668741406551428*^9, 3.66874140830649*^9}}],
+
+Cell["Let\[CloseCurlyQuote]s generate some random numbers:", "Text",
+ CellChangeTimes->{{3.6801229684846067`*^9, 3.680122977139492*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "RandomInteger"}]], "Input",
+ CellChangeTimes->{{3.667604848053586*^9, 3.667604853501835*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"RandomInteger\\\", \\\"[\\\", RowBox[{\\\"{\
+\\\", RowBox[{SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], \
+StyleBox[\\\"min\\\", \\\"TI\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], StyleBox[\\\"max\\\", \
+\\\"TI\\\"]]}], \\\"}\\\"}], \\\"]\\\"}]\) gives a pseudorandom integer in \
+the range \!\(\*RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"i\\\", \
+\\\"TI\\\"], StyleBox[\\\"min\\\", \\\"TI\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], StyleBox[\\\"max\\\", \
+\\\"TI\\\"]]}], \\\"}\\\"}]\). \\n\!\(\*RowBox[{\\\"RandomInteger\\\", \
+\\\"[\\\", SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], \
+StyleBox[\\\"max\\\", \\\"TI\\\"]], \\\"]\\\"}]\) gives a pseudorandom \
+integer in the range \!\(\*RowBox[{\\\"{\\\", RowBox[{\\\"0\\\", \\\",\\\", \
+StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"i\\\", \\\"TI\\\"], StyleBox[\\\"max\\\", \
+\\\"TI\\\"]]}], \\\"}\\\"}]\). \\n\!\(\*RowBox[{\\\"RandomInteger\\\", \
+\\\"[\\\", \\\"]\\\"}]\) pseudorandomly gives 0 or 1. \
+\\n\!\(\*RowBox[{\\\"RandomInteger\\\", \\\"[\\\", RowBox[{StyleBox[\\\"range\
+\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\"TI\\\"]}], \
+\\\"]\\\"}]\) gives a list of \!\(\*StyleBox[\\\"n\\\", \\\"TI\\\"]\) \
+pseudorandom integers. \\n\!\(\*RowBox[{\\\"RandomInteger\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"range\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\) gives an \
+\!\(\*SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]]\)\[Times]\!\(\*SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]]\)\[Times]\[Ellipsis] array of pseudorandom \
+integers. \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/RandomInteger"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.668802286750856*^9},
+ CellTags->"Info-bf591bb8-fd70-4575-b36d-92a10d04fe9e"]
+}, Open  ]],
+
+Cell["Let\[CloseCurlyQuote]s generate 20 random numbers that range from 1 to \
+100:", "Text",
+ CellChangeTimes->{{3.668741921161421*^9, 3.6687419315554028`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"randomNumbers", "=", 
+  RowBox[{"RandomInteger", "[", 
+   RowBox[{"100", ",", "20"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.666653606758122*^9, 3.66665361420538*^9}, 
+   3.667601724595545*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "20", ",", "98", ",", "57", ",", "39", ",", "33", ",", "73", ",", "15", ",",
+    "7", ",", "24", ",", "8", ",", "99", ",", "46", ",", "31", ",", "33", ",",
+    "17", ",", "35", ",", "89", ",", "20", ",", "24", ",", "3"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.666653600663085*^9, 3.666653615129983*^9}, 
+   3.667599327315893*^9, 3.667600304332266*^9, 3.6676017269781513`*^9, 
+   3.667602316505937*^9, 3.6688022868080187`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Let\[CloseCurlyQuote]s sort the random numbers. We\[CloseCurlyQuote]ll use \
+the ",
+ StyleBox["Sort", "Code"],
+ " function:"
+}], "Text",
+ CellChangeTimes->{{3.680123004722845*^9, 3.680123017554068*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Sort"}]], "Input",
+ CellChangeTimes->{{3.666653656813588*^9, 3.6666536574276857`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Sort\\\", \\\"[\\\", StyleBox[\\\"list\\\", \
+\\\"TI\\\"], \\\"]\\\"}]\) sorts the elements of \!\(\*StyleBox[\\\"list\\\", \
+\\\"TI\\\"]\) into canonical order. \\n\!\(\*RowBox[{\\\"Sort\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"p\\\", \\\
+\"TI\\\"]}], \\\"]\\\"}]\) sorts using the ordering function \
+\!\(\*StyleBox[\\\"p\\\", \\\"TI\\\"]\). \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Sort"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.668802286867098*^9},
+ CellTags->"Info-e2632d3c-4e21-4a5a-9f1d-f338d79579c0"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sortedNumbers", "=", 
+  RowBox[{"Sort", "[", "randomNumbers", "]"}]}]], "Input",
+ CellChangeTimes->{{3.6666535302640533`*^9, 3.666653618376545*^9}, {
+  3.667600178521758*^9, 3.667600188289826*^9}, {3.667601764881692*^9, 
+  3.667601775841111*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "3", ",", "7", ",", "8", ",", "15", ",", "17", ",", "20", ",", "20", ",", 
+   "24", ",", "24", ",", "31", ",", "33", ",", "33", ",", "35", ",", "39", 
+   ",", "46", ",", "57", ",", "73", ",", "89", ",", "98", ",", "99"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.666653535066552*^9, 3.6666536188874283`*^9}, 
+   3.667599327540126*^9, {3.667600183352892*^9, 3.667600188577127*^9}, 
+   3.6676003044933453`*^9, 3.66760173036763*^9, 3.6676018097839108`*^9, 
+   3.667602316690546*^9, 3.668802286926545*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "To get the numbers in descending order, we can ",
+ StyleBox["Reverse", "Code"],
+ " the ",
+ StyleBox["sortedNumbers", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.680123033442301*^9, 3.6801230550568743`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Reverse"}]], "Input",
+ CellChangeTimes->{{3.667603022254492*^9, 3.6676030300733137`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Reverse\\\", \\\"[\\\", StyleBox[\\\"expr\\\
+\", \\\"TI\\\"], \\\"]\\\"}]\) reverses the order of the elements in \
+\!\(\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\). \\n\!\(\*RowBox[{\\\"Reverse\\\", \
+\\\"[\\\", RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\
+\"n\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) reverses elements at level \
+\!\(\*StyleBox[\\\"n\\\", \\\"TI\\\"]\) in \!\(\*StyleBox[\\\"expr\\\", \
+\\\"TI\\\"]\).\\n\!\(\*RowBox[{\\\"Reverse\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\) reverses elements at levels \
+\!\(\*SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]]\), \!\(\*SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], StyleBox[\
+\\\"2\\\", \\\"TR\\\"]]\), \[Ellipsis] in \!\(\*StyleBox[\\\"expr\\\", \\\"TI\
+\\\"]\).\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Reverse"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.6688022869853888`*^9},
+ CellTags->"Info-ebb00e52-aef4-483a-94c9-f58163bf977c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Reverse", "[", "sortedNumbers", "]"}]], "Input",
+ CellChangeTimes->{{3.6676030591401777`*^9, 3.667603064748869*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "99", ",", "98", ",", "89", ",", "73", ",", "57", ",", "46", ",", "39", ",",
+    "35", ",", "33", ",", "33", ",", "31", ",", "24", ",", "24", ",", "20", 
+   ",", "20", ",", "17", ",", "15", ",", "8", ",", "7", ",", "3"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.667603065392871*^9, 3.6688022870694513`*^9}]
+}, Open  ]],
+
+Cell["\<\
+If you wanted to shuffle a list of values, you would use RandomSample:\
+\>", "Text",
+ CellChangeTimes->{{3.668741952997916*^9, 3.6687419665429783`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "RandomSample"}]], "Input",
+ CellChangeTimes->{{3.667600158026185*^9, 3.6676001671298447`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"RandomSample\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"e\\\", \
+\\\"TI\\\"], StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\
+\"}], \\\",\\\", StyleBox[\\\"n\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) gives a \
+pseudorandom sample of \!\(\*StyleBox[\\\"n\\\", \\\"TI\\\"]\) of the \
+\!\(\*SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \
+\\\"TI\\\"]]\).\\n\!\(\*RowBox[{\\\"RandomSample\\\", \\\"[\\\", \
+RowBox[{RowBox[{RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"w\\\", \
+\\\"TI\\\"], StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"w\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\
+\"}], \\\"\[Rule]\\\", RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"e\
+\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\
+\"}]}], \\\",\\\", StyleBox[\\\"n\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) gives a \
+pseudorandom sample of \!\(\*StyleBox[\\\"n\\\", \\\"TI\\\"]\) of the \
+\!\(\*SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \
+\\\"TI\\\"]]\) chosen using weights \!\(\*SubscriptBox[StyleBox[\\\"w\\\", \\\
+\"TI\\\"], StyleBox[\\\"i\\\", \
+\\\"TI\\\"]]\).\\n\!\(\*RowBox[{\\\"RandomSample\\\", \\\"[\\\", \
+RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], \
+StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"e\\\", \
+\\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\
+\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\"}], \\\"]\\\"}]\) gives a \
+pseudorandom permutation of the \!\(\*SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\
+\\\"], StyleBox[\\\"i\\\", \\\"TI\\\"]]\).\"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/RandomSample"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.668802287136964*^9},
+ CellTags->"Info-0f276db1-932d-48dd-980f-7dd56758be51"]
+}, Open  ]],
+
+Cell["Let\[CloseCurlyQuote]s shuffle the deck of cards:", "Text",
+ CellChangeTimes->{{3.668741428467428*^9, 3.668741431998844*^9}, {
+  3.668741968590343*^9, 3.668741970772747*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"shuffled", "=", 
+  RowBox[{"RandomSample", "[", "deck", "]"}]}]], "Input",
+ CellChangeTimes->{{3.667600191568458*^9, 3.667600213864801*^9}, {
+  3.667601798824565*^9, 3.667601800008725*^9}, {3.668741422335472*^9, 
+  3.668741446905398*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"Q", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"J", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"A", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"A", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"A", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Q", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"A", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Q", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"J", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"J", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"K", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"J", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"K", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Q", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"K", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"K", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "\[HeartSuit]"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.667600215086812*^9, {3.667600252371359*^9, 3.667600304657699*^9}, {
+   3.66760173768188*^9, 3.667601749807878*^9}, 3.667601812638742*^9, 
+   3.667602316856885*^9, {3.668741423791193*^9, 3.6687414485522614`*^9}, 
+   3.668802287188972*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "SortBy"}]], "Input",
+ CellChangeTimes->{{3.667604966728318*^9, 3.667604968271994*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"SortBy\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"f\\\", \\\
+\"TI\\\"]}], \\\"]\\\"}]\) sorts the elements of \!\(\*StyleBox[\\\"list\\\", \
+\\\"TI\\\"]\) in the order defined by applying \!\(\*StyleBox[\\\"f\\\", \
+\\\"TI\\\"]\) to each of them. \\n\!\(\*RowBox[{\\\"SortBy\\\", \\\"[\\\", \
+StyleBox[\\\"f\\\", \\\"TI\\\"], \\\"]\\\"}]\) represents an operator form of \
+SortBy that can be applied to an expression.\"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/SortBy"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.668802287248386*^9},
+ CellTags->"Info-9943c02e-0b2e-48e1-b4ce-6afeb6a5ad5c"]
+}, Open  ]],
+
+Cell["Let\[CloseCurlyQuote]s sort our shuffled deck by the value of the \
+cards:", "Text",
+ CellChangeTimes->{{3.6687415659651747`*^9, 3.6687415767752237`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SortBy", "[", 
+  RowBox[{"shuffled", ",", "First"}], "]"}]], "Input",
+ CellChangeTimes->{{3.668741462435523*^9, 3.668741504404072*^9}, {
+  3.668741580264359*^9, 3.66874158101648*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"2", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"A", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"A", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"A", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"A", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"J", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"J", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"J", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"J", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"K", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"K", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"K", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"K", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Q", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Q", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Q", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Q", ",", "\[SpadeSuit]"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.6687414681757917`*^9, 3.668741504683695*^9}, 
+   3.66874158181588*^9, 3.668802287322713*^9}]
+}, Open  ]],
+
+Cell["And now let\[CloseCurlyQuote]s sort by the suit of the cards:", "Text",
+ CellChangeTimes->{{3.668741592953364*^9, 3.668741603269143*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SortBy", "[", 
+  RowBox[{"shuffled", ",", "Last"}], "]"}]], "Input",
+ CellChangeTimes->{{3.667600703082882*^9, 3.667601022252508*^9}, {
+  3.6676011627288227`*^9, 3.66760116288066*^9}, {3.667601203087508*^9, 
+  3.6676012138632717`*^9}, {3.668741586565238*^9, 3.6687415902755537`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"2", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"A", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"J", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"K", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Q", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"A", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"J", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"K", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Q", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"A", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"J", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"K", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Q", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"A", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"J", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"K", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Q", ",", "\[SpadeSuit]"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.667601205080344*^9, 3.6676012142297697`*^9}, 
+   3.667601309098474*^9, 3.667601823430998*^9, 3.667602316971324*^9, 
+   3.667605059959758*^9, 3.668741590787558*^9, 3.6688022873733463`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Notice that ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " has it\[CloseCurlyQuote]s own notion of the natural order for the card \
+values and suits. That\[CloseCurlyQuote]s why Ace isn\[CloseCurlyQuote]t the \
+highest valued card. We will need pure functions in order to tell ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " how to sort our deck of cards properly, so we\[CloseCurlyQuote]ll revisit \
+this in our lecture on pure functions. "
+}], "Text",
+ CellChangeTimes->{{3.66874161168501*^9, 3.6687417905478992`*^9}, {
+   3.668742002959469*^9, 3.668742012982881*^9}, 3.6688030935901012`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Set Operations on Lists", "Subsection",
+ CellChangeTimes->{{3.666625919467692*^9, 3.6666259251600943`*^9}}],
+
+Cell["\<\
+To demonstrate the set operations on lists, let\[CloseCurlyQuote]s generate \
+some sample lists. We\[CloseCurlyQuote]ll generate a list of even values, odd \
+values and prime values less than 20:\
+\>", "Text",
+ CellChangeTimes->{{3.6801232836584253`*^9, 3.6801233289911203`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"evens", " ", "=", " ", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"2", " ", "n"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"n", ",", "10"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.666625933375793*^9, 3.66662597782137*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "2", ",", "4", ",", "6", ",", "8", ",", "10", ",", "12", ",", "14", ",", 
+   "16", ",", "18", ",", "20"}], "}"}]], "Output",
+ CellChangeTimes->{{3.666625950794923*^9, 3.666625978114533*^9}, 
+   3.666652700648411*^9, 3.667599328752324*^9, 3.667600305764393*^9, 
+   3.667602318151379*^9, 3.668802287525517*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"odds", " ", "=", " ", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"2", " ", "n"}], " ", "-", "1"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"n", ",", "10"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.666625933375793*^9, 3.666625986191523*^9}, {
+   3.666652706685533*^9, 3.666652707995592*^9}, 3.666652771059051*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "3", ",", "5", ",", "7", ",", "9", ",", "11", ",", "13", ",", 
+   "15", ",", "17", ",", "19"}], "}"}]], "Output",
+ CellChangeTimes->{{3.666625979341454*^9, 3.666625986450469*^9}, 
+   3.666652708503373*^9, 3.6666527720424128`*^9, 3.667599328800405*^9, 
+   3.6676003058173027`*^9, 3.667602318208584*^9, 3.6688022877437687`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"primes", " ", "=", " ", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"Prime", "[", "n", "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"n", ",", "8"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.666626198955192*^9, 3.666626228943343*^9}, {
+  3.6666268571559887`*^9, 3.666626864781747*^9}, {3.66760335537148*^9, 
+  3.667603362560917*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "2", ",", "3", ",", "5", ",", "7", ",", "11", ",", "13", ",", "17", ",", 
+   "19"}], "}"}]], "Output",
+ CellChangeTimes->{3.6676033627735357`*^9, 3.668802287790121*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Union"}]], "Input",
+ CellChangeTimes->{{3.680123371974607*^9, 3.680123372805573*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Union\\\", \\\"[\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"list\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"list\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"]\\\"}]\\) gives a sorted list of all the distinct elements \
+that appear in any of the \\!\\(\\*SubscriptBox[StyleBox[\\\"list\\\", \\\"TI\
+\\\"], StyleBox[\\\"i\\\", \\\"TI\\\"]]\\). \
+\\n\\!\\(\\*RowBox[{\\\"Union\\\", \\\"[\\\", StyleBox[\\\"list\\\", \\\"TI\\\
+\"], \\\"]\\\"}]\\) gives a sorted version of a list, in which all duplicated \
+elements have been dropped. \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Union"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.6801233733615713`*^9},
+ CellTags->"Info-bcf48953-0a61-432c-83fe-4315f2135793"]
+}, Open  ]],
+
+Cell["Here\[CloseCurlyQuote]s the union of all 3 sets of numbers:", "Text",
+ CellChangeTimes->{{3.6801234369725027`*^9, 3.68012344261897*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Union", "[", 
+  RowBox[{"evens", ",", "odds", ",", "primes"}], "]"}]], "Input",
+ CellChangeTimes->{{3.666625993016067*^9, 3.666625998307466*^9}, {
+  3.666626232003724*^9, 3.666626232812909*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", "8", 
+   ",", "9", ",", "10", ",", "11", ",", "12", ",", "13", ",", "14", ",", "15",
+    ",", "16", ",", "17", ",", "18", ",", "19", ",", "20"}], "}"}]], "Output",\
+
+ CellChangeTimes->{3.666625998708136*^9, 3.6666262333860073`*^9, 
+  3.6666527120762873`*^9, 3.6675993289322567`*^9, 3.667600305934298*^9, 
+  3.667602318328363*^9, 3.66880228784522*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["Union", "Code"],
+ " returns a sorted list with unique elements. You can get the same effect by \
+doing..."
+}], "Text",
+ CellChangeTimes->{{3.6666260222941227`*^9, 3.666626040426983*^9}, {
+  3.6666262447828007`*^9, 3.666626265696773*^9}, {3.6676034405765142`*^9, 
+  3.667603464669981*^9}, {3.680123347736305*^9, 3.680123364774041*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Sort", "[", 
+  RowBox[{"DeleteDuplicates", "[", 
+   RowBox[{"Join", "[", 
+    RowBox[{"evens", ",", "odds", ",", "primes"}], "]"}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6666260011112413`*^9, 3.666626010807589*^9}, {
+  3.666626236188744*^9, 3.666626239102068*^9}, {3.667603394048007*^9, 
+  3.667603422863426*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", "8", 
+   ",", "9", ",", "10", ",", "11", ",", "12", ",", "13", ",", "14", ",", "15",
+    ",", "16", ",", "17", ",", "18", ",", "19", ",", "20"}], "}"}]], "Output",\
+
+ CellChangeTimes->{
+  3.666626011229918*^9, 3.66662623962934*^9, 3.666652715008402*^9, 
+   3.666655888453006*^9, 3.6675993289998817`*^9, 3.667600305992572*^9, 
+   3.667602318390039*^9, {3.6676034018402987`*^9, 3.667603423501671*^9}, 
+   3.668802287893841*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Intersection"}]], "Input",
+ CellChangeTimes->{{3.680123431134781*^9, 3.680123433239965*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Intersection\\\", \\\"[\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"list\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"list\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"]\\\"}]\\) gives a sorted list of the elements common to all \
+the \\!\\(\\*SubscriptBox[StyleBox[\\\"list\\\", \\\"TI\\\"], \
+StyleBox[\\\"i\\\", \\\"TI\\\"]]\\). \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Intersection"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.680123433573674*^9},
+ CellTags->"Info-028c1d80-5712-4dfc-8abc-33c982e4ea1f"]
+}, Open  ]],
+
+Cell["\<\
+The intersection of odds and primes will be the set of odd values that are \
+prime:\
+\>", "Text",
+ CellChangeTimes->{{3.680123448355042*^9, 3.680123471273911*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Intersection", "[", 
+  RowBox[{"odds", ",", " ", "primes"}], "]"}]], "Input",
+ CellChangeTimes->{{3.666626181800605*^9, 3.666626183234726*^9}, {
+  3.6666262685765877`*^9, 3.666626286959446*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "3", ",", "5", ",", "7", ",", "11", ",", "13", ",", "17", ",", "19"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.666626287592293*^9, 3.6666527271262903`*^9, 
+  3.667599329065398*^9, 3.667600306043344*^9, 3.6676023184497757`*^9, 
+  3.667603469782015*^9, 3.6688022879408092`*^9}]
+}, Open  ]],
+
+Cell["\<\
+The intersection of odds and evens is the empty set since they are mutually \
+exclusive:\
+\>", "Text",
+ CellChangeTimes->{{3.680123473666089*^9, 3.680123485737794*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Intersection", "[", 
+  RowBox[{"odds", ",", " ", "evens"}], "]"}]], "Input",
+ CellChangeTimes->{{3.666626181800605*^9, 3.666626183234726*^9}, {
+  3.6666262685765877`*^9, 3.66662629413697*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6666262945230513`*^9, 3.666652731793209*^9, 
+  3.667599329132069*^9, 3.667600306100531*^9, 3.667602318510508*^9, 
+  3.667603470803289*^9, 3.668802287995062*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "ContainsAll"}]], "Input",
+ CellChangeTimes->{{3.667603480398923*^9, 3.667603482629924*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"ContainsAll\\\", \\\"[\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]]}], \\\"]\\\"}]\) yields True if \
+\!\(\*SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]]\) contains all of the elements of \!\(\*SubscriptBox[StyleBox[\\\
+\"e\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]]\).\\n\!\(\*RowBox[{\\\"ContainsAll\\\", \\\"[\\\", \
+SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]], \\\"]\\\"}]\) is an operator form that yields True when the \
+object to which it is applied contains all of the elements of \
+\!\(\*SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]]\).\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/ContainsAll"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.668802288062303*^9},
+ CellTags->"Info-498ba332-56bf-49a6-a1a0-e38c00afdc73"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Check whether ",
+ StyleBox["{2, 4}", "Code"],
+ " is entirely contained in the set of evens:"
+}], "Text",
+ CellChangeTimes->{{3.680123508808846*^9, 3.680123533032063*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ContainsAll", "[", 
+  RowBox[{"evens", ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "4"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.666626299372841*^9, 3.666626324837916*^9}, {
+  3.666655970655985*^9, 3.666655970742259*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{{3.666626320867668*^9, 3.666626325300982*^9}, 
+   3.666652738403664*^9, 3.666655971233507*^9, 3.667599329198567*^9, 
+   3.667600306270287*^9, 3.667602318570073*^9, 3.667603476846471*^9, 
+   3.668802288152622*^9}]
+}, Open  ]],
+
+Cell["\<\
+Check whether the primes are entirely contained in the set of odds (it isn\
+\[CloseCurlyQuote]t because 2 is a prime and is not in odds):\
+\>", "Text",
+ CellChangeTimes->{{3.680123539999799*^9, 3.680123561342887*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ContainsAll", "[", 
+  RowBox[{"odds", ",", "primes"}], "]"}]], "Input",
+ CellChangeTimes->{{3.666626299372841*^9, 3.66662633219549*^9}, {
+  3.666655998574898*^9, 3.666655999654282*^9}}],
+
+Cell[BoxData["False"], "Output",
+ CellChangeTimes->{3.666626332580282*^9, 3.66665274122024*^9, 
+  3.6666560001204844`*^9, 3.6675993292658854`*^9, 3.667600306310408*^9, 
+  3.667602318624234*^9, 3.667603491393517*^9, 3.668802288192485*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "ContainsAny"}]], "Input",
+ CellChangeTimes->{{3.6676058227597923`*^9, 3.667605829889985*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"ContainsAny\\\", \\\"[\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]]}], \\\"]\\\"}]\) yields True if \
+\!\(\*SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]]\) contains any of the elements of \!\(\*SubscriptBox[StyleBox[\\\
+\"e\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]]\).\\n\!\(\*RowBox[{\\\"ContainsAny\\\", \\\"[\\\", \
+SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]], \\\"]\\\"}]\) is an operator form that yields True when the \
+object to which it is applied contains any of the elements in \
+\!\(\*SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]]\).\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/ContainsAny"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.668802288254293*^9},
+ CellTags->"Info-589626ab-27df-4961-90a0-0a5958d2dd4b"]
+}, Open  ]],
+
+Cell["Check if evens contains any primes (2 is prime, so yes):", "Text",
+ CellChangeTimes->{{3.68012358172612*^9, 3.680123591205933*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ContainsAny", "[", 
+  RowBox[{"evens", ",", "primes"}], "]"}]], "Input",
+ CellChangeTimes->{{3.666626299372841*^9, 3.666626344638111*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{3.666626345000864*^9, 3.6666527504740133`*^9, 
+  3.667599329334413*^9, 3.667600306368355*^9, 3.667602318683831*^9, 
+  3.667603499756013*^9, 3.668802288307922*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Complement"}]], "Input",
+ CellChangeTimes->{{3.666652793746846*^9, 3.6666527957444143`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Complement\\\", \\\"[\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], StyleBox[\\\"all\\\", \
+\\\"TI\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], \
+StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"e\\\", \
+\\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\
+\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"]\\\"}]\) gives the elements in \
+\!\(\*SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], StyleBox[\\\"all\\\", \
+\\\"TI\\\"]]\) that are not in any of the \!\(\*SubscriptBox[StyleBox[\\\"e\\\
+\", \\\"TI\\\"], StyleBox[\\\"i\\\", \\\"TI\\\"]]\). \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Complement"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.668802288372478*^9},
+ CellTags->"Info-f0a622f1-d11c-4994-851f-3dda4f785cf0"]
+}, Open  ]],
+
+Cell[TextData[{
+ "We can use ",
+ StyleBox["Complement", "Code"],
+ " to find the set of numbers that are odd but not prime:"
+}], "Text",
+ CellChangeTimes->{{3.667603539981496*^9, 3.6676035458599653`*^9}, {
+  3.680123628276573*^9, 3.6801236421399307`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Complement", "[", 
+  RowBox[{"odds", ",", "primes"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6666268139969187`*^9, 3.666626834429755*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "9", ",", "15"}], "}"}]], "Output",
+ CellChangeTimes->{{3.666626822716926*^9, 3.666626837228929*^9}, 
+   3.6666268677435627`*^9, 3.666652754545684*^9, 3.667599329500787*^9, 
+   3.667600306520235*^9, 3.667602318906464*^9, 3.667603518362019*^9, 
+   3.668802288445434*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Basic List Combinatorics", "Subsection",
+ CellChangeTimes->{{3.667599776572744*^9, 3.667599777099728*^9}, {
+   3.6676038108064947`*^9, 3.6676038289329243`*^9}, {3.6676058817264643`*^9, 
+   3.667605885121097*^9}, 3.6687407755063972`*^9}],
+
+Cell[TextData[{
+ StyleBox["Tuples", "Code"],
+ " is the cartesian product of the elements:"
+}], "Text",
+ CellChangeTimes->{{3.6676038591487722`*^9, 3.667603894202997*^9}, {
+  3.680124198892997*^9, 3.6801242001310253`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Tuples"}]], "Input",
+ CellChangeTimes->{{3.6676038924323273`*^9, 3.667603897379233*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Tuples\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\
+\"TI\\\"]}], \\\"]\\\"}]\) generates a list of all possible \!\(\*StyleBox[\\\
+\"n\\\", \\\"TI\\\"]\)\[Hyphen]tuples of elements from \
+\!\(\*StyleBox[\\\"list\\\", \\\"TI\\\"]\). \\n\!\(\*RowBox[{\\\"Tuples\\\", \
+\\\"[\\\", RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"list\\\", \
+\\\"TI\\\"], StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"list\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\
+\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\"}], \\\
+\"]\\\"}]\) generates a list of all possible tuples whose \
+\!\(\*StyleBox[\\\"i\\\", \\\"TI\\\"]\)\!\(\*RowBox[{\\\"\[Null]\\\", \
+SuperscriptBox[\\\"\[Null]\\\", \\\"th\\\"]}]\) element is from \
+\!\(\*SubscriptBox[StyleBox[\\\"list\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \\\
+\"TI\\\"]]\). \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Tuples"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.668802288527676*^9},
+ CellTags->"Info-a6b09e49-b0db-431d-9750-07aab47b3424"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Tuples", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", "3"}], "]"}]], "Input",
+ CellChangeTimes->{{3.666653242240816*^9, 3.6666532794005957`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"a", ",", "a", ",", "a"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", "a", ",", "b"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", "a", ",", "c"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", "b", ",", "a"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", "b", ",", "b"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", "c", ",", "a"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", "c", ",", "b"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", "c", ",", "c"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"b", ",", "a", ",", "a"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"b", ",", "a", ",", "b"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"b", ",", "a", ",", "c"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"b", ",", "b", ",", "a"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"b", ",", "b", ",", "b"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"b", ",", "b", ",", "c"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"b", ",", "c", ",", "a"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"b", ",", "c", ",", "b"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"b", ",", "c", ",", "c"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"c", ",", "a", ",", "a"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"c", ",", "a", ",", "b"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"c", ",", "a", ",", "c"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"c", ",", "b", ",", "a"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"c", ",", "b", ",", "b"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"c", ",", "b", ",", "c"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"c", ",", "c", ",", "a"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"c", ",", "c", ",", "b"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"c", ",", "c", ",", "c"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.666653253558427*^9, 3.666653279741995*^9}, 
+   3.667599329752427*^9, 3.667600306559392*^9, 3.6676023189623547`*^9, 
+   3.668802288731546*^9}]
+}, Open  ]],
+
+Cell["\<\
+The second form of Tuples can can be used to generate the deck of cards, \
+which we originally did with Table in our first lecture on lists:\
+\>", "Text",
+ CellChangeTimes->{{3.668740914151231*^9, 3.668740954751069*^9}, {
+  3.668741012858007*^9, 3.6687410397675123`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Tuples", "[", 
+  RowBox[{"{", 
+   RowBox[{"values", ",", "suits"}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.66874081721369*^9, 3.6687408259736958`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"2", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"J", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"J", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"J", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"J", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Q", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Q", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Q", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Q", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"K", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"K", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"K", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"K", ",", "\[SpadeSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"A", ",", "\[DiamondSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"A", ",", "\[ClubSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"A", ",", "\[HeartSuit]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"A", ",", "\[SpadeSuit]"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.668740826162376*^9, 3.668741001185669*^9, 
+  3.6687410464324408`*^9, 3.668802288773342*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "The ",
+ StyleBox["Permutations", "Code"],
+ " function generates the permutations of the elements as a list of lists:"
+}], "Text",
+ CellChangeTimes->{{3.6676039030586853`*^9, 3.667603913954631*^9}, {
+  3.668742216958112*^9, 3.6687422253603277`*^9}, {3.6687423767970133`*^9, 
+  3.668742397845553*^9}, {3.680124215994822*^9, 3.68012421664244*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Permutations"}]], "Input",
+ CellChangeTimes->{{3.6666533099868107`*^9, 3.66665331127817*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Permutations\\\", \\\"[\\\", \
+StyleBox[\\\"list\\\", \\\"TI\\\"], \\\"]\\\"}]\) generates a list of all \
+possible permutations of the elements in \!\(\*StyleBox[\\\"list\\\", \
+\\\"TI\\\"]\). \\n\!\(\*RowBox[{\\\"Permutations\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\
+\"TI\\\"]}], \\\"]\\\"}]\) gives all permutations containing at most \
+\!\(\*StyleBox[\\\"n\\\", \\\"TI\\\"]\) \
+elements.\\n\!\(\*RowBox[{\\\"Permutations\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+StyleBox[\\\"n\\\", \\\"TI\\\"], \\\"}\\\"}]}], \\\"]\\\"}]\) gives all \
+permutations containing exactly \!\(\*StyleBox[\\\"n\\\", \\\"TI\\\"]\) \
+elements.\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Permutations"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.668802288890793*^9},
+ CellTags->"Info-f3ea4726-d99c-4a7a-b142-f16c13ee83e1"]
+}, Open  ]],
+
+Cell["\<\
+Let\[CloseCurlyQuote]s look at all possible permutations of the letters a, b \
+and c of length 2. This is the third form:\
+\>", "Text",
+ CellChangeTimes->{{3.668742242224387*^9, 3.668742282184243*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Permutations", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", 
+   RowBox[{"{", "2", "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.666653295063589*^9, 3.666653316991399*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"a", ",", "b"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", "c"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"b", ",", "a"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"b", ",", "c"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"c", ",", "a"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"c", ",", "b"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.6666533012785683`*^9, 3.6666533173105392`*^9}, 
+   3.6675993299259*^9, 3.6676003067118683`*^9, 3.667602319118662*^9, 
+   3.668742468887265*^9, 3.668802288968854*^9}]
+}, Open  ]],
+
+Cell["\<\
+If you use the second form, then you\[CloseCurlyQuote]ll get the permutations \
+of the list of all lengths n and below:\
+\>", "Text",
+ CellChangeTimes->{{3.668742270934321*^9, 3.668742344779277*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Permutations", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", "2"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6687423176038237`*^9, 3.668742354142097*^9}, 
+   3.6687424180735207`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "}"}], ",", 
+   RowBox[{"{", "a", "}"}], ",", 
+   RowBox[{"{", "b", "}"}], ",", 
+   RowBox[{"{", "c", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", "b"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", "c"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"b", ",", "a"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"b", ",", "c"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"c", ",", "a"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"c", ",", "b"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.6687423209264402`*^9, 3.668742354404752*^9}, 
+   3.668742418588134*^9, 3.668802289059226*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "The ",
+ StyleBox["Subsets", "Code"],
+ " function generates the combinations of the elements in a list of lists. "
+}], "Text",
+ CellChangeTimes->{{3.6676039185464478`*^9, 3.667603929282113*^9}, {
+  3.6687423661106987`*^9, 3.66874237515446*^9}, {3.668742428884075*^9, 
+  3.6687424328102093`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Subsets"}]], "Input",
+ CellChangeTimes->{{3.666656101470014*^9, 3.666656104401662*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Subsets\\\", \\\"[\\\", StyleBox[\\\"list\\\
+\", \\\"TI\\\"], \\\"]\\\"}]\) gives a list of all possible subsets of \
+\!\(\*StyleBox[\\\"list\\\", \\\"TI\\\"]\). \\n\!\(\*RowBox[{\\\"Subsets\\\", \
+\\\"[\\\", RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\
+\"n\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) gives all subsets containing at most \!\
+\(\*StyleBox[\\\"n\\\", \\\"TI\\\"]\) elements. \
+\\n\!\(\*RowBox[{\\\"Subsets\\\", \\\"[\\\", RowBox[{StyleBox[\\\"list\\\", \
+\\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", StyleBox[\\\"n\\\", \\\"TI\\\"], \
+\\\"}\\\"}]}], \\\"]\\\"}]\) gives all subsets containing exactly \
+\!\(\*StyleBox[\\\"n\\\", \\\"TI\\\"]\) elements. \
+\\n\!\(\*RowBox[{\\\"Subsets\\\", \\\"[\\\", RowBox[{StyleBox[\\\"list\\\", \
+\\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], StyleBox[\\\"min\\\", \
+\\\"TI\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], \
+StyleBox[\\\"max\\\", \\\"TI\\\"]]}], \\\"}\\\"}]}], \\\"]\\\"}]\) gives all \
+subsets containing between \!\(\*SubscriptBox[StyleBox[\\\"n\\\", \
+\\\"TI\\\"], StyleBox[\\\"min\\\", \\\"TI\\\"]]\) and \
+\!\(\*SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], StyleBox[\\\"max\\\", \
+\\\"TI\\\"]]\) elements. \\n\!\(\*RowBox[{\\\"Subsets\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"nspec\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"s\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\) limits the result to the first \!\(\*StyleBox[\\\
+\"s\\\", \\\"TI\\\"]\) subsets. \\n\!\(\*RowBox[{\\\"Subsets\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"nspec\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+StyleBox[\\\"s\\\", \\\"TI\\\"], \\\"}\\\"}]}], \\\"]\\\"}]\) gives if \
+possible the \!\(\*StyleBox[RowBox[{StyleBox[\\\"s\\\", \\\"TI\\\"], \\\"\
+\[Null]\\\"}]]\)\!\(\*SuperscriptBox[\\\"\[Null]\\\", \\\"th\\\"]\) subset. \
+\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Subsets"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.6688022891958847`*^9},
+ CellTags->"Info-c8fc36e6-5323-4e70-8bc3-c857d1c3122f"]
+}, Open  ]],
+
+Cell["\<\
+So, if we wanted all combinations that can be formed from the elements a, b \
+and c of length 2:\
+\>", "Text",
+ CellChangeTimes->{{3.668742437771809*^9, 3.6687424627695293`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Subsets", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", 
+   RowBox[{"{", "2", "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.666656079234251*^9, 3.666656090217898*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"a", ",", "b"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", "c"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"b", ",", "c"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.666656090420146*^9, 3.667599330095036*^9, 
+  3.667600306879286*^9, 3.667602319277616*^9, 3.668742464464388*^9, 
+  3.668802289286029*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Summary", "Subsection",
+ CellChangeTimes->{{3.6801242514046097`*^9, 3.680124252252492*^9}}],
+
+Cell[TextData[{
+ "In this lecture we learned how to sort lists, find elements in a list, how \
+to use a list as a set and how to use basic combinatoric methods to generate \
+new lists. These last three lectures were a lot to take in and the only way \
+to master this material is to practice. Please make sure you solve the \
+problems in the practice notebooks. Solutions are also provided, but try and \
+do them yourself first. Lists are very important, and once you really grock \
+them, you will quickly become an expert ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " programmer!"
+}], "Text",
+ CellChangeTimes->{{3.6687429797529716`*^9, 3.668743141944553*^9}, {
+  3.668743211482916*^9, 3.668743327186493*^9}, {3.668744518036091*^9, 
+  3.668744543919291*^9}, {3.6801242463810053`*^9, 3.680124292334363*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{808, 655},
+WindowMargins->{{12, Automatic}, {Automatic, 24}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"10.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (October 9, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info-0e12bf18-b55f-4800-b3ba-1ed0ec3af4cd"->{
+  Cell[7530, 235, 1501, 25, 108, "Print",
+   CellTags->"Info-0e12bf18-b55f-4800-b3ba-1ed0ec3af4cd"]},
+ "Info-bf591bb8-fd70-4575-b36d-92a10d04fe9e"->{
+  Cell[11608, 339, 2296, 37, 127, "Print",
+   CellTags->"Info-bf591bb8-fd70-4575-b36d-92a10d04fe9e"]},
+ "Info-e2632d3c-4e21-4a5a-9f1d-f338d79579c0"->{
+  Cell[15177, 418, 735, 14, 70, "Print",
+   CellTags->"Info-e2632d3c-4e21-4a5a-9f1d-f338d79579c0"]},
+ "Info-ebb00e52-aef4-483a-94c9-f58163bf977c"->{
+  Cell[17156, 472, 1444, 24, 89, "Print",
+   CellTags->"Info-ebb00e52-aef4-483a-94c9-f58163bf977c"]},
+ "Info-0f276db1-932d-48dd-980f-7dd56758be51"->{
+  Cell[19458, 526, 2352, 38, 108, "Print",
+   CellTags->"Info-0f276db1-932d-48dd-980f-7dd56758be51"]},
+ "Info-9943c02e-0b2e-48e1-b4ce-6afeb6a5ad5c"->{
+  Cell[26422, 700, 811, 16, 70, "Print",
+   CellTags->"Info-9943c02e-0b2e-48e1-b4ce-6afeb6a5ad5c"]},
+ "Info-bcf48953-0a61-432c-83fe-4315f2135793"->{
+  Cell[39159, 1065, 1001, 18, 70, "Print",
+   CellTags->"Info-bcf48953-0a61-432c-83fe-4315f2135793"]},
+ "Info-028c1d80-5712-4dfc-8abc-33c982e4ea1f"->{
+  Cell[42475, 1150, 803, 15, 51, "Print",
+   CellTags->"Info-028c1d80-5712-4dfc-8abc-33c982e4ea1f"]},
+ "Info-498ba332-56bf-49a6-a1a0-e38c00afdc73"->{
+  Cell[44855, 1219, 1159, 21, 89, "Print",
+   CellTags->"Info-498ba332-56bf-49a6-a1a0-e38c00afdc73"]},
+ "Info-589626ab-27df-4961-90a0-0a5958d2dd4b"->{
+  Cell[47641, 1293, 1159, 21, 89, "Print",
+   CellTags->"Info-589626ab-27df-4961-90a0-0a5958d2dd4b"]},
+ "Info-f0a622f1-d11c-4994-851f-3dda4f785cf0"->{
+  Cell[49516, 1339, 966, 18, 51, "Print",
+   CellTags->"Info-f0a622f1-d11c-4994-851f-3dda4f785cf0"]},
+ "Info-a6b09e49-b0db-431d-9750-07aab47b3424"->{
+  Cell[51919, 1405, 1252, 22, 94, "Print",
+   CellTags->"Info-a6b09e49-b0db-431d-9750-07aab47b3424"]},
+ "Info-f3ea4726-d99c-4a7a-b142-f16c13ee83e1"->{
+  Cell[60356, 1642, 1086, 20, 89, "Print",
+   CellTags->"Info-f3ea4726-d99c-4a7a-b142-f16c13ee83e1"]},
+ "Info-c8fc36e6-5323-4e70-8bc3-c857d1c3122f"->{
+  Cell[64148, 1755, 2295, 37, 151, "Print",
+   CellTags->"Info-c8fc36e6-5323-4e70-8bc3-c857d1c3122f"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info-0e12bf18-b55f-4800-b3ba-1ed0ec3af4cd", 68656, 1861},
+ {"Info-bf591bb8-fd70-4575-b36d-92a10d04fe9e", 68806, 1864},
+ {"Info-e2632d3c-4e21-4a5a-9f1d-f338d79579c0", 68957, 1867},
+ {"Info-ebb00e52-aef4-483a-94c9-f58163bf977c", 69106, 1870},
+ {"Info-0f276db1-932d-48dd-980f-7dd56758be51", 69256, 1873},
+ {"Info-9943c02e-0b2e-48e1-b4ce-6afeb6a5ad5c", 69407, 1876},
+ {"Info-bcf48953-0a61-432c-83fe-4315f2135793", 69556, 1879},
+ {"Info-028c1d80-5712-4dfc-8abc-33c982e4ea1f", 69707, 1882},
+ {"Info-498ba332-56bf-49a6-a1a0-e38c00afdc73", 69857, 1885},
+ {"Info-589626ab-27df-4961-90a0-0a5958d2dd4b", 70008, 1888},
+ {"Info-f0a622f1-d11c-4994-851f-3dda4f785cf0", 70159, 1891},
+ {"Info-a6b09e49-b0db-431d-9750-07aab47b3424", 70309, 1894},
+ {"Info-f3ea4726-d99c-4a7a-b142-f16c13ee83e1", 70460, 1897},
+ {"Info-c8fc36e6-5323-4e70-8bc3-c857d1c3122f", 70611, 1900}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 142, 2, 80, "Section"],
+Cell[725, 26, 251, 5, 61, "Text"],
+Cell[CellGroupData[{
+Cell[1001, 35, 146, 2, 54, "Subsection"],
+Cell[1150, 39, 231, 4, 61, "Text"],
+Cell[CellGroupData[{
+Cell[1406, 47, 287, 6, 35, "Input"],
+Cell[1696, 55, 257, 5, 35, "Output"]
+}, Open  ]],
+Cell[1968, 63, 232, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[2225, 72, 241, 6, 35, "Input"],
+Cell[2469, 80, 209, 5, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2715, 90, 663, 19, 78, "Input"],
+Cell[3381, 111, 3776, 107, 162, "Output"]
+}, Open  ]],
+Cell[7172, 221, 213, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[7410, 231, 117, 2, 35, "Input"],
+Cell[7530, 235, 1501, 25, 108, "Print",
+ CellTags->"Info-0e12bf18-b55f-4800-b3ba-1ed0ec3af4cd"]
+}, Open  ]],
+Cell[9046, 263, 224, 3, 37, "Text"],
+Cell[CellGroupData[{
+Cell[9295, 270, 367, 7, 35, "Input"],
+Cell[9665, 279, 187, 4, 35, "Output"]
+}, Open  ]],
+Cell[9867, 286, 308, 6, 61, "Text"],
+Cell[CellGroupData[{
+Cell[10200, 296, 319, 7, 35, "Input"],
+Cell[10522, 305, 160, 3, 35, "Output"]
+}, Open  ]],
+Cell[10697, 311, 426, 10, 61, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11160, 326, 159, 2, 54, "Subsection"],
+Cell[11322, 330, 136, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[11483, 335, 122, 2, 36, "Input"],
+Cell[11608, 339, 2296, 37, 127, "Print",
+ CellTags->"Info-bf591bb8-fd70-4575-b36d-92a10d04fe9e"]
+}, Open  ]],
+Cell[13919, 379, 161, 2, 37, "Text"],
+Cell[CellGroupData[{
+Cell[14105, 385, 219, 5, 36, "Input"],
+Cell[14327, 392, 472, 9, 57, "Output"]
+}, Open  ]],
+Cell[14814, 404, 220, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[15059, 414, 115, 2, 35, "Input"],
+Cell[15177, 418, 735, 14, 70, "Print",
+ CellTags->"Info-e2632d3c-4e21-4a5a-9f1d-f338d79579c0"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15949, 437, 270, 5, 35, "Input"],
+Cell[16222, 444, 545, 10, 57, "Output"]
+}, Open  ]],
+Cell[16782, 457, 228, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[17035, 468, 118, 2, 35, "Input"],
+Cell[17156, 472, 1444, 24, 89, "Print",
+ CellTags->"Info-ebb00e52-aef4-483a-94c9-f58163bf977c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18637, 501, 140, 2, 35, "Input"],
+Cell[18780, 505, 350, 7, 57, "Output"]
+}, Open  ]],
+Cell[19145, 515, 162, 3, 37, "Text"],
+Cell[CellGroupData[{
+Cell[19332, 522, 123, 2, 36, "Input"],
+Cell[19458, 526, 2352, 38, 108, "Print",
+ CellTags->"Info-0f276db1-932d-48dd-980f-7dd56758be51"]
+}, Open  ]],
+Cell[21825, 567, 180, 2, 37, "Text"],
+Cell[CellGroupData[{
+Cell[22030, 573, 262, 5, 36, "Input"],
+Cell[22295, 580, 3972, 111, 162, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26304, 696, 115, 2, 36, "Input"],
+Cell[26422, 700, 811, 16, 70, "Print",
+ CellTags->"Info-9943c02e-0b2e-48e1-b4ce-6afeb6a5ad5c"]
+}, Open  ]],
+Cell[27248, 719, 160, 2, 37, "Text"],
+Cell[CellGroupData[{
+Cell[27433, 725, 207, 4, 36, "Input"],
+Cell[27643, 731, 3825, 108, 162, "Output"]
+}, Open  ]],
+Cell[31483, 842, 143, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[31651, 847, 307, 5, 36, "Input"],
+Cell[31961, 854, 3920, 109, 162, "Output"]
+}, Open  ]],
+Cell[35896, 966, 627, 13, 109, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36560, 984, 113, 1, 54, "Subsection"],
+Cell[36676, 987, 289, 5, 61, "Text"],
+Cell[CellGroupData[{
+Cell[36990, 996, 261, 7, 35, "Input"],
+Cell[37254, 1005, 350, 7, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37641, 1017, 364, 9, 35, "Input"],
+Cell[38008, 1028, 377, 7, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[38422, 1040, 370, 9, 36, "Input"],
+Cell[38795, 1051, 210, 5, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[39042, 1061, 114, 2, 35, "Input"],
+Cell[39159, 1065, 1001, 18, 70, "Print",
+ CellTags->"Info-bcf48953-0a61-432c-83fe-4315f2135793"]
+}, Open  ]],
+Cell[40175, 1086, 142, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[40342, 1091, 218, 4, 36, "Input"],
+Cell[40563, 1097, 462, 9, 35, "Output"]
+}, Open  ]],
+Cell[41040, 1109, 361, 7, 61, "Text"],
+Cell[CellGroupData[{
+Cell[41426, 1120, 348, 8, 36, "Input"],
+Cell[41777, 1130, 537, 11, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[42351, 1146, 121, 2, 35, "Input"],
+Cell[42475, 1150, 803, 15, 51, "Print",
+ CellTags->"Info-028c1d80-5712-4dfc-8abc-33c982e4ea1f"]
+}, Open  ]],
+Cell[43293, 1168, 173, 4, 37, "Text"],
+Cell[CellGroupData[{
+Cell[43491, 1176, 218, 4, 36, "Input"],
+Cell[43712, 1182, 319, 7, 35, "Output"]
+}, Open  ]],
+Cell[44046, 1192, 178, 4, 37, "Text"],
+Cell[CellGroupData[{
+Cell[44249, 1200, 216, 4, 35, "Input"],
+Cell[44468, 1206, 227, 4, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[44732, 1215, 120, 2, 35, "Input"],
+Cell[44855, 1219, 1159, 21, 89, "Print",
+ CellTags->"Info-498ba332-56bf-49a6-a1a0-e38c00afdc73"]
+}, Open  ]],
+Cell[46029, 1243, 188, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[46242, 1252, 255, 6, 35, "Input"],
+Cell[46500, 1260, 263, 4, 35, "Output"]
+}, Open  ]],
+Cell[46778, 1267, 227, 4, 61, "Text"],
+Cell[CellGroupData[{
+Cell[47030, 1275, 209, 4, 36, "Input"],
+Cell[47242, 1281, 237, 3, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[47516, 1289, 122, 2, 36, "Input"],
+Cell[47641, 1293, 1159, 21, 89, "Print",
+ CellTags->"Info-589626ab-27df-4961-90a0-0a5958d2dd4b"]
+}, Open  ]],
+Cell[48815, 1317, 137, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[48977, 1322, 162, 3, 36, "Input"],
+Cell[49142, 1327, 213, 3, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[49392, 1335, 121, 2, 36, "Input"],
+Cell[49516, 1339, 966, 18, 51, "Print",
+ CellTags->"Info-f0a622f1-d11c-4994-851f-3dda4f785cf0"]
+}, Open  ]],
+Cell[50497, 1360, 254, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[50776, 1370, 162, 3, 36, "Input"],
+Cell[50941, 1375, 318, 6, 35, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[51308, 1387, 242, 3, 54, "Subsection"],
+Cell[51553, 1392, 221, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[51799, 1401, 117, 2, 36, "Input"],
+Cell[51919, 1405, 1252, 22, 94, "Print",
+ CellTags->"Info-a6b09e49-b0db-431d-9750-07aab47b3424"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[53208, 1432, 209, 5, 36, "Input"],
+Cell[53420, 1439, 2080, 59, 120, "Output"]
+}, Open  ]],
+Cell[55515, 1501, 281, 5, 61, "Text"],
+Cell[CellGroupData[{
+Cell[55821, 1510, 182, 4, 36, "Input"],
+Cell[56006, 1516, 3823, 108, 162, "Output"]
+}, Open  ]],
+Cell[59844, 1627, 362, 7, 61, "Text"],
+Cell[CellGroupData[{
+Cell[60231, 1638, 122, 2, 35, "Input"],
+Cell[60356, 1642, 1086, 20, 89, "Print",
+ CellTags->"Info-f3ea4726-d99c-4a7a-b142-f16c13ee83e1"]
+}, Open  ]],
+Cell[61457, 1665, 211, 4, 61, "Text"],
+Cell[CellGroupData[{
+Cell[61693, 1673, 237, 6, 35, "Input"],
+Cell[61933, 1681, 595, 17, 35, "Output"]
+}, Open  ]],
+Cell[62543, 1701, 209, 4, 61, "Text"],
+Cell[CellGroupData[{
+Cell[62777, 1709, 243, 6, 35, "Input"],
+Cell[63023, 1717, 654, 20, 35, "Output"]
+}, Open  ]],
+Cell[63692, 1740, 312, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[64029, 1751, 116, 2, 35, "Input"],
+Cell[64148, 1755, 2295, 37, 151, "Print",
+ CellTags->"Info-c8fc36e6-5323-4e70-8bc3-c857d1c3122f"]
+}, Open  ]],
+Cell[66458, 1795, 188, 4, 61, "Text"],
+Cell[CellGroupData[{
+Cell[66671, 1803, 232, 6, 35, "Input"],
+Cell[66906, 1811, 388, 11, 35, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[67343, 1828, 97, 1, 54, "Subsection"],
+Cell[67443, 1831, 815, 14, 180, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

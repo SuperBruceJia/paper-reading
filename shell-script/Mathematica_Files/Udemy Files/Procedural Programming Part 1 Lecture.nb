@@ -1,0 +1,1020 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     34432,       1012]
+NotebookOptionsPosition[     28225,        814]
+NotebookOutlinePosition[     29655,        853]
+CellTagsIndexPosition[     29311,        844]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Procedural Programming Part 1", "Section",
+ CellChangeTimes->{{3.688862041921101*^9, 3.688862058481118*^9}}],
+
+Cell[TextData[{
+ "Hello and welcome to our first lecture on procedural programming. While ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " is a functional programming language, it does provide some functions that \
+are familiar to procedural programmers. We will cover some of these functions \
+in this lecture and the next."
+}], "Text",
+ CellChangeTimes->{{3.6710210901167707`*^9, 3.6710211787444077`*^9}, {
+  3.671021352956078*^9, 3.6710213985048933`*^9}, {3.671021748643602*^9, 
+  3.671021757386372*^9}, {3.672277859743414*^9, 3.672277872269679*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Compound Statements", "Subsection",
+ CellChangeTimes->{{3.6710217597304363`*^9, 3.671021762041965*^9}}],
+
+Cell[TextData[{
+ "Procedural programming requires that you have a sequence of statements. In ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ", we call these compound expressions:"
+}], "Text",
+ CellChangeTimes->{{3.671021766930064*^9, 3.6710218284805603`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "CompoundExpression"}]], "Input",
+ CellChangeTimes->{{3.671021806603839*^9, 3.671021835655036*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{SubscriptBox[StyleBox[\\\"expr\\\", \\\"TI\\\
+\"], StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\";\\\", \
+SubscriptBox[StyleBox[\\\"expr\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\
+\"]], \\\";\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}]\\) evaluates the \
+\\!\\(\\*SubscriptBox[StyleBox[\\\"expr\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \
+\\\"TI\\\"]]\\) in turn, giving the last one as the result. \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/CompoundExpression"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.671021836057423*^9},
+ CellTags->"Info-3461fa84-0678-4999-b0f2-01ed2f05889e"]
+}, Open  ]],
+
+Cell["\<\
+Basically, a compound expression is a sequence of expressions separated by \
+semicolons. For example:\
+\>", "Text",
+ CellChangeTimes->{{3.6710218428522043`*^9, 3.671021875563415*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"x", "=", "3"}], ";", 
+  RowBox[{"y", "=", 
+   RowBox[{"x", "+", "5"}]}]}]], "Input",
+ CellChangeTimes->{{3.6710218772698936`*^9, 3.67102188662541*^9}}],
+
+Cell[BoxData["8"], "Output",
+ CellChangeTimes->{3.6710218877303743`*^9}]
+}, Open  ]],
+
+Cell["Notice that both x and y are now defined:", "Text",
+ CellChangeTimes->{{3.671021891872917*^9, 3.6710219184190397`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["x"], "Input",
+ CellChangeTimes->{3.671021904323144*^9}],
+
+Cell[BoxData["3"], "Output",
+ CellChangeTimes->{3.671021904858976*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["y"], "Input",
+ CellChangeTimes->{3.671021905490223*^9}],
+
+Cell[BoxData["8"], "Output",
+ CellChangeTimes->{3.671021905864436*^9}]
+}, Open  ]],
+
+Cell["\<\
+Also notice that only the value of y was printed out here. The semicolon \
+serves two purposes. One is to enable multiple expressions to be evaluated in \
+the same block of code. But, it also serves to suppress the output of the \
+expression:\
+\>", "Text",
+ CellChangeTimes->{{3.671021923362544*^9, 3.6710219511159554`*^9}, {
+  3.671021996160779*^9, 3.671022048290373*^9}, {3.671025374534004*^9, 
+  3.671025380326044*^9}, {3.688862086608411*^9, 3.688862105479824*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"y", "=", 
+   RowBox[{"x", "+", "6"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.671022050189185*^9, 3.6710220528981533`*^9}}],
+
+Cell[TextData[{
+ "By convention, when we write ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " code, we put each statement in a compound expression on its own line:"
+}], "Text",
+ CellChangeTimes->{{3.671022073827248*^9, 3.671022121369331*^9}, {
+  3.671025390429448*^9, 3.671025391213358*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"x", "=", "4"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"y", "=", 
+   RowBox[{"x", "+", "7"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.6710221235403967`*^9, 3.6710221352487087`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["The Print Statement", "Subsection",
+ CellChangeTimes->{{3.671025126879569*^9, 3.671025133645815*^9}}],
+
+Cell[TextData[{
+ "In just about every programming language in existence, there exists a ",
+ StyleBox["Print", "Code"],
+ " statement or function:"
+}], "Text",
+ CellChangeTimes->{{3.671025136565896*^9, 3.6710251635375957`*^9}, {
+  3.6888621277823067`*^9, 3.688862129893413*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Print"}]], "Input",
+ CellChangeTimes->{{3.671025164347761*^9, 3.671025165114943*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Print\\\", \\\"[\\\", \
+StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\"]\\\"}]\\) prints \
+\\!\\(\\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\\) as output. \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Print"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.671025165269998*^9},
+ CellTags->"Info-30113560-2489-4ae4-8ace-da6eb969deaf"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["Print", "Code"],
+ " enables you to give feedback to the user in a procedural program. For \
+example:"
+}], "Text",
+ CellChangeTimes->{{3.6710251726474257`*^9, 3.671025203649887*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"x", "=", "3"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", "x", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"x", "=", 
+   RowBox[{"x", "+", "5"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", "x", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.671025216672028*^9, 3.67102523057859*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["3"], "Print",
+ CellChangeTimes->{3.6710252379801493`*^9}],
+
+Cell[BoxData["8"], "Print",
+ CellChangeTimes->{3.671025237988431*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell["\<\
+Note that these are not output cells: the output cells were suppressed by the \
+semicolons. They are their own special type of cell called a Print cell.\
+\>", "Text",
+ CellChangeTimes->{{3.671025435840343*^9, 3.671025446352091*^9}, {
+   3.6710254953474503`*^9, 3.671025503801797*^9}, {3.671025567911882*^9, 
+   3.6710256513135433`*^9}, {3.671025760558194*^9, 3.671025766501742*^9}, {
+   3.671025876757571*^9, 3.671025877413974*^9}, 3.688862146989471*^9}],
+
+Cell[TextData[{
+ "The ",
+ StyleBox["Print", "Code"],
+ " function is extremely useful in procedural programming especially when \
+debugging."
+}], "Text",
+ CellChangeTimes->{{3.671025881541478*^9, 3.671025931595686*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Conditional Statements", "Subsection",
+ CellChangeTimes->{{3.671021406377921*^9, 3.67102140887352*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["If", "Subsubsection",
+ CellChangeTimes->{{3.6710227423869743`*^9, 3.671022742531798*^9}}],
+
+Cell[TextData[{
+ "Great! Let\[CloseCurlyQuote]s take a look at conditional statements. ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " provides several conditional statements, the most common of which is the \
+",
+ StyleBox["If", "Code"],
+ " statement:"
+}], "Text",
+ CellChangeTimes->{{3.671022197699278*^9, 3.671022224825715*^9}, {
+  3.6710222731186123`*^9, 3.6710223162565928`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "If"}]], "Input",
+ CellChangeTimes->{{3.671021513031559*^9, 3.671021514017332*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"If\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"condition\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"t\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"f\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\\) gives \\!\\(\\*StyleBox[\\\"t\\\", \
+\\\"TI\\\"]\\) if \\!\\(\\*StyleBox[\\\"condition\\\", \\\"TI\\\"]\\) \
+evaluates to True, and \\!\\(\\*StyleBox[\\\"f\\\", \\\"TI\\\"]\\) if it \
+evaluates to False. \\n\\!\\(\\*RowBox[{\\\"If\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"condition\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"t\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"f\\\", \\\"TI\\\"], \
+\\\",\\\", StyleBox[\\\"u\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) gives \
+\\!\\(\\*StyleBox[\\\"u\\\", \\\"TI\\\"]\\) if \
+\\!\\(\\*StyleBox[\\\"condition\\\", \\\"TI\\\"]\\) evaluates to neither True \
+nor False. \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/If"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.67102151493146*^9},
+ CellTags->"Info-a9367a7c-aa4d-4ed6-948b-e52ccfd8daa5"]
+}, Open  ]],
+
+Cell["\<\
+In most programming languages, the conditional statement is structured as:\
+\>", "Text",
+ CellChangeTimes->{{3.671021518297812*^9, 3.671021612611169*^9}, {
+  3.671025952496045*^9, 3.67102596461106*^9}, {3.671026389679554*^9, 
+  3.671026400446047*^9}, {3.67102650827414*^9, 3.671026543349798*^9}, {
+  3.688862187013912*^9, 3.688862263659075*^9}}],
+
+Cell["\<\
+\tif <some condition> then
+\t\t<perform action 1>
+\telse
+\t\t<perform action 2>\
+\>", "Text",
+ CellChangeTimes->{3.688862258618617*^9}],
+
+Cell[TextData[{
+ "This is the first form of the ",
+ StyleBox["If", "Code"],
+ " statement. Let\[CloseCurlyQuote]s use ",
+ StyleBox["If", "Code"],
+ " to greet someone:"
+}], "Text",
+ CellChangeTimes->{3.6888622660037622`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"name", "=", "\"\<Shad\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"If", "[", 
+  RowBox[{
+   RowBox[{"name", "\[Equal]", "\"\<Shad\>\""}], ",", "\"\<Hello, Shad\>\"", 
+   ",", "\"\<Welcome, Stranger!\>\""}], "]"}]}], "Input",
+ CellChangeTimes->{{3.671021627546216*^9, 3.671021689525468*^9}, {
+   3.671022436349766*^9, 3.671022437188786*^9}, 3.6710260200347433`*^9, {
+   3.67102613628018*^9, 3.671026139734559*^9}, {3.6710261902703*^9, 
+   3.67102619082859*^9}, {3.671026240668667*^9, 3.6710262418587427`*^9}, {
+   3.6710263451045227`*^9, 3.6710263516799173`*^9}}],
+
+Cell[BoxData["\<\"Hello, Shad\"\>"], "Output",
+ CellChangeTimes->{3.671026375851573*^9}]
+}, Open  ]],
+
+Cell["Let\[CloseCurlyQuote]s try a different name:", "Text",
+ CellChangeTimes->{{3.6710224297720203`*^9, 3.6710224448595953`*^9}, {
+  3.671026368847136*^9, 3.671026373126733*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"name", "=", "\"\<Sahand\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"If", "[", 
+  RowBox[{
+   RowBox[{"name", "\[Equal]", "\"\<Shad\>\""}], ",", "\"\<Hello, Shad\>\"", 
+   ",", "\"\<Welcome, Stranger!\>\""}], "]"}]}], "Input",
+ CellChangeTimes->{{3.671021627546216*^9, 3.671021689525468*^9}, {
+   3.671022436349766*^9, 3.671022437188786*^9}, 3.6710260200347433`*^9, {
+   3.67102613628018*^9, 3.671026139734559*^9}, {3.6710261902703*^9, 
+   3.67102619082859*^9}, {3.671026240668667*^9, 3.6710262418587427`*^9}, {
+   3.6710263451045227`*^9, 3.6710263516799173`*^9}, {3.671026554319355*^9, 
+   3.671026557917158*^9}}],
+
+Cell[BoxData["\<\"Welcome, Stranger!\"\>"], "Output",
+ CellChangeTimes->{3.67102655846628*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "The second form of the ",
+ StyleBox["If", "Code"],
+ " statement is used for when condition evaluates to neither ",
+ StyleBox["True", "Code"],
+ " nor ",
+ StyleBox["False", "Code"],
+ ". This can happen in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " because some conditional statements cannot be evaluated until more is \
+known. For example, if we hadn\[CloseCurlyQuote]t defined name:"
+}], "Text",
+ CellChangeTimes->{{3.671022496213181*^9, 3.6710225538579397`*^9}, {
+  3.671026590805283*^9, 3.671026600651211*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "name", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"If", "[", 
+  RowBox[{
+   RowBox[{"name", "\[Equal]", "\"\<Shad\>\""}], ",", "\"\<Hello, Shad\>\"", 
+   ",", "\"\<Welcome, Stranger!\>\""}], "]"}]}], "Input",
+ CellChangeTimes->{{3.671021627546216*^9, 3.671021689525468*^9}, {
+   3.671022436349766*^9, 3.671022437188786*^9}, 3.6710260200347433`*^9, {
+   3.67102613628018*^9, 3.671026139734559*^9}, {3.6710261902703*^9, 
+   3.67102619082859*^9}, {3.671026240668667*^9, 3.6710262418587427`*^9}, {
+   3.6710263451045227`*^9, 3.6710263516799173`*^9}, {3.671026554319355*^9, 
+   3.671026557917158*^9}, {3.671026607581319*^9, 3.67102661179634*^9}}],
+
+Cell[BoxData[
+ RowBox[{"If", "[", 
+  RowBox[{
+   RowBox[{"name", "\[Equal]", "\<\"Shad\"\>"}], ",", "\<\"Hello, Shad\"\>", 
+   ",", "\<\"Welcome, Stranger!\"\>"}], "]"}]], "Output",
+ CellChangeTimes->{3.671026615947548*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Here, we can\[CloseCurlyQuote]t know whether name equals Shad until name is \
+given a value. For this situation, you can use the second form of ",
+ StyleBox["If", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.6710225668104*^9, 3.671022611659212*^9}, {
+  3.671026624037374*^9, 3.67102663317305*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "name", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"If", "[", 
+  RowBox[{
+   RowBox[{"name", "\[Equal]", "\"\<Shad\>\""}], ",", "\"\<Hello, Shad\>\"", 
+   ",", "\"\<Welcome, Stranger!\>\"", ",", "\"\<What's your name?\>\""}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.6710226136302013`*^9, 3.671022613859213*^9}, {
+  3.67102269301768*^9, 3.671022716184742*^9}, {3.6710266451643963`*^9, 
+  3.671026666427071*^9}}],
+
+Cell[BoxData["\<\"What's your name?\"\>"], "Output",
+ CellChangeTimes->{3.671022717151346*^9, 3.6710266689772882`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Which", "Subsubsection",
+ CellChangeTimes->{{3.671022736650909*^9, 3.671022737250757*^9}, {
+  3.671022770346921*^9, 3.671022772633333*^9}, {3.6710250504223413`*^9, 
+  3.67102505056529*^9}}],
+
+Cell[TextData[{
+ "Another common conditional pattern is the if, else if, else pattern. You \
+could use ",
+ StyleBox["If", "Code"],
+ "s embedded in ",
+ StyleBox["If", "Code"],
+ "s, but if your logic is even slightly complex, this form will quickly \
+become unwieldy. To solve this, ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " provides the ",
+ StyleBox["Which", "Code"],
+ " function:"
+}], "Text",
+ CellChangeTimes->{{3.671022774569199*^9, 3.671022883929888*^9}, {
+   3.671024078514145*^9, 3.6710240833384666`*^9}, {3.671026803661138*^9, 
+   3.6710268344905252`*^9}, 3.688862326237314*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Which"}]], "Input",
+ CellChangeTimes->{{3.671022884629095*^9, 3.671022885337832*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Which\\\", \\\"[\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"test\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"value\\\", \\\"TI\\\"], \
+StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"test\\\
+\", \\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"value\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"]\\\
+\"}]\\) evaluates each of the \\!\\(\\*SubscriptBox[StyleBox[\\\"test\\\", \\\
+\"TI\\\"], StyleBox[\\\"i\\\", \\\"TI\\\"]]\\) in turn, returning the value \
+of the \\!\\(\\*SubscriptBox[StyleBox[\\\"value\\\", \\\"TI\\\"], StyleBox[\\\
+\"i\\\", \\\"TI\\\"]]\\) corresponding to the first one that yields True. \
+\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Which"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.671022885760865*^9},
+ CellTags->"Info-4043f0d8-8c88-41b6-81f0-5e526f48c64e"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Let\[CloseCurlyQuote]s write our ",
+ StyleBox["Which", "Code"],
+ " statement, but to avoid having it in every cell, we\[CloseCurlyQuote]ll ",
+ StyleBox["SetDelayed", "Code"],
+ " to greet: "
+}], "Text",
+ CellChangeTimes->{{3.671023921841585*^9, 3.671024010773514*^9}, {
+   3.671026879565995*^9, 3.6710268806376753`*^9}, {3.671026938621374*^9, 
+   3.671027003394372*^9}, 3.672252208789895*^9}],
+
+Cell[BoxData[
+ RowBox[{"greet", ":=", 
+  RowBox[{"Which", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"name", "\[Equal]", "\"\<Shad\>\""}], ",", "\"\<Hello, Shad!\>\"",
+     ",", "\[IndentingNewLine]", 
+    RowBox[{"name", "\[Equal]", "\"\<Sahand\>\""}], ",", 
+    "\"\<How's it going, Sahand?\>\"", ",", "\[IndentingNewLine]", "True", 
+    ",", "\"\<Welcome, Stranger!\>\""}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.671023735140018*^9, 3.671023811564817*^9}, 
+   3.671026883222237*^9, {3.6710270174824743`*^9, 3.671027050881278*^9}}],
+
+Cell["Let\[CloseCurlyQuote]s test out the greeting for Shad:", "Text",
+ CellChangeTimes->{{3.671024053003509*^9, 3.6710240570991488`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"name", "=", "\"\<Shad\>\""}], 
+  ";"}], "\[IndentingNewLine]", "greet"}], "Input",
+ CellChangeTimes->{{3.671023815683476*^9, 3.6710238206476727`*^9}, 
+   3.6710238832520103`*^9, {3.671027061836013*^9, 3.671027062218148*^9}}],
+
+Cell[BoxData["\<\"Hello, Shad!\"\>"], "Output",
+ CellChangeTimes->{3.671023820918501*^9, 3.671023883652788*^9, 
+  3.671027063063491*^9}]
+}, Open  ]],
+
+Cell["And for Sahand:", "Text",
+ CellChangeTimes->{{3.671024059587126*^9, 3.671024061154991*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"name", "=", "\"\<Sahand\>\""}], 
+  ";"}], "\[IndentingNewLine]", "greet"}], "Input",
+ CellChangeTimes->{{3.671023821956087*^9, 3.671023825119973*^9}, 
+   3.671023889954081*^9, {3.671027066866585*^9, 3.671027067210034*^9}}],
+
+Cell[BoxData["\<\"How's it going, Sahand?\"\>"], "Output",
+ CellChangeTimes->{
+  3.671023825560472*^9, {3.6710238863278847`*^9, 3.6710238902301493`*^9}, 
+   3.6710270678481607`*^9}]
+}, Open  ]],
+
+Cell["And for our stranger named Mike:", "Text",
+ CellChangeTimes->{{3.6710240648107758`*^9, 3.671024069458805*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"name", "=", "\"\<Mike\>\""}], 
+  ";"}], "\[IndentingNewLine]", "greet"}], "Input",
+ CellChangeTimes->{{3.671023826805475*^9, 3.671023831250689*^9}, 
+   3.671023892081801*^9, {3.6710270713143187`*^9, 3.671027071650097*^9}}],
+
+Cell[BoxData["\<\"Welcome, Stranger!\"\>"], "Output",
+ CellChangeTimes->{3.67102383165277*^9, 3.671023892395178*^9, 
+  3.671027072128405*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Note that ",
+ StyleBox["Which", "Code"],
+ " will stop evaluating the tests if any test returns something other than ",
+ StyleBox["True", "Code"],
+ " or ",
+ StyleBox["False", "Code"],
+ ". And unlike the ",
+ StyleBox["If", "Code"],
+ " statement, we can\[CloseCurlyQuote]t provide a return a value for this \
+case, as we did with the ",
+ StyleBox["If", "Code"],
+ " statement:"
+}], "Text",
+ CellChangeTimes->{{3.671027115766264*^9, 3.6710271176053867`*^9}, {
+  3.6710271503823633`*^9, 3.671027177917268*^9}, {3.6710272439917793`*^9, 
+  3.671027263215049*^9}, {3.671027636306175*^9, 3.6710276451860657`*^9}, {
+  3.6710277188293133`*^9, 3.6710277935422297`*^9}, {3.688864555540971*^9, 
+  3.688864567588484*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "@", "name"}], 
+  ";"}], "\[IndentingNewLine]", "greet"}], "Input",
+ CellChangeTimes->{{3.671027104834476*^9, 3.671027110805546*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Which", "[", 
+  RowBox[{
+   RowBox[{"name", "\[Equal]", "\<\"Shad\"\>"}], ",", "\<\"Hello, Shad!\"\>", 
+   ",", 
+   RowBox[{"name", "\[Equal]", "\<\"Sahand\"\>"}], 
+   ",", "\<\"How's it going, Sahand?\"\>", ",", "True", 
+   ",", "\<\"Welcome, Stranger!\"\>"}], "]"}]], "Output",
+ CellChangeTimes->{3.6710271111623573`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Here, name has no value and the test that checks if name equals Shad \
+returns neither ",
+ StyleBox["True", "Code"],
+ " nor ",
+ StyleBox["False", "Code"],
+ ", so ",
+ StyleBox["Which", "Code"],
+ " stops evaluation immediately."
+}], "Text",
+ CellChangeTimes->{{3.671027803969618*^9, 3.671027836688262*^9}, 
+   3.671028027700774*^9, {3.6888645769484177`*^9, 3.688864579036522*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Switch", "Subsubsection",
+ CellChangeTimes->{{3.671024089715476*^9, 3.671024090417871*^9}}],
+
+Cell[TextData[{
+ "We can provide a case where the expression does not evaluate to a ",
+ StyleBox["Boolean", "Code"],
+ " with the ",
+ StyleBox["Switch", "Code"],
+ " statement:"
+}], "Text",
+ CellChangeTimes->{{3.671024098513795*^9, 3.671024106201118*^9}, {
+   3.6710273029388733`*^9, 3.6710273180972*^9}, {3.671027862535512*^9, 
+   3.671027865503152*^9}, {3.671028040738757*^9, 3.671028084585248*^9}, 
+   3.688864592815508*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Switch"}]], "Input",
+ CellChangeTimes->{{3.671022888275696*^9, 3.671022889425812*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Switch\\\", \\\"[\\\", RowBox[{StyleBox[\
+\\\"expr\\\", \\\"TI\\\"], \\\",\\\", SubscriptBox[StyleBox[\\\"form\\\", \
+\\\"TI\\\"], StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"value\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"form\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"value\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"]\\\
+\"}]\\) evaluates \\!\\(\\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\\), then \
+compares it with each of the \\!\\(\\*SubscriptBox[StyleBox[\\\"form\\\", \
+\\\"TI\\\"], StyleBox[\\\"i\\\", \\\"TI\\\"]]\\) in turn, evaluating and \
+returning the \\!\\(\\*SubscriptBox[StyleBox[\\\"value\\\", \\\"TI\\\"], \
+StyleBox[\\\"i\\\", \\\"TI\\\"]]\\) corresponding to the first match found. \
+\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Switch"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.671022889822927*^9},
+ CellTags->"Info-887ba0ee-f2a6-479f-9bd4-bf602385c61d"]
+}, Open  ]],
+
+Cell["\<\
+Switch enables us to test a set of patterns against an expression. Let\
+\[CloseCurlyQuote]s write a function that matches different patterns and \
+tells us what they are:\
+\>", "Text",
+ CellChangeTimes->{{3.6710241135689373`*^9, 3.67102422828292*^9}, {
+  3.6710243047556343`*^9, 3.671024317899164*^9}, {3.671024934806602*^9, 
+  3.671024943493946*^9}, {3.671028095434951*^9, 3.6710280999308243`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"whatAmI", "[", "obj_", "]"}], ":=", 
+  RowBox[{"Switch", "[", 
+   RowBox[{
+   "obj", ",", "\[IndentingNewLine]", "1", ",", "\"\<I'm the number One!\>\"",
+     ",", "\[IndentingNewLine]", "_Integer", ",", "\"\<I'm an Integer!\>\"", 
+    ",", "\[IndentingNewLine]", 
+    RowBox[{"{", "}"}], ",", "\"\<I'm an empty List!\>\"", ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"{", "__Integer", "}"}], ",", "\"\<I'm a list of Integers!\>\"", 
+    ",", "\[IndentingNewLine]", "_String", ",", "\"\<I'm a String!\>\"", ",", 
+    "\[IndentingNewLine]", "_", ",", "\"\<I'm something else!\>\""}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.67102423198885*^9, 3.671024374571528*^9}, {
+  3.671024429097149*^9, 3.671024453558899*^9}, {3.671024516853307*^9, 
+  3.6710248062267513`*^9}, {3.671024836343799*^9, 3.6710248499528008`*^9}, {
+  3.672252691885106*^9, 3.6722527228994093`*^9}}],
+
+Cell["Now, let\[CloseCurlyQuote]s test it out:", "Text",
+ CellChangeTimes->{{3.671024472561634*^9, 3.6710244782082872`*^9}, {
+   3.671024966229405*^9, 3.671024967205676*^9}, 3.672252703980307*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"whatAmI", "[", "1", "]"}]], "Input",
+ CellChangeTimes->{{3.671024462893765*^9, 3.671024466977816*^9}}],
+
+Cell[BoxData["\<\"I'm the number One!\"\>"], "Output",
+ CellChangeTimes->{
+  3.671024467847704*^9, {3.671024520770216*^9, 3.6710246068608*^9}, 
+   3.671024710150612*^9, {3.671024747763584*^9, 3.6710247589525414`*^9}, 
+   3.671024809727097*^9, {3.67102484552494*^9, 3.671024857450996*^9}, 
+   3.671027367776659*^9, 3.672252706831738*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"whatAmI", "[", "2", "]"}]], "Input",
+ CellChangeTimes->{{3.671024462893765*^9, 3.671024466977816*^9}, {
+  3.671024864104514*^9, 3.6710248658222723`*^9}, {3.672252713877018*^9, 
+  3.672252716331298*^9}}],
+
+Cell[BoxData["\<\"I'm an Integer!\"\>"], "Output",
+ CellChangeTimes->{
+  3.67102486627991*^9, 3.671027368551241*^9, {3.6722527083685627`*^9, 
+   3.672252716932478*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"whatAmI", "[", 
+  RowBox[{"{", 
+   RowBox[{"1", ",", "2", ",", "3"}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.671024869188786*^9, 3.67102487660581*^9}}],
+
+Cell[BoxData["\<\"I'm a list of Integers!\"\>"], "Output",
+ CellChangeTimes->{{3.671024872690688*^9, 3.671024877243886*^9}, 
+   3.671027370131219*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"whatAmI", "[", "\"\<Hello Students!\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.671024883302874*^9, 3.671024901513389*^9}}],
+
+Cell[BoxData["\<\"I'm a String!\"\>"], "Output",
+ CellChangeTimes->{3.6710249017263203`*^9, 3.671027371253578*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"whatAmI", "[", "a", "]"}]], "Input",
+ CellChangeTimes->{{3.67102490429314*^9, 3.671024905842183*^9}}],
+
+Cell[BoxData["\<\"I'm something else!\"\>"], "Output",
+ CellChangeTimes->{3.671024906277803*^9, 3.67102737198956*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Let\[CloseCurlyQuote]s use ",
+ StyleBox["Switch", "Code"],
+ " to implement the default case for our greeting, when name is not defined:"
+}], "Text",
+ CellChangeTimes->{{3.671027376208398*^9, 3.671027395910887*^9}}],
+
+Cell[BoxData[
+ RowBox[{"greet", ":=", 
+  RowBox[{"Switch", "[", 
+   RowBox[{
+   "name", ",", "\[IndentingNewLine]", "\"\<Shad\>\"", ",", 
+    "\"\<Hello, Shad\>\"", ",", "\[IndentingNewLine]", "\"\<Sahand\>\"", ",", 
+    " ", "\"\<How's it going, Sahand?\>\"", ",", "\[IndentingNewLine]", 
+    "_String", ",", "\"\<Welcome, stranger!\>\"", ",", "\[IndentingNewLine]", 
+    "_", ",", "\"\<Hello, what's your name?\>\""}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.671027403086952*^9, 3.671027487105088*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "@", "name"}], 
+  ";"}], "\[IndentingNewLine]", "greet"}], "Input",
+ CellChangeTimes->{{3.6710274956510344`*^9, 3.671027502798902*^9}}],
+
+Cell[BoxData["\<\"Hello, what's your name?\"\>"], "Output",
+ CellChangeTimes->{3.671027503200707*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"name", "=", "\"\<Mike\>\""}], 
+  ";"}], "\[IndentingNewLine]", "greet"}], "Input",
+ CellChangeTimes->{{3.671027507027787*^9, 3.67102751251821*^9}}],
+
+Cell[BoxData["\<\"Welcome, stranger!\"\>"], "Output",
+ CellChangeTimes->{3.671027512991149*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Summary", "Subsection",
+ CellChangeTimes->{{3.688864651834879*^9, 3.688864653154516*^9}}],
+
+Cell[TextData[{
+ "Cool. That covers the first part of procedural programming in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ". In this lecture we looked at ",
+ StyleBox["CompoundExpression", "Code"],
+ "s, the ",
+ StyleBox["Print", "Code"],
+ " statement, and the three conditional statements, ",
+ StyleBox["If", "Code"],
+ ", ",
+ StyleBox["Which", "Code"],
+ " and ",
+ StyleBox["Switch", "Code"],
+ ". In the next lecture, we\[CloseCurlyQuote]ll talk about loops. See you at \
+the next lecture!"
+}], "Text",
+ CellChangeTimes->{
+  3.67227767276816*^9, {3.6722777059473867`*^9, 3.6722777952082663`*^9}, {
+   3.6888646601069813`*^9, 3.68886468997077*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1399, 855},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info-3461fa84-0678-4999-b0f2-01ed2f05889e"->{
+  Cell[1813, 56, 759, 15, 52, "Print",
+   CellTags->"Info-3461fa84-0678-4999-b0f2-01ed2f05889e"]},
+ "Info-30113560-2489-4ae4-8ace-da6eb969deaf"->{
+  Cell[5308, 167, 495, 12, 52, "Print",
+   CellTags->"Info-30113560-2489-4ae4-8ace-da6eb969deaf"]},
+ "Info-a9367a7c-aa4d-4ed6-948b-e52ccfd8daa5"->{
+  Cell[8109, 259, 1124, 21, 77, "Print",
+   CellTags->"Info-a9367a7c-aa4d-4ed6-948b-e52ccfd8daa5"]},
+ "Info-4043f0d8-8c88-41b6-81f0-5e526f48c64e"->{
+  Cell[15097, 450, 1136, 20, 52, "Print",
+   CellTags->"Info-4043f0d8-8c88-41b6-81f0-5e526f48c64e"]},
+ "Info-887ba0ee-f2a6-479f-9bd4-bf602385c61d"->{
+  Cell[21313, 624, 1252, 22, 52, "Print",
+   CellTags->"Info-887ba0ee-f2a6-479f-9bd4-bf602385c61d"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info-3461fa84-0678-4999-b0f2-01ed2f05889e", 28592, 826},
+ {"Info-30113560-2489-4ae4-8ace-da6eb969deaf", 28739, 829},
+ {"Info-a9367a7c-aa4d-4ed6-948b-e52ccfd8daa5", 28887, 832},
+ {"Info-4043f0d8-8c88-41b6-81f0-5e526f48c64e", 29036, 835},
+ {"Info-887ba0ee-f2a6-479f-9bd4-bf602385c61d", 29186, 838}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 114, 1, 80, "Section"],
+Cell[697, 25, 559, 10, 61, "Text"],
+Cell[CellGroupData[{
+Cell[1281, 39, 109, 1, 54, "Subsection"],
+Cell[1393, 42, 265, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[1683, 52, 127, 2, 39, "Input"],
+Cell[1813, 56, 759, 15, 52, "Print",
+ CellTags->"Info-3461fa84-0678-4999-b0f2-01ed2f05889e"]
+}, Open  ]],
+Cell[2587, 74, 193, 4, 37, "Text"],
+Cell[CellGroupData[{
+Cell[2805, 82, 186, 5, 39, "Input"],
+Cell[2994, 89, 72, 1, 39, "Output"]
+}, Open  ]],
+Cell[3081, 93, 125, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[3231, 98, 69, 1, 39, "Input"],
+Cell[3303, 101, 70, 1, 39, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3410, 107, 69, 1, 39, "Input"],
+Cell[3482, 110, 70, 1, 39, "Output"]
+}, Open  ]],
+Cell[3567, 114, 478, 8, 61, "Text"],
+Cell[4048, 124, 159, 4, 39, "Input"],
+Cell[4210, 130, 299, 7, 37, "Text"],
+Cell[4512, 139, 231, 6, 66, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4780, 150, 107, 1, 54, "Subsection"],
+Cell[4890, 153, 276, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[5191, 163, 114, 2, 39, "Input"],
+Cell[5308, 167, 495, 12, 52, "Print",
+ CellTags->"Info-30113560-2489-4ae4-8ace-da6eb969deaf"]
+}, Open  ]],
+Cell[5818, 182, 208, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[6051, 191, 380, 10, 118, "Input"],
+Cell[CellGroupData[{
+Cell[6456, 205, 71, 1, 29, "Print"],
+Cell[6530, 208, 69, 1, 29, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[6626, 213, 464, 7, 37, "Text"],
+Cell[7093, 222, 218, 6, 37, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7348, 233, 109, 1, 54, "Subsection"],
+Cell[CellGroupData[{
+Cell[7482, 238, 95, 1, 43, "Subsubsection"],
+Cell[7580, 241, 390, 10, 37, "Text"],
+Cell[CellGroupData[{
+Cell[7995, 255, 111, 2, 39, "Input"],
+Cell[8109, 259, 1124, 21, 77, "Print",
+ CellTags->"Info-a9367a7c-aa4d-4ed6-948b-e52ccfd8daa5"]
+}, Open  ]],
+Cell[9248, 283, 355, 6, 37, "Text"],
+Cell[9606, 291, 145, 6, 109, "Text"],
+Cell[9754, 299, 222, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[10001, 310, 602, 11, 66, "Input"],
+Cell[10606, 323, 88, 1, 39, "Output"]
+}, Open  ]],
+Cell[10709, 327, 179, 2, 37, "Text"],
+Cell[CellGroupData[{
+Cell[10913, 333, 654, 12, 66, "Input"],
+Cell[11570, 347, 94, 1, 39, "Output"]
+}, Open  ]],
+Cell[11679, 351, 541, 14, 61, "Text"],
+Cell[CellGroupData[{
+Cell[12245, 369, 695, 12, 66, "Input"],
+Cell[12943, 383, 223, 5, 39, "Output"]
+}, Open  ]],
+Cell[13181, 391, 318, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[13524, 402, 466, 10, 66, "Input"],
+Cell[13993, 414, 118, 1, 39, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14160, 421, 195, 3, 43, "Subsubsection"],
+Cell[14358, 426, 597, 16, 61, "Text"],
+Cell[CellGroupData[{
+Cell[14980, 446, 114, 2, 39, "Input"],
+Cell[15097, 450, 1136, 20, 52, "Print",
+ CellTags->"Info-4043f0d8-8c88-41b6-81f0-5e526f48c64e"]
+}, Open  ]],
+Cell[16248, 473, 409, 9, 37, "Text"],
+Cell[16660, 484, 545, 10, 118, "Input"],
+Cell[17208, 496, 138, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[17371, 501, 260, 5, 66, "Input"],
+Cell[17634, 508, 136, 2, 39, "Output"]
+}, Open  ]],
+Cell[17785, 513, 97, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[17907, 518, 258, 5, 66, "Input"],
+Cell[18168, 525, 181, 3, 39, "Output"]
+}, Open  ]],
+Cell[18364, 531, 116, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[18505, 536, 258, 5, 66, "Input"],
+Cell[18766, 543, 141, 2, 39, "Output"]
+}, Open  ]],
+Cell[18922, 548, 723, 18, 61, "Text"],
+Cell[CellGroupData[{
+Cell[19670, 570, 177, 4, 66, "Input"],
+Cell[19850, 576, 347, 8, 39, "Output"]
+}, Open  ]],
+Cell[20212, 587, 396, 11, 37, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20645, 603, 97, 1, 43, "Subsubsection"],
+Cell[20745, 606, 425, 10, 37, "Text"],
+Cell[CellGroupData[{
+Cell[21195, 620, 115, 2, 39, "Input"],
+Cell[21313, 624, 1252, 22, 52, "Print",
+ CellTags->"Info-887ba0ee-f2a6-479f-9bd4-bf602385c61d"]
+}, Open  ]],
+Cell[22580, 649, 409, 7, 37, "Text"],
+Cell[22992, 658, 929, 17, 222, "Input"],
+Cell[23924, 677, 196, 2, 37, "Text"],
+Cell[CellGroupData[{
+Cell[24145, 683, 126, 2, 39, "Input"],
+Cell[24274, 687, 336, 5, 39, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24647, 697, 226, 4, 39, "Input"],
+Cell[24876, 703, 168, 3, 39, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25081, 711, 182, 4, 39, "Input"],
+Cell[25266, 717, 150, 2, 39, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25453, 724, 148, 2, 39, "Input"],
+Cell[25604, 728, 114, 1, 39, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25755, 734, 125, 2, 39, "Input"],
+Cell[25883, 738, 117, 1, 39, "Output"]
+}, Open  ]],
+Cell[26015, 742, 232, 5, 37, "Text"],
+Cell[26250, 749, 505, 9, 144, "Input"],
+Cell[CellGroupData[{
+Cell[26780, 762, 179, 4, 66, "Input"],
+Cell[26962, 768, 101, 1, 39, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27100, 774, 183, 4, 66, "Input"],
+Cell[27286, 780, 95, 1, 39, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27442, 788, 95, 1, 54, "Subsection"],
+Cell[27540, 791, 657, 19, 61, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

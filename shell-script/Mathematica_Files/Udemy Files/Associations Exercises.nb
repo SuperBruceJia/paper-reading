@@ -1,0 +1,751 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     25445,        743]
+NotebookOptionsPosition[     22680,        639]
+NotebookOutlinePosition[     23067,        656]
+CellTagsIndexPosition[     23024,        653]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Associations", "Title",
+ CellChangeTimes->{{3.679347636506831*^9, 3.679347639321329*^9}, 
+   3.6799472491694393`*^9, {3.680412306236822*^9, 3.680412306328977*^9}, {
+   3.6868007549322357`*^9, 3.686800757913107*^9}, {3.70233430911423*^9, 
+   3.702334310770298*^9}, {3.707935631167241*^9, 3.707935633212365*^9}, {
+   3.713471828643806*^9, 3.7134718298566236`*^9}, {3.713472802609559*^9, 
+   3.713472805125045*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Basic Exercises", "Section",
+ CellChangeTimes->{{3.67933910070142*^9, 3.679339105692511*^9}, {
+  3.679347656225293*^9, 3.679347658144876*^9}}],
+
+Cell["\<\
+Recall the database we used in the exercise notebook for Functions Part I. \
+\>", "Text",
+ CellChangeTimes->{{3.713472842299314*^9, 3.713472861962867*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"dataBase", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\"\<Jalanda\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"\"\<Age\>\"", "\[Rule]", "27"}], ",", 
+        RowBox[{"\"\<State\>\"", "\[Rule]", "\"\<PA\>\""}], ",", 
+        RowBox[{"\"\<Gender\>\"", "\[Rule]", "\"\<F\>\""}]}], "}"}]}], ",", 
+     RowBox[{"\"\<Jack\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"\"\<Age\>\"", "\[Rule]", "54"}], ",", 
+        RowBox[{"\"\<State\>\"", "\[Rule]", "\"\<CA\>\""}], ",", 
+        RowBox[{"\"\<Gender\>\"", "\[Rule]", "\"\<M\>\""}]}], "}"}]}], ",", 
+     RowBox[{"\"\<Jake\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"\"\<Age\>\"", "\[Rule]", "34"}], ",", 
+        RowBox[{"\"\<State\>\"", "\[Rule]", "\"\<MD\>\""}], ",", 
+        RowBox[{"\"\<Gender\>\"", "\[Rule]", "\"\<M\>\""}]}], "}"}]}], ",", 
+     RowBox[{"\"\<Jane\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"\"\<Age\>\"", "\[Rule]", "14"}], ",", 
+        RowBox[{"\"\<State\>\"", "\[Rule]", "\"\<PA\>\""}], ",", 
+        RowBox[{"\"\<Gender\>\"", "\[Rule]", "\"\<F\>\""}]}], "}"}]}], ",", 
+     RowBox[{"\"\<Jeremiah\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"\"\<Age\>\"", "\[Rule]", "57"}], ",", 
+        RowBox[{"\"\<State\>\"", "\[Rule]", "\"\<PA\>\""}], ",", 
+        RowBox[{"\"\<Gender\>\"", "\[Rule]", "\"\<M\>\""}]}], "}"}]}], ",", 
+     RowBox[{"\"\<Jodie\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"\"\<Age\>\"", "\[Rule]", "39"}], ",", 
+        RowBox[{"\"\<State\>\"", "\[Rule]", "\"\<FL\>\""}], ",", 
+        RowBox[{"\"\<Gender\>\"", "\[Rule]", "\"\<F\>\""}]}], "}"}]}], ",", 
+     RowBox[{"\"\<Joe\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"\"\<Age\>\"", "\[Rule]", "37"}], ",", 
+        RowBox[{"\"\<State\>\"", "\[Rule]", "\"\<PA\>\""}], ",", 
+        RowBox[{"\"\<Gender\>\"", "\[Rule]", "\"\<M\>\""}]}], "}"}]}], ",", 
+     RowBox[{"\"\<John\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"\"\<Age\>\"", "\[Rule]", "23"}], ",", 
+        RowBox[{"\"\<State\>\"", "\[Rule]", "\"\<IL\>\""}], ",", 
+        RowBox[{"\"\<Gender\>\"", "\[Rule]", "\"\<M\>\""}]}], "}"}]}], ",", 
+     RowBox[{"\"\<Judy\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"\"\<Age\>\"", "\[Rule]", "43"}], ",", 
+        RowBox[{"\"\<State\>\"", "\[Rule]", "\"\<PA\>\""}], ",", 
+        RowBox[{"\"\<Gender\>\"", "\[Rule]", "\"\<F\>\""}]}], "}"}]}]}], 
+    "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7134728384252977`*^9, 3.713472838426423*^9}, 
+   3.715824097438286*^9}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Redefine this database using ",
+ StyleBox["Association",
+  FontWeight->"Bold"],
+ ". "
+}], "Text",
+ CellChangeTimes->{{3.707936363316573*^9, 3.707936404980132*^9}, {
+   3.713469491180779*^9, 3.713469520047422*^9}, {3.7134695594955606`*^9, 
+   3.713469585974922*^9}, 3.713472809637094*^9, {3.713472871947671*^9, 
+   3.713472883554639*^9}, {3.713474569084339*^9, 3.7134745718708563`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.680413280898682*^9, 3.6804132817067957`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"dataBaseAssociation", "=", 
+  RowBox[{"Association", "[", 
+   RowBox[{"dataBase", "/.", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Rule", "[", 
+       RowBox[{"s_String", ",", "l_List"}], "]"}], "\[Rule]", 
+      RowBox[{"Rule", "[", 
+       RowBox[{"s", ",", 
+        RowBox[{"Association", "[", "l", "]"}]}], "]"}]}], "}"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.713472897203607*^9, 3.71347291945641*^9}, {
+   3.713472952047699*^9, 3.713472977805214*^9}, 3.713473027686681*^9, 
+   3.713473107422966*^9, {3.715824105037664*^9, 3.715824106433337*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"Jalanda\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"Age\"\>", "\[Rule]", "27"}], ",", 
+      RowBox[{"\<\"State\"\>", "\[Rule]", "\<\"PA\"\>"}], ",", 
+      RowBox[{"\<\"Gender\"\>", "\[Rule]", "\<\"F\"\>"}]}], 
+     "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"Jack\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"Age\"\>", "\[Rule]", "54"}], ",", 
+      RowBox[{"\<\"State\"\>", "\[Rule]", "\<\"CA\"\>"}], ",", 
+      RowBox[{"\<\"Gender\"\>", "\[Rule]", "\<\"M\"\>"}]}], 
+     "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"Jake\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"Age\"\>", "\[Rule]", "34"}], ",", 
+      RowBox[{"\<\"State\"\>", "\[Rule]", "\<\"MD\"\>"}], ",", 
+      RowBox[{"\<\"Gender\"\>", "\[Rule]", "\<\"M\"\>"}]}], 
+     "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"Jane\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"Age\"\>", "\[Rule]", "14"}], ",", 
+      RowBox[{"\<\"State\"\>", "\[Rule]", "\<\"PA\"\>"}], ",", 
+      RowBox[{"\<\"Gender\"\>", "\[Rule]", "\<\"F\"\>"}]}], 
+     "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"Jeremiah\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"Age\"\>", "\[Rule]", "57"}], ",", 
+      RowBox[{"\<\"State\"\>", "\[Rule]", "\<\"PA\"\>"}], ",", 
+      RowBox[{"\<\"Gender\"\>", "\[Rule]", "\<\"M\"\>"}]}], 
+     "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"Jodie\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"Age\"\>", "\[Rule]", "39"}], ",", 
+      RowBox[{"\<\"State\"\>", "\[Rule]", "\<\"FL\"\>"}], ",", 
+      RowBox[{"\<\"Gender\"\>", "\[Rule]", "\<\"F\"\>"}]}], 
+     "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"Joe\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"Age\"\>", "\[Rule]", "37"}], ",", 
+      RowBox[{"\<\"State\"\>", "\[Rule]", "\<\"PA\"\>"}], ",", 
+      RowBox[{"\<\"Gender\"\>", "\[Rule]", "\<\"M\"\>"}]}], 
+     "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"John\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"Age\"\>", "\[Rule]", "23"}], ",", 
+      RowBox[{"\<\"State\"\>", "\[Rule]", "\<\"IL\"\>"}], ",", 
+      RowBox[{"\<\"Gender\"\>", "\[Rule]", "\<\"M\"\>"}]}], 
+     "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"Judy\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"Age\"\>", "\[Rule]", "43"}], ",", 
+      RowBox[{"\<\"State\"\>", "\[Rule]", "\<\"PA\"\>"}], ",", 
+      RowBox[{"\<\"Gender\"\>", "\[Rule]", "\<\"F\"\>"}]}], 
+     "\[RightAssociation]"}]}]}], "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{{3.713472968250057*^9, 3.713472978115095*^9}, 
+   3.713473028169791*^9, 3.713473107871348*^9, 3.715824150554228*^9}]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell["Extract all the names from the database", "Text",
+ CellChangeTimes->{{3.7134731397453337`*^9, 3.713473148799645*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.680413280898682*^9, 3.6804132817067957`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Keys", "[", "dataBaseAssociation", "]"}]], "Input",
+ CellChangeTimes->{{3.7134731564106092`*^9, 3.713473165016686*^9}, 
+   3.715824112148758*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"Jalanda\"\>", ",", "\<\"Jack\"\>", ",", "\<\"Jake\"\>", 
+   ",", "\<\"Jane\"\>", ",", "\<\"Jeremiah\"\>", ",", "\<\"Jodie\"\>", 
+   ",", "\<\"Joe\"\>", ",", "\<\"John\"\>", ",", "\<\"Judy\"\>"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.7134731652498407`*^9, 3.7158241506151752`*^9}]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell["Find out how old Judy and Jodie are.", "Text",
+ CellChangeTimes->{{3.7134731397453337`*^9, 3.713473148799645*^9}, {
+  3.713473187010262*^9, 3.713473234687008*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.680413280898682*^9, 3.6804132817067957`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MapThread", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"#1", ",", 
+      RowBox[{"\"\<Age\>\"", "/.", "#2"}]}], "}"}], "&"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\"\<Judy\>\"", ",", "\"\<Jodie\>\""}], "}"}], ",", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"\"\<Judy\>\"", ",", " ", "\"\<Jodie\>\""}], "}"}], "/.", 
+      "dataBaseAssociation"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7134733344678173`*^9, 3.713473384660486*^9}, 
+   3.7158241156918907`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"Judy\"\>", ",", "43"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Jodie\"\>", ",", "39"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.713473385213829*^9, 3.7158241506641808`*^9}]
+}, Open  ]],
+
+Cell["Or...", "Text",
+ CellChangeTimes->{{3.713473548443666*^9, 3.71347355211557*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Lookup", "[", 
+  RowBox[{
+   RowBox[{"Lookup", "[", 
+    RowBox[{"dataBaseAssociation", ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<Judy\>\"", ",", "\"\<Jodie\>\""}], "}"}]}], "]"}], ",", 
+   "\"\<Age\>\""}], "]"}]], "Input",
+ CellChangeTimes->{3.7158241175699787`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"43", ",", "39"}], "}"}]], "Output",
+ CellChangeTimes->{3.713473554010037*^9, 3.7158241507152576`*^9}]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell["Select all the people who are older than 40", "Text",
+ CellChangeTimes->{{3.7134731397453337`*^9, 3.713473148799645*^9}, {
+  3.713473187010262*^9, 3.713473234687008*^9}, {3.713473398580948*^9, 
+  3.713473408691884*^9}, {3.713473654222518*^9, 3.7134736542927227`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.680413280898682*^9, 3.6804132817067957`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Select", "[", 
+  RowBox[{"dataBaseAssociation", ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Lookup", "[", 
+      RowBox[{"#", ",", "\"\<Age\>\""}], "]"}], ">", "40"}], "&"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7134733344678173`*^9, 3.71347341870592*^9}, {
+   3.71347357257432*^9, 3.7134736577898703`*^9}, 3.715824122958929*^9}],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"Jack\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"Age\"\>", "\[Rule]", "54"}], ",", 
+      RowBox[{"\<\"State\"\>", "\[Rule]", "\<\"CA\"\>"}], ",", 
+      RowBox[{"\<\"Gender\"\>", "\[Rule]", "\<\"M\"\>"}]}], 
+     "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"Jeremiah\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"Age\"\>", "\[Rule]", "57"}], ",", 
+      RowBox[{"\<\"State\"\>", "\[Rule]", "\<\"PA\"\>"}], ",", 
+      RowBox[{"\<\"Gender\"\>", "\[Rule]", "\<\"M\"\>"}]}], 
+     "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"Judy\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"Age\"\>", "\[Rule]", "43"}], ",", 
+      RowBox[{"\<\"State\"\>", "\[Rule]", "\<\"PA\"\>"}], ",", 
+      RowBox[{"\<\"Gender\"\>", "\[Rule]", "\<\"F\"\>"}]}], 
+     "\[RightAssociation]"}]}]}], "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{
+  3.713473385213829*^9, 3.713473419228713*^9, {3.713473644576783*^9, 
+   3.713473658083761*^9}, 3.715824150766634*^9}]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "Redefine the database using ",
+ StyleBox["Association",
+  FontWeight->"Bold"],
+ " yet again, but this time have it be a flat table where the name is on the \
+same level as all the other information (this is really how a database should \
+be defined anyway). The key for the name field could simply be \
+\[OpenCurlyDoubleQuote]Name\[CloseCurlyDoubleQuote]."
+}], "Text",
+ CellChangeTimes->{{3.7134731397453337`*^9, 3.713473148799645*^9}, {
+  3.713473187010262*^9, 3.713473234687008*^9}, {3.713473398580948*^9, 
+  3.713473408691884*^9}, {3.713473654222518*^9, 3.7134736542927227`*^9}, {
+  3.713473819164837*^9, 3.71347387522859*^9}, {3.713474083542399*^9, 
+  3.713474097228401*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.680413280898682*^9, 3.6804132817067957`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"dataBaseAssociation2", " ", "=", " ", 
+  RowBox[{"dataBase", "/.", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Rule", "[", 
+      RowBox[{"s_String", ",", "l_List"}], "]"}], "\[Rule]", 
+     RowBox[{"Append", "[", 
+      RowBox[{
+       RowBox[{"Association", "[", "l", "]"}], ",", 
+       RowBox[{"\"\<Name\>\"", "\[Rule]", "s"}]}], "]"}]}], 
+    "}"}]}]}]], "Input",
+ CellChangeTimes->{{3.713473887962009*^9, 3.7134738902065887`*^9}, {
+  3.713474107466433*^9, 3.713474136869327*^9}, {3.713474208862905*^9, 
+  3.713474210637165*^9}, {3.715824124713972*^9, 3.7158241258613443`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"Age\"\>", "\[Rule]", "27"}], ",", 
+     RowBox[{"\<\"State\"\>", "\[Rule]", "\<\"PA\"\>"}], ",", 
+     RowBox[{"\<\"Gender\"\>", "\[Rule]", "\<\"F\"\>"}], ",", 
+     RowBox[{"\<\"Name\"\>", "\[Rule]", "\<\"Jalanda\"\>"}]}], 
+    "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"Age\"\>", "\[Rule]", "54"}], ",", 
+     RowBox[{"\<\"State\"\>", "\[Rule]", "\<\"CA\"\>"}], ",", 
+     RowBox[{"\<\"Gender\"\>", "\[Rule]", "\<\"M\"\>"}], ",", 
+     RowBox[{"\<\"Name\"\>", "\[Rule]", "\<\"Jack\"\>"}]}], 
+    "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"Age\"\>", "\[Rule]", "34"}], ",", 
+     RowBox[{"\<\"State\"\>", "\[Rule]", "\<\"MD\"\>"}], ",", 
+     RowBox[{"\<\"Gender\"\>", "\[Rule]", "\<\"M\"\>"}], ",", 
+     RowBox[{"\<\"Name\"\>", "\[Rule]", "\<\"Jake\"\>"}]}], 
+    "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"Age\"\>", "\[Rule]", "14"}], ",", 
+     RowBox[{"\<\"State\"\>", "\[Rule]", "\<\"PA\"\>"}], ",", 
+     RowBox[{"\<\"Gender\"\>", "\[Rule]", "\<\"F\"\>"}], ",", 
+     RowBox[{"\<\"Name\"\>", "\[Rule]", "\<\"Jane\"\>"}]}], 
+    "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"Age\"\>", "\[Rule]", "57"}], ",", 
+     RowBox[{"\<\"State\"\>", "\[Rule]", "\<\"PA\"\>"}], ",", 
+     RowBox[{"\<\"Gender\"\>", "\[Rule]", "\<\"M\"\>"}], ",", 
+     RowBox[{"\<\"Name\"\>", "\[Rule]", "\<\"Jeremiah\"\>"}]}], 
+    "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"Age\"\>", "\[Rule]", "39"}], ",", 
+     RowBox[{"\<\"State\"\>", "\[Rule]", "\<\"FL\"\>"}], ",", 
+     RowBox[{"\<\"Gender\"\>", "\[Rule]", "\<\"F\"\>"}], ",", 
+     RowBox[{"\<\"Name\"\>", "\[Rule]", "\<\"Jodie\"\>"}]}], 
+    "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"Age\"\>", "\[Rule]", "37"}], ",", 
+     RowBox[{"\<\"State\"\>", "\[Rule]", "\<\"PA\"\>"}], ",", 
+     RowBox[{"\<\"Gender\"\>", "\[Rule]", "\<\"M\"\>"}], ",", 
+     RowBox[{"\<\"Name\"\>", "\[Rule]", "\<\"Joe\"\>"}]}], 
+    "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"Age\"\>", "\[Rule]", "23"}], ",", 
+     RowBox[{"\<\"State\"\>", "\[Rule]", "\<\"IL\"\>"}], ",", 
+     RowBox[{"\<\"Gender\"\>", "\[Rule]", "\<\"M\"\>"}], ",", 
+     RowBox[{"\<\"Name\"\>", "\[Rule]", "\<\"John\"\>"}]}], 
+    "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"Age\"\>", "\[Rule]", "43"}], ",", 
+     RowBox[{"\<\"State\"\>", "\[Rule]", "\<\"PA\"\>"}], ",", 
+     RowBox[{"\<\"Gender\"\>", "\[Rule]", "\<\"F\"\>"}], ",", 
+     RowBox[{"\<\"Name\"\>", "\[Rule]", "\<\"Judy\"\>"}]}], 
+    "\[RightAssociation]"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.7134741121517153`*^9, 3.7134742111254053`*^9, 
+  3.71582415081703*^9}]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell["\<\
+Check your new database to see if it includes a person named Bob.\
+\>", "Text",
+ CellChangeTimes->{{3.7134731397453337`*^9, 3.713473148799645*^9}, {
+   3.713473187010262*^9, 3.713473234687008*^9}, {3.713473398580948*^9, 
+   3.713473408691884*^9}, {3.713473654222518*^9, 3.7134736542927227`*^9}, {
+   3.713473819164837*^9, 3.71347387522859*^9}, {3.713474083542399*^9, 
+   3.713474097228401*^9}, {3.713474223904051*^9, 3.713474254377535*^9}, 
+   3.715824011819735*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.680413280898682*^9, 3.6804132817067957`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MemberQ", "[", 
+  RowBox[{
+   RowBox[{"Lookup", "[", 
+    RowBox[{"dataBaseAssociation2", " ", ",", "\"\<Name\>\""}], "]"}], ",", 
+   "\"\<Bob\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.713473887962009*^9, 3.7134738902065887`*^9}, {
+   3.713474107466433*^9, 3.713474136869327*^9}, {3.713474208862905*^9, 
+   3.713474210637165*^9}, {3.713474259937106*^9, 3.713474321874584*^9}, 
+   3.71582412974257*^9}],
+
+Cell[BoxData["False"], "Output",
+ CellChangeTimes->{{3.713474295574665*^9, 3.7134743221775227`*^9}, 
+   3.715824150866436*^9}]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell["\<\
+Print the names and states and genders of people who are over 30. \
+\>", "Text",
+ CellChangeTimes->{{3.7134731397453337`*^9, 3.713473148799645*^9}, {
+  3.713473187010262*^9, 3.713473234687008*^9}, {3.713473398580948*^9, 
+  3.713473408691884*^9}, {3.713473654222518*^9, 3.7134736542927227`*^9}, {
+  3.713473819164837*^9, 3.71347387522859*^9}, {3.713474083542399*^9, 
+  3.713474097228401*^9}, {3.713474223904051*^9, 3.713474254377535*^9}, {
+  3.7134743459690742`*^9, 3.713474363719638*^9}, {3.7134745352156878`*^9, 
+  3.713474544160746*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.680413280898682*^9, 3.6804132817067957`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Grid", "[", 
+  RowBox[{
+   RowBox[{"Lookup", "[", 
+    RowBox[{
+     RowBox[{"Select", "[", 
+      RowBox[{"dataBaseAssociation2", " ", ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"#", "[", "\"\<Age\>\"", "]"}], ">", "30"}], "&"}]}], "]"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<Name\>\"", ",", "\"\<State\>\"", ",", "\"\<Gender\>\""}], 
+      "}"}]}], "]"}], ",", 
+   RowBox[{"Frame", "\[Rule]", "All"}], ",", 
+   RowBox[{"Background", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"None", ",", 
+      RowBox[{"{", 
+       RowBox[{"{", 
+        RowBox[{"Pink", ",", "Gray"}], "}"}], "}"}]}], "}"}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.713473887962009*^9, 3.7134738902065887`*^9}, {
+   3.713474107466433*^9, 3.713474136869327*^9}, {3.713474208862905*^9, 
+   3.713474210637165*^9}, {3.713474259937106*^9, 3.713474321874584*^9}, {
+   3.713474368176795*^9, 3.7134744068251333`*^9}, {3.71347444045389*^9, 
+   3.713474555223007*^9}, 3.7158241350081987`*^9}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"Jack\"\>", "\<\"CA\"\>", "\<\"M\"\>"},
+    {"\<\"Jake\"\>", "\<\"MD\"\>", "\<\"M\"\>"},
+    {"\<\"Jeremiah\"\>", "\<\"PA\"\>", "\<\"M\"\>"},
+    {"\<\"Jodie\"\>", "\<\"FL\"\>", "\<\"F\"\>"},
+    {"\<\"Joe\"\>", "\<\"PA\"\>", "\<\"M\"\>"},
+    {"\<\"Judy\"\>", "\<\"PA\"\>", "\<\"F\"\>"}
+   },
+   AutoDelete->False,
+   GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {{
+        RGBColor[1, 0.5, 0.5], 
+        GrayLevel[0.5]}}},
+   GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{{3.713474295574665*^9, 3.7134743221775227`*^9}, {
+   3.71347438977501*^9, 3.71347440704117*^9}, {3.713474440843286*^9, 
+   3.7134744531805277`*^9}, {3.713474485076601*^9, 3.7134745556422033`*^9}, 
+   3.7158241509146748`*^9}]
+}, Open  ]]
+}, Closed]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{819, 1005},
+WindowMargins->{{Automatic, 703}, {Automatic, 81}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 418, 6, 114, "Title"],
+Cell[CellGroupData[{
+Cell[1023, 32, 148, 2, 80, "Section"],
+Cell[1174, 36, 165, 3, 37, "Text"],
+Cell[1342, 41, 2693, 61, 248, "Input"],
+Cell[CellGroupData[{
+Cell[4060, 106, 194, 6, 54, "Subsection"],
+Cell[4257, 114, 403, 9, 37, "Text"],
+Cell[CellGroupData[{
+Cell[4685, 127, 101, 1, 43, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[4811, 132, 589, 14, 92, "Input"],
+Cell[5403, 148, 2976, 67, 248, "Output"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8440, 222, 194, 6, 54, "Subsection"],
+Cell[8637, 230, 123, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[8785, 235, 101, 1, 43, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[8911, 240, 169, 3, 39, "Input"],
+Cell[9083, 245, 328, 6, 39, "Output"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9472, 258, 194, 6, 54, "Subsection"],
+Cell[9669, 266, 169, 2, 37, "Text"],
+Cell[CellGroupData[{
+Cell[9863, 272, 101, 1, 43, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[9989, 277, 551, 16, 66, "Input"],
+Cell[10543, 295, 262, 7, 39, "Output"]
+}, Open  ]],
+Cell[10820, 305, 86, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[10931, 310, 293, 8, 39, "Input"],
+Cell[11227, 320, 141, 3, 39, "Output"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11429, 330, 194, 6, 54, "Subsection"],
+Cell[11626, 338, 273, 3, 37, "Text"],
+Cell[CellGroupData[{
+Cell[11924, 345, 101, 1, 43, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[12050, 350, 361, 9, 39, "Input"],
+Cell[12414, 361, 1146, 26, 92, "Output"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13621, 394, 194, 6, 54, "Subsection"],
+Cell[13818, 402, 697, 13, 109, "Text"],
+Cell[CellGroupData[{
+Cell[14540, 419, 101, 1, 43, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[14666, 424, 607, 14, 92, "Input"],
+Cell[15276, 440, 3050, 67, 248, "Output"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18387, 514, 194, 6, 54, "Subsection"],
+Cell[18584, 522, 476, 8, 37, "Text"],
+Cell[CellGroupData[{
+Cell[19085, 534, 101, 1, 43, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[19211, 539, 430, 9, 39, "Input"],
+Cell[19644, 550, 126, 2, 39, "Output"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19831, 559, 194, 6, 54, "Subsection"],
+Cell[20028, 567, 549, 9, 37, "Text"],
+Cell[CellGroupData[{
+Cell[20602, 580, 101, 1, 43, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[20728, 585, 1007, 26, 92, "Input"],
+Cell[21738, 613, 878, 19, 164, "Output"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

@@ -1,0 +1,337 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9549,        328]
+NotebookOptionsPosition[      7501,        254]
+NotebookOutlinePosition[      8098,        277]
+CellTagsIndexPosition[      7995,        272]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["A Note on Immutability", "Section",
+ CellChangeTimes->{{3.6799458010371428`*^9, 3.679945804244281*^9}}],
+
+Cell[TextData[{
+ "In our lecture on lists, we said that objects in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " are immutable. We\[CloseCurlyQuote]ve provided this extra material to \
+explain this in greater detail."
+}], "Text",
+ CellChangeTimes->{{3.67994580641185*^9, 3.679945856210352*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Appending to Lists", "Subsection",
+ CellChangeTimes->{{3.679945863058215*^9, 3.6799458949606113`*^9}, {
+  3.679946239884383*^9, 3.6799462400035133`*^9}}],
+
+Cell["Let\[CloseCurlyQuote]s start with a simple list:", "Text",
+ CellChangeTimes->{{3.679945868818845*^9, 3.679945905400107*^9}, {
+  3.6799459389755*^9, 3.679945941575148*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"list", "=", 
+  RowBox[{"{", 
+   RowBox[{"1", ",", "2", ",", "3"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.6799459447750683`*^9, 3.6799459470226717`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "2", ",", "3"}], "}"}]], "Output",
+ CellChangeTimes->{3.679945947495875*^9}]
+}, Open  ]],
+
+Cell["Now, let\[CloseCurlyQuote]s append to it:", "Text",
+ CellChangeTimes->{{3.679945949054742*^9, 3.679945951622513*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Append", "[", 
+  RowBox[{"list", ",", "4"}], "]"}]], "Input",
+ CellChangeTimes->{{3.679945954407544*^9, 3.679945960078615*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "2", ",", "3", ",", "4"}], "}"}]], "Output",
+ CellChangeTimes->{3.679945960382347*^9}]
+}, Open  ]],
+
+Cell["Notice that list hasn\[CloseCurlyQuote]t changed:", "Text",
+ CellChangeTimes->{{3.6799459626781187`*^9, 3.679945966941934*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["list"], "Input",
+ CellChangeTimes->{{3.679945968432301*^9, 3.679945968606193*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "2", ",", "3"}], "}"}]], "Output",
+ CellChangeTimes->{3.6799459688791323`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "We can also append to the list using the ",
+ StyleBox["AppendTo", "Code"],
+ " function:"
+}], "Text",
+ CellChangeTimes->{{3.6799459728470707`*^9, 3.679946004292583*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "AppendTo"}]], "Input",
+ CellChangeTimes->{{3.6799460057199306`*^9, 3.679946006852845*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"AppendTo\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"s\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"elem\\\", \\\
+\"TI\\\"]}], \\\"]\\\"}]\\) appends \\!\\(\\*StyleBox[\\\"elem\\\", \
+\\\"TI\\\"]\\) to the value of \\!\\(\\*StyleBox[\\\"s\\\", \\\"TI\\\"]\\), \
+and resets \\!\\(\\*StyleBox[\\\"s\\\", \\\"TI\\\"]\\) to the result. \"\>", 
+   "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/AppendTo"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.6799460072694387`*^9},
+ CellTags->"Info-b086a516-a2ed-47ba-a59a-e13bf36a2644"]
+}, Open  ]],
+
+Cell["Let\[CloseCurlyQuote]s try it again:", "Text",
+ CellChangeTimes->{{3.679946017781373*^9, 3.679946019923946*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AppendTo", "[", 
+  RowBox[{"list", ",", "4"}], "]"}]], "Input",
+ CellChangeTimes->{{3.679946021345377*^9, 3.679946025747962*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "2", ",", "3", ",", "4"}], "}"}]], "Output",
+ CellChangeTimes->{3.679946026349024*^9}]
+}, Open  ]],
+
+Cell["Now what does list look like?", "Text",
+ CellChangeTimes->{{3.679946028316023*^9, 3.6799460316679497`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["list"], "Input",
+ CellChangeTimes->{{3.67994603264944*^9, 3.67994603464377*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "2", ",", "3", ",", "4"}], "}"}]], "Output",
+ CellChangeTimes->{3.679946034916459*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Hmm... it looks like we mutated list, doesn\[CloseCurlyQuote]t it? However, \
+notice the documentation of ",
+ StyleBox["AppendTo", "Code"],
+ ". It says that AppendTo appends to the value of s and then ",
+ StyleBox["resets s to the result",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ ". This is the key. Under the hood, ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " replaced our value of s. Here\[CloseCurlyQuote]s an example demonstrating \
+that object mutation never occurred:"
+}], "Text",
+ CellChangeTimes->{{3.679946037228965*^9, 3.679946149863367*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"list1", "=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"list2", "=", "list1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AppendTo", "[", 
+   RowBox[{"list1", ",", "4"}], "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.679946151826202*^9, 3.679946172422503*^9}}],
+
+Cell[TextData[{
+ "What do you expect ",
+ StyleBox["list1", "Code"],
+ " and ",
+ StyleBox["list2", "Code"],
+ " to look like? Think about it before reading on."
+}], "Text",
+ CellChangeTimes->{{3.679946176662401*^9, 3.679946204341196*^9}, {
+  3.679946522443741*^9, 3.679946524161291*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.679946808343443*^9, 3.67994680904675*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["list1"], "Input",
+ CellChangeTimes->{{3.6799462097071743`*^9, 3.679946210069146*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "2", ",", "3", ",", "4"}], "}"}]], "Output",
+ CellChangeTimes->{3.679946210526082*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["list2"], "Input",
+ CellChangeTimes->{{3.6799462111225767`*^9, 3.679946211476973*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "2", ",", "3"}], "}"}]], "Output",
+ CellChangeTimes->{3.679946211848193*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "If you\[CloseCurlyQuote]re a programmer, you might have thought that ",
+ StyleBox["list1", "Code"],
+ " and ",
+ StyleBox["list2", "Code"],
+ " would be the same, because we set ",
+ StyleBox["list2 = list1", "Code"],
+ ". However, objects in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " are immutable. Moreover, setting ",
+ StyleBox["list2 = list1", "Code"],
+ " has the effect of ",
+ StyleBox["deep copying",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ " ",
+ StyleBox["list1", "Code"],
+ " to ",
+ StyleBox["list2", "Code"],
+ ". "
+}], "Text",
+ CellChangeTimes->{{3.6799462505634604`*^9, 3.6799463915663157`*^9}, {
+  3.679946439629026*^9, 3.679946466811708*^9}, {3.67994656727287*^9, 
+  3.679946677036909*^9}}],
+
+Cell[TextData[{
+ "Additionally, there is no way in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " to achieve the effect creating a pointer or reference. This is true about \
+all objects including lists and associations, with only very specific fringe \
+exceptions."
+}], "Text",
+ CellChangeTimes->{
+  3.679946678272637*^9, {3.679946708546576*^9, 3.679946797719118*^9}}]
+}, Closed]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{808, 905},
+WindowMargins->{{390, Automatic}, {Automatic, 50}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"10.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (October 9, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info-b086a516-a2ed-47ba-a59a-e13bf36a2644"->{
+  Cell[2890, 101, 683, 14, 51, "Print",
+   CellTags->"Info-b086a516-a2ed-47ba-a59a-e13bf36a2644"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info-b086a516-a2ed-47ba-a59a-e13bf36a2644", 7872, 266}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 109, 1, 80, "Section"],
+Cell[692, 25, 303, 7, 61, "Text"],
+Cell[CellGroupData[{
+Cell[1020, 36, 159, 2, 54, "Subsection"],
+Cell[1182, 40, 177, 2, 37, "Text"],
+Cell[CellGroupData[{
+Cell[1384, 46, 179, 4, 35, "Input"],
+Cell[1566, 52, 125, 3, 35, "Output"]
+}, Open  ]],
+Cell[1706, 58, 123, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[1854, 63, 151, 3, 36, "Input"],
+Cell[2008, 68, 135, 3, 35, "Output"]
+}, Open  ]],
+Cell[2158, 74, 133, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[2316, 79, 96, 1, 35, "Input"],
+Cell[2415, 82, 127, 3, 35, "Output"]
+}, Open  ]],
+Cell[2557, 88, 186, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[2768, 97, 119, 2, 36, "Input"],
+Cell[2890, 101, 683, 14, 51, "Print",
+ CellTags->"Info-b086a516-a2ed-47ba-a59a-e13bf36a2644"]
+}, Open  ]],
+Cell[3588, 118, 118, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[3731, 123, 153, 3, 36, "Input"],
+Cell[3887, 128, 135, 3, 35, "Output"]
+}, Open  ]],
+Cell[4037, 134, 113, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[4175, 139, 94, 1, 35, "Input"],
+Cell[4272, 142, 135, 3, 35, "Output"]
+}, Open  ]],
+Cell[4422, 148, 587, 14, 109, "Text"],
+Cell[5012, 164, 385, 11, 78, "Input"],
+Cell[5400, 177, 284, 8, 37, "Text"],
+Cell[CellGroupData[{
+Cell[5709, 189, 98, 1, 43, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[5832, 194, 99, 1, 35, "Input"],
+Cell[5934, 197, 135, 3, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6106, 205, 99, 1, 35, "Input"],
+Cell[6208, 208, 125, 3, 35, "Output"]
+}, Open  ]],
+Cell[6348, 214, 734, 24, 85, "Text"],
+Cell[7085, 240, 376, 9, 85, "Text"]
+}, Closed]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

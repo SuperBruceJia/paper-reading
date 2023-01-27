@@ -1,0 +1,1551 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     66116,       1543]
+NotebookOptionsPosition[     60687,       1369]
+NotebookOutlinePosition[     61914,       1404]
+CellTagsIndexPosition[     61626,       1396]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Associations", "Section",
+ CellChangeTimes->{{3.666627072074589*^9, 3.666627074255021*^9}, 
+   3.675726759987706*^9}],
+
+Cell[TextData[{
+ "Hello and welcome to our lecture on associations. Associations are a recent \
+addition to ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " as they were added in version 10."
+}], "Text",
+ CellChangeTimes->{{3.675721805585968*^9, 3.675721930553141*^9}, {
+  3.675722268645102*^9, 3.675722290604878*^9}, {3.675726675087776*^9, 
+  3.67572668013481*^9}, {3.693446325763488*^9, 3.693446332127602*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Introduction", "Subsection",
+ CellChangeTimes->{{3.69344630796*^9, 3.6934463092452593`*^9}}],
+
+Cell["\<\
+Associations are a special type of data structure that represent a mapping \
+between a unique key and a value. In other languages, associations are \
+typically known as dictionaries or hash maps. Let\[CloseCurlyQuote]s take a \
+look at the definition:\
+\>", "Text",
+ CellChangeTimes->{{3.666627076662537*^9, 3.666627129480732*^9}, {
+  3.6666581858247757`*^9, 3.666658230708468*^9}, {3.666658308589321*^9, 
+  3.666658373013645*^9}, {3.675721996408139*^9, 3.6757220057487307`*^9}, {
+  3.6757222926446743`*^9, 3.6757222952304583`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Association"}]], "Input",
+ CellChangeTimes->{{3.6757222725146513`*^9, 3.675722278208351*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Association\\\", \\\"[\\\", \
+RowBox[{RowBox[{SubscriptBox[StyleBox[\\\"key\\\", \\\"TI\\\"], \
+StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\"\[Rule]\\\", \
+SubscriptBox[StyleBox[\\\"val\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]]}], \\\",\\\", RowBox[{SubscriptBox[StyleBox[\\\"key\\\", \
+\\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\"\[Rule]\\\", \
+SubscriptBox[StyleBox[\\\"val\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]]}], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"]\
+\\\"}]\) or \!\(\*RowBox[{\\\"\[LeftAssociation]\\\", \
+RowBox[{RowBox[{SubscriptBox[StyleBox[\\\"key\\\", \\\"TI\\\"], \
+StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\"\[Rule]\\\", \
+SubscriptBox[StyleBox[\\\"val\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]]}], \\\",\\\", RowBox[{SubscriptBox[StyleBox[\\\"key\\\", \
+\\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\"\[Rule]\\\", \
+SubscriptBox[StyleBox[\\\"val\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]]}], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"\
+\[RightAssociation]\\\"}]\) represents an association between keys and \
+values.\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Association"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.6757222786165543`*^9},
+ CellTags->"Info-2b66e647-1964-44e5-aad7-be0d5cfed553"]
+}, Open  ]],
+
+Cell["\<\
+So, we define an association with less than, pipe, and then pipe, less than. \
+Let\[CloseCurlyQuote]s define a simple one:\
+\>", "Text",
+ CellChangeTimes->{{3.6757223270129547`*^9, 3.6757223636216373`*^9}, {
+  3.693446354358672*^9, 3.6934463665833*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"letterToNumber", " ", "=", " ", 
+  RowBox[{"<|", 
+   RowBox[{
+    RowBox[{"a", "\[Rule]", "1"}], ",", 
+    RowBox[{"b", "\[Rule]", "2"}], ",", 
+    RowBox[{"c", "\[Rule]", "3"}]}], "|>"}]}]], "Input",
+ CellChangeTimes->{{3.6666271583727217`*^9, 3.666627158934107*^9}, {
+  3.675722374283897*^9, 3.6757223877424088`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"a", "\[Rule]", "1"}], ",", 
+   RowBox[{"b", "\[Rule]", "2"}], ",", 
+   RowBox[{"c", "\[Rule]", "3"}]}], "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{{3.66662715410867*^9, 3.666627159192807*^9}, 
+   3.6666581679888887`*^9, 3.675722390775226*^9}]
+}, Open  ]],
+
+Cell["Let\[CloseCurlyQuote]s get the number for b:", "Text",
+ CellChangeTimes->{{3.675722397921309*^9, 3.675722402146062*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"letterToNumber", "[", "b", "]"}]], "Input",
+ CellChangeTimes->{{3.666627162254383*^9, 3.666627168889801*^9}, {
+  3.675722404675256*^9, 3.675722405348781*^9}}],
+
+Cell[BoxData["2"], "Output",
+ CellChangeTimes->{3.666627169205188*^9, 3.666658168195943*^9, 
+  3.675722406380269*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "The ",
+ StyleBox["Keys", "Code"],
+ " function gets the keys from an association:"
+}], "Text",
+ CellChangeTimes->{{3.675722409149537*^9, 3.6757224256091127`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Keys"}]], "Input",
+ CellChangeTimes->{{3.675722426552956*^9, 3.675722427238894*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Keys\\\", \\\"[\\\", RowBox[{\\\"\
+\[LeftAssociation]\\\", RowBox[{RowBox[{SubscriptBox[StyleBox[\\\"key\\\", \\\
+\"TI\\\"], StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\"\[Rule]\\\", \
+SubscriptBox[StyleBox[\\\"val\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]]}], \\\",\\\", RowBox[{SubscriptBox[StyleBox[\\\"key\\\", \
+\\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\"\[Rule]\\\", \
+SubscriptBox[StyleBox[\\\"val\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]]}], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"\
+\[RightAssociation]\\\"}], \\\"]\\\"}]\\) gives a list of the keys \
+\\!\\(\\*SubscriptBox[StyleBox[\\\"key\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \
+\\\"TI\\\"]]\\) in an association.\\n\\!\\(\\*RowBox[{\\\"Keys\\\", \
+\\\"[\\\", RowBox[{\\\"{\\\", RowBox[{RowBox[{SubscriptBox[StyleBox[\\\"key\\\
+\", \\\"TI\\\"], StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\"\[Rule]\\\", \
+SubscriptBox[StyleBox[\\\"val\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]]}], \\\",\\\", RowBox[{SubscriptBox[StyleBox[\\\"key\\\", \
+\\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\"\[Rule]\\\", \
+SubscriptBox[StyleBox[\\\"val\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]]}], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\
+\\\"}], \\\"]\\\"}]\\) gives a list of the \
+\\!\\(\\*SubscriptBox[StyleBox[\\\"key\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \
+\\\"TI\\\"]]\\) in a list of rules.\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Keys"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.675722427702079*^9},
+ CellTags->"Info-234e61b2-573a-4896-8ed9-0d52c3eaa3c8"]
+}, Open  ]],
+
+Cell["The keys of our association is:", "Text",
+ CellChangeTimes->{{3.675722430387282*^9, 3.6757224347482758`*^9}, {
+  3.6934463852552223`*^9, 3.693446395996723*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Keys", "[", "letterToNumber", "]"}]], "Input",
+ CellChangeTimes->{{3.66662806134763*^9, 3.66662806610937*^9}, {
+  3.675722437005033*^9, 3.675722437519164*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"a", ",", "b", ",", "c"}], "}"}]], "Output",
+ CellChangeTimes->{3.6666280664607353`*^9, 3.666658168243638*^9, 
+  3.6757224378029127`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "The ",
+ StyleBox["Values", "Code"],
+ " functions gets the values from an association:"
+}], "Text",
+ CellChangeTimes->{{3.675722440142902*^9, 3.675722446599564*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Values"}]], "Input",
+ CellChangeTimes->{{3.675722447439516*^9, 3.675722448196205*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Values\\\", \\\"[\\\", RowBox[{\\\"\
+\[LeftAssociation]\\\", RowBox[{RowBox[{SubscriptBox[StyleBox[\\\"key\\\", \\\
+\"TI\\\"], StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\"\[Rule]\\\", \
+SubscriptBox[StyleBox[\\\"val\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]]}], \\\",\\\", RowBox[{SubscriptBox[StyleBox[\\\"key\\\", \
+\\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\"\[Rule]\\\", \
+SubscriptBox[StyleBox[\\\"val\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]]}], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"\
+\[RightAssociation]\\\"}], \\\"]\\\"}]\\) gives a list of the values \
+\\!\\(\\*SubscriptBox[StyleBox[\\\"val\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \
+\\\"TI\\\"]]\\) in an association.\\n\\!\\(\\*RowBox[{\\\"Values\\\", \\\"[\\\
+\", RowBox[{\\\"{\\\", RowBox[{RowBox[{SubscriptBox[StyleBox[\\\"key\\\", \
+\\\"TI\\\"], StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\"\[Rule]\\\", \
+SubscriptBox[StyleBox[\\\"val\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]]}], \\\",\\\", RowBox[{SubscriptBox[StyleBox[\\\"key\\\", \
+\\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\"\[Rule]\\\", \
+SubscriptBox[StyleBox[\\\"val\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]]}], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\
+\\\"}], \\\"]\\\"}]\\) gives a list of the \
+\\!\\(\\*SubscriptBox[StyleBox[\\\"val\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \
+\\\"TI\\\"]]\\) in a list of rules.\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Values"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.675722448497901*^9},
+ CellTags->"Info-4cfe5aff-bb5d-4e6c-949f-1a090bbbbc58"]
+}, Open  ]],
+
+Cell["The values of our association is:", "Text",
+ CellChangeTimes->{{3.675722452426147*^9, 3.675722455938218*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Values", "[", "letterToNumber", "]"}]], "Input",
+ CellChangeTimes->{{3.66662806134763*^9, 3.666628071633359*^9}, {
+  3.675722457795583*^9, 3.675722458205152*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "2", ",", "3"}], "}"}]], "Output",
+ CellChangeTimes->{3.666628072279696*^9, 3.666658168294623*^9, 
+  3.675722458527481*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "We can add a key value pair to the association using the ",
+ StyleBox["Append", "Code"],
+ " function with a ",
+ StyleBox["Rule", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.675722462445663*^9, 3.675722514658271*^9}, {
+  3.67572264147303*^9, 3.6757226416873198`*^9}, {3.693446401589913*^9, 
+  3.693446405972289*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"letterToNumber", "=", 
+  RowBox[{"Append", "[", 
+   RowBox[{"letterToNumber", ",", 
+    RowBox[{"d", "\[Rule]", "4"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.666658662452197*^9, 3.6666586704882393`*^9}, {
+  3.675722517843525*^9, 3.6757225225165043`*^9}, {3.675722615606956*^9, 
+  3.675722616557763*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"a", "\[Rule]", "1"}], ",", 
+   RowBox[{"b", "\[Rule]", "2"}], ",", 
+   RowBox[{"c", "\[Rule]", "3"}], ",", 
+   RowBox[{"d", "\[Rule]", "4"}]}], "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{3.66665867100589*^9, 3.675722524373146*^9, 
+  3.675722617384921*^9}]
+}, Open  ]],
+
+Cell["If we add a key that already exists:", "Text",
+ CellChangeTimes->{{3.675722794370762*^9, 3.6757228000112677`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"letterToNumber", "=", 
+  RowBox[{"Append", "[", 
+   RowBox[{"letterToNumber", ",", 
+    RowBox[{"a", "\[Rule]", "Infinity"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.675722803978918*^9, 3.675722813056922*^9}, {
+  3.675726434843964*^9, 3.6757264360761127`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"b", "\[Rule]", "2"}], ",", 
+   RowBox[{"c", "\[Rule]", "3"}], ",", 
+   RowBox[{"d", "\[Rule]", "4"}], ",", 
+   RowBox[{"a", "\[Rule]", "\[Infinity]"}]}], 
+  "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{3.6757228133524523`*^9, 3.675726437531101*^9}]
+}, Open  ]],
+
+Cell["The value for the key is replaced. Now if we access a:", "Text",
+ CellChangeTimes->{{3.67572281702595*^9, 3.6757228224024553`*^9}, {
+  3.675726424594141*^9, 3.675726427423987*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"letterToNumber", "[", "a", "]"}]], "Input",
+ CellChangeTimes->{{3.675726439665718*^9, 3.675726441157237*^9}}],
+
+Cell[BoxData["\[Infinity]"], "Output",
+ CellChangeTimes->{3.6757264414334183`*^9}]
+}, Open  ]],
+
+Cell["\<\
+It\[CloseCurlyQuote]s equal to infinity. We can also set the value of a key \
+as follows:\
+\>", "Text",
+ CellChangeTimes->{{3.6757264447018948`*^9, 3.6757264506469727`*^9}, {
+  3.675726484295598*^9, 3.67572649999597*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"letterToNumber", "[", "a", "]"}], "=", "1"}]], "Input",
+ CellChangeTimes->{{3.675726501218203*^9, 3.6757265035172453`*^9}}],
+
+Cell[BoxData["1"], "Output",
+ CellChangeTimes->{3.675726503927075*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["letterToNumber"], "Input",
+ CellChangeTimes->{{3.675726505140004*^9, 3.675726505744965*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"b", "\[Rule]", "2"}], ",", 
+   RowBox[{"c", "\[Rule]", "3"}], ",", 
+   RowBox[{"d", "\[Rule]", "4"}], ",", 
+   RowBox[{"a", "\[Rule]", "1"}]}], "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{3.675726505964715*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "The function ",
+ StyleBox["KeyExistsQ", "Code"],
+ " lets you check if a key exists:"
+}], "Text",
+ CellChangeTimes->{{3.675726915967305*^9, 3.6757269433666267`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"KeyExistsQ", "[", 
+  RowBox[{"letterToNumber", ",", "a"}], "]"}]], "Input",
+ CellChangeTimes->{{3.675726944579361*^9, 3.675726951688924*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{3.675726952145166*^9}]
+}, Open  ]],
+
+Cell["And if it doesn\[CloseCurlyQuote]t exist:", "Text",
+ CellChangeTimes->{{3.675726954625935*^9, 3.6757269583071012`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"KeyExistsQ", "[", 
+  RowBox[{"leftHandWords", ",", "z"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6757269596096287`*^9, 3.675726962924664*^9}}],
+
+Cell[BoxData["False"], "Output",
+ CellChangeTimes->{3.675726963295726*^9}]
+}, Open  ]],
+
+Cell["It returns False.", "Text",
+ CellChangeTimes->{{3.675726964436576*^9, 3.67572696779021*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Database Example", "Subsection",
+ CellChangeTimes->{{3.666628078262084*^9, 3.666628083974112*^9}, {
+  3.6757269765699253`*^9, 3.6757269782805*^9}}],
+
+Cell["\<\
+Let\[CloseCurlyQuote]s do a little database example. Suppose you had the \
+following data:\
+\>", "Text",
+ CellChangeTimes->{{3.6757269839154253`*^9, 3.675727000071478*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"data", "=", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"<|", 
+     RowBox[{
+      RowBox[{"\"\<FirstName\>\"", "\[Rule]", "\"\<Albert\>\""}], ",", " ", 
+      RowBox[{"\"\<LastName\>\"", "\[Rule]", "\"\<Einstein\>\""}], ",", 
+      RowBox[{"\"\<FamousFor\>\"", "\[Rule]", "\"\<Sciencing\>\""}]}], "|>"}],
+     ",", "\[IndentingNewLine]", 
+    RowBox[{"<|", 
+     RowBox[{
+      RowBox[{"\"\<FirstName\>\"", "\[Rule]", "\"\<Fred\>\""}], ",", " ", 
+      RowBox[{"\"\<LastName\>\"", "\[Rule]", "\"\<Astaire\>\""}], ",", 
+      RowBox[{"\"\<FamousFor\>\"", "\[Rule]", "\"\<Dancing\>\""}]}], "|>"}], 
+    ",", "\[IndentingNewLine]", 
+    RowBox[{"<|", 
+     RowBox[{
+      RowBox[{"\"\<FirstName\>\"", "\[Rule]", "\"\<Lionel\>\""}], ",", " ", 
+      RowBox[{"\"\<LastName\>\"", "\[Rule]", "\"\<Messi\>\""}], ",", 
+      RowBox[{"\"\<FamousFor\>\"", "\[Rule]", "\"\<Footballing\>\""}]}], 
+     "|>"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"<|", 
+     RowBox[{
+      RowBox[{"\"\<FirstName\>\"", "\[Rule]", "\"\<Bill\>\""}], ",", " ", 
+      RowBox[{"\"\<LastName\>\"", "\[Rule]", "\"\<Gates\>\""}], ",", 
+      RowBox[{"\"\<FamousFor\>\"", "\[Rule]", "\"\<Computering\>\""}]}], 
+     "|>"}]}], "\[IndentingNewLine]", "}"}]}]], "Input",
+ CellChangeTimes->{{3.666627188615982*^9, 3.666627517606411*^9}, {
+  3.666627553158168*^9, 3.6666275662626133`*^9}, {3.666627692208622*^9, 
+  3.6666277281271048`*^9}, {3.6666278166645517`*^9, 3.666627836622346*^9}, {
+  3.6666279585186663`*^9, 3.6666279689217577`*^9}, {3.6757270019287786`*^9, 
+  3.6757272343348303`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"FirstName\"\>", "\[Rule]", "\<\"Albert\"\>"}], ",", 
+     RowBox[{"\<\"LastName\"\>", "\[Rule]", "\<\"Einstein\"\>"}], ",", 
+     RowBox[{"\<\"FamousFor\"\>", "\[Rule]", "\<\"Sciencing\"\>"}]}], 
+    "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"FirstName\"\>", "\[Rule]", "\<\"Fred\"\>"}], ",", 
+     RowBox[{"\<\"LastName\"\>", "\[Rule]", "\<\"Astaire\"\>"}], ",", 
+     RowBox[{"\<\"FamousFor\"\>", "\[Rule]", "\<\"Dancing\"\>"}]}], 
+    "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"FirstName\"\>", "\[Rule]", "\<\"Lionel\"\>"}], ",", 
+     RowBox[{"\<\"LastName\"\>", "\[Rule]", "\<\"Messi\"\>"}], ",", 
+     RowBox[{"\<\"FamousFor\"\>", "\[Rule]", "\<\"Footballing\"\>"}]}], 
+    "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"FirstName\"\>", "\[Rule]", "\<\"Bill\"\>"}], ",", 
+     RowBox[{"\<\"LastName\"\>", "\[Rule]", "\<\"Gates\"\>"}], ",", 
+     RowBox[{"\<\"FamousFor\"\>", "\[Rule]", "\<\"Computering\"\>"}]}], 
+    "\[RightAssociation]"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.666627336140683*^9, 3.6666273594683447`*^9}, {
+   3.666627415634822*^9, 3.666627441521125*^9}, {3.66662755628554*^9, 
+   3.666627567064045*^9}, 3.666627695781004*^9, 3.666627837946323*^9, 
+   3.666627969150998*^9, 3.6666581683458853`*^9, {3.6757272284581623`*^9, 
+   3.6757272351939993`*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "The function ",
+ StyleBox["Lookup", "Code"],
+ " let\[CloseCurlyQuote]s us select specific fields from our data:"
+}], "Text",
+ CellChangeTimes->{{3.675727253445108*^9, 3.6757272741781387`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Lookup"}]], "Input",
+ CellChangeTimes->{{3.675727274918902*^9, 3.675727275899066*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Lookup\\\", \\\"[\\\", RowBox[{StyleBox[\
+\\\"assoc\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"key\\\", \\\"TI\\\"]}], \
+\\\"]\\\"}]\\) looks up the value associated with \\!\\(\\*StyleBox[\\\"key\\\
+\", \\\"TI\\\"]\\) in the association \\!\\(\\*StyleBox[\\\"assoc\\\", \\\"TI\
+\\\"]\\); if the key is not present, \\!\\(\\*RowBox[{\\\"Missing\\\", \
+\\\"[\\\", \
+RowBox[{StyleBox[\\\"\\\\\\\"KeyAbsent\\\\\\\"\\\",ShowStringCharacters->True]\
+, \\\",\\\", StyleBox[\\\"key\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) is returned.\
+\\n\\!\\(\\*RowBox[{\\\"Lookup\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"assoc\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"key\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"key\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\\) gives a list of the values \
+associated with the \\!\\(\\*SubscriptBox[StyleBox[\\\"key\\\", \\\"TI\\\"], \
+StyleBox[\\\"i\\\", \\\"TI\\\"]]\\).\\n\\!\\(\\*RowBox[{\\\"Lookup\\\", \\\"[\
+\\\", RowBox[{RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"assoc\\\", \
+\\\"TI\\\"], StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"assoc\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\
+\"}], \\\",\\\", StyleBox[\\\"key\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) gives a \
+list corresponding to the value of \\!\\(\\*StyleBox[\\\"key\\\", \\\"TI\\\"]\
+\\) in each \\!\\(\\*SubscriptBox[StyleBox[\\\"assoc\\\", \\\"TI\\\"], \
+StyleBox[\\\"i\\\", \\\"TI\\\"]]\\).\\n\\!\\(\\*RowBox[{\\\"Lookup\\\", \\\"[\
+\\\", RowBox[{StyleBox[\\\"assoc\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"key\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"default\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\\) gives \\!\\(\\*StyleBox[\\\"default\\\", \\\"TI\
+\\\"]\\) if the \\!\\(\\*StyleBox[\\\"key\\\", \\\"TI\\\"]\\) is not present.\
+\\n\\!\\(\\*RowBox[{\\\"Lookup\\\", \\\"[\\\", StyleBox[\\\"key\\\", \\\"TI\\\
+\"], \\\"]\\\"}]\\) represents an operator form of Lookup that can be applied \
+to an expression.\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Lookup"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.675727276301828*^9},
+ CellTags->"Info-4954808b-9033-471d-9055-7e18f6689a4d"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Let\[CloseCurlyQuote]s get the ",
+ StyleBox["LastName", "Code"],
+ " and ",
+ StyleBox["FamousFor", "Code"],
+ " columns:"
+}], "Text",
+ CellChangeTimes->{{3.675727277620337*^9, 3.675727291799138*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Lookup", "[", 
+  RowBox[{"data", ",", 
+   RowBox[{"{", 
+    RowBox[{"\"\<LastName\>\"", ",", "\"\<FamousFor\>\""}], "}"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6666278765806503`*^9, 3.6666279381753902`*^9}, {
+  3.6666279843904867`*^9, 3.666627984705448*^9}, {3.675727295672924*^9, 
+  3.675727311526005*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"Einstein\"\>", ",", "\<\"Sciencing\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Astaire\"\>", ",", "\<\"Dancing\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Messi\"\>", ",", "\<\"Footballing\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Gates\"\>", ",", "\<\"Computering\"\>"}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.666627906036674*^9, 3.666627938426342*^9}, 
+   3.6666279849759083`*^9, 3.666658168444169*^9, {3.675727304943637*^9, 
+   3.675727312050778*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "To ",
+ StyleBox["Select", "Code"],
+ " the association where ",
+ StyleBox["FamousFor", "Code"],
+ " equals ",
+ StyleBox["Computering", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.675727365965073*^9, 3.675727380480831*^9}, 
+   3.693446488067198*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Select", "[", 
+  RowBox[{"data", ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"#", "[", "\"\<FamousFor\>\"", "]"}], "\[Equal]", 
+     "\"\<Computering\>\""}], "&"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.675727395679133*^9, 3.67572742446987*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\[LeftAssociation]", 
+   RowBox[{
+    RowBox[{"\<\"FirstName\"\>", "\[Rule]", "\<\"Bill\"\>"}], ",", 
+    RowBox[{"\<\"LastName\"\>", "\[Rule]", "\<\"Gates\"\>"}], ",", 
+    RowBox[{"\<\"FamousFor\"\>", "\[Rule]", "\<\"Computering\"\>"}]}], 
+   "\[RightAssociation]"}], "}"}]], "Output",
+ CellChangeTimes->{3.675727424845133*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "We could also use a ",
+ StyleBox["Case", "Code"],
+ " statement:"
+}], "Text",
+ CellChangeTimes->{{3.675727431455282*^9, 3.675727436888813*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Cases", "[", 
+  RowBox[{"data", ",", 
+   RowBox[{"x_", "/;", 
+    RowBox[{
+     RowBox[{"x", "[", "\"\<FamousFor\>\"", "]"}], "\[Equal]", 
+     "\"\<Computering\>\""}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.675727438212426*^9, 3.675727458775572*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\[LeftAssociation]", 
+   RowBox[{
+    RowBox[{"\<\"FirstName\"\>", "\[Rule]", "\<\"Bill\"\>"}], ",", 
+    RowBox[{"\<\"LastName\"\>", "\[Rule]", "\<\"Gates\"\>"}], ",", 
+    RowBox[{"\<\"FamousFor\"\>", "\[Rule]", "\<\"Computering\"\>"}]}], 
+   "\[RightAssociation]"}], "}"}]], "Output",
+ CellChangeTimes->{3.675727459737215*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Difference between Associations and Rule Replacements", "Subsection",
+ CellChangeTimes->{{3.675727497009461*^9, 3.675727504115325*^9}, {
+  3.675727600305491*^9, 3.675727602217945*^9}}],
+
+Cell["\<\
+Associations and Rule Replacements are actually very similar. The main \
+difference is that a rule replacement can contain the same key more than \
+once, whereas an association cannot:\
+\>", "Text",
+ CellChangeTimes->{{3.67572747040919*^9, 3.675727475139105*^9}, {
+  3.675727608851666*^9, 3.675727616782147*^9}, {3.6757276733335533`*^9, 
+  3.675727680014539*^9}, {3.675727758666828*^9, 3.67572778758751*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"rule", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"a", "\[Rule]", "1"}], ",", 
+    RowBox[{"b", "\[Rule]", "2"}], ",", 
+    RowBox[{"c", "\[Rule]", "3"}], ",", 
+    RowBox[{"d", "\[Rule]", "4"}], ",", 
+    RowBox[{"a", "\[Rule]", "Infinity"}]}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.675727796028738*^9, 3.675727805249814*^9}, {
+  3.675728237402404*^9, 3.675728242907158*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"a", "\[Rule]", "1"}], ",", 
+   RowBox[{"b", "\[Rule]", "2"}], ",", 
+   RowBox[{"c", "\[Rule]", "3"}], ",", 
+   RowBox[{"d", "\[Rule]", "4"}], ",", 
+   RowBox[{"a", "\[Rule]", "\[Infinity]"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.675727805677219*^9, 3.675728244601531*^9}]
+}, Open  ]],
+
+Cell["You can use an association like a Rule Replacement:", "Text",
+ CellChangeTimes->{{3.6757278096668787`*^9, 3.675727818724556*^9}, {
+  3.675728246108292*^9, 3.675728247267791*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"b", "/.", "letterToNumber"}]], "Input",
+ CellChangeTimes->{{3.6757278205079727`*^9, 3.675727822718109*^9}, {
+  3.675728254062559*^9, 3.675728254358362*^9}}],
+
+Cell[BoxData["2"], "Output",
+ CellChangeTimes->{
+  3.6757278229493933`*^9, {3.675728248411407*^9, 3.6757282548277893`*^9}}]
+}, Open  ]],
+
+Cell["In the same way you would use a Rule Replacement:", "Text",
+ CellChangeTimes->{{3.675727868331471*^9, 3.6757278759416647`*^9}, {
+  3.693446533359586*^9, 3.6934465366395903`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"b", "/.", "rule"}]], "Input",
+ CellChangeTimes->{{3.6757278570294228`*^9, 3.675727858384738*^9}, {
+  3.6757282567591143`*^9, 3.675728257695034*^9}}],
+
+Cell[BoxData["2"], "Output",
+ CellChangeTimes->{
+  3.675727858760808*^9, {3.675728250422037*^9, 3.67572825804257*^9}}]
+}, Open  ]],
+
+Cell["To replace an entry in a Rule Replacement:", "Text",
+ CellChangeTimes->{{3.675728213818721*^9, 3.675728228558208*^9}, {
+  3.693446554375058*^9, 3.693446555678836*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"rule", "/.", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"a", "\[Rule]", "_"}], ")"}], "\[Rule]", 
+   RowBox[{"(", 
+    RowBox[{"a", "\[Rule]", "20"}], ")"}]}]}]], "Input",
+ CellChangeTimes->{{3.675728230647993*^9, 3.675728233008054*^9}, {
+  3.675728264745371*^9, 3.675728291281287*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"a", "\[Rule]", "20"}], ",", 
+   RowBox[{"b", "\[Rule]", "2"}], ",", 
+   RowBox[{"c", "\[Rule]", "3"}], ",", 
+   RowBox[{"d", "\[Rule]", "4"}], ",", 
+   RowBox[{"a", "\[Rule]", "20"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.675728291985215*^9}]
+}, Open  ]],
+
+Cell["\<\
+There is one additional difference. Associations are implemented with a \
+HashMap, which means that lookup of a key can be done in O(1), which \
+essentially means that a lookup takes an amount of time that is independent \
+of the number of keys in the HashMap.\
+\>", "Text",
+ CellChangeTimes->{{3.675728300516088*^9, 3.675728367816367*^9}, {
+   3.6757284512539177`*^9, 3.6757284881290903`*^9}, {3.675729056442967*^9, 
+   3.6757290575556383`*^9}, 3.675730924937801*^9, {3.693446577589979*^9, 
+   3.693446596109172*^9}}],
+
+Cell["Let\[CloseCurlyQuote]s demo this:", "Text",
+ CellChangeTimes->{{3.675730927084416*^9, 3.67573093427873*^9}, {
+  3.6757309780439253`*^9, 3.675731122868442*^9}, {3.675731275175816*^9, 
+  3.6757312795216722`*^9}, {3.693446599916855*^9, 3.693446609244594*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Labeled", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"ListPlot", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Transpose", "@", "\[IndentingNewLine]", 
+      RowBox[{"Table", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Module", "[", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"samples", "=", "100"}], ",", "\[IndentingNewLine]", 
+            RowBox[{"numRule", "=", 
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"i", "\[Rule]", "i"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"i", ",", "1", ",", "j"}], "}"}]}], "]"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"numAssoc", "=", 
+             RowBox[{"Association", "[", "numRule", "]"}]}], ",", 
+            "\[IndentingNewLine]", "randNumbers"}], "\[IndentingNewLine]", 
+           "}"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"randNumbers", "=", 
+            RowBox[{"RandomInteger", "[", 
+             RowBox[{
+              RowBox[{"Length", "[", "numRule", "]"}], ",", "samples"}], 
+             "]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"Timing", "[", 
+                RowBox[{"randNumbers", "/.", "numRule"}], "]"}], "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "/", "samples"}], ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"Timing", "[", 
+                RowBox[{"randNumbers", "/.", "numAssoc"}], "]"}], "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "/", "samples"}]}], "}"}]}]}], 
+         "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{"j", ",", "1", ",", "1000", ",", "1"}], "}"}]}], "]"}]}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{"PlotLegends", "\[Rule]", 
+      RowBox[{"SwatchLegend", "[", 
+       RowBox[{"{", 
+        RowBox[{"\"\<Rule\>\"", ",", "\"\<Assocation\>\""}], "}"}], "]"}]}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{"Frame", "\[Rule]", "Automatic"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"\"\<Size of Rule / Association\>\"", ",", 
+     RowBox[{"Rotate", "[", 
+      RowBox[{"\"\<Time in Seconds\>\"", ",", 
+       RowBox[{"Pi", "/", "2"}]}], "]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Bottom", ",", "Left"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.675728491851948*^9, 3.675728501502417*^9}, {
+   3.675729062293325*^9, 3.675729112123591*^9}, {3.6757291490922003`*^9, 
+   3.675729214577992*^9}, {3.675729261172038*^9, 3.675729393444294*^9}, {
+   3.675729441209762*^9, 3.675729481633574*^9}, {3.675729691384171*^9, 
+   3.675729715008794*^9}, {3.675729767108474*^9, 3.675729831382949*^9}, 
+   3.6757298766082*^9, {3.6757299070843*^9, 3.675729932062125*^9}, {
+   3.675730015727437*^9, 3.6757300462578287`*^9}, {3.675730097207366*^9, 
+   3.675730097775639*^9}, {3.675730231077209*^9, 3.675730311085877*^9}, {
+   3.67573035134511*^9, 3.675730356031918*^9}, {3.675730545032851*^9, 
+   3.675730555025477*^9}, {3.675730770404202*^9, 3.675730860320118*^9}, {
+   3.6757309430512466`*^9, 3.6757309583832073`*^9}, {3.675731126104086*^9, 
+   3.675731204019367*^9}, {3.67573123611062*^9, 3.675731236556843*^9}, {
+   3.675731352516945*^9, 3.675731507892497*^9}, 3.675731544209923*^9, 
+   3.675731683404192*^9, {3.6757317727152863`*^9, 3.6757318253117237`*^9}, {
+   3.675732248758459*^9, 3.675732466152824*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{TemplateBox[{
+     GraphicsBox[{{}, {{{}, {
+          Hue[0.67, 0.6, 0.6], 
+          Directive[
+           PointSize[0.004583333333333334], 
+           RGBColor[0.368417, 0.506779, 0.709798], 
+           AbsoluteThickness[1.6]], 
+          PointBox[CompressedData["
+1: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
+mSrvL2al8r2VOP+nImh0xNQkPeNrSkVO6oVBqfUF/qmounWsvU+UyP9U/h6F
++m+nYtR+71kV/qI8cyrfv5IuSIVvB48tPdrQ38JUvj8W/Z9U+X6iSIMuc8Hu
+2dGi/qchq1/rTU++ivtfmjxfrdPw1avNqWMH6K9NGgal2xRsCyDfNg3WFmNm
+9qzJ+NinYW3XhVc3nxX5n8b+IfMPaXBY5jdh7ULyh6VhRJbDqm83aJ9TGm7d
+ezXDezflu6bBxey2zf+NyP80aJeXmzQ0j/56p0Gz/WzwrCOW/5OnSkNoyrK1
+5X8xf8LT0FXdpYvvRtJSGsaYBn2x0Qr80+TxTU/Dyne+j+vGCfzT5P1zYxoC
+Xaa9WlxR4J8G39lbK23/Iep/Gjp6Fs5o80Cc/9LQqOWgb+q6pE1p2KeLnB4T
+K/b/NOwd26Wkyjax/6dhQ42kJZ5Pxf5fqm9ch+YpZ6nPnMbfYwr802BT0uNI
+f3viXVgaj7RWp9qNZ3yK05BRcLxexcEC//n8Hkq+5Xy0a2dXfmdVkf/z+b5Y
+4D8fF/e3fl65psj/Un6F1hWdfMT5fz4CptTMzhjI+NvPR8y23c7jPBgPhzI0
+5qPmj61L699T9Ps/vfdZmw==
+           "]]}, {
+          Hue[0.9060679774997897, 0.6, 0.6], 
+          Directive[
+           PointSize[0.004583333333333334], 
+           RGBColor[0.880722, 0.611041, 0.142051], 
+           AbsoluteThickness[1.6]], 
+          PointBox[CompressedData["
+1:eJxdm1uMJFUZx08wxjHRpEkwjpFgc7W5qO1ya1HhgMA2LEizy6VXwK1ld5be
+ndndmtnZmZ4LM2emZ6arLzNbCmqDoOVtbdGESoimHxSPxmi7iaZMjPYDasUX
+OyZqxYB2olFjrI35fryQH//vds53zqlT1cOlT57cO3GBUmr4JqX+++///ZPc
+ds/L333+r79u3pr+B7159rlv7TeNlMe01DPQLwKPgy8GZxHvMuhX6B+8OPeq
+zXkpXwU9B/0a8HWwfz84D/4g6tkF/XrEvwH2N+rIXjB/RX075Zv023q/81of
+aKd8sz7wrondry9/LuVCqr+Q8of0v57dF733F2dTvkVffpl34/YvOyl/WL/1
+3NfPdi//Wsof0dcd/erV1747SPmjyHcr6rsNupZswOp26Lcj3h2SDVh9TM6f
+Aas7od8J/7vkfJu74H836gOr3dB3I35R9sMU9QuZO/Y/duVnU/0e2U9zD/zv
+Rf33Qt8DfQ/quw/13Yfx3Q9/sPo45h+sHoD+APxLknUJ9mALVg9K1g+iXrAF
+q73w34v52Cv7YffqW9r53+8sfCb135ful1TX+6Ru9sF/n97507eDv//YT/0f
+SvdPyvohqRuwhb16WOr6YakbsIW9ekT/Zfon7/zRzKdS/0ew3sD2EayfR/Uz
+P71y4nu/3Un9H0V+6BasyjKeLqP/YAtW+9E/sAHb/ej/J5AfbMAWrB5D/sfg
+D7Zg9Tjygw3YgtUT8AcbsAWrT8IfbMAWrA7oO89Vdl9yd5j6H8D6OQD/A+if
+I9dD1tEP/m2w41/y6TSeI+M5DvaHI+MHYAv/+Lz/+efVQf3S9T+/8Pu1z6f5
+D2I9H0T+g5gfcAC24BisnpScBWuwAzbgAGzB8ZN4/h+S51MWrA+lz7/0+e8c
+kuedAQeH5HliwfEhnD+HpZ49jPPssH5l8Y9vfuJcuh4c6Ab+AXQLjg/j/JnA
+/E/IfmuwA3sDDsAWHE+k+b+Q5j8iz8vsEZwnYOcI8oMDsAXHRzD+p2T8LFiD
+nafwfH0K+cEWHCOeqmD+wbqC+YduKjJeALbgGKyO4vw5ivEfxf4DG3AAfwuO
+Ya+OyfFlj2H9Q3eOIT84OKbXewfPzc1+Oc1/TI4vRjw1ifyTuA9M6nf8+x/L
+V899Jc0/if03KeMHiGcn5XkSw15NIf8U8k+l+Z9J80/pP1zzzcuvuu75NP+U
+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
+wf9v+f/4/wH3NNIM
+           "]]}, {}}}, {}}, {
+      DisplayFunction -> Identity, PlotRangePadding -> {{
+          Scaled[0.02], 
+          Scaled[0.02]}, {
+          Scaled[0.02], 
+          Scaled[0.05]}}, AxesOrigin -> {0, 0}, 
+       PlotRange -> {{0., 1000.}, {0, 0.00004718}}, DisplayFunction -> 
+       Identity, AspectRatio -> NCache[GoldenRatio^(-1), 0.6180339887498948], 
+       Axes -> {True, True}, AxesLabel -> {None, None}, AxesOrigin -> {0, 0}, 
+       DisplayFunction :> Identity, 
+       Frame -> {{Automatic, Automatic}, {Automatic, Automatic}}, 
+       FrameLabel -> {{None, None}, {None, None}}, 
+       FrameTicks -> {{Automatic, Automatic}, {Automatic, Automatic}}, 
+       GridLines -> {None, None}, GridLinesStyle -> Directive[
+         GrayLevel[0.5, 0.4]], ImageSize -> Large, Method -> {}, 
+       PlotRange -> {{0., 1000.}, {0, 0.00004718}}, PlotRangeClipping -> True,
+        PlotRangePadding -> {{
+          Scaled[0.02], 
+          Scaled[0.02]}, {
+          Scaled[0.02], 
+          Scaled[0.05]}}, Ticks -> {Automatic, Automatic}}], 
+     FormBox[
+      FormBox[
+       TemplateBox[{"\"Rule\"", "\"Assocation\""}, "SwatchLegend", 
+        DisplayFunction -> (FormBox[
+          StyleBox[
+           StyleBox[
+            PaneBox[
+             TagBox[
+              GridBox[{{
+                 TagBox[
+                  GridBox[{{
+                    GraphicsBox[{
+                    Directive[
+                    EdgeForm[
+                    Directive[
+                    Opacity[0.3], 
+                    GrayLevel[0]]], 
+                    PointSize[0.16500000000000004`], 
+                    RGBColor[0.368417, 0.506779, 0.709798], 
+                    AbsoluteThickness[1.6]], 
+                    RectangleBox[{0, 0}, {10, 10}, "RoundingRadius" -> 0]}, 
+                    AspectRatio -> Full, ImageSize -> {10, 10}, 
+                    PlotRangePadding -> None, ImagePadding -> Automatic, 
+                    BaselinePosition -> (Scaled[0.1] -> Baseline)], #}, {
+                    GraphicsBox[{
+                    Directive[
+                    EdgeForm[
+                    Directive[
+                    Opacity[0.3], 
+                    GrayLevel[0]]], 
+                    PointSize[0.16500000000000004`], 
+                    RGBColor[0.880722, 0.611041, 0.142051], 
+                    AbsoluteThickness[1.6]], 
+                    RectangleBox[{0, 0}, {10, 10}, "RoundingRadius" -> 0]}, 
+                    AspectRatio -> Full, ImageSize -> {10, 10}, 
+                    PlotRangePadding -> None, ImagePadding -> Automatic, 
+                    BaselinePosition -> (Scaled[0.1] -> Baseline)], #2}}, 
+                   GridBoxAlignment -> {
+                    "Columns" -> {Center, Left}, "Rows" -> {{Baseline}}}, 
+                   AutoDelete -> False, 
+                   GridBoxDividers -> {
+                    "Columns" -> {{False}}, "Rows" -> {{False}}}, 
+                   GridBoxItemSize -> {
+                    "Columns" -> {{All}}, "Rows" -> {{All}}}, 
+                   GridBoxSpacings -> {
+                    "Columns" -> {{0.5}}, "Rows" -> {{0.5}}}], "Grid"]}}, 
+               GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}},
+                AutoDelete -> False, 
+               GridBoxItemSize -> {
+                "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+               GridBoxSpacings -> {"Columns" -> {{1}}, "Rows" -> {{0}}}], 
+              "Grid"], Alignment -> Left, AppearanceElements -> None, 
+             ImageMargins -> {{5, 5}, {5, 5}}, ImageSizeAction -> 
+             "ResizeToFit"], LineIndent -> 0, StripOnInput -> False], {
+           FontFamily -> "Arial"}, Background -> Automatic, StripOnInput -> 
+           False], TraditionalForm]& ), 
+        InterpretationFunction :> (RowBox[{"SwatchLegend", "[", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{
+                 RowBox[{"Directive", "[", 
+                   RowBox[{
+                    RowBox[{"PointSize", "[", "0.004583333333333334`", "]"}], 
+                    ",", 
+                    InterpretationBox[
+                    ButtonBox[
+                    TooltipBox[
+                    GraphicsBox[{{
+                    GrayLevel[0], 
+                    RectangleBox[{0, 0}]}, {
+                    GrayLevel[0], 
+                    RectangleBox[{1, -1}]}, {
+                    RGBColor[0.368417, 0.506779, 0.709798], 
+                    RectangleBox[{0, -1}, {2, 1}]}}, AspectRatio -> 1, Frame -> 
+                    True, FrameStyle -> 
+                    RGBColor[
+                    0.24561133333333335`, 0.3378526666666667, 
+                    0.4731986666666667], FrameTicks -> None, PlotRangePadding -> 
+                    None, ImageSize -> 
+                    Dynamic[{
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], 
+                    "RGBColor[0.368417, 0.506779, 0.709798]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
+                    If[
+                    Not[
+                    AbsoluteCurrentValue["Deployed"]], 
+                    SelectionMove[Typeset`box$, All, Expression]; 
+                    FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
+                    FrontEnd`Private`$ColorSelectorInitialColor = 
+                    RGBColor[0.368417, 0.506779, 0.709798]; 
+                    FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
+                    MathLink`CallFrontEnd[
+                    FrontEnd`AttachCell[Typeset`box$, 
+                    FrontEndResource["RGBColorValueSelector"], {
+                    0, {Left, Bottom}}, {Left, Top}, 
+                    "ClosingActions" -> {
+                    "SelectionDeparture", "ParentChanged", 
+                    "EvaluatorQuit"}]]]], BaseStyle -> Inherited, Evaluator -> 
+                    Automatic, Method -> "Preemptive"], 
+                    RGBColor[0.368417, 0.506779, 0.709798], Editable -> False,
+                     Selectable -> False], ",", 
+                    RowBox[{"AbsoluteThickness", "[", "1.6`", "]"}]}], "]"}], 
+                 ",", 
+                 RowBox[{"Directive", "[", 
+                   RowBox[{
+                    RowBox[{"PointSize", "[", "0.004583333333333334`", "]"}], 
+                    ",", 
+                    InterpretationBox[
+                    ButtonBox[
+                    TooltipBox[
+                    GraphicsBox[{{
+                    GrayLevel[0], 
+                    RectangleBox[{0, 0}]}, {
+                    GrayLevel[0], 
+                    RectangleBox[{1, -1}]}, {
+                    RGBColor[0.880722, 0.611041, 0.142051], 
+                    RectangleBox[{0, -1}, {2, 1}]}}, AspectRatio -> 1, Frame -> 
+                    True, FrameStyle -> 
+                    RGBColor[
+                    0.587148, 0.40736066666666665`, 0.09470066666666668], 
+                    FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
+                    Dynamic[{
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], 
+                    "RGBColor[0.880722, 0.611041, 0.142051]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
+                    If[
+                    Not[
+                    AbsoluteCurrentValue["Deployed"]], 
+                    SelectionMove[Typeset`box$, All, Expression]; 
+                    FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
+                    FrontEnd`Private`$ColorSelectorInitialColor = 
+                    RGBColor[0.880722, 0.611041, 0.142051]; 
+                    FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
+                    MathLink`CallFrontEnd[
+                    FrontEnd`AttachCell[Typeset`box$, 
+                    FrontEndResource["RGBColorValueSelector"], {
+                    0, {Left, Bottom}}, {Left, Top}, 
+                    "ClosingActions" -> {
+                    "SelectionDeparture", "ParentChanged", 
+                    "EvaluatorQuit"}]]]], BaseStyle -> Inherited, Evaluator -> 
+                    Automatic, Method -> "Preemptive"], 
+                    RGBColor[0.880722, 0.611041, 0.142051], Editable -> False,
+                     Selectable -> False], ",", 
+                    RowBox[{"AbsoluteThickness", "[", "1.6`", "]"}]}], 
+                   "]"}]}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{#, ",", #2}], "}"}], ",", 
+             RowBox[{"LegendMarkers", "\[Rule]", "Automatic"}], ",", 
+             RowBox[{"LabelStyle", "\[Rule]", 
+               RowBox[{"{", "}"}]}], ",", 
+             RowBox[{"LegendLayout", "\[Rule]", "\"Column\""}]}], "]"}]& ), 
+        Editable -> True], TraditionalForm], TraditionalForm]}, "Legended", 
+    DisplayFunction -> (GridBox[{{
+        TagBox[
+         ItemBox[
+          PaneBox[
+           TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline}, 
+           BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+         "SkipImageSizeLevel"], 
+        ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"]}}, 
+      GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+      AutoDelete -> False, GridBoxItemSize -> Automatic, 
+      BaselinePosition -> {1, 1}]& ), 
+    InterpretationFunction -> (RowBox[{"Legended", "[", 
+       RowBox[{#, ",", 
+         RowBox[{"Placed", "[", 
+           RowBox[{#2, ",", "After"}], "]"}]}], "]"}]& ), Editable -> True],
+   "\"Size of Rule / Association\"",RotationBox[
+   "\"Time in Seconds\"", BoxRotation -> 1.5707963267948966`]},
+  "Labeled",
+  DisplayFunction->(GridBox[{{
+      ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"], 
+      TagBox[
+       ItemBox[
+        PaneBox[
+         TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline}, 
+         BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+       "SkipImageSizeLevel"]}, {"", 
+      ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"]}}, 
+    GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+    AutoDelete -> False, 
+    GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+    BaselinePosition -> {1, 2}]& ),
+  InterpretationFunction->(RowBox[{"Labeled", "[", 
+     RowBox[{#, ",", 
+       RowBox[{"{", 
+         RowBox[{#2, ",", #3}], "}"}], ",", 
+       RowBox[{"{", 
+         RowBox[{"Bottom", ",", "Left"}], "}"}]}], "]"}]& )]], "Output",
+ CellChangeTimes->{
+  3.675730992549595*^9, {3.675731144383485*^9, 3.675731156678241*^9}, 
+   3.675731206614849*^9, 3.675731239262402*^9, {3.675731358827262*^9, 
+   3.6757313644495783`*^9}, 3.675731408976898*^9, 3.6757314819529123`*^9, 
+   3.675731560727727*^9, 3.675731686077601*^9, {3.675731801146113*^9, 
+   3.6757318280881844`*^9}, {3.675732252346799*^9, 3.675732313828038*^9}, {
+   3.675732362368331*^9, 3.67573239125865*^9}, {3.675732422546852*^9, 
+   3.6757324687727137`*^9}}]
+}, Open  ]],
+
+Cell["\<\
+This code computes the timings for replacing 100 integers in a list using \
+rule and association replacements whose sizes vary from 1 to 1000. \
+\>", "Text",
+ CellChangeTimes->{{3.675731282668727*^9, 3.675731343670561*^9}, {
+  3.675731374962776*^9, 3.6757313782599277`*^9}, {3.675731701606534*^9, 
+  3.675731745442669*^9}, {3.6757336198263206`*^9, 3.675733678958273*^9}, {
+  3.6934466303317347`*^9, 3.6934467155156717`*^9}}],
+
+Cell["\<\
+The x-axis represents the number of rules in the rule list, and the number of \
+associations in the Association. The blue dots represent the timings for the \
+rule replacement and the orange dots represent the timings for the \
+association replacement. \
+\>", "Text",
+ CellChangeTimes->{{3.693446716933859*^9, 3.6934467196198072`*^9}}],
+
+Cell["\<\
+As you can see, the time to perform a rule replacement increases as the size \
+of the rule list increases, whereas the time to perform an association \
+replacement remains constant as the size of the association increases. Pretty \
+cool, huh?\
+\>", "Text",
+ CellChangeTimes->{3.6934467209314613`*^9}],
+
+Cell["\<\
+In this lecture we learned about associations. Associations are super \
+powerful and you can use them to make your code very efficient when you need \
+to perform a lookup. We hope you had fun! See you at the next lecture.\
+\>", "Text",
+ CellChangeTimes->{{3.675732267322567*^9, 3.675732268808926*^9}, {
+   3.675732402095993*^9, 3.675732409080809*^9}, {3.675732474942958*^9, 
+   3.6757325079532423`*^9}, 3.693446633515473*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{960, 1035},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info-2b66e647-1964-44e5-aad7-be0d5cfed553"->{
+  Cell[1942, 59, 1472, 26, 77, "Print",
+   CellTags->"Info-2b66e647-1964-44e5-aad7-be0d5cfed553"]},
+ "Info-234e61b2-573a-4896-8ed9-0d52c3eaa3c8"->{
+  Cell[5189, 145, 1766, 29, 77, "Print",
+   CellTags->"Info-234e61b2-573a-4896-8ed9-0d52c3eaa3c8"]},
+ "Info-4cfe5aff-bb5d-4e6c-949f-1a090bbbbc58"->{
+  Cell[7863, 208, 1774, 29, 77, "Print",
+   CellTags->"Info-4cfe5aff-bb5d-4e6c-949f-1a090bbbbc58"]},
+ "Info-4954808b-9033-471d-9055-7e18f6689a4d"->{
+  Cell[18258, 492, 2535, 39, 173, "Print",
+   CellTags->"Info-4954808b-9033-471d-9055-7e18f6689a4d"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info-2b66e647-1964-44e5-aad7-be0d5cfed553", 61054, 1381},
+ {"Info-234e61b2-573a-4896-8ed9-0d52c3eaa3c8", 61202, 1384},
+ {"Info-4cfe5aff-bb5d-4e6c-949f-1a090bbbbc58", 61351, 1387},
+ {"Info-4954808b-9033-471d-9055-7e18f6689a4d", 61500, 1390}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 123, 2, 80, "Section"],
+Cell[706, 26, 418, 9, 61, "Text"],
+Cell[CellGroupData[{
+Cell[1149, 39, 98, 1, 54, "Subsection"],
+Cell[1250, 42, 542, 9, 85, "Text"],
+Cell[CellGroupData[{
+Cell[1817, 55, 122, 2, 39, "Input"],
+Cell[1942, 59, 1472, 26, 77, "Print",
+ CellTags->"Info-2b66e647-1964-44e5-aad7-be0d5cfed553"]
+}, Open  ]],
+Cell[3429, 88, 263, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[3717, 97, 343, 8, 39, "Input"],
+Cell[4063, 107, 323, 7, 39, "Output"]
+}, Open  ]],
+Cell[4401, 117, 126, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[4552, 122, 182, 3, 39, "Input"],
+Cell[4737, 127, 117, 2, 39, "Output"]
+}, Open  ]],
+Cell[4869, 132, 179, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[5073, 141, 113, 2, 39, "Input"],
+Cell[5189, 145, 1766, 29, 77, "Print",
+ CellTags->"Info-234e61b2-573a-4896-8ed9-0d52c3eaa3c8"]
+}, Open  ]],
+Cell[6970, 177, 166, 2, 37, "Text"],
+Cell[CellGroupData[{
+Cell[7161, 183, 183, 3, 39, "Input"],
+Cell[7347, 188, 176, 4, 39, "Output"]
+}, Open  ]],
+Cell[7538, 195, 182, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[7745, 204, 115, 2, 39, "Input"],
+Cell[7863, 208, 1774, 29, 77, "Print",
+ CellTags->"Info-4cfe5aff-bb5d-4e6c-949f-1a090bbbbc58"]
+}, Open  ]],
+Cell[9652, 240, 115, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[9792, 245, 186, 3, 39, "Input"],
+Cell[9981, 250, 172, 4, 39, "Output"]
+}, Open  ]],
+Cell[10168, 257, 337, 9, 37, "Text"],
+Cell[CellGroupData[{
+Cell[10530, 270, 331, 7, 39, "Input"],
+Cell[10864, 279, 336, 8, 39, "Output"]
+}, Open  ]],
+Cell[11215, 290, 120, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[11360, 295, 287, 6, 39, "Input"],
+Cell[11650, 303, 327, 8, 39, "Output"]
+}, Open  ]],
+Cell[11992, 314, 186, 2, 37, "Text"],
+Cell[CellGroupData[{
+Cell[12203, 320, 133, 2, 39, "Input"],
+Cell[12339, 324, 82, 1, 39, "Output"]
+}, Open  ]],
+Cell[12436, 328, 231, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[12692, 337, 158, 3, 39, "Input"],
+Cell[12853, 342, 70, 1, 39, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12960, 348, 106, 1, 39, "Input"],
+Cell[13069, 351, 290, 7, 39, "Output"]
+}, Open  ]],
+Cell[13374, 361, 182, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[13581, 370, 165, 3, 39, "Input"],
+Cell[13749, 375, 73, 1, 39, "Output"]
+}, Open  ]],
+Cell[13837, 379, 125, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[13987, 384, 166, 3, 39, "Input"],
+Cell[14156, 389, 74, 1, 39, "Output"]
+}, Open  ]],
+Cell[14245, 393, 98, 1, 37, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14380, 399, 153, 2, 54, "Subsection"],
+Cell[14536, 403, 182, 4, 37, "Text"],
+Cell[CellGroupData[{
+Cell[14743, 411, 1601, 32, 170, "Input"],
+Cell[16347, 445, 1543, 31, 118, "Output"]
+}, Open  ]],
+Cell[17905, 479, 210, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[18140, 488, 115, 2, 39, "Input"],
+Cell[18258, 492, 2535, 39, 173, "Print",
+ CellTags->"Info-4954808b-9033-471d-9055-7e18f6689a4d"]
+}, Open  ]],
+Cell[20808, 534, 215, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[21048, 545, 338, 8, 39, "Input"],
+Cell[21389, 555, 577, 14, 66, "Output"]
+}, Open  ]],
+Cell[21981, 572, 268, 10, 37, "Text"],
+Cell[CellGroupData[{
+Cell[22274, 586, 272, 7, 39, "Input"],
+Cell[22549, 595, 369, 8, 39, "Output"]
+}, Open  ]],
+Cell[22933, 606, 160, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[23118, 615, 279, 7, 39, "Input"],
+Cell[23400, 624, 369, 8, 39, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23818, 638, 190, 2, 54, "Subsection"],
+Cell[24011, 642, 418, 7, 61, "Text"],
+Cell[CellGroupData[{
+Cell[24454, 653, 406, 10, 39, "Input"],
+Cell[24863, 665, 327, 8, 39, "Output"]
+}, Open  ]],
+Cell[25205, 676, 184, 2, 37, "Text"],
+Cell[CellGroupData[{
+Cell[25414, 682, 180, 3, 39, "Input"],
+Cell[25597, 687, 123, 2, 39, "Output"]
+}, Open  ]],
+Cell[25735, 692, 184, 2, 37, "Text"],
+Cell[CellGroupData[{
+Cell[25944, 698, 172, 3, 39, "Input"],
+Cell[26119, 703, 118, 2, 39, "Output"]
+}, Open  ]],
+Cell[26252, 708, 173, 2, 37, "Text"],
+Cell[CellGroupData[{
+Cell[26450, 714, 308, 8, 39, "Input"],
+Cell[26761, 724, 297, 8, 39, "Output"]
+}, Open  ]],
+Cell[27073, 735, 528, 9, 85, "Text"],
+Cell[27604, 746, 262, 3, 37, "Text"],
+Cell[CellGroupData[{
+Cell[27891, 753, 3631, 75, 508, "Input"],
+Cell[31525, 830, 27586, 500, 476, "Output"]
+}, Open  ]],
+Cell[59126, 1333, 434, 7, 61, "Text"],
+Cell[59563, 1342, 345, 6, 85, "Text"],
+Cell[59911, 1350, 310, 6, 85, "Text"],
+Cell[60224, 1358, 435, 7, 85, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

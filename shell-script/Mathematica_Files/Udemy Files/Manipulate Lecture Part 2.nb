@@ -1,0 +1,1419 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     52964,       1411]
+NotebookOptionsPosition[     49704,       1302]
+NotebookOutlinePosition[     50512,       1329]
+CellTagsIndexPosition[     50346,       1323]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Manipulate Part 2", "Section",
+ CellChangeTimes->{{3.690409920909237*^9, 3.690409924769742*^9}}],
+
+Cell[TextData[{
+ "Hello and welcome to the second part of our lectures on ",
+ StyleBox["Manipulate",
+  FontWeight->"Bold"],
+ "."
+}], "Text",
+ CellChangeTimes->{3.694120268831666*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Introduction", "Subsection",
+ CellChangeTimes->{{3.694120262684245*^9, 3.69412026409027*^9}}],
+
+Cell["Today we are going to learn how to build this: ", "Text",
+ CellChangeTimes->{{3.690409947356225*^9, 3.690410092701939*^9}, {
+  3.694120267405017*^9, 3.694120287074923*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"GraphicsGrid", "[", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Graphics", "[", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Circle", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", "0"}], "}"}], ",", "1"}], "]"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Disk", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", "0"}], "}"}], ",", "0.05"}], "]"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Circle", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Cos", "[", "t", "]"}], ",", 
+                RowBox[{"Sin", "[", "t", "]"}]}], "}"}], ",", "0.05"}], "]"}],
+             ",", "\[IndentingNewLine]", 
+            RowBox[{"Line", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"0", ",", "0"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Cos", "[", "t", "]"}], ",", 
+                 RowBox[{"Sin", "[", "t", "]"}]}], "}"}]}], "}"}], "]"}]}], 
+           "\[IndentingNewLine]", "}"}], ",", 
+          RowBox[{"PlotRange", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "1.1"}], ",", "1.1"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "1.1"}], ",", "1.1"}], "}"}]}], "}"}]}], ",", 
+          RowBox[{"AspectRatio", "\[Rule]", "1"}]}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Plot", "[", 
+         RowBox[{
+          RowBox[{"Sin", "[", "x", "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", "0", ",", "t"}], "}"}], ",", 
+          RowBox[{"PlotRange", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", 
+               RowBox[{"8", "Pi"}]}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "1.1"}], ",", "1.1"}], "}"}]}], "}"}]}], ",", 
+          RowBox[{"AspectRatio", "\[Rule]", "1"}]}], "]"}]}], 
+       "\[IndentingNewLine]", "}"}], ",", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{"Rotate", "[", 
+        RowBox[{
+         RowBox[{"Plot", "[", 
+          RowBox[{
+           RowBox[{"Cos", "[", "x", "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"x", ",", "0", ",", "t"}], "}"}], ",", 
+           RowBox[{"PlotRange", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", 
+                RowBox[{"8", "Pi"}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"-", "1.1"}], ",", "1.1"}], "}"}]}], "}"}]}], ",", 
+           RowBox[{"AspectRatio", "\[Rule]", "1"}]}], "]"}], ",", 
+         RowBox[{
+          RowBox[{"-", "Pi"}], "/", "2"}]}], "]"}], "\[IndentingNewLine]", 
+       "}"}]}], "\[IndentingNewLine]", "}"}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0.001", ",", 
+     RowBox[{"8", "Pi"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.664848684727449*^9, 3.664848691245887*^9}, {
+   3.664848740247295*^9, 3.6648487530523167`*^9}, 3.6904109998461637`*^9}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`t$$ = 0.001, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`t$$], 0.001, 8 Pi}}, Typeset`size$$ = {
+    450., {222., 228.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`t$197191$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`t$$ = 0.001}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`t$$, $CellContext`t$197191$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> GraphicsGrid[{{
+          Graphics[{
+            Circle[{0, 0}, 1], 
+            Disk[{0, 0}, 0.05], 
+            Circle[{
+              Cos[$CellContext`t$$], 
+              Sin[$CellContext`t$$]}, 0.05], 
+            Line[{{0, 0}, {
+               Cos[$CellContext`t$$], 
+               Sin[$CellContext`t$$]}}]}, 
+           PlotRange -> {{-1.1, 1.1}, {-1.1, 1.1}}, AspectRatio -> 1], 
+          Plot[
+           Sin[$CellContext`x], {$CellContext`x, 0, $CellContext`t$$}, 
+           PlotRange -> {{0, 8 Pi}, {-1.1, 1.1}}, AspectRatio -> 1]}, {
+          Rotate[
+           Plot[
+            Cos[$CellContext`x], {$CellContext`x, 0, $CellContext`t$$}, 
+            PlotRange -> {{0, 8 Pi}, {-1.1, 1.1}}, AspectRatio -> 1], (-Pi)/
+           2]}}], "Specifications" :> {{$CellContext`t$$, 0.001, 8 Pi}}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{505., {275., 282.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.6904111747677383`*^9}]
+}, {2}]],
+
+Cell[TextData[{
+ "So what is this? In a previous lecture we used ",
+ StyleBox["ParametricPlot",
+  FontWeight->"Bold"],
+ " to plot a circle where ",
+ StyleBox["x=cos(t), y=sin(t)",
+  FontSlant->"Italic"],
+ ", and ",
+ StyleBox["t",
+  FontSlant->"Italic"],
+ " was our independent parameter, which in this case is the angle from the \
+positive x-axis. In this animation we can actually visualize the x and y \
+coordinates of the circle over time. So let\[CloseCurlyQuote]s begin!"
+}], "Text",
+ CellChangeTimes->{
+  3.6941202903729277`*^9, {3.694120350759907*^9, 3.694120353128166*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Drawing the Model", "Subsection",
+ CellChangeTimes->{{3.6941206766531773`*^9, 3.694120678772608*^9}}],
+
+Cell["The first thing we need to do is make the circle:", "Text",
+ CellChangeTimes->{
+  3.6941203544247913`*^9, {3.694120397582041*^9, 3.69412039820604*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{"Circle", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], "}"}], ",", "1"}], "]"}], 
+   "\[IndentingNewLine]", "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6941203924882517`*^9, 3.694120394790326*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[CircleBox[{0, 0}]]], "Output",
+ CellChangeTimes->{3.694120399416297*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Now let\[CloseCurlyQuote]s add our tracing circle, and \
+we\[CloseCurlyQuote]ll place it at ",
+ StyleBox["t=1 (for now)", "InlineFormula"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.690410197710013*^9, 3.690410241824088*^9}, {
+  3.694120415557405*^9, 3.694120451334216*^9}, {3.694120492442473*^9, 
+  3.694120514857736*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Circle", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}], ",", "1"}], "]"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Circle", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Cos", "[", "1", "]"}], ",", 
+        RowBox[{"Sin", "[", "1", "]"}]}], "}"}], ",", "0.05"}], "]"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Line", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Cos", "[", "1", "]"}], ",", 
+         RowBox[{"Sin", "[", "1", "]"}]}], "}"}]}], "}"}], "]"}]}], 
+   "\[IndentingNewLine]", "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6941203924882517`*^9, 3.694120394790326*^9}, {
+  3.6941204684854937`*^9, 3.694120487403125*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{CircleBox[{0, 0}], 
+   CircleBox[
+    NCache[{Cos[1], Sin[1]}, {0.5403023058681398, 0.8414709848078965}], 0.05],
+    LineBox[NCache[{{0, 0}, {Cos[1], Sin[1]}}, {{0, 0}, {0.5403023058681398, 
+      0.8414709848078965}}]]}]], "Output",
+ CellChangeTimes->{
+  3.694120399416297*^9, {3.6941204718792667`*^9, 3.694120488662591*^9}}]
+}, Open  ]],
+
+Cell["Now let\[CloseCurlyQuote]s add the disk at the center:", "Text",
+ CellChangeTimes->{{3.6941205357291727`*^9, 3.694120542216977*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Circle", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}], ",", "1"}], "]"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Disk", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}], ",", "0.05"}], "]"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Circle", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Cos", "[", "1", "]"}], ",", 
+        RowBox[{"Sin", "[", "1", "]"}]}], "}"}], ",", "0.05"}], "]"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Line", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Cos", "[", "1", "]"}], ",", 
+         RowBox[{"Sin", "[", "1", "]"}]}], "}"}]}], "}"}], "]"}]}], 
+   "\[IndentingNewLine]", "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6941203924882517`*^9, 3.694120394790326*^9}, {
+  3.6941204684854937`*^9, 3.694120487403125*^9}, {3.694120551810652*^9, 
+  3.694120552290505*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{CircleBox[{0, 0}], DiskBox[{0, 0}, 0.05], 
+   CircleBox[
+    NCache[{Cos[1], Sin[1]}, {0.5403023058681398, 0.8414709848078965}], 0.05],
+    LineBox[NCache[{{0, 0}, {Cos[1], Sin[1]}}, {{0, 0}, {0.5403023058681398, 
+      0.8414709848078965}}]]}]], "Output",
+ CellChangeTimes->{
+  3.694120399416297*^9, {3.6941204718792667`*^9, 3.694120488662591*^9}, 
+   3.694120553343275*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Animating the Model", "Subsection",
+ CellChangeTimes->{{3.6941206845080147`*^9, 3.694120686547722*^9}}],
+
+Cell[TextData[{
+ "Now, let\[CloseCurlyQuote]s wrap this up in a ",
+ StyleBox["Manipulate",
+  FontWeight->"Bold"],
+ " and replace our instances of 1 with the variable t:"
+}], "Text",
+ CellChangeTimes->{{3.6941204524253817`*^9, 3.694120454604225*^9}, {
+  3.694120559344195*^9, 3.694120621790331*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Graphics", "[", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Circle", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", "1"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Disk", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", "0.05"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Circle", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Cos", "[", "t", "]"}], ",", 
+          RowBox[{"Sin", "[", "t", "]"}]}], "}"}], ",", "0.05"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Line", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Cos", "[", "t", "]"}], ",", 
+           RowBox[{"Sin", "[", "t", "]"}]}], "}"}]}], "}"}], "]"}]}], 
+     "\[IndentingNewLine]", "}"}], "]"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", 
+     RowBox[{"8", "Pi"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.664847925126893*^9, 3.664848069329742*^9}, {
+  3.664848119689502*^9, 3.664848138496525*^9}, {3.690410400887723*^9, 
+  3.6904104010744047`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`t$$ = 0, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`t$$], 0, 8 Pi}}, Typeset`size$$ = {
+    450., {216., 223.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`t$18233$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`t$$ = 0}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`t$$, $CellContext`t$18233$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Graphics[{
+         Circle[{0, 0}, 1], 
+         Disk[{0, 0}, 0.05], 
+         Circle[{
+           Cos[$CellContext`t$$], 
+           Sin[$CellContext`t$$]}, 0.05], 
+         Line[{{0, 0}, {
+            Cos[$CellContext`t$$], 
+            Sin[$CellContext`t$$]}}]}], 
+      "Specifications" :> {{$CellContext`t$$, 0, 8 Pi}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{505., {269., 276.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.66484807642022*^9, 3.664848140320013*^9, 
+  3.690410402539627*^9, 3.6941206291486893`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Now we should be able to drag our slider. It looks pretty good aside from \
+the fact that it bounces a little. The reason for the bouncing is that as we \
+drag the slider, ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " notices that it needs more space over here, so it shrinks the image on the \
+x-axis here, and you reach the bottom, it shrinks it vertically. So what we \
+need to do is tell ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " the range over which we want to plot values. So we can add that to the ",
+ StyleBox["Graphics",
+  FontWeight->"Bold"],
+ " object. We use ",
+ StyleBox["PlotRange.",
+  FontWeight->"Bold"]
+}], "Text",
+ CellChangeTimes->{{3.690410271907839*^9, 3.6904103872367067`*^9}, {
+  3.690410420981063*^9, 3.6904104245649223`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Graphics", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Circle", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}], ",", "1"}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Disk", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}], ",", "0.05"}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Circle", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Cos", "[", "t", "]"}], ",", 
+           RowBox[{"Sin", "[", "t", "]"}]}], "}"}], ",", "0.05"}], "]"}], ",",
+        "\[IndentingNewLine]", 
+       RowBox[{"Line", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", "0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Cos", "[", "t", "]"}], ",", 
+            RowBox[{"Sin", "[", "t", "]"}]}], "}"}]}], "}"}], "]"}]}], 
+      "\[IndentingNewLine]", "}"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "1.1"}], ",", "1.1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "1.1"}], ",", "1.1"}], "}"}]}], "}"}]}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", 
+     RowBox[{"8", "Pi"}]}], "}"}]}], "]"}]], "Input"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`t$$ = 0, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`t$$], 0, 8 Pi}}, Typeset`size$$ = {
+    450., {222., 228.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`t$171738$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`t$$ = 0}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`t$$, $CellContext`t$171738$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Graphics[{
+         Circle[{0, 0}, 1], 
+         Disk[{0, 0}, 0.05], 
+         Circle[{
+           Cos[$CellContext`t$$], 
+           Sin[$CellContext`t$$]}, 0.05], 
+         Line[{{0, 0}, {
+            Cos[$CellContext`t$$], 
+            Sin[$CellContext`t$$]}}]}, 
+        PlotRange -> {{-1.1, 1.1}, {-1.1, 1.1}}], 
+      "Specifications" :> {{$CellContext`t$$, 0, 8 Pi}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{505., {275., 282.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.690410406239376*^9}]
+}, Open  ]],
+
+Cell["\<\
+So you see it shrunk a little. And now when we drag our slider, no more \
+bouncing. Beautiful!\
+\>", "Text",
+ CellChangeTimes->{{3.6904104354363337`*^9, 3.6904105821448393`*^9}, {
+  3.694120650966172*^9, 3.6941206520624533`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Multiple Graphics with GraphicsGrid", "Subsection",
+ CellChangeTimes->{{3.694120706283173*^9, 3.694120713898272*^9}}],
+
+Cell[TextData[{
+ "So now we need to take this circle and put it next to a Sine plot and put \
+it above a Cosine plot. In order to do that, we are going to need a new \
+function ",
+ StyleBox["GraphicsGrid.",
+  FontWeight->"Bold"],
+ " In previous lectures we saw ",
+ StyleBox["GraphicsRow",
+  FontWeight->"Bold"],
+ ", which allowed us to put multiple graphics one after the next. Now we need \
+to be able to put a graphic in the top left, and the right and below. So we \
+are going to use ",
+ StyleBox["GraphicsGrid",
+  FontWeight->"Bold"],
+ " for that. "
+}], "Text",
+ CellChangeTimes->{3.694120653406765*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "GraphicsGrid"}]], "Input",
+ CellChangeTimes->{{3.664848198890074*^9, 3.664848201669001*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"GraphicsGrid\\\", \\\"[\\\", \
+RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"g\\\", \\\"TI\\\"], StyleBox[\\\"11\\\", \\\
+\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"g\\\", \\\"TI\\\"], \
+StyleBox[\\\"12\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \
+\\\"TR\\\"]}], \\\"}\\\"}], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\
+\"]}], \\\"}\\\"}], \\\"]\\\"}]\\) generates a graphic in which the \
+\\!\\(\\*SubscriptBox[StyleBox[\\\"g\\\", \\\"TI\\\"], StyleBox[\\\"ij\\\", \
+\\\"TI\\\"]]\\) are laid out in a two-dimensional grid.\"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/GraphicsGrid"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.664848203714052*^9},
+ CellTags->"Info-918f9d4b-e6f3-41a3-b081-fc7a8e13a304"]
+}, Open  ]],
+
+Cell[TextData[{
+ "So ",
+ StyleBox["GraphicsGrid",
+  FontWeight->"Bold"],
+ " takes a list of lists.  The top level list basically takes a list of rows, \
+and each embedded list is the set of columns. So let\[CloseCurlyQuote]s start \
+by creating our first row. So we say "
+}], "Text",
+ CellChangeTimes->{{3.6904105909057426`*^9, 3.690410640047308*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"GraphicsGrid", "[", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Graphics", "[", 
+        RowBox[{
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"Circle", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "0"}], "}"}], ",", "1"}], "]"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"Disk", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "0"}], "}"}], ",", "0.05"}], "]"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"Circle", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"Cos", "[", "t", "]"}], ",", 
+               RowBox[{"Sin", "[", "t", "]"}]}], "}"}], ",", "0.05"}], "]"}], 
+           ",", "\[IndentingNewLine]", 
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", "0"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Cos", "[", "t", "]"}], ",", 
+                RowBox[{"Sin", "[", "t", "]"}]}], "}"}]}], "}"}], "]"}]}], 
+          "\[IndentingNewLine]", "}"}], ",", 
+         RowBox[{"PlotRange", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "1.1"}], ",", "1.1"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "1.1"}], ",", "1.1"}], "}"}]}], "}"}]}]}], "]"}], 
+       ",", "\[IndentingNewLine]", 
+       RowBox[{"Plot", "[", 
+        RowBox[{
+         RowBox[{"Sin", "[", "x", "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"x", ",", "0", ",", "t"}], "}"}], ",", 
+         RowBox[{"PlotRange", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", 
+              RowBox[{"8", "Pi"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "1.1"}], ",", "1.1"}], "}"}]}], "}"}]}]}], "]"}]}],
+       "\[IndentingNewLine]", "}"}], "\[IndentingNewLine]", "}"}], "]"}], ",",
+    "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0.001", ",", 
+     RowBox[{"8", "Pi"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.664847925126893*^9, 3.664848069329742*^9}, {
+  3.664848119689502*^9, 3.664848167990418*^9}, {3.664848375056612*^9, 
+  3.6648484676849613`*^9}, {3.664848528523924*^9, 3.664848529795257*^9}, {
+  3.6648485714901953`*^9, 3.664848637882202*^9}, {3.690410720033115*^9, 
+  3.690410720422225*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`t$$ = 0.001, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`t$$], 0.001, 8 Pi}}, Typeset`size$$ = {
+    450., {93., 99.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`t$180904$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`t$$ = 0.001}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`t$$, $CellContext`t$180904$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> GraphicsGrid[{{
+          Graphics[{
+            Circle[{0, 0}, 1], 
+            Disk[{0, 0}, 0.05], 
+            Circle[{
+              Cos[$CellContext`t$$], 
+              Sin[$CellContext`t$$]}, 0.05], 
+            Line[{{0, 0}, {
+               Cos[$CellContext`t$$], 
+               Sin[$CellContext`t$$]}}]}, 
+           PlotRange -> {{-1.1, 1.1}, {-1.1, 1.1}}], 
+          Plot[
+           Sin[$CellContext`x], {$CellContext`x, 0, $CellContext`t$$}, 
+           PlotRange -> {{0, 8 Pi}, {-1.1, 1.1}}]}}], 
+      "Specifications" :> {{$CellContext`t$$, 0.001, 8 Pi}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{505., {146., 153.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.664848478226859*^9, 3.664848530936311*^9, 
+  3.6648485954419537`*^9, 3.664848640263336*^9, 3.690410681008465*^9, 
+  3.690410722043715*^9}]
+}, Open  ]],
+
+Cell["Let\[CloseCurlyQuote]s add the next row. ", "Text",
+ CellChangeTimes->{{3.6904108411337557`*^9, 3.690410844491934*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"GraphicsGrid", "[", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Graphics", "[", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Circle", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", "0"}], "}"}], ",", "1"}], "]"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Disk", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", "0"}], "}"}], ",", "0.05"}], "]"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Circle", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Cos", "[", "t", "]"}], ",", 
+                RowBox[{"Sin", "[", "t", "]"}]}], "}"}], ",", "0.05"}], "]"}],
+             ",", "\[IndentingNewLine]", 
+            RowBox[{"Line", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"0", ",", "0"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Cos", "[", "t", "]"}], ",", 
+                 RowBox[{"Sin", "[", "t", "]"}]}], "}"}]}], "}"}], "]"}]}], 
+           "\[IndentingNewLine]", "}"}], ",", 
+          RowBox[{"PlotRange", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "1.1"}], ",", "1.1"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "1.1"}], ",", "1.1"}], "}"}]}], "}"}]}]}], "]"}], 
+        ",", "\[IndentingNewLine]", 
+        RowBox[{"Plot", "[", 
+         RowBox[{
+          RowBox[{"Sin", "[", "x", "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", "0", ",", "t"}], "}"}], ",", 
+          RowBox[{"PlotRange", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", 
+               RowBox[{"8", "Pi"}]}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "1.1"}], ",", "1.1"}], "}"}]}], "}"}]}]}], 
+         "]"}]}], "\[IndentingNewLine]", "}"}], ",", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{"Plot", "[", 
+        RowBox[{
+         RowBox[{"Cos", "[", "x", "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"x", ",", "0", ",", "t"}], "}"}], ",", 
+         RowBox[{"PlotRange", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", 
+              RowBox[{"8", "Pi"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "1.1"}], ",", "1.1"}], "}"}]}], "}"}]}]}], "]"}], 
+       "\[IndentingNewLine]", "}"}]}], "\[IndentingNewLine]", "}"}], "]"}], 
+   ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0.001", ",", 
+     RowBox[{"8", "Pi"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.664847925126893*^9, 3.664848069329742*^9}, {
+   3.664848119689502*^9, 3.664848167990418*^9}, {3.664848375056612*^9, 
+   3.6648484676849613`*^9}, {3.664848528523924*^9, 3.664848529795257*^9}, {
+   3.6648485714901953`*^9, 3.664848637882202*^9}, 3.6904107091980133`*^9}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`t$$ = 7.289204956328319, Typeset`show$$ = 
+    True, Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`t$$], 0.001, 8 Pi}}, Typeset`size$$ = {
+    450., {165., 171.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`t$194075$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`t$$ = 0.001}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`t$$, $CellContext`t$194075$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> GraphicsGrid[{{
+          Graphics[{
+            Circle[{0, 0}, 1], 
+            Disk[{0, 0}, 0.05], 
+            Circle[{
+              Cos[$CellContext`t$$], 
+              Sin[$CellContext`t$$]}, 0.05], 
+            Line[{{0, 0}, {
+               Cos[$CellContext`t$$], 
+               Sin[$CellContext`t$$]}}]}, 
+           PlotRange -> {{-1.1, 1.1}, {-1.1, 1.1}}], 
+          Plot[
+           Sin[$CellContext`x], {$CellContext`x, 0, $CellContext`t$$}, 
+           PlotRange -> {{0, 8 Pi}, {-1.1, 1.1}}]}, {
+          Plot[
+           Cos[$CellContext`x], {$CellContext`x, 0, $CellContext`t$$}, 
+           PlotRange -> {{0, 8 Pi}, {-1.1, 1.1}}]}}], 
+      "Specifications" :> {{$CellContext`t$$, 0.001, 8 Pi}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{505., {218., 225.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.690410849868387*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Now we have our Sine and Cosine. We are going to need the ",
+ StyleBox["Rotate",
+  FontWeight->"Bold"],
+ " function.  "
+}], "Text",
+ CellChangeTimes->{{3.690410874249634*^9, 3.690410906199768*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Rotate"}]], "Input",
+ CellChangeTimes->{{3.6648486559754677`*^9, 3.6648486577430267`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Rotate\\\", \\\"[\\\", RowBox[{StyleBox[\
+\\\"g\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"\[Theta]\\\", \\\"TR\\\"]}], \
+\\\"]\\\"}]\\) represents 2D graphics primitives or any other objects \
+\\!\\(\\*StyleBox[\\\"g\\\", \\\"TI\\\"]\\) rotated counterclockwise by \
+\\!\\(\\*StyleBox[\\\"\[Theta]\\\", \\\"TR\\\"]\\) radians about the center \
+of their bounding box. \\n\\!\\(\\*RowBox[{\\\"Rotate\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"g\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"\[Theta]\\\", \\\"TR\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"y\\\", \
+\\\"TI\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\\) rotates about the point \
+\\!\\(\\*RowBox[{\\\"{\\\", RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \
+\\\",\\\", StyleBox[\\\"y\\\", \\\"TI\\\"]}], \\\"}\\\"}]\\). \
+\\n\\!\\(\\*RowBox[{\\\"Rotate\\\", \\\"[\\\", RowBox[{StyleBox[\\\"g\\\", \\\
+\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{StyleBox[\\\"u\\\", \\\"TI\\\
+\"], \\\",\\\", StyleBox[\\\"v\\\", \\\"TI\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\
+\\) rotates around the origin, transforming the 2D or 3D vector \
+\\!\\(\\*StyleBox[\\\"u\\\", \\\"TI\\\"]\\) to \\!\\(\\*StyleBox[\\\"v\\\", \
+\\\"TI\\\"]\\).\\n\\!\\(\\*RowBox[{\\\"Rotate\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"g\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"\[Theta]\\\", \\\"TR\\\"], \\\",\\\", StyleBox[\\\"w\\\", \\\"TI\
+\\\"]}], \\\"]\\\"}]\\) rotates 3D graphics primitives by \
+\\!\\(\\*StyleBox[\\\"\[Theta]\\\", \\\"TR\\\"]\\) radians around the 3D \
+vector \\!\\(\\*StyleBox[\\\"w\\\", \\\"TI\\\"]\\) anchored at the origin.\\n\
+\\!\\(\\*RowBox[{\\\"Rotate\\\", \\\"[\\\", RowBox[{StyleBox[\\\"g\\\", \
+\\\"TI\\\"], \\\",\\\", StyleBox[\\\"\[Theta]\\\", \\\"TR\\\"], \\\",\\\", \
+StyleBox[\\\"w\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"p\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\\) rotates around the 3D vector \\!\\(\\*StyleBox[\
+\\\"w\\\", \\\"TI\\\"]\\) anchored at \\!\\(\\*StyleBox[\\\"p\\\", \
+\\\"TI\\\"]\\).\\n\\!\\(\\*RowBox[{\\\"Rotate\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"g\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"\[Theta]\\\", \\\"TR\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{StyleBox[\\\"u\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"v\\\", \
+\\\"TI\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\\) rotates by angle \
+\\!\\(\\*StyleBox[\\\"\[Theta]\\\", \\\"TR\\\"]\\) in the plane spanned by 3D \
+vectors \\!\\(\\*StyleBox[\\\"u\\\", \\\"TI\\\"]\\) and \
+\\!\\(\\*StyleBox[\\\"v\\\", \\\"TI\\\"]\\).\"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Rotate"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.6648486587838297`*^9},
+ CellTags->"Info-ebfa5ae0-7202-4b0b-b5ec-9bddd0bfd568"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["Rotate",
+  FontWeight->"Bold"],
+ " takes a graphics object and rotates it by \[Theta] in radians.We are going \
+to need to rotate it by -\[Pi]/2.  "
+}], "Text",
+ CellChangeTimes->{{3.6904109109122753`*^9, 3.690410969237875*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"GraphicsGrid", "[", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Graphics", "[", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Circle", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", "0"}], "}"}], ",", "1"}], "]"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Disk", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", "0"}], "}"}], ",", "0.05"}], "]"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Circle", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Cos", "[", "t", "]"}], ",", 
+                RowBox[{"Sin", "[", "t", "]"}]}], "}"}], ",", "0.05"}], "]"}],
+             ",", "\[IndentingNewLine]", 
+            RowBox[{"Line", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"0", ",", "0"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Cos", "[", "t", "]"}], ",", 
+                 RowBox[{"Sin", "[", "t", "]"}]}], "}"}]}], "}"}], "]"}]}], 
+           "\[IndentingNewLine]", "}"}], ",", 
+          RowBox[{"PlotRange", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "1.1"}], ",", "1.1"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "1.1"}], ",", "1.1"}], "}"}]}], "}"}]}]}], "]"}], 
+        ",", "\[IndentingNewLine]", 
+        RowBox[{"Plot", "[", 
+         RowBox[{
+          RowBox[{"Sin", "[", "x", "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", "0", ",", "t"}], "}"}], ",", 
+          RowBox[{"PlotRange", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", 
+               RowBox[{"8", "Pi"}]}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "1.1"}], ",", "1.1"}], "}"}]}], "}"}]}]}], 
+         "]"}]}], "\[IndentingNewLine]", "}"}], ",", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{"Rotate", "[", 
+        RowBox[{
+         RowBox[{"Plot", "[", 
+          RowBox[{
+           RowBox[{"Cos", "[", "x", "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"x", ",", "0", ",", "t"}], "}"}], ",", 
+           RowBox[{"PlotRange", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", 
+                RowBox[{"8", "Pi"}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"-", "1.1"}], ",", "1.1"}], "}"}]}], "}"}]}]}], "]"}],
+          ",", 
+         RowBox[{
+          RowBox[{"-", "Pi"}], "/", "2"}]}], "]"}], "\[IndentingNewLine]", 
+       "}"}]}], "\[IndentingNewLine]", "}"}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0.001", ",", 
+     RowBox[{"8", "Pi"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.664848684727449*^9, 3.664848691245887*^9}, {
+  3.664848740247295*^9, 3.6648487530523167`*^9}, {3.690411009738677*^9, 
+  3.6904110182405567`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`t$$ = 6.133144859807276, Typeset`show$$ = 
+    True, Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`t$$], 0.001, 8 Pi}}, Typeset`size$$ = {
+    450., {193., 200.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`t$196978$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`t$$ = 0.001}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`t$$, $CellContext`t$196978$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> GraphicsGrid[{{
+          Graphics[{
+            Circle[{0, 0}, 1], 
+            Disk[{0, 0}, 0.05], 
+            Circle[{
+              Cos[$CellContext`t$$], 
+              Sin[$CellContext`t$$]}, 0.05], 
+            Line[{{0, 0}, {
+               Cos[$CellContext`t$$], 
+               Sin[$CellContext`t$$]}}]}, 
+           PlotRange -> {{-1.1, 1.1}, {-1.1, 1.1}}], 
+          Plot[
+           Sin[$CellContext`x], {$CellContext`x, 0, $CellContext`t$$}, 
+           PlotRange -> {{0, 8 Pi}, {-1.1, 1.1}}]}, {
+          Rotate[
+           Plot[
+            Cos[$CellContext`x], {$CellContext`x, 0, $CellContext`t$$}, 
+            PlotRange -> {{0, 8 Pi}, {-1.1, 1.1}}], (-Pi)/2]}}], 
+      "Specifications" :> {{$CellContext`t$$, 0.001, 8 Pi}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{505., {246., 253.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.664848692951069*^9, 3.664848756173975*^9, 3.665447082758708*^9, 
+   3.690410972880032*^9, {3.690411005490911*^9, 3.690411018708177*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Nice! Now one of the things that ",
+ StyleBox["GraphicsGrid",
+  FontWeight->"Bold"],
+ " does is assumes the cells have the same size, which is why these numbers \
+are getting clipped here. One way we can make everything look better is by \
+making everything the same size. In order to do that, we need to start by \
+telling ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " what the sizes of these things should be. A really easy way to do that is \
+to say that the ",
+ StyleBox["AspectRatio",
+  FontWeight->"Bold"],
+ " is one. That way we get back only square figures. So \
+let\[CloseCurlyQuote]s do that to each of our objects. "
+}], "Text",
+ CellChangeTimes->{{3.6904110214233847`*^9, 3.690411171178111*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"GraphicsGrid", "[", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Graphics", "[", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Circle", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", "0"}], "}"}], ",", "1"}], "]"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Disk", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", "0"}], "}"}], ",", "0.05"}], "]"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Circle", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Cos", "[", "t", "]"}], ",", 
+                RowBox[{"Sin", "[", "t", "]"}]}], "}"}], ",", "0.05"}], "]"}],
+             ",", "\[IndentingNewLine]", 
+            RowBox[{"Line", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"0", ",", "0"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Cos", "[", "t", "]"}], ",", 
+                 RowBox[{"Sin", "[", "t", "]"}]}], "}"}]}], "}"}], "]"}]}], 
+           "\[IndentingNewLine]", "}"}], ",", 
+          RowBox[{"PlotRange", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "1.1"}], ",", "1.1"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "1.1"}], ",", "1.1"}], "}"}]}], "}"}]}], ",", 
+          RowBox[{"AspectRatio", "\[Rule]", "1"}]}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Plot", "[", 
+         RowBox[{
+          RowBox[{"Sin", "[", "x", "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", "0", ",", "t"}], "}"}], ",", 
+          RowBox[{"PlotRange", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", 
+               RowBox[{"8", "Pi"}]}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "1.1"}], ",", "1.1"}], "}"}]}], "}"}]}], ",", 
+          RowBox[{"AspectRatio", "\[Rule]", "1"}]}], "]"}]}], 
+       "\[IndentingNewLine]", "}"}], ",", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{"Rotate", "[", 
+        RowBox[{
+         RowBox[{"Plot", "[", 
+          RowBox[{
+           RowBox[{"Cos", "[", "x", "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"x", ",", "0", ",", "t"}], "}"}], ",", 
+           RowBox[{"PlotRange", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", 
+                RowBox[{"8", "Pi"}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"-", "1.1"}], ",", "1.1"}], "}"}]}], "}"}]}], ",", 
+           RowBox[{"AspectRatio", "\[Rule]", "1"}]}], "]"}], ",", 
+         RowBox[{
+          RowBox[{"-", "Pi"}], "/", "2"}]}], "]"}], "\[IndentingNewLine]", 
+       "}"}]}], "\[IndentingNewLine]", "}"}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0.001", ",", 
+     RowBox[{"8", "Pi"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.664848684727449*^9, 3.664848691245887*^9}, {
+   3.664848740247295*^9, 3.6648487530523167`*^9}, 3.6904109998461637`*^9}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`t$$ = 0.001, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`t$$], 0.001, 8 Pi}}, Typeset`size$$ = {
+    450., {222., 228.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`t$197191$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`t$$ = 0.001}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`t$$, $CellContext`t$197191$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> GraphicsGrid[{{
+          Graphics[{
+            Circle[{0, 0}, 1], 
+            Disk[{0, 0}, 0.05], 
+            Circle[{
+              Cos[$CellContext`t$$], 
+              Sin[$CellContext`t$$]}, 0.05], 
+            Line[{{0, 0}, {
+               Cos[$CellContext`t$$], 
+               Sin[$CellContext`t$$]}}]}, 
+           PlotRange -> {{-1.1, 1.1}, {-1.1, 1.1}}, AspectRatio -> 1], 
+          Plot[
+           Sin[$CellContext`x], {$CellContext`x, 0, $CellContext`t$$}, 
+           PlotRange -> {{0, 8 Pi}, {-1.1, 1.1}}, AspectRatio -> 1]}, {
+          Rotate[
+           Plot[
+            Cos[$CellContext`x], {$CellContext`x, 0, $CellContext`t$$}, 
+            PlotRange -> {{0, 8 Pi}, {-1.1, 1.1}}, AspectRatio -> 1], (-Pi)/
+           2]}}], "Specifications" :> {{$CellContext`t$$, 0.001, 8 Pi}}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{505., {275., 282.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.6904111747677383`*^9}]
+}, {2}]],
+
+Cell["So now we have only square cells, and everything looks tidy!", "Text",
+ CellChangeTimes->{{3.694120736709815*^9, 3.6941207472655153`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Summary", "Subsection",
+ CellChangeTimes->{{3.6941207311144876`*^9, 3.6941207326016083`*^9}}],
+
+Cell[TextData[{
+ "This concludes our lecture on ",
+ StyleBox["Manipulate",
+  FontWeight->"Bold"],
+ ". ",
+ StyleBox["Manipulate",
+  FontWeight->"Bold"],
+ " is a pretty powerful function and I\[CloseCurlyQuote]m sure we are going \
+to use it again in future lectures. I hope you had fun and \
+I\[CloseCurlyQuote]ll see you at the next lecture!"
+}], "Text",
+ CellChangeTimes->{{3.690411184788485*^9, 3.690411198263842*^9}, {
+  3.690411239687757*^9, 3.690411292326564*^9}, {3.69412073423534*^9, 
+  3.694120756401504*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1398, 855},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info-918f9d4b-e6f3-41a3-b081-fc7a8e13a304"->{
+  Cell[20883, 589, 949, 18, 56, "Print",
+   CellTags->"Info-918f9d4b-e6f3-41a3-b081-fc7a8e13a304"]},
+ "Info-ebfa5ae0-7202-4b0b-b5ec-9bddd0bfd568"->{
+  Cell[33299, 904, 2846, 45, 173, "Print",
+   CellTags->"Info-ebfa5ae0-7202-4b0b-b5ec-9bddd0bfd568"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info-918f9d4b-e6f3-41a3-b081-fc7a8e13a304", 50071, 1314},
+ {"Info-ebfa5ae0-7202-4b0b-b5ec-9bddd0bfd568", 50220, 1317}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 102, 1, 80, "Section"],
+Cell[685, 25, 182, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[892, 35, 99, 1, 54, "Subsection"],
+Cell[994, 38, 178, 2, 37, "Text"],
+Cell[CellGroupData[{
+Cell[1197, 44, 3558, 92, 404, "Input"],
+Cell[4758, 138, 2296, 49, 577, "Output"]
+}, {2}]],
+Cell[7066, 190, 581, 15, 61, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7684, 210, 107, 1, 54, "Subsection"],
+Cell[7794, 213, 157, 2, 37, "Text"],
+Cell[CellGroupData[{
+Cell[7976, 219, 314, 8, 92, "Input"],
+Cell[8293, 229, 99, 2, 467, "Output"]
+}, Open  ]],
+Cell[8407, 234, 338, 8, 38, "Text"],
+Cell[CellGroupData[{
+Cell[8770, 246, 924, 27, 144, "Input"],
+Cell[9697, 275, 354, 7, 467, "Output"]
+}, Open  ]],
+Cell[10066, 285, 138, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[10229, 290, 1128, 33, 170, "Input"],
+Cell[11360, 325, 403, 8, 467, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11812, 339, 109, 1, 54, "Subsection"],
+Cell[11924, 342, 298, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[12247, 353, 1372, 38, 222, "Input"],
+Cell[13622, 393, 1868, 41, 565, "Output"]
+}, Open  ]],
+Cell[15505, 437, 790, 19, 85, "Text"],
+Cell[CellGroupData[{
+Cell[16320, 460, 1537, 46, 222, "Input"],
+Cell[17860, 508, 1850, 41, 577, "Output"]
+}, Open  ]],
+Cell[19725, 552, 239, 5, 37, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20001, 562, 123, 1, 54, "Subsection"],
+Cell[20127, 565, 607, 16, 85, "Text"],
+Cell[CellGroupData[{
+Cell[20759, 585, 121, 2, 39, "Input"],
+Cell[20883, 589, 949, 18, 56, "Print",
+ CellTags->"Info-918f9d4b-e6f3-41a3-b081-fc7a8e13a304"]
+}, Open  ]],
+Cell[21847, 610, 351, 8, 61, "Text"],
+Cell[CellGroupData[{
+Cell[22223, 622, 2750, 71, 352, "Input"],
+Cell[24976, 695, 2178, 47, 319, "Output"]
+}, Open  ]],
+Cell[27169, 745, 125, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[27319, 750, 3384, 87, 404, "Input"],
+Cell[30706, 839, 2216, 48, 463, "Output"]
+}, Open  ]],
+Cell[32937, 890, 215, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[33177, 900, 119, 2, 39, "Input"],
+Cell[33299, 904, 2846, 45, 173, "Print",
+ CellTags->"Info-ebfa5ae0-7202-4b0b-b5ec-9bddd0bfd568"]
+}, Open  ]],
+Cell[36160, 952, 255, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[36440, 962, 3424, 91, 404, "Input"],
+Cell[39867, 1055, 2366, 51, 519, "Output"]
+}, Open  ]],
+Cell[42248, 1109, 734, 17, 85, "Text"],
+Cell[CellGroupData[{
+Cell[43007, 1130, 3558, 92, 404, "Input"],
+Cell[46568, 1224, 2296, 49, 577, "Output"]
+}, {2}]],
+Cell[48876, 1276, 144, 1, 37, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[49057, 1282, 99, 1, 54, "Subsection"],
+Cell[49159, 1285, 517, 13, 61, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

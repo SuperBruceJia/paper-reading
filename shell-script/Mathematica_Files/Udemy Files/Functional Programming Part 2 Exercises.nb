@@ -1,0 +1,969 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     29607,        961]
+NotebookOptionsPosition[     26172,        836]
+NotebookOutlinePosition[     26557,        853]
+CellTagsIndexPosition[     26514,        850]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Functional Programming Part 2", "Title",
+ CellChangeTimes->{{3.679347636506831*^9, 3.679347639321329*^9}, 
+   3.6799472491694393`*^9, {3.680412306236822*^9, 3.680412306328977*^9}, {
+   3.6868007549322357`*^9, 3.686800757913107*^9}, {3.70233430911423*^9, 
+   3.702334310770298*^9}, {3.707935631167241*^9, 3.707935633212365*^9}, {
+   3.709053325834556*^9, 3.709053337242448*^9}, 3.7090534268420343`*^9, {
+   3.709139039668128*^9, 3.709139044206313*^9}, {3.709145498595642*^9, 
+   3.7091454988061647`*^9}, {3.709148309286038*^9, 3.7091483095377483`*^9}, {
+   3.709148369642929*^9, 3.709148370231617*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Basic Exercises", "Section",
+ CellChangeTimes->{{3.67933910070142*^9, 3.679339105692511*^9}, {
+  3.679347656225293*^9, 3.679347658144876*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell["Put the following happy smiley in a box, 5 fold.", "Text",
+ CellChangeTimes->{{3.709162717110656*^9, 3.709162742237768*^9}, {
+  3.711652832195861*^9, 3.7116528357855473`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"s", " ", "=", " ", 
+  RowBox[{"Style", "[", 
+   RowBox[{"\[HappySmiley]", ",", "Large"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7091626525064774`*^9, 3.709162712919382*^9}, {
+  3.709162744870685*^9, 3.709162810572197*^9}}],
+
+Cell[BoxData[
+ StyleBox["\[HappySmiley]",
+  StripOnInput->False,
+  FontSize->Large]], "Output",
+ CellChangeTimes->{{3.709162701154875*^9, 3.7091627133554287`*^9}, {
+   3.709162745895151*^9, 3.709162810863988*^9}, 3.7110280512988653`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Hint", "Subsubsection",
+ CellChangeTimes->{{3.709161490939797*^9, 3.709161491348181*^9}, {
+  3.711028575850112*^9, 3.7110285770581837`*^9}}],
+
+Cell["We\[CloseCurlyQuote]re looking for this:", "Text",
+ CellChangeTimes->{{3.711652858441684*^9, 3.711652861249484*^9}}],
+
+Cell[BoxData[
+ FrameBox[
+  FrameBox[
+   FrameBox[
+    FrameBox[
+     FrameBox[
+      StyleBox["\[HappySmiley]",
+       StripOnInput->False,
+       FontSize->Large],
+      StripOnInput->False],
+     StripOnInput->False],
+    StripOnInput->False],
+   StripOnInput->False],
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{3.709162762364455*^9, 3.709162812886683*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.709162748134625*^9, 3.7091627489427347`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Nest", "[", 
+  RowBox[{"Framed", ",", "s", ",", "5"}], "]"}]], "Input",
+ CellChangeTimes->{{3.709162751827416*^9, 3.70916276207792*^9}}],
+
+Cell[BoxData[
+ FrameBox[
+  FrameBox[
+   FrameBox[
+    FrameBox[
+     FrameBox[
+      StyleBox["\[HappySmiley]",
+       StripOnInput->False,
+       FontSize->Large],
+      StripOnInput->False],
+     StripOnInput->False],
+    StripOnInput->False],
+   StripOnInput->False],
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{3.709162762364455*^9, 3.709162812886683*^9}]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell["\<\
+Show the iterative process of trapping the smiley above in a list.\
+\>", "Text",
+ CellChangeTimes->{{3.709162855187276*^9, 3.709162899089245*^9}, {
+  3.71165287683305*^9, 3.711652915272031*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Hint", "Subsubsection",
+ CellChangeTimes->{{3.709161490939797*^9, 3.709161491348181*^9}, {
+  3.711028575850112*^9, 3.7110285770581837`*^9}}],
+
+Cell["We\[CloseCurlyQuote]re looking for this:", "Text",
+ CellChangeTimes->{{3.711652858441684*^9, 3.711652861249484*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   StyleBox["\[HappySmiley]",
+    StripOnInput->False,
+    FontSize->Large], ",", 
+   FrameBox[
+    StyleBox["\[HappySmiley]",
+     StripOnInput->False,
+     FontSize->Large],
+    StripOnInput->False], ",", 
+   FrameBox[
+    FrameBox[
+     StyleBox["\[HappySmiley]",
+      StripOnInput->False,
+      FontSize->Large],
+     StripOnInput->False],
+    StripOnInput->False], ",", 
+   FrameBox[
+    FrameBox[
+     FrameBox[
+      StyleBox["\[HappySmiley]",
+       StripOnInput->False,
+       FontSize->Large],
+      StripOnInput->False],
+     StripOnInput->False],
+    StripOnInput->False], ",", 
+   FrameBox[
+    FrameBox[
+     FrameBox[
+      FrameBox[
+       StyleBox["\[HappySmiley]",
+        StripOnInput->False,
+        FontSize->Large],
+       StripOnInput->False],
+      StripOnInput->False],
+     StripOnInput->False],
+    StripOnInput->False], ",", 
+   FrameBox[
+    FrameBox[
+     FrameBox[
+      FrameBox[
+       FrameBox[
+        StyleBox["\[HappySmiley]",
+         StripOnInput->False,
+         FontSize->Large],
+        StripOnInput->False],
+       StripOnInput->False],
+      StripOnInput->False],
+     StripOnInput->False],
+    StripOnInput->False]}], "}"}]], "Output",
+ CellChangeTimes->{3.709162762364455*^9, 3.709162812886683*^9, 
+  3.709162891323897*^9, 3.711028053215631*^9, 3.711028108694303*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.709162748134625*^9, 3.7091627489427347`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NestList", "[", 
+  RowBox[{"Framed", ",", "s", ",", "5"}], "]"}]], "Input",
+ CellChangeTimes->{{3.709162751827416*^9, 3.70916276207792*^9}, {
+  3.709162890636622*^9, 3.7091628909926033`*^9}, {3.711028003498406*^9, 
+  3.711028004368085*^9}, {3.7110280556090193`*^9, 3.711028093012125*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   StyleBox["\[HappySmiley]",
+    StripOnInput->False,
+    FontSize->Large], ",", 
+   FrameBox[
+    StyleBox["\[HappySmiley]",
+     StripOnInput->False,
+     FontSize->Large],
+    StripOnInput->False], ",", 
+   FrameBox[
+    FrameBox[
+     StyleBox["\[HappySmiley]",
+      StripOnInput->False,
+      FontSize->Large],
+     StripOnInput->False],
+    StripOnInput->False], ",", 
+   FrameBox[
+    FrameBox[
+     FrameBox[
+      StyleBox["\[HappySmiley]",
+       StripOnInput->False,
+       FontSize->Large],
+      StripOnInput->False],
+     StripOnInput->False],
+    StripOnInput->False], ",", 
+   FrameBox[
+    FrameBox[
+     FrameBox[
+      FrameBox[
+       StyleBox["\[HappySmiley]",
+        StripOnInput->False,
+        FontSize->Large],
+       StripOnInput->False],
+      StripOnInput->False],
+     StripOnInput->False],
+    StripOnInput->False], ",", 
+   FrameBox[
+    FrameBox[
+     FrameBox[
+      FrameBox[
+       FrameBox[
+        StyleBox["\[HappySmiley]",
+         StripOnInput->False,
+         FontSize->Large],
+        StripOnInput->False],
+       StripOnInput->False],
+      StripOnInput->False],
+     StripOnInput->False],
+    StripOnInput->False]}], "}"}]], "Output",
+ CellChangeTimes->{3.709162762364455*^9, 3.709162812886683*^9, 
+  3.709162891323897*^9, 3.711028053215631*^9, 3.711028108694303*^9}]
+}, Open  ]]
+}, Closed]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Intermediate Exercises", "Section",
+ CellChangeTimes->{{3.67933910070142*^9, 3.679339105692511*^9}, {
+  3.679347656225293*^9, 3.679347658144876*^9}, {3.707932160189926*^9, 
+  3.707932162210072*^9}, {3.70793254186989*^9, 3.707932543646908*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell["\<\
+In the exercise above, make it so that the smiley remains smiling until at \
+least five frames around it, at which point it turns into a sad face. \
+\>", "Text",
+ CellChangeTimes->{{3.709162717110656*^9, 3.709162742237768*^9}, {
+  3.711028494486854*^9, 3.711028532803632*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"s", " ", "=", " ", 
+  RowBox[{"Style", "[", 
+   RowBox[{"\[HappySmiley]", ",", "Large"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7091626525064774`*^9, 3.709162712919382*^9}, {
+  3.709162744870685*^9, 3.709162810572197*^9}}],
+
+Cell[BoxData[
+ StyleBox["\[HappySmiley]",
+  StripOnInput->False,
+  FontSize->Large]], "Output",
+ CellChangeTimes->{{3.709162701154875*^9, 3.7091627133554287`*^9}, {
+   3.709162745895151*^9, 3.709162810863988*^9}, 3.7110280512988653`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"f", "=", 
+  RowBox[{"Style", "[", 
+   RowBox[{"\[SadSmiley]", ",", "Large"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.711028418909786*^9, 3.711028422208046*^9}}],
+
+Cell[BoxData[
+ StyleBox["\[SadSmiley]",
+  StripOnInput->False,
+  FontSize->Large]], "Output",
+ CellChangeTimes->{{3.711028419975391*^9, 3.711028422645549*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Hint", "Subsubsection",
+ CellChangeTimes->{{3.709161490939797*^9, 3.709161491348181*^9}, {
+  3.711028575850112*^9, 3.7110285770581837`*^9}}],
+
+Cell[TextData[{
+ "Define a variable counter to keep track of how many iterations ",
+ StyleBox["NestList",
+  FontWeight->"Bold"],
+ " has been through. "
+}], "Text",
+ CellChangeTimes->{{3.711028581186245*^9, 3.711028747484483*^9}, {
+  3.711652971256315*^9, 3.711652972629472*^9}}],
+
+Cell[TextData[{
+ "In the first argument of ",
+ StyleBox["NestList",
+  FontWeight->"Bold"],
+ " you can use multiple expressions separated by a semicolon (;)."
+}], "Text",
+ CellChangeTimes->{{3.711652973965961*^9, 3.711652976903298*^9}}],
+
+Cell[TextData[{
+ "We used ",
+ StyleBox["If ",
+  FontWeight->"Bold"],
+ "to specify the condition that the counter is greater than 5."
+}], "Text",
+ CellChangeTimes->{{3.7116529780232067`*^9, 3.7116529834614677`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.709162748134625*^9, 3.7091627489427347`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"counter", " ", "=", " ", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"NestList", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"counter", "=", 
+       RowBox[{"counter", "+", "1"}]}], ";", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"counter", "\[GreaterEqual]", "5"}], ",", 
+        RowBox[{
+         RowBox[{"Framed", "[", "#", "]"}], "/.", 
+         RowBox[{"{", 
+          RowBox[{"s", "\[Rule]", "f"}], "}"}]}], ",", 
+        RowBox[{"Framed", "[", "#", "]"}]}], "]"}]}], ")"}], "&"}], ",", "s", 
+   ",", "6"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.711028207758134*^9, 3.711028394114079*^9}, 
+   3.711028425549069*^9, {3.711028753712468*^9, 3.7110287595398483`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   StyleBox["\[HappySmiley]",
+    StripOnInput->False,
+    FontSize->Large], ",", 
+   FrameBox[
+    StyleBox["\[HappySmiley]",
+     StripOnInput->False,
+     FontSize->Large],
+    StripOnInput->False], ",", 
+   FrameBox[
+    FrameBox[
+     StyleBox["\[HappySmiley]",
+      StripOnInput->False,
+      FontSize->Large],
+     StripOnInput->False],
+    StripOnInput->False], ",", 
+   FrameBox[
+    FrameBox[
+     FrameBox[
+      StyleBox["\[HappySmiley]",
+       StripOnInput->False,
+       FontSize->Large],
+      StripOnInput->False],
+     StripOnInput->False],
+    StripOnInput->False], ",", 
+   FrameBox[
+    FrameBox[
+     FrameBox[
+      FrameBox[
+       StyleBox["\[HappySmiley]",
+        StripOnInput->False,
+        FontSize->Large],
+       StripOnInput->False],
+      StripOnInput->False],
+     StripOnInput->False],
+    StripOnInput->False], ",", 
+   FrameBox[
+    FrameBox[
+     FrameBox[
+      FrameBox[
+       FrameBox[
+        StyleBox["\[SadSmiley]",
+         StripOnInput->False,
+         FontSize->Large],
+        StripOnInput->False],
+       StripOnInput->False],
+      StripOnInput->False],
+     StripOnInput->False],
+    StripOnInput->False], ",", 
+   FrameBox[
+    FrameBox[
+     FrameBox[
+      FrameBox[
+       FrameBox[
+        FrameBox[
+         StyleBox["\[SadSmiley]",
+          StripOnInput->False,
+          FontSize->Large],
+         StripOnInput->False],
+        StripOnInput->False],
+       StripOnInput->False],
+      StripOnInput->False],
+     StripOnInput->False],
+    StripOnInput->False]}], "}"}]], "Output",
+ CellChangeTimes->{{3.711028295078368*^9, 3.7110283534686613`*^9}, 
+   3.711028425891675*^9, {3.711028754606287*^9, 3.711028759949171*^9}}]
+}, Open  ]]
+}, Closed]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Advanced Exercises", "Section",
+ CellChangeTimes->{{3.67933910070142*^9, 3.679339105692511*^9}, {
+  3.679347656225293*^9, 3.679347658144876*^9}, {3.707932160189926*^9, 
+  3.707932162210072*^9}, {3.70793254186989*^9, 3.707932543646908*^9}, {
+  3.7091465501038094`*^9, 3.709146554046186*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Question ",
+ 
+ CounterBox["Subsection"]
+}], "Subsection",
+ CellChangeTimes->{{3.6793391081481113`*^9, 3.6793391093958683`*^9}, {
+  3.679343285218049*^9, 3.679343309976263*^9}}],
+
+Cell[TextData[{
+ "A lot of times in computational sciences, infinite series arise, and we \
+need to compute an approximation for them. Of course we \
+can\[CloseCurlyQuote]t add infinitely many numbers, and so we add finitely \
+many of them. Let\[CloseCurlyQuote]s look at a simple example, the \
+exponential function. Of course we can use the built-in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " function, but let\[CloseCurlyQuote]s assume for a moment it wasn\
+\[CloseCurlyQuote]t available to us, and we had to use the series form of \
+this function to compute our values. The Taylor expansion of this function is:"
+}], "Text",
+ CellChangeTimes->{{3.709160894539296*^9, 3.709161079294965*^9}, 
+   3.7116530332135677`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Series", "[", 
+  RowBox[{
+   RowBox[{"Exp", "[", "x", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "0", ",", "5"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7091610572100353`*^9, 3.709161072143302*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"1", "+", "x", "+", 
+   FractionBox[
+    SuperscriptBox["x", "2"], "2"], "+", 
+   FractionBox[
+    SuperscriptBox["x", "3"], "6"], "+", 
+   FractionBox[
+    SuperscriptBox["x", "4"], "24"], "+", 
+   FractionBox[
+    SuperscriptBox["x", "5"], "120"], "+", 
+   InterpretationBox[
+    SuperscriptBox[
+     RowBox[{"O", "[", "x", "]"}], "6"],
+    SeriesData[$CellContext`x, 0, {}, 0, 6, 1],
+    Editable->False]}],
+  SeriesData[$CellContext`x, 0, {1, 1, 
+    Rational[1, 2], 
+    Rational[1, 6], 
+    Rational[1, 24], 
+    Rational[1, 120]}, 0, 6, 1],
+  Editable->False]], "Output",
+ CellChangeTimes->{{3.709161064733652*^9, 3.709161072511539*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Now assume the value ",
+ StyleBox["x",
+  FontSlant->"Italic"],
+ " is an experimentally or numerically obtained values and contains some \
+possible errors. If we simply plug this value into the series above and start \
+computing each of the powers, then at higher powers (5 in the example above) \
+we will be magnify those errors quite a bit, and that is no good. "
+}], "Text",
+ CellChangeTimes->{{3.709161089638321*^9, 3.709161268634946*^9}, {
+  3.709161308105001*^9, 3.709161319985732*^9}, {3.711653087907386*^9, 
+  3.711653089107615*^9}}],
+
+Cell["\<\
+The smart way of programming this is to decide a priori how many terms in the \
+series we will use to approximate our function, and then factor our the \
+expression in to what we call its Onion Skin. So let\[CloseCurlyQuote]s say \
+we have decided we will use 6 terms. Then the Onion Skin factorization is:\
+\>", "Text",
+ CellChangeTimes->{{3.711653090402543*^9, 3.711653114201243*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"1", "+", "x", "+", 
+   FractionBox[
+    SuperscriptBox["x", "2"], "2"], "+", 
+   FractionBox[
+    SuperscriptBox["x", "3"], "6"], "+", 
+   FractionBox[
+    SuperscriptBox["x", "4"], "24"], "+", 
+   FractionBox[
+    SuperscriptBox["x", "5"], "120"]}], " ", "=", " ", 
+  RowBox[{"1", "+", 
+   RowBox[{"x", " ", 
+    RowBox[{"(", 
+     RowBox[{"1", "+", 
+      RowBox[{
+       FractionBox["1", "2"], " ", "x", " ", 
+       RowBox[{"(", 
+        RowBox[{"1", "+", 
+         RowBox[{
+          FractionBox["1", "3"], " ", "x", " ", 
+          RowBox[{"(", 
+           RowBox[{"1", "+", 
+            RowBox[{
+             FractionBox["1", "4"], " ", 
+             RowBox[{"(", 
+              RowBox[{"1", "+", 
+               FractionBox["x", "5"]}], ")"}], " ", "x"}]}], ")"}]}]}], 
+        ")"}]}]}], ")"}]}]}]}]], "Text",
+ CellChangeTimes->{{3.709161330547675*^9, 3.709161350130663*^9}, {
+  3.7091613965936003`*^9, 3.709161396912088*^9}}],
+
+Cell[TextData[{
+ "You can verify this by using the function ",
+ StyleBox["Expand",
+  FontWeight->"Bold"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.709161356808058*^9, 3.7091613751116333`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Expand", "[", 
+  RowBox[{"1", "+", 
+   RowBox[{"x", " ", 
+    RowBox[{"(", 
+     RowBox[{"1", "+", 
+      RowBox[{
+       FractionBox["1", "2"], " ", "x", " ", 
+       RowBox[{"(", 
+        RowBox[{"1", "+", 
+         RowBox[{
+          FractionBox["1", "3"], " ", "x", " ", 
+          RowBox[{"(", 
+           RowBox[{"1", "+", 
+            RowBox[{
+             FractionBox["1", "4"], " ", 
+             RowBox[{"(", 
+              RowBox[{"1", "+", 
+               FractionBox["x", "5"]}], ")"}], " ", "x"}]}], ")"}]}]}], 
+        ")"}]}]}], ")"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.709161376956994*^9, 3.709161401967906*^9}}],
+
+Cell[BoxData[
+ RowBox[{"1", "+", "x", "+", 
+  FractionBox[
+   SuperscriptBox["x", "2"], "2"], "+", 
+  FractionBox[
+   SuperscriptBox["x", "3"], "6"], "+", 
+  FractionBox[
+   SuperscriptBox["x", "4"], "24"], "+", 
+  FractionBox[
+   SuperscriptBox["x", "5"], "120"]}]], "Output",
+ CellChangeTimes->{{3.709161381157065*^9, 3.70916140233601*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Now note that all the powers of ",
+ StyleBox["x ",
+  FontSlant->"Italic"],
+ "are 1 and the errors associated with this value will not get amplified. Use \
+",
+ StyleBox["Fold",
+  FontWeight->"Bold"],
+ " to program computation of this onion skin. "
+}], "Text",
+ CellChangeTimes->{{3.7091614142636833`*^9, 3.7091614864773407`*^9}, 
+   3.711653152992014*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Hint", "Subsubsection",
+ CellChangeTimes->{{3.709161490939797*^9, 3.709161491348181*^9}}],
+
+Cell[TextData[{
+ "Create a function that defines the core of the onion at each step of the \
+iteration. For example at the first step, the core is ",
+ Cell[BoxData[
+  RowBox[{"1", "+", 
+   FractionBox["x", "5"]}]],
+  CellChangeTimes->{{3.709161330547675*^9, 3.709161350130663*^9}, {
+   3.7091613965936003`*^9, 3.709161396912088*^9}}],
+ ", and at the second step, the core is ",
+ Cell[BoxData[
+  RowBox[{"1", "+", 
+   FractionBox["x", "4"]}]],
+  CellChangeTimes->{{3.709161330547675*^9, 3.709161350130663*^9}, {
+   3.7091613965936003`*^9, 3.709161396912088*^9}}],
+ ", which when ",
+ StyleBox["Fold",
+  FontWeight->"Bold"],
+ "ed, becomes ",
+ Cell[BoxData[
+  RowBox[{"1", "+", 
+   RowBox[{
+    FractionBox["1", "4"], " ", 
+    RowBox[{"(", 
+     RowBox[{"1", "+", 
+      FractionBox["x", "5"]}], ")"}], "x"}]}]],
+  CellChangeTimes->{{3.709161376956994*^9, 3.709161401967906*^9}}],
+ ". Once you have this function, you can use ",
+ StyleBox["Fold",
+  FontWeight->"Bold"],
+ " to create the series. Note that you may have to play around with indices \
+to get the right number of terms. "
+}], "Text",
+ CellChangeTimes->{{3.709161495636338*^9, 3.7091615229396963`*^9}, {
+  3.7091617989173098`*^9, 3.7091618482589817`*^9}, {3.709162437189271*^9, 
+  3.709162491404171*^9}, {3.709162533018815*^9, 3.709162603496811*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection",
+ CellChangeTimes->{{3.7091607745820007`*^9, 3.7091607753664837`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"OnionCore", "[", 
+   RowBox[{"x_", ",", "i_", ",", "n_"}], "]"}], ":=", " ", 
+  RowBox[{"(", 
+   RowBox[{"1", "+", 
+    RowBox[{
+     RowBox[{"1", "/", 
+      RowBox[{"(", 
+       RowBox[{"n", "-", "i", "+", "1"}], ")"}]}], " ", "x"}]}], 
+   ")"}]}]], "Input",
+ CellChangeTimes->{{3.7091594981025867`*^9, 3.709159601729555*^9}, {
+  3.709159667120762*^9, 3.709159721207212*^9}, {3.7091599927824993`*^9, 
+  3.709159999080841*^9}, {3.709160108360732*^9, 3.70916013624581*^9}, {
+  3.7091602739971724`*^9, 3.709160274767912*^9}, {3.709160416111842*^9, 
+  3.709160470046522*^9}, {3.70916057409227*^9, 3.7091605741799927`*^9}, {
+  3.7091607125395613`*^9, 3.7091607135928593`*^9}, {3.709161570499454*^9, 
+  3.7091615731312447`*^9}, {3.709161717263989*^9, 3.7091617177202253`*^9}, {
+  3.7091618908837547`*^9, 3.709161918770919*^9}, {3.709162031838441*^9, 
+  3.7091620320235147`*^9}, {3.709162338303718*^9, 3.709162338823392*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"OnionCore", "[", 
+  RowBox[{"x", ",", "1", ",", "5"}], "]"}]], "Input",
+ CellChangeTimes->{{3.709160793618505*^9, 3.709160801270639*^9}, {
+  3.70916128366847*^9, 3.709161289186079*^9}, {3.709161574283123*^9, 
+  3.709161594266367*^9}, {3.709161655945506*^9, 3.709161656913109*^9}, {
+  3.709161723304153*^9, 3.709161723743581*^9}, {3.709161928715654*^9, 
+  3.709161928794133*^9}, {3.7091620002407923`*^9, 3.709162005528529*^9}}],
+
+Cell[BoxData[
+ RowBox[{"1", "+", 
+  FractionBox["x", "5"]}]], "Output",
+ CellChangeTimes->{
+  3.70916080166567*^9, 3.709161289536352*^9, {3.709161575268344*^9, 
+   3.709161594685581*^9}, 3.709161657322357*^9, {3.709161720391361*^9, 
+   3.7091617505742283`*^9}, 3.709161850443737*^9, {3.709161888600822*^9, 
+   3.709161929124818*^9}, {3.70916199815934*^9, 3.709162033177459*^9}, 
+   3.709162066373317*^9, 3.7091623400488167`*^9, 3.7110279444691763`*^9, 
+   3.7116533008978853`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"OnionSkins", "[", 
+   RowBox[{"x_", ",", "n_"}], "]"}], ":=", 
+  RowBox[{"1", "+", 
+   RowBox[{"Fold", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"x", " ", 
+       RowBox[{"OnionCore", "[", 
+        RowBox[{"#1", ",", "#2", ",", "n"}], "]"}]}], "&"}], ",", "x", ",", 
+     RowBox[{"Range", "[", 
+      RowBox[{"n", "-", "1"}], "]"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.7091597486876793`*^9, 3.709159762918523*^9}, {
+  3.709159897541637*^9, 3.709159943954483*^9}, {3.709160013960863*^9, 
+  3.7091600141289167`*^9}, {3.709160355625009*^9, 3.709160355993232*^9}, {
+  3.7091604533931847`*^9, 3.709160548381116*^9}, {3.709160594235388*^9, 
+  3.7091605993393507`*^9}, {3.709160717697433*^9, 3.7091607272548227`*^9}, {
+  3.7091616803849697`*^9, 3.709161697416888*^9}, {3.70916172947219*^9, 
+  3.709161740103202*^9}, {3.7091617762537203`*^9, 3.70916178562245*^9}, {
+  3.709161868140647*^9, 3.709161962487504*^9}, {3.709162012856736*^9, 
+  3.709162026113*^9}, {3.709162071407095*^9, 3.709162071807351*^9}, {
+  3.7091622784208727`*^9, 3.709162361664145*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ex", "=", 
+  RowBox[{"OnionSkins", "[", 
+   RowBox[{"x", ",", "5"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.70915992775243*^9, 3.709159958977532*^9}, {
+   3.709160015600563*^9, 3.709160016470559*^9}, {3.709160365528989*^9, 
+   3.709160369727172*^9}, {3.7091604928614063`*^9, 3.709160495741787*^9}, {
+   3.709160563604842*^9, 3.709160565011986*^9}, {3.709160605925581*^9, 
+   3.709160606346451*^9}, 3.7091607328137302`*^9, {3.709160816766605*^9, 
+   3.709160821836882*^9}, {3.709161343273741*^9, 3.709161343992713*^9}, {
+   3.7091616854649773`*^9, 3.7091616881371403`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"1", "+", 
+  RowBox[{"x", " ", 
+   RowBox[{"(", 
+    RowBox[{"1", "+", 
+     RowBox[{
+      FractionBox["1", "2"], " ", "x", " ", 
+      RowBox[{"(", 
+       RowBox[{"1", "+", 
+        RowBox[{
+         FractionBox["1", "3"], " ", "x", " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", 
+           RowBox[{
+            FractionBox["1", "4"], " ", 
+            RowBox[{"(", 
+             RowBox[{"1", "+", 
+              FractionBox["x", "5"]}], ")"}], " ", "x"}]}], ")"}]}]}], 
+       ")"}]}]}], ")"}]}]}]], "Output",
+ CellChangeTimes->{{3.709159930236163*^9, 3.709159959321168*^9}, {
+   3.709160016979043*^9, 3.709160027276107*^9}, {3.709160357055685*^9, 
+   3.7091603700369453`*^9}, {3.709160447457797*^9, 3.709160606748158*^9}, 
+   3.709160733218972*^9, {3.709160814431797*^9, 3.7091608221179256`*^9}, 
+   3.7091613444059362`*^9, {3.7091616830866327`*^9, 3.7091617005568857`*^9}, {
+   3.70916173228627*^9, 3.7091617532383013`*^9}, 3.7091617871113987`*^9, {
+   3.709161874446764*^9, 3.709161896029159*^9}, {3.709161937609294*^9, 
+   3.709161963359933*^9}, {3.709162020593561*^9, 3.709162034597413*^9}, {
+   3.709162068597711*^9, 3.709162072941867*^9}, {3.709162279695438*^9, 
+   3.709162362970785*^9}, 3.71102794888806*^9, 3.71165330103122*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Expand", "[", "ex", "]"}]], "Input",
+ CellChangeTimes->{{3.709160497483976*^9, 3.7091604992370653`*^9}, {
+  3.709161946817111*^9, 3.709161947657586*^9}}],
+
+Cell[BoxData[
+ RowBox[{"1", "+", "x", "+", 
+  FractionBox[
+   SuperscriptBox["x", "2"], "2"], "+", 
+  FractionBox[
+   SuperscriptBox["x", "3"], "6"], "+", 
+  FractionBox[
+   SuperscriptBox["x", "4"], "24"], "+", 
+  FractionBox[
+   SuperscriptBox["x", "5"], "120"]}]], "Output",
+ CellChangeTimes->{{3.709160522703529*^9, 3.7091606081970377`*^9}, 
+   3.70916073439935*^9, 3.709160823124433*^9, {3.709161703976207*^9, 
+   3.7091617430769873`*^9}, 3.709161788609515*^9, 3.709161897205287*^9, {
+   3.709161948007352*^9, 3.709161963893998*^9}, 3.709162074089867*^9, {
+   3.709162280928503*^9, 3.7091623637073193`*^9}, 3.7110279517834997`*^9, 
+   3.7116533011222*^9}]
+}, Open  ]]
+}, Closed]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1639, 1005},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 607, 8, 114, "Title"],
+Cell[CellGroupData[{
+Cell[1212, 34, 148, 2, 80, "Section"],
+Cell[CellGroupData[{
+Cell[1385, 40, 194, 6, 54, "Subsection"],
+Cell[1582, 48, 181, 2, 37, "Text"],
+Cell[CellGroupData[{
+Cell[1788, 54, 249, 5, 39, "Input"],
+Cell[2040, 61, 237, 5, 56, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2314, 71, 146, 2, 43, "Subsubsection"],
+Cell[2463, 75, 122, 1, 37, "Text"],
+Cell[2588, 78, 369, 14, 119, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2994, 97, 101, 1, 43, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[3120, 102, 160, 3, 39, "Input"],
+Cell[3283, 107, 369, 14, 119, "Output"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3713, 128, 194, 6, 54, "Subsection"],
+Cell[3910, 136, 204, 4, 37, "Text"],
+Cell[CellGroupData[{
+Cell[4139, 144, 146, 2, 43, "Subsubsection"],
+Cell[4288, 148, 122, 1, 37, "Text"],
+Cell[4413, 151, 1354, 52, 119, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5804, 208, 101, 1, 43, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[5930, 213, 312, 5, 39, "Input"],
+Cell[6245, 220, 1354, 52, 119, "Output"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7672, 280, 249, 3, 80, "Section"],
+Cell[CellGroupData[{
+Cell[7946, 287, 194, 6, 54, "Subsection"],
+Cell[8143, 295, 286, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[8454, 304, 249, 5, 39, "Input"],
+Cell[8706, 311, 237, 5, 56, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8980, 321, 186, 4, 39, "Input"],
+Cell[9169, 327, 159, 4, 56, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9365, 336, 146, 2, 43, "Subsubsection"],
+Cell[9514, 340, 278, 7, 37, "Text"],
+Cell[9795, 349, 235, 6, 37, "Text"],
+Cell[10033, 357, 214, 6, 37, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10284, 368, 101, 1, 43, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[10410, 373, 757, 20, 66, "Input"],
+Cell[11170, 395, 1722, 67, 131, "Output"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12965, 470, 296, 4, 80, "Section"],
+Cell[CellGroupData[{
+Cell[13286, 478, 194, 6, 54, "Subsection"],
+Cell[13483, 486, 734, 13, 85, "Text"],
+Cell[CellGroupData[{
+Cell[14242, 503, 240, 6, 39, "Input"],
+Cell[14485, 511, 688, 22, 61, "Output"]
+}, Open  ]],
+Cell[15188, 536, 558, 11, 61, "Text"],
+Cell[15749, 549, 396, 6, 61, "Text"],
+Cell[16148, 557, 970, 30, 60, "Text"],
+Cell[17121, 589, 190, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[17336, 599, 662, 20, 59, "Input"],
+Cell[18001, 621, 342, 10, 61, "Output"]
+}, Open  ]],
+Cell[18358, 634, 372, 11, 37, "Text"],
+Cell[CellGroupData[{
+Cell[18755, 649, 95, 1, 43, "Subsubsection"],
+Cell[18853, 652, 1308, 34, 77, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20198, 691, 103, 1, 43, "Subsubsection"],
+Cell[20304, 694, 955, 19, 39, "Input"],
+Cell[CellGroupData[{
+Cell[21284, 717, 450, 7, 39, "Input"],
+Cell[21737, 726, 480, 9, 54, "Output"]
+}, Open  ]],
+Cell[22232, 738, 1097, 22, 39, "Input"],
+Cell[CellGroupData[{
+Cell[23354, 764, 598, 10, 39, "Input"],
+Cell[23955, 776, 1276, 28, 57, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25268, 809, 177, 3, 39, "Input"],
+Cell[25448, 814, 660, 15, 61, "Output"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

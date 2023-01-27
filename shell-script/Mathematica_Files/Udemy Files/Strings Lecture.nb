@@ -1,0 +1,1518 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     57132,       1510]
+NotebookOptionsPosition[     47265,       1213]
+NotebookOutlinePosition[     49971,       1276]
+CellTagsIndexPosition[     49256,       1261]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Strings", "Section",
+ CellChangeTimes->{{3.6890158537693167`*^9, 3.689015854722329*^9}}],
+
+Cell[TextData[{
+ "Hello and welcome to our lecture on strings. Strings are fundamental \
+objects in just about every programming language, so it will be useful for us \
+to go over how to create and manipulate strings in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ". "
+}], "Text",
+ CellChangeTimes->{{3.673447766885748*^9, 3.6734477776293287`*^9}, {
+   3.673447962313713*^9, 3.67344808038841*^9}, {3.673448223159997*^9, 
+   3.67344822376789*^9}, 3.6734486026525183`*^9, {3.675012999866805*^9, 
+   3.6750130021210403`*^9}, {3.675111694874127*^9, 3.6751117178220453`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Introduction", "Subsection",
+ CellChangeTimes->{{3.673448604249194*^9, 3.6734486048965683`*^9}, {
+  3.689015856953583*^9, 3.689015858572694*^9}}],
+
+Cell["\<\
+A string is a sequence of characters, surrounded by double quotes:\
+\>", "Text",
+ CellChangeTimes->{3.67344860692544*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"hw", "=", "\"\<Hello World!\>\""}]], "Input",
+ CellChangeTimes->{{3.6734480572001877`*^9, 3.67344808666775*^9}, 
+   3.673448628791645*^9, {3.673448957943808*^9, 3.673448961998865*^9}}],
+
+Cell[BoxData["\<\"Hello World!\"\>"], "Output",
+ CellChangeTimes->{3.673448087709462*^9, 3.67344862902485*^9, 
+  3.673448962911714*^9, 3.6750134934904423`*^9, 3.675013769117881*^9, 
+  3.6751151101033783`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "The head of this expression is ",
+ StyleBox["String", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.673448093995387*^9, 3.6734481029710197`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Head", "[", "hw", "]"}]], "Input",
+ CellChangeTimes->{{3.6734481040020533`*^9, 3.673448105788046*^9}, 
+   3.673448632290721*^9, {3.67344896595909*^9, 3.67344896607882*^9}}],
+
+Cell[BoxData["String"], "Output",
+ CellChangeTimes->{3.673448106063716*^9, 3.673448633297069*^9, 
+  3.673448966522376*^9, 3.675013493788135*^9, 3.675115110346692*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "We can convert the ",
+ StyleBox["String", "Code"],
+ " to a list of characters using the ",
+ StyleBox["Characters", "Code"],
+ " function:"
+}], "Text",
+ CellChangeTimes->{{3.67345694975203*^9, 3.6734569704934053`*^9}, {
+  3.68901588172027*^9, 3.689015881853915*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Characters"}]], "Input",
+ CellChangeTimes->{{3.673456971208996*^9, 3.67345697229502*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Characters\\\", \\\"[\\\", \
+StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\\\\\"\
+TI\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\"]\\\"}]\) \
+gives a list of the characters in a string. \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Characters"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.675115110465845*^9},
+ CellTags->"Info-74a33d56-d4f9-4cc4-9c0a-a572f612073f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Characters", "[", "hw", "]"}]], "Input",
+ CellChangeTimes->{{3.6734569810523853`*^9, 3.6734569829292727`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"H\"\>", ",", "\<\"e\"\>", ",", "\<\"l\"\>", ",", "\<\"l\"\>", 
+   ",", "\<\"o\"\>", ",", "\<\" \"\>", ",", "\<\"W\"\>", ",", "\<\"o\"\>", 
+   ",", "\<\"r\"\>", ",", "\<\"l\"\>", ",", "\<\"d\"\>", ",", "\<\"!\"\>"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.6734569832543993`*^9, 3.6750135006638193`*^9, 
+  3.675115110539279*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "To join the characters back together, we use ",
+ StyleBox["StringJoin", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.673457007342794*^9, 3.673457019420879*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "StringJoin"}]], "Input",
+ CellChangeTimes->{{3.6734570201933613`*^9, 3.673457023309174*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\
+\\\\\"s\\\\\\\",\\\\\\\"TI\\\\\\\"]\\\\_1\\\\)\\\\\\\"\\\", \
+ShowStringCharacters->True], \\\"<>\\\", \
+StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"s\\\\\\\",\\\\\\\"TI\\\\\
+\\\"]\\\\_2\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\"<>\\\", \
+StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}]\), \!\(\*RowBox[{\\\"StringJoin\\\
+\", \\\"[\\\", RowBox[{StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"s\
+\\\\\\\",\\\\\\\"TI\\\\\\\"]\\\\_1\\\\)\\\\\\\"\\\", \
+ShowStringCharacters->True], \\\",\\\", \
+StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"s\\\\\\\",\\\\\\\"TI\\\\\
+\\\"]\\\\_2\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\",\\\", \
+StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"]\\\"}]\), or \!\(\*RowBox[{\
+\\\"StringJoin\\\", \\\"[\\\", RowBox[{\\\"{\\\", RowBox[{StyleBox[\\\"\\\\\\\
+\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"s\\\\\\\",\\\\\\\"TI\\\\\\\"]\\\\_1\\\\)\\\\\
+\\\"\\\", ShowStringCharacters->True], \\\",\\\", \
+StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"s\\\\\\\",\\\\\\\"TI\\\\\
+\\\"]\\\\_2\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\",\\\", \
+StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\"}], \\\"]\\\"}]\) \
+yields a string consisting of a concatenation of the \
+\!\(\*SubscriptBox[StyleBox[\\\"s\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \
+\\\"TI\\\"]]\). \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/StringJoin"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.6751151106099*^9},
+ CellTags->"Info-4b4066ff-c14a-4056-9a52-c663b4dad4b7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringJoin", "[", 
+  RowBox[{"Characters", "[", "hw", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.673457033615611*^9, 3.673457039645049*^9}}],
+
+Cell[BoxData["\<\"Hello World!\"\>"], "Output",
+ CellChangeTimes->{3.673457039974723*^9, 3.675013501227168*^9, 
+  3.675115110696682*^9}]
+}, Open  ]],
+
+Cell["If we had:", "Text",
+ CellChangeTimes->{{3.673452153770142*^9, 3.6734521643847227`*^9}, 
+   3.6734570891299887`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"h", "=", "\"\<Hello \>\""}]], "Input",
+ CellChangeTimes->{{3.673452165875058*^9, 3.6734521680082827`*^9}}],
+
+Cell[BoxData["\<\"Hello \"\>"], "Output",
+ CellChangeTimes->{3.673452170534709*^9, 3.6750135013138638`*^9, 
+  3.6751151107568817`*^9}]
+}, Open  ]],
+
+Cell["And:", "Text",
+ CellChangeTimes->{{3.673457092633626*^9, 3.6734570930093803`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"w", "=", "\"\<World!\>\""}]], "Input",
+ CellChangeTimes->{{3.673452171332041*^9, 3.673452173680337*^9}}],
+
+Cell[BoxData["\<\"World!\"\>"], "Output",
+ CellChangeTimes->{3.673452174804014*^9, 3.675013501396562*^9, 
+  3.675115110822763*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Then we could use the shorthand notation of ",
+ StyleBox["StringJoin", "Code"],
+ " to join them together:"
+}], "Text",
+ CellChangeTimes->{{3.673452176023633*^9, 3.67345218355156*^9}, {
+  3.673457100177092*^9, 3.673457111152686*^9}, {3.6890158995983677`*^9, 
+  3.6890159056071653`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"h", "<>", "w"}]], "Input",
+ CellChangeTimes->{{3.6734521994670763`*^9, 3.6734522004462147`*^9}}],
+
+Cell[BoxData["\<\"Hello World!\"\>"], "Output",
+ CellChangeTimes->{3.673452200748468*^9, 3.675013501486148*^9, 
+  3.675115110890008*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Manipulating Strings", "Subsection",
+ CellChangeTimes->{{3.6734487089930677`*^9, 3.673448713095804*^9}}],
+
+Cell[TextData[{
+ "Strings in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " are actually a primitive type and they are manipulated with a bunch of \
+functions typically prefixed with the word String."
+}], "Text",
+ CellChangeTimes->{{3.6734487195842943`*^9, 3.6734488410856256`*^9}, {
+  3.673452375163787*^9, 3.673452424632394*^9}, {3.673457241659526*^9, 
+  3.6734572434580297`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["StringLength", "Subsubsection",
+ CellChangeTimes->{{3.6734523598202553`*^9, 3.673452366044323*^9}}],
+
+Cell["To get the length of our hello world string, we could say:", "Text",
+ CellChangeTimes->{{3.6734523690203114`*^9, 3.6734523704680023`*^9}, {
+  3.673452428423452*^9, 3.673452441623336*^9}, {3.673457259761159*^9, 
+  3.673457299438231*^9}, {3.6741731771101713`*^9, 3.674173190519661*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Length", "[", 
+  RowBox[{"Characters", "[", "hw", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.673457270784709*^9, 3.673457273977745*^9}}],
+
+Cell[BoxData["12"], "Output",
+ CellChangeTimes->{3.673457274318426*^9, 3.675013501603952*^9, 
+  3.6751151109578447`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Or we can use the ",
+ StyleBox["StringLength", "Code"],
+ " function:"
+}], "Text",
+ CellChangeTimes->{{3.673457277559572*^9, 3.673457284551306*^9}, {
+  3.6741731976632767`*^9, 3.674173200535369*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "StringLength"}]], "Input",
+ CellChangeTimes->{{3.673452442289261*^9, 3.673452443759211*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"StringLength\\\", \\\"[\\\", \
+StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\\\\\"\
+TI\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\"]\\\"}]\) \
+gives the number of characters in a string. \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/StringLength"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.675115111027924*^9},
+ CellTags->"Info-91630bb4-e89d-4c10-b73f-19959c313a5f"]
+}, Open  ]],
+
+Cell["In which case, we would say:", "Text",
+ CellChangeTimes->{{3.673457315342861*^9, 3.673457319669303*^9}, {
+  3.67417320614289*^9, 3.674173210686941*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringLength", "[", "hw", "]"}]], "Input",
+ CellChangeTimes->{{3.673452455569256*^9, 3.6734524576074543`*^9}}],
+
+Cell[BoxData["12"], "Output",
+ CellChangeTimes->{3.673452457889244*^9, 3.675013502342784*^9, 
+  3.6751151111156197`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["StringTake", "Subsubsection",
+ CellChangeTimes->{{3.6734488683179207`*^9, 3.673448869484332*^9}}],
+
+Cell[TextData[{
+ "The function ",
+ StyleBox["StringTake", "Code"],
+ " lets us extract substrings from a string:"
+}], "Text",
+ CellChangeTimes->{{3.673448872301214*^9, 3.6734489220173197`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "StringTake"}]], "Input",
+ CellChangeTimes->{{3.673448922886018*^9, 3.673448924592945*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"StringTake\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\
+\\\\\"TI\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\",\\\", \
+StyleBox[\\\"n\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) gives a string containing \
+the first \!\(\*StyleBox[\\\"n\\\", \\\"TI\\\"]\) characters in \
+\\\"\!\(\*\\nStyleBox[\\\"string\\\", \\\"TI\\\"]\)\\\". \
+\\n\!\(\*RowBox[{\\\"StringTake\\\", \\\"[\\\", RowBox[{StyleBox[\\\"\\\\\\\"\
+\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\\\\\"TI\\\\\\\"]\\\\)\\\\\\\
+\"\\\", ShowStringCharacters->True], \\\",\\\", RowBox[{\\\"-\\\", \
+StyleBox[\\\"n\\\", \\\"TI\\\"]}]}], \\\"]\\\"}]\) gives the last \
+\!\(\*StyleBox[\\\"n\\\", \\\"TI\\\"]\) characters in \
+\\\"\!\(\*\\nStyleBox[\\\"string\\\", \\\"TI\\\"]\)\\\". \
+\\n\!\(\*RowBox[{\\\"StringTake\\\", \\\"[\\\", RowBox[{StyleBox[\\\"\\\\\\\"\
+\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\\\\\"TI\\\\\\\"]\\\\)\\\\\\\
+\"\\\", ShowStringCharacters->True], \\\",\\\", RowBox[{\\\"{\\\", \
+StyleBox[\\\"n\\\", \\\"TI\\\"], \\\"}\\\"}]}], \\\"]\\\"}]\) gives the \
+\!\(\*StyleBox[RowBox[{StyleBox[\\\"n\\\", \\\"TI\\\"], \
+\\\"\[Null]\\\"}]]\)\!\(\*SuperscriptBox[\\\"\[Null]\\\", \\\"th\\\"]\) \
+character in \\\"\!\(\*\\nStyleBox[\\\"string\\\", \\\"TI\\\"]\)\\\". \\n\!\(\
+\*RowBox[{\\\"StringTake\\\", \\\"[\\\", RowBox[{StyleBox[\\\"\\\\\\\"\\\\!\\\
+\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\\\\\"TI\\\\\\\"]\\\\)\\\\\\\"\\\", \
+ShowStringCharacters->True], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{StyleBox[\\\"m\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \
+\\\"TI\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\) gives characters \
+\!\(\*StyleBox[\\\"m\\\", \\\"TI\\\"]\) through \!\(\*StyleBox[\\\"n\\\", \
+\\\"TI\\\"]\) in \\\"\!\(\*\\nStyleBox[\\\"string\\\", \\\"TI\\\"]\)\\\". \\n\
+\!\(\*RowBox[{\\\"StringTake\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\
+\\\\\"TI\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"spec\\\", \\\"TI\\\"], \
+StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"spec\\\
+\", \\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\
+\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\) gives a list of \
+the substrings specified by the \!\(\*SubscriptBox[StyleBox[\\\"spec\\\", \
+\\\"TI\\\"], StyleBox[\\\"i\\\", \
+\\\"TI\\\"]]\).\\n\!\(\*RowBox[{\\\"StringTake\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"s\\\", \
+\\\"TI\\\"], StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"s\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\
+\"}], \\\",\\\", StyleBox[\\\"spec\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) gives \
+the list of results for each of the \!\(\*SubscriptBox[StyleBox[\\\"s\\\", \\\
+\"TI\\\"], StyleBox[\\\"i\\\", \\\"TI\\\"]]\). \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/StringTake"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.675115111250387*^9},
+ CellTags->"Info-b3dcc6ec-1b7f-448e-8c26-7f3371791839"]
+}, Open  ]],
+
+Cell["Let\[CloseCurlyQuote]s extract the first 6 characters:", "Text",
+ CellChangeTimes->{{3.67344892866576*^9, 3.673448935400403*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringTake", "[", 
+  RowBox[{"hw", ",", "6"}], "]"}]], "Input",
+ CellChangeTimes->{{3.673448821267531*^9, 3.673448823063425*^9}, {
+  3.6734488980109453`*^9, 3.673448913281479*^9}, {3.673448969840082*^9, 
+  3.673448969990571*^9}}],
+
+Cell[BoxData["\<\"Hello \"\>"], "Output",
+ CellChangeTimes->{3.6734489135191517`*^9, 3.673448970318495*^9, 
+  3.6750135029647303`*^9, 3.675115111349741*^9}]
+}, Open  ]],
+
+Cell["We can also use it to extract the word World:", "Text",
+ CellChangeTimes->{{3.673448938632039*^9, 3.6734489501755543`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringTake", "[", 
+  RowBox[{"hw", ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", "11"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.673448951637679*^9, 3.673448986969862*^9}}],
+
+Cell[BoxData["\<\"World\"\>"], "Output",
+ CellChangeTimes->{{3.6734489835252733`*^9, 3.673448987439218*^9}, 
+   3.6750135030872927`*^9, 3.6751151114087973`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["StringPosition", "Subsubsection",
+ CellChangeTimes->{{3.673451941304996*^9, 3.673451943119595*^9}}],
+
+Cell[TextData[{
+ "The function ",
+ StyleBox["StringPosition", "Code"],
+ " finds the positions in a string where a given substring occurs:"
+}], "Text",
+ CellChangeTimes->{{3.673451946863402*^9, 3.673451979989641*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "StringPosition"}]], "Input",
+ CellChangeTimes->{{3.6734519807720203`*^9, 3.673451983629539*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"StringPosition\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\
+\\\\\"TI\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\",\\\", \
+StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"sub\\\\\\\",\\\\\\\"TI\\\
+\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True]}], \\\"]\\\"}]\) gives \
+a list of the starting and ending character positions at which \
+\\\"\!\(\*\\nStyleBox[\\\"sub\\\", \\\"TI\\\"]\)\\\" appears as a substring \
+of \\\"\!\(\*\\nStyleBox[\\\"string\\\", \\\"TI\\\"]\)\\\". \\n\!\(\*RowBox[{\
+\\\"StringPosition\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\
+\\\\\"TI\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\",\\\", \
+StyleBox[\\\"patt\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) gives all positions at \
+which substrings matching the general string expression \
+\!\(\*StyleBox[\\\"patt\\\", \\\"TI\\\"]\) appear in \\\"\!\(\*\\nStyleBox[\\\
+\"string\\\", \\\"TI\\\"]\)\\\". \\n\!\(\*RowBox[{\\\"StringPosition\\\", \
+\\\"[\\\", \
+RowBox[{StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\
+\\\\\"TI\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\",\\\", \
+StyleBox[\\\"patt\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\) includes only the first \
+\!\(\*StyleBox[\\\"n\\\", \\\"TI\\\"]\) occurrences of \
+\!\(\*StyleBox[\\\"patt\\\", \\\"TI\\\"]\). \
+\\n\!\(\*RowBox[{\\\"StringPosition\\\", \\\"[\\\", RowBox[{StyleBox[\\\"\\\\\
+\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\\\\\"TI\\\\\\\"]\\\\)\\\
+\\\\\"\\\", ShowStringCharacters->True], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"patt\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"patt\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\) gives positions of all the \
+\!\(\*SubscriptBox[StyleBox[\\\"patt\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \\\
+\"TI\\\"]]\). \\n\!\(\*RowBox[{\\\"StringPosition\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"s\\\", \
+\\\"TI\\\"], StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"s\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\
+\"}], \\\",\\\", StyleBox[\\\"p\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) gives the \
+list of results for each of the \!\(\*SubscriptBox[StyleBox[\\\"s\\\", \\\"TI\
+\\\"], StyleBox[\\\"i\\\", \\\"TI\\\"]]\). \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/StringPosition"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.67511511148072*^9},
+ CellTags->"Info-590ca467-6665-41b9-a670-ee12904a677c"]
+}, Open  ]],
+
+Cell["\<\
+So, to find the position of the word World in our string, we would say:\
+\>", "Text",
+ CellChangeTimes->{{3.673451992485599*^9, 3.6734520208427973`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringPosition", "[", 
+  RowBox[{"hw", ",", "\"\<World\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.673452022025923*^9, 3.673452028834681*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{"7", ",", "11"}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{3.6734520290161552`*^9, 3.6750135036445637`*^9, 
+  3.675115111566329*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Notice that the result of ",
+ StyleBox["StringPosition", "Code"],
+ " can be used with ",
+ StyleBox["StringTake", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.673452032514412*^9, 3.6734520503934593`*^9}, {
+  3.674173268621179*^9, 3.674173273292873*^9}, {3.689015963499881*^9, 
+  3.68901596381933*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringTake", "[", 
+  RowBox[{"hw", ",", 
+   RowBox[{"StringPosition", "[", 
+    RowBox[{"hw", ",", "\"\<World\>\""}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6734520512812*^9, 3.6734520617063704`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", "\<\"World\"\>", "}"}]], "Output",
+ CellChangeTimes->{{3.6734520539735413`*^9, 3.6734520625097933`*^9}, 
+   3.675013503739368*^9, 3.6751151115999537`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Relationship to List Functions", "Subsubsection",
+ CellChangeTimes->{{3.6734524817976522`*^9, 3.6734525042435923`*^9}}],
+
+Cell["\<\
+By this point, you might have noticed that a lot of the string functions are \
+string versions of functions that operate on lists and expressions. In fact, \
+a lot of the functions that apply to lists have a string counterpart. For \
+instance:\
+\>", "Text",
+ CellChangeTimes->{{3.673452506459189*^9, 3.673452644165558*^9}, 
+   3.6734530447503023`*^9, {3.673457575706465*^9, 3.6734576442202997`*^9}}],
+
+Cell[TextData[{
+ "for ",
+ StyleBox["Length", "Code"],
+ ", there is ",
+ StyleBox["StringLength", "Code"],
+ ",",
+ "\nfor ",
+ StyleBox["Join", "Code"],
+ ", there is ",
+ StyleBox["StringJoin", "Code"],
+ ",\nfor ",
+ StyleBox["Take", "Code"],
+ ", there is ",
+ StyleBox["StringTake", "Code"],
+ ",\nfor ",
+ StyleBox["Reverse", "Code"],
+ ", there is ",
+ StyleBox["StringReverse", "Code"],
+ ",\nand so on."
+}], "Text",
+ CellChangeTimes->{{3.6734526458207893`*^9, 3.67345268827337*^9}, {
+  3.673452840734889*^9, 3.673452890923623*^9}, {3.673457653249927*^9, 
+  3.6734576712332277`*^9}, {3.689016007170375*^9, 3.689016010145967*^9}}],
+
+Cell[TextData[{
+ "We won\[CloseCurlyQuote]t bother demonstrating all of these functions. If \
+you understand how ",
+ StyleBox["Length", "Code"],
+ ", ",
+ StyleBox["Join", "Code"],
+ ", ",
+ StyleBox["Take", "Code"],
+ ", ",
+ StyleBox["Reverse", "Code"],
+ ", etc work, then you\[CloseCurlyQuote]ll understand how their String \
+versions work too. "
+}], "Text",
+ CellChangeTimes->{{3.673452899315238*^9, 3.673452974403801*^9}, {
+  3.673453063516737*^9, 3.673453086459317*^9}, {3.6734532133397093`*^9, 
+  3.6734532303522882`*^9}, {3.6734577149294453`*^9, 3.6734577155218697`*^9}, {
+  3.674173310181262*^9, 3.674173313859798*^9}, {3.675013272261992*^9, 
+  3.675013273938324*^9}}],
+
+Cell["\<\
+Let\[CloseCurlyQuote]s highlight some more functions that are string specific.\
+\>", "Text",
+ CellChangeTimes->{{3.673457754389957*^9, 3.673457778412986*^9}, {
+  3.673457827891018*^9, 3.673457828497869*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["StringSplit", "Subsubsection",
+ CellChangeTimes->{{3.67345223341354*^9, 3.6734522366121063`*^9}}],
+
+Cell[TextData[{
+ "In many cases, we will have one large string and we\[CloseCurlyQuote]ll \
+want to split it into pieces in order to perform some operation. In these \
+cases, we can use ",
+ StyleBox["StringSplit", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.6734522379481916`*^9, 3.6734522445958357`*^9}, {
+  3.67345742781522*^9, 3.673457497806912*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "StringSplit"}]], "Input",
+ CellChangeTimes->{{3.6734522457829647`*^9, 3.6734522497235947`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"StringSplit\\\", \\\"[\\\", StyleBox[\\\"\\\
+\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\\\\\"TI\\\\\\\"]\\\\)\
+\\\\\\\"\\\", ShowStringCharacters->True], \\\"]\\\"}]\) splits \
+\\\"\!\(\*\\nStyleBox[\\\"string\\\", \\\"TI\\\"]\)\\\" into a list of \
+substrings separated by whitespace. \\n\!\(\*RowBox[{\\\"StringSplit\\\", \
+\\\"[\\\", \
+RowBox[{StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\
+\\\\\"TI\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\",\\\", \
+StyleBox[\\\"patt\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) splits into substrings \
+separated by delimiters matching the string expression \
+\!\(\*StyleBox[\\\"patt\\\", \\\"TI\\\"]\). \
+\\n\!\(\*RowBox[{\\\"StringSplit\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\
+\\\\\"TI\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], \
+StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"p\\\", \
+\\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\
+\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\) splits at any of \
+the \!\(\*SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \
+\\\"TI\\\"]]\). \\n\!\(\*RowBox[{\\\"StringSplit\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\
+\\\\\"TI\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\",\\\", \
+RowBox[{StyleBox[\\\"patt\\\", \\\"TI\\\"], \\\"\[Rule]\\\", StyleBox[\\\"val\
+\\\", \\\"TI\\\"]}]}], \\\"]\\\"}]\) inserts \!\(\*StyleBox[\\\"val\\\", \
+\\\"TI\\\"]\) at the position of each delimiter. \
+\\n\!\(\*RowBox[{\\\"StringSplit\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\
+\\\\\"TI\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{RowBox[{SubscriptBox[StyleBox[\\\"p\\\", \
+\\\"TI\\\"], StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\"\[Rule]\\\", \
+SubscriptBox[StyleBox[\\\"v\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]]}], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\
+\\\"}]}], \\\"]\\\"}]\) inserts \!\(\*SubscriptBox[StyleBox[\\\"v\\\", \\\"TI\
+\\\"], StyleBox[\\\"i\\\", \\\"TI\\\"]]\) at the position of each delimiter \
+\!\(\*SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \
+\\\"TI\\\"]]\). \\n\!\(\*RowBox[{\\\"StringSplit\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\
+\\\\\"TI\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\",\\\", \
+StyleBox[\\\"patt\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\) splits into at most \!\(\*StyleBox[\\\"n\\\", \\\
+\"TI\\\"]\) substrings. \\n\!\(\*RowBox[{\\\"StringSplit\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"s\\\", \
+\\\"TI\\\"], StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"s\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\
+\"}], \\\",\\\", StyleBox[\\\"p\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) gives the \
+list of results for each of the \!\(\*SubscriptBox[StyleBox[\\\"s\\\", \\\"TI\
+\\\"], StyleBox[\\\"i\\\", \\\"TI\\\"]]\). \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/StringSplit"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.675115111669795*^9},
+ CellTags->"Info-95529ffc-4016-460d-bae3-b163438e9b85"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["StringSplit", "Code"],
+ " can split a string separated by whitespace, or some other pattern. To \
+split our hello world string into words, we would write:"
+}], "Text",
+ CellChangeTimes->{{3.6734522522761173`*^9, 3.673452298527911*^9}, {
+  3.67345748037612*^9, 3.6734575132139683`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"hws", "=", 
+  RowBox[{"StringSplit", "[", "hw", "]"}]}]], "Input",
+ CellChangeTimes->{{3.673452283308104*^9, 3.6734522868983793`*^9}, {
+  3.675013740892523*^9, 3.675013743667037*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"Hello\"\>", ",", "\<\"World!\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{3.67345228724543*^9, 3.6750135040892897`*^9, 
+  3.675013744088575*^9, 3.675013802974716*^9, 3.67511511179322*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Note that by default, ",
+ StyleBox["StringSplit", "Code"],
+ " splits the string on the space characters. But we can give it any \
+delimiter we want."
+}], "Text",
+ CellChangeTimes->{{3.675013441328702*^9, 3.675013486781118*^9}, 
+   3.68901605315361*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"hwo", "=", 
+  RowBox[{"StringSplit", "[", 
+   RowBox[{"hw", ",", "\"\<o\>\""}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.675013506667902*^9, 3.675013541244197*^9}, {
+  3.675013805782555*^9, 3.6750138081131887`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"Hell\"\>", ",", "\<\" W\"\>", ",", "\<\"rld!\"\>"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.6750135275766773`*^9, 3.6750135436219788`*^9}, 
+   3.675013808990965*^9, 3.67511511185977*^9}]
+}, Open  ]],
+
+Cell["\<\
+As you can see, it split the string where the letter \[OpenCurlyDoubleQuote]o\
+\[CloseCurlyDoubleQuote] occurred, and discarded the \[OpenCurlyDoubleQuote]o\
+\[CloseCurlyDoubleQuote]. If we wanted to keep the \[OpenCurlyDoubleQuote]o\
+\[CloseCurlyDoubleQuote], we would do:\
+\>", "Text",
+ CellChangeTimes->{{3.6750135594270353`*^9, 3.675013594330482*^9}, {
+  3.675111913334423*^9, 3.6751119403085413`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringSplit", "[", 
+  RowBox[{"hw", ",", 
+   RowBox[{
+    RowBox[{"n", ":", "\"\<o\>\""}], "\[Rule]", "n"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.675013596183539*^9, 3.675013611247445*^9}, {
+  3.675013820021887*^9, 3.6750138267101603`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"Hell\"\>", ",", "\<\"o\"\>", ",", "\<\" W\"\>", 
+   ",", "\<\"o\"\>", ",", "\<\"rld!\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.675013612034326*^9, {3.675013823629312*^9, 3.6750138272386513`*^9}, 
+   3.675115111926717*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["StringRiffle", "Subsubsection",
+ CellChangeTimes->{{3.6734579531430902`*^9, 3.67345795662322*^9}}],
+
+Cell[TextData[{
+ "To join the string back, we can use ",
+ StyleBox["StringRiffle", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.673457959374743*^9, 3.67345796632652*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "StringRiffle"}]], "Input",
+ CellChangeTimes->{{3.673457967079999*^9, 3.67345797176576*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"StringRiffle\\\", \\\"[\\\", \
+RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"s\\\", \\\"TI\\\"], \
+StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"s\\\", \
+\\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"s\\\", \\\"TI\\\"], StyleBox[\\\"3\\\", \
+\\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\
+\"}], \\\"]\\\"}]\) creates a string by concatenating all the \
+\!\(\*SubscriptBox[StyleBox[\\\"s\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \
+\\\"TI\\\"]]\), with spaces inserted between \
+them.\\n\!\(\*RowBox[{\\\"StringRiffle\\\", \\\"[\\\", RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"s\\\", \
+\\\"TI\\\"], StyleBox[\\\"11\\\", \\\"TR\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"s\\\", \\\"TI\\\"], StyleBox[\\\"12\\\", \
+\\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\
+\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"s\\\", \
+\\\"TI\\\"], StyleBox[\\\"21\\\", \\\"TR\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"s\\\", \\\"TI\\\"], StyleBox[\\\"22\\\", \
+\\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\
+\"}], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\"}], \\\
+\"]\\\"}]\) creates a string by concatenating the \
+\!\(\*SubscriptBox[StyleBox[\\\"s\\\", \\\"TI\\\"], StyleBox[\\\"ij\\\", \
+\\\"TI\\\"]]\), and inserting spaces at the lowest level and newlines at the \
+higher level.\\n\!\(\*RowBox[{\\\"StringRiffle\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"sep\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\) inserts the separator \
+\!\(\*StyleBox[\\\"sep\\\", \\\"TI\\\"]\) between all elements in \
+\!\(\*StyleBox[\\\"list\\\", \
+\\\"TI\\\"]\).\\n\!\(\*RowBox[{\\\"StringRiffle\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"left\\\\\\\",\\\\\
+\\\"TI\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\",\\\", \
+StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"sep\\\\\\\",\\\\\\\"TI\\\
+\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\",\\\", StyleBox[\\\
+\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"right\\\\\\\",\\\\\\\"TI\\\\\\\"]\\\
+\\)\\\\\\\"\\\", ShowStringCharacters->True]}], \\\"}\\\"}]}], \\\"]\\\"}]\) \
+use \!\(\*StyleBox[\\\"left\\\", \\\"TI\\\"]\) and \!\(\*StyleBox[\\\"right\\\
+\", \\\"TI\\\"]\) as delimiters after \
+concatenation.\\n\!\(\*RowBox[{\\\"StringRiffle\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", SubscriptBox[StyleBox[\
+\\\"sep\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"sep\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"]\\\
+\"}]\) inserts separator \!\(\*SubscriptBox[StyleBox[\\\"sep\\\", \
+\\\"TI\\\"], StyleBox[\\\"i\\\", \\\"TI\\\"]]\) between elements of \
+\!\(\*StyleBox[\\\"list\\\", \\\"TI\\\"]\) at level \!\(\*StyleBox[\\\"i\\\", \
+\\\"TI\\\"]\).\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/StringRiffle"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.67511511201873*^9},
+ CellTags->"Info-001fc1b6-2118-4bd0-a3be-778daca345da"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["StringRiffle", "Code"],
+ " is just like ",
+ StyleBox["StringJoin", "Code"],
+ ", but it allows us join the substrings with a delimiter. So, to join our \
+hello world with a space, we would write:"
+}], "Text",
+ CellChangeTimes->{{3.67345797495891*^9, 3.673458006244112*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringRiffle", "[", "hws", "]"}]], "Input",
+ CellChangeTimes->{{3.6734580083114557`*^9, 3.67345801238764*^9}, {
+   3.675013672096004*^9, 3.6750136733449173`*^9}, 3.675013841262021*^9}],
+
+Cell[BoxData["\<\"Hello World!\"\>"], "Output",
+ CellChangeTimes->{3.673458012656205*^9, 3.675013717620489*^9, 
+  3.675013798633778*^9, 3.675013841678423*^9, 3.675115112152542*^9}]
+}, Open  ]],
+
+Cell["\<\
+And if we had a specific delimiter in mind, for instance, putting the \
+\[OpenCurlyDoubleQuote]o\[CloseCurlyDoubleQuote]s back, we would write:\
+\>", "Text",
+ CellChangeTimes->{{3.67511199343169*^9, 3.675112014941271*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringRiffle", "[", 
+  RowBox[{"hwo", ",", "\"\<o\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.67501384354935*^9, 3.675013863604409*^9}}],
+
+Cell[BoxData["\<\"Hello World!\"\>"], "Output",
+ CellChangeTimes->{3.675013863893571*^9, 3.675115112305369*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["StringTrim", "Subsubsection",
+ CellChangeTimes->{{3.673452718672545*^9, 3.67345271999892*^9}}],
+
+Cell[TextData[{
+ "If we have unwanted whitespace in our string at the beginning or end, we \
+can use ",
+ StyleBox["StringTrim", "Code"],
+ " to remove it:"
+}], "Text",
+ CellChangeTimes->{{3.6734527298469048`*^9, 3.673452767355356*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "StringTrim"}]], "Input",
+ CellChangeTimes->{{3.6734527681012583`*^9, 3.6734527695233297`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"StringTrim\\\", \\\"[\\\", \
+StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\\\\\"\
+TI\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\"]\\\"}]\) \
+trims whitespace from the beginning and end of \
+\\\"\!\(\*\\nStyleBox[\\\"string\\\", \
+\\\"TI\\\"]\)\\\".\\n\!\(\*RowBox[{\\\"StringTrim\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\
+\\\\\"TI\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\",\\\", \
+StyleBox[\\\"patt\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) trims substrings matching \
+\!\(\*StyleBox[\\\"patt\\\", \\\"TI\\\"]\) from the beginning and end.\"\>", 
+   "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/StringTrim"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.675115112376731*^9},
+ CellTags->"Info-60c52744-3e89-4f2e-b7c1-73ac27c406ab"]
+}, Open  ]],
+
+Cell["And here\[CloseCurlyQuote]s an example of how we would use it:", "Text",
+ CellChangeTimes->{{3.673452779178553*^9, 3.673452785546268*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringTrim", "[", "\"\<   my word   \>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.673452772829364*^9, 3.6734527980656633`*^9}}],
+
+Cell[BoxData["\<\"my word\"\>"], "Output",
+ CellChangeTimes->{3.6734527986302977`*^9, 3.675115112445447*^9}]
+}, Open  ]],
+
+Cell["And the extraneous whitespace is now removed.", "Text",
+ CellChangeTimes->{{3.673452803489292*^9, 3.673452808848896*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["ToUpperCase and ToLowerCase", "Subsubsection",
+ CellChangeTimes->{{3.673453095714643*^9, 3.6734531076899223`*^9}}],
+
+Cell[TextData[{
+ "We can use ",
+ StyleBox["ToUpperCase", "Code"],
+ " and ",
+ StyleBox["ToLowerCase", "Code"],
+ " to change the case of a string:"
+}], "Text",
+ CellChangeTimes->{{3.673453109481758*^9, 3.673453121473448*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "ToUpperCase"}]], "Input",
+ CellChangeTimes->{{3.673453122601039*^9, 3.673453127313118*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"ToUpperCase\\\", \\\"[\\\", \
+StyleBox[\\\"string\\\", \\\"TI\\\"], \\\"]\\\"}]\) yields a string in which \
+all letters have been converted to uppercase. \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/ToUpperCase"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.675115112515765*^9},
+ CellTags->"Info-8296459f-fdf5-467f-a693-1064c4b2f4f2"]
+}, Open  ]],
+
+Cell["To shout at people, we can write:", "Text",
+ CellChangeTimes->{{3.673453141047934*^9, 3.673453150487597*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ToUpperCase", "[", "hw", "]"}]], "Input",
+ CellChangeTimes->{{3.673453133031979*^9, 3.673453135833708*^9}}],
+
+Cell[BoxData["\<\"HELLO WORLD!\"\>"], "Output",
+ CellChangeTimes->{3.6734531362387857`*^9, 3.67511511258673*^9}]
+}, Open  ]],
+
+Cell["To be informal, we can write:", "Text",
+ CellChangeTimes->{{3.673453154478794*^9, 3.673453165726445*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ToLowerCase", "[", "hw", "]"}]], "Input",
+ CellChangeTimes->{{3.673453158710843*^9, 3.673453160664095*^9}}],
+
+Cell[BoxData["\<\"hello world!\"\>"], "Output",
+ CellChangeTimes->{3.673453161074161*^9, 3.675115112649675*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["StringReplace", "Subsubsection",
+ CellChangeTimes->{{3.67511508106164*^9, 3.675115082588561*^9}}],
+
+Cell[TextData[{
+ "The ",
+ StyleBox["StringReplace", "Code"],
+ " function is useful for replacing parts of a string:"
+}], "Text",
+ CellChangeTimes->{{3.675115084812957*^9, 3.675115107472033*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "StringReplace"}]], "Input",
+ CellChangeTimes->{{3.675115116658024*^9, 3.675115118723139*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"StringReplace\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\
+\\\\\"TI\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\",\\\", \
+RowBox[{StyleBox[\\\"s\\\", \\\"TI\\\"], \\\"\[Rule]\\\", \
+StyleBox[\\\"sp\\\", \\\"TI\\\"]}]}], \\\"]\\\"}]\\) replaces the string \
+expression \\!\\(\\*StyleBox[\\\"s\\\", \\\"TI\\\"]\\) by \
+\\!\\(\\*StyleBox[\\\"sp\\\", \\\"TI\\\"]\\) wherever it appears in \
+\\\"\\!\\(\\*\\nStyleBox[\\\"string\\\", \\\"TI\\\"]\\)\\\". \
+\\n\\!\\(\\*RowBox[{\\\"StringReplace\\\", \\\"[\\\", RowBox[{StyleBox[\\\"\\\
+\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\\\\\"TI\\\\\\\"]\\\\)\
+\\\\\\\"\\\", ShowStringCharacters->True], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{SubscriptBox[StyleBox[\\\"s\\\", \\\"TI\\\"], \
+StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\"\[Rule]\\\", \
+SubscriptBox[StyleBox[\\\"sp\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]]}], \\\",\\\", RowBox[{SubscriptBox[StyleBox[\\\"s\\\", \
+\\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\"\[Rule]\\\", \
+SubscriptBox[StyleBox[\\\"sp\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]]}], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\
+\\\"}]}], \\\"]\\\"}]\\) replaces the string expressions \
+\\!\\(\\*SubscriptBox[StyleBox[\\\"s\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \\\
+\"TI\\\"]]\\) by \\!\\(\\*SubscriptBox[StyleBox[\\\"sp\\\", \\\"TI\\\"], \
+StyleBox[\\\"i\\\", \\\"TI\\\"]]\\) whenever they appear as substrings of \
+\\\"\\!\\(\\*\\nStyleBox[\\\"string\\\", \
+\\\"TI\\\"]\\)\\\".\\n\\!\\(\\*RowBox[{\\\"StringReplace\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\
+\\\\\"TI\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\",\\\", \
+StyleBox[\\\"srules\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\"TI\\\
+\"]}], \\\"]\\\"}]\\) does only the first \\!\\(\\*StyleBox[\\\"n\\\", \\\"TI\
+\\\"]\\) replacements. \\n\\!\\(\\*RowBox[{\\\"StringReplace\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"s\\\", \
+\\\"TI\\\"], StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", \
+SubscriptBox[StyleBox[\\\"s\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\
+\"}], \\\",\\\", StyleBox[\\\"srules\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) gives \
+the list of results for each of the \\!\\(\\*SubscriptBox[StyleBox[\\\"s\\\", \
+\\\"TI\\\"], StyleBox[\\\"i\\\", \\\"TI\\\"]]\\). \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/StringReplace"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.675115119045615*^9},
+ CellTags->"Info-4262f55f-53e4-4ebd-a431-e67a85db117a"]
+}, Open  ]],
+
+Cell["For instance, we can replace World with Town:", "Text",
+ CellChangeTimes->{{3.675115120996502*^9, 3.6751151285659647`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringReplace", "[", 
+  RowBox[{"hw", ",", 
+   RowBox[{"\"\<World\>\"", "\[Rule]", "\"\<Town\>\""}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6751151302291117`*^9, 3.675115140993634*^9}}],
+
+Cell[BoxData["\<\"Hello Town!\"\>"], "Output",
+ CellChangeTimes->{3.6751151413413067`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["StringTemplate & TemplateApply", "Subsubsection",
+ CellChangeTimes->{{3.675115171060872*^9, 3.67511518267877*^9}}],
+
+Cell[TextData[{
+ "Related to ",
+ StyleBox["StringReplace", "Code"],
+ " is the ",
+ StyleBox["StringTemplate", "Code"],
+ " function:"
+}], "Text",
+ CellChangeTimes->{{3.675115184495131*^9, 3.67511520032375*^9}, {
+  3.675115247909157*^9, 3.6751152488613462`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "StringTemplate"}]], "Input",
+ CellChangeTimes->{{3.675115201027931*^9, 3.675115203156891*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"StringTemplate\\\", \\\"[\\\", StyleBox[\
+\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\\\\\"TI\\\\\\\"]\
+\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\"]\\\"}]\\) yields a \
+TemplateObject that represents a string template to be applied using \
+functions like TemplateApply.\\n\\!\\(\\*RowBox[{\\\"StringTemplate\\\", \
+\\\"[\\\", RowBox[{\\\"File\\\", \\\"[\\\", StyleBox[\\\"\[Ellipsis]\\\", \
+\\\"TR\\\"], \\\"]\\\"}], \\\"]\\\"}]\\) takes the source for the string \
+template from a file.\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/StringTemplate"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.675115203431087*^9},
+ CellTags->"Info-76325575-eb4f-4ad0-af48-fef476c33b9f"]
+}, Open  ]],
+
+Cell[TextData[{
+ "We can use ",
+ StyleBox["StringTemplate", "Code"],
+ " to construct a template which we can use later to construct various \
+documents. For instance, suppose you were writing an annoying mass email:"
+}], "Text",
+ CellChangeTimes->{{3.675115236738942*^9, 3.6751152935039587`*^9}, 
+   3.689016146630868*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"emailTemplate", "=", 
+   RowBox[{
+   "StringTemplate", "[", 
+    "\"\<\nDear `1`,\nI'm a prince with lots of money. Please send me your \
+bank account so that I can send you some of it.\n- Wealthy Prince\>\"", 
+    "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.67511529615274*^9, 3.675115396167747*^9}, {
+   3.675115463185267*^9, 3.675115477579893*^9}, 3.675115602980815*^9, {
+   3.67511568249312*^9, 3.6751156986602917`*^9}}],
+
+Cell["Now to use the template:", "Text",
+ CellChangeTimes->{{3.675115494634218*^9, 3.675115514998124*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"emailTemplate", "[", "\"\<Shad\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.675115483781663*^9, 3.675115487686635*^9}}],
+
+Cell[BoxData["\<\"\\nDear Shad,\\nI'm a prince with lots of money. Please \
+send me your bank account so that I can send you some of it.\\n- Wealthy \
+Prince\"\>"], "Output",
+ CellChangeTimes->{{3.675115684817779*^9, 3.675115700739832*^9}}]
+}, Open  ]],
+
+Cell["\<\
+And to apply it to a number of people, simply map over a list of names:\
+\>", "Text",
+ CellChangeTimes->{{3.6751155258100023`*^9, 3.675115531955203*^9}, {
+  3.675115628432082*^9, 3.675115639939279*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"emailTemplate", "/@", 
+  RowBox[{"{", 
+   RowBox[{"\"\<Shad\>\"", ",", "\"\<Sahand\>\"", ",", "\"\<Mike\>\""}], 
+   "}"}]}]], "Input",
+ CellChangeTimes->{{3.6751154902796497`*^9, 3.67511549162486*^9}, {
+  3.6751155336103363`*^9, 3.6751155415813227`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"\\nDear Shad,\\nI'm a prince with lots of money. Please send \
+me your bank account so that I can send you some of it.\\n- Wealthy \
+Prince\"\>", 
+   ",", "\<\"\\nDear Sahand,\\nI'm a prince with lots of money. Please send \
+me your bank account so that I can send you some of it.\\n- Wealthy \
+Prince\"\>", 
+   ",", "\<\"\\nDear Mike,\\nI'm a prince with lots of money. Please send me \
+your bank account so that I can send you some of it.\\n- Wealthy \
+Prince\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.675115545209016*^9, {3.675115687951651*^9, 3.6751157023298407`*^9}}]
+}, Open  ]],
+
+Cell["\<\
+Great! Now you can extort money from as many people as you want.\
+\>", "Text",
+ CellChangeTimes->{{3.6751156479883137`*^9, 3.6751156569747047`*^9}, {
+  3.675115708190906*^9, 3.675115713360244*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Summary", "Subsection",
+ CellChangeTimes->{{3.6890161770998383`*^9, 3.6890161778361673`*^9}}],
+
+Cell[TextData[{
+ "In this lecture we looked at how to do string processing in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ". In the next lecture, we\[CloseCurlyQuote]ll look at string expressions. \
+Thanks and see you at the next lecture!"
+}], "Text",
+ CellChangeTimes->{{3.674174260858562*^9, 3.6741743174238577`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1399, 855},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info-74a33d56-d4f9-4cc4-9c0a-a572f612073f"->{
+  Cell[3023, 97, 581, 13, 52, "Print",
+   CellTags->"Info-74a33d56-d4f9-4cc4-9c0a-a572f612073f"]},
+ "Info-4b4066ff-c14a-4056-9a52-c663b4dad4b7"->{
+  Cell[4496, 142, 1718, 29, 52, "Print",
+   CellTags->"Info-4b4066ff-c14a-4056-9a52-c663b4dad4b7"]},
+ "Info-91630bb4-e89d-4c10-b73f-19959c313a5f"->{
+  Cell[9643, 288, 585, 13, 52, "Print",
+   CellTags->"Info-91630bb4-e89d-4c10-b73f-19959c313a5f"]},
+ "Info-b3dcc6ec-1b7f-448e-8c26-7f3371791839"->{
+  Cell[11177, 338, 3352, 52, 174, "Print",
+   CellTags->"Info-b3dcc6ec-1b7f-448e-8c26-7f3371791839"]},
+ "Info-590ca467-6665-41b9-a670-ee12904a677c"->{
+  Cell[16177, 446, 2972, 47, 149, "Print",
+   CellTags->"Info-590ca467-6665-41b9-a670-ee12904a677c"]},
+ "Info-95529ffc-4016-460d-bae3-b163438e9b85"->{
+  Cell[23250, 628, 3719, 57, 197, "Print",
+   CellTags->"Info-95529ffc-4016-460d-bae3-b163438e9b85"]},
+ "Info-001fc1b6-2118-4bd0-a3be-778daca345da"->{
+  Cell[30025, 784, 3487, 54, 151, "Print",
+   CellTags->"Info-001fc1b6-2118-4bd0-a3be-778daca345da"]},
+ "Info-60c52744-3e89-4f2e-b7c1-73ac27c406ab"->{
+  Cell[35328, 899, 1003, 19, 77, "Print",
+   CellTags->"Info-60c52744-3e89-4f2e-b7c1-73ac27c406ab"]},
+ "Info-8296459f-fdf5-467f-a693-1064c4b2f4f2"->{
+  Cell[37450, 958, 511, 12, 52, "Print",
+   CellTags->"Info-8296459f-fdf5-467f-a693-1064c4b2f4f2"]},
+ "Info-4262f55f-53e4-4ebd-a431-e67a85db117a"->{
+  Cell[39257, 1018, 2871, 45, 125, "Print",
+   CellTags->"Info-4262f55f-53e4-4ebd-a431-e67a85db117a"]},
+ "Info-76325575-eb4f-4ad0-af48-fef476c33b9f"->{
+  Cell[43183, 1103, 873, 16, 77, "Print",
+   CellTags->"Info-76325575-eb4f-4ad0-af48-fef476c33b9f"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info-74a33d56-d4f9-4cc4-9c0a-a572f612073f", 47632, 1225},
+ {"Info-4b4066ff-c14a-4056-9a52-c663b4dad4b7", 47779, 1228},
+ {"Info-91630bb4-e89d-4c10-b73f-19959c313a5f", 47928, 1231},
+ {"Info-b3dcc6ec-1b7f-448e-8c26-7f3371791839", 48076, 1234},
+ {"Info-590ca467-6665-41b9-a670-ee12904a677c", 48227, 1237},
+ {"Info-95529ffc-4016-460d-bae3-b163438e9b85", 48378, 1240},
+ {"Info-001fc1b6-2118-4bd0-a3be-778daca345da", 48529, 1243},
+ {"Info-60c52744-3e89-4f2e-b7c1-73ac27c406ab", 48680, 1246},
+ {"Info-8296459f-fdf5-467f-a693-1064c4b2f4f2", 48830, 1249},
+ {"Info-4262f55f-53e4-4ebd-a431-e67a85db117a", 48979, 1252},
+ {"Info-76325575-eb4f-4ad0-af48-fef476c33b9f", 49131, 1255}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 94, 1, 80, "Section"],
+Cell[677, 25, 579, 11, 61, "Text"],
+Cell[CellGroupData[{
+Cell[1281, 40, 151, 2, 54, "Subsection"],
+Cell[1435, 44, 131, 3, 37, "Text"],
+Cell[CellGroupData[{
+Cell[1591, 51, 208, 3, 39, "Input"],
+Cell[1802, 56, 208, 3, 39, "Output"]
+}, Open  ]],
+Cell[2025, 62, 165, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[2215, 71, 196, 3, 39, "Input"],
+Cell[2414, 76, 166, 2, 39, "Output"]
+}, Open  ]],
+Cell[2595, 81, 282, 8, 37, "Text"],
+Cell[CellGroupData[{
+Cell[2902, 93, 118, 2, 39, "Input"],
+Cell[3023, 97, 581, 13, 52, "Print",
+ CellTags->"Info-74a33d56-d4f9-4cc4-9c0a-a572f612073f"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3641, 115, 134, 2, 39, "Input"],
+Cell[3778, 119, 373, 7, 39, "Output"]
+}, Open  ]],
+Cell[4166, 129, 181, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[4372, 138, 121, 2, 39, "Input"],
+Cell[4496, 142, 1718, 29, 52, "Print",
+ CellTags->"Info-4b4066ff-c14a-4056-9a52-c663b4dad4b7"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6251, 176, 167, 3, 39, "Input"],
+Cell[6421, 181, 136, 2, 39, "Output"]
+}, Open  ]],
+Cell[6572, 186, 122, 2, 37, "Text"],
+Cell[CellGroupData[{
+Cell[6719, 192, 130, 2, 39, "Input"],
+Cell[6852, 196, 134, 2, 39, "Output"]
+}, Open  ]],
+Cell[7001, 201, 88, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[7114, 206, 128, 2, 39, "Input"],
+Cell[7245, 210, 130, 2, 39, "Output"]
+}, Open  ]],
+Cell[7390, 215, 303, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[7718, 226, 120, 2, 39, "Input"],
+Cell[7841, 230, 136, 2, 39, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8026, 238, 110, 1, 54, "Subsection"],
+Cell[8139, 241, 390, 9, 37, "Text"],
+Cell[CellGroupData[{
+Cell[8554, 254, 105, 1, 43, "Subsubsection"],
+Cell[8662, 257, 290, 3, 37, "Text"],
+Cell[CellGroupData[{
+Cell[8977, 264, 163, 3, 39, "Input"],
+Cell[9143, 269, 120, 2, 39, "Output"]
+}, Open  ]],
+Cell[9278, 274, 216, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[9519, 284, 121, 2, 39, "Input"],
+Cell[9643, 288, 585, 13, 52, "Print",
+ CellTags->"Info-91630bb4-e89d-4c10-b73f-19959c313a5f"]
+}, Open  ]],
+Cell[10243, 304, 158, 2, 37, "Text"],
+Cell[CellGroupData[{
+Cell[10426, 310, 134, 2, 39, "Input"],
+Cell[10563, 314, 120, 2, 39, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10732, 322, 103, 1, 43, "Subsubsection"],
+Cell[10838, 325, 192, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[11055, 334, 119, 2, 39, "Input"],
+Cell[11177, 338, 3352, 52, 174, "Print",
+ CellTags->"Info-b3dcc6ec-1b7f-448e-8c26-7f3371791839"]
+}, Open  ]],
+Cell[14544, 393, 135, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[14704, 398, 253, 5, 39, "Input"],
+Cell[14960, 405, 156, 2, 39, "Output"]
+}, Open  ]],
+Cell[15131, 410, 129, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[15285, 415, 203, 5, 39, "Input"],
+Cell[15491, 422, 160, 2, 39, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15700, 430, 105, 1, 43, "Subsubsection"],
+Cell[15808, 433, 216, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[16049, 442, 125, 2, 39, "Input"],
+Cell[16177, 446, 2972, 47, 149, "Print",
+ CellTags->"Info-590ca467-6665-41b9-a670-ee12904a677c"]
+}, Open  ]],
+Cell[19164, 496, 163, 3, 37, "Text"],
+Cell[CellGroupData[{
+Cell[19352, 503, 169, 3, 39, "Input"],
+Cell[19524, 508, 191, 5, 39, "Output"]
+}, Open  ]],
+Cell[19730, 516, 321, 9, 37, "Text"],
+Cell[CellGroupData[{
+Cell[20076, 529, 233, 5, 39, "Input"],
+Cell[20312, 536, 182, 3, 39, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20543, 545, 125, 1, 43, "Subsubsection"],
+Cell[20671, 548, 409, 7, 61, "Text"],
+Cell[21083, 557, 621, 22, 132, "Text"],
+Cell[21707, 581, 671, 17, 61, "Text"],
+Cell[22381, 600, 217, 4, 37, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22635, 609, 103, 1, 43, "Subsubsection"],
+Cell[22741, 612, 357, 8, 37, "Text"],
+Cell[CellGroupData[{
+Cell[23123, 624, 124, 2, 39, "Input"],
+Cell[23250, 628, 3719, 57, 197, "Print",
+ CellTags->"Info-95529ffc-4016-460d-bae3-b163438e9b85"]
+}, Open  ]],
+Cell[26984, 688, 312, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[27321, 698, 207, 4, 39, "Input"],
+Cell[27531, 704, 231, 4, 39, "Output"]
+}, Open  ]],
+Cell[27777, 711, 270, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[28072, 722, 239, 5, 39, "Input"],
+Cell[28314, 729, 234, 5, 39, "Output"]
+}, Open  ]],
+Cell[28563, 737, 416, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[29004, 748, 268, 6, 39, "Input"],
+Cell[29275, 756, 273, 6, 39, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29597, 768, 104, 1, 43, "Subsubsection"],
+Cell[29704, 771, 173, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[29902, 780, 120, 2, 39, "Input"],
+Cell[30025, 784, 3487, 54, 151, "Print",
+ CellTags->"Info-001fc1b6-2118-4bd0-a3be-778daca345da"]
+}, Open  ]],
+Cell[33527, 841, 299, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[33851, 852, 208, 3, 39, "Input"],
+Cell[34062, 857, 180, 2, 39, "Output"]
+}, Open  ]],
+Cell[34257, 862, 232, 4, 37, "Text"],
+Cell[CellGroupData[{
+Cell[34514, 870, 163, 3, 39, "Input"],
+Cell[34680, 875, 111, 1, 39, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[34840, 882, 100, 1, 43, "Subsubsection"],
+Cell[34943, 885, 234, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[35202, 895, 123, 2, 39, "Input"],
+Cell[35328, 899, 1003, 19, 77, "Print",
+ CellTags->"Info-60c52744-3e89-4f2e-b7c1-73ac27c406ab"]
+}, Open  ]],
+Cell[36346, 921, 144, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[36515, 926, 151, 2, 39, "Input"],
+Cell[36669, 930, 108, 1, 39, "Output"]
+}, Open  ]],
+Cell[36792, 934, 127, 1, 37, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36956, 940, 120, 1, 43, "Subsubsection"],
+Cell[37079, 943, 223, 7, 37, "Text"],
+Cell[CellGroupData[{
+Cell[37327, 954, 120, 2, 39, "Input"],
+Cell[37450, 958, 511, 12, 52, "Print",
+ CellTags->"Info-8296459f-fdf5-467f-a693-1064c4b2f4f2"]
+}, Open  ]],
+Cell[37976, 973, 115, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[38116, 978, 131, 2, 39, "Input"],
+Cell[38250, 982, 112, 1, 39, "Output"]
+}, Open  ]],
+Cell[38377, 986, 111, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[38513, 991, 131, 2, 39, "Input"],
+Cell[38647, 995, 111, 1, 39, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[38807, 1002, 103, 1, 43, "Subsubsection"],
+Cell[38913, 1005, 194, 5, 37, "Text"],
+Cell[CellGroupData[{
+Cell[39132, 1014, 122, 2, 39, "Input"],
+Cell[39257, 1018, 2871, 45, 125, "Print",
+ CellTags->"Info-4262f55f-53e4-4ebd-a431-e67a85db117a"]
+}, Open  ]],
+Cell[42143, 1066, 129, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[42297, 1071, 211, 4, 39, "Input"],
+Cell[42511, 1077, 90, 1, 39, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[42650, 1084, 120, 1, 43, "Subsubsection"],
+Cell[42773, 1087, 259, 8, 37, "Text"],
+Cell[CellGroupData[{
+Cell[43057, 1099, 123, 2, 39, "Input"],
+Cell[43183, 1103, 873, 16, 77, "Print",
+ CellTags->"Info-76325575-eb4f-4ad0-af48-fef476c33b9f"]
+}, Open  ]],
+Cell[44071, 1122, 322, 7, 61, "Text"],
+Cell[44396, 1131, 463, 10, 118, "Input"],
+Cell[44862, 1143, 106, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[44993, 1148, 143, 2, 39, "Input"],
+Cell[45139, 1152, 240, 3, 118, "Output"]
+}, Open  ]],
+Cell[45394, 1158, 212, 4, 37, "Text"],
+Cell[CellGroupData[{
+Cell[45631, 1166, 278, 6, 39, "Input"],
+Cell[45912, 1174, 624, 12, 274, "Output"]
+}, Open  ]],
+Cell[46551, 1189, 207, 4, 37, "Text"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[46807, 1199, 99, 1, 54, "Subsection"],
+Cell[46909, 1202, 328, 7, 37, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

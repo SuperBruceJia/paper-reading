@@ -1,0 +1,1123 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     40768,       1115]
+NotebookOptionsPosition[     36095,        964]
+NotebookOutlinePosition[     37361,       1005]
+CellTagsIndexPosition[     37102,        996]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Options", "Section",
+ CellChangeTimes->{{3.690810428755734*^9, 3.690810429666401*^9}}],
+
+Cell[TextData[{
+ "Hello and welcome. By now you have become familiar with how functions in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " work. One important feature that functions have is that they have options. \
+We\[CloseCurlyQuote]ve seen how to define our own function, but we haven\
+\[CloseCurlyQuote]t yet seen how to define options for a function. In this \
+lecture we will see how to do that. "
+}], "Text",
+ CellChangeTimes->{{3.690810433344458*^9, 3.690810578354219*^9}, {
+   3.690839999095262*^9, 3.69084000004525*^9}, {3.690862276958434*^9, 
+   3.690862283349494*^9}, 3.6908623307395487`*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Introduction", "Subsection",
+ CellChangeTimes->{{3.690868140676104*^9, 3.690868142178874*^9}}],
+
+Cell[TextData[{
+ "For starters, we can see the options of a function using the ",
+ StyleBox["Options", "Code"],
+ " function:"
+}], "Text",
+ CellChangeTimes->{{3.690837056755753*^9, 3.690837096369265*^9}, {
+  3.690862343867214*^9, 3.6908623664335747`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Options"}]], "Input",
+ CellChangeTimes->{{3.690837097561887*^9, 3.690837099091462*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Options\\\", \\\"[\\\", \
+StyleBox[\\\"symbol\\\", \\\"TI\\\"], \\\"]\\\"}]\\) gives the list of \
+default options assigned to a symbol. \\n\\!\\(\\*RowBox[{\\\"Options\\\", \\\
+\"[\\\", StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\"]\\\"}]\\) gives the options \
+explicitly specified in a particular expression such as a graphics object. \
+\\n\\!\\(\\*RowBox[{\\\"Options\\\", \\\"[\\\", StyleBox[\\\"stream\\\", \
+\\\"TI\\\"], \\\"]\\\"}]\\) or \\!\\(\\*RowBox[{\\\"Options\\\", \\\"[\\\", \
+StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"sname\\\\\\\",\\\\\\\"TI\
+\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\"]\\\"}]\\) gives \
+options associated with a particular stream. \
+\\n\\!\\(\\*RowBox[{\\\"Options\\\", \\\"[\\\", StyleBox[\\\"object\\\", \
+\\\"TI\\\"], \\\"]\\\"}]\\) gives options associated with an external object \
+such as a NotebookObject. \\n\\!\\(\\*RowBox[{\\\"Options\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"obj\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"name\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\\) gives the setting for the option \
+\\!\\(\\*StyleBox[\\\"name\\\", \\\"TI\\\"]\\). \
+\\n\\!\\(\\*RowBox[{\\\"Options\\\", \\\"[\\\", RowBox[{StyleBox[\\\"obj\\\", \
+\\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"name\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"name\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\\) gives a list of the settings for \
+the options \\!\\(\\*SubscriptBox[StyleBox[\\\"name\\\", \\\"TI\\\"], \
+StyleBox[\\\"i\\\", \\\"TI\\\"]]\\). \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Options"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.690837099350317*^9},
+ CellTags->"Info523690815499-3933090"]
+}, Open  ]],
+
+Cell[TextData[{
+ "For example, to get the options for ",
+ StyleBox["Plot",
+  FontWeight->"Bold"],
+ ", we would write:"
+}], "Text",
+ CellChangeTimes->{{3.69083710024452*^9, 3.690837112313593*^9}, {
+  3.690862529134358*^9, 3.6908625370242987`*^9}, {3.690906945597846*^9, 
+  3.690906946610173*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Plot", "]"}]], "Input",
+ CellChangeTimes->{{3.6908371142205963`*^9, 3.69083711678892*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"AlignmentPoint", "\[Rule]", "Center"}], ",", 
+   RowBox[{"AspectRatio", "\[Rule]", 
+    FractionBox["1", "GoldenRatio"]}], ",", 
+   RowBox[{"Axes", "\[Rule]", "True"}], ",", 
+   RowBox[{"AxesLabel", "\[Rule]", "None"}], ",", 
+   RowBox[{"AxesOrigin", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"AxesStyle", "\[Rule]", 
+    RowBox[{"{", "}"}]}], ",", 
+   RowBox[{"Background", "\[Rule]", "None"}], ",", 
+   RowBox[{"BaselinePosition", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"BaseStyle", "\[Rule]", 
+    RowBox[{"{", "}"}]}], ",", 
+   RowBox[{"ClippingStyle", "\[Rule]", "None"}], ",", 
+   RowBox[{"ColorFunction", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"ColorFunctionScaling", "\[Rule]", "True"}], ",", 
+   RowBox[{"ColorOutput", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"ContentSelectable", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"CoordinatesToolOptions", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"DisplayFunction", "\[RuleDelayed]", "$DisplayFunction"}], ",", 
+   RowBox[{"Epilog", "\[Rule]", 
+    RowBox[{"{", "}"}]}], ",", 
+   RowBox[{"Evaluated", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"EvaluationMonitor", "\[Rule]", "None"}], ",", 
+   RowBox[{"Exclusions", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"ExclusionsStyle", "\[Rule]", "None"}], ",", 
+   RowBox[{"Filling", "\[Rule]", "None"}], ",", 
+   RowBox[{"FillingStyle", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"FormatType", "\[RuleDelayed]", "TraditionalForm"}], ",", 
+   RowBox[{"Frame", "\[Rule]", "False"}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", "None"}], ",", 
+   RowBox[{"FrameStyle", "\[Rule]", 
+    RowBox[{"{", "}"}]}], ",", 
+   RowBox[{"FrameTicks", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"FrameTicksStyle", "\[Rule]", 
+    RowBox[{"{", "}"}]}], ",", 
+   RowBox[{"GridLines", "\[Rule]", "None"}], ",", 
+   RowBox[{"GridLinesStyle", "\[Rule]", 
+    RowBox[{"{", "}"}]}], ",", 
+   RowBox[{"ImageMargins", "\[Rule]", "0.`"}], ",", 
+   RowBox[{"ImagePadding", "\[Rule]", "All"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"ImageSizeRaw", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"LabelStyle", "\[Rule]", 
+    RowBox[{"{", "}"}]}], ",", 
+   RowBox[{"MaxRecursion", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"Mesh", "\[Rule]", "None"}], ",", 
+   RowBox[{"MeshFunctions", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"#1", "&"}], "}"}]}], ",", 
+   RowBox[{"MeshShading", "\[Rule]", "None"}], ",", 
+   RowBox[{"MeshStyle", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"Method", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"PerformanceGoal", "\[RuleDelayed]", "$PerformanceGoal"}], ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "None"}], ",", 
+   RowBox[{"PlotLabels", "\[Rule]", "None"}], ",", 
+   RowBox[{"PlotLegends", "\[Rule]", "None"}], ",", 
+   RowBox[{"PlotPoints", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"Full", ",", "Automatic"}], "}"}]}], ",", 
+   RowBox[{"PlotRangeClipping", "\[Rule]", "True"}], ",", 
+   RowBox[{"PlotRangePadding", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"PlotRegion", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"PlotStyle", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"PlotTheme", "\[RuleDelayed]", "$PlotTheme"}], ",", 
+   RowBox[{"PreserveImageOptions", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"Prolog", "\[Rule]", 
+    RowBox[{"{", "}"}]}], ",", 
+   RowBox[{"RegionFunction", "\[Rule]", 
+    RowBox[{"(", 
+     RowBox[{"True", "&"}], ")"}]}], ",", 
+   RowBox[{"RotateLabel", "\[Rule]", "True"}], ",", 
+   RowBox[{"ScalingFunctions", "\[Rule]", "None"}], ",", 
+   RowBox[{"TargetUnits", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"Ticks", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"TicksStyle", "\[Rule]", 
+    RowBox[{"{", "}"}]}], ",", 
+   RowBox[{"WorkingPrecision", "\[Rule]", "MachinePrecision"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.690837117460287*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "So, the output of the ",
+ StyleBox["Options", "Code"],
+ " function is a list of rules. On the left hand side of each rule we have \
+the option name, and on the right hand side, its default value. "
+}], "Text",
+ CellChangeTimes->{{3.690837125876143*^9, 3.690837160361847*^9}, {
+  3.690840037795905*^9, 3.690840038259305*^9}, {3.690862544377345*^9, 
+  3.690862559167686*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Revisiting Sin\[CloseCurlyQuote]s Taylor Series Expansion", "Subsection",
+ CellChangeTimes->{{3.6908681567462673`*^9, 3.6908681742017107`*^9}}],
+
+Cell[TextData[{
+ "In the previous lecture, we defined the ",
+ StyleBox["mySin", "Code"],
+ " function as a Taylor Series expansion parameterized by N:"
+}], "Text",
+ CellChangeTimes->{{3.690862684532301*^9, 3.6908626994862347`*^9}, {
+   3.690862823383499*^9, 3.69086282872563*^9}, {3.690863716337185*^9, 
+   3.6908637190008802`*^9}, {3.690864832726656*^9, 3.690864868771961*^9}, 
+   3.690864956896805*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"mySin", "[", 
+   RowBox[{"x_", ",", 
+    RowBox[{"N_Integer", "?", "Positive"}]}], "]"}], ":=", 
+  RowBox[{"Total", "[", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"-", "1"}], ")"}], "^", "i"}], " ", 
+      RowBox[{
+       RowBox[{"x", "^", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"2", " ", "i"}], "+", "1"}], ")"}]}], "/", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"2", "i"}], "+", "1"}], ")"}], "!"}]}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "0", ",", "N"}], "}"}]}], "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.669417389749433*^9, 3.669417438514935*^9}, {
+  3.6694174736527157`*^9, 3.669417474058332*^9}, {3.6694175334735813`*^9, 
+  3.669417538424711*^9}, {3.669417571775867*^9, 3.669417617758523*^9}, {
+  3.6694177299899893`*^9, 3.669417774698921*^9}, {3.669417823449871*^9, 
+  3.669417879208023*^9}, {3.669418887501952*^9, 3.669418905214058*^9}, {
+  3.669420982567979*^9, 3.669420987032501*^9}, {3.6694216401844797`*^9, 
+  3.6694216565456457`*^9}, {3.6694217279191628`*^9, 3.669421729870277*^9}, {
+  3.6694217750051603`*^9, 3.669421775317334*^9}}],
+
+Cell[TextData[{
+ "Our plan is to redefine ",
+ StyleBox["mySin", "Code"],
+ " so that the second argument is passed in as an ",
+ StyleBox["Option", "Code"],
+ " instead of as an argument. To do that, we need the ",
+ StyleBox["OptionsPattern", "Code"],
+ " function:"
+}], "Text",
+ CellChangeTimes->{{3.690864882388413*^9, 3.6908649011465597`*^9}, {
+   3.6908649455848103`*^9, 3.690864945848884*^9}, {3.6908652263828497`*^9, 
+   3.690865228966837*^9}, {3.690865289589197*^9, 3.690865317284123*^9}, {
+   3.6908682563273993`*^9, 3.690868321963389*^9}, 3.690904110303658*^9, {
+   3.6909041511021967`*^9, 3.690904160531042*^9}, {3.69090857251902*^9, 
+   3.6909085727811413`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "OptionsPattern"}]], "Input",
+ CellChangeTimes->{{3.690838413069703*^9, 3.690838415649887*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"OptionsPattern\\\", \\\"[\\\", \
+\\\"]\\\"}]\\) is a pattern object that represents a collection of options \
+given as rules, where the values of the options can be accessed using \
+OptionValue. \\n\\!\\(\\*RowBox[{\\\"OptionsPattern\\\", \\\"[\\\", StyleBox[\
+\\\"f\\\", \\\"TI\\\"], \\\"]\\\"}]\\) takes default option values from \
+\\!\\(\\*RowBox[{\\\"Options\\\", \\\"[\\\", StyleBox[\\\"f\\\", \\\"TI\\\"], \
+\\\"]\\\"}]\\).\\n\\!\\(\\*RowBox[{\\\"OptionsPattern\\\", \\\"[\\\", \
+RowBox[{\\\"{\\\", RowBox[{RowBox[{SubscriptBox[StyleBox[\\\"opt\\\", \
+\\\"TI\\\"], StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\"\[Rule]\\\", \
+SubscriptBox[StyleBox[\\\"val\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]]}], \\\",\\\", RowBox[{SubscriptBox[StyleBox[\\\"opt\\\", \
+\\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\"\[Rule]\\\", \
+SubscriptBox[StyleBox[\\\"val\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]]}], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\
+\\\"}], \\\"]\\\"}]\\) uses an explicit list of default option values.\"\>", 
+   "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/OptionsPattern"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.690838416325692*^9},
+ CellTags->"Info643690816816-3933090"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["OptionsPattern", "Code"],
+ " is simply a pattern object that matches a set of options which can be \
+accessed with the ",
+ StyleBox["OptionValue", "Code"],
+ " function. It needs to appear as the last argument passed to the function, \
+and it basically matches a sequence of rules zero or more times. We will be \
+using the third form of ",
+ StyleBox["OptionsPattern", "Code"],
+ ": let\[CloseCurlyQuote]s change the second argument to:"
+}], "Text",
+ CellChangeTimes->{{3.690838449247019*^9, 3.690838459317831*^9}, {
+  3.690838491596575*^9, 3.6908386236972322`*^9}, {3.690840168114862*^9, 
+  3.690840222255192*^9}, {3.6908663523466578`*^9, 3.690866401058489*^9}, {
+  3.69086644900977*^9, 3.690866491615547*^9}, {3.690867060194335*^9, 
+  3.690867060513739*^9}, {3.69086721482865*^9, 3.690867249499178*^9}, {
+  3.6908683995689497`*^9, 3.690868423808779*^9}, {3.690904272959997*^9, 
+  3.69090430290372*^9}, {3.6909043600714607`*^9, 3.690904389261199*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"mySin", "[", 
+   RowBox[{"x_", ",", 
+    RowBox[{"OptionsPattern", "[", 
+     RowBox[{"{", 
+      RowBox[{"NumberOfTerms", "\[Rule]", "6"}], "}"}], "]"}]}], "]"}], ":=", 
+  
+  RowBox[{"Total", "[", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"-", "1"}], ")"}], "^", "i"}], " ", 
+      RowBox[{
+       RowBox[{"x", "^", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"2", " ", "i"}], "+", "1"}], ")"}]}], "/", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"2", "i"}], "+", "1"}], ")"}], "!"}]}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "0", ",", "N"}], "}"}]}], "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.669417389749433*^9, 3.669417438514935*^9}, {
+  3.6694174736527157`*^9, 3.669417474058332*^9}, {3.6694175334735813`*^9, 
+  3.669417538424711*^9}, {3.669417571775867*^9, 3.669417617758523*^9}, {
+  3.6694177299899893`*^9, 3.669417774698921*^9}, {3.669417823449871*^9, 
+  3.669417879208023*^9}, {3.669418887501952*^9, 3.669418905214058*^9}, {
+  3.669420982567979*^9, 3.669420987032501*^9}, {3.6694216401844797`*^9, 
+  3.6694216565456457`*^9}, {3.6694217279191628`*^9, 3.669421729870277*^9}, {
+  3.6694217750051603`*^9, 3.669421775317334*^9}, {3.690904393036023*^9, 
+  3.6909044053178377`*^9}}],
+
+Cell[TextData[{
+ "Now, to use our new option, we need the ",
+ StyleBox["OptionValue", "Code"],
+ " function:"
+}], "Text",
+ CellChangeTimes->{{3.690867227772438*^9, 3.690867232771544*^9}, {
+  3.6908676818001137`*^9, 3.6908676832083883`*^9}, {3.690904414473855*^9, 
+  3.6909044247554083`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "OptionValue"}]], "Input",
+ CellChangeTimes->{{3.6908385678278093`*^9, 3.69083857336392*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"OptionValue\\\", \\\"[\\\", \
+StyleBox[\\\"name\\\", \\\"TI\\\"], \\\"]\\\"}]\) gives the value of \
+\!\(\*StyleBox[\\\"name\\\", \\\"TI\\\"]\) in options matched by \
+OptionsPattern. \\n\!\(\*RowBox[{\\\"OptionValue\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"name\\\", \\\
+\"TI\\\"]}], \\\"]\\\"}]\) gives the value of \!\(\*StyleBox[\\\"name\\\", \\\
+\"TI\\\"]\) for options associated with the head \!\(\*StyleBox[\\\"f\\\", \\\
+\"TI\\\"]\). \\n\!\(\*RowBox[{\\\"OptionValue\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"f\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"opts\\\", \\\
+\"TI\\\"], \\\",\\\", StyleBox[\\\"name\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) \
+extracts option values from the explicit list of rules \
+\!\(\*StyleBox[\\\"opts\\\", \\\"TI\\\"]\).\\n\!\(\*RowBox[{\\\"OptionValue\\\
+\", \\\"[\\\", RowBox[{StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"name\\\", \\\"TI\\\"], \
+StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"name\\\
+\", \\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\
+\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\) extracts several \
+option values.\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/OptionValue"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.690838625321722*^9},
+ CellTags->"Info683690817025-3933090"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["OptionValue",
+  FontWeight->"Bold"],
+ " gives the value for the specific option. When calling the function, if an \
+option value other than the default is used, ",
+ StyleBox["OptionValue",
+  FontWeight->"Bold"],
+ " will return that, otherwise it\[CloseCurlyQuote]ll use the default value. \
+So now, let\[CloseCurlyQuote]s use ",
+ StyleBox["OptionValue", "Code"],
+ " in our ",
+ StyleBox["mySin", "Code"],
+ " function:"
+}], "Text",
+ CellChangeTimes->{{3.69084022923026*^9, 3.690840316404049*^9}, 
+   3.690867245956818*^9, {3.6908677011676073`*^9, 3.690867704209423*^9}, {
+   3.6909044480271*^9, 3.690904476522644*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"mySin", "[", 
+   RowBox[{"x_", ",", 
+    RowBox[{"OptionsPattern", "[", 
+     RowBox[{"{", 
+      RowBox[{"NumberOfTerms", "\[Rule]", "6"}], "}"}], "]"}]}], "]"}], ":=", 
+  
+  RowBox[{"Total", "[", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"-", "1"}], ")"}], "^", "i"}], " ", 
+      RowBox[{
+       RowBox[{"x", "^", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"2", " ", "i"}], "+", "1"}], ")"}]}], "/", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"2", "i"}], "+", "1"}], ")"}], "!"}]}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "0", ",", 
+       RowBox[{"OptionValue", "[", "NumberOfTerms", "]"}]}], "}"}]}], "]"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.669417389749433*^9, 3.669417438514935*^9}, {
+   3.6694174736527157`*^9, 3.669417474058332*^9}, {3.6694175334735813`*^9, 
+   3.669417538424711*^9}, {3.669417571775867*^9, 3.669417617758523*^9}, {
+   3.6694177299899893`*^9, 3.669417774698921*^9}, {3.669417823449871*^9, 
+   3.669417879208023*^9}, {3.669418887501952*^9, 3.669418905214058*^9}, {
+   3.669420982567979*^9, 3.669420987032501*^9}, {3.6694216401844797`*^9, 
+   3.6694216565456457`*^9}, {3.6694217279191628`*^9, 3.669421729870277*^9}, {
+   3.6694217750051603`*^9, 3.669421775317334*^9}, {3.690904393036023*^9, 
+   3.6909044053178377`*^9}, 3.6909044873993797`*^9}],
+
+Cell[TextData[{
+ "Now, we\[CloseCurlyQuote]ve renamed the parameterization to ",
+ StyleBox["NumberOfTerms", "Code"],
+ ", which does not have the same meaning as our original parameter N. The \
+number of terms returned by the function is going to be N+1 since the very \
+first term is the zeroth power of the Taylor series expansion. So, we need to \
+subtract 1 from the ",
+ StyleBox["OptionValue", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.690908618101458*^9, 3.690908797014927*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"mySin", "[", 
+   RowBox[{"x_", ",", 
+    RowBox[{"OptionsPattern", "[", 
+     RowBox[{"{", 
+      RowBox[{"NumberOfTerms", "\[Rule]", "6"}], "}"}], "]"}]}], "]"}], ":=", 
+  
+  RowBox[{"Total", "[", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"-", "1"}], ")"}], "^", "i"}], " ", 
+      RowBox[{
+       RowBox[{"x", "^", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"2", " ", "i"}], "+", "1"}], ")"}]}], "/", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"2", "i"}], "+", "1"}], ")"}], "!"}]}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "0", ",", 
+       RowBox[{
+        RowBox[{"OptionValue", "[", "NumberOfTerms", "]"}], "-", "1"}]}], 
+      "}"}]}], "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.669417389749433*^9, 3.669417438514935*^9}, {
+   3.6694174736527157`*^9, 3.669417474058332*^9}, {3.6694175334735813`*^9, 
+   3.669417538424711*^9}, {3.669417571775867*^9, 3.669417617758523*^9}, {
+   3.6694177299899893`*^9, 3.669417774698921*^9}, {3.669417823449871*^9, 
+   3.669417879208023*^9}, {3.669418887501952*^9, 3.669418905214058*^9}, {
+   3.669420982567979*^9, 3.669420987032501*^9}, {3.6694216401844797`*^9, 
+   3.6694216565456457`*^9}, {3.6694217279191628`*^9, 3.669421729870277*^9}, {
+   3.6694217750051603`*^9, 3.669421775317334*^9}, {3.690904393036023*^9, 
+   3.6909044053178377`*^9}, 3.6909044873993797`*^9, {3.690908691988163*^9, 
+   3.69090869204012*^9}}],
+
+Cell["\<\
+Note that this is now a slightly modified form of the function defined in the \
+last lecture. Anyway, let\[CloseCurlyQuote]s test it out without any options:\
+\
+\>", "Text",
+ CellChangeTimes->{{3.690838649249255*^9, 3.690838653816813*^9}, {
+  3.690867736189851*^9, 3.690867738854241*^9}, {3.6908677704865103`*^9, 
+  3.690867774076888*^9}, {3.690908814392475*^9, 3.690908843645763*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"mySin", "[", "x", "]"}]], "Input",
+ CellChangeTimes->{{3.690867752980563*^9, 3.690867757186311*^9}}],
+
+Cell[BoxData[
+ RowBox[{"x", "-", 
+  FractionBox[
+   SuperscriptBox["x", "3"], "6"], "+", 
+  FractionBox[
+   SuperscriptBox["x", "5"], "120"], "-", 
+  FractionBox[
+   SuperscriptBox["x", "7"], "5040"], "+", 
+  FractionBox[
+   SuperscriptBox["x", "9"], "362880"], "-", 
+  FractionBox[
+   SuperscriptBox["x", "11"], "39916800"], "+", 
+  FractionBox[
+   SuperscriptBox["x", "13"], "6227020800"]}]], "Output",
+ CellChangeTimes->{
+  3.690867757812361*^9, {3.690904496232759*^9, 3.6909045164279547`*^9}}]
+}, Open  ]],
+
+Cell["This looks correct. That\[CloseCurlyQuote]s Now let\[CloseCurlyQuote]s \
+try it with 10 terms:", "Text",
+ CellChangeTimes->{{3.690867762381177*^9, 3.690867785228593*^9}, 
+   3.69086798696799*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"mySin", "[", 
+  RowBox[{"x", ",", 
+   RowBox[{"NumberOfTerms", "\[Rule]", "10"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.690867988271983*^9, 3.69086799864712*^9}}],
+
+Cell[BoxData[
+ RowBox[{"x", "-", 
+  FractionBox[
+   SuperscriptBox["x", "3"], "6"], "+", 
+  FractionBox[
+   SuperscriptBox["x", "5"], "120"], "-", 
+  FractionBox[
+   SuperscriptBox["x", "7"], "5040"], "+", 
+  FractionBox[
+   SuperscriptBox["x", "9"], "362880"], "-", 
+  FractionBox[
+   SuperscriptBox["x", "11"], "39916800"], "+", 
+  FractionBox[
+   SuperscriptBox["x", "13"], "6227020800"], "-", 
+  FractionBox[
+   SuperscriptBox["x", "15"], "1307674368000"], "+", 
+  FractionBox[
+   SuperscriptBox["x", "17"], "355687428096000"], "-", 
+  FractionBox[
+   SuperscriptBox["x", "19"], "121645100408832000"], "+", 
+  FractionBox[
+   SuperscriptBox["x", "21"], "51090942171709440000"]}]], "Output",
+ CellChangeTimes->{
+  3.690867999109622*^9, {3.690904503028899*^9, 3.6909045181063147`*^9}}]
+}, Open  ]],
+
+Cell["Great!", "Text",
+ CellChangeTimes->{{3.6909050463621073`*^9, 3.690905047089468*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Exposing the Options", "Subsection",
+ CellChangeTimes->{{3.6909050498495398`*^9, 3.690905055977487*^9}}],
+
+Cell[TextData[{
+ "If we look at the ",
+ StyleBox["Options", "Code"],
+ " of mySin:"
+}], "Text",
+ CellChangeTimes->{{3.6909046296707487`*^9, 3.690904653468987*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "mySin", "]"}]], "Input",
+ CellChangeTimes->{{3.690904659488031*^9, 3.6909046617963943`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.6909046621285477`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "We see that it doesn\[CloseCurlyQuote]t list the option that we added to \
+our ",
+ StyleBox["mySin", "Code"],
+ ". If we want to expose the options of ",
+ StyleBox["mySin", "Code"],
+ " through the ",
+ StyleBox["Options", "Code"],
+ " function, we need to proceed slightly differently."
+}], "Text",
+ CellChangeTimes->{{3.6909046637022257`*^9, 3.6909047699520063`*^9}}],
+
+Cell[TextData[{
+ "Let\[CloseCurlyQuote]s create a new function to demonstrate this, ",
+ StyleBox["mySin2.", "Code"]
+}], "Text",
+ CellChangeTimes->{{3.6909050893986607`*^9, 3.690905103896421*^9}}],
+
+Cell[TextData[{
+ "First, we set the ",
+ StyleBox["Options", "Code"],
+ " for ",
+ StyleBox["mySin2", "Code"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.690904742577901*^9, 3.690904807872346*^9}, 
+   3.6909051100387917`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Options", "[", "mySin2", "]"}], "=", 
+  RowBox[{"{", 
+   RowBox[{"NumberOfTerms", "\[Rule]", "5"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.6909048087771397`*^9, 3.690904828791291*^9}, {
+   3.690904867640593*^9, 3.690904873255109*^9}, 3.690905111475121*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"NumberOfTerms", "\[Rule]", "5"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.690904829212399*^9, {3.690904867981497*^9, 3.690904873784321*^9}, 
+   3.6909051386725693`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Next, we need to use the first form of ",
+ StyleBox["OptionsPattern", "Code"],
+ " in our ",
+ StyleBox["mySin2", "Code"],
+ " definition:"
+}], "Text",
+ CellChangeTimes->{{3.690904845768633*^9, 3.690904882725627*^9}, 
+   3.690905147846141*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "OptionsPattern"}]], "Input",
+ CellChangeTimes->{{3.6909047031567383`*^9, 3.690904704261133*^9}, {
+  3.690904864151882*^9, 3.690904864942527*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"OptionsPattern\\\", \\\"[\\\", \
+\\\"]\\\"}]\) is a pattern object that represents a collection of options \
+given as rules, where the values of the options can be accessed using \
+OptionValue. \\n\!\(\*RowBox[{\\\"OptionsPattern\\\", \\\"[\\\", \
+StyleBox[\\\"f\\\", \\\"TI\\\"], \\\"]\\\"}]\) takes default option values \
+from \!\(\*RowBox[{\\\"Options\\\", \\\"[\\\", StyleBox[\\\"f\\\", \
+\\\"TI\\\"], \\\"]\\\"}]\).\\n\!\(\*RowBox[{\\\"OptionsPattern\\\", \
+\\\"[\\\", RowBox[{\\\"{\\\", RowBox[{RowBox[{SubscriptBox[StyleBox[\\\"opt\\\
+\", \\\"TI\\\"], StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\"\[Rule]\\\", \
+SubscriptBox[StyleBox[\\\"val\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]]}], \\\",\\\", RowBox[{SubscriptBox[StyleBox[\\\"opt\\\", \
+\\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\"\[Rule]\\\", \
+SubscriptBox[StyleBox[\\\"val\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \
+\\\"TR\\\"]]}], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\
+\\\"}], \\\"]\\\"}]\) uses an explicit list of default option values.\"\>", 
+   "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/OptionsPattern"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.690904870462489*^9},
+ CellTags->"Info113690883270-2108487"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Now let\[CloseCurlyQuote]s define our ",
+ StyleBox["mySin2", "Code"],
+ " function:"
+}], "Text",
+ CellChangeTimes->{{3.6909049121754313`*^9, 3.6909049172212954`*^9}, {
+  3.690905156893464*^9, 3.690905165037925*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"mySin2", "[", 
+   RowBox[{"x_", ",", 
+    RowBox[{"OptionsPattern", "[", "]"}]}], "]"}], ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{"Total", "[", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"-", "1"}], ")"}], "^", "i"}], " ", 
+      RowBox[{
+       RowBox[{"x", "^", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"2", " ", "i"}], "+", "1"}], ")"}]}], "/", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"2", "i"}], "+", "1"}], ")"}], "!"}]}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "0", ",", 
+       RowBox[{"OptionValue", "[", "NumberOfTerms", "]"}]}], "}"}]}], "]"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.669417389749433*^9, 3.669417438514935*^9}, {
+   3.6694174736527157`*^9, 3.669417474058332*^9}, {3.6694175334735813`*^9, 
+   3.669417538424711*^9}, {3.669417571775867*^9, 3.669417617758523*^9}, {
+   3.6694177299899893`*^9, 3.669417774698921*^9}, {3.669417823449871*^9, 
+   3.669417879208023*^9}, {3.669418887501952*^9, 3.669418905214058*^9}, {
+   3.669420982567979*^9, 3.669420987032501*^9}, {3.6694216401844797`*^9, 
+   3.6694216565456457`*^9}, {3.6694217279191628`*^9, 3.669421729870277*^9}, {
+   3.6694217750051603`*^9, 3.669421775317334*^9}, {3.690904393036023*^9, 
+   3.6909044053178377`*^9}, 3.6909044873993797`*^9, 3.69090492095249*^9, 
+   3.690905169062811*^9, {3.6909052409505377`*^9, 3.690905258660396*^9}, {
+   3.6909053178414373`*^9, 3.690905324394971*^9}}],
+
+Cell["Now, let\[CloseCurlyQuote]s test it out!", "Text",
+ CellChangeTimes->{{3.690904887030635*^9, 3.690904887936659*^9}, {
+  3.690904927492488*^9, 3.690904933596252*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"mySin2", "[", "x", "]"}]], "Input",
+ CellChangeTimes->{{3.6909049346031027`*^9, 3.6909049365512953`*^9}, 
+   3.690905172343569*^9}],
+
+Cell[BoxData[
+ RowBox[{"x", "-", 
+  FractionBox[
+   SuperscriptBox["x", "3"], "6"], "+", 
+  FractionBox[
+   SuperscriptBox["x", "5"], "120"], "-", 
+  FractionBox[
+   SuperscriptBox["x", "7"], "5040"], "+", 
+  FractionBox[
+   SuperscriptBox["x", "9"], "362880"], "-", 
+  FractionBox[
+   SuperscriptBox["x", "11"], "39916800"]}]], "Output",
+ CellChangeTimes->{3.690904936880671*^9, 3.6909051733181868`*^9}]
+}, Open  ]],
+
+Cell["That looks right. Now let\[CloseCurlyQuote]s ask for 9 terms:", "Text",
+ CellChangeTimes->{{3.6909049390199413`*^9, 3.690904961316292*^9}, {
+  3.6909051880847673`*^9, 3.690905195645335*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"mySin2", "[", 
+  RowBox[{"x", ",", 
+   RowBox[{"NumberOfTerms", "\[Rule]", "9"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.690904962339065*^9, 3.690904969764535*^9}, 
+   3.690905196550178*^9, 3.6909082750325813`*^9}],
+
+Cell[BoxData[
+ RowBox[{"x", "-", 
+  FractionBox[
+   SuperscriptBox["x", "3"], "6"], "+", 
+  FractionBox[
+   SuperscriptBox["x", "5"], "120"], "-", 
+  FractionBox[
+   SuperscriptBox["x", "7"], "5040"], "+", 
+  FractionBox[
+   SuperscriptBox["x", "9"], "362880"], "-", 
+  FractionBox[
+   SuperscriptBox["x", "11"], "39916800"], "+", 
+  FractionBox[
+   SuperscriptBox["x", "13"], "6227020800"], "-", 
+  FractionBox[
+   SuperscriptBox["x", "15"], "1307674368000"], "+", 
+  FractionBox[
+   SuperscriptBox["x", "17"], "355687428096000"], "-", 
+  FractionBox[
+   SuperscriptBox["x", "19"], "121645100408832000"]}]], "Output",
+ CellChangeTimes->{3.690904970022101*^9, 3.6909051974003153`*^9, 
+  3.690908278719048*^9}]
+}, Open  ]],
+
+Cell["Now, we can list the options of our function too:", "Text",
+ CellChangeTimes->{{3.69090499051493*^9, 3.690905006010105*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "mySin2", "]"}]], "Input",
+ CellChangeTimes->{{3.690905007798341*^9, 3.6909050095390244`*^9}, 
+   3.690905201623577*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"NumberOfTerms", "\[Rule]", "5"}], "}"}]], "Output",
+ CellChangeTimes->{3.690905009787671*^9, 3.69090520236452*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "The full definition of our ",
+ StyleBox["mySin2", "Code"],
+ " function is now:"
+}], "Text",
+ CellChangeTimes->{{3.690905014563828*^9, 3.690905020618456*^9}, 
+   3.690905206000654*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "mySin2"}]], "Input",
+ CellChangeTimes->{{3.6909050218152122`*^9, 3.690905023032926*^9}, 
+   3.690905210733124*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Global`mySin2", "Print", "PrintUsage",
+ CellChangeTimes->{3.690905262211667*^9},
+ CellTags->"Info263690883662-2108487"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {GridBox[{
+       {
+        RowBox[{
+         RowBox[{"mySin2", "[", 
+          RowBox[{"x_", ",", 
+           RowBox[{"OptionsPattern", "[", "]"}]}], "]"}], ":=", 
+         RowBox[{"Module", "[", 
+          RowBox[{
+           RowBox[{"{", "}"}], ",", 
+           RowBox[{"Total", "[", 
+            RowBox[{"Table", "[", 
+             RowBox[{
+              FractionBox[
+               RowBox[{
+                SuperscriptBox[
+                 RowBox[{"(", 
+                  RowBox[{"-", "1"}], ")"}], "i"], " ", 
+                SuperscriptBox["x", 
+                 RowBox[{
+                  RowBox[{"2", " ", "i"}], "+", "1"}]]}], 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"2", " ", "i"}], "+", "1"}], ")"}], "!"}]], ",", 
+              RowBox[{"{", 
+               RowBox[{"i", ",", "0", ",", 
+                RowBox[{"OptionValue", "[", "NumberOfTerms", "]"}]}], "}"}]}],
+              "]"}], "]"}]}], "]"}]}]}
+      },
+      BaselinePosition->{Baseline, {1, 1}},
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{"Columns" -> {{
+           Scaled[0.999]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}}]},
+    {" "},
+    {GridBox[{
+       {
+        RowBox[{
+         RowBox[{"Options", "[", "mySin2", "]"}], "=", 
+         RowBox[{"{", 
+          RowBox[{"NumberOfTerms", "\[Rule]", "5"}], "}"}]}]}
+      },
+      BaselinePosition->{Baseline, {1, 1}},
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{"Columns" -> {{
+           Scaled[0.999]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}}]}
+   },
+   BaselinePosition->{Baseline, {1, 1}},
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}}],
+  Definition[$CellContext`mySin2],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.690905262255774*^9},
+ CellTags->"Info263690883662-2108487"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Summary", "Subsection",
+ CellChangeTimes->{{3.6908684763056297`*^9, 3.69086847708988*^9}}],
+
+Cell["Nice! ", "Text",
+ CellChangeTimes->{{3.6908680014312143`*^9, 3.690868063413453*^9}, {
+   3.690868449706485*^9, 3.6908684865771914`*^9}, 3.690904539335194*^9}],
+
+Cell[TextData[{
+ "In this lecture we saw how to add options to our functions using ",
+ StyleBox["OptionsPattern", "Code"],
+ " and ",
+ StyleBox["OptionValue", "Code"],
+ " and how to inspect the options using the ",
+ StyleBox["Options", "Code"],
+ " function. "
+}], "Text",
+ CellChangeTimes->{
+  3.69086845083768*^9, {3.690868525304076*^9, 3.690868541999444*^9}, {
+   3.690904555922599*^9, 3.690904578110776*^9}, {3.690905560986485*^9, 
+   3.690905590389764*^9}, {3.690908324014017*^9, 3.6909083243723*^9}}],
+
+Cell["\<\
+We also saw that there are two ways to add options to our functions. \
+\>", "Text",
+ CellChangeTimes->{{3.69090540769445*^9, 3.690905481918022*^9}, 
+   3.690905529891107*^9, {3.690905598720787*^9, 3.690905655857243*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "In one of the ways, we expose the list of options by setting to, ",
+ StyleBox["Options", "Code"],
+ " of your function. "
+}], "ItemNumbered",
+ CellChangeTimes->{{3.6909056436870613`*^9, 3.6909056441599913`*^9}}],
+
+Cell["\<\
+The second way is more self contained in that all the options are expressed \
+in the function definition. \
+\>", "ItemNumbered",
+ CellChangeTimes->{{3.6909056436870613`*^9, 3.690905652563424*^9}}]
+}, Open  ]],
+
+Cell["Use whichever one makes the most sense for your application.", "Text",
+ CellChangeTimes->{3.690905653997726*^9}],
+
+Cell["\<\
+So there you have it \[Dash] that\[CloseCurlyQuote]s how you add options to \
+your functions! See you in the next lecture!\
+\>", "Text",
+ CellChangeTimes->{3.690905592522032*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1396, 855},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info523690815499-3933090"->{
+  Cell[1813, 57, 1999, 32, 173, "Print",
+   CellTags->"Info523690815499-3933090"]},
+ "Info643690816816-3933090"->{
+  Cell[11255, 273, 1398, 24, 226, "Print",
+   CellTags->"Info643690816816-3933090"]},
+ "Info683690817025-3933090"->{
+  Cell[15437, 370, 1570, 26, 190, "Print",
+   CellTags->"Info683690817025-3933090"]},
+ "Info113690883270-2108487"->{
+  Cell[25876, 669, 1382, 24, 226, "Print",
+   CellTags->"Info113690883270-2108487"]},
+ "Info263690883662-2108487"->{
+  Cell[31885, 838, 125, 2, 78, "Print",
+   CellTags->"Info263690883662-2108487"],
+  Cell[32013, 842, 2204, 61, 163, "Print",
+   CellTags->"Info263690883662-2108487"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info523690815499-3933090", 36445, 976},
+ {"Info643690816816-3933090", 36560, 979},
+ {"Info683690817025-3933090", 36677, 982},
+ {"Info113690883270-2108487", 36794, 985},
+ {"Info263690883662-2108487", 36911, 988}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 92, 1, 80, "Section"],
+Cell[675, 25, 612, 11, 61, "Text"],
+Cell[CellGroupData[{
+Cell[1312, 40, 100, 1, 54, "Subsection"],
+Cell[1415, 43, 254, 6, 37, "Text"],
+Cell[CellGroupData[{
+Cell[1694, 53, 116, 2, 39, "Input"],
+Cell[1813, 57, 1999, 32, 173, "Print",
+ CellTags->"Info523690815499-3933090"]
+}, Open  ]],
+Cell[3827, 92, 295, 8, 37, "Text"],
+Cell[CellGroupData[{
+Cell[4147, 104, 130, 2, 39, "Input"],
+Cell[4280, 108, 3932, 82, 352, "Output"]
+}, Open  ]],
+Cell[8227, 193, 391, 8, 37, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8655, 206, 149, 1, 54, "Subsection"],
+Cell[8807, 209, 403, 8, 95, "Text"],
+Cell[9213, 219, 1219, 30, 100, "Input"],
+Cell[10435, 251, 669, 14, 131, "Text"],
+Cell[CellGroupData[{
+Cell[11129, 269, 123, 2, 60, "Input"],
+Cell[11255, 273, 1398, 24, 226, "Print",
+ CellTags->"Info643690816816-3933090"]
+}, Open  ]],
+Cell[12668, 300, 977, 17, 205, "Text"],
+Cell[13648, 319, 1347, 34, 100, "Input"],
+Cell[14998, 355, 290, 7, 57, "Text"],
+Cell[CellGroupData[{
+Cell[15313, 366, 121, 2, 60, "Input"],
+Cell[15437, 370, 1570, 26, 190, "Print",
+ CellTags->"Info683690817025-3933090"]
+}, Open  ]],
+Cell[17022, 399, 643, 16, 131, "Text"],
+Cell[17668, 417, 1438, 36, 138, "Input"],
+Cell[19109, 455, 489, 10, 168, "Text"],
+Cell[19601, 467, 1519, 38, 138, "Input"],
+Cell[21123, 507, 395, 7, 95, "Text"],
+Cell[CellGroupData[{
+Cell[21543, 518, 124, 2, 60, "Input"],
+Cell[21670, 522, 497, 15, 86, "Output"]
+}, Open  ]],
+Cell[22182, 540, 201, 3, 57, "Text"],
+Cell[CellGroupData[{
+Cell[22408, 547, 189, 4, 60, "Input"],
+Cell[22600, 553, 787, 23, 228, "Output"]
+}, Open  ]],
+Cell[23402, 579, 90, 1, 57, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23529, 585, 110, 1, 81, "Subsection"],
+Cell[23642, 588, 162, 5, 57, "Text"],
+Cell[CellGroupData[{
+Cell[23829, 597, 132, 2, 60, "Input"],
+Cell[23964, 601, 89, 2, 60, "Output"]
+}, Open  ]],
+Cell[24068, 606, 383, 10, 131, "Text"],
+Cell[24454, 618, 195, 4, 57, "Text"],
+Cell[24652, 624, 218, 8, 57, "Text"],
+Cell[CellGroupData[{
+Cell[24895, 636, 293, 6, 60, "Input"],
+Cell[25191, 644, 210, 5, 60, "Output"]
+}, Open  ]],
+Cell[25416, 652, 258, 8, 57, "Text"],
+Cell[CellGroupData[{
+Cell[25699, 664, 174, 3, 60, "Input"],
+Cell[25876, 669, 1382, 24, 226, "Print",
+ CellTags->"Info113690883270-2108487"]
+}, Open  ]],
+Cell[27273, 696, 232, 6, 57, "Text"],
+Cell[27508, 704, 1533, 36, 138, "Input"],
+Cell[29044, 742, 171, 2, 57, "Text"],
+Cell[CellGroupData[{
+Cell[29240, 748, 155, 3, 60, "Input"],
+Cell[29398, 753, 404, 12, 86, "Output"]
+}, Open  ]],
+Cell[29817, 768, 196, 2, 57, "Text"],
+Cell[CellGroupData[{
+Cell[30038, 774, 240, 5, 60, "Input"],
+Cell[30281, 781, 709, 21, 157, "Output"]
+}, Open  ]],
+Cell[31005, 805, 130, 1, 57, "Text"],
+Cell[CellGroupData[{
+Cell[31160, 810, 159, 3, 60, "Input"],
+Cell[31322, 815, 154, 3, 60, "Output"]
+}, Open  ]],
+Cell[31491, 821, 201, 6, 57, "Text"],
+Cell[CellGroupData[{
+Cell[31717, 831, 143, 3, 60, "Input"],
+Cell[CellGroupData[{
+Cell[31885, 838, 125, 2, 78, "Print",
+ CellTags->"Info263690883662-2108487"],
+Cell[32013, 842, 2204, 61, 163, "Print",
+ CellTags->"Info263690883662-2108487"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[34278, 910, 96, 1, 81, "Subsection"],
+Cell[34377, 913, 164, 2, 57, "Text"],
+Cell[34544, 917, 504, 12, 95, "Text"],
+Cell[35051, 931, 230, 4, 57, "Text"],
+Cell[CellGroupData[{
+Cell[35306, 939, 228, 5, 90, "ItemNumbered"],
+Cell[35537, 946, 206, 4, 90, "ItemNumbered"]
+}, Open  ]],
+Cell[35758, 953, 118, 1, 57, "Text"],
+Cell[35879, 956, 188, 4, 95, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
