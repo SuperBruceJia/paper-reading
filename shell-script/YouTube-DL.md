@@ -1,12 +1,14 @@
+<img width="840" alt="image" src="https://user-images.githubusercontent.com/31528604/217407284-233cd624-1e6d-4695-826e-f3119fb92b3e.png">
+
 ## Download the master branch of youtube-dl
 ```shell
 git clone https://github.com/ytdl-org/youtube-dl.git
 ```
 
-##  Install some Python Dependency
+<!-- ##  Install some Python Dependency
 ```shell
 pip install youtube_dl
-```
+``` -->
 
 ## Make from source
 ```shell
@@ -22,3 +24,5 @@ alias youtube="/Users/shuyuej/Desktop/Codes/youtube-dl/youtube-dl -f 'bestvideo[
 ```shell
 youtube "https://www.youtube.com/watch?v=C1SwwWp6mSo"
 ```
+
+**Notice**: You may `clone` and `make` again if the speed is limited someday.
