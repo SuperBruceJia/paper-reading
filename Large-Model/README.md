@@ -46,3 +46,9 @@ This seminar-style course will focus on recent advances in the rapidly developin
 Link: https://github.com/SuperBruceJia/paper-reading/tree/master/Self-supervised%20Learning
 
 ---
+
+(7) Computing Architecture for Digital, Al and Quantum Computing
+
+Link: https://github.com/SuperBruceJia/paper-reading/tree/master/Large-Model/Digital-AI-Quantum
+
+---
