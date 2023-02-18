@@ -1,5 +1,4 @@
 # Computing Architecture for Digital, Al and Quantum Computing
-![Xnip2023-02-17_19-18-05](https://user-images.githubusercontent.com/31528604/219854290-34552421-1bee-42da-8aeb-9cd7acd02c12.jpg)
 ![Xnip2023-02-17_19-30-59](https://user-images.githubusercontent.com/31528604/219854295-b9079f19-c7ea-4949-86b4-784aebb035f8.jpg)
 ![Xnip2023-02-17_19-37-10](https://user-images.githubusercontent.com/31528604/219854296-61b5979d-6f4d-43a4-98c5-adac16aa245e.jpg)
 ![Xnip2023-02-17_19-41-52](https://user-images.githubusercontent.com/31528604/219854298-7b64255d-a8ab-4d57-87d3-59d0e70685a8.jpg)
