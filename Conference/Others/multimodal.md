@@ -1,4 +1,4 @@
-# Large Vision Model (Foundation Model)
+# Large Vision Model
 <img width="1112" alt="image" src="https://user-images.githubusercontent.com/31528604/222620915-ca365432-3ab0-4d64-9951-3f3146c95055.png">
 <img width="1112" alt="image" src="https://user-images.githubusercontent.com/31528604/222621022-0c4b41bd-1539-458d-93b6-5a618e4aa8fb.png">
 <img width="1112" alt="image" src="https://user-images.githubusercontent.com/31528604/222621087-e8ed9aac-99ab-4579-81e4-808682da736f.png">
@@ -12,6 +12,9 @@
 <img width="1112" alt="image" src="https://user-images.githubusercontent.com/31528604/222621908-1c01d0d9-7015-4b18-82bb-6bc263f863f9.png">
 <img width="1112" alt="image" src="https://user-images.githubusercontent.com/31528604/222621936-1d364794-ae47-4a15-8162-1f30f3a79371.png">
 <img width="1112" alt="image" src="https://user-images.githubusercontent.com/31528604/222621993-772b4b30-c704-44f9-bf6c-8468dc0f917e.png">
+<img width="1112" alt="image" src="https://user-images.githubusercontent.com/31528604/222622090-5a8d32da-8d29-4d9b-ae19-7328b1b5151e.png">
+<img width="1112" alt="image" src="https://user-images.githubusercontent.com/31528604/222622225-c05391fd-d7a1-4b59-8195-dfc119f25788.png">
+<img width="1112" alt="image" src="https://user-images.githubusercontent.com/31528604/222622255-035a5e95-6338-47cc-ab0b-10c16500a96c.png">
 
 
 
