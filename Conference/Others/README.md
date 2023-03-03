@@ -4,3 +4,6 @@
 4. Artificial General Intelligence: [Link](https://github.com/SuperBruceJia/paper-reading/blob/master/Conference/Others/agi.md)
 5. Large Vision Model: [Link](https://github.com/SuperBruceJia/paper-reading/blob/master/Conference/Others/multimodal.md)
 6. Large Speech Model: [Link](https://github.com/SuperBruceJia/paper-reading/blob/master/Conference/Others/speech.md)
+7. Large Language Model: [Link](https://github.com/SuperBruceJia/paper-reading/blob/master/Conference/Others/language.md)
+8. Multimodal Learning: [Link](https://github.com/SuperBruceJia/paper-reading/blob/master/Conference/Others/multimodal_learning.md)
+9. Conversation AI: [Link](https://github.com/SuperBruceJia/paper-reading/blob/master/Conference/Others/conversation_AI.md)
