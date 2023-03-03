@@ -2,3 +2,5 @@
 2. After studying AI in Taiwan, What's next?: [Link](https://github.com/SuperBruceJia/paper-reading/blob/master/Conference/Others/After_studying_AI_in_Taiwan_-_Next_PhD.pdf)
 3. ChatGPT: [Link](https://github.com/SuperBruceJia/paper-reading/blob/master/Conference/Others/chatgpt.md)
 4. Artificial General Intelligence: [Link](https://github.com/SuperBruceJia/paper-reading/blob/master/Conference/Others/agi.md)
+5. Large Vision Model: [Link](https://github.com/SuperBruceJia/paper-reading/blob/master/Conference/Others/multimodal.md)
+6. Large Speech Model: [Link](https://github.com/SuperBruceJia/paper-reading/blob/master/Conference/Others/speech.md)
