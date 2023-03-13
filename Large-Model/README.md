@@ -1,4 +1,6 @@
 # Foundation Model
+ChatGPT is not a ConvAI system (chatbot) because it is not trained for multiturn open domain dialog nor is it trained for task oriented dialog.  Using it either as a chatbot or for task completion is bound to disappoint. This class of LLMs with chat interface are distinct from LLM based ConvAI systems such as BlenderBot. There is NO pure generative task oriented dialog systems currently. (Prof. Pascale Fung)
+
 ## Course and Tutorials
 
 (1) Stanford CS324 - Advances in Foundation Models
