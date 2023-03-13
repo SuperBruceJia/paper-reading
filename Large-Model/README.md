@@ -54,3 +54,17 @@ Link: https://github.com/SuperBruceJia/paper-reading/tree/master/Self-supervised
 Link: https://github.com/SuperBruceJia/paper-reading/tree/master/Large-Model/Digital-AI-Quantum
 
 ---
+
+(8) Stanford MLSys Seminars
+
+Link: https://www.youtube.com/playlist?list=PLSrTvUm384I9PV10koj_cqit9OfbJXEkq
+
+---
+
+(9) Prof. Edward Y. Chang
+
+Link: https://www.youtube.com/@eyuchang
+
+---
+
+
