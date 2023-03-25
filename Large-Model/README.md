@@ -67,4 +67,8 @@ Link: https://www.youtube.com/@eyuchang
 
 ---
 
+(10) Northeastern AI Event
 
+Link: https://ai.northeastern.edu/events/
+
+---
