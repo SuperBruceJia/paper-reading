@@ -72,3 +72,7 @@ Link: https://www.youtube.com/@eyuchang
 Link: https://ai.northeastern.edu/events/
 
 ---
+
+(11) Foundation Models for Decision Making
+
+Link: https://nips.cc/virtual/2022/workshop/49988
