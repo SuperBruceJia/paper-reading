@@ -73,6 +73,12 @@ Link: https://ai.northeastern.edu/events/
 
 ---
 
-(11) Foundation Models for Decision Making
+(11) The Berkeley lectures on the status and future of AI
+
+Link: https://www.berkeley.edu/ai/
+
+---
+
+
 
 Link: https://nips.cc/virtual/2022/workshop/49988
