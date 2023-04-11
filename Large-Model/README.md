@@ -78,7 +78,3 @@ Link: https://ai.northeastern.edu/events/
 Link: https://www.berkeley.edu/ai/
 
 ---
-
-
-
-Link: https://nips.cc/virtual/2022/workshop/49988
