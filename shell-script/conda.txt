@@ -1,3 +1,7 @@
+python -m notebook
+
+---
+
 set PYTHONIOENCODING=utf-8
 
 nvcc --version
