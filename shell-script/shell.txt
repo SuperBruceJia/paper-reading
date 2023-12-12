@@ -34,3 +34,27 @@ export HBASE_HOME=/usr/local/Cellar/hbase
 sudo chown -R $(whoami) /var/root/
 
 for i in /Users/shuyuej/Desktop/START-19/*; do mv "$i" /Users/shuyuej/Desktop/Saved_JSON_data; done
+
+---
+
+cleardot
+cleardot
+cleardot
+cleards
+cleards
+cleards
+
+rm -rf .idea
+
+cleardot
+cleardot
+cleardot
+cleards
+cleards
+cleards
+
+git add .
+
+git commit -m "update"
+
+git push
