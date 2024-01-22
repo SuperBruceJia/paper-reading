@@ -1,0 +1,346 @@
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath,amscd,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathop{\mathbb{E}}}
+\newcommand{\argmin}{\mathop{\text{argmin}}}
+\newcommand{\argmax}{\mathop{\text{argmax}}}
+\renewcommand{\L}{\mathcal{L}}
+
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\bw}{\mathbf{w}}
+\newcommand{\bz}{\mathbf{z}}
+\newcommand{\bv}{\mathbf{v}}
+\newcommand{\bg}{\mathbf{g}}
+\newcommand{\op}{\text{op}}
+\newcommand{\addspace}{\vskip1.5em}
+\newcommand{\solution}{}%\addspace\noindent\textbf{Solution:}\newline}
+
+\newcommand{\reffig}[1]{Figure~\ref{#1}}
+\newcommand{\reftab}[1]{Table~\ref{#1}}
+\newcommand{\refequ}[1]{Eqn.~\eqref{#1}}
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+\newcommand{\etal}{\emph{et al}. }
+\newcommand{\ie}{\emph{i}.\emph{e}.}
+\newcommand{\eg}{\emph{e}.\emph{g}.}
+\renewcommand{\qedsymbol}{\hfill $\square$}
+
+\title{Optimization for Machine Learning HW 2}
+\author{\textbf{Shuyue Jia} \\ \textbf{BUID: U62343813}}
+\date{Due: 9/20/2023}
+
+\begin{document}
+\maketitle
+All parts of each question are equally weighted. When solving one question/part, you may assume the results of all previous questions/parts. This HW provides an alternative analysis of SGD in the convex setting that provides a convergence bound for the \emph{last iterate}: $\E[\L(\bw_T)-\L(\bw_\star)]=\tilde O(1/\sqrt{T})$.
+\begin{enumerate}
+    \item \textcolor{red}{Prove the following technical identity: for any sequence of numbers $a_1,\dots,a_T$ with $T>1$,}
+    \begin{align*}
+        \textcolor{red}{T \cdot a_T= \sum_{t=1}^T a_t + \sum_{k=1}^{T-1}\frac{T}{(T-k)(T-k+1)}\sum_{t=k}^T (a_t-a_k)}
+    \end{align*}
+    \textcolor{red}{(Hint: There are a number of different ways to show this. One way starts by showing that $\frac{T-k+1}{T-k}\sum_{t=k+1}^T a_t = \sum_{t=k}^T a_t + \frac{1}{T-k}\sum_{t=k}^T (a_t-a_k)$ and uses induction on $k$. Another is to rearrange the terms in the sums to directly show equality. For this, you might want to show the useful identity $\sum_{k=1}^{T-1} b_k \sum_{t=k}^T a_t = \sum_{t=1}^{T-1}a_t \sum_{k=1}^t b_k + a_T \sum_{k=1}^{T-1}b_k$, valid for all $a$ and $b$. You might also want to observe that $\frac{T}{(T-k)(T-k+1)} = \frac{T}{T-k} -\frac{T}{T-k+1}$).}
+    
+    \addspace
+    
+    \solution
+    \textbf{\textit{Proof.}} We will start with the second hint: ``Another is to rearrange the terms in the sums to directly show equality. For this, you might want to show the useful identity $\sum_{k=1}^{T-1} b_k \sum_{t=k}^T a_t = \sum_{t=1}^{T-1}a_t \sum_{k=1}^t b_k + a_T \sum_{k=1}^{T-1}b_k$, valid for all $a$ and $b$. You might also want to observe that $\frac{T}{(T-k)(T-k+1)} = \frac{T}{T-k} -\frac{T}{T-k+1}$)."
+    
+    Firstly, we need to prove the hint identity,~\ie, $\sum_{k=1}^{T-1} b_k \sum_{t=k}^T a_t = \sum_{t=1}^{T-1}a_t \sum_{k=1}^t b_k + a_T \sum_{k=1}^{T-1}b_k$, because it will be useful to solve this problem. We first expand the summation of $a_t$ from $t=k$ to $T$:
+    \begin{equation}
+		\begin{aligned}
+    		&\sum_{k=1}^{T-1} b_k \sum_{t=k}^T a_t\\
+    		&=\sum_{k=1}^{T-1} b_k \left(a_k + a_{k+1} + \ldots + a_T\right)\\
+    		&=\sum_{k=1}^{T-1} \left(b_k a_k + b_k a_{k+1} + \ldots + b_k a_T\right)\\
+    		&=\sum_{k=1}^{T-1} b_k a_k + \sum_{k=1}^{T-1} b_k a_{k+1} + \ldots + \sum_{k=1}^{T-1} b_k a_T\\
+    		&=a_1\sum_{k=1}^{T-1} b_k + a_2\sum_{k=1}^{T-1} b_k + \ldots + a_{T-1}\sum_{k=1}^{T-1} b_k + a_T\sum_{k=1}^{T-1} b_k\\
+    		&=\left(a_1 + a_2 + \ldots + a_{T-1} + a_T\right) \sum_{k=1}^{T-1} b_k
+    	\end{aligned}
+    	\label{Lhand}
+	\end{equation}
+    
+    Then, for the right-hand sum, we can expand the summation of $a_t$ and $b_k$:
+    \begin{equation}
+    	\begin{aligned}
+   		 &\sum_{t=1}^{T-1} a_t \sum_{k=1}^t b_k + a_T \sum_{k=1}^{T-1} b_k\\
+   		 =&(a_1 + a_2 + \ldots + a_{T-1}) \sum_{k=1}^1 b_k + (a_1 + a_2 + \ldots + a_{T-1}) \sum_{k=1}^2 b_k \\
+   		 &+ \ldots + (a_1 + a_2 + \ldots + a_{T-1}) \sum_{k=1}^{T-1} b_k + a_T \sum_{k=1}^{T-1} b_k\\
+   		 =&(a_1 + a_2 + \ldots + a_{T-1}) \left(\sum_{k=1}^1 b_k + \sum_{k=1}^2 b_k + \ldots + \sum_{k=1}^{T-1} b_k\right) + a_T \sum_{k=1}^{T-1} b_k\\
+   		 =&(a_1 + a_2 + \ldots + a_{T-1}) \sum_{k=1}^{T-1} b_k + a_T \sum_{k=1}^{T-1} b_k\\
+   		 =&(a_1 + a_2 + \ldots + a_{T}) \sum_{k=1}^{T-1} b_k
+    	\end{aligned}
+    	\label{Rhand}
+	\end{equation}
+    
+	As a result, we can prove this identity $\sum_{k=1}^{T-1} b_k \sum_{t=k}^T a_t = \sum_{t=1}^{T-1}a_t \sum_{k=1}^t b_k + a_T \sum_{k=1}^{T-1}b_k$ holds true for all $a$ and $b$.
+    
+    Secondly, let $b_{k}=\frac{T}{(T-k)(T-k+1)}$ to simplify computation. Then, we obtain:
+    
+    \begin{equation}
+    	\begin{aligned}
+			&\sum_{t=1}^T a_t + \sum_{k=1}^{T-1}b_{k}\sum_{t=k}^T (a_t-a_k)\\
+			&=\sum_{t=1}^T a_t + \textcolor{red}{\sum_{k=1}^{T-1}b_{k}\sum_{t=k}^T a_t} - \sum_{k=1}^{T-1}b_{k}\sum_{t=k}^T a_k\\
+    	\end{aligned}
+    \end{equation}
+    
+    Finally, from~\refequ{Lhand} and~\refequ{Rhand}, we know that $\textcolor{red}{\sum_{k=1}^{T-1} b_k \sum_{t=k}^T a_t} = \textcolor{blue}{\sum_{t=1}^{T-1}a_t \sum_{k=1}^t b_k + a_T \sum_{k=1}^{T-1}b_k}$. Then, we will have
+    \begin{equation}
+    	\begin{aligned}
+    		&\sum_{t=1}^T a_t + \sum_{k=1}^{T-1}b_{k}\sum_{t=k}^T (a_t-a_k)\\
+    		&=\sum_{t=1}^T a_t + \textcolor{blue}{\sum_{t=1}^{T-1} a_t \sum_{k=1}^t b_k + a_T \sum_{k=1}^{T-1} b_k} - \sum_{k=1}^{T-1} b_k \sum_{t=k}^{T} a_k\\
+    		&=\sum_{t=1}^T a_t + \sum_{t=1}^{T-1} T(\frac{1}{T-t}-\frac{1}{T})a_t + T(1-\frac{1}{T})a_T - \sum_{k=1}^{T-1}b_k(T-K+1)a_k\\
+    		&=\sum_{t=1}^T a_t + \sum_{t=1}^{T-1} \frac{t}{T-t} a_t + (1-\frac{1}{T}) a_T - \sum_{k=1}^{T-1} \frac{T}{T-k} a_k\\
+    		&=\sum_{t=1}^T a_t + \sum_{t=1}^{T-1} (\frac{t}{T-t} - \frac{T}{T-t}) + T a_T-a_T\\
+    		&=a_T + \sum_{t=1}^{T-1} a_t - \sum_{t=1}^{T-1} a_t + T a_T-a_T\\
+    		&=T a_T
+        \end{aligned}
+	\end{equation}
+    \qedsymbol
+    \addspace
+    \addspace
+    \addspace
+    
+%    \setcounter{equation}{0}
+%    
+%    \textbf{\textit{Proof Method 2.}} We shall start with the hint: ``One way starts by showing that $\frac{T-k+1}{T-k}\sum_{t=k+1}^T a_t = \sum_{t=k}^T a_t + \frac{1}{T-k}\sum_{t=k}^T (a_t-a_k)$, and uses induction on $k$."
+%    
+%    We first prove that $\frac{T-k+1}{T-k}\sum_{t=k+1}^T a_t = \sum_{t=k}^T a_t + \frac{1}{T-k}\sum_{t=k}^T (a_t-a_k)$:
+%    \begin{equation}
+%    	\begin{aligned}
+%    		&\frac{T-k+1}{T-k}\sum_{t=k+1}^T a_t\\
+%    		&=\frac{T-k+1}{T-k}\sum_{t=k}^T a_t - a_k\\
+%    		&=\frac{T-k+1}{T-k}\sum_{t=k}^T a_t - \frac{T-k+1}{T-k} a_k
+%    	\end{aligned}
+%    	\label{equ1}
+%    \end{equation}
+%    
+%    On the other hand, we can deduce that,
+%     \begin{equation}
+%    	\begin{aligned}
+%    		& \sum_{t=k}^T a_t + \frac{1}{T-k}\sum_{t=k}^T (a_t-a_k)\\
+%    		&=\sum_{t=k}^T a_t + \frac{1}{T-k}\sum_{t=k}^T a_t - \frac{T-k+1}{T-k} a_k\\
+%    		& =(1+\frac{1}{T-k})\sum_{t=k}^T a_t - \frac{T-k+1}{T-k} a_k\\
+%    		& = \frac{T-k+1}{T-k} \sum_{t=k}^T a_t - \frac{T-k+1}{T-k} a_k
+%    	\end{aligned}
+%    	\label{equ2}
+%    \end{equation}
+%    
+%    According to the final results of~\refequ{equ1} and \refequ{equ2}, we have proven the hint identity.
+%    \begin{equation}
+%    	\begin{aligned}
+%    		\frac{T-k+1}{T-k}\sum_{t=k+1}^T a_t = \sum_{t=k}^T a_t + \frac{1}{T-k}\sum_{t=k}^T (a_t-a_k)
+%    	\end{aligned}
+%    \end{equation}
+%    
+%    Next, we shall use the \textit{induction method} to prove the original technical identity. Firstly, we assume $T=2$. Then, we have:
+
+%    \addspace
+    
+    \setcounter{equation}{0}
+    \item \textcolor{red}{Consider stochastic gradient descent with a constant learning rate $\eta$: $\bw_{t+1} = \bw_t - \eta \nabla \ell(\bw_t, z_t)$. Suppose that $\ell$ is convex and $G$-Lipschitz. Show that for all $k$:}
+    \begin{align*}
+        \textcolor{red}{\sum_{t=k}^T \E[\L(\bw_t) - \L(\bw_{k})]\le \frac{\eta (T-k + 1)G^2}{2}}
+    \end{align*}
+    
+    \addspace
+    
+    \solution
+    \textbf{\textit{Proof.}} The proof is actually very similar to the proof for the \textbf{Theorem 3.2} of Stochastic Gradient Descent. All expectations presented here are not over the randomness of the algorithm, \textit{i.e.}, over the choices $z_1, ..., z_T$. Besides, we denote $\bg_t=\nabla \ell(\bw_t, z_t)$ for simplicity.
+    \begin{equation}
+		\begin{aligned}
+			&\E\left[\| \bw_{t+1}-\bw_k \|^2\right] \\
+			&=\E\left[\| \bw_{t}-\eta\bg_t-\bw_k \|^2\right]\\
+			&=\E\left[\| \left(\bw_{t}-\bw_k\right)-\eta\bg_t \|^2\right]\\
+			&=\E\left[\| \bw_{t}-\bw_k \|^2 - 2\eta\left<\bg_t, \bw_{t}-\bw_k\right>+\eta^2\| \bg_t \|^2\right]\\
+		\end{aligned}
+    \end{equation}
+    
+    By rearranging the above equation, we have:
+    \begin{equation}
+    	\begin{aligned}
+    		&\E\left[ \left<\bg_t, \bw_{t}-\bw_k\right> \right] \\
+			&=\frac{\E\left[\| \bw_{t+1}-\bw_k \|^2 - \| \bw_{t}-\bw_k \|^2\right]}{2\eta}+\frac{\eta\E\left[ \| \bg_t \|^2 \right]}{2}
+    	\end{aligned}
+    	\label{rearranging}
+    \end{equation}
+    
+    Then, we start from the perspective of unbiasedness and convexity, and we can also observe that $\bw_{t}$ is a deterministic function of $z_1, ..., z_{t-1}$, and that $\bg_t$ is independent of $z_1, ..., z_{t-1}$ given $\bw_{t}$,
+    \begin{equation}
+    	\begin{aligned}
+    		&\E\left[ \left<\bg_t, \bw_{t}-\bw_k\right> \right] \\
+    		&=\E_{z_1, ..., z_{t-1}} \left[\E[\left< \bg_t, \bw_{t}-\bw_k \right> | z_1, ..., z_{t-1}]\right]\\
+ 		    &=\E_{z_1, ..., z_{t-1}} \left[\left<\nabla \L(\bw_{t}), \bw_{t}-\bw_k\right>\right]\\
+ 		    &=\E\left[\left<\nabla \L(\bw_{t}), \bw_{t}-\bw_k\right> \right]\\
+ 		    &\geq\E\left[\L(\bw_{t})-\L(\bw_{k}) \right]
+    	\end{aligned}
+    	\label{convexity}
+    \end{equation}
+    
+    Thus, according to~\refequ{rearranging} and~\refequ{convexity}, we have:
+     \begin{equation}
+    	\begin{aligned}
+			&\E\left[\L(\bw_{t})-\L(\bw_{k}) \right]\leq\frac{\E\left[\| \bw_{t+1}-\bw_k \|^2 - \| \bw_{t}-\bw_k \|^2\right]}{2\eta}+\frac{\eta\E\left[ \| \bg_t \|^2 \right]}{2}
+    	\end{aligned}
+    \end{equation}
+    
+    Next, we sum $\E\left[\L(\bw_{t})-\L(\bw_{k}) \right]$ from $t=k$ to $T$,
+    \begin{equation}
+    	\begin{aligned}
+    		&\E\left[\sum_{t=k}^{T}\L(\bw_{t})-\L(\bw_{k}) \right]\\
+    		&\leq \sum_{t=k}^{T} {\frac{\eta\E\left[ \| \bg_t \|^2 \right]}{2}} - \frac{\E\left[\| \bw_{T+1}-\bw_k \|^2\right]}{2\eta}\\
+    		&\leq \eta\frac{\sum_{t=k}^{T} {\E\left[ \| \bg_t \|^2 \right]}}{2}
+    	\end{aligned}
+    \end{equation}
+    
+    Finally, since $\ell$ is convex and $G$-Lipschitz, we have $\bg_t=\nabla \ell(\bw_t, z_t)\leq G$. As a result, we get:
+    \begin{equation}
+    	\begin{aligned}
+    		\E\left[\sum_{t=k}^{T}\L(\bw_{t})-\L(\bw_{k}) \right] &\leq \frac{\eta\sum_{t=k}^{T} {G^2}}{2}\\
+    		&\leq\frac{\eta\left(T-k+1\right)G^2}{2}
+    	\end{aligned}
+    \end{equation}
+    \qedsymbol
+    \addspace
+    \addspace
+    \addspace
+    
+    \setcounter{equation}{0}
+    \item \textcolor{red}{Show that for $G$-Lipschitz convex losses, SGD with constant learning rate $\eta = \frac{\|\bw_1-\bw_\star\|}{G\sqrt{T}}$ guarantees:}
+    \begin{align*}
+        \textcolor{red}{\E[\L(\bw_T)-\L(\bw_\star)] \le O\left(\frac{\|\bw_\star -\bw_1\|G\log(T)}{\sqrt{T}}\right)}
+    \end{align*}
+    \textcolor{red}{(Hint: you will need to show $\sum_{t=1}^T \frac{1}{t} \le 1+\log(T)$. As an intermediate step, try showing $\sum_{t=2}^T \frac{1}{t}\le \int_1^{T} \frac{dt}{t}$ - note the sum starts at $2$. Drawing a picture might help).}
+    
+    \textcolor{red}{By having a learning rate that changes appropriately over time (called a ``schedule'') it is possible to eliminate the logarithmic factor, but it is quite difficult to do so - finding such a schedule was open until as recently as 2019! See \url{https://arxiv.org/abs/1904.12443} for the first such result via a very complicated schedule and analysis. Just this summer, \url{https://arxiv.org/abs/2307.11134} provided a much tighter analysis with a simpler learning rate.}
+    
+    \addspace
+    \solution
+    \textbf{\textit{Proof.}} In \textbf{Problem 1}, we obtain
+    \begin{equation}
+    	\begin{aligned}
+    		T a_T=\sum_{t=1}^T a_t + \sum_{k=1}^{T-1}\frac{T}{(T-k)(T-k+1)}\sum_{t=k}^T (a_t-a_k)
+    	\end{aligned}
+    \end{equation}
+    
+    Here, let $a_t=\E[\L(\bw_t)-\L(\bw_\star)]$ and $a_t - a_k=\E[\L(\bw_t)-\L(\bw_k)]$. Then, we will have:
+    \begin{equation}
+    	\begin{aligned}
+    		T\cdot\E[\L(\bw_t)-\L(\bw_\star)]=\sum_{t=1}^T \E[\L(\bw_t)-\L(\bw_\star)] + \sum_{k=1}^{T-1}\frac{T}{(T-k)(T-k+1)}\sum_{t=k}^T \E[\L(\bw_t)-\L(\bw_k)]
+    	\end{aligned}
+    	\label{problem1}
+    \end{equation}
+    
+    Then, from the results of \textbf{Theorem 3.2} in the Lecture Notes, we have:
+    \begin{equation}
+  	   	 \begin{aligned}
+  	   	 	\E\left[\sum_{t=1}^T \L(\bw_t)-\L(\bw_\star)\right] &\le \sum_{t=1}^T \frac{\E[\|\bw_t - \bw_\star \|^2 - \| \bw_{t+1}-\bw_\star\|^2]}{2\eta} + \frac{\eta\E[\bg_t]^2}{2}\\
+  	   	 	&\le \frac{\E[\|\bw_1-\bw_\star\|^2]}{2\eta}+\frac{\eta TG^2}{2}
+	   	 \end{aligned}
+	   	 \label{term1}
+  	 \end{equation}
+	
+	By applying~\refequ{term1} to~\refequ{problem1}, we get:
+	\begin{equation}
+		\begin{aligned}
+			T\cdot\E[\L(\bw_t)-\L(\bw_\star)]&=\sum_{t=1}^T \E[\L(\bw_t)-\L(\bw_\star)] + \sum_{k=1}^{T-1}\frac{T}{(T-k)(T-k+1)}\sum_{t=k}^T \E[\L(\bw_t)-\L(\bw_k)]\\
+			&\le \frac{\E[\|\bw_1-\bw_\star\|^2]}{2\eta}+\frac{\eta TG^2}{2} + \sum_{k=1}^{T-1}\frac{T}{(T-k)(T-k+1)}\sum_{t=k}^T \E[\L(\bw_t)-\L(\bw_k)]
+		\end{aligned}
+		\label{term2}
+	\end{equation}
+	
+	Next, in \textbf{Problem 2}, we have:
+	\begin{equation}
+		\begin{aligned}
+			\E\left[\sum_{t=k}^{T}\L(\bw_{t})-\L(\bw_{k}) \right] \leq \frac{\eta\left(T-k+1\right)G^2}{2}
+		\end{aligned}
+		\label{problem2}
+	\end{equation}
+	
+	By applying~\refequ{problem2} to~\refequ{term2}, we get:
+	\begin{equation}
+		\begin{aligned}
+			T\cdot\E[\L(\bw_t)-\L(\bw_\star)]&\le \frac{\E[\|\bw_1-\bw_\star\|^2]}{2\eta}+\frac{\eta TG^2}{2} + \sum_{k=1}^{T-1}\frac{T}{(T-k)(T-k+1)}\sum_{t=k}^T \E[\L(\bw_t)-\L(\bw_k)]\\
+			&\le \frac{\E[\|\bw_1-\bw_\star\|^2]}{2\eta}+\frac{\eta TG^2}{2} + \sum_{k=1}^{T-1}\frac{T}{(T-k)(T-k+1)}\frac{\eta\left(T-k+1\right)G^2}{2}\\
+			&\le \frac{\E[\|\bw_1-\bw_\star\|^2]}{2\eta}+\frac{\eta TG^2}{2} + \frac{\eta T G^2}{2}\sum_{k=1}^{T-1}\frac{1}{(T-k)}
+		\end{aligned}
+	\end{equation}
+	
+	Here, since $\sum_{k=1}^{T-1}\frac{1}{(T-k)}=\sum_{k=1}^{T-1}\frac{1}{k}=1+\frac{1}{1}+\cdots+\frac{1}{T-1}$, the above inequality can be written as follows,
+	\begin{equation}
+		\begin{aligned}
+			T\cdot\E[\L(\bw_t)-\L(\bw_\star)] &\le \frac{\E[\|\bw_1-\bw_\star\|^2]}{2\eta}+\frac{\eta TG^2}{2} + \frac{\eta T G^2}{2}\sum_{k=1}^{T-1}\frac{1}{(T-k)}\\
+			&\le \frac{\E[\|\bw_1-\bw_\star\|^2]}{2\eta}+\frac{\eta TG^2}{2} + \frac{\eta T G^2}{2}\sum_{k=1}^{T-1}\frac{1}{k}
+		\end{aligned}
+	\end{equation}
+	
+	Further, we know that the learning rate $\eta$ is constant,~\ie, $\eta = \frac{\|\bw_1-\bw_\star\|}{G\sqrt{T}}$. We use this $\eta$ in the above inequality.
+	\begin{equation}
+		\begin{aligned}
+			T\cdot\E[\L(\bw_t)-\L(\bw_\star)]&\le \frac{\E[\|\bw_1-\bw_\star\|^2]}{2\eta}+\frac{\eta G^2T}{2} + \frac{\eta G^2T}{2}\sum_{k=1}^{T-1}\frac{1}{k}\\
+			&\le \frac{\E[\|\bw_1-\bw_\star\|^2]]G\sqrt{T}}{2\| \bw_1-\bw_\star \|}+\frac{\| \bw_1-\bw_\star \|G^2T}{2G\sqrt{T}} + \frac{\| \bw_\star - \bw_1 \| GT}{2\sqrt{T}}\sum_{k=1}^{T-1}\frac{1}{k}\\
+			&\le \frac{\|\bw_1-\bw_\star\|^2G\sqrt{T}}{2\| \bw_1-\bw_\star \|}+\frac{\| \bw_1-\bw_\star \|G^2T}{2G\sqrt{T}} + \frac{\| \bw_\star - \bw_1 \| GT}{2\sqrt{T}}\sum_{k=1}^{T-1}\frac{1}{k}\\
+			&\le \frac{\|\bw_1-\bw_\star \|G\sqrt{T}}{2}+\frac{\| \bw_1-\bw_\star \|GT}{2\sqrt{T}} + \frac{\| \bw_\star - \bw_1 \| GT}{2\sqrt{T}}\sum_{k=1}^{T-1}\frac{1}{k}\\
+			&\le \frac{\| \bw_\star - \bw_1 \| GT}{\sqrt{T}} + \frac{\| \bw_\star - \bw_1 \| GT}{2\sqrt{T}}\sum_{k=1}^{T-1}\frac{1}{k}
+		\end{aligned}
+	\end{equation}
+	
+	Here, we learn that $\sum_{t=1}^T \frac{1}{t} \le 1+\log(T)$ from the hint. The proof is as follows,
+	\begin{equation}
+		\begin{aligned}
+			\sum_{t=1}^T \frac{1}{t}&=1 + \sum_{t=2}^T \frac{1}{t}\\
+			&=1 + \int_{t=2}^T \frac{1}{t} dt\\
+			&\le1 + \int_{t=1}^T \frac{1}{t} dt\\
+			&\le1 + \left(\log{(T)}-\log{(1)}\right)\\
+			&\le1 + \log{(T)}
+		\end{aligned}
+	\end{equation}
+	
+	Hereby, we get:
+	\begin{equation}
+		\begin{aligned}
+			T\cdot\E[\L(\bw_t)-\L(\bw_\star)]&\le \frac{\| \bw_\star - \bw_1 \| GT}{\sqrt{T}} + \frac{\| \bw_\star - \bw_1 \| GT}{2\sqrt{T}}\sum_{k=1}^{T-1}\frac{1}{k}\\
+			&\le \frac{\| \bw_\star - \bw_1 \| GT}{\sqrt{T}} + \frac{\| \bw_\star - \bw_1 \| GT}{2\sqrt{T}}(1+\log(T-1))\\
+			&\le \frac{\| \bw_\star - \bw_1 \| GT (3 + \log(T-1))}{2\sqrt{T}}
+		\end{aligned}
+	\end{equation}
+	
+	Finally, 
+	\begin{equation}
+		\begin{aligned}
+			\E[\L(\bw_t)-\L(\bw_\star)] &\le \frac{\| \bw_\star - \bw_1 \| G (3 + \log(T-1))}{2\sqrt{T}}\\
+			&\le O\left(\frac{\|\bw_\star -\bw_1\|G\log(T)}{\sqrt{T}}\right)		
+		\end{aligned}
+	\end{equation}
+	
+    \qedsymbol
+    \addspace
+    \addspace
+    \addspace
+    
+    \setcounter{equation}{0}
+    \item[\textcolor{red}{BONUS}:] \textcolor{red}{Consider SGD with a \emph{varying} learning rate $\eta_t = \frac{\|\bw_1-\bw_\star\|}{G\sqrt{t}}$. Show that for all $T$:}
+    \begin{align*}
+    	\textcolor{red}{\E[\L(\bw_T) - \L(\bw_\star)]\le O\left(\frac{\|\bw_\star -\bw_1\|G\log(T)}{\sqrt{T}}\right)}
+    \end{align*}
+    
+    \addspace
+    \solution
+    \textbf{\textit{Proof.}} From \textbf{Problem 3}, we have
+    \begin{equation}
+    	\begin{aligned}
+    		T\cdot\E[\L(\bw_t)-\L(\bw_\star)]=\sum_{t=1}^T \E[\L(\bw_t)-\L(\bw_\star)] + \sum_{k=1}^{T-1}\frac{T}{(T-k)(T-k+1)}\sum_{t=k}^T \E[\L(\bw_t)-\L(\bw_k)]
+    	\end{aligned}
+    \end{equation}
+    
+    
+    Since the learning rate $\eta$ is varying, we will have:
+    
+    \addspace
+    
+\end{enumerate}
+
+\end{document}
