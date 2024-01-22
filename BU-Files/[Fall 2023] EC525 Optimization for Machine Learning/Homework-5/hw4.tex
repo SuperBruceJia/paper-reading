@@ -1,0 +1,234 @@
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath,amscd,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathop{\mathbb{E}}}
+\newcommand{\argmin}{\mathop{\text{argmin}}}
+\newcommand{\argmax}{\mathop{\text{argmax}}}
+\renewcommand{\L}{\mathcal{L}}
+
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\bw}{\mathbf{w}}
+\newcommand{\bz}{\mathbf{z}}
+\newcommand{\bv}{\mathbf{v}}
+\newcommand{\bg}{\mathbf{g}}
+\newcommand{\op}{\text{op}}
+\newcommand{\addspace}{\vskip1.5em}
+\newcommand{\solution}{\addspace\noindent\textbf{Solution:}\newline}
+
+\newcommand{\reffig}[1]{Figure~\ref{#1}}
+\newcommand{\reftab}[1]{Table~\ref{#1}}
+\newcommand{\refequ}[1]{Eqn.~\eqref{#1}}
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+\newcommand{\etal}{\emph{et al}. }
+\newcommand{\ie}{\emph{i}.\emph{e}.}
+\newcommand{\eg}{\emph{e}.\emph{g}.}
+\renewcommand{\qedsymbol}{\hfill $\square$}
+
+\title{Optimization for Machine Learning HW 4}
+
+\author{\textbf{Shuyue Jia} \\ \textbf{BUID: U62343813}}
+
+\date{Due: 10/20/2023}
+
+\begin{document}
+
+\maketitle
+All parts of each question are equally weighted. When solving one question/part, you may assume the results of all previous questions/parts. This HW provides a little theoretical motivation for some ideas encountered in practice (e.g. \href{https://openreview.net/pdf?id=B1Yy1BxCZ}{[Smith et al., 2018, https://openreview.net/pdf?id=B1Yy1BxCZ}]).
+\begin{enumerate}
+    \item Suppose that you run the SGD update with a constant learning rate and a gradient estimate $\bg_t$: $\bw_{t+1} = \bw_t - \eta \bg_t$ where $\E[\bg_t]=\nabla \L(\bw_t)$. So far, we have considered only the case $\bg_t = \nabla \ell(\bw_t, z_t)$, but it might be any other random quantity, so long as $\E[\bg_t]=\nabla \L(\bw_t)$. Suppose that $\L$ is an $H$-smooth function, and suppose $\E[\|\bg_t - \nabla \L(\bw_t)\|^2]\le \sigma_t^2$ for some sequence of numbers $\sigma_1,\sigma_2,\dots,\sigma_T$. Suppose $\eta \le \frac{1}{H}$, and let $\Delta = \L(\bw_1) - \L(\bw_\star)$ where $\bw_\star=\argmin\L(\bw)$. Show that
+    \begin{align*}
+        \sum_{t=1}^T \E[\|\nabla \L(\bw_t)\|^2]&\le \frac{2\Delta}{\eta} + H\eta\sum_{t=1}^T\sigma_t^2
+    \end{align*}
+    
+    \addspace
+    \solution
+    \textbf{\textit{Proof.}} Since that $\L$ is an $H$-smooth function, we will have
+    \begin{equation}
+    	\begin{aligned}
+    		\L(\bw_{t+1}) &\le \L(\bw_{t}) + \langle \nabla \ell(\bw_t), \bw_{t+1} - \bw_t\rangle + \frac{H}{2} \| \bw_{t+1} - \bw_{t}\|^2\\
+    		& = \L(\bw_{t}) - \eta \langle \nabla \ell(\bw_t), \bg_t\rangle + \frac{H\eta^2}{2} \| \bg_t\|^2.
+    	\end{aligned}
+    \end{equation}
+    
+   Now, in deference to the randomness, we take the expected value of both sides:
+   \begin{equation}
+   	\begin{aligned}
+   		\E[\L(\bw_{t+1})] \le \E[\L(\bw_{t})] - \eta \E\left[\langle \nabla \ell(\bw_t), \bg_t\rangle\right] + \frac{H\eta^2}{2} \E[\| \bg_t\|^2].
+   	\end{aligned}
+   \end{equation}
+   
+   Since $\E[\bg_t]=\nabla \L(\bw_t)$, we will have:
+   \begin{equation}
+   	\begin{aligned}
+   		\E[\L(\bw_{t+1})] \le \E[\L(\bw_{t})] - \eta \E\left[\| \nabla \ell(\bw_t) \|^2\right] + \frac{H\eta^2}{2} \E[\| \bg_t\|^2].
+   	\end{aligned}
+   \end{equation}
+   
+   From bias variance decomposition:
+   \begin{equation}
+   	\begin{aligned}
+   		\E[\L(\bw_{t+1})] &\le \E[\L(\bw_{t})] - \eta \E\left[\| \nabla \ell(\bw_t) \|^2\right] + \frac{H\eta^2}{2} \E[\| \nabla \ell(\bw_t) \|^2 + \sigma_t^2]\\
+   		& = \E[\L(\bw_{t})] - \eta(1 - \frac{\eta H}{2}) \E[\| \nabla \ell(\bw_t) \|^2] + \frac{H\eta^2\sigma_t^2}{2}.
+   	\end{aligned}
+   \end{equation}
+   
+   Since $\eta \le \frac{1}{H}$,
+   \begin{equation}
+   	\begin{aligned}
+   		\E[\L(\bw_{t+1})] \le \E[\L(\bw_{t})] - \frac{\eta}{2}\E[\| \nabla \ell(\bw_t) \|^2] + \frac{H\eta^2\sigma_t^2}{2}.
+   	\end{aligned}
+   \end{equation}
+   
+   Summing over $t$ and telescoping,
+    \begin{equation}
+   	\begin{aligned}
+   		\E[\L(\bw_{T+1}) - \L(\bw_{1})] \le - \sum_{t=1}^T \frac{\eta}{2} \E[\| \nabla \ell(\bw_t) \|^2] + \frac{H\eta^2}{2} \sum_{t=1}^T \sigma_t^2.
+   	\end{aligned}
+   \end{equation}
+   
+   Thus, we will have:
+   \begin{equation}
+   	\begin{aligned}
+   		\sum_{t=1}^T \E[\|\nabla \L(\bw_t)\|^2] \le \frac{2\Delta}{\eta} + H\eta\sum_{t=1}^T\sigma_t^2.
+   	\end{aligned}
+   \end{equation}
+   \qedsymbol
+    
+    \addspace
+    
+    \setcounter{equation}{0}
+    \item Suppose that $\L(\bw) =\E[\ell(\bw,z)]$ and $\L$ is $H$-smooth and $\E[\|\nabla \ell(\bw,z)-\nabla \L(\bw)\|^2]\le \sigma^2$ for all $\bw$. Consider SGD with constant learning rate $\eta=\frac{1}{H}$, but where the $t$th iterate uses a minibatch of size $t$. That is, at each iteration $t$, we sample $t$ independent random values $z_{t,1},\dots,z_{t,t}$ and set:
+    \begin{align*}
+    \bg_t &= \frac{1}{t}\sum_{i=1}^t \nabla \ell(\bw_t, z_{t,i})\\
+    \bw_{t+1} &= \bw_t - \frac{\bg_t}{H}
+    \end{align*}
+    Define $\Delta = \L(\bw_1) - \L(\bw_\star)$ where $\bw_\star = \argmin \L(\bw)$. Show that
+    \begin{align*}
+        \sum_{t=1}^T \E[\|\nabla \L(\bw_t)\|^2]&\le O\left( \Delta H  + \sigma^2\log(T)\right)
+    \end{align*}
+    
+    \addspace
+    \solution
+    \textbf{\textit{Proof.}} Since that $\L$ is an $H$-smooth function and $\bw_{t+1} = \bw_t - \frac{\bg_t}{H}$, we will have
+    \begin{equation}
+    	\begin{aligned}
+    		\L(\bw_{t+1}) &\le \L(\bw_{t}) + \langle \nabla \ell(\bw_t), \bw_{t+1} - \bw_t\rangle + \frac{H}{2} \| \bw_{t+1} - \bw_{t}\|^2\\
+    		& = \L(\bw_{t}) - \langle \nabla \ell(\bw_t), \frac{\bg_t}{H}\rangle + \frac{H}{2} \| \frac{\bg_t}{H}\|^2\\
+    		& = \L(\bw_{t}) - \frac{1}{H} \langle \nabla \ell(\bw_t), \bg_t\rangle + \frac{H}{2} \| \frac{\bg_t}{H}\|^2.
+    	\end{aligned}
+    \end{equation}
+    
+    Since we know $\eta=\frac{1}{H}$, then we will have:
+    \begin{equation}
+    	\begin{aligned}
+    		\L(\bw_{t+1}) \le \L(\bw_{t}) - \frac{1}{H} \langle \nabla \ell(\bw_t), \bg_t\rangle + \frac{1}{2H} \| \bg_t \|^2.
+    	\end{aligned}
+    \end{equation}
+    
+    Now, in deference to the randomness, we take the expected value of both sides:
+    \begin{equation}
+    	\begin{aligned}
+    		\E[\L(\bw_{t+1})] \le \E[\L(\bw_{t})] - \frac{1}{H} \E\left[\langle \nabla \ell(\bw_t), \bg_t\rangle\right] + \frac{1}{2H} \E[\| \bg_t\|^2].
+    	\end{aligned}
+    \end{equation}
+    
+    From bias variance decomposition and $\E[\| \bg_t - \nabla \ell(\bw_t) \|^2] \le \frac{\sigma^2}{t}$:
+    \begin{equation}
+    	\begin{aligned}
+    		\E[\L(\bw_{t+1})] &\le \E[\L(\bw_{t})] - \frac{1}{H} \E\left[\| \nabla \ell(\bw_t) \|^2\right] + \frac{1}{2H} \E\left[\| \nabla \ell(\bw_t) \|^2 + \frac{\sigma^2}{t}\right]\\
+    		& \le \E[\L(\bw_{t})] - \frac{2}{H} \E[\| \nabla \ell(\bw_t) \|^2 + \frac{\sigma^2}{2tH}.
+    	\end{aligned}
+    \end{equation}
+    
+   Summing over $t$ and telescoping,
+    \begin{equation}
+    	\begin{aligned}
+    		\E[\L(\bw_{T+1}) - \L(\bw_{1})] \le - \frac{2}{H} \sum_{t=1}^T \E[\| \nabla \ell(\bw_t) \|^2] +  \frac{\sigma^2}{2H} \sum_{t=1}^T \frac{1}{t}.
+    	\end{aligned}
+    \end{equation}
+    
+    Since we know: $\sum_{t=1}^T \frac{1}{t} = 1 + \log(T)$
+     \begin{equation}
+    	\begin{aligned}
+    		\E[\L(\bw_{T+1}) - \L(\bw_{1})] \le - \frac{2}{H} \sum_{t=1}^T \E[\| \nabla \ell(\bw_t) \|^2] +  \frac{\sigma^2}{2H} (1 + \log(T)).
+    	\end{aligned}
+    \end{equation}
+    
+    Thus, we will have:
+    \begin{equation}
+    	\begin{aligned}
+    		\sum_{t=1}^T \E[\| \nabla \ell(\bw_t) \|^2]  &\le \frac{\Delta H}{2} + \frac{\sigma^2}{4} (1 + \log(T))\\
+    		& \le O\left( \Delta H  + \sigma^2\log(T)\right).
+    	\end{aligned}
+    \end{equation}
+   	\qedsymbol
+    
+    \addspace
+    
+    \setcounter{equation}{0}
+    \item Let $N$ be the total number of gradient evaluations in question 2. Show that
+    \begin{align*}
+        \frac{1}{T}\sum_{t=1}^T \E[\|\nabla \L(\bw_t)\|]&\le O\left( \frac{\sqrt{\log(N)}}{N^{1/4}}\right)
+    \end{align*}
+    where here we consider $\Delta$, $H$, $\sigma$ all constant for purposes of big-O. Note that this is the average of $\|\nabla \L(\bw_t)\|$ rather than $\|\nabla \L(\bw_t)\|^2$.
+    Compare this result to what you might obtain with using a varying learning rate but a fixed batch size (one sentence of comparison here is sufficient).
+    \addspace
+    \solution
+    \textbf{\textit{Proof.}} In \textbf{Problem 2}, we proof:
+   	\begin{equation}
+   		\begin{aligned}
+   			\sum_{t=1}^T \E[\| \nabla \ell(\bw_t) \|^2] \le O\left( \Delta H  + \sigma^2\log(T)\right).
+   		\end{aligned}
+   	\end{equation}
+   
+   Besides, since $N$ is the total number of gradient evaluations, 
+   \begin{equation}
+   	\begin{aligned}
+   		N = \sum_{t=1}^{T} t = \frac{T(T+1)}{2} = \frac{T^2 + T}{2} = O(T^2).
+   	\end{aligned}
+   	\label{NT}
+   \end{equation}
+   In other words, we will have
+  \begin{equation}
+   	\begin{aligned}
+   		T = O(\sqrt{N}).
+   	\end{aligned}
+   \end{equation}
+   
+   Through the Jensen Inequality,~\ie, $\E[X^2] \ge \E[X]^2$ we will have:
+   \begin{equation}
+   	\begin{aligned}
+   		\E[\| \nabla \ell(\bw_t) \|^2] \ge \E[\| \nabla \ell(\bw_t) \|]^2.
+   	\end{aligned}
+   \end{equation}
+   
+   Thus,
+   \begin{equation}
+   	\begin{aligned}
+   		\sqrt{\E[\| \nabla \ell(\bw_t) \|^2]} \ge \E[\| \nabla \ell(\bw_t) \|].
+   	\end{aligned}
+   \end{equation}
+      
+	From ~\refequ{NT}, we can know that $\log{(N)} = \log{(\frac{T^2 + T}{2})} \approx 2\log{(T)}$. Thus, we will have:
+	\begin{equation}
+		\begin{aligned}
+			\frac{1}{T} \sum_{t=1}^T \E[\| \nabla \ell(\bw_t) \|] & \le \sqrt{\frac{1}{T} \sum_{t=1}^T \E[\| \nabla \ell(\bw_t)\|^2]}\\
+			& \le \sqrt{\frac{1}{T} O(\Delta H + \sigma^2\log(T))}\\
+			& \le O\left(\sqrt{\frac{\Delta H + \sigma^2\log(T)}{T}}\right)\\
+			&   \le O\left(\sqrt{\frac{\Delta H + \sigma^2 \frac{\log{(N)}}{2}}{\sqrt{N}}}\right)\\
+			&  \le O\left( \sqrt{\frac{\Delta H}{\sqrt{N}}  + \frac{\sigma^2 \log{(N)}}{2\sqrt{N}}}\right)\\
+			&  \le O\left(\sqrt{\frac{2\Delta H + \sigma^2 \log{(N)}}{2\sqrt{N}}}\right)\\
+			&  \le O\left(\frac{\sqrt{2\Delta H + \sigma^2 \log{(N)}}}{\sqrt{2} N^{\frac{1}{4}}}\right)\\
+			& \le O\left( \frac{\sqrt{\log(N)}}{N^{\frac{1}{4}}}\right).
+		\end{aligned}
+	\end{equation}
+	\qedsymbol
+\end{enumerate}
+\end{document}
