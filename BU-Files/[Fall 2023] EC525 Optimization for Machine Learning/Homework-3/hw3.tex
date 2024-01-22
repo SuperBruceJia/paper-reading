@@ -1,0 +1,358 @@
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath,amscd,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{xcolor}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathop{\mathbb{E}}}
+\newcommand{\argmin}{\mathop{\text{argmin}}}
+\newcommand{\argmax}{\mathop{\text{argmax}}}
+\renewcommand{\L}{\mathcal{L}}
+
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\bw}{\mathbf{w}}
+\newcommand{\bz}{\mathbf{z}}
+\newcommand{\bv}{\mathbf{v}}
+\newcommand{\bg}{\mathbf{g}}
+\newcommand{\op}{\text{op}}
+\newcommand{\addspace}{\vskip1.5em}
+\newcommand{\solution}{\addspace\noindent\textbf{Solution:}}
+
+\newcommand{\reffig}[1]{Figure~\ref{#1}}
+\newcommand{\reftab}[1]{Table~\ref{#1}}
+\newcommand{\refequ}[1]{Eqn.~\eqref{#1}}
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+\newcommand{\etal}{\emph{et al}. }
+\newcommand{\ie}{\emph{i}.\emph{e}.}
+\newcommand{\eg}{\emph{e}.\emph{g}.}
+\renewcommand{\qedsymbol}{\hfill $\square$}
+
+\title{Optimization for Machine Learning HW 3}
+
+\author{\textbf{Shuyue Jia} \\ \textbf{BUID: U62343813}}
+
+\date{Due: 9/27/2023}
+
+\begin{document}
+
+\maketitle
+All parts of each question are equally weighted. When solving one question/part, you may assume the results of all previous questions/parts.
+\begin{enumerate}
+
+\item \textcolor{red}{This question explores the use of \emph{time-varying} learning rates. Suppose $\L(\bw) = \E_z [\ell(\bw ,z)]$ is a convex function, and suppose $D\ge \|\bw_1-\bw_\star\|$ for some $\bw_1$ and $\bw_\star =\argmin \L(\bw)$. In class, we showed that if $\|\nabla \ell(\bw,z)\|\le G$ for all $z$ and $\bw$, then stochastic gradient descent with learning rate $\eta=\frac{D}{G\sqrt{T}}$ satisfies}
+\begin{align*}
+    \textcolor{red}{\E\left[\frac{1}{T}\sum_{t=1}^T \L(\bw_t) -\L(\bw_\star)\right] \le \frac{DG}{\sqrt{T}}}
+\end{align*}
+\textcolor{red}{However, in order to set this learning rate, we needed to use knowledge of $D$, $G$ and $T$. This question helps show a way to avoid needing to know $T$.}
+\begin{enumerate}
+    \item \textcolor{red}{To do this, we will consider \emph{projected} stochastic gradient descent with \emph{varying learning rate}. Suppose we start at $\bw_1=0$. Then the update is:}
+    \begin{align*}
+        \textcolor{red}{\bw_{t+1} = \Pi_{\|\bw\|\le D} \left[\bw_t - \eta_t \nabla \ell(\bw_t,z_t)\right]}
+    \end{align*}
+    \textcolor{red}{where $\Pi_{\|\bw\|\le D}[x]=\argmin_{\|\bw\|\le D} \|x-\bw\|$. Notice that $\Pi_{\|\bw\|\le D}[\bw_\star]=\bw_\star$ by definition of $D$. Show that}
+    \begin{align*}
+        \textcolor{red}{\langle \nabla \ell(\bw_t,z_t),\bw_t-\bw_\star\rangle\le \frac{\|\bw_t-\bw_\star\|^2-\|\bw_{t+1}-\bw_\star\|^2}{2\eta_t} + \frac{\eta_t\|\nabla \ell(\bw_t,z_t)\|^2}{2}}
+    \end{align*}
+    \textcolor{red}{And conclude:}
+    \begin{align*}
+        \textcolor{red}{\E\left[\sum_{t=1}^T \L(\bw_t)-\L(\bw_\star)\right] \le \E\left[\sum_{t=1}^T \frac{\|\bw_t-\bw_\star\|^2-\|\bw_{t+1}-\bw_\star\|^2}{2\eta_t} + \frac{\eta_t\|\nabla \ell(\bw_t,z_t)\|^2}{2}\right]}
+    \end{align*}
+    \textcolor{red}{(You may use without proof the identity $\| \Pi_{\|\bw\|\le D}[x]-\bw_\star\|^2\le \|x-\bw_\star\|^2 $ for all $t$ and all vectors $x$. This follows because $\|\bw_\star\|\le D$.)}
+    
+    \addspace
+    \solution
+    
+    \textbf{\textit{Proof.}} From the hint, we know that $\| \Pi_{\|\bw\|\le D}[x]-\bw_\star\|^2\le \|x-\bw_\star\|^2$ for all $t$ and all vectors $x$. Thus,
+     \begin{equation}
+   	     	\begin{aligned}
+   		     		\| \bw_{t+1} - \bw_\star \|^2 & \leq  \| \bw_t - \eta_t \nabla \ell(\bw_t, z_t) - \bw_\star \|^2\\
+   		     		& \leq \| (\bw_t - \bw_\star) - \eta_t \nabla \ell(\bw_t, z_t)  \|^2\\
+   		     		& \leq \| \bw_t - \bw_\star \|^2 - 2\eta_t \langle \nabla \ell(\bw_t, z_t), \bw_t - \bw_\star\rangle + \eta_t^2 \nabla \| \ell(\bw_t, z_t) \|^2.
+   		     	\end{aligned}
+	     \end{equation}
+	     
+	     Thus, we obtain
+	      \begin{equation}
+	     	\begin{aligned}
+	     		\langle \nabla \ell(\bw_t,z_t),\bw_t-\bw_\star\rangle\le \frac{\|\bw_t-\bw_\star\|^2-\|\bw_{t+1}-\bw_\star\|^2}{2\eta_t} + \frac{\eta_t\|\nabla \ell(\bw_t,z_t)\|^2}{2}.
+	     	\end{aligned}
+	     \end{equation}
+	     
+    	From the convexity and subgradient, we know that $\L(\bw_t)-\L(\bw_\star) \leq \langle \nabla \ell(\bw_t,z_t),\bw_t-\bw_\star\rangle$. As a result, we have
+    	\begin{equation}
+    		\begin{aligned}
+    			\L(\bw_t)-\L(\bw_\star)  \le \frac{\|\bw_t-\bw_\star\|^2-\|\bw_{t+1}-\bw_\star\|^2}{2\eta_t} + \frac{\eta_t\|\nabla \ell(\bw_t,z_t)\|^2}{2}.
+    		\end{aligned}
+    	\end{equation}
+    	
+    	Thus, we can obtain,
+    	 \begin{equation}
+    		\begin{aligned}
+    			\E\left[\sum_{t=1}^T \L(\bw_t)-\L(\bw_\star)\right] \le \E\left[\sum_{t=1}^T \frac{\|\bw_t-\bw_\star\|^2-\|\bw_{t+1}-\bw_\star\|^2}{2\eta_t} + \frac{\eta_t\|\nabla \ell(\bw_t,z_t)\|^2}{2}\right].
+    		\end{aligned}
+    	\end{equation}
+    	\qedsymbol
+   
+    \addspace
+    
+    \item \textcolor{red}{Next, show that so long as $\eta_t$ satisfies $\eta_t\le \eta_{t-1}$ for all $t$, we have:}
+	\begin{align*}
+	    \textcolor{red}{\E\left[\sum_{t=1}^T \L(\bw_t) -\L(\bw_\star)\right] \le \E\left[\frac{2D^2}{\eta_T} + \frac{ \sum_{t=1}^T \eta_t \|\nabla \ell(\bw_t,z_t)\|^2}{2}\right]}
+	\end{align*}
+	\textcolor{red}{(hint: at some point you will probably need to show $\|\bw_t-\bw_\star\|^2(\tfrac{1}{2\eta_t} - \tfrac{1}{2\eta_{t-1}}) \le 2D^2(\tfrac{1}{\eta_t} - \tfrac{1}{\eta_{t-1}})$).}
+
+	\addspace
+    \solution\\
+    \textbf{\textit{Proof.}} 
+    Following the results of the past problem, we sum telescopes,
+     \begin{equation}
+    	\begin{aligned}
+    		\E\left[\sum_{t=1}^T \L(\bw_t)-\L(\bw_\star)\right] \le \E & \left[\sum_{t=1}^T \frac{\|\bw_t-\bw_\star\|^2-\|\bw_{t+1}-\bw_\star\|^2}{2\eta_t} + \frac{\eta_t\|\nabla \ell(\bw_t,z_t)\|^2}{2}\right]\\
+    		\le \E & [\frac{\| \bw_1 - \bw_\star\|^2}{2\eta_1} + \sum_{t=1}^{T-1} \left(\| \bw_{t+1} - \bw_\star\|^2 (\frac{1}{2\eta_{t+1}} - \frac{1}{2\eta_t})\right) \\
+    		& + \sum_{t=1}^T \frac{\eta_t \| \nabla \ell(\bw_t,z_t)\|^2}{2}]\\
+    		\le \E & \left[\frac{D^2}{2\eta_1} + 4D^2\sum_{t=2}^{T-1} (\frac{1}{2\eta_{t}} - \frac{1}{2\eta_{t-1}}) + \sum_{t=1}^T \frac{\eta_t \| \nabla \ell(\bw_t,z_t)\|^2}{2}\right]\\
+    		= \E & \left[\frac{D^2}{2\eta_1} + 4D^2 (\frac{1}{2\eta_{T}} - \frac{1}{2\eta_1}) + \sum_{t=1}^T \frac{\eta_t \| \nabla \ell(\bw_t,z_t)\|^2}{2}\right]\\
+    		\le \E & \left[\frac{2D^2}{\eta_T} + \frac{ \sum_{t=1}^T \eta_t \|\nabla \ell(\bw_t,z_t)\|^2}{2}\right].
+    	\end{aligned}
+    \end{equation}
+    	%    		\le \E & \left[\sum_{t=1}^T \frac{\|\bw_t-\bw_\star\|^2-\|\bw_{t+1}-\bw_\star\|^2}{2\eta_t} + \sum_{t=1}^T \frac{\eta_t\|\nabla \ell(\bw_t,z_t)\|^2}{2}\right]\\
+    %    		\le \E[ & \sum_{t=1}^T \frac{\|\bw_1-\bw_\star\|^2}{2\eta_1} - \frac{\|\bw_2-\bw_\star\|^2}{2\eta_1} \\
+    %    		& + \frac{\|\bw_2-\bw_\star\|^2}{2\eta_2} - \frac{\|\bw_3-\bw_\star\|^2}{2\eta_2} + \cdots + \frac{\|\bw_{T-1}-\bw_\star\|^2}{2\eta_{T-1}} - \frac{\|\bw_T-\bw_\star\|^2}{2\eta_{T-1}}\\
+    %    		& + \frac{\|\bw_T-\bw_\star\|^2}{2\eta_T} - \frac{\|\bw_{T+1}-\bw_\star\|^2}{2\eta_T} + \sum_{t=1}^T \frac{\eta_t\|\nabla \ell(\bw_t,z_t)\|^2}{2}]\\
+    %    		\le \E & [\frac{\| \bw_1 - \bw_\star\|^2}{2\eta_1} + \sum_{t=2}^{T-1} \frac{(\eta_{t-1}-\eta_t)\| \bw_t - \bw_\star\|^2}{\eta_{t-1}\eta_t} - \frac{\| \bw_{T+1} - \bw_\star\|^2}{2\eta_T} \\
+    %    		& + \frac{\eta_t\|\nabla \ell(\bw_t,z_t)\|^2}{2}]\\
+    %    		\le \E & [\frac{\| \bw_1 - \bw_\star\|^2}{2\eta_1} + \sum_{t=2}^{T-1} \| \bw_t - \bw_\star\|^2 (\frac{1}{2\eta_t} - \frac{1}{2\eta_{t-1}}) - \frac{\| \bw_{T+1} - \bw_\star\|^2}{2\eta_T} \\
+    %    		& + \frac{\eta_t\|\nabla \ell(\bw_t,z_t)\|^2}{2}]\\
+    %    		\le \E & \left[\frac{D^2}{2\eta_1} + \sum_{t=2}^{T-1} 2D^2 (\frac{1}{\eta_t} - \frac{1}{\eta_{t-1}}) - \frac{D^2}{2\eta_T} + \frac{\eta_t\|\nabla \ell(\bw_t,z_t)\|^2}{2}\right]\\ 
+    %    		\le \E & \left[\frac{D^2}{2\eta_1} +  2D^2 \sum_{t=2}^{T-1} (\frac{1}{\eta_t} - \frac{1}{\eta_{t-1}}) - \frac{D^2}{2\eta_T} + \frac{\eta_t\|\nabla \ell(\bw_t,z_t)\|^2}{2}\right].
+%    Since $\eta_t\le \eta_{t-1}$, we have
+%    \begin{equation}
+%    	\begin{aligned}
+%    		\E\left[\sum_{t=1}^T \L(\bw_t)-\L(\bw_\star)\right] \le \E \left[\frac{2D^2}{\eta_T} + \frac{ \sum_{t=1}^T \eta_t \|\nabla \ell(\bw_t,z_t)\|^2}{2}\right].
+%    	\end{aligned}
+%    \end{equation}
+	\qedsymbol
+	
+    \addspace
+	
+	\item \textcolor{red}{Next, consider the update}
+	    \begin{align*}
+	        \textcolor{red}{\bw_{t+1} = \Pi_{\|\bw\|\le D} \left[\bw_t - \eta_t \nabla \ell(\bw_t,z_t)\right]}
+	    \end{align*}
+	    \textcolor{red}{where we set $\eta_t = \frac{D}{G\sqrt{t}}$. Recalling our assumption that $\|\nabla \ell(\bw_t, z_t)\|\le G$ with probability 1, Show that}
+	\begin{align*}
+	    \textcolor{red}{\E\left[\sum_{t=1}^T \L(\bw_t) -\L(\bw_\star)\right] \le O(DG\sqrt{T})}
+	\end{align*}
+	\textcolor{red}{This allows you to handle any $T$ value without having the algorithm know $T$ ahead of time. (Hint: you may want to show that $\sum_{t=1}^T \frac{1}{\sqrt{t}}\le 1+\int_1^T\frac{dx}{\sqrt{x}}$).}
+
+   	\addspace
+    \solution\\
+    \textbf{\textit{Proof.}} From the above problem and $\|\nabla \ell(\bw_t, z_t)\|\le G$, we know that
+    \begin{equation}
+    	\begin{aligned}
+    		\E\left[\sum_{t=1}^T \L(\bw_t)-\L(\bw_\star)\right] & \le \E \left[\frac{2D^2}{\eta_T} + \frac{ \sum_{t=1}^T \eta_t \|\nabla \ell(\bw_t,z_t)\|^2}{2}\right]\\
+    		 & \le \E \left[\frac{2D^2}{\eta_T} + \frac{ \sum_{t=1}^T \eta_t G^2}{2}\right]\\
+    		 & \le \E \left[\frac{2D^2}{\eta_T} + \frac{ \sum_{t=1}^T \frac{D}{G\sqrt{t}} G^2}{2}\right]\\
+    		 & \le \E \left[\frac{2D^2}{\eta_T} + \frac{1}{2} DG \sum_{t=1}^T \frac{1}{\sqrt{t}}\right]\\
+    		 & \le \E \left[\frac{2D^2}{\eta_T} + \frac{1}{2} DG \left(1+\int_1^T\frac{dx}{\sqrt{x}}\right)\right].
+    	\end{aligned}
+    \end{equation}
+    
+    We know that
+    \begin{equation}
+    	\begin{aligned}
+    		\int_1^T \frac{dx}{\sqrt{x}} = 2\sqrt{x} \bigg|_1^T = 2\sqrt{T} - 2\sqrt{1} = 2\sqrt{T} - 2.
+    	\end{aligned}
+    \end{equation}
+    
+    Thus, we can get
+    \begin{equation}
+    	\begin{aligned}
+    		\E\left[\sum_{t=1}^T \L(\bw_t)-\L(\bw_\star)\right] & \le \E \left[\frac{2D^2}{\eta_T} + \frac{1}{2} DG \left(1+\int_1^T\frac{dx}{\sqrt{x}}\right)\right]\\
+    		& \le \E \left[\frac{2D^2}{\eta_T} + \frac{1}{2} DG(1 + 2\sqrt{2} - 2)\right]\\
+    		& \le \E \left[\frac{2D^2}{\eta_T} + DG\sqrt{T} - \frac{1}{2}DG\right].
+    	\end{aligned}
+    \end{equation}
+    
+    Finally, we can obtain
+    \begin{equation}
+    	\begin{aligned}
+    		\E\left[\sum_{t=1}^T \L(\bw_t)-\L(\bw_\star)\right] & \le \E \left[\frac{2D^2}{\eta_T} + DG\sqrt{T} - \frac{1}{2}DG\right]\\
+    		& \le O(DG\sqrt{T}).
+    	\end{aligned}
+    \end{equation}
+    \qedsymbol
+    
+    \addspace
+
+\end{enumerate}
+
+\setcounter{equation}{0}
+\item \textcolor{red}{This question is an exercise in understanding the non-convex SGD analysis. In the notes, Theorem 5.3 discusses how to use varying learning rate $\eta_t$ proportional to $\frac{1}{\sqrt{t}}$ to obtain a non-convex convergence rate of:}
+    \begin{align*}
+        \textcolor{red}{\E[\|\nabla \L(\hat \bw)\|^2]\le O\left(\frac{\log(T)}{\sqrt{T}}\right)}
+    \end{align*}
+    \textcolor{red}{In this question, we will remove the logarithmic factor by adding an extra assumption.}
+\begin{enumerate}
+
+    \item \textcolor{red}{Suppose that $\L$ is $H$-smooth, $\|\nabla \ell(\bw, z)\|\le G$ for all $\bw$ and $z$, and further that $\L(\bw)\in[0,M]$ for all $\bw$ (this last assumption is slightly stronger than we have assumed in class). Consider the SGD update:}
+    \begin{align*}
+        \textcolor{red}{\bw_{t+1} = \bw_t - \eta \nabla \ell(\bw_t, z_t)}
+    \end{align*}
+    \textcolor{red}{Suppose $\eta_t$ is an arbitrary deterministic learning rate schedule satisfying $\eta_{t+1}\le \eta_t$ for all $t$ (i.e. the learning rate never increases). Show that for all $\tau< T$:}
+    \begin{align*}
+    \textcolor{red}{\frac{1}{T-\tau}\E\left[\sum_{t=\tau+1}^T\|\nabla \L(\bw_t)\|^2\right]\le \frac{1}{\eta_T (T-\tau)}\left( M + \frac{HG^2}{2}\sum_{t=\tau+1}^T \eta_t^2\right)}
+    \end{align*}
+    
+    \addspace
+    \solution\\
+    \textbf{\textit{Proof.}} We have
+    \begin{equation}
+    	\begin{aligned}
+    		\L(\bw_{t+1}) & \leq \L(\bw_{t}) + \langle \nabla \L(\bw_{t}), \bw_{t+1} - \bw_t\rangle + \frac{H}{2} \| \bw_{t+1} - \bw_{t} \| \\
+    		& \leq \L(\bw_{t}) - \eta_t \langle \L(\bw_{t}), \bg_t\rangle + \frac{H\eta_t^2}{2} \| \bg_t\|^2.
+    	\end{aligned}
+    \end{equation}
+    
+    Thus, we have
+	\begin{equation}
+		\begin{aligned}
+			\E[\L(\bw_{t+1})] \leq \E[\L(\bw_{t})] - \eta_t \E[\| \nabla \L(\bw_{t}) \|^2] + \frac{H\eta_t^2 G^2}{2}.
+		\end{aligned}
+		\label{use}
+	\end{equation}
+	
+	Then, we will sum over $\tau+1$ to $T$ and divide $T-\tau$:
+	\begin{equation}
+		\begin{aligned}
+			\frac{1}{T-\tau} \E[\sum_{t=\tau+1}^T \L(\bw_{t+1})] \leq \frac{1}{T-\tau} \E[\sum_{t=\tau+1}^T \L(\bw_{t})] - \frac{1}{T-\tau} \sum_{t=\tau+1}^T \eta_t \E[\| \nabla \L(\bw_{t}) \|^2] + \frac{1}{T-\tau} \frac{H G^2}{2} \sum_{t=\tau+1}^T \eta_t^2.
+		\end{aligned}
+	\end{equation}
+	
+	Thus, we can obtain
+	\begin{equation}
+		\begin{aligned}
+			\frac{1}{T-\tau} \sum_{t=\tau+1}^T \eta_t \E[\| \nabla \L(\bw_{t}) \|^2] & \leq \frac{1}{T-\tau} \E[\sum_{t=\tau+1}^T \L(\bw_{t})] - \frac{1}{T-\tau} \E[\sum_{t=\tau+1}^T \L(\bw_{t+1})] + \frac{1}{T-\tau} \frac{H G^2}{2} \sum_{t=\tau+1}^T \eta_t^2\\
+			& \leq \frac{1}{T-\tau} \E[\sum_{t=\tau+1}^T \L(\bw_{t})]+ \frac{1}{T-\tau} \frac{H G^2}{2} \sum_{t=\tau+1}^T \eta_t^2.
+		\end{aligned}
+	\end{equation}
+	
+	Because $\L(\bw)\in[0,M]$ for all $\bw$, we will have
+	\begin{equation}
+		\begin{aligned}
+			\frac{1}{T-\tau} \sum_{t=\tau+1}^T \eta_t \E[\| \nabla \L(\bw_{t}) \|^2] & \leq \frac{1}{T-\tau} \E[\sum_{t=\tau+1}^T \L(\bw_{t})] + \frac{1}{T-\tau} \frac{H G^2}{2} \sum_{t=\tau+1}^T \eta_t^2\\
+			& \leq \frac{1}{T-\tau} M + \frac{1}{T-\tau} \frac{H G^2}{2} \sum_{t=\tau+1}^T \eta_t^2.
+		\end{aligned}
+	\end{equation}
+	
+	Use the fact that $\eta_T \leq \eta_t$ for all $t$:
+	\begin{equation}
+		\begin{aligned}
+			\frac{\eta_T}{T-\tau} \sum_{t=\tau+1}^T \E[\| \nabla \L(\bw_{t}) \|^2] \leq \frac{1}{T-\tau} M + \frac{1}{T-\tau} \frac{H G^2}{2} \sum_{t=\tau+1}^T \eta_t^2.
+		\end{aligned}
+	\end{equation}
+	
+	Finally, we have
+	\begin{equation}
+		\begin{aligned}
+			\frac{1}{T-\tau} \sum_{t=\tau+1}^T \E[\| \nabla \L(\bw_{t}) \|^2] & \leq \frac{1}{\eta_T(T-\tau)} M + \frac{1}{\eta_T(T-\tau)} \frac{H G^2}{2} \sum_{t=\tau+1}^T \eta_t^2\\
+			& \leq \frac{1}{\eta_T (T-\tau)}\left( M + \frac{HG^2}{2}\sum_{t=\tau+1}^T \eta_t^2\right).
+		\end{aligned}
+	\end{equation}
+	\qedsymbol
+	
+    \addspace
+    
+    \item \textcolor{red}{Next, consider $\eta_t = \frac{1}{\sqrt{t}}$. In class, we considered choosing $\hat \bw$ \emph{uniformly} at random from $\bw_1,\dots,\bw_T$. Instead, produce a \emph{non-uniform} distribution over $\bw_1,\dots,\bw_T$ such that choosing $\bw_T$ from this distribution satisfies:}
+    \begin{align*}
+        \textcolor{red}{\E[\|\nabla \L(\hat \bw)\|^2] \le O\left(\frac{1}{\sqrt{T}}\right)}
+    \end{align*}
+    \textcolor{red}{where the $O(\cdot)$ notation hides constants that do not depend on $T$. That is, you should find some $p_1,\dots,p_T$ such that you set $\hat \bw = \bw_t$ with probability $p_t$. The uniform case is $p_t=1/T$ for all $t$.
+    If it helps, you may assume that $T$ is divisible by any natural number (e.g. you can assume $T$ is even if you want). Note that such an assumption is not required.}
+    
+    \addspace
+    \solution\\
+    \textbf{\textit{Proof.}} 
+    From~\refequ{use}, we know that
+    \begin{equation}
+    	\begin{aligned}
+    		\E[\L(\bw_{t+1})] \leq \E[\L(\bw_{t})] - \eta_t \E[\| \nabla \L(\bw_{t}) \|^2] + \frac{H\eta_t^2 G^2}{2}.
+    	\end{aligned}
+    \end{equation}
+    
+    Thus, we will have
+    \begin{equation}
+    	\begin{aligned}
+    		\eta_t \E[\| \nabla \L(\bw_{t}) \|^2] \leq  \E[\L(\bw_{t})] - \E[\L(\bw_{t+1})]  + \frac{H\eta_t^2 G^2}{2}.
+    	\end{aligned}
+    \end{equation}
+    
+    By summing up from $t=\tau+1$ to $T$, we will have
+    \begin{equation}
+    	\begin{aligned}
+    		\sum_{t=\tau+1}^T \E[\| \nabla \L(\bw_{t}) \|^2] & \leq  \sum_{t=\tau+1}^T \frac{\E[\L(\bw_{t})] - \E[\L(\bw_{t+1})]}{\eta_t} + \sum_{t=\tau+1}^T \frac{H G^2}{2} \eta_t\\
+    		& = \frac{\E[\L(\bw_{\tau+1})]}{\eta_{\tau+1}} - \frac{\E[\L(\bw_{T})]}{\eta_{\tau_T}} + \sum_{t=\tau+1}^{T-1} (\frac{1}{\eta_{t+1}} - \frac{1}{\eta_t}) \E[\L(\bw_{t+1})] \\ 
+    		& + \frac{H G^2}{2} \sum_{t=\tau+1}^T \eta_t\\
+    		& \leq M \sqrt{\tau + 1} + M (\sqrt{T} - \sqrt{\tau + 1}) + \frac{H G^2}{2} \sum_{t=\tau+1}^T \eta_t\\
+    		& \leq M \sqrt{T} + \frac{H G^2}{2} \sum_{t=\tau+1}^T \eta_t\\
+    		& \leq M \sqrt{T} + \frac{H G^2}{2} \sum_{t=\tau+1}^T \frac{1}{\sqrt{t}}.
+    	\end{aligned}
+    \end{equation}
+    
+    Thus, we finally have
+    \begin{equation}
+    	\begin{aligned}
+    		\E[\|\nabla \L(\hat \bw)\|^2] & = \frac{1}{T-\tau} \sum_{t=\tau+1}^T \E[\| \nabla \L(\bw_{t}) \|^2] \\
+    		& \leq \frac{1}{T} \sum_{t=\tau+1}^T \E[\| \nabla \L(\bw_{t}) \|^2] \\
+    		& \leq M \frac{\sqrt{T}}{T} + \frac{1}{T}\frac{H G^2}{2} \sum_{t=\tau+1}^T \frac{1}{\sqrt{t}}\\
+    		& \leq M \frac{1}{\sqrt{T}} + \frac{1}{T}\frac{H G^2}{2} \sum_{t=\tau+1}^T \frac{1}{\sqrt{t}}\\
+    		& \leq O\left(\frac{1}{\sqrt{T}}\right).
+    	\end{aligned}
+    \end{equation}
+    \qedsymbol
+
+%    From (a), we knew that
+%    \begin{equation}
+%    	\begin{aligned}
+%    		\sum_{t=\tau+1}^T \E[\| \nabla \L(\bw_{t}) \|^2] & \leq \frac{1}{\eta_T}\left( M + \frac{HG^2}{2}\sum_{t=\tau+1}^T \eta_t^2\right).
+%    	\end{aligned}
+%    \end{equation}
+%    
+%    Since $\eta_t = \frac{1}{\sqrt{t}}$, we have
+%    \begin{equation}
+%    	\begin{aligned}
+%    		\sum_{t=\tau+1}^T \E[\| \nabla \L(\bw_{t}) \|^2] & \leq \frac{1}{\sqrt{T}}\left( M + \frac{HG^2}{2}\sum_{t=\tau+1}^T \frac{1}{t}\right).
+%    	\end{aligned}
+%    \end{equation}
+%    
+%    Because $\hat \bw$ is \emph{non-uniformly} chosen from $\bw_1,\dots,\bw_T$, we set $p_t=1 / KT$ and $\sum_{t=1}^K p_t = 1$:
+%    \begin{equation}
+%    	\begin{aligned}
+%    		\sum_{t=\tau+1}^T \E[\| \nabla \L(\hat \bw) \|^2] & \leq \sum_{t=\tau+1}^T p_t \cdot \E[\| \nabla \L(\bw_{t}) \|^2]\\
+%    		& \leq p_t \frac{1}{\sqrt{T}}\left( M + \frac{HG^2}{2}\sum_{t=\tau+1}^T \frac{1}{t}\right)\\
+%%    		& \leq \frac{1}{\sqrt{T}}\left( M + \frac{HG^2}{2}\sum_{t=\tau+1}^T \frac{p_t}{t}\right)\\
+%    		& \le O\left(\frac{1}{\sqrt{T}}\right).
+%    	\end{aligned}
+%    \end{equation}
+    
+    \addspace
+
+%    \item[BONUS (c)] Assume that $\L$ is $H$-smooth, $\|\nabla \ell(\bw ,z)\|\le G$ for all $\bw$ and $z$, and $\bw_1$ is such that $\L(\bw_1)-\inf_\bw \L\le \Delta$ (note that this is \emph{the same} as our usual assumptions in class). Devise a sequence of learning rates such that:
+%     \begin{align*}
+%         \frac{1}{T}\sum_{t=1}^T \E\left[\left\|\nabla \L(\bw_t)\right\|^2\right]\le O\left(\frac{(HG^2\log\log(T)+\Delta)\sqrt{\log(T)}}{\sqrt{T}}\right)
+%     \end{align*}
+%     where the $O(\cdot)$ notation hides constants that may depend on $G$, $\Delta$ and $H$ but \emph{not} $T$.
+%
+%    \solution
+%    
+%    % write solution here
+%    
+%    \addspace
+
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}
