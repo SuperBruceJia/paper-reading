@@ -1,0 +1,142 @@
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath,amscd,amssymb,amsthm}
+\usepackage{thmtools}
+\usepackage{thm-restate}
+\usepackage[margin=1in]{geometry}
+\declaretheorem[name=Theorem]{Theorem}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+
+\usepackage{hyperref}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathop{\mathbb{E}}}
+\newcommand{\argmin}{\mathop{\text{argmin}}}
+\newcommand{\argmax}{\mathop{\text{argmax}}}
+\renewcommand{\L}{\mathcal{L}}
+
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\by}{\mathbf{y}}
+\newcommand{\bw}{\mathbf{w}}
+\newcommand{\bz}{\mathbf{z}}
+\newcommand{\bv}{\mathbf{v}}
+\newcommand{\bg}{\mathbf{g}}
+\newcommand{\op}{\text{op}}
+\newcommand{\addspace}{\vskip1.5em}
+\newcommand{\solution}{\addspace\noindent\textbf{Solution:}\newline}
+
+\newcommand{\reffig}[1]{Figure~\ref{#1}}
+\newcommand{\reftab}[1]{Table~\ref{#1}}
+\newcommand{\refequ}[1]{Eqn.~\eqref{#1}}
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+\newcommand{\etal}{\emph{et al}. }
+\newcommand{\ie}{\emph{i}.\emph{e}.}
+\newcommand{\eg}{\emph{e}.\emph{g}.}
+\renewcommand{\qedsymbol}{\hfill $\square$}
+
+\title{Optimization for Machine Learning HW 6}
+\author{\textbf{Shuyue Jia} \\ \textbf{BUID: U62343813}}
+\date{Due: 11/17/2023}
+
+\begin{document}
+
+\maketitle
+All parts of each question are equally weighted. When solving one question/part, you may assume the results of all previous questions/parts. You may also assume all previous homework results and results from class or lecture notes, but please explain which result you are using when you use it.
+
+\begin{enumerate}
+   \item We have seen that for $H$-smooth convex objectives, no first-order algorithm can faster than $O(H/T^2)$ in a \emph{dimension-free}  manner. That is, the ``hard'' function we studied is a very high dimensional function. However, if we restrict to considering $\L:\R\to \R$, the situation is quite different. Provide a first-order algorithm that, given a first-order oracle for a convex function  $\L:\R\to  \R$ such that $\L$ is $H$-smooth and achieves its minimum at some $|w_\star|\le 1$, then after $T$  iterations the  algorithm outputs $\hat  w$  that  satisfies $\L(\hat w) - \L(w_\star)\le O(H2^{-2T})$. Be careful: you need to have the $2$ in the exponent since $2^{-T}$ is NOT $O(2^{-2T})$.
+    \addspace
+    \solution
+    The intuition is to design a \textbf{Bisection method} that meets the above requirements:
+
+    Firstly, the bisection method halves the interval \([a, b]\) in each iteration, so after \(T\) iterations, the interval size is reduced to \((b - a) / 2^T\).
+    
+    Since the function \(\mathcal{L}\) is \(H\)-smooth, the absolute value of its gradient is bounded by \(H\) everywhere. Thus, the Lipschitz continuity of the gradient implies that \(\mathcal{L}(c) - \mathcal{L}(w_\star) \leq \frac{H}{2}(b - a)\) for any \(c \in [a, b]\).
+    
+    By combining steps 1 and 2, we have \(\mathcal{L}(c) - \mathcal{L}(w_\star) \leq \frac{H}{2^T}(b - a)\).
+    
+    Then, let \(\hat{w}\) be the final approximation returned by the bisection method. Since \(\hat{w}\) lies in the final interval \([a, b]\), we can write \(\mathcal{L}(\hat{w}) - \mathcal{L}(w_\star) \leq \frac{H}{2^T}(b - a)\).
+    
+    Next, by substituting \(b - a\) with the initial interval size, we get \(\mathcal{L}(\hat{w}) - \mathcal{L}(w_\star) \leq \frac{H}{2^T}(b - a) = \frac{H}{2^T}(2) = \frac{H}{2^{T-1}}\).
+    
+    Finally, since \(2^{T-1} = 2^T/2\), we can rewrite the result as \(\mathcal{L}(\hat{w}) - \mathcal{L}(w_\star) \leq O(H2^{-2T})\), as desired.
+    \qedsymbol
+    
+%    The following is the Python codes:
+     
+%    def bisection_method(oracle, T, a=-1, b=1):
+%%    """
+%%    Bisection method for minimizing a convex function.
+%%    
+%%    Parameters:
+%%    oracle (callable): A first-order oracle for the convex function.
+%%    T (int): Number of iterations.
+%%    a (float): Left endpoint of the search interval.
+%%    b (float): Right endpoint of the search interval.
+%%    
+%%    Returns:
+%%    float: Approximation of the minimizer.
+%%    """
+%    for t in range(T):
+%    c = (a + b) / 2  # Midpoint of the interval
+%    
+%    # Use the oracle to get the gradient at the midpoint
+%    gradient_c = oracle.gradient(c)
+%    
+%    if gradient_c > 0:
+%    b = c
+%    else:
+%    a = c
+%    
+%    # Return the final approximation
+%    return (a + b) / 2
+     
+    \addspace
+    
+    \item Suppose you are trying to identify the bias of a coin. We model a coin flip as a ``1'' if it comes up heads, and ``0'' otherwise, and let $p_\star$ be the probability  that it comes up  heads. If  $Z\in\{0,1\}$ is the outcome of a coin flip, it holds that $p_\star=\argmin \E[\ell(w,Z)]=\L(w)$ where $\ell(w,z) = (w-z)^2$. After observing $T$ coin flips $z_1,\dots, z_T$, you make the natural prediction  $\hat p = \frac{z_1+\dots+z_T}{T}$. Show that  $\E[\L(\hat p)-\L(p_\star)] = \frac{p_\star(1-p_\star)}{T}$. Explain why this does \emph{not} contradict our $\frac{1}{\sqrt{T}}$ lower bound for stochastic convex optimization?
+    
+    \addspace
+    \solution
+    \textbf{\textit{Proof.}}     
+    The loss function is given by \(\ell(w, z) = (w - z)^2\), and our goal is to find the probability \(p_\star\) that minimizes the expected loss \(\mathbb{E}[\ell(w, Z)]\), where \(Z\), a Bernoulli random variable, is the outcome of a coin flip. 
+    \begin{equation}
+    	\begin{aligned}
+    		\mathbb{E}\left[(z_1 - p_\star)^2\right]=\text{Var}(Z)=p_\star(1-p_\star).
+    	\end{aligned}
+    \end{equation}
+    
+    The expected loss is given by
+    \begin{equation}
+    	\begin{aligned}
+    		\mathbb{E}[\ell(w, Z)] = \sum_{z \in \{0, 1\}} \ell(w, z) P(Z = z).
+    	\end{aligned}
+    \end{equation}
+    
+    For our coin flip, \(p_\star\) minimizes this expectation. Now, let's calculate the expected loss for the natural prediction \(\hat{p} = \frac{z_1 + \dots + z_T}{T}\) after observing \(T\) coin flips \(z_1, \dots, z_T\).
+    
+    (1) Calculate \(\mathbb{E}[\L(\hat{p}) - \L(p_\star)]\):
+    \begin{equation}
+    	\begin{aligned}
+    		\mathbb{E}[\L(\hat{p}) - \L(p_\star)] &= \mathbb{E}\left[\left(\frac{z_1 + \dots + z_T}{T} - p_\star\right)^2 - (p_\star - p_\star)^2\right] \\
+    		&= \frac{1}{T^2}\mathbb{E}\left[(z_1 + \dots + z_T - Tp_\star)^2\right] \\
+    		&= \frac{1}{T^2}\sum_{t=1}^T\mathbb{E}\left[(z_t - p_\star)^2\right] \quad \text{(by linearity of expectation)} \\
+    		&= \frac{1}{T^2}T\mathbb{E}\left[(z_1 - p_\star)^2\right] \quad \text{(all terms are identical)} \\
+    		&= \frac{1}{T}\mathbb{E}\left[(z_1 - p_\star)^2\right] \\
+    		&= \frac{p_\star(1-p_\star)}{T}.
+    	\end{aligned}
+    \end{equation}
+    \qedsymbol
+    
+    (2) Explanation for why this does not contradict the \(\frac{1}{\sqrt{T}}\) lower bound for stochastic convex optimization:
+    
+    The lower bound of \(\frac{1}{\sqrt{T}}\) is a convergence rate for optimization problems where the goal is to find the optimal parameter \(w_\star\) in a convex function. In this case, we are not optimizing a convex function directly; instead, we are estimating a probability parameter \(p_\star\) based on observed coin flips.
+    
+    The rate \(\frac{1}{\sqrt{T}}\) arises in optimization problems where the objective function is smooth and has a Lipschitz continuous gradient. In the coin flip scenario, the loss function is not differentiable at \(p_\star = 0\) and \(p_\star = 1\), so it doesn't satisfy the smoothness conditions typically assumed in optimization settings.
+    
+    
+\end{enumerate}
+
+\end{document}

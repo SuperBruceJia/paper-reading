@@ -1,0 +1,519 @@
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath,amscd,amssymb,amsthm}
+\usepackage{thmtools}
+\usepackage{thm-restate}
+\usepackage[margin=1in]{geometry}
+\declaretheorem[name=Theorem]{Theorem}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathop{\mathbb{E}}}
+\newcommand{\argmin}{\mathop{\text{argmin}}}
+\newcommand{\argmax}{\mathop{\text{argmax}}}
+\renewcommand{\L}{\mathcal{L}}
+
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\by}{\mathbf{y}}
+\newcommand{\bw}{\mathbf{w}}
+\newcommand{\bz}{\mathbf{z}}
+\newcommand{\bv}{\mathbf{v}}
+\newcommand{\bg}{\mathbf{g}}
+\newcommand{\op}{\text{op}}
+\newcommand{\addspace}{\vskip1.5em}
+\newcommand{\solution}{\addspace\noindent\textbf{Solution:}\newline}
+
+\newcommand{\reffig}[1]{Figure~\ref{#1}}
+\newcommand{\reftab}[1]{Table~\ref{#1}}
+\newcommand{\refequ}[1]{Eqn.~\eqref{#1}}
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+\newcommand{\etal}{\emph{et al}. }
+\newcommand{\ie}{\emph{i}.\emph{e}.}
+\newcommand{\eg}{\emph{e}.\emph{g}.}
+\renewcommand{\qedsymbol}{\hfill $\square$}
+
+\title{Optimization for Machine Learning HW 5}
+
+\author{\textbf{Shuyue Jia} \\ \textbf{BUID: U62343813}}
+
+\date{Due: 10/27/2023}
+
+\begin{document}
+
+\maketitle
+All parts of each question are equally weighted. When solving one question/part, you may assume the results of all previous questions/parts. You may also assume all previous homework results and results from class or lecture notes, but please explain which result you are using when you use it.
+
+In this homework, you will extend the deterministic accelerated algorithm to a stochastic setting. The goal is to obtain a convergence rate like:
+\begin{align*}
+    \E\left[\L(\bw_{T+1})-\L(\bw_\star)\right]&\le O\left(\frac{H \|\bw_\star - \by_1\|^2}{T^2} + \frac{\sigma \|\bw_\star - \by_1\|}{\sqrt{T}}\right)
+\end{align*}
+Thus, when $\sigma$ is very small the convergence rate is nearly $O(1/T^2)$, but when $\sigma$ is larger it decays to the ordinary $O(1/\sqrt{T})$. Obtaining this result in an adaptive way (i.e. via an algorithm that does not know $H$ or $\sigma$ ahead of time) is rather difficult, although some progress has been made recently. The state-of-the art here is currently this ICML 2020 paper: \url{http://proceedings.mlr.press/v119/joulani20a.html}.
+
+Throughout this problem, assume that $\L$ is a convex, $H$-smooth function, and that $\ell(\bw ,z)$ is such that $\E[\|\nabla \ell(\bw,z)-\nabla \L(\bw)\|^2]\le \sigma^2$ for all $\bw$. Recall that by bias-variance decomposition this also implies $\E[\|\nabla\ell(\bw,z)\|^2]\le \E[\|\nabla \L(\bw)\|^2+\sigma^2]$ for all (possibly random) $\bw$.
+
+\begin{algorithm}
+   \caption{Accelerated Gradient Descent}
+   \begin{algorithmic}
+      \STATE{\bfseries Input: } Initial Point $\bw_1$, smoothness constant $H$, time horizon $T$, learning rate $\eta$
+      \STATE Set $\by_1=\bw_1$
+      \STATE Set $\alpha_0=0$, $\alpha_1=1$.
+      \FOR{$t=1\dots T$}
+      \STATE Set $\tau_t = \frac{\alpha_t}{\sum_{i=1}^t \alpha_t}$
+      \STATE Set $\bx_t = (1-\tau_t)\bw_t + \tau_t \by_t$
+      \STATE Set $\bg_t = \alpha_t \nabla \ell(\bx_t, z_t)$.
+      \STATE Set $\by_{t+1} = \by_t  -  \eta \bg_t$.
+      \STATE Set $\bw_{t+1} = \bx_t - \eta \nabla \ell(\bx_t, z_t)$
+      \STATE Set $\alpha_{t+1}$ to satisfy $\alpha_{t+1}^2 - \alpha_{t+1} = \sum_{i=1}^t \alpha_i$.
+      \ENDFOR
+   \end{algorithmic}
+\label{alg:momentumAGD}
+\end{algorithm}
+\begin{enumerate}
+
+\setcounter{equation}{0}
+\item Show that Algorithm \ref{alg:momentumAGD} satisfies:
+\begin{align*}
+    \E\left[\sum_{t=1}^T \alpha_t (\L(\bx_t)- \L(\bw_\star))\right]&\le \E\left[\sum_{t=1}^T \langle \nabla\L(\bx_t), \alpha_t(\bx_t -\by_t)\rangle +\sum_{t=1}^T \langle \bg_t, \by_t -\bw_\star\rangle\right]
+\end{align*}
+
+\addspace
+\solution
+\textbf{\textit{Proof.}} By convexity, we have $\L(\bx_t) - \L(\bw_\star) \le \langle \nabla\L(\bx_t), \bx_t - \bw_\star\rangle$, so,
+\begin{equation}
+	\begin{aligned}
+		\sum_{t=1}^T \alpha_t(\L(\bx_t) - \L(\bw_\star)) &\le \sum_{t=1}^T \alpha_t \langle \nabla\L(\bx_t), \bx_t - \bw_\star\rangle\\
+		& = \sum_{t=1}^T \alpha_t \langle \nabla\L(\bx_t), \bx_t - \by_t\rangle + \sum_{t=1}^T \alpha_t \langle \nabla\L(\bx_t), \by_t - \bw_\star\rangle\\
+		& = \sum_{t=1}^T \langle \nabla\L(\bx_t), \alpha_t (\bx_t - \by_t)\rangle + \sum_{t=1}^T \langle \bg_t, \by_t - \bw_\star\rangle.
+	\end{aligned}
+\end{equation}
+Thus, by taking expectations, we will have:
+\begin{equation}
+	\begin{aligned}
+		\E\left[\sum_{t=1}^T \alpha_t (\L(\bx_t)- \L(\bw_\star))\right] \le \E\left[\sum_{t=1}^T \langle \nabla\L(\bx_t), \alpha_t(\bx_t -\by_t)\rangle +\sum_{t=1}^T \langle \bg_t, \by_t -\bw_\star\rangle\right].
+	\end{aligned}
+\end{equation}
+\qedsymbol
+
+\addspace
+
+\setcounter{equation}{0}
+\item Show that
+\begin{align*}
+    \E\left[\sum_{t=1}^T\langle \bg_t, \by_t -\bw_\star\rangle\right]&\le \frac{\|\bw_\star-\by_1\|^2}{2\eta} + \frac{\sigma^2 \eta \sum_{t=1}^T \alpha_t^2 }{2}+\frac{\eta}{2}\E\left[\sum_{t=1}^T \alpha_t^2\|\nabla \L(\bx_t)\|^2\right].
+\end{align*}
+
+\addspace
+\solution
+\textbf{\textit{Proof.}} First, we will have:
+\begin{equation}
+	\begin{aligned}
+		\| \by_{t+1} - \bw_\star \|^2 & = \| \by_t - \eta \bg_t - \bw_\star \|^2\\
+		& = \| \by_t - \bw_\star \|^2 - 2\eta \langle \bg_t, \by_t -\bw_\star\rangle + \eta^2 \| \bg_t \|^2.
+	\end{aligned}
+\end{equation}
+
+Thus, we will have:
+\begin{equation}
+	\begin{aligned}
+		\langle \bg_t, \by_t -\bw_\star\rangle = \frac{\| \by_t - \bw_\star \|^2 - \| \by_{t+1} -\bw_\star \|^2}{2\eta} + \frac{\eta}{2} \| \bg_t \|^2.
+	\end{aligned}
+\end{equation}
+
+Sum over $t$, and telescope:
+\begin{equation}
+	\begin{aligned}
+		\sum_{t=1}^T \langle \bg_t, \by_t -\bw_\star\rangle &= \frac{\| \by_1 - \bw_\star \|^2 - \| \by_{T+1} -\bw_\star \|^2}{2\eta} + \frac{\eta}{2} \sum_{t=1}^T \| \bg_t \|^2\\
+		& = \frac{\| \by_1 - \bw_\star \|^2}{2\eta} - \frac{\| \by_{T+1} -\bw_\star \|^2}{2\eta} + \frac{\eta}{2} \sum_{t=1}^T \| \bg_t \|^2\\
+		& \le \frac{\| \by_1 - \bw_\star \|^2}{2\eta} + \frac{\eta}{2} \sum_{t=1}^T \| \bg_t \|^2.
+	\end{aligned}
+\end{equation}
+
+By taking the expectation:
+\begin{equation}
+	\begin{aligned}
+		\E\left[\sum_{t=1}^T \langle \bg_t, \by_t -\bw_\star\rangle\right]  \le \frac{\| \by_1 - \bw_\star \|^2}{2\eta} + \frac{\eta}{2} \E\left[\sum_{t=1}^T \| \bg_t \|^2\right].
+	\end{aligned}
+\end{equation}
+
+Since $\bg_t = \alpha_t \nabla \ell(\bx_t, z_t)$, we will have:
+\begin{equation}
+	\begin{aligned}
+		\E\left[\sum_{t=1}^T \langle \bg_t, \by_t -\bw_\star\rangle\right]  &\le \frac{\| \by_1 - \bw_\star \|^2}{2\eta} + \frac{\eta}{2} \E\left[ \sum_{t=1}^T \| \alpha_t \nabla \ell(\bx_t, z_t) \|^2\right]\\
+		& \le \frac{\| \by_1 - \bw_\star \|^2}{2\eta} + \frac{\eta}{2} \E\left[\sum_{t=1}^T \alpha_t^2 \| \nabla \ell(\bx_t, z_t) \|^2\right]\\
+		& \le \frac{\| \by_1 - \bw_\star \|^2}{2\eta} + \frac{\eta}{2} \sum_{t=1}^T \E\left[\alpha_t^2 \| \nabla \ell(\bx_t, z_t) \|^2\right].
+	\end{aligned}
+\end{equation}
+
+From the problem description, we know that $\E[\|\nabla\ell(\bw,z)\|^2]\le \E[\|\nabla \L(\bw)\|^2+\sigma^2]$, thus we will have:
+\begin{equation}
+	\begin{aligned}
+		\E\left[\sum_{t=1}^T \langle \bg_t, \by_t -\bw_\star\rangle\right] & \le \frac{\| \by_1 - \bw_\star \|^2}{2\eta} + \frac{\eta}{2} \sum_{t=1}^T \E\left[\alpha_t^2 \| \nabla \ell(\bx_t, z_t) \|^2\right]\\
+		& \le \frac{\| \by_1 - \bw_\star \|^2}{2\eta} + \frac{\eta}{2} \sum_{t=1}^T \E\left[\alpha_t^2 (\| \nabla \ell(\bx_t) \|^2 + \sigma^2)\right]\\
+		& \le \frac{\| \by_1 - \bw_\star \|^2}{2\eta} + \frac{\eta}{2}\sum_{t=1}^T \E\left[\alpha_t^2 \| \nabla \ell(\bx_t) \|^2\right] + \frac{\eta}{2}\sum_{t=1}^T \E\left[\alpha_t^2 \sigma^2\right] \\
+		& \le \frac{\| \by_1 - \bw_\star \|^2}{2\eta} + \frac{\eta}{2}\sum_{t=1}^T \E\left[\alpha_t^2 \| \nabla \ell(\bx_t) \|^2\right] + \frac{\sigma^2\eta}{2}\sum_{t=1}^T \alpha_t^2.
+	\end{aligned}
+\end{equation}
+
+Thus, we will have:
+\begin{equation}
+	\begin{aligned}
+		\E\left[\sum_{t=1}^T\langle \bg_t, \by_t -\bw_\star\rangle\right] \le \frac{\|\bw_\star-\by_1\|^2}{2\eta} + \frac{\sigma^2 \eta \sum_{t=1}^T \alpha_t^2 }{2}+\frac{\eta}{2}\E\left[\sum_{t=1}^T \alpha_t^2\|\nabla \L(\bx_t)\|^2\right].
+	\end{aligned}
+\end{equation}
+\qedsymbol
+
+\addspace
+
+\setcounter{equation}{0}
+\item Show that
+
+\begin{align*}
+    -\E\left[\sum_{t=1}^T \alpha_t  \L(\bw_\star)\right] \le & \E\left[\sum_{t=1}^T \left(\sum_{i=1}^{t-1} \alpha_i\right)\L(\bw_t) - \left(\sum_{i=1}^{t} \alpha_i\right)\L(\bx_t)\right] \\
+    &\quad+ \frac{\|\bw_\star-\by_1\|^2}{2\eta}+ \frac{\sigma^2 \eta \sum_{t=1}^T \alpha_t^2 }{2}+\frac{\eta}{2}\E\left[\sum_{t=1}^T \alpha_t^2\|\nabla \L(\bx_t)\|^2\right]
+\end{align*}
+
+\addspace
+\solution
+\textbf{\textit{Proof.}} From the \textbf{Problem 1 - Equation 1}, we have:
+\begin{equation}
+	\begin{aligned}
+		\sum_{t=1}^T \alpha_t(\L(\bx_t) - \L(\bw_\star)) = \sum_{t=1}^T \langle \nabla\L(\bx_t), \alpha_t (\bx_t - \by_t)\rangle + \sum_{t=1}^T \langle \bg_t, \by_t - \bw_\star\rangle.
+	\end{aligned}
+\end{equation}
+
+From the \textbf{Problem 2 - Equation 3}, we have:
+\begin{equation}
+	\begin{aligned}
+		\sum_{t=1}^T \langle \bg_t, \by_t -\bw_\star\rangle \le \frac{\| \by_1 - \bw_\star \|^2}{2\eta} + \frac{\eta}{2} \sum_{t=1}^T \| \bg_t \|^2.
+	\end{aligned}
+\end{equation}
+
+Since $\bx_t = (1-\tau_t)\bw_t + \tau_t \by_t$, then we will have:
+\begin{equation}
+	\begin{aligned}
+		\mathbf{x}_t=\left(1-\tau_t\right) \mathbf{w}_t+\tau_t \mathbf{y}_t=\left(1-\frac{\alpha_t}{\sum_{i=1}^t \alpha_i}\right) \mathbf{w}_t+\frac{\alpha_t}{\sum_{i=1}^t \alpha_i} \mathbf{y}_t.
+	\end{aligned}
+\end{equation}
+and 
+\begin{equation}
+	\begin{aligned}
+		\left(\sum_{i=1}^t \alpha_i\right) \mathbf{x}_t=\left(\left(\sum_{i=1}^t \alpha_i\right)-\alpha_t\right) \mathbf{w}_t+\alpha_t \mathbf{y}_t.
+	\end{aligned}
+\end{equation}
+
+By subtracting $\left(\sum_{i=1}^{t-1} \alpha_i\right) \mathbf{x}_t$ and $\alpha_t \by_t$ frombothboth sides:
+\begin{equation}
+	\begin{aligned}
+		\alpha_t \mathbf{x}_t-\alpha_t \mathbf{y}_t & =\left(\left(\sum_{i=1}^t \alpha_i\right)-\alpha_t\right) \mathbf{w}_t-\left(\sum_{i=1}^{t-1} \alpha_i\right) \mathbf{x}_t \\
+		& =\left(\sum_{i=1}^{t-1} \alpha_i\right)\left(\mathbf{w}_t-\mathbf{x}_t\right).
+	\end{aligned}
+\end{equation}
+
+Therefore, we have:
+\begin{equation}
+	\begin{aligned}
+		\left\langle\nabla \mathcal{L}\left(\mathbf{x}_t\right), \alpha_t\left(\mathbf{x}_t-\mathbf{y}_t\right)\right\rangle=\left(\sum_{i=1}^{t-1} \alpha_i\right)\left\langle\nabla \mathcal{L}\left(\mathbf{x}_t\right), \mathbf{w}_t-\mathbf{x}_t\right\rangle.
+	\end{aligned}
+\end{equation}
+
+Now, let’s use convexity again: we have $\mathcal{L}\left(\mathbf{w}_t\right) \geq \mathcal{L}\left(\mathbf{x}_t\right)+\left\langle\nabla \mathcal{L}\left(\mathbf{x}_t\right), \mathbf{w}_t-\mathbf{x}_t\right\rangle$, so:
+\begin{equation}
+	\begin{aligned}
+		\left\langle\nabla \mathcal{L}\left(\mathbf{x}_t\right), \alpha_t\left(\mathbf{x}_t-\mathbf{y}_t\right)\right\rangle \leq\left(\sum_{i=1}^{t-1} \alpha_i\right)\left(\mathcal{L}\left(\mathbf{w}_t\right)-\mathcal{L}\left(\mathbf{x}_t\right)\right).
+	\end{aligned}
+\end{equation}
+
+Going back and putting this all together, we have shown:
+\begin{equation}
+	\begin{aligned}
+		\sum_{t=1}^T \alpha_t\left(\mathcal{L}\left(\mathbf{x}_t\right)-\mathcal{L}\left(\mathbf{w}_{\star}\right)\right) \leq \frac{\left\|\mathbf{w}_{\star}-\mathbf{y}_1\right\|^2}{2 \eta}+\frac{\eta}{2} \sum_{t=1}^T\left\|\mathbf{g}_t\right\|^2+\sum_{t=1}^T\left(\sum_{i=1}^{t-1} \alpha_i\right)\left(\mathcal{L}\left(\mathbf{w}_t\right)-\mathcal{L}\left(\mathbf{x}_t\right)\right).
+	\end{aligned}
+\end{equation}
+
+Now, eventually we are going to want the last sum to telescope. So far there are two obstacles. First, there is a $\bw$ instead of a $\bx$, and second the coefﬁcients on the $\L(\bw_t)$ and $\L(\bx_t)$ are the same. Let’s ﬁx the second problem ﬁrst: subtract $\sum_{t=1}^T \alpha_t \mathcal{L}\left(\mathbf{x}_t\right)$ from both sides to get,
+\begin{equation}
+	\begin{aligned}
+		-\sum_{t=1}^T \alpha_t \mathcal{L}\left(\mathbf{w}_{\star}\right) \leq \frac{\left\|\mathbf{w}_{\star}-\mathbf{y}_1\right\|^2}{2 \eta}+\frac{\eta}{2} \sum_{t=1}^T\left\|\mathbf{g}_t\right\|^2+\sum_{t=1}^T\left(\sum_{i=1}^{t-1} \alpha_i\right) \mathcal{L}\left(\mathbf{w}_t\right)-\left(\sum_{i=1}^t \alpha_i\right) \mathcal{L}\left(\mathbf{x}_t\right).
+	\end{aligned}
+\end{equation}
+
+Taking the expectation, we will have:
+\begin{equation}
+ 	\begin{aligned}
+ 		-\E\left[\sum_{t=1}^T \alpha_t  \L(\bw_\star)\right] \leq \frac{\left\|\mathbf{w}_{\star}-\mathbf{y}_1\right\|^2}{2 \eta}+\frac{\eta}{2} \sum_{t=1}^T \E \left[\left\|\mathbf{g}_t\right\|^2\right] + \E\left[\sum_{t=1}^T\left(\sum_{i=1}^{t-1} \alpha_i\right) \mathcal{L}\left(\mathbf{w}_t\right)-\left(\sum_{i=1}^t \alpha_i\right) \mathcal{L}\left(\mathbf{x}_t\right)\right].
+ 	\end{aligned}
+ \end{equation}
+ 
+ Since $\bg_t = \alpha_t \nabla \ell(\bx_t, z_t)$, we will have:
+\begin{equation}
+ 	\begin{aligned}
+ 		-\E\left[\sum_{t=1}^T \alpha_t  \L(\bw_\star)\right] &\leq \frac{\left\|\mathbf{w}_{\star}-\mathbf{y}_1\right\|^2}{2 \eta}+\frac{\eta}{2} \sum_{t=1}^T\E\left[\left\|\alpha_t \nabla \ell(\bx_t, z_t)\right\|^2\right] + \E\left[\sum_{t=1}^T\left(\sum_{i=1}^{t-1} \alpha_i\right) \mathcal{L}\left(\mathbf{w}_t\right)-\left(\sum_{i=1}^t \alpha_i\right) \mathcal{L}\left(\mathbf{x}_t\right)\right]\\
+ 		&\leq \frac{\left\|\mathbf{w}_{\star}-\mathbf{y}_1\right\|^2}{2 \eta}+\frac{\eta}{2} \sum_{t=1}^T\E\left[\alpha_t^2 \| \nabla \ell(\bx_t, z_t) \|^2\right] + \E\left[\sum_{t=1}^T\left(\sum_{i=1}^{t-1} \alpha_i\right) \mathcal{L}\left(\mathbf{w}_t\right)-\left(\sum_{i=1}^t \alpha_i\right) \mathcal{L}\left(\mathbf{x}_t\right)\right].
+ 	\end{aligned}
+ \end{equation}
+
+From the problem description, we know that $\E[\|\nabla\ell(\bw,z)\|^2]\le \E[\|\nabla \L(\bw)\|^2+\sigma^2]$ and similar to \textbf{Problem 2},  we will have:
+\begin{equation}
+	\begin{aligned}
+		-\E\left[\sum_{t=1}^T \alpha_t  \L(\bw_\star)\right] \leq & \frac{\left\|\mathbf{w}_{\star}-\mathbf{y}_1\right\|^2}{2 \eta}+\frac{\eta}{2} \sum_{t=1}^T\E\left[\alpha_t^2 \| \nabla \ell(\bx_t, z_t) \|^2\right] \\
+		& + \E\left[\sum_{t=1}^T\left(\sum_{i=1}^{t-1} \alpha_i\right) \mathcal{L}\left(\mathbf{w}_t\right)-\left(\sum_{i=1}^t \alpha_i\right) \mathcal{L}\left(\mathbf{x}_t\right)\right]\\
+		&\leq \frac{\left\|\mathbf{w}_{\star}-\mathbf{y}_1\right\|^2}{2 \eta}+\frac{\eta}{2}\sum_{t=1}^T \E\left[\alpha_t^2 \| \nabla \ell(\bx_t) \|^2\right] + \frac{\sigma^2\eta}{2}\sum_{t=1}^T \alpha_t^2\\
+		& + \E\left[\sum_{t=1}^T\left(\sum_{i=1}^{t-1} \alpha_i\right) \mathcal{L}\left(\mathbf{w}_t\right)-\left(\sum_{i=1}^t \alpha_i\right) \mathcal{L}\left(\mathbf{x}_t\right)\right].
+	\end{aligned}
+\end{equation}
+
+Thus, we will have:
+\begin{equation}
+	\begin{aligned}
+		-\E\left[\sum_{t=1}^T \alpha_t  \L(\bw_\star)\right] \le & \E\left[\sum_{t=1}^T \left(\sum_{i=1}^{t-1} \alpha_i\right)\L(\bw_t) - \left(\sum_{i=1}^{t} \alpha_i\right)\L(\bx_t)\right] \\
+		&\quad+ \frac{\|\bw_\star-\by_1\|^2}{2\eta}+ \frac{\sigma^2 \eta \sum_{t=1}^T \alpha_t^2 }{2}+\frac{\eta}{2}\E\left[\sum_{t=1}^T \alpha_t^2\|\nabla \L(\bx_t)\|^2\right].
+	\end{aligned}
+\end{equation}
+\qedsymbol
+
+\addspace
+
+\setcounter{equation}{0}
+\item Show that for any $\eta \le \frac{1}{H}$, for all $t$:
+\begin{align*}
+     \E\left[ - \L(\bx_t)\right]&\le \E\left[-\L(\bw_{t+1})- \frac{\eta}{2}\| \nabla \L(\bx_t)\|^2 + \frac{\eta \sigma^2 }{2}\right]
+\end{align*}
+(note the $\eta$ instead of $\eta^2$ in the last term!)
+
+\addspace
+\solution
+\textbf{\textit{Proof.}} Let’s use smoothness to relate $\L(\bx_t)$ to $\L(\bw_{t+1})$. So long as $\eta \le \frac{1}{H}$,
+\begin{equation}
+	\begin{aligned}
+		\mathcal{L}\left(\mathbf{w}_{t+1}\right) \leq \mathcal{L}\left(\mathbf{x}_t\right)-\frac{\eta}{2}\left\|\nabla \mathcal{L}\left(\mathbf{x}_t\right)\right\|^2.
+	\end{aligned}
+\end{equation}
+Since we know that $\E[\|\nabla\ell(\bw,z)\|^2]\le \E[\|\nabla \L(\bw)\|^2+\sigma^2]$, then we will have:
+\begin{equation}
+	\begin{aligned}
+		\mathcal{L}\left(\mathbf{w}_{t+1}\right) - \mathcal{L}\left(\mathbf{x}_t\right) &\leq -\frac{\eta}{2}\left\|\nabla \mathcal{L}\left(\mathbf{x}_t\right)\right\|^2\\
+		& \leq -\frac{\eta}{2} \left[ \|\nabla\ell(\bx_t, \bz_t)\|^2 - \sigma^2 \right]
+	\end{aligned}
+\end{equation}
+
+By taking the expectation, we will have:
+\begin{equation}
+	\begin{aligned}
+		\E\left[\mathcal{L}\left(\mathbf{w}_{t+1}\right) - \mathcal{L}\left(\mathbf{x}_t\right)\right] &\leq -\frac{\eta}{2} \E\left[ \|\nabla\ell(\bx_t, \bz_t)\|^2 - \sigma^2 \right]\\
+		& \leq -\frac{\eta}{2} \E\left[ \|\nabla\ell(\bx_t, \bz_t)\|^2 \right] + \frac{\eta}{2} \E\left[\sigma^2 \right]\\
+		& \leq -\frac{\eta}{2} \| \nabla \L(\bx_t)\|^2 + \frac{\eta}{2} \E\left[\sigma^2 \right].
+	\end{aligned}
+\end{equation}
+
+Thus, we will have:
+\begin{equation}
+	\begin{aligned}
+		\E\left[ - \L(\bx_t)\right] \le \E\left[-\L(\bw_{t+1})- \frac{\eta}{2}\| \nabla \L(\bx_t)\|^2 + \frac{\eta \sigma^2 }{2}\right].
+	\end{aligned}
+\end{equation}
+\qedsymbol
+
+\addspace
+
+\setcounter{equation}{0}
+\item Show that for any $\eta\le \frac{1}{H}$:
+\begin{align*}
+    \sum_{t=1}^T \alpha_t\E\left[ \L(\bw_{T+1}) - \L(\bw_\star)\right]&\le \frac{\|\bw_\star-\by_1\|^2}{2\eta}+ \sigma^2 \eta \sum_{t=1}^T \alpha_t^2 
+\end{align*}
+
+\addspace
+\solution
+\textbf{\textit{Proof.}} 
+%From \textbf{Problem 4 - Equation 1}, we know that:
+%\begin{equation}
+%	\begin{aligned}
+%		\mathcal{L}\left(\mathbf{w}_{t+1}\right) \leq \mathcal{L}\left(\mathbf{x}_t\right)-\frac{\eta}{2}\left\|\nabla \mathcal{L}\left(\mathbf{x}_t\right)\right\|^2.
+%	\end{aligned}
+%\end{equation}
+%
+%From \textbf{Problem 3 - Equation 9}, we have:
+%\begin{equation}
+%	\begin{aligned}
+%		-\sum_{t=1}^T \alpha_t \mathcal{L}\left(\mathbf{w}_{\star}\right) \leq \frac{\left\|\mathbf{w}_{\star}-\mathbf{y}_1\right\|^2}{2 \eta}+\frac{\eta}{2} \sum_{t=1}^T\left\|\mathbf{g}_t\right\|^2+\sum_{t=1}^T\left(\sum_{i=1}^{t-1} \alpha_i\right) \mathcal{L}\left(\mathbf{w}_t\right)-\left(\sum_{i=1}^t \alpha_i\right) \mathcal{L}\left(\mathbf{x}_t\right).
+%	\end{aligned}
+%\end{equation}
+%
+%Thus, we have
+%\begin{equation}
+%	\begin{aligned}
+%		-\sum_{t=1}^T \alpha_t \mathcal{L}\left(\mathbf{w}_{\star}\right) \leq & \frac{\left\|\mathbf{w}_{\star}-\mathbf{y}_1\right\|^2}{2 \eta}+\frac{\eta}{2} \sum_{t=1}^T\left\|\mathbf{g}_t\right\|^2\\
+%		& +\sum_{t=1}^T\left[\left(\sum_{i=1}^{t-1} \alpha_i\right) \mathcal{L}\left(\mathbf{w}_t\right)-\left(\sum_{i=1}^t \alpha_i\right) \mathcal{L}\left(\mathbf{w}_{t+1}\right)-\left(\sum_{i=1}^t \alpha_i\right) \frac{\eta}{2}\left\|\nabla \mathcal{L}\left(\mathbf{x}_t\right)\right\|^2\right].
+%	\end{aligned}
+%\end{equation}
+%
+%Telescope, yielding:
+%\begin{equation}
+%	\begin{aligned}
+%		-\sum_{t=1}^T \alpha_t \mathcal{L}\left(\mathbf{w}_{\star}\right) \leq \frac{\left\|\mathbf{w}_{\star}-\mathbf{y}_1\right\|^2}{2 \eta}+\frac{\eta}{2} \sum_{t=1}^T\left\|\mathbf{g}_t\right\|^2-\sum_{t=1}^T \alpha_t \mathcal{L}\left(\mathbf{w}_{T+1}\right)-\sum_{t=1}^T\left(\sum_{i=1}^t \alpha_i\right) \frac{\eta}{2}\left\|\nabla \mathcal{L}\left(\mathbf{x}_t\right)\right\|^2.
+%	\end{aligned}
+%\end{equation}
+%
+%By rearranging:
+%\begin{equation}
+%	\begin{aligned}
+%		\left(\sum_{t=1}^T \alpha_t\right)\left(\mathcal{L}\left(\mathbf{w}_{T+1}\right)-\mathcal{L}\left(\mathbf{w}_{\star}\right)\right) \leq \frac{\left\|\mathbf{w}_{\star}-\mathbf{y}_1\right\|^2}{2 \eta}+\frac{\eta}{2} \sum_{t=1}^T\left\|\mathbf{g}_t\right\|^2-\sum_{t=1}^T\left(\sum_{i=1}^t \alpha_i\right) \frac{\eta}{2}\left\|\nabla \mathcal{L}\left(\mathbf{x}_t\right)\right\|^2.
+%	\end{aligned}
+%\end{equation}
+%
+%Since we know that $\alpha_{t+1}^2 - \alpha_{t+1} = \sum_{i=1}^t \alpha_i$ and $\alpha_{t}^2 - \alpha_{t} = \sum_{i=1}^{t-1} \alpha_i$, we will have $\forall t \geq 1, \alpha_t^2=\sum_{i=1}^t \alpha_i$
+%\begin{equation}
+%	\begin{aligned}
+%		\left(\sum_{t=1}^T \alpha_t\right)\left(\mathcal{L}\left(\mathbf{w}_{T+1}\right)-\mathcal{L}\left(\mathbf{w}_{\star}\right)\right) \leq \frac{\left\|\mathbf{w}_{\star}-\mathbf{y}_1\right\|^2}{2 \eta}+\frac{\eta}{2} \sum_{t=1}^T\left\|\mathbf{g}_t\right\|^2 - \frac{\eta}{2} \sum_{t=1}^T\alpha_{t}^2 \left\|\nabla \mathcal{L}\left(\mathbf{x}_t\right)\right\|^2.
+%	\end{aligned}
+%\end{equation}
+From \textbf{Problem 4}, we have:
+\begin{equation}
+	\begin{aligned}
+		\E\left[ - \L(\bx_t)\right]&\le \E\left[-\L(\bw_{t+1})- \frac{\eta}{2}\| \nabla \L(\bx_t)\|^2 + \frac{\eta \sigma^2 }{2}\right].
+	\end{aligned}
+\end{equation}
+
+By rearranging and multipling $\sum_{i=1}^{t-1} \alpha_i$ and adding $\mathcal{L}\left(\mathbf{w}_t\right)$, we will have:
+\begin{equation}
+	\begin{aligned}
+		\mathbb{E}\left[\left(\sum_{i=1}^{t-1} \alpha_i\right) \mathcal{L}\left(\mathbf{w}_t\right)-\left(\sum_{i=1}^t \alpha_i\right) \mathcal{L}\left(\mathbf{x}_t\right)\right] \leq & \mathbb{E}[\left(\sum_{i=1}^{t-1} \alpha_i\right) \mathcal{L}\left(\mathbf{w}_t\right)\\
+		&-\left(\sum_{i=1}^t \alpha_i\right)\left(\mathcal{L}\left(\mathbf{w}_{t+1}\right)+\frac{\eta}{2}\left\|\nabla \mathcal{L}\left(\mathbf{x}_t\right)\right\|^2-\frac{\eta \sigma^2}{2}\right)].
+	\end{aligned}
+\end{equation}
+
+Then, by rearranging:
+\begin{equation}
+	\begin{aligned}
+		\mathbb{E}\left[\left(\sum_{i=1}^{t-1} \alpha_i\right) \mathcal{L}\left(\mathbf{w}_t\right)-\left(\sum_{i=1}^t \alpha_i\right) \mathcal{L}\left(\mathbf{x}_t\right)\right] \leq & \mathbb{E}\left[\left(\sum_{i=1}^{t-1} \alpha_i\right) \mathcal{L}\left(\mathbf{w}_t\right)-\left(\sum_{i=1}^t \alpha_i\right) \mathcal{L}\left(\mathbf{w}_{t+1}\right)\right] \\
+		& -\mathbb{E}\left[\left(\sum_{i=1}^t \alpha_i\right) \frac{\eta}{2}\left\|\nabla \mathcal{L}\left(\mathbf{x}_t\right)\right\|^2\right]+\frac{\eta \sigma^2}{2} \sum_{i=1}^t \alpha_i.
+	\end{aligned}
+\end{equation}
+
+From \textbf{Problem 3 - Equation 13}, we have:
+\begin{equation}
+	\begin{aligned}
+		-\E\left[\sum_{t=1}^T \alpha_t  \L(\bw_\star)\right] \le & \E\left[\sum_{t=1}^T \left(\sum_{i=1}^{t-1} \alpha_i\right)\L(\bw_t) - \left(\sum_{i=1}^{t} \alpha_i\right)\L(\bx_t)\right] \\
+		&\quad+ \frac{\|\bw_\star-\by_1\|^2}{2\eta}+ \frac{\sigma^2 \eta \sum_{t=1}^T \alpha_t^2 }{2}+\frac{\eta}{2}\E\left[\sum_{t=1}^T \alpha_t^2\|\nabla \L(\bx_t)\|^2\right].
+	\end{aligned}
+\end{equation}
+
+Thus, we then have:
+\begin{equation}
+	\begin{aligned}
+		-\mathbb{E}\left[\sum_{t=1}^T \alpha_t \mathcal{L}\left(\mathbf{w}_{\star}\right)\right] \leq & -\mathbb{E}\left[\left(\sum_{t=1}^T \alpha_t\right) \mathcal{L}\left(\mathbf{w}_{T+1}\right)\right]\\
+		& +\frac{\eta \sigma^2}{2} \sum_{t=1}^T \sum_{i=1}^t \alpha_i-\sum_{t=1}^T \mathbb{E}\left[\left(\sum_{i=1}^t \alpha_i\right) \frac{\eta}{2}\left\|\nabla \mathcal{L}\left(\mathbf{x}_t\right)\right\|^2\right] \\
+		& +\frac{\left\|\mathbf{w}_{\star}-\mathbf{y}_1\right\|^2}{2 \eta}+\frac{\sigma^2 \eta \sum_{t=1}^T \alpha_t^2}{2}+\frac{\eta}{2} \mathbb{E}\left[\sum_{t=1}^T \alpha_t^2\left\|\nabla \mathcal{L}\left(\mathbf{x}_t\right)\right\|^2\right].
+	\end{aligned}
+\end{equation}
+
+By rearranging:
+\begin{equation}
+	\begin{aligned}
+		\left(\sum_{t=1}^T \alpha_t\right)\left(\mathcal{L}\left(\mathbf{w}_{T+1}\right)-\mathcal{L}\left(\mathbf{w}_{\star}\right)\right) \leq & \frac{\eta \sigma^2}{2} \sum_{t=1}^T \sum_{i=1}^t \alpha_i-\sum_{t=1}^T \mathbb{E}\left[\left(\sum_{i=1}^t \alpha_i\right) \frac{\eta}{2}\left\|\nabla \mathcal{L}\left(\mathbf{x}_t\right)\right\|^2\right] \\
+		& +\frac{\left\|\mathbf{w}_{\star}-\mathbf{y}_1\right\|^2}{2 \eta}+\frac{\sigma^2 \eta \sum_{t=1}^T \alpha_t^2}{2}+\frac{\eta}{2} \mathbb{E}\left[\sum_{t=1}^T \alpha_t^2\left\|\nabla \mathcal{L}\left(\mathbf{x}_t\right)\right\|^2\right].
+	\end{aligned}
+\end{equation}
+
+Since we know that $\alpha_{t+1}^2 - \alpha_{t+1} = \sum_{i=1}^t \alpha_i$ and $\alpha_{t}^2 - \alpha_{t} = \sum_{i=1}^{t-1} \alpha_i$, we will have $\forall t \geq 1, \alpha_t^2=\sum_{i=1}^t \alpha_i$
+\begin{equation}
+	\begin{aligned}
+		\left(\sum_{t=1}^T \alpha_t\right)\left(\mathcal{L}\left(\mathbf{w}_{T+1}\right)-\mathcal{L}\left(\mathbf{w}_{\star}\right)\right) \leq & \frac{\eta \sigma^2}{2} \sum_{t=1}^T \alpha_t^2 - \frac{\eta}{2} \sum_{t=1}^T \mathbb{E}\left[\alpha_t^2 \left\|\nabla \mathcal{L}\left(\mathbf{x}_t\right)\right\|^2\right] \\
+		& +\frac{\left\|\mathbf{w}_{\star}-\mathbf{y}_1\right\|^2}{2 \eta}+\frac{\eta \sigma^2 \sum_{t=1}^T \alpha_t^2}{2}+\frac{\eta}{2} \mathbb{E}\left[\sum_{t=1}^T \alpha_t^2\left\|\nabla \mathcal{L}\left(\mathbf{x}_t\right)\right\|^2\right].
+	\end{aligned}
+\end{equation}
+
+Then, we will have:
+\begin{equation}
+	\begin{aligned}
+		\left(\sum_{t=1}^T \alpha_t\right)\left(\mathcal{L}\left(\mathbf{w}_{T+1}\right)-\mathcal{L}\left(\mathbf{w}_{\star}\right)\right) \leq & \eta \sigma^2 \sum_{t=1}^T \alpha_t^2 +\frac{\left\|\mathbf{w}_{\star}-\mathbf{y}_1\right\|^2}{2 \eta}.
+	\end{aligned}
+\end{equation}
+\qedsymbol
+
+\addspace
+
+\setcounter{equation}{0}
+\item Choose a value for $\eta$ such that:
+\begin{align*}
+    \E[\L(\bw_{T+1})-\L(\bw_\star)]&\le O\left(\frac{H\|\bw_\star - \by_1\|^2}{T^2} + \frac{\sigma \|\bw_\star -\by_1\|}{\sqrt{T}}\right)
+\end{align*}
+Your choice for $\eta$ may depend on values unknown in practice, such as $\|\bw_\star -\by_1\|$. You would normally have to tune the learning rate to obtain this result without this knowledge.
+
+\addspace
+\solution
+\textbf{\textit{Proof.}} In the \textbf{Proposition 15.3}, for all $t \ge 1$, we have
+\begin{equation}
+	\begin{aligned}
+		\frac{t^2}{9} \leq \sum_{i=1}^t \alpha_i \leq t^2.
+	\end{aligned}
+\end{equation}
+
+Since we know $\alpha_t^2=\sum_{i=1}^t \alpha_i$, we will have:
+\begin{equation}
+	\begin{aligned}
+		\sum_{t=1}^T \alpha_t^2=\sum_{t=1}^T \sum_{i=1}^t \alpha_i \leq \sum_{t=1}^T t^2=\frac{T(T+1)(2 T+1)}{6}.
+	\end{aligned}
+\end{equation}
+
+From \textbf{Problem 5}, we know that:
+\begin{equation}
+	\begin{aligned}
+		\frac{T^2}{9} \mathbb{E}\left[\mathcal{L}\left(\mathbf{w}_{T+1}\right)-\mathcal{L}\left(\mathbf{w}_{\star}\right)\right] \leq \frac{\left\|\mathbf{w}_{\star}-\mathbf{y}_1\right\|^2}{2 \eta}+\sigma^2 \eta \frac{T(T+1)(2 T+1)}{6}.
+	\end{aligned}
+\end{equation}
+
+Here, we will use:
+\begin{equation}
+	\begin{aligned}
+		\eta=\min \left(\frac{1}{H}, c \frac{\left\|\mathbf{w}_{\star}-\mathbf{y}_1\right\|}{\sigma T^{3 / 2}}\right),
+	\end{aligned}
+\end{equation}
+where $c$ is a constant.
+
+Thus, we will have:
+
+(1) If $\eta=\frac{1}{H} \leq c \frac{\left\|\mathbf{w}_{\star}-\mathbf{y}_1\right\|}{\sigma T^{3 / 2}}$, we will have:
+\begin{equation}
+	\begin{aligned}
+		\frac{\left\|\mathbf{w}_{\star}-\mathbf{y}_1\right\|^2}{\eta T^2}=\frac{H\left\|\mathbf{w}_{\star}-\mathbf{y}_1\right\|^2}{T^2}.
+	\end{aligned}
+\end{equation}
+
+As a result, we will have:
+\begin{equation}
+	\begin{aligned}
+		\sigma^2 \eta T \leq \sigma^2 T c \frac{\left\|\mathbf{w}_{\star}-\mathbf{y}_1\right\|}{\sigma T^{3 / 2}}=c \frac{\sigma\left\|\mathbf{w}_{\star}-\mathbf{y}_1\right\|}{\sqrt{T}}.
+	\end{aligned}
+\end{equation}
+
+(2) If $\eta = c \frac{\left\|\mathbf{w}_{\star}-\mathbf{y}_1\right\|}{\sigma T^{3 / 2}}$, we will have:
+\begin{equation}
+	\begin{aligned}
+		\frac{\left\|\mathbf{w}_{\star}-\mathbf{y}_1\right\|^2}{\eta T^2}=\frac{\sigma\left\|\mathbf{w}_{\star}-\mathbf{y}_1\right\|^2}{c\sqrt{T}}.
+	\end{aligned}
+\end{equation}
+
+As a result, we will have:
+\begin{equation}
+	\begin{aligned}
+		\sigma^2 \eta T =c \frac{\sigma\left\|\mathbf{w}_{\star}-\mathbf{y}_1\right\|}{\sqrt{T}}.
+	\end{aligned}
+\end{equation}
+
+Finally, we will have:
+\begin{equation}
+	\begin{aligned}
+		\E[\L(\bw_{T+1})-\L(\bw_\star)]&\le O\left(\frac{H\|\bw_\star - \by_1\|^2}{T^2} + \frac{\sigma \|\bw_\star -\by_1\|}{\sqrt{T}}\right).
+	\end{aligned}
+\end{equation}
+\qedsymbol
+
+\end{enumerate}
+
+\end{document}

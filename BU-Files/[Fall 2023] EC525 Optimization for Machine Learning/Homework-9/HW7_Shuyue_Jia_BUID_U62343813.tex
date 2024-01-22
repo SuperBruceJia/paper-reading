@@ -1,0 +1,295 @@
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath,amscd,amssymb,amsthm}
+\usepackage{thmtools}
+\usepackage{thm-restate}
+\usepackage[margin=1in]{geometry}
+\declaretheorem[name=Theorem]{Theorem}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+
+\usepackage{hyperref}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathop{\mathbb{E}}}
+\newcommand{\argmin}{\mathop{\text{argmin}}}
+\newcommand{\argmax}{\mathop{\text{argmax}}}
+\renewcommand{\L}{\mathcal{L}}
+
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\by}{\mathbf{y}}
+\newcommand{\bw}{\mathbf{w}}
+\newcommand{\bz}{\mathbf{z}}
+\newcommand{\bv}{\mathbf{v}}
+\newcommand{\bg}{\mathbf{g}}
+\newcommand{\op}{\text{op}}
+\renewcommand{\H}{\mathbf{H}}
+\newcommand{\addspace}{\vskip1.5em}
+\newcommand{\solution}{\addspace\noindent\textbf{Solution:}\newline}
+
+\newcommand{\reffig}[1]{Figure~\ref{#1}}
+\newcommand{\reftab}[1]{Table~\ref{#1}}
+\newcommand{\refequ}[1]{Eqn.~\eqref{#1}}
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+\newcommand{\etal}{\emph{et al}. }
+\newcommand{\ie}{\emph{i}.\emph{e}.}
+\newcommand{\eg}{\emph{e}.\emph{g}.}
+\renewcommand{\qedsymbol}{\hfill $\square$}
+
+\title{Optimization for Machine Learning HW 7}
+\author{\textbf{Shuyue Jia} \\ \textbf{BUID: U62343813}}
+\date{Due: 12/4/2022}
+
+\begin{document}
+
+\maketitle
+All parts of each question are equally weighted. When solving one question/part, you may assume the results of all previous questions/parts. You may also assume all previous homework results and results from class or lecture notes, but please explain which result you are using when you use it.
+
+This homework examines the connection between accelerated algorithms for smooth and strongly-convex functions. In particular, you will devise an algorithm for $H$-smooth and $\mu$-strongly convex objectives such that after computing $N$ gradient evaluations, the algorithm outputs a $\hat \bw$ such that (dropping some constants):
+\begin{align*}
+    \L(\hat \bw)-\L(\bw_\star)\le\exp\left(-\sqrt{\frac{\mu}{H}}N\right)
+\end{align*}
+This is contrast to ordinary gradient descent, for which the guarantee is only $\exp(-\frac{\mu}{H}N)$.
+
+Recall that if $\L$ is an $H$-smooth, convex function, then there is an absolute constant $C$ such that after $T$ gradient evaluations, the accelerated gradient descent algorithm starting from initial point  $\bw_1$ outputs a point $\bw_T$ such that:
+        \begin{align*}
+            \L(\bw_T)-\L(\bw_\star) \le \frac{CH\|\bw_1-\bw_\star\|^2}{T^2}
+        \end{align*}
+        
+For simplicity throughout this problem, you may assume that $\sqrt{8C\frac{H}{\mu}}$ is an integer. You will not need to use any of the internal arguments for how accelerated gradient descent works, or anything in particular about the constant $C$.
+
+    \begin{enumerate}
+    	\setcounter{equation}{0}
+        \item Suppose that $\L$ is and $H$ smooth and $\mu$-strongly convex function. Show that $\frac{\mu\|\bw-\bw_\star\|^2}{2}\le \L(\bw)-\L(\bw_\star)\le \frac{H\|\bw-\bw_\star\|^2}{2}$.
+        \addspace
+        \solution From \textbf{Lemma 24.4 } in the Lecture Notes, we know that 
+        \begin{equation}
+        	\begin{aligned}
+        		\mathcal{L}(\mathbf{w}) \geq \mathcal{L}\left(\mathbf{w}_{\star}\right)+\left\langle\nabla \mathcal{L}\left(\mathbf{w}_{\star}\right), \mathbf{w}-\mathbf{w}_{\star}\right\rangle+\frac{\mu}{2}\left\|\mathbf{w}-\mathbf{w}_{\star}\right\|^2.
+        	\end{aligned}
+        \end{equation}
+        
+        Note that $\nabla \mathcal{L}\left(\mathbf{w}_{\star}\right)=0$, we will have:
+        \begin{equation}
+        	\begin{aligned}
+        		\mathcal{L}(\mathbf{w}) \geq \mathcal{L}\left(\mathbf{w}_{\star}\right)+\frac{\mu}{2}\left\|\mathbf{w}-\mathbf{w}_{\star}\right\|^2.
+        	\end{aligned}
+        \end{equation}
+        
+        Thus,
+        \begin{equation}
+        	\begin{aligned}
+        		\frac{\mu\|\bw-\bw_\star\|^2}{2} \le \L(\bw)-\L(\bw_\star).
+        	\end{aligned}
+        \end{equation}
+        
+        Besides, because $\L$ is $H$-smooth, we know that:
+        \begin{equation}
+        	\begin{aligned}
+        		\mathcal{L}\left(\mathbf{w}\right) \leq \mathcal{L}\left(\mathbf{w}_{\star}\right)+\left\langle\nabla \mathcal{L}\left(\mathbf{w}_{\star}\right), \mathbf{w}-\mathbf{w}_{\star}\right\rangle+\frac{H}{2}\left\|\mathbf{w}-\mathbf{w}_{\star}\right\|^2.
+        	\end{aligned}
+        \end{equation}
+        
+        Note that $\nabla \mathcal{L}\left(\mathbf{w}_{\star}\right)=0$, we will have:
+        \begin{equation}
+        	\begin{aligned}
+        		\mathcal{L}\left(\mathbf{w}\right) \leq \mathcal{L}\left(\mathbf{w}_{\star}\right)+\frac{H}{2}\left\|\mathbf{w}-\mathbf{w}_{\star}\right\|^2.
+        	\end{aligned}
+        \end{equation}
+        
+        Thus, we will have:
+        \begin{equation}
+        	\begin{aligned}
+        		\L(\bw)-\L(\bw_\star)\le \frac{H\|\bw-\bw_\star\|^2}{2}.
+        	\end{aligned}
+        \end{equation}
+        
+        Finally, we have proven:
+        \begin{equation}
+        	\begin{aligned}
+        		\frac{\mu\|\bw-\bw_\star\|^2}{2}\le \L(\bw)-\L(\bw_\star)\le \frac{H\|\bw-\bw_\star\|^2}{2}.
+        	\end{aligned}
+        \end{equation}
+        \qedsymbol
+        
+        \addspace
+        
+        \setcounter{equation}{0}
+        \item Show that after $T= \sqrt{8C\frac{H}{\mu}}$ iterations of accelerated gradient descent, we have:
+        \begin{align*}
+            \|\bw_T-\bw_\star\|\le \frac{1}{2}\|\bw_1-\bw_\star\|
+        \end{align*}
+        \addspace
+        \solution From the question, we know that
+        \begin{equation}
+        	\begin{aligned}
+        		\L(\bw_T)-\L(\bw_\star) \le \frac{CH\|\bw_1-\bw_\star\|^2}{T^2}.
+        	\end{aligned}
+        \end{equation}
+        
+        Since $T= \sqrt{8C\frac{H}{\mu}}$, we will have:
+        \begin{equation}
+        	\begin{aligned}
+        		\L(\bw_T)-\L(\bw_\star) \le \frac{\mu\|\bw_1-\bw_\star\|^2}{8}.
+        	\end{aligned}
+        	\label{equ1}
+        \end{equation}
+        
+        Because the accelerated gradient descent algorithm starting from initial point  $\bw_1$ outputs a point $\bw_T$, we will have:
+         \begin{equation}
+        	\begin{aligned}
+        		\frac{\mu\|\bw_T-\bw_\star\|^2}{2} \le \L(\bw_T)-\L(\bw_\star).
+        	\end{aligned}
+        	\label{equ2}
+        \end{equation}
+        
+        Thus, according to~\refequ{equ1} and~\refequ{equ2}, we have:
+         \begin{equation}
+        	\begin{aligned}
+        		\frac{\mu\|\bw_T-\bw_\star\|^2}{2} \le \frac{\mu\|\bw_1-\bw_\star\|^2}{8}.
+        	\end{aligned}
+        \end{equation}
+        
+        By arranging:
+         \begin{equation}
+        	\begin{aligned}
+        		\|\bw_T-\bw_\star\|^2 \le \frac{\|\bw_1-\bw_\star\|^2}{4}.
+        	\end{aligned}
+        \end{equation}
+        
+        Finally, we will have:
+         \begin{equation}
+        	\begin{aligned}
+        		\|\bw_T-\bw_\star\|\le \frac{1}{2}\|\bw_1-\bw_\star\|.
+        	\end{aligned}
+        \end{equation}
+		\qedsymbol
+        
+        \addspace
+       	
+       	\setcounter{equation}{0}
+        \item Consider an algorithm that runs accelerated gradient descent for $\sqrt{8C\frac{H}{\mu}}$ iterations, then stops, resets $\bw_1=\bw_T$, and then restarts and runs accelerated gradient descent for $\sqrt{8C\frac{H}{\mu}}$ iterations and repeats (i.e. Algorithm \ref{alg:momentumAGD}).
+		\begin{algorithm}
+		   \caption{Restarted Accelerated Gradient Descent}
+		   \begin{algorithmic}
+		      \STATE Set $x_1=0$
+		      \FOR{$r=1\dots R$}
+		      \STATE Set $\bw_1= \bx_r$ 
+		      \STATE Initialize and run accelerated gradient descent for $T=\sqrt{8C\frac{H}{\mu}}$ iterations starting from initial iterate $\bw_1$, let $\bw_T$ be the output.
+		      \STATE Set $\bx_{r+1}=\bw_T$.
+		      \ENDFOR
+		      \RETURN $\bx_{R+1}$.
+		   \end{algorithmic}
+		\label{alg:momentumAGD}
+		\end{algorithm}
+		
+		Show that this algorithm satisfies for all $R$:
+		\begin{align*}
+		\|\bx_{R+1}-\bw_\star\|\le \frac{1}{2^R}\|\bw_\star\|
+		\end{align*}
+		\addspace
+		\solution 
+		
+		From~\ref{alg:momentumAGD}, we know that $\bw_1= \bx_r$ and $\bx_{r+1}=\bw_T$. According to the result of \textbf{Problem 2}, we will have:
+		\begin{equation}
+			\begin{aligned}
+				\|\bx_{r+1}-\bw_\star\|\le \frac{1}{2}\|\bx_r-\bw_\star\|.
+			\end{aligned}
+		\end{equation}
+		
+		Thus, we have:
+		\begin{equation}
+			\begin{aligned}
+				& \|\bx_{2}-\bw_\star\| \le \frac{1}{2}\|\bx_1-\bw_\star\|,\\
+				& \|\bx_{3}-\bw_\star\| \le \frac{1}{2}\|\bx_2-\bw_\star\| \le \frac{1}{2^2}\|\bx_1-\bw_\star\|,\\
+				& \cdots\\
+				& \|\bx_{r+1}-\bw_\star\|\le \frac{1}{2}\|\bx_r-\bw_\star\| \le \frac{1}{2^r}\|\bx_1-\bw_\star\|.
+			\end{aligned}
+		\end{equation}
+		
+		Since $r=1\dots R$, after $R$ iterations, we will have:
+		\begin{equation}
+			\begin{aligned}
+				\|\bx_{R+1}-\bw_\star\|\le \frac{1}{2}\|\bx_r-\bw_\star\| \le \frac{1}{2^R}\|\bx_1-\bw_\star\|.
+			\end{aligned}
+		\end{equation}
+		
+		Since $x_1=0$, we finally have:
+		\begin{equation}
+			\begin{aligned}
+				\|\bx_{R+1}-\bw_\star\|\le \frac{1}{2^R}\|\bw_\star\|.
+			\end{aligned}
+		\end{equation}
+		\qedsymbol
+		
+		\addspace
+		
+       	\setcounter{equation}{0}
+		\item Suppose $N=R\sqrt{8C\frac{H}{\mu}}$ for some integer $R$. Show that after $N$ gradient evaluations, Algorithm \ref{alg:momentumAGD} outputs a point $\hat \bw = \bx_{R+1}$ that satisfies:
+		\begin{align*}
+		    \L(\hat \bw) - \L(\bw_\star)\le2^{-\sqrt{\frac{\mu}{2CH}}N}\frac{H\|\bw_\star\|^2}{2} = \exp\left(-\frac{\log(2)}{\sqrt{2C}}\sqrt{\frac{\mu}{H}}N\right)\frac{H\|\bw_\star\|^2}{2}
+		\end{align*}
+		\addspace
+		\solution From \textbf{Problem 3}, we know that:
+		\begin{equation}
+			\begin{aligned}
+				\|\bx_{R+1}-\bw_\star\|\le \frac{1}{2^R}\|\bw_\star\|.
+			\end{aligned}
+		\end{equation}
+		
+		Since $N=R\sqrt{8C\frac{H}{\mu}}$, we will have:
+		\begin{equation}
+			\begin{aligned}
+				\|\bx_{R+1}-\bw_\star\|\le \frac{1}{2^{\frac{N}{\sqrt{8C\frac{H}{\mu}}}}}\|\bw_\star\|.
+			\end{aligned}
+			\label{equ3}
+		\end{equation}
+		
+		From Problem 1, we know that:
+		\begin{equation}
+			\begin{aligned}
+				\L(\bw)-\L(\bw_\star)\le \frac{H\|\bw-\bw_\star\|^2}{2}.
+			\end{aligned}
+		\end{equation}
+		
+		Since $\hat \bw = \bx_{R+1}$, we will then have:
+		\begin{equation}
+			\begin{aligned}
+				\L(\bx_{R+1})-\L(\bw_\star)\le \frac{H\|\bx_{R+1}-\bw_\star\|^2}{2}.
+			\end{aligned}
+		\end{equation}
+		
+		According to~\refequ{equ3}, we will have:
+		\begin{equation}
+			\begin{aligned}
+				\L(\bx_{R+1})-\L(\bw_\star)\le \frac{H}{2} {\left(\frac{1}{2^{\frac{N}{\sqrt{8C\frac{H}{\mu}}}}}\|\bw_\star\|\right)}^2.
+			\end{aligned}
+		\end{equation}
+		
+		Then, we will have:
+		\begin{equation}
+			\begin{aligned}
+				\L(\bx_{R+1})-\L(\bw_\star)\le \frac{HN}{2}\left\|\mathbf{w}_{\star}\right\|^2 2^{-\sqrt{\frac{\mu}{2 H C}}}.
+			\end{aligned}
+		\end{equation}
+		
+		By arranging, we will have:
+		\begin{equation}
+			\begin{aligned}
+				\L(\hat \bw) - \L(\bw_\star)\le2^{-\sqrt{\frac{\mu}{2CH}}N}\frac{H\|\bw_\star\|^2}{2}.
+			\end{aligned}
+		\end{equation}
+		
+		Since $2^{-\sqrt{\frac{\mu}{2CH}}N}=\exp\left(-\frac{\log(2)}{\sqrt{2C}}\sqrt{\frac{\mu}{H}}N\right)$, we will finally have:
+		\begin{equation}
+			\begin{aligned}
+				\L(\hat \bw) - \L(\bw_\star)\le2^{-\sqrt{\frac{\mu}{2CH}}N}\frac{H\|\bw_\star\|^2}{2} = \exp\left(-\frac{\log(2)}{\sqrt{2C}}\sqrt{\frac{\mu}{H}}N\right)\frac{H\|\bw_\star\|^2}{2}.
+			\end{aligned}
+		\end{equation}
+		\qedsymbol
+		
+    \end{enumerate}
+
+\end{document}
