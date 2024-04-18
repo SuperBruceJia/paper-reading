@@ -1,0 +1,67 @@
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath,amscd,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{hyperref}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathop{\mathbb{E}}}
+\newcommand{\argmin}{\mathop{\text{argmin}}}
+\newcommand{\argmax}{\mathop{\text{argmax}}}
+\renewcommand{\L}{\mathcal{L}}
+
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\bw}{\mathbf{w}}
+\newcommand{\bz}{\mathbf{z}}
+\newcommand{\bv}{\mathbf{v}}
+\newcommand{\bg}{\mathbf{g}}
+\newcommand{\op}{\text{op}}
+\newcommand{\addspace}{\vskip1.5em}
+\newcommand{\solution}{\addspace\noindent\textbf{Solution:}\newline}
+
+
+\title{Optimization for Machine Learning HW 4}
+
+\author{
+}
+
+\date{Due: 10/20/2023}
+
+\begin{document}
+
+\maketitle
+All parts of each question are equally weighted. When solving one question/part, you may assume the results of all previous questions/parts. This HW provides a little theoretical motivation for some ideas encountered in practice (e.g. \href{https://openreview.net/pdf?id=B1Yy1BxCZ}{[Smith et al., 2018, https://openreview.net/pdf?id=B1Yy1BxCZ}]).
+\begin{enumerate}
+    \item Suppose that you run the SGD update with a constant learning rate and a gradient estimate $\bg_t$: $\bw_{t+1} = \bw_t - \eta \bg_t$ where $\E[\bg_t]=\nabla \L(\bw_t)$. So far, we have considered only the case $\bg_t = \nabla \ell(\bw_t, z_t)$, but it might be any other random quantity, so long as $\E[\bg_t]=\nabla \L(\bw_t)$. Suppose that $\L$ is an $H$-smooth function, and suppose $\E[\|\bg_t - \nabla \L(\bw_t)\|^2]\le \sigma_t^2$ for some sequence of numbers $\sigma_1,\sigma_2,\dots,\sigma_T$. Suppose $\eta \le \frac{1}{H}$, and let $\Delta = \L(\bw_1) - \L(\bw_\star)$ where $\bw_\star=\argmin\L(\bw)$. Show that
+    \begin{align*}
+        \sum_{t=1}^T \E[\|\nabla \L(\bw_t)\|^2]&\le \frac{2\Delta}{\eta} + H\eta\sum_{t=1}^T\sigma_t^2
+    \end{align*}
+    \solution
+    
+    \addspace
+    \item Suppose that $\L(\bw) =\E[\ell(\bw,z)]$ and $\L$ is $H$-smooth and $\E[\|\nabla \ell(\bw,z)-\nabla \L(\bw)\|^2]\le \sigma^2$ for all $\bw$. Consider SGD with constant learning rate $\eta=\frac{1}{H}$, but where the $t$th iterate uses a minibatch of size $t$. That is, at each iteration $t$, we sample $t$ independent random values $z_{t,1},\dots,z_{t,t}$ and set:
+    \begin{align*}
+    \bg_t &= \frac{1}{t}\sum_{i=1}^t \nabla \ell(\bw_t, z_{t,i})\\
+    \bw_{t+1} &= \bw_t - \frac{\bg_t}{H}
+    \end{align*}
+    Define $\Delta = \L(\bw_1) - \L(\bw_\star)$ where $\bw_\star = \argmin \L(\bw)$. Show that
+    \begin{align*}
+        \sum_{t=1}^T \E[\|\nabla \L(\bw_t)\|^2]&\le O\left( \Delta H  + \sigma^2\log(T)\right)
+    \end{align*}
+    \solution
+    
+    
+    \addspace
+    \item Let $N$ be the total number of gradient evaluations in question 2. Show that
+    \begin{align*}
+        \frac{1}{T}\sum_{t=1}^T \E[\|\nabla \L(\bw_t)\|]&\le O\left( \frac{\sqrt{\log(N)}}{N^{1/4}}\right)
+    \end{align*}
+    where here we consider $\Delta$, $H$, $\sigma$ all constant for purposes of big-O. Note that this is the average of $\|\nabla \L(\bw_t)\|$ rather than $\|\nabla \L(\bw_t)\|^2$.
+    Compare this result to what you might obtain with using a varying learning rate but a fixed batch size (one sentence of comparison here is sufficient).
+    \solution
+
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,123 @@
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath,amscd,amssymb,amsthm}
+\usepackage{thmtools}
+\usepackage{thm-restate}
+\usepackage[margin=1in]{geometry}
+\declaretheorem[name=Theorem]{Theorem}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+
+\usepackage{hyperref}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathop{\mathbb{E}}}
+\newcommand{\argmin}{\mathop{\text{argmin}}}
+\newcommand{\argmax}{\mathop{\text{argmax}}}
+\renewcommand{\L}{\mathcal{L}}
+
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\by}{\mathbf{y}}
+\newcommand{\bw}{\mathbf{w}}
+\newcommand{\bz}{\mathbf{z}}
+\newcommand{\bv}{\mathbf{v}}
+\newcommand{\bg}{\mathbf{g}}
+\newcommand{\op}{\text{op}}
+\renewcommand{\H}{\mathbf{H}}
+\newcommand{\addspace}{\vskip1.5em}
+\newcommand{\solution}{\addspace\noindent\textbf{Solution:}\newline}
+
+
+\title{Optimization for Machine Learning Final Exam}
+
+\author{
+name
+}
+
+\date{Due:  12/18/2023}
+
+\begin{document}
+
+\maketitle
+You MAY NOT collaborate with other students on this final.
+
+When solving one question/part, you may assume the results of all previous questions/parts. You may also assume all previous homework results and results from class or lecture notes, but please explain which result you are using when you use it.
+
+Please justify all answers unless explicitly instructed not to in the question statement.
+
+
+    \begin{enumerate}
+    
+    \item (5pts) Suppose that $\L(\bw)$ is a convex function, and $\bw_1,\dots,\bw_T$ are such that:
+    \begin{align*}
+        \sum_{t=1}^T t (\L(\bw_t)-\L(\bw_\star))\le T^{3/2}
+    \end{align*}
+    You know the identities of the points $\bw_1,\dots,\bw_T$, but you \emph{do not} have any other information about $\L$ (e.g. you cannot compute its values or its gradients). Provide a \emph{deterministic} point $\hat \bw$ as a function of $\bw_1,\dots,\bw_T$ such that
+    \begin{align*}
+        \L(\hat \bw)-\L(\bw_\star)&\le O\left(\frac{1}{\sqrt{T}}\right)
+    \end{align*}
+    \solution
+
+    \addspace
+    \item (5pts) Specify a function $f:\R\to \R$ that is both 1-strongly convex and 10-Lipschitz, or prove that no such function exists.
+    \solution
+
+    \addspace
+    \item (5pts) Specify a function $f:\R\to \R$ that is both 1-smooth and 2 strongly convex, or prove that no such function exists.
+    \solution
+    
+    \addspace
+    \item
+    \begin{enumerate}
+        \item (5pts) \emph{Newton's method} employs the following update: $\bw_{t+1} =  \bw_t - \nabla^2 \L(\bw_t)^{-1} \nabla \L(\bw_t)$. Suppose that $\L$ is a convex quadratic function (that is, $\L$ has the form $\L(\bw) = \bw^\top A\bw + \langle \bw ,\bv\rangle + c$ for some positive semi-definite matrix $A$, vector  $\bw$ and scalar $c$). Show that in this case, no matter what $\bw_1$ is, $\bw_2 = \argmin \L$ whenever $A$ is strictly positive-definite.
+        \solution
+
+
+        \addspace
+        \item (5pts) A friend asks if the reason the result in part (a) is able to avoid the $\Omega(1/T^2)$ lower bound we learned in class is that the analysis was restricted to quadratic loss functions rather than general smooth convex loss functions. You tell them no: the lower bound applies even to algorithms that consider only quadratic losses. Why?
+        \solution
+
+
+        \addspace
+        \item (5pts) What is the true reason that the result in part (a) can avoid the $\Omega(1/T^2)$ lower bound?
+        \solution
+
+    \end{enumerate}
+        
+    
+    \addspace
+    \item (10pts) Let us call a differentiable function $q$-star-convex if for all $\bw$, $\L(\bw_\star)\ge \L(\bw)+ q\langle \nabla \L(\bw),\bw_\star-\bw\rangle$. Convex functions satisfy this condition with $q=1$ (although $q=1$ does not imply convexity). $q>1$ indicates some non-convexity. Suppose that $\L=\E[\ell(\bw,z)]$ is $q$-star-convex, and satisfies $\|\bw_\star\|\le D$ for some known $D$. Further, suppose that $\ell(\bw,z)$ is differentiable and $G$-Lipschitz in $\bw$ for all $z$. Show that stochastic gradient descent with an appropriate learning rate guarantees:
+    \begin{align*}
+        \frac{1}{T}\sum_{t=1}^T \E[\L(\bw_t)-\L(\bw_\star)]&\le O\left(\frac{q DG}{\sqrt{T}}\right)
+    \end{align*}
+    
+    \solution
+
+    \addspace
+    \item Consider the following ``communication constrained'' situation: A ``server'' holds a training dataset, and when provided with a point $\bw$ it will be able to randomly sample some example $z$ and compute a gradient of a loss $\ell(\bw, z)$ such that $\E[\ell(\bw,z)]=\L(\bw)$ for some $H$-smooth function $\L$. It is guaranteed that each coordinate of $\nabla \ell(\bw,z)\in \R^d$ lies in $[-1,1]$ for all $\bw$ and $z$. Unfortunately, in order to preserve outgoing bandwidth, the server will not tell you the actual gradients $\nabla \ell(\bw,z)$ it computes. Instead it will give you a $d$-bit string $C(\nabla \ell(\bw,z))\in \{\pm 1\}^d$ (the $C$ stands for ``compressed''). The $i$th coordinate of $C(\nabla \ell(\bw,z))$ is set randomly by the formula:
+    \begin{align*}
+        C(\nabla \ell(\bw,z))[i]=\left\{\begin{array}{lr}1&\text{ with probability $\frac{1+\nabla \ell(\bw,z)[i]}{2}$}\\-1&\text{ with probability $\frac{1-\nabla \ell(\bw,z)[i]}{2}$}\end{array}\right.
+    \end{align*}
+    \begin{enumerate}
+        \item (5pts) Show that $\E[C(\nabla \ell(\bw,z))] = \nabla \L(\bw)$, where the expectation is over both the randomness in the choice of $z$ as well as the randomness in the function $C$.
+        \solution
+        
+        \addspace
+        \item (10 pts) Suppose you perform SGD with these compressed gradients:
+        \begin{align*}
+            \bw_{t+1} = \bw_t-\eta C(\nabla \ell(\bw_t,z))
+        \end{align*}
+        Show that after $T$ iterations, with an appropriate learning rate,
+        \begin{align*}
+            \frac{1}{T}\sum_{t=1}^T \E[\|\nabla \L(\bw_t)\|^2]&\le O\left(\frac{ \sqrt{d H(\L(\bw_1)-\L(\bw_\star))}}{\sqrt{T}}\right)
+        \end{align*}
+        \solution
+        
+    \end{enumerate}
+    
+
+    \end{enumerate}
+
+\end{document}

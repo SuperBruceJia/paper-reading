@@ -1,0 +1,132 @@
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath,amscd,amssymb,amsthm}
+\usepackage{thmtools}
+\usepackage{thm-restate}
+\usepackage[margin=1in]{geometry}
+\declaretheorem[name=Theorem]{Theorem}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+
+\usepackage{hyperref}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathop{\mathbb{E}}}
+\newcommand{\argmin}{\mathop{\text{argmin}}}
+\newcommand{\argmax}{\mathop{\text{argmax}}}
+\renewcommand{\L}{\mathcal{L}}
+
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\by}{\mathbf{y}}
+\newcommand{\bw}{\mathbf{w}}
+\newcommand{\bz}{\mathbf{z}}
+\newcommand{\bv}{\mathbf{v}}
+\newcommand{\bg}{\mathbf{g}}
+\newcommand{\op}{\text{op}}
+\newcommand{\addspace}{\vskip1.5em}
+\newcommand{\solution}{\addspace\noindent\textbf{Solution:}\newline}
+
+
+\title{Optimization for Machine Learning HW 5}
+
+\author{
+name
+}
+
+\date{Due: 10/27/2023}
+
+\begin{document}
+
+\maketitle
+All parts of each question are equally weighted. When solving one question/part, you may assume the results of all previous questions/parts. You may also assume all previous homework results and results from class or lecture notes, but please explain which result you are using when you use it.
+
+In this homework, you will extend the deterministic accelerated algorithm to a stochastic setting. The goal is to obtain a convergence rate like:
+\begin{align*}
+    \E\left[\L(\bw_{T+1})-\L(\bw_\star)\right]&\le O\left(\frac{H \|\bw_\star - \by_1\|^2}{T^2} + \frac{\sigma \|\bw_\star - \by_1\|}{\sqrt{T}}\right)
+\end{align*}
+Thus, when $\sigma$ is very small the convergence rate is nearly $O(1/T^2)$, but when $\sigma$ is larger it decays to the ordinary $O(1/\sqrt{T})$. Obtaining this result in an adaptive way (i.e. via an algorithm that does not know $H$ or $\sigma$ ahead of time) is rather difficult, although some progress has been made recently. The state-of-the art here is currently this ICML 2020 paper: \url{http://proceedings.mlr.press/v119/joulani20a.html}.
+
+Throughout this problem, assume that $\L$ is a convex, $H$-smooth function, and that $\ell(\bw ,z)$ is such that $\E[\|\nabla \ell(\bw,z)-\nabla \L(\bw)\|^2]\le \sigma^2$ for all $\bw$. Recall that by bias-variance decomposition this also implies $\E[\|\nabla\ell(\bw,z)\|^2]\le \E[\|\nabla \L(\bw)\|^2+\sigma^2]$ for all (possibly random) $\bw$.
+
+\begin{algorithm}
+   \caption{Accelerated Gradient Descent}
+   \begin{algorithmic}
+      \STATE{\bfseries Input: } Initial Point $\bw_1$, smoothness constant $H$, time horizon $T$, learning rate $\eta$
+      \STATE Set $\by_1=\bw_1$
+      \STATE Set $\alpha_0=0$, $\alpha_1=1$.
+      \FOR{$t=1\dots T$}
+      \STATE Set $\tau_t = \frac{\alpha_t}{\sum_{i=1}^t \alpha_t}$
+      \STATE Set $\bx_t = (1-\tau_t)\bw_t + \tau_t \by_t$
+      \STATE Set $\bg_t = \alpha_t \nabla \ell(\bx_t, z_t)$.
+      \STATE Set $\by_{t+1} = \by_t  -  \eta \bg_t$.
+      \STATE Set $\bw_{t+1} = \bx_t - \eta \nabla \ell(\bx_t, z_t)$
+      \STATE Set $\alpha_{t+1}$ to satisfy $\alpha_{t+1}^2 - \alpha_{t+1} = \sum_{i=1}^t \alpha_i$.
+      \ENDFOR
+   \end{algorithmic}
+\label{alg:momentumAGD}
+\end{algorithm}
+\begin{enumerate}
+
+\item Show that Algorithm \ref{alg:momentumAGD} satisfies:
+\begin{align*}
+    \E\left[\sum_{t=1}^T \alpha_t (\L(\bx_t)- \L(\bw_\star))\right]&\le \E\left[\sum_{t=1}^T \langle \nabla\L(\bx_t), \alpha_t(\bx_t -\by_t)\rangle +\sum_{t=1}^T \langle \bg_t, \by_t -\bw_\star\rangle\right]
+\end{align*}
+
+\solution
+    
+
+\addspace
+
+\item Show that
+\begin{align*}
+    \E\left[\sum_{t=1}^T\langle \bg_t, \by_t -\bw_\star\rangle\right]&\le \frac{\|\bw_\star-\by_1\|^2}{2\eta} + \frac{\sigma^2 \eta \sum_{t=1}^T \alpha_t^2 }{2}+\frac{\eta}{2}\E\left[\sum_{t=1}^T \alpha_t^2\|\nabla \L(\bx_t)\|^2\right]
+\end{align*}
+
+\solution
+
+\addspace
+
+\item Show that
+
+\begin{align*}
+    -\E\left[\sum_{t=1}^T \alpha_t  \L(\bw_\star)\right]&\le \E\left[\sum_{t=1}^T \left(\sum_{i=1}^{t-1} \alpha_i\right)\L(\bw_t) - \left(\sum_{i=1}^{t} \alpha_i\right)\L(\bx_t)\right] \\
+    &\quad+ \frac{\|\bw_\star-\by_1\|^2}{2\eta}+ \frac{\sigma^2 \eta \sum_{t=1}^T \alpha_t^2 }{2}+\frac{\eta}{2}\E\left[\sum_{t=1}^T \alpha_t^2\|\nabla \L(\bx_t)\|^2\right]
+\end{align*}
+
+\solution
+
+
+\addspace
+    
+\item Show that for any $\eta \le \frac{1}{H}$, for all $t$:
+    \begin{align*}
+     \E\left[ - \L(\bx_t)\right]&\le \E\left[-\L(\bw_{t+1})- \frac{\eta}{2}\| \nabla \L(\bx_t)\|^2 + \frac{\eta \sigma^2 }{2}\right]
+\end{align*}
+(note the $\eta$ instead of $\eta^2$ in the last term!)
+
+
+\solution
+
+\addspace
+
+\item Show that for any $\eta\le \frac{1}{H}$:
+\begin{align*}
+    \sum_{t=1}^T \alpha_t\E\left[ \L(\bw_{T+1}) - \L(\bw_\star)\right]&\le \frac{\|\bw_\star-\by_1\|^2}{2\eta}+ \sigma^2 \eta \sum_{t=1}^T \alpha_t^2 
+\end{align*}
+
+\solution
+
+\addspace
+\item Choose a value for $\eta$ such that:
+\begin{align*}
+    \E[\L(\bw_{T+1})-\L(\bw_\star)]&\le O\left(\frac{H\|\bw_\star - \by_1\|^2}{T^2} + \frac{\sigma \|\bw_\star -\by_1\|}{\sqrt{T}}\right)
+\end{align*}
+Your choice for $\eta$ may depend on values unknown in practice, such as $\|\bw_\star -\by_1\|$. You would normally have to tune the learning rate to obtain this result without this knowledge.
+
+\solution
+
+\end{enumerate}
+
+\end{document}

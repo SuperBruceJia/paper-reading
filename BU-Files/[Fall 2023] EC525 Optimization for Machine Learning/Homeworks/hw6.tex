@@ -1,0 +1,58 @@
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath,amscd,amssymb,amsthm}
+\usepackage{thmtools}
+\usepackage{thm-restate}
+\usepackage[margin=1in]{geometry}
+\declaretheorem[name=Theorem]{Theorem}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+
+\usepackage{hyperref}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathop{\mathbb{E}}}
+\newcommand{\argmin}{\mathop{\text{argmin}}}
+\newcommand{\argmax}{\mathop{\text{argmax}}}
+\renewcommand{\L}{\mathcal{L}}
+
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\by}{\mathbf{y}}
+\newcommand{\bw}{\mathbf{w}}
+\newcommand{\bz}{\mathbf{z}}
+\newcommand{\bv}{\mathbf{v}}
+\newcommand{\bg}{\mathbf{g}}
+\newcommand{\op}{\text{op}}
+\newcommand{\addspace}{\vskip1.5em}
+\newcommand{\solution}{\addspace\noindent\textbf{Solution:}\newline}
+
+
+\title{Optimization for Machine Learning HW 6}
+
+\author{
+}
+
+\date{Due: 11/17/2023}
+
+\begin{document}
+
+\maketitle
+All parts of each question are equally weighted. When solving one question/part, you may assume the results of all previous questions/parts. You may also assume all previous homework results and results from class or lecture notes, but please explain which result you are using when you use it.
+
+\begin{enumerate}
+   \item We have seen that for $H$-smooth convex objectives, no first-order algorithm can faster than $O(H/T^2)$ in a \emph{dimension-free}  manner. That is, the ``hard'' function we studied is a very high dimensional function. However, if we restrict to considering $\L:\R\to \R$, the situation is quite different. Provide a first-order algorithm that, given a first-order oracle for a convex function  $\L:\R\to  \R$ such that $\L$ is $H$-smooth and achieves its minimum at some $|w_\star|\le 1$, then after $T$  iterations the  algorithm outputs $\hat  w$  that  satisfies $\L(\hat w) - \L(w_\star)\le O(H2^{-2T})$. Be careful: you need to have the $2$ in the exponent since $2^{-T}$ is NOT $O(2^{-2T})$.
+    
+    
+    \solution
+    
+    \addspace
+    
+    \item Suppose you are trying to identify the bias of a coin. We model a coin flip as a ``1'' if it comes up heads, and ``0'' otherwise, and let $p_\star$ be the probability  that it comes up  heads. If  $Z\in\{0,1\}$ is the outcome of a coin flip, it holds that $p_\star=\argmin \E[\ell(w,Z)]=\L(w)$ where $\ell(w,z) = (w-z)^2$. After observing $T$ coin flips $z_1,\dots, z_T$, you make the natural prediction  $\hat p = \frac{z_1+\dots+z_T}{T}$. Show that  $\E[\L(\hat p)-\L(p_\star)] = \frac{p_\star(1-p_\star)}{T}$. Explain why this does \emph{not} contradict our $\frac{1}{\sqrt{T}}$ lower bound for stochastic convex optimization?
+    
+    \solution
+    
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,143 @@
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath,amscd,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathop{\mathbb{E}}}
+\newcommand{\argmin}{\mathop{\text{argmin}}}
+\newcommand{\argmax}{\mathop{\text{argmax}}}
+\renewcommand{\L}{\mathcal{L}}
+
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\bw}{\mathbf{w}}
+\newcommand{\bz}{\mathbf{z}}
+\newcommand{\bv}{\mathbf{v}}
+\newcommand{\bg}{\mathbf{g}}
+\newcommand{\op}{\text{op}}
+\newcommand{\addspace}{\vskip1.5em}
+\newcommand{\solution}{\addspace\noindent\textbf{Solution:}}
+
+
+\title{Optimization for Machine Learning HW 3}
+
+\author{
+}
+
+\date{Due: 9/27/2023}
+
+\begin{document}
+
+\maketitle
+All parts of each question are equally weighted. When solving one question/part, you may assume the results of all previous questions/parts.
+\begin{enumerate}
+
+\item This question explores the use of \emph{time-varying} learning rates. Suppose $\L(\bw) = \E_z [\ell(\bw ,z)]$ is a convex function, and suppose $D\ge \|\bw_1-\bw_\star\|$ for some $\bw_1$ and $\bw_\star =\argmin \L(\bw)$. In class, we showed that if $\|\nabla \ell(\bw,z)\|\le G$ for all $z$ and $\bw$, then stochastic gradient descent with learning rate $\eta=\frac{D}{G\sqrt{T}}$ satisfies
+\begin{align*}
+    \E\left[\frac{1}{T}\sum_{t=1}^T \L(\bw_t) -\L(\bw_\star)\right]&\le \frac{DG}{\sqrt{T}}
+\end{align*}
+However, in order to set this learning rate, we needed to use knowledge of $D$, $G$ and $T$. This question helps show a way to avoid needing to know $T$.
+\begin{enumerate}
+    \item To do this, we will consider \emph{projected} stochastic gradient descent with \emph{varying learning rate}. Suppose we start at $\bw_1=0$. Then the update is:
+    \begin{align*}
+        \bw_{t+1} = \Pi_{\|\bw\|\le D} \left[\bw_t - \eta_t \nabla \ell(\bw_t,z_t)\right]
+    \end{align*}
+    where $\Pi_{\|\bw\|\le D}[x]=\argmin_{\|\bw\|\le D} \|x-\bw\|$. Notice that $\Pi_{\|\bw\|\le D}[\bw_\star]=\bw_\star$ by definition of $D$. Show that
+    \begin{align*}
+        \langle \nabla \ell(\bw_t,z_t),\bw_t-\bw_\star\rangle\le \frac{\|\bw_t-\bw_\star\|^2-\|\bw_{t+1}-\bw_\star\|^2}{2\eta_t} + \frac{\eta_t\|\nabla \ell(\bw_t,z_t)\|^2}{2}
+    \end{align*}
+    And conclude:
+    \begin{align*}
+        \E\left[\sum_{t=1}^T \L(\bw_t)-\L(\bw_\star)\right] \le \E\left[\sum_{t=1}^T \frac{\|\bw_t-\bw_\star\|^2-\|\bw_{t+1}-\bw_\star\|^2}{2\eta_t} + \frac{\eta_t\|\nabla \ell(\bw_t,z_t)\|^2}{2}\right]
+    \end{align*}
+    (You may use without proof the identity $\| \Pi_{\|\bw\|\le D}[x]-\bw_\star\|^2\le \|x-\bw_\star\|^2 $ for all $t$ and all vectors $x$. This follows because $\|\bw_\star\|\le D$.)
+    
+    \solution
+    
+    % write solution here
+    
+    \addspace
+    
+    \item Next, show that so long as $\eta_t$ satisfies $\eta_t\le \eta_{t-1}$ for all $t$, we have:
+\begin{align*}
+    \E\left[\sum_{t=1}^T \L(\bw_t) -\L(\bw_\star)\right]&\le \E\left[\frac{2D^2}{\eta_T} + \frac{ \sum_{t=1}^T \eta_t \|\nabla \ell(\bw_t,z_t)\|^2}{2}\right]
+\end{align*}
+(hint: at some point you will probably need to show $\|\bw_t-\bw_\star\|^2(\tfrac{1}{2\eta_t} - \tfrac{1}{2\eta_{t-1}}) \le 2D^2(\tfrac{1}{\eta_t} - \tfrac{1}{\eta_{t-1}})$).
+
+    \solution
+    
+    % write solution here
+    
+    \addspace
+
+\item Next, consider the update
+    \begin{align*}
+        \bw_{t+1} = \Pi_{\|\bw\|\le D} \left[\bw_t - \eta_t \nabla \ell(\bw_t,z_t)\right]
+    \end{align*}
+    where we set $\eta_t = \frac{D}{G\sqrt{t}}$. Recalling our assumption that $\|\nabla \ell(\bw_t, z_t)\|\le G$ with probability 1, Show that
+\begin{align*}
+    \E\left[\sum_{t=1}^T \L(\bw_t) -\L(\bw_\star)\right]&\le O(DG\sqrt{T})
+\end{align*}
+This allows you to handle any $T$ value without having the algorithm know $T$ ahead of time. (Hint: you may want to show that $\sum_{t=1}^T \frac{1}{\sqrt{t}}\le 1+\int_1^T\frac{dx}{\sqrt{x}}$).
+
+    \solution
+    
+    % write solution here
+    
+    \addspace
+
+\end{enumerate}
+
+\item This question is an exercise in understanding the non-convex SGD analysis. In the notes, Theorem 5.3 discusses how to use varying learning rate $\eta_t$ proportional to $\frac{1}{\sqrt{t}}$ to obtain a non-convex convergence rate of:
+    \begin{align*}
+        \E[\|\nabla \L(\hat \bw)\|^2]\le O\left(\frac{\log(T)}{\sqrt{T}}\right)
+    \end{align*}
+    In this question, we will remove the logarithmic factor by adding an extra assumption.
+\begin{enumerate}
+
+    \item Suppose that $\L$ is $H$-smooth, $\|\nabla \ell(\bw, z)\|\le G$ for all $\bw$ and $z$, and further that $\L(\bw)\in[0,M]$ for all $\bw$ (this last assumption is slightly stronger than we have assumed in class). Consider the SGD update:
+    \begin{align*}
+        \bw_{t+1} = \bw_t - \eta \nabla \ell(\bw_t, z_t)
+    \end{align*}
+    Suppose $\eta_t$ is an arbitrary deterministic learning rate schedule satisfying $\eta_{t+1}\le \eta_t$ for all $t$ (i.e. the learning rate never increases). Show that for all $\tau< T$:
+    \begin{align*}
+    \frac{1}{T-\tau}\E\left[\sum_{t=\tau+1}^T\|\nabla \L(\bw_t)\|^2\right]\le \frac{1}{\eta_T (T-\tau)}\left( M + \frac{HG^2}{2}\sum_{t=\tau+1}^T \eta_t^2\right)
+    \end{align*}
+    
+    \solution
+    
+    % write solution here
+    
+    \addspace
+    
+    \item Next, consider $\eta_t = \frac{1}{\sqrt{t}}$. In class, we considered choosing $\hat \bw$ \emph{uniformly} at random from $\bw_1,\dots,\bw_T$. Instead, produce a \emph{non-uniform} distribution over $\bw_1,\dots,\bw_T$ such that choosing $\bw_T$ from this distribution satisfies:
+    \begin{align*}
+        \E[\|\nabla \L(\hat \bw)\|^2] \le O\left(\frac{1}{\sqrt{T}}\right)
+    \end{align*}
+    where the $O(\cdot)$ notation hides constants that do not depend on $T$. That is, you should find some $p_1,\dots,p_T$ such that you set $\hat \bw = \bw_t$ with probability $p_t$. The uniform case is $p_t=1/T$ for all $t$.
+    If it helps, you may assume that $T$ is divisible by any natural number (e.g. you can assume $T$ is even if you want). Note that such an assumption is not required.
+    \solution
+    
+    % write solution here
+    
+    \addspace
+
+    \item[BONUS (c)] Assume that $\L$ is $H$-smooth, $\|\nabla \ell(\bw ,z)\|\le G$ for all $\bw$ and $z$, and $\bw_1$ is such that $\L(\bw_1)-\inf_\bw \L\le \Delta$ (note that this is \emph{the same} as our usual assumptions in class). Devise a sequence of learning rates such that:
+     \begin{align*}
+         \frac{1}{T}\sum_{t=1}^T \E\left[\left\|\nabla \L(\bw_t)\right\|^2\right]\le O\left(\frac{(HG^2\log\log(T)+\Delta)\sqrt{\log(T)}}{\sqrt{T}}\right)
+     \end{align*}
+     where the $O(\cdot)$ notation hides constants that may depend on $G$, $\Delta$ and $H$ but \emph{not} $T$.
+
+    \solution
+    
+    % write solution here
+    
+    \addspace
+
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}

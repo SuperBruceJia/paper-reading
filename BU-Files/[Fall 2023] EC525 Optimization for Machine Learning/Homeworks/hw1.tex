@@ -1,0 +1,85 @@
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath,amscd,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathop{\mathbb{E}}}
+\newcommand{\argmin}{\mathop{\text{argmin}}}
+\newcommand{\argmax}{\mathop{\text{argmax}}}
+\renewcommand{\L}{\mathcal{L}}
+
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\bw}{\mathbf{w}}
+\newcommand{\bz}{\mathbf{z}}
+\newcommand{\bv}{\mathbf{v}}
+\newcommand{\bg}{\mathbf{g}}
+\newcommand{\op}{\text{op}}
+\newcommand{\addspace}{\vskip1.5em}
+\newcommand{\solution}{\addspace\noindent\textbf{Solution:}}
+
+\title{Optimization for Machine Learning HW 1}
+
+\author{
+}
+
+\date{Due: 9/13/2022}
+
+\begin{document}
+
+\maketitle
+This homework is optional. You may do as much of it as you like.
+\begin{enumerate}
+
+\item This question provides practice thinking about random variables. 
+\begin{enumerate}
+\item Is there a random variable $X$ supported on the positive integers that has finite mean $\E[X]$ but infinite second moment $\E[X^2]$? If so, explicitly state a probability mass function for such an $X$ and prove that it has the desired properties. If not, prove that no such distribution random variable exists.
+    \solution
+    
+    % write solution here
+
+    \addspace
+\item If $X$ is a random variable satisfying $\E[\|X-\E[X]\|^n]\le \sigma^n$ for some $n>0$, show that for any $\delta>0$, $P[\|X-\E[X]\|\le \frac{\sigma}{\delta^{1/n}}]\ge 1-\delta$. This statement is often written instead as ``with probability at least $1-\delta$, $\|X-\E[X]\|\le \frac{\sigma}{\delta^{1/n}}$''.
+    \solution
+    
+    % write solution here
+    
+    \addspace
+\item Suppose that $X$ is a random variable such that for all real numbers (not just integers!) $n>0$, $\E[\|X-\E[X]\|^n]^{1/n}\le \sigma\sqrt{n}$. Show that with probability at least $1-\delta$, $\|X-\E[X]\|\le \sigma \sqrt{2\exp(1)\log(1/\delta)}$. Distributions satisfying this property are called \emph{subgaussian}. The Normal distribution is an example of a distribution satisfying this kind of property.
+    \solution
+    
+    % write solution here
+    
+    \addspace
+\end{enumerate}
+
+\item This question provides practice in some linear algebra ideas.
+\begin{enumerate}
+    \item For any matrix $M$, the \emph{operator norm} of $M$ is $\|M\|_{\text{op}}=\sup_{\|v\|= 1} \|Mv\|$. Prove that the operator norm satisfies the triangle inequality: for all matrices $A$ and $B$ of the same dimensions, $\|A+B\|_{\text{op}}\le \|A\|_{\text{op}} + \|B\|_{\text{op}}$.
+    \solution
+    
+    % write solution here
+    
+    \addspace
+    \item Most of the matrices we will discuss in this class are \emph{symmetric} matrices. The \emph{real spectral theorem} states that any symmetric matrix $M\in \R^{d\times d}$ has an orthonormal basis of eigenvectors. That is, there exists $v_1,\dots,v_d$ such that each $v_i$ has norm 1, $\langle v_i,v_j\rangle =0$ for all $i\ne j$, and $Mv_i=\lambda_i v_i$ for some real numbers $\lambda_1,\dots,\lambda_d$. Prove that $\|M\|_{\text{op}}=\max_i |\lambda_i|$ for any symmetric matrix $M$.
+    \solution
+    
+    % write solution here
+    
+    \addspace
+\end{enumerate}
+
+
+\item Suppose you are working for a online store and you need to predict the probability that a person who visits your homepage will buy something. You have a dataset $z_1,\dots,z_N$ where $z_i$ is $1$ if the $i$th visitor to the homepage bought something, and $0$ otherwise. You assume that each $z_i$ is an independent and indentically distributred random variable, so your task is just to learn $p=P[z=1]=\E[z]$. You decide to use the simple estimate $\hat p = \frac{1}{N}\sum_{t=1}^N z_i$. Show that for any $N$ and any $p$, $\E[|\hat p-p|]\le \frac{\sqrt{p(1-p)}}{\sqrt{N}}$.
+    \solution
+    
+    % write solution here
+    
+    \addspace
+
+
+\end{enumerate}
+
+\end{document}
