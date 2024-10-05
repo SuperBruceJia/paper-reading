@@ -1,4 +1,8 @@
 # Boston Journey
+## Fellowships
+<img width="868" alt="image" src="https://github.com/user-attachments/assets/9ea638ec-2712-40b7-be12-ae18ce10d490">
+<img width="1012" alt="image" src="https://github.com/user-attachments/assets/597a42bd-e281-4b8b-bf9d-4fab4f081089">
+
 ## Flight and Travel
 <img width="842" alt="image" src="https://github.com/user-attachments/assets/43083d82-254b-4b64-bb22-9fbdda6164f6">
 
